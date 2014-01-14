@@ -1,0 +1,987 @@
+<?xml version="1.0" encoding="utf-8"?>
+<language>
+	<item id="4">该地区不能进行征服</item><!--征服按钮禁用提示-->
+	<item id="5">不能攻击不同等级地区的玩家</item><!--攻击按钮禁用提示-->
+	<item id="6">您成功的向{0}派遣了{1}支商队</item>
+	<item id="11">无</item><!--没有物品掉落、没官职、没军团、下一官职没有可获得的武将、没有上次缴纳银币的时间、没有军团长-->
+	<item id="17">您确定要解聘武将 [{0}] 吗？</item>
+	<item id="18">设为默认阵型成功</item>
+	<item id="19">增加 {0}金币</item><!--领取奖励-->
+	<item id="30">您确定花费 {0}金币，增加一个军令吗？</item>
+	<item id="31">您确定花费 {0}金币，增加军令上限吗？</item>
+	<item id="32">您确定花费 {0}金币，把等待时间设为零吗？</item>
+	<item id="33">鼓舞成功</item>
+	<item id="34">您确定花费 {0}金币，增加一个建造队伍吗？</item>
+	<item id="35">获得低级别成长奖励 {0}银币</item>
+	<item id="36">增加 {0}金币</item><!--充值返还-->
+	<item id="37">领取成功，获得 {0}银币</item><!--领取在事件中的奖励-->
+	<item id="38">修改成功！</item><!--修改旗号、留言-->
+	
+	<item id="39">农场大丰收，</item><!--世界地图收获资源-->
+	<item id="40">本次收获 {0}粮食</item>
+	<item id="41">投资成功</item>
+	<item id="42"><![CDATA[您确认要迁移到 {0} 吗？<br/>迁移到该地区需要加入 {1}国]]></item>
+	<item id="43"><![CDATA[您所选择的地区所在的国家({0}国)，与您军团所在的国家({1}国)不同。<br/>您必须先退出军团！]]></item>
+	<item id="46">您确定花费 {0}金币，创建一个幻影吗？</item>
+	
+	
+	<item id="20">卖出了[{0}]，获得 {1}银币</item><!--派遣、直接卖出-->
+	<item id="21">购买 [{0}] 成功，物品已经放入仓库</item><!--购买物品-->
+	<item id="22">升级成功！物品等级提升</item>
+	<item id="23">降级成功！物品等级下降</item>
+	<item id="24">升级失败，运气欠佳！</item>
+	<item id="25">降级成功！获得 {0}银币</item><!--仓库界面，降级装备-->
+	
+	<item id="26">您确定要退出军团吗？</item>
+	<item id="27">您确定要将 {0} 请出军团吗？</item>
+	
+	<item id="28">发送军团邮件成功!</item>
+	<item id="29">发送邮件成功!</item>
+	
+	
+	<item id="13">获得 {0}银币</item><!--征收-->
+	<item id="14"><![CDATA[，<font color='#FFA713'>{0}金币</font>]]></item>
+	<item id="15">向军团捐献 {0}银币</item>
+	
+	<!--弹出对话框上的标题文本-->
+	<item id="1">提示</item>
+	<item id="16">请确认</item>
+	
+	<!--场景提示-->
+	<item id="2">号区域</item>
+	<item id="3">农田</item>
+	<item id="12">%完成度</item>
+	<item id="44">主城</item>
+	<item id="45">世界地图</item>
+	
+	<!--资源名称-->
+	<item id="1001">粮食</item>
+	<item id="1002">银币</item>
+	<item id="1003">金币</item>
+	<item id="1004">威望</item>
+	<item id="1005">军功</item>
+	<item id="1006">兵力</item>
+	
+	
+	<!--武将提示-->
+	<item id="2001">不甘心，被打败了。[br]{0}成为您的在野武将</item>
+	<item id="2002">将军，恭喜打败张梁！[br]招募界面和布阵界面已经开放，这两个界面可以在部队面板中找到。</item>
+	<item id="2003">将军，恭喜击败了黄巾势力！[br]洛阳地区已经开放。你可以在世界场景中迁移到洛阳。</item>
+	<item id="2004">将军，恭喜击败了董卓势力！有3个新地区向你开放了。3个地区分别对应魏蜀吴三个国家。国家一旦选择就无法变更，请谨慎！</item>
+	<item id="2005">旗帜与众不同的是将军自己的主城，主城周围是其他玩家的城池。平原地区有多个区域，可以通过“上一区域”“下一区域”按钮查看其他区域的玩家</item>
+	<item id="2006">这是世界场景，场景上的每坐城池代表一个地区，每个地区都有等级上限。[br]打败张角就会开发洛阳地区。</item>
+	<item id="2007">将军，恭喜升到3级！[br]地区场景已经开放，可以通过右下“地区”按钮切换到地区场景。</item>
+	<item id="2008">将军，恭喜升到5级！[br]世界场景已经开放，可以通过右下“世界”按钮切换到世界场景。</item>
+	<item id="2009">将军，恭喜升到9级！[br]您必须迁移到洛阳才能继续提升主城等级。</item>
+	<item id="2010">将军，恭喜升到10级！[br]农田场景已经开放。在农田界面中你可以占领农田获得粮食。</item>
+	<item id="2011">将军，恭喜升到11级！[br]您拥有军机处了，可以研究军事科技，进一步增强军事实力。</item>
+	<item id="2012">将军，恭喜升到15级！[br]从现在开始你战斗损失的兵力需要通过兵营补充，请储备足够的兵力！</item>
+	<item id="2013">将军，恭喜升到21级！[br]您现在所在的地区有许多银矿，占领银矿能增加征收收入。</item>
+	<item id="2014">将军，恭喜升到30级！[br]委派界面已经开放，在委派界面中，你可以委派商人采购高级装备。</item>
+	<item id="2015">将军，恭喜升到31级！[br]您现在所在的地区可以征服本国玩家，使他成为你的属臣。</item>
+	<item id="2016">将军，恭喜升到35级！[br]不过您现在征战失败也会减少军令。</item>
+	<item id="2017">将军，恭喜升到40级！[br]现在开始会有每日任务，每日任务提供丰富的军功奖励，并可以获得书籍装备！</item>
+	<item id="2018">将军，恭喜升到41级！[br]您现在拥有了驿站，可以向本国玩家派遣商队获得银币收入。</item>
+	<item id="2019">将军，恭喜加入{0}国！[br]攻击敌国玩家能获得威望，威望提升后能升级官职，获得{0}国特有的武将！</item>
+	<item id="2020">天佑我军！[br]趁着暴雨天气夺下黄巾党把守的城池。</item>
+	
+	
+	<!--聊天文字-->
+	<item id="2101"><![CDATA[<font color='#4477E6'>您对[{0}]说：{1}]]></item>
+	<item id="2102"><![CDATA[<font color='#4477E6'>{0}对您说：{1}]]></item>
+	<item id="2103"><![CDATA[<font color='#CCB07A'>[全服]{0}：{1}]]></item>
+	<item id="2104"><![CDATA[<font color='#99B36B'>[国家]{0}：{1}]]></item>
+	<item id="2105"><![CDATA[<font color='#BFBFBF'>[地区]{0}：{1}]]></item>
+	<item id="2106"><![CDATA[<font color='#A6A6A6'>{0}：{1}]]></item><!--附近-->
+	<item id="2107"><![CDATA[<font color='#7291E6'>{0}：{1}]]></item><!--军团-->
+	<item id="2108"><![CDATA[<font color='#65CC88'>[系统]：{0}]]></item>
+	<item id="2109"><![CDATA[<font color='#E67272'>[公告]：{0}]]></item>
+	<item id="2110"><![CDATA[<font color='#C9CC65'>[提示]：{0}]]></item>
+	
+	<item id="2111">获取聊天纪录失败</item>
+	<item id="2112">等级在十级以上才能在全服频道发言</item>
+	<item id="2113">在全服频道发言每次需要[2金币]</item>
+	<item id="2114">国家威望排名前100才能在国家频道发言</item>
+	<item id="2115">等级在十级以上才能在地区频道发言</item>
+	
+	<!--军团职位-->
+	<item id="2201">申请者</item>
+	<item id="2202">普通成员</item>
+	<item id="2203">伍长</item>
+	<item id="2204">百夫长</item>
+	<item id="2205">千夫长</item>
+	<item id="2206">营长</item>
+	<item id="2207">督军</item>
+	<item id="2208">军团长</item>
+	<item id="2209">无</item>
+	
+	<!--国家-->
+	<item id="2301">魏</item>
+	<item id="2302">蜀</item>
+	<item id="2303">吴</item>
+	<item id="2304">无</item>
+	
+	<!--季节-->
+	<item id="2401">春</item>
+	<item id="2402">夏</item>
+	<item id="2403">秋</item>
+	<item id="2404">冬</item>
+	<item id="2405">无</item>
+	
+	<!--时间单位-->
+	<item id="2501">时</item>
+	<item id="2502">分</item>
+	<item id="2503">秒</item>
+	<item id="2504">天</item>
+	
+	<!--其他提示-->
+	<item id="2601">需要播放器版本9.0.124以上</item>
+	<item id="2602">当前版本号：{0}</item>
+	<item id="2603">正在与服务器同步</item>
+	<item id="2604">正在查询您的登录状态，请稍后！</item>
+	<item id="2605">正在获取您的详细信息，请稍候！</item>
+	<item id="2606"><![CDATA[您被防沉迷了，请休息{0}小时后再上游戏<br/>请点击[确定]按钮，填写防沉迷信息]]></item>
+	
+	<item id="2701">错误信息：通信错误</item>
+	<item id="2702">与服务器通信产生了一个严重的错误，需要退出游戏。请稍候尝试重新登录！</item>
+	<item id="2703"><![CDATA[<br/><br/>错误信息：{0}]]></item>
+	<item id="2704">解压AMF3数据时出错！</item>
+	<item id="2705">解析成XML时出错！</item>
+	
+	
+	<!--按钮label-->
+	<item id="3001">返回</item>
+	<item id="3002">确定</item>
+	<item id="3003">取消</item>
+	
+	<!--按钮提示-->
+	<item id="3101">剩余冷却时间</item><!--按钮冷却中提示-->
+	
+	<!--资源、模块名称-->
+	<item id="4001">游戏主界面</item>
+	<item id="4002">登录场景</item>
+	<item id="4003">地区场景</item>
+	<item id="4004">主城场景</item>
+	<item id="4005">世界场景</item>
+	<item id="4006">征战场景</item>
+	<item id="4007">角色创建场景</item>
+	<item id="4008">用户指导系统</item>
+	<item id="4009">战斗场景</item>
+	<item id="4010">战场场景</item>
+	<item id="4011">武将系统</item>
+	<item id="4012">商店、仓库系统</item>
+	<item id="4013">经济系统</item>
+	<item id="4014">任务系统</item>
+	<item id="4015">军团系统</item>
+	<item id="4016">邮件系统</item>
+	<item id="4017">帮助系统</item>
+	<item id="4018">礼品系统</item>
+	<item id="4019">团战组队系统</item>
+	<item id="4020">充值系统</item>
+	<item id="4022">登录界面</item>
+	<item id="4023">地区、农田界面</item>
+	<item id="4024">主城界面</item>
+	<item id="4025">世界界面</item>
+	<item id="4026">征战界面</item>
+	<item id="4027">角色创建界面</item>
+	<item id="4028">用户指导界面</item>
+	<item id="4029">团战界面</item>
+	<item id="4030">下雨天气效果</item>
+	<item id="4031">战斗背景</item>
+	<item id="4032">战场背景</item>
+	<item id="4033">征战背景</item>
+	<item id="4034">战场士兵</item>
+	<item id="4035">银矿战场景</item>
+	<item id="4036">银矿战界面</item>
+	<item id="4037">纺织系统</item>
+	
+	<item id="4101">步兵</item>
+	<item id="4102">轻步兵</item>
+	<item id="4103">重步兵</item>
+	<item id="4104">盾牌兵</item>
+	<item id="4105">盾牌兵</item>
+	<item id="4106">刀兵</item>
+	<item id="4107">枪兵</item>
+	<item id="4108">戟兵</item>
+	<item id="4109">藤甲兵</item>
+	<item id="4110">死神重步</item>
+	<item id="4111">铁锤重步</item>
+	<item id="4112">烈火轻步</item>
+	<item id="4113">踏雪轻步</item>
+	<item id="4114">绿林野战</item>
+	<item id="4115">长枪方阵</item>
+	<item id="4116">止水重步</item>
+	<item id="4117">黄金重步</item>
+	<item id="4118">黄金重步</item>
+	<item id="4119">磐石重步</item>
+	<item id="4120">骑兵</item>
+	<item id="4121">轻骑兵</item>
+	<item id="4122">重骑兵</item>
+	<item id="4123">游击骑兵</item>
+	<item id="4124">冲锋骑兵</item>
+	<item id="4125">突击骑兵</item>
+	<item id="4126">砍刀骑兵</item>
+	<item id="4127">暗影骑兵</item>
+	<item id="4128">黄金骑兵</item>
+	<item id="4129">狮子骑</item>
+	<item id="4130">白龙骑</item>
+	<item id="4131">烈火骑</item>
+	<item id="4132">凌波骑</item>
+	<item id="4133">雷电骑</item>
+	<item id="4134">战象</item>
+	<item id="4135">战弓骑</item>
+	<item id="4136">弓兵</item>
+	<item id="4137">长弓兵</item>
+	<item id="4138">重弓兵</item>
+	<item id="4139">重型长弓</item>
+	<item id="4140">劲弩兵</item>
+	<item id="4141">飞镖兵</item>
+	<item id="4142">投矛兵</item>
+	<item id="4143">剧毒镖兵</item>
+	<item id="4144">影子弓</item>
+	<item id="4145">烈火掷矛</item>
+	<item id="4146">飘雪长弓</item>
+	<item id="4147">黄金连弩</item>
+	<item id="4148">拔树投掷</item>
+	<item id="4149">紫电怒弩</item>
+	<item id="4150">凌波影子镖</item>
+	<item id="4151">火计策士</item>
+	<item id="4152">水计策士</item>
+	<item id="4153">雷击术士</item>
+	<item id="4154">粮草队</item>
+	<item id="4155">军乐队</item>
+	<item id="4156">火神策士</item>
+	<item id="4157">洪水策士</item>
+	<item id="4158">紫电术士</item>
+	<item id="4159">烈日术士</item>
+	<item id="4160">落石策士</item>
+	<item id="4161">荆棘术士</item>
+	<item id="4162">医疗队</item>
+	<item id="4163">舞姬</item>
+	<item id="4164">战鼓</item>
+	<item id="4165">投石车</item>
+	<item id="4166">弩炮车</item>
+	<item id="4167">箭塔车</item>
+	<item id="4168">烈火弩炮</item>
+	<item id="4169">天雷轰</item>
+	<item id="4170">磐石甲车</item>
+	<item id="4171">巨树箭塔车</item>
+	<item id="4172">巨型铁锤车</item>
+	<item id="4173">火牛阵</item>
+	<item id="4174">精锐湘军</item>
+	<item id="4175">太平天国军</item>
+	<item id="4176">神机营</item>
+	<item id="4177">八旗铁骑</item>
+	
+	
+	<!--地区、农田-->
+	<item id="4201">占领</item>
+	<!--<item id="4202">抢夺</item>-->
+	<item id="4203">征服</item>
+	<item id="4204">攻击</item>
+	<item id="4205">独立</item>
+	<item id="4206">信件</item>
+	<item id="4207">商队</item>
+	<item id="4208">进入</item>
+	<item id="4209">留言</item>
+	<item id="4210">旗号</item>
+	<item id="4211">属臣</item>
+	<item id="4212">放弃</item>
+	<item id="4213">免战</item>
+	<!--<item id="4214">敌方</item>
+	<item id="4215">黄巾军</item>
+	<item id="4216">中立</item>
+	<item id="4217">本国</item>
+	<item id="4218">敌国</item>
+	<item id="4219">盟国</item>
+	<item id="4220">银矿</item>
+	<item id="4221">征收加成：</item>-->
+	<item id="4222">当前可以攻击</item>
+	<item id="4223">您确定要放弃银矿吗？</item>
+	<!--<item id="4224">农田</item>-->
+	<item id="4225">占领</item>
+	<item id="4226">放弃</item>
+	<item id="4227">您确定要放弃农田吗？</item>
+	<item id="4228">资源</item>
+	<item id="4229">产量</item>
+	<item id="4230">时间</item>
+	<item id="4231">占有</item>
+	<item id="4232">占领该农田，根据占有时间获得粮食</item>
+	<item id="4233">放弃该农田，根据占有时间获得部分粮食</item>
+	<item id="4234">主公</item>
+	<item id="4235">属臣</item>
+	<item id="4236">占领该银矿，根据占有时间获得银币</item>
+	<!--<item id="4237">抢夺该银矿</item>-->
+	<item id="4238">征服该玩家</item>
+	<item id="4239">独立</item>
+	<item id="4240">攻击该玩家</item>
+	<item id="4241">给该玩家发信</item>
+	<item id="4242">对该玩家派遣商队</item>
+	<item id="4243">进入主城</item>
+	<item id="4244">更改本城留言</item>
+	<item id="4245">更改自己的旗号</item>
+	<item id="4246">查看自己的属臣</item>
+	<item id="4247">放弃该银矿，根据占有时间获得部分银币</item>
+	<item id="4248">使用免战令牌</item>
+	<item id="4249">敌对</item>
+	<item id="4250">保护</item>
+	<item id="4251">收入</item>
+	<item id="4252">时间</item>
+	<item id="4253">所属</item>
+	
+	<!--征战-->
+	<item id="4301">攻击</item>
+	<item id="4302">强攻</item>
+	<item id="4303">无限制</item>
+	<item id="4304">精英部队</item>
+	<item id="4305">主将部队</item>
+	<item id="4306">普通军团</item>
+	<item id="4307">精英军团</item>
+	<item id="4308">主将军团</item>
+	<item id="4309">普通部队</item>
+	<item id="4310">您必须先击败[{0}]</item>
+	<item id="4311">已被打完，等待刷新</item>
+	<item id="4312">主将部队只能击败一次</item>
+	<item id="4313">没有可用的军令</item>
+	<item id="4314">军令冷却中...</item>
+	<item id="4315"><![CDATA[强攻需要花费 {0}金币，<br/>您确定强攻 {1}部队吗？]]></item>
+	<item id="4316">查看其他玩家通关</item>
+	<item id="4317">数量限制</item>
+	<item id="4318">攻击获得{0}军功</item>
+	<item id="4319">掉落{0}</item>
+	<item id="4320">（不受数量限制攻击）</item>
+	
+	
+	<!--战场-->
+	<item id="4401">退出</item>
+	<item id="4402">重播</item>
+	<item id="4403">关闭特效</item>
+	<item id="4404">开启特效</item>
+	<item id="4405">{0}部队的勇士跟我上，消灭敌军！</item>
+	<item id="4406">{0}部队所向披靡，已经{1}连胜了！</item>
+	<item id="4407">{0}部队击败敌军，获得胜利！</item>
+	<item id="4408">{0}部队连胜下阵，大家欢呼吧！</item>
+	<item id="4409">离开</item>
+	<item id="4410">征兵</item>
+	<item id="4411">每级对敌人造成的伤害增加4%</item>
+	<item id="4412">每级自己受到的伤害减少4%</item>
+	<item id="4413">速战：对敌人造成的伤害增加10%[br]铁壁：自己受到的伤害减少10%[br]连战/持久：增加连胜数</item>
+	<item id="4414"><![CDATA[攻击方：<font color='#C97872'>{0}</font>[br]防守方：<font color='#72AAC9'>{1}</font>]]></item>
+	<item id="4415">{0}/{1}部队[br]{2}/{3}部队</item>
+	<item id="4416">预备兵力</item>
+	<item id="4417">鼓舞加成</item>
+	<item id="4418"><![CDATA[<font color='#C97872'>速战 </font>]]></item>
+	<item id="4419"><![CDATA[<font color='#72AAC9'>铁壁 </font>]]></item>
+	<item id="4420"><![CDATA[<font color='#C97872'>连战 </font>]]></item>
+	<item id="4421"><![CDATA[<font color='#72AAC9'>持久 </font>]]></item>
+	<item id="4422">正在载入战斗数据...</item>
+	<item id="4423"><![CDATA[<font color='#DAB32C'>{0}</font>后开战]]></item>
+	<item id="4424">鼓舞冷却中：{0}</item>
+	
+	<!--组件-->
+	<item id="4501">{0}{1}星</item><!--装备、部队等级，如：千夫5星-->
+	<item id="4502">攻击力</item>
+	<item id="4503">防御力</item>
+	<item id="4504">战法攻击力</item>
+	<item id="4505">战法防御力</item>
+	<item id="4506">策略攻击力</item>
+	<item id="4507">带兵数</item>
+	<item id="4508">统：影响普通攻击和防御[br]勇：影响战法攻击和防御[br]智：影响策略攻击和防御</item>
+	<item id="4509">级</item>
+	<item id="4510">统</item>
+	<item id="4511">勇</item>
+	<item id="4512">智</item>
+	<item id="4513">军机处{0}级</item>
+	<item id="4514">需要{0}军功</item>
+	<item id="4515">军团长等级 </item>
+	<item id="4516">军团等级 </item>
+	<item id="4517">未激活</item>
+	<item id="4518">号区域</item>
+	<item id="4519">已达到顶级</item>
+	
+	<!--创建角色、新手指导-->
+	<item id="4601">赵林</item>
+	<item id="4602">钱涛</item>
+	<item id="4603">孙成</item>
+	<item id="4604">李立</item>
+	<item id="4605">周月</item>
+	<item id="4606">吴娜</item>
+	<item id="4607">郑冰</item>
+	<item id="4608">王馨</item>
+	<item id="4609">请输入激活码</item>
+	<item id="4610">正在验证激活码，请稍候..</item>
+	<item id="4611">激活码格式有误</item>
+	<item id="4612">英雄，请输入你的大名</item>
+	<item id="4613">正在验证玩家名，请稍候..</item>
+	<item id="4614">玩家名格式有误</item>
+	<item id="4615"><![CDATA[你选择<font color='#FFFFFF'>{0}</font>做为你的部将]]></item>
+	<item id="4616">誓死跟随将军！</item>
+	<item id="4617">跳过新手指导</item>
+	<item id="4618">将军，黄巾势力猖獗，我们必须击溃他们！</item>
+	<item id="4619">您确定要跳过全部新手指导吗？</item>
+	
+	<!--弹出组件-->
+	<item id="4701">征召士兵</item>
+	<item id="4702">请输入征兵数量</item>
+	<item id="4703">士兵数量</item>
+	<item id="4704">消耗粮食</item>
+	<item id="4705">捐献银币</item>
+	<item id="4706">今日捐献</item>
+	<item id="4707">投资地区</item>
+	<item id="4708">繁荣度</item>
+	<item id="4709">投资 {0} 地区</item>
+	<item id="4710">最大</item>
+	
+	<!--经济系统-->
+	<item id="4801">征收</item>
+	<item id="4802">属臣</item>
+	<item id="4803">商队</item>
+	<item id="4804">升官</item>
+	<item id="4805">粮草</item>
+	<item id="4806">通过</item>
+	<item id="4807">拒绝</item>
+	<item id="4808">取消申请</item>
+	<item id="4809">强制通商</item>
+	<item id="4810">通行商队数</item>
+	<item id="4811">通商可获利</item>
+	<item id="4812">剩余商队数量</item>
+	<item id="4813">您目前没有向任何人申请通商</item>
+	<item id="4814">向{0}派遣商队中...</item>
+	<item id="4815">您确定花费 {0}金币强制通商吗？</item>
+	<item id="4816">每日征收</item>
+	<item id="4817">征收</item>
+	<item id="4818">强征</item>
+	<item id="4819">现在可以征收</item>
+	<item id="4820">下次强征时间</item>
+	<item id="4821">下次征收时间</item>
+	<item id="4822">今日征收次数</item>
+	<item id="4823">征收时间冷却中...</item>
+	<item id="4824">今日无法继续征收</item>
+	<item id="4825">民居等级总和：{0}[br]地区繁荣程度：{1}({2}%)[br]军团征收科技：{3}级[br]主城帐房等级：{4}[br]主城民众忠诚：{5}</item>
+	<item id="4826">主城建筑等级：{0}[br]铸币厂的等级：{1}</item>
+	<item id="4827">征收银币数量</item>
+	<item id="4828">一定概率获得{0}金币</item>
+	<item id="4829">强征冷却中</item>
+	<item id="4830">今日无法继续强征</item>
+	<item id="4831">最小</item>
+	<item id="4832">最大</item>
+	<item id="4833">购买粮草</item>
+	<item id="4834">卖出粮草</item>
+	<item id="4835">黑市买粮</item>
+	<item id="4836"><![CDATA[今日交易数量：<font color='#CCCCCC'>{0}/{1}</font>（每天凌晨或升级市场刷新交易量）]]></item>
+	<item id="4837">上涨</item>
+	<item id="4838">下跌</item>
+	<item id="4839"><![CDATA[当前粮食价格：<font color='#CCCCCC'>{0}{1}</font>（每半小时变化一次）]]></item>
+	<item id="4840">每次购买的粮草数必须在100以上</item>
+	<item id="4841"><![CDATA[花费<font color='#CCCCCC'>{0}</font>银币购买<font color='#CCCCCC'>{1}</font>粮草]]></item>
+	<item id="4842">每次卖出的粮草数必须在100以上</item>
+	<item id="4843"><![CDATA[卖掉<font color='#CCCCCC'>{0}</font>粮草，获得<font color='#CCCCCC'>{1}</font>银币]]></item>
+	<item id="4844">每日俸禄</item>
+	<item id="4845">下次升官</item>
+	<item id="4846">领取俸禄</item>
+	<item id="4847">捐献军功</item>
+	<item id="4848">当前可以领取俸禄</item>
+	<item id="4849">今日已领取</item>
+	<item id="4850">当前可以捐献军功</item>
+	<item id="4851">您的军功不够，不能捐献</item>
+	<item id="4852">下次捐献</item>
+	<item id="4853">当前官职</item>
+	<item id="4854">当前威望</item>
+	<item id="4855">当前俸禄</item>
+	<item id="4856">您已达到最大官职</item>
+	<item id="4857">官职名称</item>
+	<item id="4858">所需威望</item>
+	<item id="4859">威望排名</item>
+	<item id="4860">官职俸禄</item>
+	<item id="4861">获得武将</item>
+	<item id="4862">捐献{0}军功，提升{1}威望</item>
+	<item id="4863">放弃属臣</item>
+	<item id="4864">总共上缴银币</item>
+	<item id="4865">最后上缴时间</item>
+	<item id="4866">战斗加成：增加我军伤害{0}%，减少敌军伤害{1}%</item>
+	<item id="4867">民忠</item>
+	<item id="4868">威望</item>
+	<item id="4869">银币</item>
+	<item id="4870">金币</item>
+	<item id="4871">征收CD</item>
+	<item id="4872">征收次数</item>
+	
+	<!--战斗系统-->
+	<item id="4901">重播</item>
+	<item id="4902">返回</item>
+	<item id="4903">正常</item>
+	<item id="4904">快速</item>
+	<item id="4905">关闭特效</item>
+	<item id="4906">开启特效</item>
+	<item id="4907">战斗中获得物品</item>
+	<item id="4908">我方损失</item>
+	<item id="4909">敌方损失</item>
+	<item id="4910">兵力</item>
+	<item id="4911">获得物品</item>
+	<item id="4912">结果</item>
+	
+	<!--武将系统-->
+	<item id="5001">训练</item>
+	<item id="5002">装备</item>
+	<item id="5003">招募</item>
+	<item id="5004">布阵</item>
+	<item id="5005">科技</item>
+	<item id="5006">培养</item>
+	<item id="5007">原属性</item>
+	<item id="5008">维持</item>
+	<item id="5009">新属性</item>
+	<item id="5010">替换</item>
+	<item id="5011">洗属性</item>
+	<item id="5012">满</item>
+	<item id="5013">转生</item>
+	<item id="5014">转生使武将等级变为1，提升武将部队成长</item>
+	<item id="5015">装备</item>
+	<item id="5016">卸下</item>
+	<item id="5017">需要武将等级</item>
+	<item id="5018">武将 [{0}] 的等级不够，不能佩戴这件物品</item>
+	<item id="5019">↓请选择上阵位置</item>
+	<item id="5020">上阵</item>
+	<item id="5021">下阵</item>
+	<item id="5022">下野</item>
+	<item id="5023">设为默认</item>
+	<item id="5024">最大武将数随着官职的提升而增加</item>
+	<item id="5025">招募</item>
+	<item id="5026">武将数</item>
+	<item id="5027">您的武将数已满</item>
+	<item id="5028">您的银币不够</item>
+	<item id="5029">升级</item>
+	<item id="5030">升级冷却中</item>
+	<item id="5031">该科技已到顶级</item>
+	<item id="5032">消耗{0}军功，{1}分钟冷却时间</item>
+	<item id="5033">升级冷却时间</item>
+	<item id="5034">购买位置</item>
+	<item id="5035">训练空位</item>
+	<item id="5036">增加训练位置能让多个武将同时训练。您确认花费 {0}金币，增加一个训练位置吗？</item>
+	<item id="5037">选择时间：</item>
+	<item id="5038">开始训练</item>
+	<item id="5039">突飞猛进</item>
+	<item id="5040">结束训练</item>
+	<item id="5041">当前训练模式：</item>
+	<item id="5042">当前经验：</item>
+	<item id="5043">使用{0}军功，增加{1}经验</item>
+	<item id="5044">训练时间：</item>
+	<item id="5045">等级已到上限（查看详情）</item>
+	<item id="5046">等级已到上限</item>
+	<item id="5047">当前经验：</item>
+	<item id="5048">您武将的等级不能超过主城的等级</item>
+	<item id="5049">您确定要改变训练模式吗？</item>
+	<item id="5050">您确认花费[1金币]结束当前的训练吗？</item>
+	<item id="5051">结束训练</item>
+	<item id="5052">转生需要武将等级：{0}级</item>
+	
+	<!--礼品、充值-->
+	<item id="5101">礼包</item>
+	<item id="5102">您在封测期间等级达到了40级，送50金币</item>
+	<item id="5103">您在封测期间等级达到了50级，送100金币</item>
+	<item id="5104">您在封测期间等级达到了60级，送150金币</item>
+	<item id="5105">您在封测期间等级达到了70级，送200金币</item>
+	<item id="5106">您在封测期间等级达到了80级，送300金币</item>
+	<item id="5107">您在封测期间威望达到了10000，送100金币</item>
+	<item id="5108">您在封测期间国家威望排名前一百，送200金币</item>
+	<item id="5109">您在封测期间国家威望排名前五十，送300金币</item>
+	<item id="5110">您在封测期间国家威望排名前十，送400金币</item>
+	<item id="5111">您在封测期间国家威望排名第一，送500金币</item>
+	<item id="5112">请输入礼品码</item>
+	<item id="5113">获得礼品</item>
+	<item id="5114">领取奖励</item>
+	<item id="5115">您输入的礼品码格式有误</item>
+	<item id="5116">充值</item>
+	<item id="5117">前往充值</item>
+	<item id="5118">充值返还</item>
+	<item id="5119">您当前的充值金额：{0}金币。感谢您对傲视天地的支持</item>
+	<item id="5120">您在封测期间充值了 {0}金币。点击按钮返还</item>
+	
+	<!--物品系统-->
+	<item id="5201">仓库</item>
+	<item id="5202">商店</item>
+	<item id="5203">商城</item>
+	<item id="5204">强化</item>
+	<item id="5205">委派</item>
+	<item id="5206">确认</item>
+	<item id="5207">直接卖出</item>
+	<item id="5208">委派</item>
+	<item id="5209">委派冷却中</item>
+	<item id="5210">您的银币不够，需要 {0}银币</item>
+	<item id="5211">下次委派时间</item>
+	<item id="5212">您确定要卖出[{0}]吗？</item>
+	<item id="5213">增加仓库</item>
+	<item id="5214">购买</item>
+	<item id="5215">当前没有物品出售</item>
+	<item id="5216">武将{0}级以上可以佩戴该物品</item>
+	<item id="5217">介绍</item>
+	<item id="5218">购买价格</item>
+	<item id="5219">您的{0}不够</item>
+	<item id="5220">购买该装备需要商店等级达到{0}级</item>
+	<item id="5221">购买该装备需要您的等级达到{0}级</item>
+	<item id="5222">购买时间冷却中</item>
+	<item id="5223">每日限售：{0}/{1}(每天晚上10点刷新)</item>
+	<item id="5224">今日限售商品已卖完</item>
+	<item id="5225">增加仓库能存放更多物品。您确认花费 {0}金币，增加一个仓库位置吗？</item>
+	<item id="5226">升级</item>
+	<item id="5227">降级</item>
+	<item id="5228">没有装备</item>
+	<item id="5229">降级该武器可获得</item>
+	<item id="5230">升级冷却中</item>
+	<item id="5231">商店等级不够，请先升级商店</item>
+	<item id="5232">您的银币不够，需要 {0}银币</item>
+	<item id="5233">升级冷却时间</item>
+	<item id="5234">上升中</item>
+	<item id="5235">下降</item>
+	<item id="5236">魔力值：{0}%  {1} (半小时变化一次)</item>
+	<item id="5237">当前升级成功率</item>
+	<item id="5238">花费{0}金币 100%成功</item>
+	<item id="5239">增加仓库</item>
+	<item id="5240">卖出</item>
+	<item id="5241">降级</item>
+	<item id="5242">前往装备界面进行装备</item>
+	<item id="5243">装备界面</item>
+	<item id="5244">领取</item>
+	<item id="5245">介绍：</item>
+	<item id="5246">卖出价格：{0}银币</item>
+	<item id="5247">武将{0}级以上可以佩戴该物品</item>
+	<item id="5248">您的仓库中没有物品存放</item>
+	<item id="5249">过期时间：</item>
+	<item id="5250"><![CDATA[增加仓库能存放更多物品。<br/>您确定花费 {0}金币，增加一个仓库位置吗？]]></item>
+	<item id="5251">降级该物品可以获得额外银币，请先降级</item>
+	<item id="5252">您确定要卖出物品“{0}”吗？</item>
+	<item id="5253">竞拍</item>
+	<item id="5254">武将{0}级可以装备</item>
+	<item id="5255">介绍：{0}</item>
+	<item id="5256"><![CDATA[竞价剩余时间：<font color='#CCCCCC'>{0}</font>]]></item>
+	<item id="5257"><![CDATA[物品拍卖价格：<font color='#CCCCCC'>{0}金币 {1}]]></item>
+	<item id="5258">升级被取消！魔力值有变化</item>
+	<item id="5259">绑定</item>
+	<item id="5260">取消绑定</item>
+	<item id="5261">终止取消</item>
+	<item id="5262">该物品已绑定</item>
+	<item id="5263">绑定后该物品不能被降级</item>
+	<item id="5264">{0}后解除绑定</item>
+	
+	
+	<!--帮助系统-->
+	<item id="5301">目标</item>
+	<item id="5302">攻略</item>
+	<item id="5303">请在征战界面选择要查看攻略的部队</item>
+	
+	<!--军团系统-->
+	<item id="5401">加入</item>
+	<item id="5402">成员</item>
+	<item id="5403">科技</item>
+	<item id="5404">情况</item>
+	<item id="5405">申请</item>
+	<item id="5406">通过</item>
+	<item id="5407">拒绝</item>
+	<item id="5408">军团贡献：</item>
+	<item id="5409">修改军徽</item>
+	<item id="5410">军徽</item>
+	<item id="5411">升级军徽</item>
+	<item id="5412"><![CDATA[军团创始：{0}<br/>创建日期：{1}<br/>所属国家：{2}<br/>军团等级：{3}<br/>军徽等级：{4}]]></item>
+	<item id="5413"><![CDATA[军团长：{0}<br/>督  军：{1}<br/>营  长：{2}<br/>千夫长：{3}<br/>百夫长：{4}]]></item>
+	<item id="5414">您确定花费 {0}金币升级军徽吗？</item>
+	<item id="5415">申请加入军团</item>
+	<item id="5416">验证信息</item>
+	<item id="5417">修改留言</item>
+	<item id="5418">内容</item>
+	<item id="5419">申请加入</item>
+	<item id="5420">取消申请</item>
+	<item id="5421">创建军团</item>
+	<item id="5422">修改留言</item>
+	<item id="5423">退出军团</item>
+	<item id="5424">创建消耗：{0}军功</item>
+	<item id="5425">申请加入中，取消才能继续申请</item>
+	<item id="5426">我是{0}，请通过验证。</item>
+	<item id="5427">修改留言</item>
+	<item id="5428">内容</item>
+	<item id="5429">当军团排名和贡献达到一定程度就能提升军团职位</item>
+	<item id="5430">修改留言</item>
+	<item id="5431">请出军团</item>
+	<item id="5432">转让军团长</item>
+	<item id="5433">军团邮件</item>
+	<item id="5434">升级为</item>
+	<item id="5435">需要军团贡献：</item>
+	<item id="5436">需要军团排名：</item>
+	<item id="5437">您确定将军团长转让给 {0} 吗？</item>
+	<item id="5438">直接提升科技进度</item>
+	<item id="5439">征收税收捐献给该科技</item>
+	<item id="5440">捐献银币</item>
+	<item id="5441">设为默认</item>
+	<item id="5442">创建新军团</item>
+	<item id="5443">军团名称：</item>
+	<item id="5444">军团留言：</item>
+	<item id="5445">该成员已经[{0}]天未上线了</item>
+	<item id="5446">{0}金币，增加{1}成员上限</item>
+	
+	<!--邮件系统-->
+	<item id="5501">新建邮件</item>
+	<item id="5502">全部删除</item>
+	<item id="5503">全部</item>
+	<item id="5504">系统</item>
+	<item id="5505">玩家</item>
+	<item id="5506">战报</item>
+	<item id="5507">保存</item>
+	<item id="5508">删除</item>
+	<item id="5509">回复</item>
+	<item id="5510">未读</item>
+	<item id="5511">发送</item>
+	<item id="5512">关闭</item>
+	<item id="5513">所有军团成员</item>
+	
+	<!--主系统模块-->
+	<item id="5601">修改留言</item>
+	<item id="5602">留言</item>
+	<item id="5603">修改旗号</item>
+	<item id="5604">旗号</item>
+	<item id="5605">聊天冷却时间</item>
+	<item id="5606">玩家私聊</item>
+	<item id="5607">玩家名称</item>
+	<item id="5608">全服</item>
+	<item id="5609">国家</item>
+	<item id="5610">地区</item>
+	<item id="5611">附近</item>
+	<item id="5612">军团</item>
+	<item id="5613"><![CDATA[<font color='#FF9900'>有人向您申请通商</font>]]></item>
+	<item id="5614"><![CDATA[<font color='#66CC33'>您的商队申请通商中</font>]]></item>
+	<item id="5615"><![CDATA[<font color='#31CCFF'>今日没有可派遣商队了</font>]]></item>
+	<item id="5616"><![CDATA[<font color='#66CC33'>商队等待派遣</font>]]></item>
+	<item id="5617"><![CDATA[时间到后，您必须下线休息{0}小时才能继续游戏<br/>请点击[确定]按钮，填写防沉迷信息<br/>填写完成后，请重新登录游戏]]></item>
+	<item id="5618"><![CDATA[<font color='#33CCFF'>防沉迷中，您必须在{0}后下线休息</font>]]></item>
+	<item id="5619"><![CDATA[<font color='#33CCFF'>今日无法继续征收</font>]]></item>
+	<item id="5620"><![CDATA[<font color='#66CC33'>当前可以征收</font>]]></item>
+	<item id="5621"><![CDATA[<font color='#33CCFF'>征收冷却中：{0}</font>]]></item>
+	<item id="5622"><![CDATA[<font color='#33CCFF'>剩余保护时间：0</font>]]></item>
+	<item id="5623"><![CDATA[<font color='#33CCFF'>剩余保护时间：{0}</font>]]></item>
+	<item id="5624"><![CDATA[<font color='#66CC33'>当前可以升级科技</font>]]></item>
+	<item id="5625"><![CDATA[<font color='#33CCFF'>科技升级冷却中：{0}</font>]]></item>
+	<item id="5626"><![CDATA[<font color='#33CCFF'>训练{0}</font>]]></item>
+	<item id="5627"><![CDATA[<font color='#33CCFF'>训练{0}  {1}</font>]]></item>
+	<item id="5628">主城</item>
+	<item id="5629">征战</item>
+	<item id="5630">地区</item>
+	<item id="5631">世界</item>
+	<item id="5632">农田</item>
+	<item id="5633">领取奖励</item>
+	<item id="5634">安全退出游戏</item>
+	<item id="5635">充值</item>
+	<!--<item id="5636">库</item>-->
+	<item id="5637">礼</item>
+	<item id="5638">信</item>
+	<item id="5639">充值信息</item>
+	<!--<item id="5640">仓库、商店</item>-->
+	<item id="5641">领取礼品</item>
+	<item id="5642">每小时恢复一个</item>
+	<item id="5643">战</item>
+	<item id="5644">田</item>
+	<item id="5645">攻</item>
+	<item id="5646">矿</item>
+	<item id="5647">服</item>
+	<item id="5648">不消耗军令进行一次征战</item>
+	<item id="5649">不消耗军令进行一次农田占领</item>
+	<item id="5650">不消耗军令进行一次敌国攻击</item>
+	<item id="5651">不消耗军令进行一次银矿抢夺</item>
+	<item id="5652">不消耗军令进行一次征服或独立</item>
+	<item id="5653">您有新的信件</item>
+	<item id="5654">信件</item>
+	<item id="5655">将于 {0}后停服</item>
+	<item id="5656">您确定要退出游戏吗？</item>
+	<item id="5657">正在加载 {0}  {1}%   {2}kb/s   {3}/{4}</item>
+	<item id="5658">军令</item>
+	<item id="5659">购买</item>
+	
+	<!--主城-->
+	<item id="5701">升级</item>
+	<item id="5702">升官</item>
+	<item id="5703">属臣</item>
+	<item id="5704">征收</item>
+	<item id="5705">征兵</item>
+	<item id="5706">义兵</item>
+	<item id="5707">训练</item>
+	<item id="5708">培养</item>
+	<item id="5709">买粮</item>
+	<item id="5710">卖粮</item>
+	<item id="5711">强化</item>
+	<item id="5712">购买</item>
+	<item id="5713">科技</item>
+	<item id="5714">商队</item>
+	<item id="5715">仓库</item>
+	<item id="5716">委派</item>
+	<item id="5717">征召义兵剩余冷却时间</item>
+	<item id="5718">{0}银币[br]{1}分钟CD</item>
+	<item id="5719">建造队伍冷却中</item>
+	<item id="5720">建筑等级不能高于主城等级</item>
+	<item id="5721">主城等级不能高于所在地区等级</item>
+	<item id="5722"><![CDATA[<font color='#66CC33'>建造队伍待命中</font>]]></item>
+	<item id="5723"><![CDATA[<font color='#33CCFF'>建造队伍冷却中：{0}</font>]]></item>
+	<item id="5724">进入{0}界面</item>
+	<item id="5725">纺织</item>
+	<item id="5726">免费招募义兵</item>
+	
+	<!--任务-->
+	<item id="5801">主线</item>
+	<item id="5802">每日</item>
+	<item id="5803">活动</item>
+	<item id="5804">名称：</item>
+	<item id="5805">难度：</item>
+	<item id="5806">描述：</item>
+	<item id="5807">说明：</item>
+	<item id="5808">奖励：</item>
+	<item id="5809">（正在进行）</item>
+	<item id="5810">（完成）</item>
+	<item id="5811">难度：</item>
+	<item id="5812">完成次数：</item>
+	<item id="5813">活动说明</item>
+	<item id="5814">自己情况</item>
+	<item id="5815">活动排名</item>
+	<item id="5816">领取奖励</item>
+	<item id="5817"><![CDATA[<br/>积分越高，排名越靠前，奖励越多。奖励可每天领取<br/>达标玩家都能获得奖励。<font color='#B8A272'>达标分：{0}分</font>]]></item>
+	<item id="5818">无</item>
+	<item id="5819">当前积分：</item>
+	<item id="5820">积分排名：</item>
+	<item id="5821">可获奖励：</item>
+	<item id="5822">今日已领取</item>
+	<item id="5823">您还未达到达标分（{0}分）</item>
+	<item id="5824">未达标</item>
+	<item id="5825">活动倒计时：</item>
+	<item id="5826">接受</item>
+	<item id="5827">取消任务</item>
+	<item id="5828">刷新任务</item>
+	<item id="5829">立即完成</item>
+	<item id="5830">本周完成最高星数：{0} （周一凌晨重置星数）</item>
+	<item id="5831">今日完成任务数量：</item>
+	<item id="5832">您确认刷新任务吗？</item>
+	
+	<!--组队-->
+	<item id="5901">组队</item>
+	<item id="5902">无限制</item>
+	<item id="5903">自己所在国家</item>
+	<item id="5904">自己所在军团</item>
+	<item id="5905">新建队伍</item>
+	<item id="5906">加入</item>
+	<item id="5907">当前人数：</item>
+	<item id="5908">没有队伍</item>
+	<item id="5909">读取数据中...</item>
+	<item id="5910">解散</item>
+	<item id="5911">发动攻击</item>
+	<item id="5912">退出</item>
+	<item id="5913">组队攻击</item>
+	<item id="5914">连胜</item>
+	<item id="5915">相同国家</item>
+	<item id="5916">相同军团</item>
+	
+	<!--世界-->
+	<item id="6001">迁移</item>
+	<item id="6002">投资</item>
+	<item id="6003">进入</item>
+	<item id="6004">收获</item>
+	<item id="6005">攻占</item>
+	<item id="6006">放弃</item>
+	<item id="6007">区战</item>
+	<item id="6008">迁移剩余冷却时间</item>
+	<item id="6009">投资剩余冷却时间</item>
+	<item id="6010">只有军团长才能发动攻击</item>
+	<item id="6011">您确定要放弃这块资源吗？</item>
+	<item id="6012">繁荣</item>
+	<item id="6013">本国占有</item>
+	<item id="6014">特色</item>
+	<item id="6015">物价</item>
+	<item id="6016">查看该地区玩家</item>
+	<item id="6017">迁移到该地区发展</item>
+	<item id="6018">投资获得威望</item>
+	<item id="6019">发起地区战</item>
+	<item id="6020">丰收获得粮食</item>
+	<item id="6021">军团长发动攻占</item>
+	<item id="6022">主动放弃该农场</item>
+	<item id="6023">产量</item>
+	<item id="6024">所属</item>
+	<item id="6025">收获</item>
+	
+	<item id="6026">普通</item>
+	
+	<item id="6027">政治中心</item>
+	<item id="6028">经济中心</item>
+	<item id="6029">贸易中心</item>
+	<item id="6030">军事中心</item>
+	<item id="6031">文化中心</item>
+	
+	<item id="6032">不会被占领</item>
+	<item id="6033">投资效果加倍</item>
+	<item id="6034">可以对其他100级地区进行投资</item>
+	<item id="6035">攻击获得占有率加倍</item>
+	<item id="6036">迁移不受国籍限制</item>
+	
+	
+	<!--银矿战-->
+	<item id="6101">行动冷却中</item>
+	<item id="6102">挖矿冷却中</item>
+	<item id="6103">挖矿成功，您获得了{0}银币</item>
+	<item id="6104">当前可以移动或攻击</item>
+	<item id="6105">当前可以挖矿</item>
+	<item id="6106">防御胜利次数</item>
+	<item id="6107">鼓舞冷却中</item>
+	<item id="6108">兵力增加了：</item>
+	<item id="6109">您遭到敌人攻击！</item>
+	<item id="6110">兵力已满</item>
+	
+	<!--纺织系统-->
+	<item id="6201">纺织</item>
+	<item id="6202">级别</item>
+	<item id="6203">成功</item>
+	<item id="6204">暴击</item>
+	<item id="6205">地区布价</item>
+	<item id="6206">上升</item>
+	<item id="6207">下降</item>
+	<item id="6208">（半小时变化）</item>
+	<item id="6209">今日次数</item>
+	<item id="6210">保护CD</item>
+	<item id="6211">造价</item>
+	<item id="6212">转</item>
+	<item id="6213">等级：{0}级</item>
+	<item id="6214">棉麻采集工</item>
+	<item id="6215">抽丝导线工</item>
+	<item id="6216">粗布坊学徒</item>
+	<item id="6217">棉帛坊小工</item>
+	<item id="6218">织造厂学徒</item>
+	<item id="6219">丝绸织造工</item>
+	<item id="6220">江南名绣</item>
+	<item id="6221">巴蜀织锦师</item>
+	<item id="6222">织纺宗师</item>
+	<item id="6223">御用织造师</item>
+	<item id="6224">锦绣前程：级别+1</item>
+	<item id="6225">锦上添花：暴击+3</item>
+	<item id="6226">一丝不紊：成功+3</item>
+	<item id="6227">天道酬勤：暴击+5</item>
+	<item id="6228">丝丝入扣：成功+5</item>
+	<item id="6229">转生</item>
+	<item id="6230">级以上</item>
+	<item id="6231">军团限制</item>
+	<item id="6232">必须加强模式</item>
+	<item id="6233">必须白金模式</item>
+	<item id="6234">制造</item>
+	<item id="6235">返回</item>
+	<item id="6236">请选择要制造的物品</item>
+	<item id="6237">加强模式{0}金 增加经验</item>
+	<item id="6238">白金模式{0}金 大幅增加经验</item>
+	<item id="6239">解散</item>
+	<item id="6240">开始制造</item>
+	<item id="6241">退出</item>
+	<item id="6242">获得{0}批布</item>
+	<item id="6243">获得{0}银币</item>
+	<item id="6244">制造CD</item>
+	<item id="6245">加强模式</item>
+	<item id="6246">白金模式</item>
+	<item id="6247">卖价</item>
+	
+	<!--角色选择-->
+	<item id="6301">角色选择</item>
+	<item id="6302">合服后发现您在几个服中都有角色，请选择一个（一旦选择，无法更改）</item>
+	<item id="6303">请选择一个角色</item>
+	<item id="6304">修改角色名</item>
+	<item id="6305">合服后发现您和别人重名了，休要修改一下你的角色名</item>
+	<item id="6306">请输入角色名</item>
+	<item id="6307">正在验证，请稍候...</item>
+
+</language>

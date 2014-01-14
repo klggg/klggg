@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- 银矿战界面配置文件 -->
+<config>
+	<displayObject view="silverWar.view.Background" property='' />
+	<displayObject name="silverList" view="silverWar.view.SilverList" property='' />
+	<displayObject name="buff" view="silverWar.icon.Buff" property='' />
+	<displayObject name="ownIcon" view="silverWar.icon.Own" property='' />
+	
+	<gameButton name="closeBtn" labelID="100104" property='{"x":940, "y":10}' btn="silverWar.btn.Exit" labelProp='{"x":12, "y":28, "color":"0xCDB9A0", "stroke":"0x0"}' />
+	
+	
+	<!--可以挖矿时的动画提示-->
+	<displayObject name="miningTipsMovie" view="silverWar.view.ForMining" property='{"x":825, "y":515, "mouseEnabled":false, "visible":false}'/>
+	<!--挖矿按钮-->
+	<gameButton name="miningBtn" labelID="100101" property='{"x":840, "y":530}' btn="silverWar.btn.Mining" labelProp='{"x":13, "y":30, "color":"0xDEC990", "stroke":"0x0"}' />
+	<!--侦查按钮-->
+	<gameButton name="detectBtn" labelID="100102" property='{"x":885, "y":530}' btn="silverWar.btn.Detect" labelProp='{"x":13, "y":30, "color":"0xDEC990", "stroke":"0x0"}' />
+	<!--创建幻影按钮-->
+	<gameButton name="shadowBtn" labelID="100103" property='{"x":930, "y":530}' btn="silverWar.btn.Shadow" labelProp='{"x":13, "y":30, "color":"0xDEC990", "stroke":"0x0"}' />
+	<!--挖矿提示文本-->
+	<text name="miningTipsText" property='{"autoSize":"right", "x":840, "y":560, "color":"0xE8DFCE", "stroke":"0x292317", "mouseEnabled":false, "visible":false}'/>
+	
+	
+	
+	<!--操作按钮-->
+	<actionButtons attack="silverWar.btn.Attack" molest="silverWar.btn.Molest" move="silverWar.btn.Move" />
+	<shadow view="silverWar.view.Shadow" />
+	
+	<!--侦查 - 周围人数提醒-->
+	<numText property='{"color":"0xE8DFCE", "stroke":"0x292317", "mouseEnabled":false}' x="18" y="3" duration="5"/>
+	
+	
+	<!--操作令牌列表-->
+	<tokenList property='{"x":320, "y":530}' itemX="5" tipsX="5">
+		<text name="tipsText" property='{"y":-20, "color":"0xE8DFCE", "stroke":"0x292317", "mouseEnabled":false, "visible":false}'/>
+		<displayObject name="buttonBG" view="silverWar.view.TokenBtnBG" property='{"visible":false}' />
+		<displayObject name="chiYuanBtn" view="silverWar.btn.ChiYuan" property='{"visible":false}' />
+		<displayObject name="zhengBingBtn" view="silverWar.btn.ZhengBing" property='{"visible":false}' />
+		<displayObject name="saoRaoBtn" view="silverWar.btn.SaoRao" property='{"visible":false}' />
+		<displayObject name="tuXiBtn" view="silverWar.btn.TuXi" property='{"visible":false}' />
+	</tokenList>
+	
+	<!--在银矿上显示的CD时间-->
+	<cdTimeView property='{"visible":false}'>
+		<text name="tipsText" property='{"x":28, "y":32, "autoSize":"center", "color":"0xE8DFCE", "stroke":"0x292317", "mouseEnabled":false}'/>
+	</cdTimeView>
+	
+	
+	<!-- 动作、显示面板 -->
+	<actionPanel property='{"x":20, "y":70}'>
+		<displayObject view="silverWar.view.ActionBackground" property='' />
+		<displayObject name="inspireIcon" view="silverWar.icon.Inspire" property='{"x":10, "y":2}' /><!--鼓舞-->
+		<displayObject name="troopsIcon" view="silverWar.icon.Troops" property='{"x":16, "y":60}' /><!--兵力-->
+		<displayObject name="defWinNumIcon" view="silverWar.icon.DefWinNum" property='{"x":17, "y":93}' /><!--防御胜利次数-->
+		<displayObject name="miningCDIcon" view="silverWar.icon.MiningCD" property='{"x":16, "y":119}' /><!--挖矿CD-->
+		<displayObject name="actionCDIcon" view="silverWar.icon.ActionCD" property='{"x":13, "y":147}' /><!--行动CD-->
+		<displayObject name="attLevelIcon" view="silverWar.icon.AttLevel" property='{"x":60, "y":7}' /><!--鼓舞攻击等级-->
+		<displayObject name="defLevelIcon" view="silverWar.icon.DefLevel" property='{"x":105, "y":11}' /><!--鼓舞防守等级-->
+		<displayObject name="suZhanIcon" view="silverWar.icon.SuZhan" property='{"x":48, "y":30}' /><!--速战-->
+		<displayObject name="tieBiIcon" view="silverWar.icon.TieBi" property='{"x":75, "y":30}' /><!--铁壁-->
+		<displayObject name="lianZhanIcon" view="silverWar.icon.LianZhan" property='{"x":102, "y":30}' /><!--连战-->
+		<displayObject name="chiJiuIcon" view="silverWar.icon.ChiJiu" property='{"x":129, "y":30}' /><!--持久-->
+		
+		<displayObject name="junGongInspireBtn" view="silverWar.btn.JunGongInspire" property='{"x":160, "y":-5}' /><!--军功鼓舞按钮-->
+		<displayObject name="goldInspireBtn" view="silverWar.btn.GoldInspire" property='{"x":193, "y":-5, "visible":false}' /><!--金币鼓舞按钮-->
+		<displayObject name="conscriptionBtn" view="silverWar.btn.Conscription" property='{"x":160, "y":54}' /><!--征兵按钮-->
+		
+		<text name="attLevelText" property='{"x":72, "y":10, "color":"0xC97872", "stroke":"0x292317", "mouseEnabled":false}'/>
+		<text name="defLevelText" property='{"x":120, "y":10, "color":"0x72AAC9", "stroke":"0x292317", "mouseEnabled":false}'/>
+		<text name="troopsText" property='{"x":50, "y":67, "color":"0xE8DFCE", "stroke":"0x292317"}'/>
+		<text name="defWinNumText" property='{"x":50, "y":96, "color":"0xE8DFCE", "stroke":"0x292317"}'/>
+		<text name="miningCDText" property='{"x":50, "y":125, "color":"0xE8DFCE", "stroke":"0x292317"}'/>
+		<text name="actionCDText" property='{"x":50, "y":154, "color":"0xE8DFCE", "stroke":"0x292317"}'/>
+		<text name="inspireCDText" property='{"x":165, "y":35, "color":"0xE8DFCE", "stroke":"0x292317", "mouseEnabled":false}'/>
+		
+		<nationBuff property='{"visible":false}'><!--国家 效果加成-->
+			<displayObject name="pic" view="silverWar.icon.NationBuff" property='{"x":0, "y":180}' />
+			<staticText property='{"x":67, "y":185, "color":"0xE8DFCE", "stroke":"0x292317"}' textID="100228"/>
+			<text name="nameText" property='{"x":67, "y":205, "bold":true, "color":"0xE8DFCE", "stroke":"0x292317"}'/>
+			<text name="buffText" property='{"x":67, "y":225, "color":"0xEFCC32", "stroke":"0x292317"}'/>
+		</nationBuff>
+	</actionPanel>
+	
+	<!-- 战场 -->
+	<war property=''>
+		<displayObject name="background" view="silverWar.war.Background" property='' />
+		<displayObject name="exitBtn" view="gameUI.btn.Close2" property='{"x":820, "y":110}' />
+		<text name="attNameText" property='{"x":620, "y":84, "autoSize":"right", "color":"0xFFFFFF", "stroke":"0x292317", "mouseEnabled":false}'/>
+		<text name="defNameText" property='{"x":653, "y":84, "color":"0xFFFFFF", "stroke":"0x292317", "mouseEnabled":false}'/>
+		<text name="summaryText" property='{"x":640, "y":220, "autoSize":"center", "color":"0xFFFFFF", "stroke":"0x292317", "mouseEnabled":false, "visible":false}'/>
+		
+		<attArmy property='{"x":590, "y":310}' />
+		<defArmy property='{"x":720, "y":240}' />
+		
+		<attackTipsText property='{"x":585, "y":220}' /><!--被攻击时的提示文本-->
+		
+		
+		<army>
+			<displayObject name="attLevelIcon" view="silverWar.icon.AttLevel" property='{"x":-30, "y":-15, "visible":false}' /><!--鼓舞攻击等级图标-->
+			<displayObject name="defLevelIcon" view="silverWar.icon.DefLevel" property='{"x":5, "y":-15, "visible":false}' /><!--鼓舞防守等级图标-->
+			<text name="attLevelText" property='{"x":-18, "y":-15, "color":"0xC97872", "stroke":"0x292317", "mouseEnabled":false}'/>
+			<text name="defLevelText" property='{"x":19, "y":-15, "color":"0x72AAC9", "stroke":"0x292317", "mouseEnabled":false}'/>
+			<textMovie property='{"font":"Arial", "size":16, "x":-25, "y":-30, "stroke":"0x0"}' yTo="-45" color1="0x00FF00" color2="0xFF0000" />
+		</army>
+	</war>
+	
+	
+</config>

@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- 征战场景配置文件 -->
+<config>
+	<forceList view="expedition.force.List{0}" num="20" />
+	
+	<!--场景提示-->
+	<sceneTips view="expedition.view.SceneTips" duration="1.5" property='{"x":422, "y":247}'>
+		<nameText property='{"x":78, "y":35, "size":14, "bold":true, "autoSize":"center", "stroke":"0xD9C5A2"}' />
+		<ratioText property='{"x":78, "y":57, "autoSize":"center", "stroke":"0xD9C5A2"}' />
+	</sceneTips>
+	
+	<prevPowerBtn property='{"x":350, "y":550}' style="button7" />
+	<nextPowerBtn property='{"x":480, "y":550}' style="button8" itemY="40" />
+	
+	<button name="rewardBtn" style="button1" labelID="080213" property='{"x":460, "y":280, "visible":false}'/>
+	
+	<forceInfo property='{"x":307, "y":177}' >
+		<displayObject view="expedition.view.ForceInfo" property='' />
+		<displayObject name="closeBtn" view="gameUI.btn.CloseBtn" property='{"x":355, "y":30}' />
+		
+		<pic name="pic" property='{"x":25, "y":45}' frame="gameUI.picCover" frameProp='{"mouseEnabled":false}' picProp='{"x":3, "y":1}' />
+		
+		<gameButton name="attackBtn" labelID="080101" property='{"x":297, "y":45}' btn="expedition.btn.Attact" labelProp='{"x":14, "y":28, "color":"0xE8DFCE", "stroke":"0x292317", "bold":true}' />
+		<gameButton name="raidersBtn" labelID="080102" property='{"x":297, "y":105}' btn="expedition.btn.Raiders" labelProp='{"x":14, "y":28, "color":"0xE8DFCE", "stroke":"0x292317", "bold":true}' />
+		<gameButton name="stormBtn" labelID="080103" property='{"x":297, "y":165}' btn="expedition.btn.Storm" labelProp='{"x":14, "y":28, "color":"0xE8DFCE", "stroke":"0x292317", "bold":true}' />
+		
+		<text name="nameText" property='{"x":110, "y":45, "color":"0xE7E0D8", "stroke":"0x2B241C"}'/>
+		<text name="junGongText" property='{"x":110, "y":65, "color":"0xE7E0D8", "stroke":"0x2B241C"}'/>
+		<text name="numText" property='{"x":110, "y":85, "color":"0xE7E0D8", "stroke":"0x2B241C"}'/>
+		<text name="itemText" property='{"x":110, "y":105, "color":"0xE7E0D8", "stroke":"0x2B241C"}'/>
+		<text name="introText" property='{"multiline":true, "x":37, "y":148, "width":235, "color":"0xE7E0D8", "stroke":"0x2B241C"}'/>
+	</forceInfo>
+</config>

@@ -1,0 +1,1139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="content-language" content="utf-8" />
+<link href="./css/css.css?v=2010-6-24" rel="stylesheet" type="text/css" />
+<link href="./css/tabs.css?v=2010-6-24" rel="stylesheet" type="text/css" />
+<link href="./css/themes/blue/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="./js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="./js/jquery.tablesorter.min.js"></script>
+
+<title>bizlife 商业人生 大富豪助手 by ggg</title>
+</head>
+<body >
+
+<!--iframe frameborder="0" marginheight="0" marginwidth="0" border="0" scrolling="no" width="810" height="100"  src="http://k11.bizlife.com.cn/"></iframe-->
+
+
+<div id="biz_head" style="width:98%" align=center>
+
+</div>
+
+
+<FORM NAME="form1">
+  <table align=center class="list_table" width="98%" cellspacing="0" cellpadding="0" border="0">
+    <tr>
+      <td class="list_top3" colspan='2' align=center>大富豪助手 (<span id="my_version"></span>) <a href="http://bizlife.zggo.com/" target="_blank">进入论坛交流</a> QQ群: 6002287  (<b>需要定制助手也可联系</b>)
+        <div id="upgradeDialog"  style="display:none;"><a style="color:red"  target="_blank" href="http://bizlife.zggo.com/forum.php?mod=forumdisplay&fid=2"> 已发现升级版本，点此进入<span id="biz_version"></span>版本下载页面</a></div></td>
+    </tr>
+    <TR>
+      <TD width="120" height="50">所在服务器 </TD>
+      <TD height="50"><select onchange="biz_server_change(this)" id="host_list">
+        </select>
+        <select id="server_list" name="server_list">
+        </select>
+        <a href="http://bizlife.zggo.com/forum.php?mod=viewthread&tid=257&extra=page%3D1" target="_blank" style="color:red;"><b>新手使用助手指导贴</b></a> &nbsp;&nbsp; <a href="http://bizlife.zggo.com/forum.php?mod=viewthread&tid=70&extra=page%3D1" target="_blank">教你怎么在助手里加新服 </a> </TD>
+    </TR>
+    <TR>
+      <TD height="50"> 公司信息： </TD>
+      <TD height="50" ><input  type="button" value="刷新" onClick="biz_check();" >
+        <span id="biz_company_info"> ... </span> </TD>
+    </TR>
+    <!--TR>
+      <TD height="50"> 登录帐号 </TD>
+      <TD height="50"><INPUT TYPE="text" id="biz_user" value=''> 特殊功能单独开通,不清楚留空,不保证长期有效</TD>
+    </TR-->
+    <!--TR>
+      <TD height="50"></TD>
+      <TD  align="center"><input type="button" value='IE7新建选项卡(CTRL+T),登陆官网成功后点击这里开始运行!' name="switch_button" />
+        <INPUT TYPE="checkbox" id="auto_load_staff_batch_run"   value='1' >
+        自动加载员工并运行批量操作 </TD>
+    </TR-->
+  </TABLE >
+</FORM>
+
+<!-- adv -->
+<table align=center  width="98%" cellspacing="0" cellpadding="0" border="0">
+  <tr>
+    <td align="center" ><script type="text/javascript"><!--
+google_ad_client = "pub-3532402732606778";
+/* 小格468x15, 创建于 10-1-8 */
+google_ad_slot = "4590511473";
+google_ad_width = 468;
+google_ad_height = 15;
+//-->
+</script>
+      <script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+    </td>
+    <td align="center" ><script type="text/javascript"><!--
+  google_ad_client = "pub-3532402732606778";
+  google_ad_format = "js_sdo";
+  google_cts_mode ="hq";
+  google_num_cts = "2";
+  google_searchbox_width = 115;
+  google_searchbox_height = 26;
+  google_link_target = 2;
+  google_ad_channel = "3669009169";
+  google_logo_pos = "left";
+  google_rs_pos = "right";
+  google_ad_height = 35;
+  google_ad_width = 430;
+//-->
+</script>
+      <script type="text/javascript"
+  src="http://pagead2.googlesyndication.com/pagead/show_sdo.js">
+</script>
+    </td>
+  </tr>
+</table>
+<div class='tab_card' >
+  <ul  class="tabs" >
+    <li class='active'><a class="current" href="javascript:void(0);">常规操作</a></li>
+    <li><a class="" href="javascript:void(0);">员工管理</a></li>
+    <li><a class="" href="javascript:void(0);">部门管理</a></li>
+    <li><a class="" href="javascript:void(0);">店铺</a></li>
+    <li><a class="" href="javascript:void(0);">日常任务</a></li>
+    <li><a class="" href="javascript:void(0);">操作日志</a></li>
+    <li><a class="" href="javascript:void(0);">其他</a></li>
+  </ul>
+  <div class="tabs_description">
+    <ul  class="tabs" >
+      <li class='active'><a class="" href="javascript:void(0);">常规操作</a></li>
+      <li><a class="" href="javascript:void(0);" >勋章领取</a></li>
+      <li><a class="" href="javascript:void(0);">社交</a></li>
+      <li><a class="" href="javascript:void(0);">城市</a></li>
+    </ul>
+    <div  class="tabs_description">
+      <fieldset>
+      <legend>参数设置</legend>
+      <INPUT TYPE="checkbox" id="auto_club_card"   value='1' checked>
+      自动打卡
+      <INPUT TYPE="checkbox" id="auto_skip_staff"   value='1' checked>
+      员工三围满是否要跳过?
+      <INPUT TYPE="checkbox" id="auto_strength_add"   value='1' >
+      董事长体力不足自动喝葡萄糖(保证有足够的葡萄糖)
+      <INPUT TYPE="checkbox" id="auto_inspection"   value='1' >
+      自动开始巡视
+      <!--INPUT TYPE="checkbox" id="auto_recover_strength_by_house"   value='1' checked>
+      豪宅自动体力恢复
+	  -->
+      <!--INPUT TYPE="checkbox" id="auto_auto_imgcode"   value='1' checked >
+      自动输入验证码(火狐下无效,需要申请才能开通)
+	  -->
+      </fieldset>
+      <p>&nbsp;</p>
+      <fieldset>
+      <legend>快捷操作</legend>
+     <input type="button" value='福利社领取当前页' onclick="biz_canteen_receive_all();"  />
+      <input type="button" value='福利社领取下一页' onclick="biz_canteen_receive_next();"  />
+      当前第
+      <INPUT TYPE="text" id="biz_canteen_receive_page"   value='1' maxlength="2" size="2" style="ime-mode:disabled">
+      页 <br>
+      <input  type="button" value="酝酿策划" onClick="biz.company.plan.prepareClick();" id="biz_prepare_plan_button">
+		限定执行<INPUT TYPE="text"  id="biz_prepare_plan_total"   value='5' maxlength="2" size="2" style="ime-mode:disabled">次
+
+	  
+<br>
+      <input  type="button" value="自动任务交易" onClick="biz_auto_mall_trade();" id="auto_mall_trade">
+      <input  type="button" value="手动商会打卡" onClick="biz_auto_club_card();" >
+      <input  type="button" value="员工全部续约" onClick="biz.staff.renewal();" >
+      </fieldset>
+      <p>&nbsp;</p>
+
+
+	<fieldset>
+      <legend>执行命令</legend>
+       URL地址：
+       <input name="command_text1" type="text" id="command_text1" value="" size="30">
+      Post数据：
+      <input name="command_text2" type="text" id="command_text2" value="" size="30">
+
+	  间隔时间:
+      <input type="text" id="command_spend_time" size="5" value="120"> 秒
+
+      <input type="button" name="button" value="执行" onClick="biz_run_command_click();" id="command_button" >
+      </fieldset>
+      <p>&nbsp;</p>
+
+      <fieldset>
+      <legend>员工招聘</legend>
+      类型:
+      <select id="recruit_type">
+        <option value="1">行政人事员</option>
+        <option value="2">财务会计</option>
+        <option value="3">策划员</option>
+        <option value="4">市场管理员</option>
+        <option value="5">公关</option>
+        <option value="6">营业员</option>
+        <option value="7">工厂职员</option>
+      </select>
+      人数:
+      <input type="text" size="5" value="0" id="recruit_num">
+      <input type="button" value="批量招聘" onclick="biz.staff.jobRecruit();" id="recruit_bottn" name="recruit_bottn">
+      </fieldset>
+      <p>&nbsp;</p>
+    </div>
+    <div  class="tabs_description">
+      <FORM NAME="medals_list_form" ID="medals_list_form">
+        <table  class="list_table" align="center" width="98%" cellspacing="0" cellpadding="0" border="0">
+          <thead>
+            <tr>
+              <td class="list_top3">名称</td>
+              <td class="list_top3">勋章加成</td>
+              <td class="list_top3">成功率</td>
+              <td class="list_top3">申请费用</td>
+              <td class="list_top3">申请条件</td>
+              <td class="list_top3" ><INPUT TYPE="checkbox" onclick="javascript:Tools.setCheckbox(document.medals_list_form,'or');"/></td>
+            </tr>
+          </thead>
+          <tbody id="medals_list" >
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan=12 height=30 align=right><span id="gadgets_medal_time_remain"> </span>
+                <input type="button" value='加载勋章' onclick="biz.gadgets.medal.load();"  />
+                <input type="button" value='运行自动勋章' onclick="biz.gadgets.medal.runClick();" id="biz_gadgets_medal_click_button" />
+                <a  href="javascript:Tools.setCheckbox(document.medals_list_form,'all');">全选</a> <a  href="javascript:Tools.setCheckbox(document.medals_list_form,'or');">反选</a> <a  href="javascript:Tools.setCheckbox(document.medals_list_form,'no');">取消</a> </td>
+            </tr>
+          </tfoot>
+        </table>
+      </FORM>
+    </div>
+    <div  class="tabs_description"> <a href='javascript:void(0);' onclick='biz_open_url("relation/index.php")'>社交</a>
+      <ul  class="tabs" >
+        <li class='active'><a class="" href="javascript:void(0);">师傅</a></li>
+        <li><a class="" href="javascript:void(0);"> 当前合作状态</a></li>
+        <li><a class="" href="javascript:void(0);">合作伙伴</a></li>
+      </ul>
+      <div  class="tabs_description">&nbsp;&nbsp;&nbsp;师傅
+        <FORM >
+          <table  class="list_table" align="center" width="98%" cellspacing="0" cellpadding="0" border="0">
+            <thead>
+              <tr>
+                <td class="list_top3">姓名</td>
+                <td class="list_top3">公司</td>
+                <td class="list_top3">公司等级</td>
+                <td class="list_top3">关系加成有效期</td>
+                <td class="list_top3">是否过期</td>
+                <td class="list_top3" >经营指导加成</td>
+              </tr>
+            </thead>
+            <tbody id="relation_master_info" >
+            </tbody>
+          </table>
+        </FORM>
+         
+        <FORM NAME="relation_master_list_form" ID="relation_master_list_form">
+          <table  class="list_table" align="center" width="98%" cellspacing="0" cellpadding="0" border="0">
+            <thead>
+              <tr>
+                <td class="list_top3">项目名称</td>
+                <td class="list_top3">花费时间</td>
+                <td class="list_top3">道具名</td>
+                <td class="list_top3">数量</td>
+                <td class="list_top3">维系关系时间</td>
+                <td class="list_top3" ><INPUT TYPE="checkbox" onclick="javascript:Tools.setCheckbox(document.relation_master_list_form,'or');"/></td>
+              </tr>
+            </thead>
+            <tbody id="relation_master_list" >
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan=7 height=30 align=right><span id="relation_master_time_remain">.. </span>
+                  <input type="button" value='加载\刷新项目' onclick="biz.relation.master.load();"  />
+                  <input type="button" value='运行自动师傅' onclick="biz.relation.master.runClick();" id="biz_relation_master_click_button" />
+                  <a  href="javascript:Tools.setCheckbox(document.relation_master_list_form,'all');">全选</a> <a  href="javascript:Tools.setCheckbox(document.relation_master_list_form,'or');">反选</a> <a  href="javascript:Tools.setCheckbox(document.relation_master_list_form,'no');">取消</a> </td>
+              </tr>
+            </tfoot>
+          </table>
+        </FORM>
+      </div>
+
+<div  class="tabs_description">
+
+<a href='javascript:void(0);' onclick='biz_open_url("relation/relation_cooperation_keep.php?type=4")'>当前合作状态</a>
+
+ 
+<table class="list_table" align="center" width="98%" cellspacing="0" cellpadding="0" border="0"  >
+	<tbody id="relation_cooperation_info" >
+</tbody></table>
+<p>&nbsp;</p>
+	<FORM NAME="relation_cooperation_list_form" ID="relation_cooperation_list_form">
+	  <table  class="list_table" align="center" width="98%" cellspacing="0" cellpadding="0" border="0">
+	    <thead>
+	      <tr>
+		<td class="list_top3">项目名称</td>
+		<td class="list_top3">花费时间</td>
+		<td class="list_top3">道具名</td>
+		<td class="list_top3">数量</td>
+		<td class="list_top3">维系关系时间</td>
+		<td class="list_top3" ><INPUT TYPE="checkbox" onclick="javascript:Tools.setCheckbox(document.relation_cooperation_list_form,'or');"/></td>
+	      </tr>
+	    </thead>
+	    <tbody id="relation_cooperation_list" >
+	    </tbody>
+	    <tfoot>
+	      <tr>
+		<td colspan=7 height=30 align=right><span id="relation_cooperation_time_remain">.. </span>
+		  <input type="button" value='加载\刷新项目' onclick="biz.relation.cooperation.load();"  />
+		  <input type="button" value='运行自动合作' onclick="biz.relation.cooperation.runClick();" id="biz_relation_cooperation_click_button" />
+		  <a  href="javascript:Tools.setCheckbox(document.relation_cooperation_list_form,'all');">全选</a> <a  href="javascript:Tools.setCheckbox(document.relation_cooperation_list_form,'or');">反选</a> <a  href="javascript:Tools.setCheckbox(document.relation_cooperation_list_form,'no');">取消</a> </td>
+	      </tr>
+	    </tfoot>
+	  </table>
+	</FORM>
+</div>
+      <div  class="tabs_description">合作伙伴(待完成)</div>
+    </div>
+    <div  class="tabs_description"> <a href='javascript:void(0);' onclick='biz_open_url("map/index.php")'>城市</a>
+      <ul  class="tabs" >
+        <li class='active'><a class="" href="javascript:void(0);" onClick="biz.city.charity.load();">慈善会</a></li>
+        <li><a class="" href="javascript:void(0);">议政厅</a></li>
+        <li><a class="" href="javascript:void(0);">福利社</a></li>
+      </ul>
+      <div  class="tabs_description">&nbsp;&nbsp;&nbsp; <a href='javascript:void(0);' onclick='biz_open_url("charity/index.php")'>慈善会</a>
+        <fieldset>
+        <legend>慈善会捐赠</legend>
+        捐赠金额：
+        <input type="text" maxlength="12" value="2500000"  style="width: 100px;" id="city_charity_endow_cash" class="input">
+        G币
+        重复次数:
+        <input type="text" size="5" value="5" id="city_charity_repeats" class="input">
+        间隔时间:
+        <input type="text" size="5" value="10" id="city_charity_interval_time" class="input">秒
+        
+        <input type="button" value="开始执行" onclick="biz.city.charity.runClick();" id="biz_city_charity_click_button" > <span id="city_charity_time_remain"></span>
+        <p id="city_charity_remark">&nbsp;</p>
+	    </fieldset>
+        <p>&nbsp;</p>
+      </div>
+
+      <div  class="tabs_description">&nbsp;&nbsp;&nbsp; <a href='javascript:void(0);' onclick='biz_open_url("official/city_hall.php")'>议政厅</a>
+        <input type="button" onclick='biz_open_url("official/vote_place.php")' value="官员选举投票">
+      </div>
+      <div  class="tabs_description">&nbsp;&nbsp;&nbsp; <a href='javascript:void(0);' onclick='biz_open_url("map/system_present.php")'>福利社</a>
+        <input type="button" onclick="biz_canteen_receive_all();" value="福利社领取当前页">
+      </div>
+
+    </div>
+  </div>
+  <div  class="tabs_description">
+    <ul  class="tabs" >
+      <li class='active'><a class="current" href="javascript:void(0);">批量操作的员工</a></li>
+      <li><a class="" href="javascript:void(0);">技能深造</a></li>
+      <li><a class="" href="javascript:void(0);">已收藏的员工</a></li>
+    </ul>
+    <div  class="tabs_description">
+      <fieldset>
+      <legend>加载员工选项</legend>
+      <input type="button" onclick="biz.staff.loadDepartment('staff_load_department')" value="刷新部门列表" >
+      <SELECT id="staff_load_department">
+        <option value="all" checked>全公司</option>
+        <option value="user_collection">&nbsp;标记员工 </option>
+        <option value="struct">&nbsp;公司架构 </option>
+        <option value="department">&nbsp;部门 </option>
+        <option value="dpt_competent">&nbsp;&nbsp;部门主管 </option>
+        <option value="department||1">&nbsp;&nbsp;&nbsp;行政人事部 </option>
+        <option value="department||2">&nbsp;&nbsp;&nbsp;财务部 </option>
+        <option value="department||3">&nbsp;&nbsp;&nbsp;策划部 </option>
+        <option value="department||4">&nbsp;&nbsp;&nbsp;市场部 </option>
+        <option value="department||5">&nbsp;&nbsp;&nbsp;公关部 </option>
+        <option value="factory">&nbsp;工厂 </option>
+        <option value="factory_competent">&nbsp;&nbsp;工厂高管 </option>
+        <option value="neg">&nbsp;谈判团 </option>
+        <option value="shop">&nbsp;店铺 </option>
+        <option value="shop_competent">&nbsp;&nbsp;店铺主管 </option>
+        <option value="build">&nbsp;建筑 </option>
+        <option value="build||1">&nbsp;&nbsp;行政人才 </option>
+        <option value="build||2">&nbsp;&nbsp;财务人才 </option>
+        <option value="build||3">&nbsp;&nbsp;策划人才 </option>
+        <option value="build||4">&nbsp;&nbsp;市场人才 </option>
+        <option value="build||5">&nbsp;&nbsp;公关人才 </option>
+        <option value="club">&nbsp;商会 </option>
+        <option value="club||1">&nbsp;&nbsp;行政人才 </option>
+        <option value="club||2">&nbsp;&nbsp;财务人才 </option>
+        <option value="club||3">&nbsp;&nbsp;策划人才 </option>
+        <option value="club||4">&nbsp;&nbsp;市场人才 </option>
+        <option value="club||5">&nbsp;&nbsp;公关人才 </option>
+        <option value="free">&nbsp;空闲员工</option>
+      </SELECT>
+      <SELECT id="staff_load_page">
+        <option  value="1">第1页</option>
+        <option  value="2">第2页</option>
+        <option  value="3">第3页</option>
+        <option  value="4">第4页</option>
+        <option  value="5">第5页</option>
+        <option  value="6">第6页</option>
+        <option  value="7">第7页</option>
+        <option  value="8">第8页</option>
+        <option  value="9">第9页</option>
+        <option  value="10">第10页</option>
+        <option  value="11">第11页</option>
+        <option  value="12">第12页</option>
+        <option  value="13">第13页</option>
+        <option  value="14">第14页</option>
+        <option  value="15">第15页</option>
+        <option  value="16">第16页</option>
+        <option  value="17">第17页</option>
+        <option  value="18">第18页</option>
+        <option  value="19">第19页</option>
+        <option  value="20">第20页</option>
+        <option  value="21">第21页</option>
+        <option  value="22">第22页</option>
+        <option  value="23">第23页</option>
+        <option  value="24">第24页</option>
+      </SELECT>
+      <label>排序</label>
+      <SELECT id="staff_load_order_by">
+        <option  value="level">等级</option>
+        <option  value="loyalty">忠诚</option>
+        <option  value="leftexec">体力</option>
+        <option  value="experience">经验</option>
+        <option  value="power">能力</option>
+        <option  value="character">人品</option>
+        <option  value="pay">周薪</option>
+        <option  value="time_expired">合约</option>
+        <option  value="skill">技能</option>
+        <option  value="hobby">爱好</option>
+      </SELECT>
+      <SELECT id="staff_load_order">
+        <option  value="desc">从大到小↓</option>
+        <option  value="asc">从小到大↑</option>
+      </SELECT>
+      <input type="button" value='点此加载员工' onclick="biz_get_staff();" name="button_load_staff"/>
+      <input type="button" value='移除选中的员工' onclick="biz.staff.removeStaff();" />
+      <input type="button" value='&gt;&gt;选中到收藏列表' onclick="biz_fav_from_staff();"/>
+      选中<font color=red  id="count_selected">0</font>人
+      <!-- sSWans修改，选中人数显示   -->
+      <P> 三围过滤:
+        <input type="button" value="满经验" onclick="biz_staff_sw_filt(1);"/>
+        <input type="button" value="满能力" onclick="biz_staff_sw_filt(2);"/>
+        <input type="button" value="满忠诚"  onclick="biz_staff_sw_filt(3);"/>
+        <input type="button" value="三围全满" onclick="biz_staff_sw_filt(0);"/>
+        <input type="button" value="显示全部" onclick="biz_staff_sw_filt(-1);"/>
+        <INPUT TYPE="checkbox" id="biz_staff_auto_speed"   value='1'>
+        自动加速
+        <INPUT TYPE="checkbox" id="biz_staff_item410" value='410'>
+        使用《氨基酸》
+        <INPUT TYPE="checkbox" id="auto_load_staff"   value='1' >
+        当前选择的所有员工无体力时重新加载新员工 </P>
+      </fieldset>
+      <FORM NAME="staff_list_form" ID="staff_list_form">
+        <table  class="list_table" align="center" width="98%" cellspacing="0" cellpadding="0" border="0">
+          <thead>
+            <tr>
+              <td class="list_top3" align="center">序号</td>
+              <td class="list_top3">姓名</td>
+              <td class="list_top3">爱好</td>
+              <td class="list_top3">单位</td>
+              <td class="list_top3">等级</td>
+              <td class="list_top3">经验</td>
+              <td class="list_top3">能力</td>
+              <td class="list_top3">忠诚</td>
+              <td class="list_top3">人品</td>
+              <td class="list_top3">体力</td>
+              <td class="list_top3">周薪</td>
+              <td class="list_top3">合约</td>
+              <td class="list_top3">技能</td>
+              <td class="list_top3">操作</td>
+              <td class="list_top3" ><INPUT TYPE="checkbox" onclick="javascript:Tools.setCheckbox(document.staff_list_form,'or');biz_staff_select_count();"/></td>
+            </tr>
+          </thead>
+          <tbody id="staff_list" >
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan=12 height=30 align=right><input type="button" value='批量进修选中员工' onclick="biz_staff_studio('#staff_list_form');" />
+                <input type="button" value='移除选中的员工' onclick="biz.staff.removeStaff();" />
+ <input type="button" value='选中的员工添加到技能深造' onclick="biz.staff.toSkill();" />
+                <a  href="javascript:Tools.setCheckbox(document.staff_list_form,'all');biz_staff_select_count();">全选</a> <a  href="javascript:Tools.setCheckbox(document.staff_list_form,'or');biz_staff_select_count();">反选</a> <a  href="javascript:Tools.setCheckbox(document.staff_list_form,'no');biz_staff_select_count();">取消</a> </td>
+            </tr>
+          </tfoot>
+        </table>
+      </FORM>
+      <fieldset>
+      <legend>批量执行选中的员工</legend>
+      <FORM NAME="form_staff_option">
+        选中员工要进行的操作项目
+        <div id="batch_state_list"> </div>
+        <a  href="javascript:Tools.setCheckbox(document.form_staff_option,'all')">全选</a> <a  href="javascript:Tools.setCheckbox(document.form_staff_option,'or')">反选</a> <a  href="javascript:Tools.setCheckbox(document.form_staff_option,'no')">取消</a> <br />
+        <label> 批量一次执行员工数
+        <INPUT TYPE="text" id="one_process_staff" value='5'>
+        不清楚先默认 < 34 </label>
+        <input type="button" value='点此加载员工' onclick="biz_get_staff();" name="button_load_staff"/>
+        <input type="button" value='开始批量执行选中的员工' onclick="biz.staff.batchGroupClick();" />
+      </FORM>
+      </fieldset>
+      <fieldset>
+      <legend>正在执行的批量列表</legend>
+      <div id="batch_group_result_list"> </div>
+      </fieldset>
+    </div>
+
+    <div  class="tabs_description">
+      <p>注：每人每次需要花费100,000 G币,开始前请准备足够的G币！(程序会自动跳过满技能员工)</p>
+      <FORM NAME="staff_skill_list_form" ID="staff_skill_list_form">
+        <table  class="list_table" align="center" width="98%" cellspacing="0" cellpadding="0" border="0" id="staff_skill_list_tb">
+          <thead>
+            <tr>
+              <td class="list_top3" align="center">序号</td>
+              <td class="list_top3">姓名</td>
+              <td class="list_top3">剩余执行</td>
+              <td class="list_top3">部门状态</td>
+              <td class="list_top3">技能</td>
+              <td class="list_top3">等级</td>
+              <td class="list_top3">经验</td>
+              <td class="list_top3">能力</td>
+              <td class="list_top3">忠诚</td>
+              <td class="list_top3" ><INPUT TYPE="checkbox" onclick="javascript:Tools.setCheckbox(document.staff_skill_list_form,'or');"/></td>
+            </tr>
+          </thead>
+          <tbody id="staff_skill_list" >
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan=12 height=30 align=right><SELECT NAME="staff_skill_object_type" ID="staff_skill_object_type" onchange="biz.staff.skill.loadClick()" >
+                  <option value=1>心算</option>
+                  <option value=2>投机</option>
+                  <option value=3>微笑</option>
+                  <option value=4>推销</option>
+                  <option value=5>创造</option>
+                  <option value=6>经营</option>
+                  <option value=7>管理</option>
+                  <option value=8>谈判</option>
+                  <option value=9>人际</option>
+                  <option value=10>学习</option>
+                  <option value=11>精算</option>
+                  <option value=12>核算</option>
+                  <option value=13>策划</option>
+                  <option value=14>鼓舞</option>
+                  <option value=15>营销 </option>
+                </SELECT>
+      <SELECT id="biz_staff_skill_load_page">
+        <option  value="1">第1页</option>
+        <option  value="2">第2页</option>
+        <option  value="3">第3页</option>
+        <option  value="4">第4页</option>
+        <option  value="5">第5页</option>
+        <option  value="6">第6页</option>
+        <option  value="7">第7页</option>
+        <option  value="8">第8页</option>
+        <option  value="9">第9页</option>
+        <option  value="10">第10页</option>
+        <option  value="11">第11页</option>
+        <option  value="12">第12页</option>
+        <option  value="13">第13页</option>
+        <option  value="14">第14页</option>
+        <option  value="15">第15页</option>
+        <option  value="16">第16页</option>
+        <option  value="17">第17页</option>
+        <option  value="18">第18页</option>
+        <option  value="19">第19页</option>
+        <option  value="20">第20页</option>
+        <option  value="21">第21页</option>
+        <option  value="22">第22页</option>
+        <option  value="23">第23页</option>
+        <option  value="24">第24页</option>
+      </SELECT>
+                <input type="button" value='点此加载要深造的员工' onclick="biz.staff.skill.loadClick()" />
+                <input type="button" value='运行技能深造选中员工' onclick="biz.staff.skill.runClick();" id="biz_staff_skill_click_button"/>
+                <a  href="javascript:Tools.setCheckbox(document.staff_skill_list_form,'all');biz_staff_select_count();">全选</a> <a  href="javascript:Tools.setCheckbox(document.staff_skill_list_form,'or');biz_staff_select_count();">反选</a> <a  href="javascript:Tools.setCheckbox(document.staff_skill_list_form,'no');biz_staff_select_count();">取消</a> </td>
+            </tr>
+          </tfoot>
+        </table>
+      </FORM>
+    </div>
+
+    <div  class="tabs_description">
+      <fieldset>
+      <legend>操作</legend>
+      文件名:
+      <input type="text" value='staff_fav' size=10 id="biz_staff_save_filename"/>
+      （可以自定义保存文件名，不清楚默认不要改）
+      <!--去掉扩展名xml -->
+      <br>
+      <input type="button" value='从文件里加载已收藏的员工' onclick="biz_load_staff_fav();" />
+      <input type="button" value='[save]保存收藏的员工' onclick="biz_staff_fav_save();" />
+      <input type="button" value='&lt;&lt;选中员工到操作员工列表' onclick="biz_staff_from_fav();" />
+      <input type="button" value='移除选中的员工' onclick="biz_remove_staff_fav();" />
+      </fieldset>
+      <FORM NAME="staff_fav_list_form" id="staff_fav_list_form">
+        <table  class="list_table" align="center" width="98%" cellspacing="0" cellpadding="0" border="0">
+          <thead>
+            <tr>
+              <td class="list_top3" align="center">序号</td>
+              <td class="list_top3">姓名</td>
+              <td class="list_top3">爱好</td>
+              <td class="list_top3">单位</td>
+              <td class="list_top3">等级</td>
+              <td class="list_top3">经验</td>
+              <td class="list_top3">能力</td>
+              <td class="list_top3">忠诚</td>
+              <td class="list_top3">人品</td>
+              <td class="list_top3">体力</td>
+              <td class="list_top3">周薪</td>
+              <td class="list_top3">合约</td>
+              <td class="list_top3">技能</td>
+              <td class="list_top3" ><INPUT TYPE="checkbox" onclick="javascript:Tools.setCheckbox(document.staff_fav_list_form,'or')"/></td>
+            </tr>
+          </thead>
+          <tbody id="staff_fav_list" >
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan=12 height=30 align=right><input type="button" value='批量进修选中员工' onclick="biz_staff_studio('#staff_fav_list_form');" />
+                <input type="button" value='移除选中的员工' onclick="biz_remove_staff_fav();" />
+                <a  href="javascript:Tools.setCheckbox(document.staff_fav_list_form,'all')">全选</a> <a  href="javascript:Tools.setCheckbox(document.staff_fav_list_form,'or')">反选</a> <a  href="javascript:Tools.setCheckbox(document.staff_fav_list_form,'no')">取消</a> </td>
+            </tr>
+          </tfoot>
+        </table>
+      </FORM>
+    </div>
+
+  </div>
+
+  <div  class="tabs_description">
+    <FORM NAME="department_from">
+      <table  class="list_table" align="center" width="98%" cellspacing="0" cellpadding="0" border="0">
+        <thead>
+          <tr>
+            <td colspan=12 height=30 align=right><span id="inspection_stauts"> </span> <span id="inspection_leave_time"> </span> &nbsp;&nbsp; <a  href="javascript:Tools.setCheckbox(document.department_from,'all')">全选</a> <a  href="javascript:Tools.setCheckbox(document.department_from,'or')">反选</a> <a  href="javascript:Tools.setCheckbox(document.department_from,'no')">取消</a>
+              <input type="button" value='加载公司、部门' onclick="biz_load_department();" />
+              <input type="button" value='巡视' onclick="biz_inspection_click();" id="biz_inspection_click_button"/>
+            </td>
+          </tr>
+          <tr>
+            <td class="list_top3" align="center">序号</td>
+            <td class="list_top3">部门/店铺</td>
+            <td class="list_top3">员工</td>
+            <td class="list_top3">级别</td>
+            <td class="list_top3">士气</td>
+            <td class="list_top3">能力</td>
+            <td class="list_top3">忠诚</td>
+            <td class="list_top3" ><INPUT TYPE="checkbox" onclick="javascript:Tools.setCheckbox(document.department_from,'or')"/></td>
+          </tr>
+        </thead>
+        <tbody id="department_list" >
+        </tbody>
+      </table>
+    </FORM>
+  </div>
+
+<div  class="tabs_description">
+<fieldset>
+      <legend>店铺选项</legend>
+
+        <table  class="list_table" align="center" width="100%" cellspacing="0" cellpadding="0" border="0">
+
+		  <thead>
+            <tr>
+              <td height=30 colspan=12 align="center" id="shop_areas">
+				<label><input type="checkbox" value="a" name="select_shop_area_array">A区</label> 
+				<label><input type="checkbox" value="b" name="select_shop_area_array">B区</label>
+				<label><input type="checkbox" value="c" name="select_shop_area_array">C区</label>
+				<label><input type="checkbox" value="d" name="select_shop_area_array">D区</label>
+				<label><input type="checkbox" value="e" name="select_shop_area_array">E区</label>
+				<label><input type="checkbox" value="f" name="select_shop_area_array">F区</label>
+				<label><input type="checkbox" value="g" name="select_shop_area_array">G区</label>
+				<label><input type="checkbox" value="h" name="select_shop_area_array">H区</label>
+				<label><input type="checkbox" value="z" name="select_shop_area_array">商会发展区区</label>
+
+			  </td>
+            </tr>
+    </table>
+</fieldset>
+      <FORM NAME="shop_cg_form" id="shop_cg_form">
+
+		<table align=center class="tablesorter list_table" width="98%" cellspacing="0" cellpadding="0" border="0" id="shop_cg_tb">
+		<thead> 
+            <tr>
+              <th width="40" align="center" class="list_top3">序号</td>
+              <th align="center" class="list_top3">店铺名称</td>
+              <th class="list_top3">人流量</td>
+              <th class="list_top3">加成</td>
+              <th class="list_top3">当前库存</td>
+              <th class="list_top3">最大库存</td>
+              <!--th class="list_top3">今日已消耗</td-->
+              <th class="list_top3">销售/小时</td>
+              <th class="list_top3">结束时间</td>
+              <th class="list_top3">采购成本</td>
+              <th width="6%" align="center" class="list_top3" ><INPUT TYPE="checkbox"  onclick="javascript:Tools.setCheckbox(document.shop_cg_form,'or')"/></td>
+            </tr>
+          </thead>
+
+			<tbody id="shop_list" >
+			</tbody>
+
+
+			<tfoot>
+            <tr> 
+              <td height=30 colspan=12 align="center">
+			  <a  href="javascript:Tools.setCheckbox(document.shop_cg_form,'all')">全选</a> <a  href="javascript:Tools.setCheckbox(document.shop_cg_form,'or')">反选</a> <a  href="javascript:Tools.setCheckbox(document.shop_cg_form,'no')">取消</a>
+
+                <input type="button" value='加载店铺当前页' onclick="biz.shop.load();" />
+				<input type="button" value='加载店铺下一页' onclick='$("#shop_cg_load_page").val(parseInt($("#shop_cg_load_page").val())+1);biz.shop.load();'  />
+                当前第<input type="text" value='1' id="shop_cg_load_page" maxlength="2" size="2" style="ime-mode:disabled"/>页
+ <input type="button" value='连续加载指定页数(小心操作)' onclick="biz.shop.loadPages(this);" />
+  一次加载<input type="text" value='10' id="shop_cg_load_page_total" maxlength="2" size="2" style="ime-mode:disabled"/>页
+		<label><input type="checkbox" value="1" id="auto_load_shop_cg" /> 次日零点自动继续</label>
+		<br />
+<input type="button" value='选中店铺促销' onclick="biz.shop.promotions.runClick();" />
+			  </td>
+            </tr>
+			</tfoot>
+
+    </table>
+      </FORM>
+
+      <fieldset>
+      <legend>采购参数设置</legend>
+
+		<table align=center class="list_table" width="98%" cellspacing="0" cellpadding="0" border="0">
+            <tr>
+              <td  >采 购 量：</td>
+              <td   >
+<label title="100件" for="days10000" style="cursor: pointer;">
+<input type="radio"   value="10000" id="days10000" name="shop_cg_days"> 微量(100件)</label>
+ 
+<label title="500件" for="days50000" style="cursor: pointer;">
+<input type="radio"  value="50000" id="days50000" name="shop_cg_days"> 小量(500件)</label>
+ 
+<label title="3000件" for="days300000" style="cursor: pointer;">
+<input type="radio"  value="300000" id="days300000" name="shop_cg_days" checked> 中量(3000件)</label>
+ 
+<label title="10000件" for="days1000000" style="cursor: pointer;">
+<input type="radio"  value="1000000" id="days1000000" name="shop_cg_days"> 大量(10000件)</label>
+ 
+<label title="40000件" for="days4000000" style="cursor: pointer;">
+<input type="radio"  value="4000000" id="days4000000" name="shop_cg_days"> 巨量(40000件)</label>
+ 
+<label title="100000件" for="days10000000" style="cursor: pointer;">
+<input type="radio"  value="10000000" id="days10000000" name="shop_cg_days"> 海量(100000件)</label>
+
+			</td>
+            </tr>
+
+            <tr>
+              <td >采购速度：</td>
+              <td   >
+
+<label for="speed1" style="cursor: pointer;"><input type="radio"  value="1" id="speed1" name="shop_cg_speed">慢速运输12小时</label>
+<label for="speed2" style="cursor: pointer;"><input type="radio"  value="2" id="speed2" name="shop_cg_speed">中速运输6小时</label>
+<label for="speed3" style="cursor: pointer;"><input type="radio"   value="3" id="speed3" name="shop_cg_speed" checked>快速运输3小时</label>
+<label for="speed4" style="cursor: pointer;"><input type="radio"  value="4" id="speed4" name="shop_cg_speed">金币即时采购</label>
+
+			</td>
+            </tr>
+
+            <tr>
+              <td  colspan="2" align="center">  
+
+<span id="shop_cg_time_remain"> </span>
+
+			  <input type="button" id="biz_shop_cg_click_button" onclick="biz.shop.runClick();" value="运行批量采购">
+			  </td>
+			</td>
+            </tr>
+
+		</table>
+
+
+	  </fieldset>
+
+
+
+      <fieldset>
+      <legend>过滤筛选</legend>
+		<p>
+			选中当前库存小于<input type="text" value='1000' id="shop_cg_filterkcnow"  size="10" style="ime-mode:disabled"/>的店铺
+			      <input type="button" value='执行' onclick='biz.shop.selectedFilter(biz.shop.filterKcNow,parseInt($("#shop_cg_filterkcnow").val()));'  />
+		</p>
+		<p>
+			选中采购成本下跌超过<input type="text" value='30' id="shop_cg_filterbuyprice"  size="5" style="ime-mode:disabled"/>%的店铺
+			      <input type="button" value='执行' onclick='biz.shop.selectedFilter(biz.shop.filterBuyprice,parseInt($("#shop_cg_filterbuyprice").val()));'  />
+		</p>	  </fieldset>
+
+
+  </div>
+	  <div  class="tabs_description">
+    <p align=right> <span id="mission_daily_status"> </span> &nbsp;&nbsp; <span id="mission_daily_time_remain"> </span> &nbsp;&nbsp;
+      <input type="button" value='加载日常任务' onclick="biz.mission.daily.load();" id="mission_daily_load_click_button" />
+      <label>
+      <input type="checkbox" name="checkbox"  value="1" onclick="biz.mission.daily.autoreloadClick();" disabled="disabled">
+      次日零点自动继续</label>
+    </p>
+    <FORM NAME="mission_daily_form" ID="mission_daily_form">
+      <table align=center class="list_table" width="98%" cellspacing="0" cellpadding="0" border="0">
+        <thead>
+          <TR>
+            <TD class="list_top3">任务目标</TD>
+            <TD class="list_top3">持续时间</TD>
+            <TD class="list_top3">任务加成</TD>
+            <!--TD class="list_top3">任务指引</TD-->
+            <TD class="list_top3">任务名称</TD>
+            <TD class="list_top3">状态(要自动执行的请打钩)</TD>
+          </TR>
+        </thead>
+        <tbody id="mission_daily_list" >
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan=6 height=30 align=right><a  href="javascript:Tools.setCheckbox(document.mission_daily_form,'all');">全选</a> <a  href="javascript:Tools.setCheckbox(document.mission_daily_form,'or');">反选</a> <a  href="javascript:Tools.setCheckbox(document.mission_daily_form,'no');">取消</a>
+              <input type="button"  value='运行日常任务' onclick="biz.mission.daily.runClick();" id="biz_mission_daily_click_button" />
+            </td>
+          </tr>
+        </tfoot>
+      </TABLE>
+    </form>
+  </div>
+  <div  class="tabs_description">
+    <input type="button" value='清空日志信息' onclick="biz_clear_process();" />
+    <input type="button" value='显示最新秘书消息' onclick="biz.gadgets.officework.runClick();" id="biz_gadgets_officework_click_button" />
+	提取未读消息时自动收取政府扶助金<INPUT TYPE="checkbox" id="auto_get_fund"   value='1' checked />
+	提取未读消息时自动接受店铺宣传邀请<INPUT TYPE="checkbox" id="auto_street_promote"   value='1' checked />
+
+
+    <div id="process" ></div>
+  </div>
+  <div  class="tabs_description">
+    <ul  class="tabs" >
+      <li class='active'><a class="" href="javascript:void(0);">帮助说明</a></li>
+      <li><a class="" href="javascript:void(0);">版本信息</a></li>
+    </ul>
+    <div  class="tabs_description">
+      <p> 运行时不要刷新该页面</p>
+      <p> 如果有问题请安装 <a target="_blank" href="http://www.firefox.com/">火狐浏览器</a> 再尝试</p>
+      <p><strong>IE7设置方法:</strong>
+      <p> 菜单栏的工具下拉框--> Interent选项--> 常规--> 选项卡--> 设置 </p>
+      <p> 在 [当创建新选项卡时,始终切换到新选项卡]前打钩 <br />
+        在
+        <始终在新选项卡中打开弹出窗口>
+        前打钩 <br />
+        重启IE! 另IE 提示 为帮助保护您的安全 ...时点击选允许 </p>
+    </div>
+    <div  class="tabs_description">
+      <div id="version_info" class="scroll_list">
+        <pre>
+
+[2011-04-27 v1.6]
+1. 自动接受店铺宣传邀功能 
+	 步聚： 操作日志->提取未读消息时自动接受店铺宣传邀请 打钩，然后点 开始秘书消息提取    感谢山中虎建议
+2.更新 360服务器
+欢迎大家支持 <a href="http://game.zggo.com">game.zggo.com</a> 助手游戏频道
+
+[2010-10-30 v1.5.9]
+1.优化用户深造功能,可以从批量操作的员工中转入(转入到技能深造的员工会在 [点此加载要深造的员工] 后出现) 感谢 世纪-贫民
+2.解决 董事长体力不足自动喝葡萄糖 bug 感谢 Ymm
+3.商铺一次加载多页功能,小心使用。
+
+
+
+[2010-10-10 v1.5.8]
+1.社交合作因官网调整，进行修复 
+2.日常任务(秘书沟通、名声在外、打卡报到、无私奉献、商会基金、共商大计)实现自动完成,并自动提交完成的任务
+
+[2010-9-20 v1.5.7]
+1.收到政府扶助金bug
+2.店铺按采购成本筛选bug
+
+[2010-9-18 v1.5.6]
+1.自动酝酿能够自己设置酝酿次数限制 感谢网友 hox建议
+2.店铺加当前库存筛选功能 感谢浮萍一梦等网友建议
+3.店铺加采购成本筛选功能 感谢wumeng168网友建议
+4.店铺批量促销功能，默认促销今天和明天 感谢网友 hox建议
+5.解决反省常失败问题
+
+[2010-9-12   v1.5.5]
+1.员工自动反省功能(用法： 员工管理->加载->点反省,结果看操作日志),感谢 亻妻↘君，雷电等建议
+2.取消日常任务排序功能。
+3.秘书消息提取bug解决
+
+[2010-9-7   v1.5.4]
+1.解决店铺批量自动采购bug 感谢快乐男人反馈
+2.店铺采购可自行输入页号
+3.添加  360合服 感谢 lingqi518 反馈
+
+[2010-9-4   v1.5.3]
+1.店铺批量自动采购功能,可排序，可选页
+2.解决员工日常培训提示忙问题。(感谢网友 快乐男人 反馈和测试)
+3.解决日常任务bug
+4.其他细节优化
+
+
+[2010-8-22   v1.5.2]
+1.员工进修自动加速bug修复
+2.官网改版，日常任务bug修复
+3.添加 火玩-三国梦 等其他服
+4.添加了广告，请大家多多支持。
+
+[2010-8-14   v1.5.1]
+1.添加慈善会捐赠功能，位置：常规操作->城市->慈善会
+2.自动合作功能，位置 常规操作->社交->当前合作状态   
+3.官服添加 墨尔本
+
+[2010-8-10   v1.5]
+1.自动师傅功能，位置 常规操作->社交->师傅
+2.“自动开始巡视”改为非默认选择状态，“当前选择的所有员工无体力时重新加载”改为非默认选择状态  感谢992852829建议
+
+[2010-8-7   v1.4.9]
+1.修复 员工管理的"移除选定员工"不能操作bug 感谢xpqh365
+2.修复 自动申请勋章 bug 感谢 Charles反馈
+2.添加 手动商会打卡
+
+[2010-7-25  v1.4.8]
+1.添加自动勋章领取(多谢 小狼君 等网友建议反馈，位置:常规操作->勋章领取->加载勋章)
+2.添加登录后的公司信息
+3.优化整理操作界面，快捷操作 移到 常规操作选项。
+
+[2010-7-3  v1.4.7]
+1.福利社快捷领取功能(多谢网友 快乐男孩 建议反馈)
+2.优化日常任务，可选择、可排序(多谢网友 桃花岛 建议反馈)
+3.酝酿策划功能
+4.去掉 豪宅自动体力恢复 (多谢网友 hy1314520 建议反馈)
+5.员工培训G币加速
+6.加入 乐趣网 等新服
+
+[2010-6-26  v1.4.6]
+1.修复建筑人才调用不出来bug
+2.所有日常任务完成后自动停止而不弹出窗口（卢森堡-雷电）
+3.日常任务优化
+4.添加官网新服米兰 和 56uu.com
+5.解决日常任务失败问题(多谢㊣恏汏①錁樹及时反馈)
+6.巡视 BUG
+7.其他细节优化
+
+[2010-6-19  v1.4.5]
+1.添加自动日常任务功能
+2.去除小道任务
+换群了，新群号：40069482 加入后请修改群签名 区号:名字 如 曼谷-ggg
+申请写理由 大富豪助手
+
+[2010-6-18  v1.4.4]
+修复深造技能bug,优化代码，解决时常提示加载员工的问题。
+感谢Sam提供的测试小号及其他兄弟的及时反馈。
+
+[2010-5-30  v1.4.3]
+1.深造技能自动过滤技能满级的人才 (感谢 chki 建议)
+2.深造技能自动更新人才信息
+
+[2010-5-30  v1.4.2]
+1.自动技能深造 (感谢Sam建议)
+2.加载员工选项加入建筑人才等 (感谢xinyuan 建议)
+3.添加官网杭州分区
+
+[2010-5-11  v1.4.1]
+1.豪宅自动体力恢复 (感谢断线 建议)
+2.出现员工正忙 bug 修复 (感谢ZJ 建议)
+3.模拟在线(感谢ZJ 建议)
+4.添加360服务器,优化服务器显示
+
+[2010-4-23  v1.4.0]
+1.修复断线版主反映体力用掉是不加勤奋的问题
+2.修复论坛用户pengke反映批量巡视问题
+
+
+[2010-4-8  v1.3.9]
+很不幸放在国外的空间服务器也被和谐了，论坛数据都已下载保留。有空我重新找空间开通。
+换工作后天天加班，好久没更新助手，看到兄弟们还是一如既往地支持，我不应该找任何理由。
+这版本主要解决官网改版造成的一些BUG，关于接任务的这版本没做支持，官网近日也在严打，大家用时也小心点。
+目前有新版本下载地址会在QQ群里公布.
+1.解决加载速度慢卡死问题
+2.恢复批量巡视功能
+
+[2010-2-22 v1.3.8]
+1.更新官网和37玩服务器
+2.解决有些服务器登录不上问题
+3.可自动接不回答问题的任务
+
+[2010-1-24 v1.3.7]
+1.提取最新未读秘书消息显示在操作日志
+2.自动领取最新政府补助金
+3.员工列表三围单项满显示成为红色,感谢建议交流版主 冰火玖重天建议
+4.添加要新服 摩纳哥 卢森堡
+
+
+[2010-1-8 v1.3.6]
+1.可以设定批量一次执行员工数,平均设5个一批不太卡网页
+2.优化代码,一定程度加快执行速度
+3.员工管理部份可以进行三围过滤,并可对过滤后选中员工进行批量进修
+4.加了些广告,希望大家谅解,有空偶尔帮忙点点广告,支持助手的发展:)
+5.页面上加了google的搜索框,方便日常使用.
+6.添加要玩网新服 东京 曼谷
+
+[2009-12-15 v1.3.5]
+1.添加新服 悉尼
+2.员工列表显示技能
+3.一些bug解决
+4.添加37玩
+
+[2009-12-12 v1.3.4]
+1.去掉了输入执行员工数,自动从官网取
+2.员工人品最大值不正确 感谢网友 H1N2_发烧了
+3.其他优化:)
+
+[2009-12-08 v1.3.3]
+1.优化自动任务交易,不需一次次去点了
+2.优化部门巡视功能
+3.添加新服 莫斯科
+
+[2009-12-06 v1.3.2]
+1.董事长体力不足自动补充葡萄糖
+2.收藏员工可以自已设定收藏的名字,感谢网友 毛毛雨 提供的想法
+3.添加要玩网新服迪拜, 官网温哥华
+4.一些bug修复
+
+[2009-11-30 v1.3.1]
+1.针对官方修改，恢复自动培训功能
+2.加快任务交易,不会卡页面了
+
+[2009-11-22 v1.3]
+1.员工收藏 导入功能
+2.接任务bug修复
+3.重新添加不显示包包任务 感谢milijide建议
+4.其他功能:)
+
+[2009-11-18 v1.2.9]
+1.恢复只接包包任务
+2.添加 巴塞罗那 新服
+3.新版本自动提示功能
+
+[2009-11-15 v1.2.8]
+1.添加了 要玩网 dfh.yaowan.com 
+2.部门管理 添加了批量巡视
+3.修复 IE8、遨游 验证码显示不正常问题
+4.修复员工三围的最大值bug 感谢网友 csg 提供等级和三围最大值对应表
+5.界面效果调整
+
+[2009-11-12 v1.2.7]
+1.任务交易自动购买功能
+2.添加新服马德里
+
+[2009-11-9 v1.2.6]
+解决其他服务器做不了任务问题
+
+[2009-11-8 v1.2.5]
+1.官方做过调整,重新修复取小道任务功能
+2.在当前页面做任务,快速提高做任务时间
+3.解决重新选择员工BUG	感谢网友 kunzhuoscar 提供
+如果有问题请安装 <a target="_blank" href="http://www.firefox.com/">火狐浏览器</a> 再尝试
+
+[2009-11-02 v1.2.4]
+1.批量操作时 自动跳过三围满的员工 感谢网友 nbraint 建议
+2.再次加载新员工时保持原来的选中状态
+3.即时更新员工列表的状态信息
+4.操作界面进一步优化,让你用得更爽
+5.代码重新整理优化
+6.添加新服慕尼黑 员工点姓名直接链到官网
+
+
+[2009-11-01 v1.2.3.1]
+解决ie6 ie8运行不正常问题
+
+[2009-10-31 v1.2.3]
+1.添加自动弹出窗口选项,做包包时比较有用。绕过时间限制
+2.增加加移除选中的员工功能
+3.日志信息最新的显示上面.
+4.小道任务出来可以选择声音提示或强制消息框提示
+5.自动加载员工BUG修复
+
+[2009-10-30 15:58 v1.2.2]
+1.采用客户端js来提取员工列表,速度提高N倍
+2.采用官方风格界面进行美化,内容排版采用选项卡.
+3.可以按各种条件加载员工列表
+4.可以从员工列表中选定指定员工进行操作
+5.加新服 伦敦 巴黎
+6.巴黎登陆不了bug(感谢网友 徐三先生)
+7.增加加载空闲员工功能(感谢网友 虬髯客)
+
+[2009-10-18] 感谢网友 乖乖侬的东 修改
+1. 只显示黑衣人任务 请重新下载
+2. 解决第二次不能执行问题
+3. 可以选择部门进行批量操作
+4. 增加纽约服务器. 感谢网友 、錯 覺 建议
+
+[2009-10-15]
+1. 解决了ie6下不能运行问题 请重新下载
+2. 解决顺序执行员工BUG
+
+[2009-10-14]
+1.自动提取小道任务
+2.跳过没体力员工。并显示状态
+3.按员工体力一键加载员工列表
+4.状态显示优化... 
+</pre>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="upgradeDialog" class="dialog" align="center" style="display:none;"> <br>
+  <font color="red">已发现升级版本，请您立刻升级</font> <br>
+  升级地址：<a target="_blank" href="http://bizlife.zggo.com/forumdisplay.php?fid=2">http://bizlife.zggo.com</a> <br>
+  <div id="biz_version"></div>
+  <div style="width:50%;" align="center">
+    <input type="button" value="我知道啦！" onClick="closeDialog('upgradeDialog')"/>
+  </div>
+</div>
+<table cellspacing="0" cellpadding="0" border="0" align="center" width="98%">
+  <tbody>
+    <tr>
+      <td align="center"><script type="text/javascript"><!--
+google_ad_client = "pub-3532402732606778";
+/* 大富豪助手 10-1-8 */
+google_ad_slot = "0456564331";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+        <script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+        点点广告,助手更好 </td>
+    </tr>
+    <tr>
+      <td align="center"><div style="font-weight: bold"> 申明：《大富豪助手》仅限于技术交流，下载试用的朋友，请在下载本软件24小时内删除；若被用于不法之途或商业经营，《大富豪助手》开发团队不承担任何责任；《大富豪助手》若侵害到他人利益，请立即与《大富豪助手》开发团队联系！ </div></td>
+    </tr>
+  </tbody>
+</table>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<script type="text/javascript" src="./js/jquery-ui-1.8.2.custom.min.js"></script>
+<script type="text/javascript" src="./js/jquery.tools.min.js"></script>
+<script type="text/javascript" src="./js/http_request.js"></script>
+<script type="text/javascript" src="./js/tools.js?v=2010-8-7"></script>
+<script type="text/javascript" src="./js/biz_staff.js?v=2010-8-10"></script>
+<script type="text/javascript" src="./js/biz_staff_skill.js?v=2010-8-10"></script>
+<script type="text/javascript" src="./js/biz.js?v=2010-8-10"></script>
+<script type="text/javascript" src="./js/biz_company.js?v=2010-8-14"></script>
+<script type="text/javascript" src="./js/biz_mission.js?v=2010-8-14"></script>
+<script type="text/javascript" src="./js/biz_gadgets.js?v=2010-8-14"></script>
+<script type="text/javascript" src="./js/biz_relation_master.js?v=2010-8-14"></script>
+<script type="text/javascript" src="./js/biz_relation_cooperation.js?v=2010-8-14"></script>
+<script type="text/javascript" src="./js/biz_city_charity.js?v=2010-8-10"></script>
+<script type="text/javascript" src="./js/biz_shop.js?v=2010-9-2"></script>
+<script type="text/javascript" src="http://www.zggo.com/bizlife/js/ggg.js?v=2010-8-10"></script>
+<script language="javascript" type="text/javascript" src="http://js.users.51.la/490671.js"></script>
+<noscript>
+<a href="http://www.51.la/?490671" target="_blank"><img alt="&#x6211;&#x8981;&#x5566;&#x514D;&#x8D39;&#x7EDF;&#x8BA1;" src="http://img.users.51.la/490671.asp" style="border:none" /></a>
+</noscript>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-846079-7']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+</body>
+</html>

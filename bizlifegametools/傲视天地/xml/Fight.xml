@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- 战斗界面配置文件 -->
+<config>
+	<background url="assets/{language}/img/fight/{0}.jpg" num="5" property='' />
+	<soldier url="assets/{language}/swf/fight/{0}.swf" />
+	
+	<attFlag view="fight.view.AttFlag" property='{"x":20, "y":-60}'>
+		<text property='{"x":-8, "y":-9, "color":"0xFFFFFF"}' />
+	</attFlag>
+	<defFlag view="fight.view.DefFlag" property='{"x":-20, "y":-60}'>
+		<text property='{"x":-9, "y":-9, "color":"0xFFFFFF"}' />
+	</defFlag>
+	
+	<textMovie property='{"autoSize":"center", "font":"Arial", "size":25, "x":5, "y":-30, "stroke":"0x151515"}' yTo="-65" color1="0x00FF00" color2="0xEE2222" />
+	<qiangGuang leftX="250" rightX="740" y="490" /><!--强光特效-->
+	<itemText property='{"x":500, "y":120, "autoSize":"center", "stroke":"0x0"}' addY="20" duration="5" /><!--战斗中获得物品的提示文本-->
+	
+	
+	<gameButton name="openEffBtn" labelID="050101" property='{"x":930, "y":530, "visible":false}' btn="fight.btn.OpenEffBtn" labelProp='{"multiline":true, "width":30, "x":12, "y":12, "color":"0xCDB9A0", "stroke":"0x0"}' />
+	<gameButton name="closeEffBtn" labelID="050102" property='{"x":930, "y":530, "visible":false}' btn="fight.btn.CloseEffBtn" labelProp='{"multiline":true, "width":30, "x":12, "y":12, "color":"0xCDB9A0", "stroke":"0x0"}' />
+	<gameButton name="speed1Btn" labelID="050103" property='{"x":880, "y":530}' btn="fight.btn.Speed1Btn" labelProp='{"x":12, "y":21, "color":"0xCDB9A0", "stroke":"0x0"}' />
+	<gameButton name="speed2Btn" labelID="050104" property='{"x":830, "y":530}' btn="fight.btn.Speed2Btn" labelProp='{"x":12, "y":21, "color":"0xCDB9A0", "stroke":"0x0"}' />
+	<gameButton name="endBtn" labelID="050105" property='{"x":780, "y":530}' btn="fight.btn.EndBtn" labelProp='{"x":12, "y":21, "color":"0xCDB9A0", "stroke":"0x0"}' />
+	
+	
+	<playerInfo property='{"x":331, "y":10}'><!-- 对战双方玩家信息视图 -->
+		<background view="fight.view.PlayerInfo" property='' />
+		<att property='{"x":122, "y":59, "autoSize":"right", "color":"0xFFFFCC", "stroke":"0x0"}' />
+		<def property='{"x":217, "y":59, "color":"0xFFFFCC", "stroke":"0x0"}' />
+	</playerInfo>
+	
+	<finish property='{"x":368, "y":135}'><!-- 战斗结束时的统计面板 -->
+		<background view="fight.view.Finish" property='' />
+		<winp property='{"x":132, "y":55}' view="fight.img.{0}" /><!--胜利系数显示图片-->
+		<attLabel property='{"x":140, "y":95, "autoSize":"right", "color":"0xFFFFCC", "stroke":"0x0"}' />
+		<defLabel property='{"x":140, "y":118, "autoSize":"right", "color":"0xFFFFCC", "stroke":"0x0"}' />
+		<attText property='{"x":140, "y":95, "color":"0xFFFFCC", "stroke":"0x0"}' />
+		<defText property='{"x":140, "y":118, "color":"0xFFFFCC", "stroke":"0x0"}' />
+		<resultText property='{"y":146, "width":264, "height":75, "align":"center", "color":"0xFFFFCC", "stroke":"0x0", "wordWrap":true}' />
+		<replayBtn property='{"x":45, "y":232}' style="button3" />
+		<backBtn property='{"x":145, "y":232}' style="button4" />
+	</finish>
+	
+	<forceInfo property=''><!-- 部队信息视图 -->
+		<pic property='{"x":7, "y":6}' width="54" height="54" />
+		<view view="fight.view.ForceInfo" property='' />
+		<nameText property='{"x":65, "y":5, "color":"0xCCCCCC", "bold":true}' />
+		<levelText property='{"x":174, "y":6, "autoSize":"right", "color":"0xCCCCCC"}' />
+		<solLabel property='{"x":66, "y":23, "color":"0xCCCCCC"}' />
+		<solText property='{"x":173, "y":24, "autoSize":"right", "color":"0xCCCCCC"}' />
+		<moraleLabel property='{"x":66, "y":41, "color":"0xCCCCCC"}' />
+		<moraleText property='{"x":173, "y":42, "autoSize":"right", "color":"0xCCCCCC"}' />
+	</forceInfo>
+	
+	<zhenFenText property='{"x":-15, "y":-50, "size":14, "color":"0xFFFFFF", "stroke":"0x0"}' />
+	<jianShouText property='{"x":-15, "y":-40, "size":14, "color":"0xFFFFFF", "stroke":"0x0"}' />
+	<hunLuanText property='{"x":-15, "y":-30, "size":14, "color":"0xFFFFFF", "stroke":"0x0"}' />
+	<shouHuText property='{"x":-15, "y":-40, "size":14, "color":"0xFFFFFF", "stroke":"0x0"}' />
+	<taoBingText property='{"x":-15, "y":-20, "size":14, "color":"0xFFFFFF", "stroke":"0x0"}' />
+	
+</config>

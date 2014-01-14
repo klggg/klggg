@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- 经济系统界面配置文件 -->
+<config>
+
+	<!--征收-->
+	<expropriation>
+		<displayObject view="economy.expropriation.Background" property='' />
+		<displayObject name="arrowIcon" view="economy.icon.Arrow" property='{"visible":false}' />
+		<displayObject name="clearCDBtn" view="gameUI.btn.ClearCD" property='{"x":220, "y":152, "visible":false}' />
+		
+		<staticText property='{"x":100, "y":80, "size":14, "bold":true, "color":"0xE7E3D8", "stroke":"0x272016"}' textID="150201"/>
+		
+		<staticText property='{"x":100, "y":127, "size":14, "color":"0xFAD06A", "stroke":"0x272016"}' textID="150202"/>
+		<staticText property='{"x":100, "y":150, "color":"0xA27D46", "stroke":"0x272016"}' textID="150203"/>
+		
+		<text name="numText" property='{"x":196, "y":127, "size":14, "bold":true, "color":"0xFAD06A", "stroke":"0x272016"}'/><!--今日征收数量-->
+		<text name="timeText" property='{"x":184, "y":150, "color":"0xE7E3D8", "stroke":"0x272016"}'/><!--下次征收时间-->
+		
+		<text name="goldText" property='{"x":494, "y":168, "autoSize":"center", "color":"0xFFC861", "stroke":"0x272016"}'/><!--强征花费-->
+		
+		<button name="zsBtn" style="button4" labelID="150301" property='{"x":340, "y":125}'/>
+		<button name="qzBtn" style="button6" labelID="150302" property='{"x":450, "y":125}'/>
+		
+		<introText property='{"x":338, "y":69, "color":"0xCAC6BD", "stroke":"0x272016"}' iconStyleList = '[
+			{ "visible":false },
+			{ "x":370, "y":110, "visible":true },
+			{ "x":480, "y":110, "visible":true }
+		]'/>
+		
+		<!--正常显示界面-->
+		<normal property=''>
+			<staticText property='{"x":100, "y":220, "color":"0xA27D46", "stroke":"0x272016"}' textID="150204"/>
+			<staticText property='{"x":100, "y":240, "color":"0xA27D46", "stroke":"0x272016"}' textID="150205"/>
+			<staticText property='{"x":100, "y":260, "color":"0xA27D46", "stroke":"0x272016"}' textID="150206"/>
+			<staticText property='{"x":100, "y":280, "color":"0xA27D46", "stroke":"0x272016"}' textID="150207"/>
+			<staticText property='{"x":100, "y":300, "color":"0xA27D46", "stroke":"0x272016"}' textID="150208"/>
+			
+			<staticText property='{"x":320, "y":220, "color":"0xA27D46", "stroke":"0x272016"}' textID="150209"/>
+			<staticText property='{"x":320, "y":240, "color":"0xA27D46", "stroke":"0x272016"}' textID="150210"/>
+		
+			<staticText property='{"x":100, "y":340, "color":"0xA27D46", "stroke":"0x272016"}' textID="150211"/>
+			
+			<text name="mjdjText" property='{"x":184, "y":220, "color":"0xE7E3D8", "stroke":"0x272016"}'/><!--民居等级总和-->
+			<text name="dqfrText" property='{"x":184, "y":240, "color":"0xE7E3D8", "stroke":"0x272016"}'/><!--地区繁荣程度-->
+			<text name="zskjText" property='{"x":184, "y":260, "color":"0xE7E3D8", "stroke":"0x272016"}'/><!--军团征收科技-->
+			<text name="jfdjText" property='{"x":184, "y":280, "color":"0xE7E3D8", "stroke":"0x272016"}'/><!--主城帐房等级-->
+			<text name="zcmzText" property='{"x":184, "y":300, "color":"0xE7E3D8", "stroke":"0x272016"}'/><!--主城民忠忠诚-->
+		
+			<text name="zcdjText" property='{"x":404, "y":220, "color":"0xE7E3D8", "stroke":"0x272016"}'/><!--主城建筑等级-->
+			<text name="zbcText" property='{"x":404, "y":240, "color":"0xE7E3D8", "stroke":"0x272016"}'/><!--铸币厂的等级-->
+		
+			<text name="ybslText" property='{"x":184, "y":340, "textType":"htmlText", "color":"0xE7E3D8", "stroke":"0x272016"}'/><!--征收银币数量-->
+		</normal>
+		
+		<!--征收问答-->
+		<question property=''>
+			<text name="titleText" property='{"x":100, "y":220, "size":14, "bold":true, "color":"0xE7E3D8", "stroke":"0x272016"}'/>
+			<text name="contentText" property='{"x":100, "y":245, "width":440, "multiline":true, "color":"0xE7E3D8", "stroke":"0x272016"}'/>
+			<answer1 property='{"x":115, "y":295}' style="radioButton1" />
+			<answer2 property='{"x":115, "y":320}' style="radioButton1" />
+			<button name="submitBtn" style="button4" labelID="150303" property='{"x":115, "y":345}'/>
+		</question>
+	</expropriation>
+	
+	
+	<!--属臣-->
+	<vassal>
+		<displayObject view="economy.vassal.Background" property='' />
+		<displayObject name="nowPic" view="GameUI.pic.BigCity" property='{"x":95, "y":270, "visible":false}' />
+		
+		<staticText property='{"x":80, "y":87, "size":14, "bold":true, "color":"0xE7E3D8", "stroke":"0x272016"}' textID="151001"/>
+		<staticText property='{"x":80, "y":230, "size":14, "bold":true, "color":"0xE7E3D8", "stroke":"0x272016"}' textID="151002"/>
+		
+		<staticText property='{"x":185, "y":277, "color":"0xA27D46", "stroke":"0x272016"}' textID="151003"/>
+		<staticText property='{"x":185, "y":297, "color":"0xA27D46", "stroke":"0x272016"}' textID="151004"/>
+		<staticText property='{"x":185, "y":317, "color":"0xA27D46", "stroke":"0x272016"}' textID="151005"/>
+		<staticText property='{"x":185, "y":337, "color":"0xA27D46", "stroke":"0x272016"}' textID="151006"/>
+		
+		<staticText property='{"x":340, "y":255, "color":"0xA27D46", "stroke":"0x272016"}' textID="151007"/>
+		<staticText property='{"x":340, "y":275, "color":"0xA27D46", "stroke":"0x272016"}' textID="151008"/>
+		
+		<text name="nameText" property='{"x":185, "y":256, "bold":true, "color":"0xE7E3D8", "stroke":"0x272016", "width":119}'/>
+		
+		<text name="levelText" property='{"x":220, "y":277, "color":"0xE7E3D8", "stroke":"0x272016"}'/>
+		<text name="officeText" property='{"x":220, "y":297, "color":"0xE7E3D8", "stroke":"0x272016"}'/>
+		<text name="legionText" property='{"x":220, "y":317, "color":"0xE7E3D8", "stroke":"0x272016", "width":87}'/>
+		<text name="positionText" property='{"x":220, "y":337, "color":"0xE7E3D8", "stroke":"0x272016"}'/>
+		
+		<text name="numText" property='{"x":422, "y":255, "color":"0xE7E3D8", "stroke":"0x272016"}'/>
+		<text name="timeText" property='{"x":422, "y":275, "color":"0xE7E3D8", "stroke":"0x272016"}'/>
+		
+		<button name="abandonBtn" style="button5" labelID="151101" property='{"x":340, "y":320, "visible":false}'/>
+		
+		<vassalBG view="economy.vassal.VassalBG" property='{"x":80, "y":110}' addX="100" />
+		<vassalPic view="GameUI.pic.BigCity" property='{"x":87, "y":123}' addX="100" />
+	</vassal>
+	
+	
+	<!--商队-->
+	<caravan>
+		<displayObject view="economy.caravan"/>
+		<staticText property='{"x":30, "y":58, "size":14, "bold":true, "color":"0xE7E3D8", "stroke":"0x272016"}' textID="154001"/>
+		<staticText property='{"x":204, "y":58, "size":14, "bold":true, "color":"0xE7E3D8", "stroke":"0x272016"}' textID="154002"/>
+		<staticText property='{"x":463, "y":58, "size":14, "bold":true, "color":"0xE7E3D8", "stroke":"0x272016"}' textID="154003"/>
+		
+		
+		
+	    <list property='{"x":25, "y":82}'>
+		    <WidthNameRenderer>
+				<button name="bg1" style="button9" property='{"width":154}'/>
+				<button name="bg2" style="button18" property='{"visible":false, "width":154}'/>
+				<text name="nameText" property='{"color":"0xE6E0D4", "autoSize":"none", "y":3, "width":154, "height":16, "align":"center", "stroke":"0x29241b", "mouseEnabled":false}'/>
+		    </WidthNameRenderer>
+	    </list>
+		<page property='{"x":44, "y":385}'/>
+		
+		<PlayerCaravan>
+		    <playerAreaInfo property='{"x":202, "y":87}'/>
+			
+			<text name="groupNum" property='{"x":212, "y":203, "color":"0xE7E3D8", "stroke":"0x272016"}'/>
+			<text name="profits" property='{"x":212, "y":224, "color":"0xE7E3D8", "stroke":"0x272016"}'/>
+			
+			<button name="pass" style="button4" labelID="154006" property='{"x":226, "y":278, "visible":false}'/>
+			<button name="refuse" style="button5" labelID="154007" property='{"x":326, "y":278, "visible":false}'/>
+		</PlayerCaravan>
+		
+		<SelfCaravan>
+		    
+			<text name="leavingNum" property='{"x":473, "y":94, "color":"0xE7E3D8", "stroke":"0x272016"}'/>
+			<text name="status" property='{"x":473, "y":115, "color":"0xE7E3D8", "stroke":"0x272016", "width":152}'/>
+			<text name="profits" property='{"x":473, "y":136, "color":"0xE7E3D8", "stroke":"0x272016"}'/>
+			
+			<button name="cancel" style="button4" labelID="154014" property='{"x":459, "y":215, "visible":false}'/>
+			<button name="force" style="button6" labelID="154015" property='{"x":553, "y":215, "visible":false}'/>
+		</SelfCaravan>
+	    
+	</caravan>
+	
+	<!--升官-->
+	<promotion>
+		<displayObject view="economy.promotion.Background" property='' />
+		<staticText property='{"x":105, "y":85, "size":14, "bold":true, "color":"0xE7E3D8", "stroke":"0x272016"}' textID="152001"/>
+		<staticText property='{"x":105, "y":215, "size":14, "bold":true, "color":"0xE7E3D8", "stroke":"0x272016"}' textID="152002"/>
+		
+		<staticText property='{"x":105, "y":110, "color":"0xA27D46", "stroke":"0x272016"}' textID="152003"/>
+		<staticText property='{"x":105, "y":130, "color":"0xA27D46", "stroke":"0x272016"}' textID="152004"/>
+		<staticText property='{"x":105, "y":150, "color":"0xA27D46", "stroke":"0x272016"}' textID="152005"/>
+		
+		<staticText property='{"x":105, "y":240, "color":"0xA27D46", "stroke":"0x272016"}' textID="152006"/>
+		<staticText property='{"x":105, "y":260, "color":"0xA27D46", "stroke":"0x272016"}' textID="152007"/>
+		<staticText property='{"x":105, "y":280, "color":"0xA27D46", "stroke":"0x272016"}' textID="152008"/>
+		<staticText property='{"x":105, "y":300, "color":"0xA27D46", "stroke":"0x272016"}' textID="152009"/>
+		
+		<button name="receiveBtn" style="button4" labelID="152101" property='{"x":290, "y":145}'/>
+		<button name="donationBtn" style="button4" labelID="152102" property='{"x":290, "y":343}'/>
+		
+		<text name="dqgzText" property='{"x":164, "y":110, "color":"0xE7E3D8", "stroke":"0x272016"}'/><!--当前官职-->
+		<text name="dqwwText" property='{"x":164, "y":130, "color":"0xE7E3D8", "stroke":"0x272016"}'/><!--当前威望-->
+		<text name="dqflText" property='{"x":164, "y":150, "color":"0xE7E3D8", "stroke":"0x272016"}'/><!--当前俸禄-->
+		<text name="lqztText" property='{"x":105, "y":170, "color":"0xE7E3D8", "stroke":"0x272016"}'/><!--领取状态-->
+		
+		<text name="gzmcText" property='{"x":164, "y":240, "color":"0xE7E3D8", "stroke":"0x272016"}'/><!--官职名称-->
+		<text name="sxwwText" property='{"x":164, "y":260, "color":"0xE7E3D8", "stroke":"0x272016"}'/><!--所需威望-->
+		<text name="gzflText" property='{"x":164, "y":280, "color":"0xE7E3D8", "stroke":"0x272016"}'/><!--官职俸禄-->
+		<text name="hdwjText" property='{"x":164, "y":300, "color":"0xE7E3D8", "stroke":"0x272016"}'/><!--获得武将-->
+		
+		<text name="jxxxText" property='{"x":105, "y":345, "color":"0xE7E3D8", "stroke":"0x272016"}'/><!--捐献信息-->
+		<text name="jxtsText" property='{"x":105, "y":365, "color":"0xE7E3D8", "stroke":"0x272016"}'/><!--捐献提示-->
+	</promotion>
+	
+	<!--粮草-->
+	<food>
+		<dragBar maxWidth="308">
+			<displayObject name="track" view="economy.food.Track" property='{"y":11}' />
+			<displayObject name="thumb" view="economy.food.Thumb" property='' />
+		</dragBar>
+		
+		<buyDragBar property='{"x":65, "y":162}' />
+		<sellDragBar property='{"x":65, "y":237}' />
+		<bmbDragBar property='{"x":65, "y":312}' />
+		
+		<displayObject view="economy.food.Background" property='' />
+		
+		<staticText property='{"x":65, "y":85, "size":14, "color":"0xF3D068", "stroke":"0x272016"}' textID="153001"/>
+		<staticText property='{"x":65, "y":110, "color":"0xA27D46", "stroke":"0x272016"}' textID="153002"/>
+		<staticText property='{"x":65, "y":348, "color":"0xE7E3D8", "stroke":"0x272016"}' textID="153003"/>
+		
+		<text name="priceText" property='{"x":133, "y":85, "size":14, "color":"0xF3D068", "stroke":"0x272016"}'/>
+		<text name="numText" property='{"x":149, "y":110, "color":"0xE7E3D8", "stroke":"0x272016"}'/>
+		
+		<text name="buyText" property='{"x":590, "y":198, "autoSize":"right", "color":"0xE7E3D8", "stroke":"0x272016"}'/>
+		<text name="sellText" property='{"x":590, "y":273, "autoSize":"right", "color":"0xE7E3D8", "stroke":"0x272016"}'/>
+		<text name="bmbText" property='{"x":590, "y":348, "autoSize":"right", "color":"0xE7E3D8", "stroke":"0x272016"}'/>
+		
+		<button name="buyMinBtn" style="button10" labelID="153101" property='{"x":425, "y":155}'/>
+		<button name="buyMaxBtn" style="button10" labelID="153102" property='{"x":465, "y":155}'/>
+		<button name="buyBtn" style="button4" labelID="153103" property='{"x":510, "y":155}'/>
+		
+		<button name="sellMinBtn" style="button10" labelID="153101" property='{"x":425, "y":230}'/>
+		<button name="sellMaxBtn" style="button10" labelID="153102" property='{"x":465, "y":230}'/>
+		<button name="sellBtn" style="button5" labelID="153104" property='{"x":510, "y":230}'/>
+		
+		<button name="bmbMinBtn" style="button10" labelID="153101" property='{"x":425, "y":305}'/>
+		<button name="bmbMaxBtn" style="button10" labelID="153102" property='{"x":465, "y":305}'/>
+		<button name="bmbBtn" style="button3" labelID="153105" property='{"x":510, "y":305}'/>
+	</food>
+</config>

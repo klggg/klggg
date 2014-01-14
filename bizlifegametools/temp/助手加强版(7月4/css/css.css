@@ -1,0 +1,714 @@
+/* get rid of those system borders being generated for A tags */
+a:active {
+  outline:none;
+}
+
+:focus {
+  -moz-outline-style:none;
+}
+
+
+
+
+BODY {
+	SCROLLBAR-FACE-COLOR: #c0edff; FONT-SIZE: 13px;  MARGIN: 0px; SCROLLBAR-HIGHLIGHT-COLOR: #d8f4ff; SCROLLBAR-SHADOW-COLOR: #7cd3ff; COLOR: #006097; SCROLLBAR-3DLIGHT-COLOR: #7cd3ff; SCROLLBAR-ARROW-COLOR: #7cd3ff; SCROLLBAR-TRACK-COLOR: #b5e5ff; FONT-FAMILY: "宋体","Arial","Helvetica","sans-serif"; SCROLLBAR-DARKSHADOW-COLOR: #c4eeff
+}
+FORM {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px
+}
+A IMG {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px
+}
+P {
+	MARGIN-TOP: 0px; MARGIN-BOTTOM: 0px
+}
+.daily_content A {
+	COLOR: #f63; TEXT-DECORATION: underline
+}
+.daily_content A:visited {
+	COLOR: #f63; TEXT-DECORATION: underline
+}
+.daily_content A:hover {
+	COLOR: #f00; TEXT-DECORATION: underline
+}
+.link_blue:link {
+	FONT-SIZE: 13px; COLOR: #0090e3; TEXT-DECORATION: underline
+}
+.link_blue:visited {
+	FONT-SIZE: 13px; COLOR: #0090e3; TEXT-DECORATION: underline
+}
+.link_blue:hover {
+	FONT-SIZE: 13px; COLOR: #538700; TEXT-DECORATION: underline
+}
+.link_orange:link {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #ff6000; TEXT-DECORATION: none
+}
+.link_orange:visited {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #ff6000; TEXT-DECORATION: none
+}
+.link_orange:hover {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #ff0000; TEXT-DECORATION: underline
+}
+.link_Notice:link {
+	FONT-SIZE: 12px; COLOR: #006ba9; TEXT-DECORATION: none
+}
+.link_Notice:visited {
+	FONT-SIZE: 12px; COLOR: #006ba9; TEXT-DECORATION: none
+}
+.link_Notice:hover {
+	FONT-SIZE: 12px; COLOR: #0034a9; TEXT-DECORATION: none
+}
+.link_leftmenu:link {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #406800; TEXT-DECORATION: none
+}
+.link_leftmenu:visited {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #406800; TEXT-DECORATION: none
+}
+.link_leftmenu:hover {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #ff5400; BOTTOM: 1px; POSITION: relative; TEXT-DECORATION: none
+}
+.link_info:link {
+	FONT-SIZE: 13px; COLOR: #daf2ff; POSITION: relative; TOP: 2px; TEXT-DECORATION: none
+}
+.link_info:visited {
+	FONT-SIZE: 13px; COLOR: #daf2ff; POSITION: relative; TOP: 2px; TEXT-DECORATION: none
+}
+.link_info:hover {
+	FONT-SIZE: 13px; RIGHT: 1px; COLOR: #ffffff; POSITION: relative; TEXT-DECORATION: none
+}
+.link_white:link {
+	FONT-SIZE: 13px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+.link_white:visited {
+	FONT-SIZE: 13px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+.link_white:hover {
+	FONT-SIZE: 13px; COLOR: #ffffff; TEXT-DECORATION: underline
+}
+.link_map_tips_white:link {
+	FONT-SIZE: 12px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+.link_map_tips_white:visited {
+	FONT-SIZE: 12px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+.link_map_tips_white:hover {
+	FONT-SIZE: 12px; COLOR: #ffffff; TEXT-DECORATION: underline
+}
+.link_map_tips_blue:link {
+	FONT-SIZE: 12px; COLOR: #008cda; TEXT-DECORATION: none
+}
+.link_map_tips_blue:visited {
+	FONT-SIZE: 12px; COLOR: #008cda; TEXT-DECORATION: none
+}
+.link_map_tips_blue:hover {
+	FONT-SIZE: 12px; COLOR: #008cda; TEXT-DECORATION: underline
+}
+.link_map_tips_red:link {
+	FONT-SIZE: 12px; COLOR: #e90000; TEXT-DECORATION: none
+}
+.link_map_tips_red:visited {
+	FONT-SIZE: 12px; COLOR: #e90000; TEXT-DECORATION: none
+}
+.link_map_tips_red:hover {
+	FONT-SIZE: 12px; COLOR: #e90000; TEXT-DECORATION: underline
+}
+.link_map_tips_orange:link {
+	FONT-SIZE: 12px; COLOR: #ff6600; TEXT-DECORATION: none
+}
+.link_map_tips_orange:visited {
+	FONT-SIZE: 12px; COLOR: #ff6600; TEXT-DECORATION: none
+}
+.link_map_tips_orange:hover {
+	FONT-SIZE: 12px; COLOR: #ff6600; TEXT-DECORATION: underline
+}
+.link_map_tips_green:link {
+	FONT-SIZE: 12px; COLOR: #397300; TEXT-DECORATION: none
+}
+.link_map_tips_green:visited {
+	FONT-SIZE: 12px; COLOR: #397300; TEXT-DECORATION: none
+}
+.link_map_tips_green:hover {
+	FONT-SIZE: 12px; COLOR: #397300; TEXT-DECORATION: underline
+}
+.link_map_tips_gray:link {
+	FONT-SIZE: 12px; COLOR: #606060; TEXT-DECORATION: none
+}
+.link_map_tips_gray:visited {
+	FONT-SIZE: 12px; COLOR: #606060; TEXT-DECORATION: none
+}
+.link_map_tips_gray:hover {
+	FONT-SIZE: 12px; COLOR: #606060; TEXT-DECORATION: underline
+}
+.link_mapleft_menu:link {
+	FONT-SIZE: 13px; COLOR: #497800; TEXT-DECORATION: none
+}
+.link_mapleft_menu:visited {
+	FONT-SIZE: 13px; COLOR: #497800; TEXT-DECORATION: none
+}
+.link_mapleft_menu:hover {
+	FONT-SIZE: 13px; COLOR: #497800; TEXT-DECORATION: underline
+}
+.link_stranger:link {
+	FONT-SIZE: 12px; COLOR: #0069a5; TEXT-DECORATION: none
+}
+.link_stranger:visited {
+	FONT-SIZE: 12px; COLOR: #0069a5; TEXT-DECORATION: none
+}
+.link_stranger:hover {
+	FONT-SIZE: 12px; COLOR: #006097; TEXT-DECORATION: underline
+}
+.link_listmenu1:link {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #0079be; TEXT-DECORATION: none
+}
+.link_listmenu1:visited {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #0079be; TEXT-DECORATION: none
+}
+.link_listmenu1:hover {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #006198; TEXT-DECORATION: none
+}
+.link_listmenu2:link {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #cbebff; TEXT-DECORATION: none
+}
+.link_listmenu2:visited {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #cbebff; TEXT-DECORATION: none
+}
+.link_listmenu2:hover {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+.link_newspaper:link {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #66bb46; TEXT-DECORATION: none
+}
+.link_newspaper:visited {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #66bb46; TEXT-DECORATION: none
+}
+.link_newspaper:hover {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #258600; TEXT-DECORATION: none
+}
+.page_links DIV {
+	BORDER-RIGHT: #005f95 1px solid; PADDING-RIGHT: 4px; BORDER-TOP: #005f95 1px solid; PADDING-LEFT: 4px; FONT-SIZE: 12px; FLOAT: left; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/page_bg.gif); PADDING-BOTTOM: 1px; MARGIN: 2px 7px 2px 0px; OVERFLOW: hidden; BORDER-LEFT: #005f95 1px solid; WIDTH: auto; CURSOR: pointer; COLOR: #fff; PADDING-TOP: 1px; BORDER-BOTTOM: #005f95 1px solid; HEIGHT: 12px
+}
+.page_links .current_page {
+	CURSOR: default; COLOR: #ff0
+}
+.link_up_green:link {
+	FONT-SIZE: 13px; COLOR: #10ac00; TEXT-DECORATION: none
+}
+.link_up_green:visited {
+	FONT-SIZE: 13px; COLOR: #10ac00; TEXT-DECORATION: none
+}
+.link_up_green:hover {
+	FONT-SIZE: 13px; COLOR: #0b7700; TEXT-DECORATION: underline
+}
+.link_down_red:link {
+	FONT-SIZE: 13px; COLOR: #ff2a00; TEXT-DECORATION: none
+}
+.link_down_red:visited {
+	FONT-SIZE: 13px; COLOR: #ff2a00; TEXT-DECORATION: none
+}
+.link_down_red:hover {
+	FONT-SIZE: 13px; COLOR: #bf1f00; TEXT-DECORATION: underline
+}
+.link_smooth_blue:link {
+	FONT-SIZE: 13px; COLOR: #0074e1; TEXT-DECORATION: none
+}
+.link_smooth_blue:visited {
+	FONT-SIZE: 13px; COLOR: #0074e1; TEXT-DECORATION: none
+}
+.link_smooth_blue:hover {
+	FONT-SIZE: 13px; COLOR: #0058aa; TEXT-DECORATION: underline
+}
+.link_listtop:link {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #0079be; TEXT-DECORATION: none
+}
+.link_listtop:visited {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #0079be; TEXT-DECORATION: none
+}
+.link_listtop:hover {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #0079be; TEXT-DECORATION: underline
+}
+.link_white2:link {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #ffffff; TEXT-DECORATION: underline
+}
+.link_white2:visited {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #ffffff; TEXT-DECORATION: underline
+}
+.link_white2:hover {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #e2f3a8; TEXT-DECORATION: underline
+}
+.link_gray:link {
+	FONT-SIZE: 13px; COLOR: #4f4f4f; TEXT-DECORATION: none
+}
+.link_gray:visited {
+	FONT-SIZE: 13px; COLOR: #4f4f4f; TEXT-DECORATION: none
+}
+.link_gray:hover {
+	FONT-SIZE: 13px; COLOR: #4f4f4f; TEXT-DECORATION: underline
+}
+.link_red:link {
+	FONT-SIZE: 13px; COLOR: #ff2a00; TEXT-DECORATION: none
+}
+.link_red:visited {
+	FONT-SIZE: 13px; COLOR: #ff2a00; TEXT-DECORATION: none
+}
+.link_red:hover {
+	FONT-SIZE: 13px; COLOR: #ff2a00; TEXT-DECORATION: underline
+}
+.link_hall_yellow:link {
+	FONT-SIZE: 12px; COLOR: #e04f00; TEXT-DECORATION: none
+}
+.link_hall_yellow:visited {
+	FONT-SIZE: 12px; COLOR: #e04f00; TEXT-DECORATION: none
+}
+.link_hall_yellow:hover {
+	FONT-SIZE: 12px; COLOR: #e00000; TEXT-DECORATION: underline
+}
+.link_hall_green:link {
+	FONT-SIZE: 12px; COLOR: #2c7d00; TEXT-DECORATION: none
+}
+.link_hall_green:visited {
+	FONT-SIZE: 12px; COLOR: #2c7d00; TEXT-DECORATION: none
+}
+.link_hall_green:hover {
+	FONT-SIZE: 12px; COLOR: #1a6802; TEXT-DECORATION: underline
+}
+.link_hall_blue:link {
+	FONT-SIZE: 12px; COLOR: #0074aa; TEXT-DECORATION: none
+}
+.link_hall_blue:visited {
+	FONT-SIZE: 12px; COLOR: #0074aa; TEXT-DECORATION: none
+}
+.link_hall_blue:hover {
+	FONT-SIZE: 12px; COLOR: #005270; TEXT-DECORATION: underline
+}
+.font-red {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #da251d
+}
+.font-red2 {
+	FONT-SIZE: 13px; COLOR: #da251d
+}
+.font-red3 {
+	FONT-SIZE: 13px; COLOR: #ff2a00
+}
+.font-white1 {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #ffffff
+}
+.font-white2 {
+	FONT-SIZE: 12px; COLOR: #ffffff
+}
+.font-white3 {
+	FONT-SIZE: 13px; COLOR: #ffffff
+}
+.font-white4 {
+	PADDING-LEFT: 0px; FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #ffffff
+}
+.font-white4 A {
+	COLOR: #fff
+}
+.font-white4 A:visited {
+	COLOR: #fff
+}
+.font-white4 A:hover {
+	COLOR: #fff; TEXT-DECORATION: underline
+}
+.font-white5 {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #ffffff
+}
+.font-gray {
+	FONT-SIZE: 13px; COLOR: #626262
+}
+.font-gray2 {
+	FONT-SIZE: 13px; COLOR: #cacaca
+}
+.font-orange1 {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #ff4800
+}
+.font-orange {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #ff6000
+}
+.font-orange2 {
+	FONT-SIZE: 18px; COLOR: #ff5400; FONT-FAMILY: "Arial", "宋体"
+}
+.font-green {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #5d8728
+}
+.font-green2 {
+	FONT-SIZE: 13px; COLOR: #00a01e
+}
+.font-black {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #000000
+}
+.font-bt-blue {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #006097
+}
+.font-bt-blue2 {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #0a74b0
+}
+.font-blue {
+	FONT-SIZE: 13px; COLOR: #006ba9
+}
+.font-blue2 {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #006097
+}
+.font-blue3 {
+	FONT-SIZE: 13px; COLOR: #006097
+}
+.font-blue4 {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #64c7ff
+}
+.font-blue5 {
+	FONT-SIZE: 12px; COLOR: #006097
+}
+.font-blue6 {
+	FONT-SIZE: 13px; COLOR: #0583c5; LINE-HEIGHT: 130%
+}
+.font-center_title1 {
+	PADDING-LEFT: 14px; FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #ffffff
+}
+.font-center_title1 A {
+	PADDING-LEFT: 14px; FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #ffffff
+}
+.font-center_title1 A:visited {
+	PADDING-LEFT: 14px; FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #ffffff
+}
+.font-center_title2 {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; BACKGROUND: url(http://k1.bizlife.com.cn/images/boxs_bt.gif); COLOR: #006097
+}
+.font-center_title3 {
+	PADDING-LEFT: 5px; FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #ffffff
+}
+.font-center_text {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #006097
+}
+.font-center_text2 {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; PADDING-BOTTOM: 5px; COLOR: #004681; PADDING-TOP: 5px
+}
+.font-center_text3 {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; PADDING-BOTTOM: 5px; COLOR: #de5810; PADDING-TOP: 5px
+}
+.font-center_text4 {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #006097
+}
+.font-foot {
+	FONT-SIZE: 12px; COLOR: #7dcfff; LINE-HEIGHT: 150%; FONT-FAMILY: "Arial", "宋体"
+}
+.font-maptext {
+	FONT-WEIGHT: bold; FONT-SIZE: 11px; COLOR: #ffffff; FONT-FAMILY: Arial
+}
+.font_hall_st {
+	FONT-SIZE: 12px; COLOR: #5fa0c5
+}
+.font-newspaper {
+	FONT-WEIGHT: bold; FONT-SIZE: 16px; COLOR: #66bb46; FONT-FAMILY: "Arial", "宋体"
+}
+.font-sjgg {
+	FONT-SIZE: 12px; COLOR: #9dfff4; PADDING-TOP: 2px; FONT-FAMILY: "Arial", "宋体"
+}
+.input {
+	BORDER-RIGHT: #017bc2 1px solid; PADDING-RIGHT: 3px; BORDER-TOP: #017bc2 1px solid; PADDING-LEFT: 3px; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/input_bg.gif); PADDING-BOTTOM: 0px; BORDER-LEFT: #017bc2 1px solid; COLOR: #ffffff; PADDING-TOP: 0px; BORDER-BOTTOM: #017bc2 1px solid; FONT-FAMILY: "Arial", "宋体"; HEIGHT: 18px
+}
+INPUT {
+	FONT-SIZE: 13px
+}
+.input2 {
+	BORDER-RIGHT: #017bc2 1px solid; PADDING-RIGHT: 3px; BORDER-TOP: #017bc2 1px solid; PADDING-LEFT: 3px; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/input_bg.gif); PADDING-BOTTOM: 0px; BORDER-LEFT: #017bc2 1px solid; COLOR: #ffffff; PADDING-TOP: 0px; BORDER-BOTTOM: #017bc2 1px solid; FONT-FAMILY: "Arial", "宋体"; HEIGHT: 16px
+}
+.textArea {
+	BORDER-RIGHT: #178bcd 1px solid; PADDING-RIGHT: 3px; BORDER-TOP: #178bcd 1px solid; PADDING-LEFT: 3px; FONT-SIZE: 13px; BORDER-LEFT: #178bcd 1px solid; COLOR: #ffffff; PADDING-TOP: 2px; BORDER-BOTTOM: #178bcd 1px solid; BACKGROUND-COLOR: #10a2f7
+}
+.info-bg {
+	BORDER-RIGHT: #0f88e1 1px solid; PADDING-RIGHT: 5px; PADDING-LEFT: 5px; FONT-SIZE: 13px; BORDER-LEFT: #0f88e1 1px solid; COLOR: #e0f4ff; BORDER-BOTTOM: #0f88e1 1px solid; BACKGROUND-COLOR: #10a2f7
+}
+.info-bt {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #ffffff
+}
+.info-bt2 {
+	FONT-SIZE: 13px; COLOR: #ffffff
+}
+.box_bgcolor {
+	BACKGROUND-COLOR: #9edbff
+}
+.box2_bgcolor {
+	BACKGROUND-COLOR: #c2c2c2
+}
+.list_table {
+	BORDER-RIGHT: #8bd4ff 1px solid; BORDER-TOP: #8bd4ff 1px solid; BORDER-LEFT: #8bd4ff 1px solid; BORDER-BOTTOM: #8bd4ff 1px solid; BACKGROUND-COLOR: #cbecff
+}
+
+.list_table .out{
+	background-color:#cbecff;
+}
+.list_table .over{
+	background-color:#FFFFDD;
+}
+
+.list_td {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #0079be; BORDER-BOTTOM: #8bd4ff 1px solid; border-right:#8bd4ff 1px solid; WHITE-SPACE: nowrap; HEIGHT: 25px; BACKGROUND-COLOR: #cbecff
+}
+
+.list_top {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-WEIGHT: bold; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/list_topbg.gif); COLOR: #0079be; BORDER-BOTTOM: #8bd4ff 1px solid; WHITE-SPACE: nowrap; HEIGHT: 25px; BACKGROUND-COLOR: #a0dcff
+}
+.list_top3 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-WEIGHT: bold; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/list_topbg.gif); COLOR: #0079be; PADDING-TOP: 2px; BORDER-BOTTOM: #8bd4ff 1px solid; WHITE-SPACE: nowrap; HEIGHT: 40px; BACKGROUND-COLOR: #a0dcff
+}
+.list_top_font {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #0079be
+}
+.list_top2 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 9px; FONT-WEIGHT: bold; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/list_topbg.gif); COLOR: #0079be; LINE-HEIGHT: 24px; BORDER-BOTTOM: #8bd4ff 1px solid; WHITE-SPACE: nowrap; BACKGROUND-COLOR: #a0dcff
+}
+.list_word TD {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 13px; COLOR: #006097; LINE-HEIGHT: 18px
+}
+.list_word2 TD {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 10px; FONT-SIZE: 13px; COLOR: #006097; LINE-HEIGHT: 23px
+}
+.list_word3 TD {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 10px; FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #006097; LINE-HEIGHT: 23px; BACKGROUND-COLOR: #b9e5ff
+}
+.list_word4 TD {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 10px; FONT-SIZE: 13px; PADDING-BOTTOM: 7px; COLOR: #006097; PADDING-TOP: 7px
+}
+.list_word5 {
+	PADDING-TOP: 12px
+}
+.list_page {
+	BORDER-TOP: #8bd4ff 1px solid; PADDING-LEFT: 8px; HEIGHT: 30px; BACKGROUND-COLOR: #cbecff
+}
+.list_bgcolor {
+	BACKGROUND-COLOR: #b7e4ff
+}
+.list_times {
+	PADDING-LEFT: 8px; FONT-SIZE: 13px; COLOR: #626262; HEIGHT: 25px
+}
+.list_leftmenu_on {
+	PADDING-LEFT: 6px; FONT-SIZE: 13px; COLOR: #006097; LINE-HEIGHT: 26px; BORDER-BOTTOM: #8bd4ff 1px solid; BACKGROUND-COLOR: #b5e5ff
+}
+.list_leftmenu_out {
+	PADDING-LEFT: 6px; FONT-SIZE: 13px; COLOR: #006097; LINE-HEIGHT: 26px; BORDER-BOTTOM: #8bd4ff 1px solid
+}
+.list_tu_color {
+	BORDER-RIGHT: #62c5ff 1px solid; PADDING-RIGHT: 1px; BORDER-TOP: #62c5ff 1px solid; PADDING-LEFT: 1px; PADDING-BOTTOM: 1px; BORDER-LEFT: #62c5ff 1px solid; PADDING-TOP: 1px; BORDER-BOTTOM: #62c5ff 1px solid
+}
+.list_tu_color2 {
+	BORDER-RIGHT: #62c5ff 1px solid; PADDING-RIGHT: 1px; BORDER-TOP: #62c5ff 1px solid; PADDING-LEFT: 1px; PADDING-BOTTOM: 1px; BORDER-LEFT: #62c5ff 1px solid; PADDING-TOP: 1px; BORDER-BOTTOM: #62c5ff 1px solid; BACKGROUND-COLOR: #9edbff
+}
+.list_tu_color3 {
+	BORDER-RIGHT: #62c5ff 1px solid; PADDING-RIGHT: 1px; BORDER-TOP: #62c5ff 1px solid; PADDING-LEFT: 1px; PADDING-BOTTOM: 1px; BORDER-LEFT: #62c5ff 1px solid; PADDING-TOP: 1px; BORDER-BOTTOM: #62c5ff 1px solid; BACKGROUND-COLOR: #b9e5ff
+}
+.list_newspaper {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 12px; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/newspaper_line.gif); COLOR: #4f4f4f; WHITE-SPACE: nowrap; HEIGHT: 23px
+}
+.list_hall_yellow {
+	BORDER-RIGHT: #67cdeb 1px solid; BORDER-TOP: #67cdeb 1px solid; BORDER-LEFT: #67cdeb 1px solid; BORDER-BOTTOM: #67cdeb 1px solid; BACKGROUND-COLOR: #fff287
+}
+.list_hall_red {
+	BORDER-RIGHT: #67cdeb 1px solid; BORDER-TOP: #67cdeb 1px solid; BORDER-LEFT: #67cdeb 1px solid; BORDER-BOTTOM: #67cdeb 1px solid; BACKGROUND-COLOR: #ffbeff
+}
+.list_hall_green {
+	BORDER-RIGHT: #67cdeb 1px solid; BORDER-TOP: #67cdeb 1px solid; BORDER-LEFT: #67cdeb 1px solid; BORDER-BOTTOM: #67cdeb 1px solid; BACKGROUND-COLOR: #e3f5ff
+}
+.list_hall_blue {
+	BORDER-RIGHT: #67cdeb 1px solid; BORDER-TOP: #67cdeb 1px solid; BORDER-LEFT: #67cdeb 1px solid; BORDER-BOTTOM: #67cdeb 1px solid; BACKGROUND-COLOR: #70edff
+}
+.list_hall_white {
+	BORDER-RIGHT: #67cdeb 1px solid; BORDER-TOP: #67cdeb 1px solid; BORDER-LEFT: #67cdeb 1px solid; BORDER-BOTTOM: #67cdeb 1px solid; BACKGROUND-COLOR: #ffffff
+}
+.tips_bgcolor {
+	BACKGROUND-COLOR: #2cb1ff
+}
+.tips2_bgcolor {
+	BACKGROUND-COLOR: #b9e5ff
+}
+.tips2_text {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #006097; LINE-HEIGHT: 150%
+}
+.tips_text {
+	PADDING-RIGHT: 8px; PADDING-LEFT: 8px; FONT-WEIGHT: bold; FONT-SIZE: 14px; PADDING-BOTTOM: 5px; COLOR: #ffffff; LINE-HEIGHT: 150%; PADDING-TOP: 5px
+}
+.tips_text2 {
+	PADDING-RIGHT: 8px; PADDING-LEFT: 8px; FONT-SIZE: 13px; PADDING-BOTTOM: 5px; COLOR: #ffffff; LINE-HEIGHT: 150%; PADDING-TOP: 5px
+}
+.talk_table_text {
+	BORDER-RIGHT: #f1faff 1px dashed; PADDING-RIGHT: 5px; BORDER-TOP: #f1faff 1px dashed; PADDING-LEFT: 5px; FONT-SIZE: 12px; PADDING-BOTTOM: 5px; BORDER-LEFT: #f1faff 1px dashed; COLOR: #0069a5; LINE-HEIGHT: 140%; PADDING-TOP: 5px; BORDER-BOTTOM: #f1faff 1px dashed; BACKGROUND-COLOR: #6dc8ff
+}
+.talk_table_text2 {
+	BORDER-RIGHT: #f1faff 1px dashed; PADDING-RIGHT: 5px; BORDER-TOP: #f1faff 1px dashed; PADDING-LEFT: 5px; FONT-SIZE: 12px; PADDING-BOTTOM: 5px; BORDER-LEFT: #f1faff 1px dashed; COLOR: #0069a5; LINE-HEIGHT: 140%; PADDING-TOP: 5px; BORDER-BOTTOM: #f1faff 1px dashed; BACKGROUND-COLOR: #91d6ff
+}
+.text_lb {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; FONT-SIZE: 13px; PADDING-BOTTOM: 5px; COLOR: #005a8d; LINE-HEIGHT: 150%; PADDING-TOP: 5px
+}
+.text_lb2 {
+	FONT-SIZE: 13px; COLOR: #005a8d; LINE-HEIGHT: 130%
+}
+.text_lb3 {
+	FONT-SIZE: 13px; COLOR: #005a8d; LINE-HEIGHT: 160%
+}
+.text_lb4 {
+	FONT-SIZE: 13px; COLOR: #004681; LINE-HEIGHT: 150%
+}
+.text_lb5 {
+	FONT-SIZE: 13px; COLOR: #222222; LINE-HEIGHT: 150%
+}
+.text_lb6 {
+	FONT-SIZE: 13px; COLOR: #005a8d; LINE-HEIGHT: 160%
+}
+.text_lb2_white {
+	PADDING-RIGHT: 4px; PADDING-LEFT: 4px; FONT-SIZE: 13px; PADDING-BOTTOM: 4px; COLOR: #ffffff; LINE-HEIGHT: 140%; PADDING-TOP: 4px
+}
+.text_lb2_white A {
+	PADDING-RIGHT: 4px; PADDING-LEFT: 4px; FONT-SIZE: 13px; PADDING-BOTTOM: 4px; COLOR: #ffffff; LINE-HEIGHT: 140%; PADDING-TOP: 4px; TEXT-DECORATION: underline
+}
+.text_lb2_white A:visited {
+	PADDING-RIGHT: 4px; PADDING-LEFT: 4px; FONT-SIZE: 13px; PADDING-BOTTOM: 4px; COLOR: #ffffff; LINE-HEIGHT: 140%; PADDING-TOP: 4px; TEXT-DECORATION: underline
+}
+.text_lb2_white A:hover {
+	PADDING-RIGHT: 4px; PADDING-LEFT: 4px; FONT-SIZE: 13px; PADDING-BOTTOM: 4px; COLOR: #fc0; LINE-HEIGHT: 140%; PADDING-TOP: 4px; TEXT-DECORATION: underline
+}
+.msbt {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #006097; PADDING-TOP: 0px
+}
+.text_joblb {
+	FONT-SIZE: 12px; COLOR: #005a8d; LINE-HEIGHT: 130%; PADDING-TOP: 5px
+}
+.text_Notice {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 10px; FONT-SIZE: 13px; COLOR: #005a8d; LINE-HEIGHT: 140%
+}
+.text_newspaper_lb {
+	FONT-SIZE: 13px; COLOR: #4f4f4f; LINE-HEIGHT: 150%
+}
+.modbox {
+	FILTER: progid:DXImageTransform.Microsoft.Alpha(opacity=90); opacity: 0.8
+}
+.dk1_wh {
+	WIDTH: 588px; HEIGHT: 390px
+}
+.dk2_wh {
+	WIDTH: 578px; HEIGHT: 351px; BACKGROUND-COLOR: #b9e5ff
+}
+.button_f1 {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/button_f1.gif); BORDER-BOTTOM-WIDTH: 0px; WIDTH: 25px; CURSOR: pointer; COLOR: #ffffff; PADDING-TOP: 3px; LETTER-SPACING: 0px; HEIGHT: 24px; BACKGROUND-COLOR: #b9e5ff; BORDER-RIGHT-WIDTH: 0px
+}
+.button_f1b {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/button_f1b.gif); BORDER-BOTTOM-WIDTH: 0px; WIDTH: 25px; CURSOR: pointer; COLOR: #c2c2c2; PADDING-TOP: 3px; LETTER-SPACING: 0px; HEIGHT: 24px; BACKGROUND-COLOR: #b9e5ff; BORDER-RIGHT-WIDTH: 0px
+}
+.button_f2 {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/button_f2.gif); BORDER-BOTTOM-WIDTH: 0px; WIDTH: 45px; CURSOR: pointer; COLOR: #ffffff; PADDING-TOP: 3px; LETTER-SPACING: 0px; HEIGHT: 24px; BACKGROUND-COLOR: #b9e5ff; BORDER-RIGHT-WIDTH: 0px
+}
+.button_f2b {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/button_f2b.gif); BORDER-BOTTOM-WIDTH: 0px; WIDTH: 45px; CURSOR: pointer; COLOR: #c2c2c2; PADDING-TOP: 3px; LETTER-SPACING: 0px; HEIGHT: 24px; BACKGROUND-COLOR: #b9e5ff; BORDER-RIGHT-WIDTH: 0px
+}
+.button_f3 {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/button_f3.gif); BORDER-BOTTOM-WIDTH: 0px; WIDTH: 60px; CURSOR: pointer; COLOR: #ffffff; PADDING-TOP: 3px; LETTER-SPACING: 0px; HEIGHT: 24px; BACKGROUND-COLOR: #b9e5ff; BORDER-RIGHT-WIDTH: 0px
+}
+.button_f3b {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/button_f3b.gif); BORDER-BOTTOM-WIDTH: 0px; WIDTH: 60px; CURSOR: pointer; COLOR: #c2c2c2; PADDING-TOP: 3px; LETTER-SPACING: 0px; HEIGHT: 24px; BACKGROUND-COLOR: #b9e5ff; BORDER-RIGHT-WIDTH: 0px
+}
+.button_f4 {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/button_f4.gif); BORDER-BOTTOM-WIDTH: 0px; WIDTH: 75px; CURSOR: pointer; COLOR: #ffffff; PADDING-TOP: 3px; LETTER-SPACING: 0px; HEIGHT: 24px; BACKGROUND-COLOR: #b9e5ff; BORDER-RIGHT-WIDTH: 0px
+}
+.button_f4b {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/button_f4b.gif); BORDER-BOTTOM-WIDTH: 0px; WIDTH: 75px; CURSOR: pointer; COLOR: #c2c2c2; PADDING-TOP: 3px; LETTER-SPACING: 0px; HEIGHT: 24px; BACKGROUND-COLOR: #b9e5ff; BORDER-RIGHT-WIDTH: 0px
+}
+.button_f5 {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/button_f5.gif); BORDER-BOTTOM-WIDTH: 0px; WIDTH: 85px; CURSOR: pointer; COLOR: #ffffff; PADDING-TOP: 3px; LETTER-SPACING: 0px; HEIGHT: 24px; BACKGROUND-COLOR: #b9e5ff; BORDER-RIGHT-WIDTH: 0px
+}
+.button_f5b {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/button_f5b.gif); BORDER-BOTTOM-WIDTH: 0px; WIDTH: 85px; CURSOR: pointer; COLOR: #c2c2c2; PADDING-TOP: 3px; LETTER-SPACING: 0px; HEIGHT: 24px; BACKGROUND-COLOR: #b9e5ff; BORDER-RIGHT-WIDTH: 0px
+}
+.button_f6 {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/button_f6.gif); BORDER-BOTTOM-WIDTH: 0px; WIDTH: 95px; CURSOR: pointer; COLOR: #ffffff; PADDING-TOP: 3px; LETTER-SPACING: 0px; HEIGHT: 24px; BACKGROUND-COLOR: #b9e5ff; BORDER-RIGHT-WIDTH: 0px
+}
+.button_f6b {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/button_f6b.gif); BORDER-BOTTOM-WIDTH: 0px; WIDTH: 95px; CURSOR: pointer; COLOR: #c2c2c2; PADDING-TOP: 3px; LETTER-SPACING: 0px; HEIGHT: 24px; BACKGROUND-COLOR: #b9e5ff; BORDER-RIGHT-WIDTH: 0px
+}
+.button_f7 {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/button_f7.gif); BORDER-BOTTOM-WIDTH: 0px; WIDTH: 110px; CURSOR: pointer; COLOR: #ffffff; PADDING-TOP: 3px; LETTER-SPACING: 0px; HEIGHT: 24px; BACKGROUND-COLOR: #b9e5ff; BORDER-RIGHT-WIDTH: 0px
+}
+.button_f7b {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/button_f7b.gif); BORDER-BOTTOM-WIDTH: 0px; WIDTH: 110px; CURSOR: pointer; COLOR: #c2c2c2; PADDING-TOP: 3px; LETTER-SPACING: 0px; HEIGHT: 24px; BACKGROUND-COLOR: #b9e5ff; BORDER-RIGHT-WIDTH: 0px
+}
+.button_f8 {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/button_f8.gif); BORDER-BOTTOM-WIDTH: 0px; WIDTH: 125px; CURSOR: pointer; COLOR: #ffffff; PADDING-TOP: 3px; LETTER-SPACING: 0px; HEIGHT: 24px; BACKGROUND-COLOR: #b9e5ff; BORDER-RIGHT-WIDTH: 0px
+}
+.button_f8b {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/button_f8b.gif); BORDER-BOTTOM-WIDTH: 0px; WIDTH: 125px; CURSOR: pointer; COLOR: #c2c2c2; PADDING-TOP: 3px; LETTER-SPACING: 0px; HEIGHT: 24px; BACKGROUND-COLOR: #b9e5ff; BORDER-RIGHT-WIDTH: 0px
+}
+.button_f9 {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/button_f9.gif); BORDER-BOTTOM-WIDTH: 0px; WIDTH: 140px; CURSOR: pointer; COLOR: #ffffff; PADDING-TOP: 3px; LETTER-SPACING: 0px; HEIGHT: 24px; BACKGROUND-COLOR: #b9e5ff; BORDER-RIGHT-WIDTH: 0px
+}
+.button_f9b {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/button_f9b.gif); BORDER-BOTTOM-WIDTH: 0px; WIDTH: 140px; CURSOR: pointer; COLOR: #c2c2c2; PADDING-TOP: 3px; LETTER-SPACING: 0px; HEIGHT: 24px; BACKGROUND-COLOR: #b9e5ff; BORDER-RIGHT-WIDTH: 0px
+}
+.button_f10 {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/button_f10.gif); BORDER-BOTTOM-WIDTH: 0px; WIDTH: 155px; CURSOR: pointer; COLOR: #ffffff; PADDING-TOP: 3px; LETTER-SPACING: 0px; HEIGHT: 24px; BACKGROUND-COLOR: #b9e5ff; BORDER-RIGHT-WIDTH: 0px
+}
+.button_f10b {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/button_f10b.gif); BORDER-BOTTOM-WIDTH: 0px; WIDTH: 155px; CURSOR: pointer; COLOR: #c2c2c2; PADDING-TOP: 3px; LETTER-SPACING: 0px; HEIGHT: 24px; BACKGROUND-COLOR: #b9e5ff; BORDER-RIGHT-WIDTH: 0px
+}
+.button_f11 {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/button_f11.gif); BORDER-BOTTOM-WIDTH: 0px; WIDTH: 165px; CURSOR: pointer; COLOR: #ffffff; PADDING-TOP: 3px; LETTER-SPACING: 0px; HEIGHT: 24px; BACKGROUND-COLOR: #b9e5ff; BORDER-RIGHT-WIDTH: 0px
+}
+.button_f11b {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/button_f11b.gif); BORDER-BOTTOM-WIDTH: 0px; WIDTH: 165px; CURSOR: pointer; COLOR: #c2c2c2; PADDING-TOP: 3px; LETTER-SPACING: 0px; HEIGHT: 24px; BACKGROUND-COLOR: #b9e5ff; BORDER-RIGHT-WIDTH: 0px
+}
+.button_f12 {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/button_f12.gif); BORDER-BOTTOM-WIDTH: 0px; WIDTH: 180px; CURSOR: pointer; COLOR: #ffffff; PADDING-TOP: 3px; LETTER-SPACING: 0px; HEIGHT: 24px; BACKGROUND-COLOR: #b9e5ff; BORDER-RIGHT-WIDTH: 0px
+}
+.button_f12b {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/button_f12b.gif); BORDER-BOTTOM-WIDTH: 0px; WIDTH: 180px; CURSOR: pointer; COLOR: #c2c2c2; PADDING-TOP: 3px; LETTER-SPACING: 0px; HEIGHT: 24px; BACKGROUND-COLOR: #b9e5ff; BORDER-RIGHT-WIDTH: 0px
+}
+.button_f13 {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/button_f13.gif); BORDER-BOTTOM-WIDTH: 0px; WIDTH: 190px; CURSOR: pointer; COLOR: #ffffff; PADDING-TOP: 3px; LETTER-SPACING: 0px; HEIGHT: 24px; BACKGROUND-COLOR: #b9e5ff; BORDER-RIGHT-WIDTH: 0px
+}
+.button_f13b {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/button_f13b.gif); BORDER-BOTTOM-WIDTH: 0px; WIDTH: 190px; CURSOR: pointer; COLOR: #c2c2c2; PADDING-TOP: 3px; LETTER-SPACING: 0px; HEIGHT: 24px; BACKGROUND-COLOR: #b9e5ff; BORDER-RIGHT-WIDTH: 0px
+}
+.button_f14 {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/button_f14.gif); BORDER-BOTTOM-WIDTH: 0px; WIDTH: 205px; CURSOR: pointer; COLOR: #ffffff; PADDING-TOP: 3px; LETTER-SPACING: 0px; HEIGHT: 24px; BACKGROUND-COLOR: #b9e5ff; BORDER-RIGHT-WIDTH: 0px
+}
+.button_f14b {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/button_f14b.gif); BORDER-BOTTOM-WIDTH: 0px; WIDTH: 205px; CURSOR: pointer; COLOR: #c2c2c2; PADDING-TOP: 3px; LETTER-SPACING: 0px; HEIGHT: 24px; BACKGROUND-COLOR: #b9e5ff; BORDER-RIGHT-WIDTH: 0px
+}
+.button_f15 {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/button_f15.gif); BORDER-BOTTOM-WIDTH: 0px; WIDTH: 215px; CURSOR: pointer; COLOR: #ffffff; PADDING-TOP: 3px; LETTER-SPACING: 0px; HEIGHT: 24px; BACKGROUND-COLOR: #b9e5ff; BORDER-RIGHT-WIDTH: 0px
+}
+.button_f15b {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/button_f15b.gif); BORDER-BOTTOM-WIDTH: 0px; WIDTH: 215px; CURSOR: pointer; COLOR: #c2c2c2; PADDING-TOP: 3px; LETTER-SPACING: 0px; HEIGHT: 24px; BACKGROUND-COLOR: #b9e5ff; BORDER-RIGHT-WIDTH: 0px
+}
+.button_f16 {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/button_f16.gif); BORDER-BOTTOM-WIDTH: 0px; WIDTH: 230px; CURSOR: pointer; COLOR: #ffffff; PADDING-TOP: 3px; LETTER-SPACING: 0px; HEIGHT: 24px; BACKGROUND-COLOR: #b9e5ff; BORDER-RIGHT-WIDTH: 0px
+}
+.button_f16b {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/button_f16b.gif); BORDER-BOTTOM-WIDTH: 0px; WIDTH: 230px; CURSOR: pointer; COLOR: #c2c2c2; PADDING-TOP: 3px; LETTER-SPACING: 0px; HEIGHT: 24px; BACKGROUND-COLOR: #b9e5ff; BORDER-RIGHT-WIDTH: 0px
+}
+.button_f17 {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/button_f17.gif); BORDER-BOTTOM-WIDTH: 0px; WIDTH: 245px; CURSOR: pointer; COLOR: #ffffff; PADDING-TOP: 3px; LETTER-SPACING: 0px; HEIGHT: 24px; BACKGROUND-COLOR: #b9e5ff; BORDER-RIGHT-WIDTH: 0px
+}
+.button_f17b {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/button_f17b.gif); BORDER-BOTTOM-WIDTH: 0px; WIDTH: 245px; CURSOR: pointer; COLOR: #c2c2c2; PADDING-TOP: 3px; LETTER-SPACING: 0px; HEIGHT: 24px; BACKGROUND-COLOR: #b9e5ff; BORDER-RIGHT-WIDTH: 0px
+}
+.button_f18 {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/button_f18.gif); BORDER-BOTTOM-WIDTH: 0px; WIDTH: 255px; CURSOR: pointer; COLOR: #ffffff; PADDING-TOP: 3px; LETTER-SPACING: 0px; HEIGHT: 24px; BACKGROUND-COLOR: #b9e5ff; BORDER-RIGHT-WIDTH: 0px
+}
+.button_f18b {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/button_f18b.gif); BORDER-BOTTOM-WIDTH: 0px; WIDTH: 255px; CURSOR: pointer; COLOR: #c2c2c2; PADDING-TOP: 3px; LETTER-SPACING: 0px; HEIGHT: 24px; BACKGROUND-COLOR: #b9e5ff; BORDER-RIGHT-WIDTH: 0px
+}
+.button_f19 {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/button_f19.gif); BORDER-BOTTOM-WIDTH: 0px; WIDTH: 270px; CURSOR: pointer; COLOR: #ffffff; PADDING-TOP: 3px; LETTER-SPACING: 0px; HEIGHT: 24px; BACKGROUND-COLOR: #b9e5ff; BORDER-RIGHT-WIDTH: 0px
+}
+.button_f19b {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/button_f19b.gif); BORDER-BOTTOM-WIDTH: 0px; WIDTH: 270px; CURSOR: pointer; COLOR: #c2c2c2; PADDING-TOP: 3px; LETTER-SPACING: 0px; HEIGHT: 24px; BACKGROUND-COLOR: #b9e5ff; BORDER-RIGHT-WIDTH: 0px
+}
+.button_f20 {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/button_f20.gif); BORDER-BOTTOM-WIDTH: 0px; WIDTH: 280px; CURSOR: pointer; COLOR: #ffffff; PADDING-TOP: 3px; LETTER-SPACING: 0px; HEIGHT: 24px; BACKGROUND-COLOR: #b9e5ff; BORDER-RIGHT-WIDTH: 0px
+}
+.button_f20b {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; FONT-SIZE: 13px; BACKGROUND-IMAGE: url(http://k1.bizlife.com.cn/images/button_f20b.gif); BORDER-BOTTOM-WIDTH: 0px; WIDTH: 280px; CURSOR: pointer; COLOR: #c2c2c2; PADDING-TOP: 3px; LETTER-SPACING: 0px; HEIGHT: 24px; BACKGROUND-COLOR: #b9e5ff; BORDER-RIGHT-WIDTH: 0px
+}
+
+
+.scroll_list {
+height:385px;
+overflow-y: scroll;
+}

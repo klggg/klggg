@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- 军团界面配置文件 -->
+<config>
+    <!-- 军团-加入 -->
+    <join>
+	    <displayObject view="legion.join"/>
+		<staticText property='{"x":28, "y":54, "size":14, "color":"0xE6E0D4", "stroke":"0x29241b", "bold":true, "mouseEnabled":false}' textID="130201"/>
+		
+		
+		<list property='{"x":28, "y":79}'>
+		    <LegionRenderer>
+		        <pic name="legionPic" property='{"x":0, "y":0}' frame="legion.cover" frameProp='{"mouseEnabled":false}' picProp='{"x":0, "y":0}' />
+			    <text name="flag" property='{"x":35, "y":20, "size":30, "color":"0x410e14", "autoSize":"center", "stroke":"0x29241b", "mouseEnabled":false, "bold":true}'/>
+		    </LegionRenderer>
+		</list>
+		<page property='{"x":155, "y":389}'/>
+		
+		<legionSelected>
+		    <staticText property='{"x":418, "y":54, "size":14, "color":"0xE6E0D4", "stroke":"0x29241b", "bold":true, "mouseEnabled":false}' textID="130202"/>
+		    <staticText property='{"x":502, "y":108, "color":"0x9D7D4C", "stroke":"0x29241b", "mouseEnabled":false}' textID="130203"/>
+		    <staticText property='{"x":502, "y":127, "color":"0x9D7D4C", "stroke":"0x29241b", "mouseEnabled":false}' textID="130204"/>
+		    <staticText property='{"x":502, "y":146, "color":"0x9D7D4C", "stroke":"0x29241b", "mouseEnabled":false}' textID="130205"/>
+		    <staticText property='{"x":423, "y":270, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false, "multiline":true, "width":208}' textID="130206"/>
+			
+			<LegionRenderer property='{"x":426, "y":88}'/>
+			
+			<text name="legionName" property='{"x":502, "y":88, "color":"0xE6E0D4", "stroke":"0x29241b", "bold":true, "width":94}'/>
+			<text name="legionLv" property='{"x":599, "y":88, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false, "bold":true}'/>
+			<text name="nation" property='{"x":537, "y":108, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="memberNum" property='{"x":537, "y":127, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="armyLeader" property='{"x":537, "y":146, "color":"0xE6E0D4", "stroke":"0x29241b", "width":88}'/>
+			<text name="intro" property='{"x":423, "y":183, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false, "multiline":true, "width":208}'/>
+			
+	    	<button name="apply" style="button1" labelID="130207" property='{"x":436, "y":350, "visible":false}'/>
+	    	<button name="create" style="button1" labelID="130212" property='{"x":535, "y":350, "visible":false}'/>
+	    	<button name="quit" style="button1" labelID="130208" property='{"x":436, "y":350, "visible":false}'/>
+	    	<button name="changeMsg" style="button1" labelID="130222" property='{"x":535, "y":350, "visible":false}'/>
+	    	<button name="cancel" style="button1" labelID="130211" property='{"x":486, "y":350, "visible":false}'/>
+		</legionSelected>
+		
+		<create property='{"visible":false}'>
+	        <displayObject view="legion.create"/>
+		    <staticText property='{"x":31, "y":43, "size":14, "color":"0xE6E0D4", "stroke":"0x29241b", "bold":true, "mouseEnabled":false}' textID="130215"/>
+		    <staticText property='{"x":38, "y":81, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}' textID="130217"/>
+		    <staticText property='{"x":38, "y":110, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}' textID="130218"/>
+		    
+			<legionName property='{"x":109, "y":77, "type":"input", "maxChars":8,
+			 "width":197, "height":20}'/>
+			<message property='{"x":109, "y":108, "type":"input", "maxChars":50,
+			 "width":197, "height":58, "multiline":true, "wordWrap":true}'/>
+		    <displayObject name="closeBtn" view="gameUI.btn.CloseBtn" property='{"x":354, "y":29}' />
+	    	<button name="confirm" style="button4" labelID="130219" property='{"x":105, "y":180}'/>
+	    	<button name="cancel" style="button5" labelID="130220" property='{"x":205, "y":180}'/>
+		</create>
+    </join>
+    <!-- 军团-成员 -->
+	<member>
+	    <displayObject view="legion.member"/>
+		<staticText property='{"x":28, "y":54, "size":14, "color":"0xE6E0D4", "stroke":"0x29241b", "bold":true, "mouseEnabled":false}' textID="130301"/>
+	    <list property='{"x":35, "y":82}'>
+		    <MemberRenderer>
+				<button name="bg1" style="button9" property='{"width":108}'/>
+				<button name="bg2" style="button18" property='{"visible":false, "width":108}'/>
+				<text name="nameText" property='{"color":"0xE6E0D4", "autoSize":"none", "y":3,
+				"width":108, "height":16, "align":"center", "stroke":"0x29241b"}'/>
+		    </MemberRenderer>
+	    </list>
+		<page property='{"x":147, "y":389}'/>
+		
+		<memberSelected>
+		    <staticText property='{"x":398, "y":54, "size":14, "color":"0xE6E0D4", "stroke":"0x29241b", "bold":true, "mouseEnabled":false}' textID="130302"/>
+			
+			<playerAreaInfo property='{"x":401, "y":79}'/>
+			
+			<staticText property='{"x":403, "y":195, "color":"0x9D7D4C", "stroke":"0x29241b", "mouseEnabled":false}' textID="130307"/>
+			<staticText property='{"x":403, "y":215, "color":"0x9D7D4C", "stroke":"0x29241b", "mouseEnabled":false}' textID="130308"/>
+			<staticText property='{"x":403, "y":235, "color":"0x9D7D4C", "stroke":"0x29241b", "mouseEnabled":false}' textID="130309"/>
+			<staticText property='{"x":403, "y":255, "color":"0x9D7D4C", "stroke":"0x29241b", "mouseEnabled":false}' textID="130310"/>
+			
+			<text name="contribution" property='{"x":463, "y":195, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="officerLegion" property='{"x":463, "y":215, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="contributionOrder" property='{"x":463, "y":235, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="message" property='{"x":463, "y":255, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false,
+			"multiline":true, "width":164}'/>
+			<text name="offLineStatus" property='{"x":360, "y":56, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false, "autoSize":"right"}'/>
+			
+	    	<button name="promotion" style="button4" labelID="130311" property='{"x":397, "y":300, "visible":false, "width":134}'/>
+	    	<button name="changeMessage" style="button4" labelID="130312" property='{"x":550, "y":300, "visible":false}'/>
+	    	<button name="kickOut" style="button5" labelID="130313" property='{"x":550, "y":300, "visible":false}'/>
+	    	<button name="transfer" style="button4" labelID="130314" property='{"x":397, "y":300, "visible":false}'/>
+	    	<button name="legionMail" style="button1" labelID="130315" property='{"x":300, "y":381, "visible":false}'/>
+			
+			<displayObject name="arrow" view="legion.arrow" property='{"y":338}'/>
+			<introText property='{"x":402, "y":361, "color":"0xE6E0D4", "stroke":"0x29241b"}' iconStyleList = '[
+				{ "visible":false },
+				{ "x":453, "y":338, "visible":true },
+				{ "x":578, "y":338, "visible":true },
+				{ "x":578, "y":338, "visible":true },
+				{ "x":425, "y":338, "visible":true },
+				{ "x":425, "y":338, "visible":true }
+			]'/>
+		</memberSelected>
+		<playerAreaInfo>
+			<staticText property='{"x":101, "y":23, "color":"0x9D7D4C", "stroke":"0x29241b", "mouseEnabled":false}' textID="130303"/>
+			<staticText property='{"x":101, "y":43, "color":"0x9D7D4C", "stroke":"0x29241b", "mouseEnabled":false}' textID="130304"/>
+			<staticText property='{"x":101, "y":63, "color":"0x9D7D4C", "stroke":"0x29241b", "mouseEnabled":false}' textID="130305"/>
+			<staticText property='{"x":101, "y":83, "color":"0x9D7D4C", "stroke":"0x29241b", "mouseEnabled":false}' textID="130306"/>
+			
+		    <displayObject name="cityPic" view="GameUI.pic.BigCity" property='{"x":13, "y":8, "visible":false}' />
+			<text name="playerName" property='{"x":101, "y":3, "color":"0xE6E0D4", "stroke":"0x29241b", "width":115, "bold":true}'/>
+			<text name="level" property='{"x":139, "y":23, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="officerName" property='{"x":139, "y":43, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="legion" property='{"x":139, "y":63, "color":"0xE6E0D4", "stroke":"0x29241b", "width":88}'/>
+			<text name="area" property='{"x":139, "y":83, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+		</playerAreaInfo>
+	</member>
+    <!-- 军团-科技 -->
+	<legionScience>
+	    <displayObject view="legion.legionScience"/>
+		<staticText property='{"x":30, "y":52, "size":14, "color":"0xE6E0D4", "stroke":"0x29241b", "bold":true}' textID="060501"/>
+		<list property='{"x":19, "y":75}'>
+		    <picRenderer>
+		        <pic name="sPic" property='{"x":0, "y":0}' frame="gameUI.picCover" frameProp='{"mouseEnabled":false}' picProp='{"x":3, "y":1}' />
+		    </picRenderer>
+			
+		</list>
+		<page property='{"x":147, "y":389}'/>
+		<legionScienceSelected>
+			<staticText property='{"x":418, "y":54, "size":14, "color":"0xE6E0D4", "stroke":"0x29241b", "bold":true}' textID="130402"/>
+			<staticText property='{"x":502, "y":103, "size":12, "color":"0x9D7D4C", "stroke":"0x29241b"}' textID="130403"/>
+			<staticText property='{"x":502, "y":123, "size":12, "color":"0x9D7D4C", "stroke":"0x29241b"}' textID="130404"/>
+			<staticText property='{"x":502, "y":143, "size":12, "color":"0x9D7D4C", "stroke":"0x29241b"}' textID="130405"/>
+			
+			<text name="scienceName" property='{"x":502, "y":81, "size":13, "color":"0xE6E0D4", "bold":true, "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="scienceLv" property='{"x":537, "y":103, "size":12, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="requireLv" property='{"x":537, "y":123, "size":12, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="progress" property='{"x":537, "y":143, "size":12, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			
+			<text name="intro" property='{"x":426, "y":200, "multiline":true, "width":195, "size":12, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			
+		    <pic name="sPic" property='{"x":426, "y":84}' frame="gameUI.picCover" frameProp='{"mouseEnabled":false}' picProp='{"x":3, "y":1}' />
+			
+			<button name="giveMoney" style="button4" labelID="130406" property='{"x":436, "y":265, "visible":false}'/>
+			<button name="setDefault" style="button1" labelID="130407" property='{"x":532, "y":265, "visible":false}'/>
+			
+			<displayObject name="arrow" view="legion.arrow" property='{"y":301}'/>
+			<introText property='{"x":426, "y":323, "color":"0xE6E0D4", "stroke":"0x29241b"}' iconStyleList = '[
+				{ "visible":false },
+				{ "x":464, "y":301, "visible":true },
+				{ "x":560, "y":301, "visible":true }
+			]'/>
+		</legionScienceSelected>
+		
+		<giveMoney>
+	        <displayObject view="legion.giveMoney"/>
+		    <displayObject name="closeBtn" view="gameUI.btn.CloseBtn" property='{"x":354, "y":29}' />
+		    <staticText property='{"x":31, "y":43, "size":14, "color":"0xE6E0D4", "stroke":"0x29241b", "bold":true, "mouseEnabled":false}' textID="130415"/>
+			
+			<text name="inputText" property='{"autoSize":"none", "selectable":true, "type":"input", "width":140, "height":18, "restrict":"0-9", "x":32, "y":114, "color":"0xE7E0D8", "stroke":"0x292317"}' />
+			<text name="todayNum" property='{"x":31, "y":157, "color":"0xE7E0D8", "stroke":"0x292317"}' />
+			
+			<button name="addBtn" style="button10" labelID="130417" property='{"x":180, "y":102}'/>
+			<button name="lessBtn" style="button10" labelID="130418" property='{"x":225, "y":102}'/>
+			<button name="maxBtn" style="button3" labelID="130419" property='{"x":270, "y":102}'/>
+			<button name="submitBtn" style="button4" labelID="130420" property='{"x":105, "y":180}'/>
+			<button name="cancelBtn" style="button5" labelID="130421" property='{"x":205, "y":180}'/>
+		</giveMoney>
+	</legionScience>
+	
+    <!-- 军团-情况 -->
+	<intro>
+	    <displayObject view="legion.intro"/>
+	
+		<LegionRenderer property='{"x":57, "y":79}'/>
+		
+		<staticText property='{"x":144, "y":79, "size":12, "color":"0x9D7D4C", "stroke":"0x29241b"}' textID="130501"/>
+		<staticText property='{"x":144, "y":99, "size":12, "color":"0x9D7D4C", "stroke":"0x29241b"}' textID="130502"/>
+		<staticText property='{"x":144, "y":119, "size":12, "color":"0x9D7D4C", "stroke":"0x29241b"}' textID="130503"/>
+		<staticText property='{"x":144, "y":139, "size":12, "color":"0x9D7D4C", "stroke":"0x29241b"}' textID="130504"/>
+		<staticText property='{"x":144, "y":159, "size":12, "color":"0x9D7D4C", "stroke":"0x29241b"}' textID="130505"/>
+		
+		<text name="creater" property='{"x":203, "y":79, "color":"0xE7E0D8", "stroke":"0x292317"}' />
+		<text name="date" property='{"x":203, "y":99, "color":"0xE7E0D8", "stroke":"0x292317"}' />
+		<text name="country" property='{"x":203, "y":119, "color":"0xE7E0D8", "stroke":"0x292317"}' />
+		<text name="legionLv" property='{"x":203, "y":139, "color":"0xE7E0D8", "stroke":"0x292317"}' />
+		<text name="badageLv" property='{"x":203, "y":159, "color":"0xE7E0D8", "stroke":"0x292317"}' />
+		
+		<button name="editBadage" style="button4" labelID="130506" property='{"x":371, "y":77, "visible":false}'/>
+		<button name="upgradeBadage" style="button6" labelID="130507" property='{"x":475, "y":77, "visible":false}'/>
+		
+		<displayObject name="arrow" view="legion.arrow" property='{"y":113}'/>
+		<introText property='{"x":363, "y":135, "color":"0xE6E0D4", "stroke":"0x29241b", "textType":"htmlText"}' iconStyleList = '[
+			{ "visible":false },
+			{ "x":399, "y":113, "visible":true },
+			{ "x":502, "y":113, "visible":true }
+		]'/>
+		
+		<staticText property='{"x":57, "y":208, "size":14, "color":"0xE6E0D4", "stroke":"0x29241b", "bold":true, "mouseEnabled":false}' textID="130510"/>
+		<staticText property='{"x":61, "y":241, "size":12, "color":"0x9D7D4C", "stroke":"0x29241b"}' textID="130511"/>
+		<staticText property='{"x":61, "y":261, "size":12, "color":"0x9D7D4C", "stroke":"0x29241b"}' textID="130512"/>
+		<staticText property='{"x":61, "y":281, "size":12, "color":"0x9D7D4C", "stroke":"0x29241b"}' textID="130513"/>
+		<staticText property='{"x":61, "y":301, "size":12, "color":"0x9D7D4C", "stroke":"0x29241b"}' textID="130514"/>
+		<staticText property='{"x":61, "y":321, "size":12, "color":"0x9D7D4C", "stroke":"0x29241b"}' textID="130515"/>
+		
+		<text name="jtz" property='{"x":110, "y":241, "color":"0xE7E0D8", "stroke":"0x292317", "width":472}' />
+		<text name="dj" property='{"x":110, "y":261, "color":"0xE7E0D8", "stroke":"0x292317", "width":472}' />
+		<text name="yz" property='{"x":110, "y":281, "color":"0xE7E0D8", "stroke":"0x292317", "width":472}' />
+		<text name="qfz" property='{"x":110, "y":301, "color":"0xE7E0D8", "stroke":"0x292317", "width":472}' />
+		<text name="bfz" property='{"x":110, "y":321, "color":"0xE7E0D8", "stroke":"0x292317", "multiline":true, "width":472}' />
+	</intro>
+	
+    <!-- 军团-申请 -->
+	<apply>
+	    <displayObject view="legion.apply"/>
+		<staticText property='{"x":28, "y":54, "size":14, "color":"0xE6E0D4", "stroke":"0x29241b", "bold":true, "mouseEnabled":false}' textID="130601"/>
+	    <list property='{"x":35, "y":82}'>
+		    <MemberRenderer>
+				<button name="bg" style="button9" property='{"width":108}'/>
+				<text name="nameText" property='{"color":"0xE6E0D4", "autoSize":"none", "y":3, "width":108, "height":16, "align":"center", "stroke":"0x29241b", "mouseEnabled":false}'/>
+		    </MemberRenderer>
+	    </list>
+		<page property='{"x":147, "y":389}'/>
+		
+		<playerSelected>
+		    <staticText property='{"x":398, "y":54, "size":14, "color":"0xE6E0D4", "stroke":"0x29241b", "bold":true, "mouseEnabled":false}' textID="130602"/>
+			<staticText property='{"x":503, "y":104, "color":"0x9D7D4C", "stroke":"0x29241b", "mouseEnabled":false}' textID="130603"/>
+			<staticText property='{"x":503, "y":124, "color":"0x9D7D4C", "stroke":"0x29241b", "mouseEnabled":false}' textID="130604"/>
+			<staticText property='{"x":503, "y":144, "color":"0x9D7D4C", "stroke":"0x29241b", "mouseEnabled":false}' textID="130606"/>
+			
+			<staticText property='{"x":406, "y":255, "color":"0x9D7D4C", "stroke":"0x29241b", "mouseEnabled":false}' textID="130609"/>
+			
+		    <displayObject name="cityPic" view="GameUI.pic.BigCity" property='{"x":414, "y":88, "visible":false}' />
+			<text name="playerName" property='{"x":503, "y":84, "color":"0xE6E0D4", "stroke":"0x29241b", "width":115, "bold":true}'/>
+			<text name="level" property='{"x":539, "y":104, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="officerName" property='{"x":539, "y":124, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="area" property='{"x":539, "y":144, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			
+			<text name="message" property='{"x":406, "y":196, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false, "multiline":true, "width":223}'/>
+			<text name="contribution" property='{"x":466, "y":255, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			
+	    	<button name="pass" style="button4" labelID="130607" property='{"x":414, "y":348, "visible":false}'/>
+	    	<button name="refuse" style="button1" labelID="130608" property='{"x":531, "y":348, "visible":false}'/>
+		</playerSelected>
+	</apply>
+</config>

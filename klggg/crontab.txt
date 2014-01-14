@@ -1,0 +1,5 @@
+10 * * * * mysql   -hlocalhost -uggg -p'sql@#454wDffd' -Dgggxin </home/ggg/del_dup_movice.sql 
+30 * * * * php /home/ggg/www/ynjob/klggg/spider2db.php
+50 * * * * php /home/ggg/www/ynjob/klggg/58spider2db.php
+10 * * * * curl -i  http://www.ynjob.net/klggg/ynjob_resume_client.php
+40 * * * * /home/ggg/www/ynjob/klggg/spider_video.sh

@@ -1,0 +1,344 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- 武将系统界面配置文件 -->
+<config>
+
+    <GeneralInfo view="general.publicInfo" property='{"y":100}'>
+		<closeBtn view="gameUI.btn.CloseBtn" property='{"x":225, "y":5}'/>
+		<pic name="generalPic" property='{"x":18, "y":47}' frame="gameUI.picCover" frameProp='{"mouseEnabled":false}' picProp='{"x":3, "y":1}'/>
+		<staticText property='{"x":12, "y":10, "size":14,  "bold":true, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}' textID="060107"/>
+		<staticText property='{"x":109, "y":48, "size":12, "color":"0x9B804D", "stroke":"0x29241b", "mouseEnabled":false}' textID="060201"/>
+		<staticText property='{"x":109, "y":68, "size":12, "color":"0x9B804D", "stroke":"0x29241b", "mouseEnabled":false}' textID="060202"/>
+		<staticText property='{"x":109, "y":128, "size":12, "color":"0x9B804D", "stroke":"0x29241b", "mouseEnabled":false}' textID="060203"/>
+		<staticText property='{"x":109, "y":148, "size":12, "color":"0x9B804D", "stroke":"0x29241b", "mouseEnabled":false}' textID="060204"/>
+		<staticText property='{"x":109, "y":168, "size":12, "color":"0x9B804D", "stroke":"0x29241b", "mouseEnabled":false}' textID="060205"/>
+		
+		<text name="generalName" property='{"x":55, "y":137, "size":14, "color":"0xE6E0D4", "bold":true, "autoSize":"center", "stroke":"0x29241b", "mouseEnabled":false}'/>
+		<text name="generalLevel" property='{"x":55, "y":161, "size":12, "color":"0xFFD88F", "autoSize":"center", "stroke":"0x29241b", "mouseEnabled":false}'/>
+		<text name="solidernum" property='{"x":145, "y":48, "size":12, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+		<text name="tongProp" property='{"x":145, "y":68, "size":12, "color":"0x8AC253", "stroke":"0x29241b"}'/>
+		<text name="yongProp" property='{"x":145, "y":88, "size":12, "color":"0xFF6565", "stroke":"0x29241b"}'/>
+		<text name="zhiProp" property='{"x":145, "y":108, "size":12, "color":"0x5888B1", "stroke":"0x29241b"}'/>
+		<text name="troopname" property='{"x":145, "y":128, "size":12, "color":"0xE6E0D4", "stroke":"0x29241b"}'/>
+		<text name="trooplevel" property='{"x":145, "y":148, "size":12, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+		<text name="skillName" property='{"x":145, "y":168, "size":12, "color":"0xFF6565", "stroke":"0x29241b"}'/>
+		
+		<text name="intro" property='{"x":11, "y":203, "size":12, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false, "multiline":true, "width":217}'/>
+    </GeneralInfo>
+    <!-- 训练界面 -->
+	<training>
+		<displayObject view="general.training"/>
+	    <generalList view="general.equipGeneralList" property='{"x":18, "y":45}'>
+			<staticText property='{"x":12, "y":10, "size":14, "color":"0xE6E0D4", "stroke":"0x29241b", "bold":true}' textID="060302"/>
+			<nameList property='{"x":4, "y":35}'>
+			    <nameRenderer>
+				    <button name="bg" style="button9"/>
+					<text name="nameText" property='{"color":"0xE6E0D4", "autoSize":"none", "y":3, "width":117, "height":16, "align":"center", "stroke":"0x29241b", "mouseEnabled":false}'/>
+		            <text name="selectedArrow" property='{"x":100, "y":5, "color":"0xE6E0D4", "stroke":"0x29241b"}'/>
+				</nameRenderer>
+			</nameList>
+			<page property='{"x":9, "y":345}'/>
+	    </generalList>
+		
+		<staticText property='{"x":162, "y":55, "size":14, "color":"0xE6E0D4", "stroke":"0x29241b", "bold":true}' textID="060303"/>
+		<pic name="headPic" property='{"x":178, "y":93}' frame="gameUI.picCover" frameProp='{"mouseEnabled":false}' picProp='{"x":3, "y":1}' />
+		<displayObject name="shadow" view="general.detailInfo" property='{"x":180, "y":148, "mouseEnabled":false}'/>
+		<text name="detailInfo" property='{"x":184, "y":150, "size":12, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+		<picCover view='general.picCover' property='{"x":176, "y":93}'/>
+		<text name="generalNameAndLv" property='{"x":213, "y":172, "size":14, "color":"0xE6E0D4", "autoSize":"center", "stroke":"0x29241b", "mouseEnabled":false}'/>
+		<staticText property='{"x":155, "y":233, "width":120, "color":"0xE6E0D4", "stroke":"0x29241b", "align":"center", "multiline":true}' textID="060307"/>
+		<text name="trainingSpace" property='{"x":215, "y":312, "size":14, "color":"0xffcc66", "autoSize":"center", "stroke":"0x29241b", "mouseEnabled":false}'/>
+		<button name="buySpace" style="button6" labelID="060308" property='{"x":174, "y":340, "visible":false}'/>
+		<text name="spaceCost" property='{"x":215, "y":382, "size":14, "color":"0xffcc66", "autoSize":"center", "stroke":"0x29241b", "mouseEnabled":false}'/>
+		<trainModel>
+		    <button name="changeModel" style="button4" labelID="060315" property='{"x":250, "y":62}'/>
+		    <button name="endTraining" style="button5" labelID="060313" property='{"x":250, "y":142}'/>
+		    <button name="speedUp" style="button4" labelID="060316" property='{"x":250, "y":182}'/>
+		    <button name="speedUpOrder" style="button4" labelID="060317" property='{"x":250, "y":222}'/>
+		    <button name="speedUpGold" style="button4" labelID="060318" property='{"x":250, "y":284}'/>
+			
+		    <staticText property='{"x":19, "y":62, "size":14, "color":"0xE6E0D4", "stroke":"0x29241b", "bold":true}' textID="060320"/>
+		    <staticText property='{"x":19, "y":142, "size":12, "color":"0xE6E0D4", "stroke":"0x29241b", "bold":true}' textID="060321"/>
+		    <staticText property='{"x":19, "y":158, "size":12, "color":"0xE6E0D4", "stroke":"0x29241b", "bold":true}' textID="060322"/>
+		    <staticText property='{"x":19, "y":189, "size":12, "color":"0xE6E0D4", "stroke":"0x29241b", "bold":true}' textID="060323"/>
+		    <staticText property='{"x":19, "y":230, "size":12, "color":"0xE6E0D4", "stroke":"0x29241b", "bold":true}' textID="060324"/>
+			
+		    <text name="speedGoldTitle" property='{"x":19, "y":294, "size":12, "color":"0xE6E0D4", "stroke":"0x29241b", "bold":true, "mouseEnabled":false}'/>
+		    <text name="currentModel" property='{"x":19, "y":89, "size":14, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+		    <text name="trainTime" property='{"x":85, "y":142, "size":12, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+		    <text name="currentExp" property='{"x":85, "y":158, "size":12, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+		    <text name="speedUpByFeat" property='{"x":85, "y":189, "size":12, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+		    <text name="speedUpByOrder" property='{"x":85, "y":230, "size":12, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+		    <text name="speedUpByGold" property='{"x":85, "y":294, "size":12, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			
+	        <displayObject name="clearCD" view="gameUI.btn.ClearCD" property='{"x":120, "y":191}'/>
+			
+			<trainingSelect view='general.trainingSelect' x="181" y="100">
+		        <staticText property='{"x":13, "y":10, "size":14, "color":"0xE6E0D4", "stroke":"0x29241b", "bold":true, "mouseEnabled":false}' textID="060332"/>
+		        <staticText property='{"x":13, "y":49, "size":14, "color":"0xE6E0D4", "stroke":"0x29241b", "bold":true, "mouseEnabled":false}' textID="060333"/>
+		        <displayObject name="closeBtn" view="gameUI.btn.CloseBtn" property='{"x":225, "y":7}' />
+		        <text name="currentModel" property='{"x":117, "y":49, "size":14, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			    <radioGroup style="radioButton2" property='{"x":60}' ry="80"/>
+		        <button name="confirm" style="button4" labelID="060334" property='{"x":85, "y":282}'/>
+			</trainingSelect>
+		</trainModel>
+		
+		<trainingStatus view="general.trainingStatus" property='{"x":288, "y":45}'>
+		    <text name="generalStatus" property='{"x":11, "y":10, "size":14, "color":"0xE6E0D4", "stroke":"0x29241b", "bold":true}'/>
+	    	<staticText property='{"x":112, "y":80, "size":14, "color":"0xE6E0D4", "stroke":"0x29241b", "bold":true}' textID="060311"/>
+			<radioGroup style="radioButton2" property='{"x":112}' ry="110"/>
+		    <button name="trainBegin" style="button4" labelID="060312" property='{"x":134, "y":295}'/>
+			
+		</trainingStatus>
+	</training>
+	
+    <!-- 装备界面 -->
+	<equip>
+	    <generalList view="general.equipGeneralList" property='{"x":18, "y":45}'>
+			<staticText property='{"x":12, "y":10, "size":14, "color":"0xE6E0D4", "stroke":"0x29241b", "bold":true}' textID="060302"/>
+			<nameList property='{"x":4, "y":35}'>
+			    <nameRenderer>
+				    <button name="bg" style="button9"/>
+					<text name="nameText" property='{"color":"0xE6E0D4", "autoSize":"none", "y":3, "width":117, "height":16, "align":"center", "stroke":"0x29241b", "mouseEnabled":false}'/>
+		            <text name="selectedArrow" property='{"x":100, "y":5, "color":"0xE6E0D4", "stroke":"0x29241b"}'/>
+				</nameRenderer>
+			</nameList>
+			<page property='{"x":9, "y":345}'/>
+	    </generalList>
+		
+		<equipList view="general.equipView" property='{"x":150, "y":45}'>
+		    <pic name="headPic" property='{"x":10, "y":10}' frame="gameUI.picCover" frameProp='{"mouseEnabled":false}' picProp='{"x":3, "y":1}' />
+		    <text name="NameAndLevel" property='{"x":14, "y":88, "size":14, "color":"0xE6E0D4", "stroke":"0x29241b"}'/>
+		    <pic name="weaponPic" property='{"x":159, "y":37}' frame="gameUI.picCover" frameProp='{"mouseEnabled":false}' picProp='{"x":3, "y":1}' effect="equipGrid"/>
+		    <pic name="bookPic" property='{"x":274, "y":37}' frame="gameUI.picCover" frameProp='{"mouseEnabled":false}' picProp='{"x":3, "y":1}' effect="equipGrid"/>
+		    <pic name="horsePic" property='{"x":99, "y":142}' frame="gameUI.picCover" frameProp='{"mouseEnabled":false}' picProp='{"x":3, "y":1}' effect="equipGrid"/>
+		    <pic name="armorPic" property='{"x":214, "y":142}' frame="gameUI.picCover" frameProp='{"mouseEnabled":false}' picProp='{"x":3, "y":1}' effect="equipGrid"/>
+		    <pic name="mantlePic" property='{"x":329, "y":142}' frame="gameUI.picCover" frameProp='{"mouseEnabled":false}' picProp='{"x":3, "y":1}' effect="equipGrid"/>
+		    <pic name="armyMarkPic" property='{"x":214, "y":246}' frame="gameUI.picCover" frameProp='{"mouseEnabled":false}' picProp='{"x":3, "y":1}' effect="equipGrid"/>
+			<changeEquip property='{"x":413, "y":-14}'>
+	            <displayObject view="general.equipChange"/>
+		    	<staticText property='{"x":12, "y":10, "size":14, "color":"0xE6E0D4", "stroke":"0x29241b", "bold":true, "mouseEnabled":false}' textID="060402"/>
+		        <displayObject name="closeBtn" view="gameUI.btn.CloseBtn" property='{"x":225, "y":7}' />
+				<currentEquip property='{"x":5, "y":30}'/>
+				<compareEquip property='{"x":5, "y":142}'/>
+			    <avaliableList property='{"x":8, "y":251}'>
+				    <equipNameRender>
+				        <button name="bg" style="button9"/>
+		                <text name="equipName" property='{"x":11, "y":2, "color":"0xE6E0D4", "stroke":"0x29241b", "width":105}'/>
+					</equipNameRender>
+				</avaliableList>
+			    <page property='{"x":72, "y":318}'/>
+				<button name="putOn" style="button13" labelID="060403" property='{"x":5, "y":353}'/>
+				<button name="takeOff" style="button13" labelID="060404" property='{"x":197, "y":353}'/>
+				<displayObject name="arrow" view="general.arrow" property='{"y":365}'/>
+				<introText property='{"x":80, "y":358, "color":"0xE6E0D4", "stroke":"0x29241b"}' iconStyleList = '[
+					{ "visible":false },
+					{ "x":57, "y":365, "visible":true, "scaleX":1 },
+					{ "x":195, "y":365, "visible":true, "scaleX":-1 }
+				]'/>
+				
+				<equipInfo>
+		            <pic name="equipPic" property='{"x":7, "y":15}' frame="gameUI.picCover" frameProp='{"mouseEnabled":false}' picProp='{"x":3, "y":1}' />
+		        	<staticText property='{"x":86, "y":30, "color":"0x9D7D4C", "stroke":"0x29241b"}' textID="060422"/>
+		        	<staticText property='{"x":86, "y":48, "color":"0x9D7D4C", "stroke":"0x29241b"}' textID="060405"/>
+		        	<staticText property='{"x":86, "y":66, "color":"0x9D7D4C", "stroke":"0x29241b"}' textID="060406"/>
+		        	<staticText property='{"x":86, "y":84, "color":"0x9D7D4C", "stroke":"0x29241b"}' textID="060407"/>
+					
+		            <text name="equipName" property='{"x":86, "y":9, "color":"0xE6E0D4", "stroke":"0x29241b"}'/>
+		            <text name="limitLv" property='{"x":122, "y":30, "color":"0xE6E0D4", "stroke":"0x29241b"}'/>
+		            <text name="equipLevel" property='{"x":122, "y":48, "color":"0xE6E0D4", "stroke":"0x29241b"}'/>
+		            <text name="major" property='{"x":122, "y":66, "color":"0xFF6565", "stroke":"0x29241b"}'/>
+		            <text name="assistant" property='{"x":122, "y":84, "color":"0xE6E0D4", "stroke":"0x29241b"}'/>
+				</equipInfo>
+			</changeEquip>
+		    <staticText property='{"x":23, "y":313, "color":"0xE6E0D4", "stroke":"0x29241b"}' textID="060418"/>
+			<button name="allTakeOff" style="button13" labelID="060417" property='{"x":80, "y":301}'/>
+		</equipList>
+	</equip>
+	
+    <!-- 招募界面 -->
+	<recruit view="general.recruit">
+		<staticText property='{"x":50, "y":65, "size":14, "color":"0xE6E0D4", "stroke":"0x29241b", "bold":true}' textID="060215"/>
+		<numText property='{"x":165, "y":65, "size":14, "color":"0xffcc66", "bold":true, "stroke":"0x29241b", "mouseEnabled":false}'/>
+		<staticIntro property='{"x":270, "y":67, "size":12, "color":"0xE6E0D4", "stroke":"0x29241b"}' textID="060216"/>
+	    <nameList property='{"x":30, "y":100}'>
+			    <nameRenderer>
+				    <button name="bg1" style="button9"/>
+				    <button name="bg2" style="button18" property='{"visible":false}'/>
+					<text name="nameText" property='{"color":"0xE6E0D4", "autoSize":"none", "y":3, "width":117, "height":16, "align":"center", "stroke":"0x29241b", "mouseEnabled":false}'/>
+		            <text name="selectedArrow" property='{"x":100, "y":5, "color":"0xE6E0D4", "stroke":"0x29241b"}'/>
+				</nameRenderer>
+		</nameList>
+		<page property='{"x":273, "y":380}'/>
+		<generalInfo view="general.info" property='{"y":47}' x1="505" x2="16">
+	        <closeBtn view="gameUI.btn.CloseBtn" property='{"x":225, "y":5}'/>
+		    <pic name="generalPic" property='{"x":18, "y":47}' frame="gameUI.picCover" frameProp='{"mouseEnabled":false}' picProp='{"x":3, "y":1}'/>
+			<staticText property='{"x":12, "y":10, "size":14,  "bold":true, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}' textID="060208"/>
+			<staticText property='{"x":109, "y":48, "size":12, "color":"0x9B804D", "stroke":"0x29241b", "mouseEnabled":false}' textID="060201"/>
+			<staticText property='{"x":109, "y":68, "size":12, "color":"0x9B804D", "stroke":"0x29241b", "mouseEnabled":false}' textID="060202"/>
+			<staticText property='{"x":109, "y":128, "size":12, "color":"0x9B804D", "stroke":"0x29241b", "mouseEnabled":false}' textID="060203"/>
+			<staticText property='{"x":109, "y":148, "size":12, "color":"0x9B804D", "stroke":"0x29241b", "mouseEnabled":false}' textID="060204"/>
+			<staticText property='{"x":109, "y":168, "size":12, "color":"0x9B804D", "stroke":"0x29241b", "mouseEnabled":false}' textID="060205"/>
+			<staticText property='{"x":29, "y":249, "size":13, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}' textID="060206"/>
+			
+			<text name="generalName" property='{"x":55, "y":137, "size":14, "color":"0xE6E0D4", "bold":true, "autoSize":"center", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="generalLevel" property='{"x":55, "y":161, "size":12, "color":"0xFFD88F", "autoSize":"center", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="solidernum" property='{"x":145, "y":48, "size":12, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="tongProp" property='{"x":145, "y":68, "size":12, "color":"0x8AC253", "stroke":"0x29241b"}'/>
+			<text name="yongProp" property='{"x":145, "y":88, "size":12, "color":"0xFF6565", "stroke":"0x29241b"}'/>
+			<text name="zhiProp" property='{"x":145, "y":108, "size":12, "color":"0x5888B1", "stroke":"0x29241b"}'/>
+			<text name="troopname" property='{"x":145, "y":128, "size":12, "color":"0xE6E0D4", "stroke":"0x29241b"}'/>
+			<text name="trooplevel" property='{"x":145, "y":148, "size":12, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="skillName" property='{"x":145, "y":168, "size":12, "color":"0xFF6565", "stroke":"0x29241b"}'/>
+			<text name="price" property='{"x":57, "y":266, "size":13, "color":"0xE6E0D4", "autoSize":"center", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			
+			<recruitButton style="button4" property='{"x":15, "y":206}'/>
+			<text name="intro" property='{"x":117, "y":205, "size":12, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false, "multiline":true, "width":101}'/>
+		</generalInfo>
+	</recruit>
+	
+    <!-- 布阵界面 -->
+	<formation>
+	    <generalList view="general.equipGeneralList" property='{"x":18, "y":45}'>
+			<staticText property='{"x":12, "y":10, "size":14, "color":"0xE6E0D4", "stroke":"0x29241b", "bold":true}' textID="060302"/>
+			<nameList property='{"x":4, "y":35}'>
+				<nameRenderer>
+				    <button name="bg" style="button9"/>
+					<text name="nameText" property='{"color":"0xE6E0D4", "autoSize":"none", "y":3, "width":117, "height":16, "align":"center", "stroke":"0x29241b", "mouseEnabled":false}'/>
+		            <text name="selectedArrow" property='{"x":100, "y":5, "color":"0xE6E0D4", "stroke":"0x29241b"}'/>
+				</nameRenderer>
+			</nameList>
+			<page property='{"x":9, "y":345}'/>
+	    </generalList>
+		<generalSelected property='{"x":150, "y":45}'>
+	        <displayObject view="general.generalSelected"/>
+			<staticText property='{"x":12, "y":10, "size":14, "color":"0xE6E0D4", "stroke":"0x29241b", "bold":true}' textID="060601"/>
+		    <pic name="generalPic" property='{"x":29, "y":45}' frame="gameUI.picCover" frameProp='{"mouseEnabled":false}' picProp='{"x":3, "y":1}'/>
+	        <displayObject name="shadow" view="general.detailInfo" property='{"x":31, "y":100, "mouseEnabled":false}'/>
+			<staticText property='{"x":12, "y":150, "size":14, "color":"0xE6E0D4", "stroke":"0x29241b", "bold":true}' textID="060604"/>
+			<text name="detailInfo" property='{"x":35, "y":102, "size":12, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="generalName" property='{"x":115, "y":48, "size":14, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false, "bold":true}'/>
+			<text name="generalLv" property='{"x":115, "y":67, "size":12, "color":"0xffcc66", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="buttonIntro" property='{"x":240, "y":43, "size":12, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false, "multiline":true, "width":231}'/>
+		    <button name="comeIn" style="button4" labelID="060605" property='{"x":251, "y":95, "detail":"060609"}'/>
+		    <button name="goOut" style="button4" labelID="060612" property='{"x":251, "y":95, "detail":"060613"}'/>
+		    <button name="goAway" style="button5" labelID="060606" property='{"x":366, "y":95, "detail":"060610"}'/>
+	        <displayObject name="arrow" view="general.arrow" property='{"visible":false, "y":82}'/>
+			
+			<doWithFormation>
+			    <list property='{"x":62, "y":191}'>
+				    <SmallFormation>
+					    <displayObject view="general.whiteBG"/>
+					    <displayObject view="general.smallFormation" property='{"x":-2}'/>
+					</SmallFormation>
+			    </list>
+				
+				<bigList property='{"x":127, "y":188}'>
+				    <FormationElement>
+					    <gameLoader name="generalPic" width="48" height="48" property='{"x":1, "y":1}'/>
+						
+						<bigTrueGrid view="general.bigTrueGrid"/>
+						<bigFalseGrid view="general.bigFalseGrid"/>
+				    </FormationElement>
+				</bigList>
+				
+				<button name="setDefault" style="button4" labelID="060617" property='{"x":350, "y":294}'/>
+				
+			<text name="formationName" property='{"x":308, "y":190, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false, "bold":true}'/>
+			<text name="formationLv" property='{"x":365, "y":190, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="formationIntro" property='{"x":308, "y":210, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false, "multiline":true, "width":153}'/>
+			</doWithFormation>
+			
+			
+			
+			<ChangeFormation x="444" y="315" modelColor="0x151515" alpha="0.7">
+			    <staticText property='{"x":185, "y":4, "color":"0xE6E0D4", "stroke":"0x29241b"}' textID="060616"/>
+				<button name="confirm" style="button4" labelID="060614" property='{"x":174, "y":114}'/>
+				<button name="cancel" style="button5" labelID="060615" property='{"x":274, "y":114}'/>
+			</ChangeFormation>
+			<trueGrid view="general.trueGrid"/>
+			<falseGrid view="general.falseGrid"/>
+			
+		</generalSelected>
+	</formation>
+	
+    <!-- 科技界面 -->
+	<science>
+	    <displayObject view="general.science" property='{"x":18, "y":45}'/>
+		<staticText property='{"x":30, "y":52, "size":14, "color":"0xE6E0D4", "stroke":"0x29241b", "bold":true}' textID="060501"/>
+		<list property='{"x":19, "y":75}'>
+		    <picRenderer>
+		        <pic name="sPic" property='{"x":0, "y":0}' frame="gameUI.picCover" frameProp='{"mouseEnabled":false}' picProp='{"x":3, "y":1}' />
+		    </picRenderer>
+			
+		</list>
+		<page property='{"x":155, "y":388}'/>
+		<scienceSelected  property='{"x":408, "y":45}'>
+	    	<staticText property='{"x":12, "y":8, "size":14, "color":"0xE6E0D4", "stroke":"0x29241b", "bold":true}' textID="060502"/>
+	    	<staticText property='{"x":94, "y":61, "size":12, "color":"0xE6E0D4", "stroke":"0x29241b"}' textID="060503"/>
+	    	<staticText property='{"x":94, "y":81, "size":12, "color":"0xE6E0D4", "stroke":"0x29241b"}' textID="060504"/>
+	    	<staticText property='{"x":94, "y":101, "size":12, "color":"0xE6E0D4", "stroke":"0x29241b"}' textID="060505"/>
+		    <pic name="sPic" property='{"x":14, "y":41}' frame="gameUI.picCover" frameProp='{"mouseEnabled":false}' picProp='{"x":3, "y":1}' />
+			<text name="scienceName" property='{"x":94, "y":38, "size":13, "color":"0xE6E0D4", "bold":true, "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="scienceLv" property='{"x":132, "y":61, "size":12, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="requireLv" property='{"x":132, "y":81, "size":12, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="requireHonor" property='{"x":132, "y":101, "size":12, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="intro" property='{"x":20, "y":138, "multiline":true, "width":195, "size":12, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			
+		    <button name="upgrade" style="button4" labelID="060506" property='{"x":72, "y":235}'/>
+			<text name="CDtime" property='{"x":40, "y":279, "size":12, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<clearCDPading x="5"/>
+	        <displayObject name="clearCD" view="gameUI.btn.ClearCD" property='{"y":281}'/>
+			
+		</scienceSelected>
+	</science>
+    <!-- 培养界面 -->
+	<culture>
+	    <generalList view="general.equipGeneralList" property='{"x":18, "y":45}'>
+			<staticText property='{"x":12, "y":10, "size":14, "color":"0xE6E0D4", "stroke":"0x29241b", "bold":true}' textID="060302"/>
+			<nameList property='{"x":4, "y":35}'>
+			    <nameRenderer>
+				    <button name="bg" style="button9"/>
+					<text name="nameText" property='{"color":"0xE6E0D4", "autoSize":"none", "y":3, "width":117, "height":16, "align":"center", "stroke":"0x29241b", "mouseEnabled":false}'/>
+		            <text name="selectedArrow" property='{"x":100, "y":5, "color":"0xE6E0D4", "stroke":"0x29241b"}'/>
+				</nameRenderer>
+			</nameList>
+			<page property='{"x":9, "y":345}'/>
+	    </generalList>
+		<reborn property='{"x":150, "y":45}'>
+	        <displayObject view="general.culture"/>
+			<staticText property='{"x":12, "y":10, "size":14, "color":"0xE6E0D4", "stroke":"0x29241b", "bold":true}' textID="060601"/>
+		    <pic name="generalPic" property='{"x":29, "y":45}' frame="gameUI.picCover" frameProp='{"mouseEnabled":false}' picProp='{"x":3, "y":1}'/>
+	        <displayObject name="shadow" view="general.detailInfo" property='{"x":31, "y":100, "mouseEnabled":false}'/>
+			
+			<text name="rebornIntro" property='{"x":360, "y":84, "color":"0xE6E0D4", "stroke":"0x29241b", "multiline":true, "width":107, "visible":false}'/>
+			
+			<text name="detailInfo" property='{"x":35, "y":102, "size":12, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="generalName" property='{"x":115, "y":48, "size":14, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false, "bold":true}'/>
+			
+			<text name="Level" property='{"x":211, "y":40, "size":12, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="armyLv" property='{"x":211, "y":74, "size":12, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="require" property='{"x":211, "y":108, "size":12, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			
+		    <button name="rebornBtn" style="button4" labelID="060704" property='{"x":363, "y":37, "visible":false}'/>
+		</reborn>
+		<clean>
+			<staticText property='{"x":164, "y":187, "size":14, "color":"0xE6E0D4", "stroke":"0x29241b", "bold":true}' textID="060707"/>
+			<text name="free" property='{"x":188, "y":342, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false, "visible":false}'/>
+			<text name="oldTitle" property='{"x":387, "y":243, "color":"0xE6E0D4", "stroke":"0x29241b", "bold":true, "mouseEnabled":false}'/>
+			<text name="newTitle" property='{"x":507, "y":243, "color":"0xE6E0D4", "stroke":"0x29241b", "bold":true, "mouseEnabled":false}'/>
+			<radioGroup style="radioButton2" property='{"x":191}' ry="238"/>
+			
+			<text name="oldTong" property='{"x":387, "y":268, "size":12, "color":"0x8AC253", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="oldYong" property='{"x":387, "y":293, "size":12, "color":"0xFF6565", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="oldZhi" property='{"x":387, "y":318, "size":12, "color":"0x5888B1", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			
+			<text name="newTong" property='{"x":507, "y":268, "size":12, "color":"0x8AC253", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="newYong" property='{"x":507, "y":293, "size":12, "color":"0xFF6565", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="newZhi" property='{"x":507, "y":318, "size":12, "color":"0x5888B1", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			
+		    <button name="cleanBtn" style="button4" labelID="060706" property='{"x":225, "y":359}'/>
+		    <button name="keepBtn" style="button4" labelID="060713" property='{"x":386, "y":359}'/>
+		    <button name="changeBtn" style="button4" labelID="060714" property='{"x":507, "y":359}'/>
+		</clean>
+	</culture>
+</config>

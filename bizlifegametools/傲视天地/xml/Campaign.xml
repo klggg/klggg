@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- 战役界面配置文件 -->
+<config>
+	<displayObject view="campaign.view.Background" property=''/>
+	
+	<background url="assets/{language}/img/campaign/{0}.jpg" property=''/>
+	
+	
+	<infoView property=''>
+		<displayObject view="campaign.view.InfoBG" property='{"mouseEnabled":false}'/>
+		<gameButton name="supplyBtn" labelID="250104" property='{"x":885, "y":535}' btn="campaign.btn.Supply" labelProp='{"x":12, "y":28, "color":"0xCDB9A0", "stroke":"0x0"}' />
+		<gameButton name="quitBtn" labelID="250105" property='{"x":935, "y":535}' btn="campaign.btn.Quit" labelProp='{"x":12, "y":28, "color":"0xCDB9A0", "stroke":"0x0"}' />
+		<text name="troopsText" property='{"x":883, "y":555, "autoSize":"right", "color":"0xDBD19E", "stroke":"0x28241B"}' />
+		
+		<title url="assets/{language}/img/campaign/{0}.png" property='{"x":20, "y":90, "mouseEnabled":false}'/>
+		
+		<displayObject name="forceNumIcon" view="campaign.icon.ForceNum" property='{"x":29, "y":126}'/>
+		<displayObject name="timeIcon" view="campaign.icon.Time" property='{"x":28, "y":156}'/>
+		<displayObject name="timeLeftIcon" view="campaign.icon.TimeLeft" property='{"x":30, "y":186}'/>
+		<displayObject name="rankIcon" view="campaign.icon.Rank" property='{"x":22, "y":215}'/>
+		<displayObject name="actionCDIcon" view="campaign.icon.ActionCD" property='{"x":26, "y":243}'/>
+	
+		<text name="forceNumText" property='{"x":66, "y":132, "color":"0xE6DFD5", "mouseEnabled":false}' />
+		<text name="timeText" property='{"x":66, "y":161, "color":"0xE6DFD5", "mouseEnabled":false}' />
+		<text name="timeLeftText" property='{"x":66, "y":190, "color":"0xE6DFD5", "mouseEnabled":false}' />
+		<text name="rankText" property='{"x":66, "y":219, "color":"0xE6DFD5", "mouseEnabled":false}' />
+		<text name="actionCDText" property='{"x":66, "y":248, "color":"0xE6DFD5", "textType":"htmlText", "mouseEnabled":false}' />
+	</infoView>
+	
+	<actionTime property='{"visible":false}'>
+		<displayObject view="campaign.view.ActionTimeBG" property='{"x":422, "y":320}'/>
+		<text name="timeText" property='{"x":500, "y":328, "autoSize":"center", "color":"0xE6DFD5"}' />
+	</actionTime>
+	
+	<resultView property=''>
+		<displayObject view="campaign.view.ResultBG" property=''/>
+		<text name="contentText" property='{"x":415, "y":225, "width":170, "height":130, "multiline":true, "color":"0xE6DFD5", "textType":"htmlText"}' />
+		<button name="backBtn" style="button5" labelID="250103" property='{"x":458, "y":377}'/>
+		<rank view="campaign.movie.Rank{0}" property='{"x":535, "y":330}' />
+	</resultView>
+	
+	<koList property='{"addY":20}'>
+		<staticText property='{"x":895, "y":40, "bold":true, "color":"0xA4D869", "stroke":"0x28241B"}' textID="250304"/>
+		<staticText property='{"x":945, "y":40, "bold":true, "color":"0xFF616C", "stroke":"0x28241B"}' textID="250305"/>
+		<nameText property='{"x":873, "y":66, "width":90, "height":18, "color":"0xF0E9DF", "stroke":"0x28241B"}' />
+		<numText property='{"x":961, "y":66, "color":"0xF0E9DF", "stroke":"0x28241B"}' />
+	</koList>
+	
+	<tokenList property='{"itemX":390, "itemAddX":45}'>
+		<tokenBtn property='{"y":500}' btn="campaign.btn.Token" labelProp='{"x":8, "y":21, "width":20, "multiline":true, "color":"0xCDB9A0" }' />
+		<currentToken property='{"x":15, "y":280}' />
+		<text name="tokenTipsText" property='{"x":48, "y":298, "color":"0xE6DFD5", "stroke":"0x28241B"}' />
+		<text name="tokenTimeText" property='{"x":48, "y":318, "color":"0xE6DFD5", "stroke":"0x28241B"}' />
+	</tokenList>
+	
+	<reportList property='{"itemY":20, "itemAddY":20, "maxNum":3}'>
+		<item property='{"x":15, "color":"0xE6DFD5", "stroke":"0x28241B", "textType":"htmlText"}' />
+	</reportList>
+	
+	
+	<arrowBan view="campaign.icon.ArrowBan" property='{"mouseEnabled":false}' />
+	<iconFight view="campaign.icon.Fight" property='{"mouseEnabled":false}' />
+	<iconArrowTop view="campaign.icon.ArrowTop" property='{"mouseEnabled":false}' />
+	<iconArrowBottom view="campaign.icon.ArrowBottom" property='{"mouseEnabled":false}'/>
+	<iconArrowLeft view="campaign.icon.ArrowLeft" property='{"mouseEnabled":false}' />
+	<iconArrowRight view="campaign.icon.ArrowRight" property='{"mouseEnabled":false}' />
+	
+	<blockToken property=''>
+		<displayObject view="campaign.view.BlockTokenBG" property='{"x":37, "y":2, "mouseEnabled":false}'/>
+		<text name="nameText" property='{"x":50, "y":17, "autoSize":"center", "color":"0xFFE79D", "stroke":"0x28241B", "mouseEnabled":false}' />
+	</blockToken>
+	
+	<army property='{"mouseEnabled":false, "mouseChildren":false}'>
+		<text name="nameText" property='{"x":0, "y":-35, "autoSize":"center", "color":"0xE6E0D4", "stroke":"0x28241B", "mouseEnabled":false}' />
+		
+		<flag view="campaign.icon.ArmyFlag" property='{"mouseEnabled":false}' />
+		<myStop view="campaign.soldier.MyStop" property='{"mouseEnabled":false}' />
+		<myMove view="campaign.soldier.MyMove" property='{"mouseEnabled":false}' />
+		<friendStop view="campaign.soldier.FriendStop" property='{"mouseEnabled":false}' />
+		<friendMove view="campaign.soldier.FriendMove" property='{"mouseEnabled":false}' />
+		<enemyStop view="campaign.soldier.EnemyStop" property='{"mouseEnabled":false}' />
+	</army>
+	
+	<readyView>
+		<displayObject view="campaign.view.ReadyBG" property=''/>
+		<text name="timeText" property='{"x":500, "y":280, "autoSize":"center", "textType":"htmlText"}' />
+	</readyView>
+	
+	
+	<!-- 战场 -->
+	<war property=''>
+		<displayObject name="background" view="campaign.war.Background" property='' />
+		<displayObject name="exitBtn" view="gameUI.btn.Close2" property='{"x":720, "y":110}' />
+		<text name="attNameText" property='{"x":520, "y":84, "autoSize":"right", "color":"0xFFFFFF", "stroke":"0x292317", "mouseEnabled":false}'/>
+		<text name="defNameText" property='{"x":553, "y":84, "color":"0xFFFFFF", "stroke":"0x292317", "mouseEnabled":false}'/>
+		<text name="summaryText" property='{"x":540, "y":210, "autoSize":"center", "color":"0xFFFFFF", "stroke":"0x292317", "mouseEnabled":false, "visible":false}'/>
+		<text name="directionText" property='{"x":540, "y":115, "autoSize":"center", "color":"0xFFA814", "stroke":"0x292317", "mouseEnabled":false}'/>
+		
+		
+		<attArmy property='{"x":490, "y":310}' />
+		<defArmy property='{"x":620, "y":240}' />
+		
+		<attackTipsText property='{"x":585, "y":220}' /><!--被攻击时的提示文本-->
+		
+		<army>
+			<displayObject name="attLevelIcon" view="campaign.war.AttLevel" property='{"x":-30, "y":-15, "visible":false}' /><!--鼓舞攻击等级图标-->
+			<displayObject name="defLevelIcon" view="campaign.war.DefLevel" property='{"x":5, "y":-15, "visible":false}' /><!--鼓舞防守等级图标-->
+			<text name="attLevelText" property='{"x":-18, "y":-15, "color":"0xC97872", "stroke":"0x292317", "mouseEnabled":false}'/>
+			<text name="defLevelText" property='{"x":19, "y":-15, "color":"0x72AAC9", "stroke":"0x292317", "mouseEnabled":false}'/>
+			<textMovie property='{"font":"Arial", "size":16, "x":-25, "y":-30, "stroke":"0x0"}' yTo="-45" color1="0x00FF00" color2="0xFF0000" />
+		</army>
+	</war>
+</config>

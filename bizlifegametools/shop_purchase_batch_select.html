@@ -1,0 +1,696 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache,must-revalidate">
+<meta http-equiv="expires" content="0">
+<title>大富豪</title>
+<link href="../css/css.css" rel="stylesheet" type="text/css" />
+<script language="javascript" src="../js/common.js"></script>
+<script language="javascript" src="../js/ralert.js"></script>
+<script language="javascript" src="../js/ajax.js"></script>
+<script language="javascript" src="../js/div_page.js"></script>
+<script language="javascript" src="../js/word_description.js"></script>
+<script language="javascript">
+var purchase_speed_cost = new Array();
+purchase_speed_cost[1] = new Array();
+purchase_speed_cost[1]['cost'] = 0.0333333333333;
+purchase_speed_cost[1]['unit'] = "G";
+purchase_speed_cost[2] = new Array();
+purchase_speed_cost[2]['cost'] = 0.0666666666667;
+purchase_speed_cost[2]['unit'] = "G";
+purchase_speed_cost[3] = new Array();
+purchase_speed_cost[3]['cost'] = 0.2;
+purchase_speed_cost[3]['unit'] = "G";
+purchase_speed_cost[4] = new Array();
+purchase_speed_cost[4]['cost'] = 0;
+purchase_speed_cost[4]['unit'] = "金币";
+var shop_stock_cost = new Array();
+shop_stock_cost[0] = new Array(100000, 0.005);
+shop_stock_cost[1] = new Array(300000, 0.01);
+shop_stock_cost[2] = new Array(500000, 0.015);
+shop_stock_cost[3] = new Array(1500000, 0.02);
+shop_stock_cost[4] = new Array(5000000, 0.02);
+
+function select_all(b) {
+	var arr_sid = document.getElementsByName("sid");
+	for (var i = 0; i < arr_sid.length; i++) {
+		arr_sid[i].checked = b;
+	}
+	change();
+}
+
+var str_sid = "";
+
+var gold_cost = 0;
+
+function change() {
+	var d = 1;
+	var days = document.getElementsByName("days");
+	for (var i = 0; i < days.length; i++) {
+		if (days[i].checked) {
+			d = days[i].value;
+			break;
+		}
+	}
+	var s = 1;
+	var speed = document.getElementsByName("speed");
+	for (var i = 0; i < speed.length; i++) {
+		if (speed[i].checked) {
+			s = speed[i].value;
+			break;
+		}
+	}
+	
+	//采购成本
+	var purchase_cost = 0;
+	//库存成本
+	var stock_cost = 0;
+	//运输成本
+	var speed_cost = 0;
+	
+	//选中店铺数
+	var shop_num = 0;
+	
+	str_sid = "";
+	
+	var arr_sid = document.getElementsByName("sid");
+	for (var i = 0; i < arr_sid.length; i++) {
+		if (arr_sid[i].checked) {
+			var purchase_price = parseFloat(document.getElementById("shop_purchase_price" + arr_sid[i].value).value);
+			var storage_left = parseInt(document.getElementById("shop_storage_left" + arr_sid[i].value).value);
+			
+			//采购指数
+			var purchase_index;
+			if (d > 300000) {
+				document.getElementById("purchase_index").innerHTML = "采购价格不受天气与市场物价的影响。";
+				purchase_index = 1;
+			}
+			else {
+				document.getElementById("purchase_index").innerHTML = "采购价格受天气与市场物价的影响，详情请看店铺对应的采购价格。";
+				purchase_index = parseFloat(document.getElementById("shop_purchase_index" + arr_sid[i].value).value);
+			}
+			
+			//采购量
+			var purchase_num_this = d > storage_left ? storage_left : d;
+			
+			//document.getElementById("purchase_num").innerHTML = number_format(purchase_num_this / 100) + " 件";
+			var purchase_cost_this = purchase_price * purchase_index * purchase_num_this;
+			
+			var stock_cost_this = 0;
+			for (var j = 0; j < shop_stock_cost.length; j++) {
+				if (purchase_num_this <= shop_stock_cost[j][0]) {
+					stock_cost_this += Math.round(shop_stock_cost[j][1] * purchase_cost_this);
+					break;
+				}
+			}
+			
+			var speed_cost_this = Math.round(purchase_speed_cost[s]['cost'] * purchase_cost_this);
+			
+			purchase_cost_this = Math.round(purchase_cost_this);
+			
+			purchase_cost += purchase_cost_this;
+			stock_cost += stock_cost_this;
+			speed_cost += speed_cost_this;
+			
+			shop_num += 1;
+			str_sid += "," + arr_sid[i].value;
+		}
+	}
+	
+	document.getElementById("purchase_cost").innerHTML = number_format(purchase_cost) + " G"; //采购成本
+	document.getElementById("stock_cost").innerHTML = number_format(stock_cost) + " G"; //库存成本
+	document.getElementById("speed_cost").innerHTML = number_format(speed_cost) + " " + purchase_speed_cost[s]['unit']; //运输成本
+	
+	if (purchase_speed_cost[s]['unit'] == "G") {
+		document.getElementById('cash_pay1').style.display = "";
+		document.getElementById('cash_pay2').style.display = "";
+		document.getElementById('cash_pay3').style.display = "";
+		document.getElementById('gold_pay').style.display = "none";
+	}
+	else{
+		document.getElementById('gold_pay').style.display = "";
+		document.getElementById('cash_pay1').style.display = "none";
+		document.getElementById('cash_pay2').style.display = "none";
+		document.getElementById('cash_pay3').style.display = "none";
+		gold_cost = Math.ceil((purchase_cost + stock_cost + speed_cost) * 0.0002);
+		document.getElementById("gold_cost").innerHTML = gold_cost + " " + purchase_speed_cost[s]['unit'];
+	}
+	
+	document.getElementById("shop_num").innerHTML = shop_num;
+	
+	if (str_sid != "") {
+		str_sid = str_sid.substr(1);
+	}
+	document.getElementById("all_shop_id").value = str_sid;
+}
+
+function purchase() {
+	if (str_sid == "") {
+		ralert("董事长：<br /><br />请选择需要采购的店铺。", "确定");
+		return;
+	}
+	
+	var d = 1;
+	var days = document.getElementsByName("days");
+	for (var i = 0; i < days.length; i++) {
+		if (days[i].checked) {
+			d = days[i].value;
+			break;
+		}
+	}
+	var s = 1;
+	var speed = document.getElementsByName("speed");
+	for (var i = 0; i < speed.length; i++) {
+		if (speed[i].checked) {
+			s = speed[i].value;
+			break;
+		}
+	}
+	
+	var r = sendPost("/enterprise/shop_purchase_batch_select.php", "ids=" + str_sid + "&days=" + d + "&speed=" + s);
+	var arr=new Array();
+	arr = r.split("|||");
+	if (arr[0] == 1) {
+		if (speed != 4) {
+			window.top.update_company();
+		}
+		else {
+			window.top.sub_gold_coin(gold_cost);
+		}
+		
+		if (arr[1]) {
+			ralert(arr[1], "确定", "js:do_submit();");
+		}
+		else {
+			do_submit();
+		}
+	}
+	else if (arr[0] == 0) {
+		ralert(arr[1], "确定");
+	}
+	else if (arr[0] == -1) {
+		ralert(arr[1], "确定", "../progress_inner.php?pid=" + arr[2]);
+	}
+	else if (arr[0] == -2) {
+		ralert(arr[1], "确定", "", "充值", "js:window.top.charge();");
+	}
+	else if(arr[0]==-3){
+		ralert(arr[1], "移民", "js:window.open('../immigrate/');",  "暂不移民", "");
+	}
+	else {
+		alert(r);
+	}
+}
+
+function do_submit() {
+	document.submit_shop_id.submit();
+}
+</script>
+<style type="text/css">
+<!--
+.tableright1 {
+	color: #004E7B;
+	font-size:13px;
+	padding-top: 5px;
+	background-color:#D3EEFF;
+	width:100%;
+	height:423px;
+}
+-->
+</style>
+</head>
+<body>
+<form method="post" name="submit_shop_id" id="submit_shop_id" action="shop_purchase_batch.php">
+  <input type="hidden" id="all_shop_id" name="all_shop_id" value=""/>
+</form>
+<table width="764" height="515" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="34" background="../images/zk_main_menu.gif" class="font-center_title1">店铺批量采购</td>
+  </tr>
+  <tr>
+    <td height="481" valign="top"><table width="740" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td height="10"></td>
+        </tr>
+        <tr>
+          <td><table width="740" border="0" align="center" cellpadding="0" cellspacing="0">
+              <tr>
+                <td width="430" valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0" class="list_table">
+                    <tr>
+                      <td background="../images/line1_bg.gif"><table width="100%" border="0" cellpadding="0" cellspacing="0">
+                          <tr>
+                            <td width="180"  background="../images/line1_bg.gif" class="list_top">&nbsp;店名</td>
+                            <td width="90"  background="../images/line1_bg.gif" class="list_top">库存</td>
+                            <td width="65"  background="../images/line1_bg.gif" class="list_top" onMouseOut="hide_description();" onMouseMove="show_description('采购价格根据报纸消息和天气情况上下波动，详情请阅读报纸，选择适当时机采购。大量、巨量和海量采购则不受上述因素影响。')">采购价格</td>
+                            <td background="../images/line1_bg.gif" class="list_top" align="center">
+                              <label style="cursor:pointer;">全选<input type="checkbox" id="all_select" checked onclick="select_all(this.checked);"></label>
+                            </td>
+                          </tr>
+                        </table></td>
+                    </tr>
+                    <tr>
+                      <td valign="top"><div style="overflow-y: scroll;" class="tableright1">
+                          <table width="406" border="0" cellpadding="0" cellspacing="0">
+                                                <tr>
+                              <td width="180" height="24">&nbsp;D-57-24影视城</td>
+                              <td width="90" onmousemove="show_description('当前库存8859/9000，今日已消耗387件。店铺升级后库存容量可扩充到13500件。')" onmouseout="hide_description()">8859/9000</td>
+                              <td width="65">正常</td>
+                              <td align="center">
+					                    			<input type="checkbox" name="sid" value="170169" checked onclick="change()" />
+                                <input type="hidden" id="shop_purchase_price170169" value="1.89" />
+                                <input type="hidden" id="shop_purchase_index170169" value="1.00" />
+                                <input type="hidden" id="shop_storage_left170169" value="14100" />
+                                                  </td>
+                            </tr>
+                                                <tr>
+                              <td width="180" height="24">&nbsp;5-20-26-1日本料理</td>
+                              <td width="90" onmousemove="show_description('当前库存2258/3000，今日已消耗2035件。店铺升级后库存容量可扩充到4500件。')" onmouseout="hide_description()">2258/3000</td>
+                              <td width="65"><font color="red">上涨20%</font></td>
+                              <td align="center">
+					                    			<input type="checkbox" name="sid" value="193044" checked onclick="change()" />
+                                <input type="hidden" id="shop_purchase_price193044" value="1.4" />
+                                <input type="hidden" id="shop_purchase_index193044" value="1.20" />
+                                <input type="hidden" id="shop_storage_left193044" value="74200" />
+                                                  </td>
+                            </tr>
+                                                <tr>
+                              <td width="180" height="24">&nbsp;5-20-24-1酒吧</td>
+                              <td width="90" onmousemove="show_description('当前库存2660/3000，今日已消耗934件。店铺升级后库存容量可扩充到4500件。')" onmouseout="hide_description()">2660/3000</td>
+                              <td width="65">正常</td>
+                              <td align="center">
+					                    			<input type="checkbox" name="sid" value="193045" checked onclick="change()" />
+                                <input type="hidden" id="shop_purchase_price193045" value="1.4" />
+                                <input type="hidden" id="shop_purchase_index193045" value="1.00" />
+                                <input type="hidden" id="shop_storage_left193045" value="34000" />
+                                                  </td>
+                            </tr>
+                                                <tr>
+                              <td width="180" height="24">&nbsp;E-47-14韩国料理</td>
+                              <td width="90" onmousemove="show_description('当前库存8304/9000，今日已消耗1909件。店铺升级后库存容量可扩充到13500件。')" onmouseout="hide_description()">8304/9000</td>
+                              <td width="65">正常</td>
+                              <td align="center">
+					                    			<input type="checkbox" name="sid" value="200453" checked onclick="change()" />
+                                <input type="hidden" id="shop_purchase_price200453" value="1.4" />
+                                <input type="hidden" id="shop_purchase_index200453" value="1.00" />
+                                <input type="hidden" id="shop_storage_left200453" value="69600" />
+                                                  </td>
+                            </tr>
+                                                <tr>
+                              <td width="180" height="24">&nbsp;5-19-24-1快餐厅</td>
+                              <td width="90" onmousemove="show_description('当前库存2646/3000，今日已消耗971件。店铺升级后库存容量可扩充到4500件。')" onmouseout="hide_description()">2646/3000</td>
+                              <td width="65">正常</td>
+                              <td align="center">
+					                    			<input type="checkbox" name="sid" value="200624" checked onclick="change()" />
+                                <input type="hidden" id="shop_purchase_price200624" value="1.4" />
+                                <input type="hidden" id="shop_purchase_index200624" value="1.00" />
+                                <input type="hidden" id="shop_storage_left200624" value="35400" />
+                                                  </td>
+                            </tr>
+                                                <tr>
+                              <td width="180" height="24">&nbsp;5-18-24-1健身会所</td>
+                              <td width="90" onmousemove="show_description('当前库存2640/3000，今日已消耗985件。店铺升级后库存容量可扩充到4500件。')" onmouseout="hide_description()">2640/3000</td>
+                              <td width="65">正常</td>
+                              <td align="center">
+					                    			<input type="checkbox" name="sid" value="200626" checked onclick="change()" />
+                                <input type="hidden" id="shop_purchase_price200626" value="1.4" />
+                                <input type="hidden" id="shop_purchase_index200626" value="1.00" />
+                                <input type="hidden" id="shop_storage_left200626" value="36000" />
+                                                  </td>
+                            </tr>
+                                                <tr>
+                              <td width="180" height="24">&nbsp;E-85-19酒吧</td>
+                              <td width="90" onmousemove="show_description('当前库存8306/9000，今日已消耗1903件。店铺升级后库存容量可扩充到13500件。')" onmouseout="hide_description()">8306/9000</td>
+                              <td width="65">正常</td>
+                              <td align="center">
+					                    			<input type="checkbox" name="sid" value="200645" checked onclick="change()" />
+                                <input type="hidden" id="shop_purchase_price200645" value="1.4" />
+                                <input type="hidden" id="shop_purchase_index200645" value="1.00" />
+                                <input type="hidden" id="shop_storage_left200645" value="69400" />
+                                                  </td>
+                            </tr>
+                                                <tr>
+                              <td width="180" height="24">&nbsp;E-68-90网络会所</td>
+                              <td width="90" onmousemove="show_description('当前库存8363/9000，今日已消耗1746件。店铺升级后库存容量可扩充到13500件。')" onmouseout="hide_description()">8363/9000</td>
+                              <td width="65"><font color="green">下跌40%</font></td>
+                              <td align="center">
+					                    			<input type="checkbox" name="sid" value="200648" checked onclick="change()" />
+                                <input type="hidden" id="shop_purchase_price200648" value="1.4" />
+                                <input type="hidden" id="shop_purchase_index200648" value="0.60" />
+                                <input type="hidden" id="shop_storage_left200648" value="63700" />
+                                                  </td>
+                            </tr>
+                                                <tr>
+                              <td width="180" height="24">&nbsp;E-49-17数码打印店</td>
+                              <td width="90" onmousemove="show_description('当前库存8498/9000，今日已消耗1375件。店铺升级后库存容量可扩充到13500件。')" onmouseout="hide_description()">8498/9000</td>
+                              <td width="65">正常</td>
+                              <td align="center">
+					                    			<input type="checkbox" name="sid" value="200724" checked onclick="change()" />
+                                <input type="hidden" id="shop_purchase_price200724" value="1.89" />
+                                <input type="hidden" id="shop_purchase_index200724" value="1.00" />
+                                <input type="hidden" id="shop_storage_left200724" value="50200" />
+                                                  </td>
+                            </tr>
+                                                <tr>
+                              <td width="180" height="24">&nbsp;5-17-35-1美容院</td>
+                              <td width="90" onmousemove="show_description('当前库存2788/3000，今日已消耗582件。店铺升级后库存容量可扩充到4500件。')" onmouseout="hide_description()">2788/3000</td>
+                              <td width="65"><font color="green">下跌40%</font></td>
+                              <td align="center">
+					                    			<input type="checkbox" name="sid" value="203917" checked onclick="change()" />
+                                <input type="hidden" id="shop_purchase_price203917" value="0.98" />
+                                <input type="hidden" id="shop_purchase_index203917" value="0.60" />
+                                <input type="hidden" id="shop_storage_left203917" value="21200" />
+                                                  </td>
+                            </tr>
+                                                <tr>
+                              <td width="180" height="24">&nbsp;5-19-34-1服装店</td>
+                              <td width="90" onmousemove="show_description('当前库存2692/3000，今日已消耗845件。店铺升级后库存容量可扩充到4500件。')" onmouseout="hide_description()">2692/3000</td>
+                              <td width="65">正常</td>
+                              <td align="center">
+					                    			<input type="checkbox" name="sid" value="204020" checked onclick="change()" />
+                                <input type="hidden" id="shop_purchase_price204020" value="1.6555" />
+                                <input type="hidden" id="shop_purchase_index204020" value="1.00" />
+                                <input type="hidden" id="shop_storage_left204020" value="30800" />
+                                                  </td>
+                            </tr>
+                                                <tr>
+                              <td width="180" height="24">&nbsp;5-18-35-1按摩店</td>
+                              <td width="90" onmousemove="show_description('当前库存2821/3000，今日已消耗492件。店铺升级后库存容量可扩充到4500件。')" onmouseout="hide_description()">2821/3000</td>
+                              <td width="65"><font color="red">上涨20%</font></td>
+                              <td align="center">
+					                    			<input type="checkbox" name="sid" value="204027" checked onclick="change()" />
+                                <input type="hidden" id="shop_purchase_price204027" value="0.98" />
+                                <input type="hidden" id="shop_purchase_index204027" value="1.20" />
+                                <input type="hidden" id="shop_storage_left204027" value="17900" />
+                                                  </td>
+                            </tr>
+                                                <tr>
+                              <td width="180" height="24">&nbsp;5-19-35-1医院</td>
+                              <td width="90" onmousemove="show_description('当前库存2840/3000，今日已消耗439件。店铺升级后库存容量可扩充到4500件。')" onmouseout="hide_description()">2840/3000</td>
+                              <td width="65">正常</td>
+                              <td align="center">
+					                    			<input type="checkbox" name="sid" value="204251" checked onclick="change()" />
+                                <input type="hidden" id="shop_purchase_price204251" value="0.98" />
+                                <input type="hidden" id="shop_purchase_index204251" value="1.00" />
+                                <input type="hidden" id="shop_storage_left204251" value="16000" />
+                                                  </td>
+                            </tr>
+                                                <tr>
+                              <td width="180" height="24">&nbsp;5-21-26-1网络会所</td>
+                              <td width="90" onmousemove="show_description('当前库存2470/3000，今日已消耗1454件。店铺升级后库存容量可扩充到4500件。')" onmouseout="hide_description()">2470/3000</td>
+                              <td width="65"><font color="green">下跌40%</font></td>
+                              <td align="center">
+					                    			<input type="checkbox" name="sid" value="204413" checked onclick="change()" />
+                                <input type="hidden" id="shop_purchase_price204413" value="1.4" />
+                                <input type="hidden" id="shop_purchase_index204413" value="0.60" />
+                                <input type="hidden" id="shop_storage_left204413" value="53000" />
+                                                  </td>
+                            </tr>
+                                                <tr>
+                              <td width="180" height="24">&nbsp;5-21-33-1网络会所</td>
+                              <td width="90" onmousemove="show_description('当前库存2728/3000，今日已消耗745件。店铺升级后库存容量可扩充到4500件。')" onmouseout="hide_description()">2728/3000</td>
+                              <td width="65"><font color="green">下跌40%</font></td>
+                              <td align="center">
+					                    			<input type="checkbox" name="sid" value="204414" checked onclick="change()" />
+                                <input type="hidden" id="shop_purchase_price204414" value="1.4" />
+                                <input type="hidden" id="shop_purchase_index204414" value="0.60" />
+                                <input type="hidden" id="shop_storage_left204414" value="27200" />
+                                                  </td>
+                            </tr>
+                                                <tr>
+                              <td width="180" height="24">&nbsp;5-53-11咖啡厅</td>
+                              <td width="90" onmousemove="show_description('当前库存7033/9000，今日已消耗3169件。店铺升级后库存容量可扩充到13500件。')" onmouseout="hide_description()">7033/9000</td>
+                              <td width="65"><font color="red">上涨20%</font></td>
+                              <td align="center">
+					                    			<input type="checkbox" name="sid" value="204547" checked onclick="change()" />
+                                <input type="hidden" id="shop_purchase_price204547" value="1.6555" />
+                                <input type="hidden" id="shop_purchase_index204547" value="1.20" />
+                                <input type="hidden" id="shop_storage_left204547" value="196700" />
+                                                  </td>
+                            </tr>
+                                                <tr>
+                              <td width="180" height="24">&nbsp;E-87-6火锅城</td>
+                              <td width="90" onmousemove="show_description('当前库存8142/9000，今日已消耗2352件。店铺升级后库存容量可扩充到13500件。')" onmouseout="hide_description()">8142/9000</td>
+                              <td width="65"><font color="green">下跌40%</font></td>
+                              <td align="center">
+					                    			<input type="checkbox" name="sid" value="205210" checked onclick="change()" />
+                                <input type="hidden" id="shop_purchase_price205210" value="1.197" />
+                                <input type="hidden" id="shop_purchase_index205210" value="0.60" />
+                                <input type="hidden" id="shop_storage_left205210" value="85800" />
+                                                  </td>
+                            </tr>
+                                                <tr>
+                              <td width="180" height="24">&nbsp;E-28-43电玩城</td>
+                              <td width="90" onmousemove="show_description('当前库存2772/3000，今日已消耗626件。店铺升级后库存容量可扩充到4500件。')" onmouseout="hide_description()">2772/3000</td>
+                              <td width="65">正常</td>
+                              <td align="center">
+					                    			<input type="checkbox" name="sid" value="205389" checked onclick="change()" />
+                                <input type="hidden" id="shop_purchase_price205389" value="1.6555" />
+                                <input type="hidden" id="shop_purchase_index205389" value="1.00" />
+                                <input type="hidden" id="shop_storage_left205389" value="22800" />
+                                                  </td>
+                            </tr>
+                                                <tr>
+                              <td width="180" height="24">&nbsp;5-21-32-1自助餐厅</td>
+                              <td width="90" onmousemove="show_description('当前库存2676/3000，今日已消耗889件。店铺升级后库存容量可扩充到4500件。')" onmouseout="hide_description()">2676/3000</td>
+                              <td width="65"><font color="red">上涨20%</font></td>
+                              <td align="center">
+					                    			<input type="checkbox" name="sid" value="206740" checked onclick="change()" />
+                                <input type="hidden" id="shop_purchase_price206740" value="1.4" />
+                                <input type="hidden" id="shop_purchase_index206740" value="1.20" />
+                                <input type="hidden" id="shop_storage_left206740" value="32400" />
+                                                  </td>
+                            </tr>
+                                                <tr>
+                              <td width="180" height="24">&nbsp;E-49-16旅馆</td>
+                              <td width="90" onmousemove="show_description('当前库存8436/9000，今日已消耗1547件。店铺升级后库存容量可扩充到13500件。')" onmouseout="hide_description()">8436/9000</td>
+                              <td width="65">正常</td>
+                              <td align="center">
+					                    			<input type="checkbox" name="sid" value="206787" checked onclick="change()" />
+                                <input type="hidden" id="shop_purchase_price206787" value="1.6555" />
+                                <input type="hidden" id="shop_purchase_index206787" value="1.00" />
+                                <input type="hidden" id="shop_storage_left206787" value="56400" />
+                                                  </td>
+                            </tr>
+                                                <tr>
+                              <td width="180" height="24">&nbsp;5-20-33-1日本料理</td>
+                              <td width="90" onmousemove="show_description('当前库存2667/3000，今日已消耗914件。店铺升级后库存容量可扩充到4500件。')" onmouseout="hide_description()">2667/3000</td>
+                              <td width="65"><font color="red">上涨20%</font></td>
+                              <td align="center">
+					                    			<input type="checkbox" name="sid" value="206788" checked onclick="change()" />
+                                <input type="hidden" id="shop_purchase_price206788" value="1.4" />
+                                <input type="hidden" id="shop_purchase_index206788" value="1.20" />
+                                <input type="hidden" id="shop_storage_left206788" value="33300" />
+                                                  </td>
+                            </tr>
+                                                <tr>
+                              <td width="180" height="24">&nbsp;高而夫高尔夫练习场</td>
+                              <td width="90" onmousemove="show_description('当前库存2602/3000，今日已消耗1091件。店铺升级后库存容量可扩充到4500件。')" onmouseout="hide_description()">2602/3000</td>
+                              <td width="65"><font color="red">上涨20%</font></td>
+                              <td align="center">
+					                    			<input type="checkbox" name="sid" value="206791" checked onclick="change()" />
+                                <input type="hidden" id="shop_purchase_price206791" value="1.6555" />
+                                <input type="hidden" id="shop_purchase_index206791" value="1.20" />
+                                <input type="hidden" id="shop_storage_left206791" value="39800" />
+                                                  </td>
+                            </tr>
+                                                <tr>
+                              <td width="180" height="24">&nbsp;5-21-25-1自助餐厅</td>
+                              <td width="90" onmousemove="show_description('当前库存2602/3000，今日已消耗1091件。店铺升级后库存容量可扩充到4500件。')" onmouseout="hide_description()">2602/3000</td>
+                              <td width="65"><font color="red">上涨20%</font></td>
+                              <td align="center">
+					                    			<input type="checkbox" name="sid" value="206793" checked onclick="change()" />
+                                <input type="hidden" id="shop_purchase_price206793" value="1.4" />
+                                <input type="hidden" id="shop_purchase_index206793" value="1.20" />
+                                <input type="hidden" id="shop_storage_left206793" value="39800" />
+                                                  </td>
+                            </tr>
+                                                <tr>
+                              <td width="180" height="24">&nbsp;5-17-27-1美发沙龙</td>
+                              <td width="90" onmousemove="show_description('当前库存2210/3000，今日已消耗2166件。店铺升级后库存容量可扩充到4500件。')" onmouseout="hide_description()">2210/3000</td>
+                              <td width="65"><font color="green">下跌40%</font></td>
+                              <td align="center">
+					                    			<input type="checkbox" name="sid" value="206979" checked onclick="change()" />
+                                <input type="hidden" id="shop_purchase_price206979" value="0.98" />
+                                <input type="hidden" id="shop_purchase_index206979" value="0.60" />
+                                <input type="hidden" id="shop_storage_left206979" value="79000" />
+                                                  </td>
+                            </tr>
+                                                <tr>
+                              <td width="180" height="24">&nbsp;5-21-35咖啡厅</td>
+                              <td width="90" onmousemove="show_description('当前库存8666/9000，今日已消耗916件。店铺升级后库存容量可扩充到13500件。')" onmouseout="hide_description()">8666/9000</td>
+                              <td width="65"><font color="red">上涨20%</font></td>
+                              <td align="center">
+					                    			<input type="checkbox" name="sid" value="206981" checked onclick="change()" />
+                                <input type="hidden" id="shop_purchase_price206981" value="1.6555" />
+                                <input type="hidden" id="shop_purchase_index206981" value="1.20" />
+                                <input type="hidden" id="shop_storage_left206981" value="33400" />
+                                                  </td>
+                            </tr>
+                                              </table>
+                        </div></td>
+                    </tr>
+                  </table></td>
+                <td width="10">&nbsp;</td>
+                <td valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td><table width="100%" border="0" cellpadding="0" cellspacing="0">
+                          <tr>
+                            <td width="6"><img src="../images/boxs_top1.gif" width="6" height="6" /></td>
+                            <td background="../images/boxs_top2.gif"></td>
+                            <td width="6"><img src="../images/boxs_top3.gif" width="6" height="6" /></td>
+                          </tr>
+                          <tr>
+                            <td background="../images/boxs_center1.gif"></td>
+                            <td class="box_bgcolor"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                  <td height="30"><table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0"  >
+                                      <tr>
+                                        <td height="125" valign="top"><div style="padding:4px;">
+                                            <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                                              <tr>
+                                                <td height="405" valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0" >
+                                                    <tr>
+                                                      <td width="76" height="24"><span class="font-center_text">店铺数量：</span><br /></td>
+                                                      <td width="204" class="font-blue"><span id="shop_num">0</span> 家</td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td height="24" valign="top" class="font-center_text" style="padding-top:4px;">采 购 量：</td>
+                                                      <td>
+                                                      <div style="margin-bottom:4px;">
+                                                    														<label style="cursor:pointer;" for="days10000" title="100件">
+														  <input type="radio" name="days" id="days10000" value="10000" checked onClick="change()" /> 微量(100件)														</label>
+                                                        <br>
+																											<label style="cursor:pointer;" for="days50000" title="500件">
+														  <input type="radio" name="days" id="days50000" value="50000" onClick="change()" /> 小量(500件)														</label>
+                                                        <br>
+																											<label style="cursor:pointer;" for="days300000" title="3000件">
+														  <input type="radio" name="days" id="days300000" value="300000" onClick="change()" /> 中量(3000件)														</label>
+                                                        <br>
+																											<label style="cursor:pointer;" for="days1000000" title="10000件">
+														  <input type="radio" name="days" id="days1000000" value="1000000" onClick="change()" /> 大量(10000件)														</label>
+                                                        <br>
+																											<label style="cursor:pointer;" for="days4000000" title="40000件">
+														  <input type="radio" name="days" id="days4000000" value="4000000" onClick="change()" /> 巨量(40000件)														</label>
+                                                        <br>
+																											<label style="cursor:pointer;" for="days10000000" title="100000件">
+														  <input type="radio" name="days" id="days10000000" value="10000000" onClick="change()" /> 海量(100000件)														</label>
+                                                        <br>
+													                                                      </div>
+                                                      </td>
+                                                    </tr>
+                                                    <tr><td style="height:5px;"></td></tr>
+                                                    <tr>
+                                                      <td valign="top" class="font-center_text" style="padding-top:4px;">采购速度：</td>
+                                                      <td>
+                                                    													<div style="margin-bottom:4px;">
+													  <label style="cursor:pointer;" for="speed1">
+														<input type="radio" name="speed" id="speed1" value="1" onClick="change()" />
+														慢速运输														12小时													  </label>
+													</div>
+																										<div style="margin-bottom:4px;">
+													  <label style="cursor:pointer;" for="speed2">
+														<input type="radio" name="speed" id="speed2" value="2" onClick="change()" />
+														中速运输														6小时													  </label>
+													</div>
+																										<div style="margin-bottom:4px;">
+													  <label style="cursor:pointer;" for="speed3">
+														<input type="radio" name="speed" id="speed3" value="3" checked onClick="change()" />
+														快速运输														3小时													  </label>
+													</div>
+																										<div style="margin-bottom:4px;">
+													  <label style="cursor:pointer;" for="speed4">
+														<input type="radio" name="speed" id="speed4" value="4" onClick="change()" />
+														金币即时采购																											  </label>
+													</div>
+													                                                      </td>
+                                                    </tr>
+                                                     <tr><td style="height:5px;"></td></tr>
+                                                    <tr id="cash_pay1">
+                                                      <td height="24" class="font-center_text">采购成本：</td>
+                                                      <td><span id="purchase_cost">0 G</span></td>
+                                                    </tr>
+                                                    <tr id="cash_pay2">
+                                                      <td height="24" class="font-center_text">库存成本：</td>
+                                                      <td><span id="stock_cost">0 G</span></td>
+                                                    </tr>
+                                                    <tr id="cash_pay3">
+                                                      <td height="24" class="font-center_text">运输成本：</td>
+                                                      <td><span id="speed_cost">0 G</span></td>
+                                                    </tr>
+                                                    <tr id="gold_pay" style="display:none;">
+                                                      <td height="24"><span class="font-center_text">采购花费：</span></td>
+                                                      <td><span id="gold_cost"></span></td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td  height="24" valign="top" style="padding-top:4px;"><span class="font-center_text">采购指数：</span></td>
+                                                      <td id="purchase_index" valign="top" style="padding-top:4px;">采购价格受天气与市场物价的影响，详情请看店铺对应的采购价格。</td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td height="24" colspan="2" class="font-green2"></td>
+                                                    </tr>
+                                                  </table></td>
+                                              </tr>
+                                            </table>
+                                          </div></td>
+                                      </tr>
+                                    </table></td>
+                                </tr>
+                              </table>
+                              <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0" >
+                              </table></td>
+                            <td background="../images/boxs_center2.gif"></td>
+                          </tr>
+                          <tr>
+                            <td><img src="../images/boxs_bottom1.gif" width="6" height="6" /></td>
+                            <td background="../images/boxs_bottom2.gif"></td>
+                            <td><img src="../images/boxs_bottom3.gif" width="6" height="6" /></td>
+                          </tr>
+                        </table></td>
+                    </tr>
+                    <tr>
+                      <td height="30" valign="bottom">
+                     	<table width="100%">
+                        	<tr>
+                    	 		<td>
+									                                          <input type="button" class="button_f4" onclick="purchase()" value="开始采购" />
+                                        &nbsp;
+                                                                              <input type="button" class="button_f2" onclick="window.location='shop.php';" value="返回" />
+                                 </td>
+                                 <td align="right">
+                                 <span onMouseOut="hide_description();" onMouseMove="show_description('修建仓储中心可以提高核定库存容量的50%')" style="cursor:pointer; text-decoration:underline; color:#FF0000">库存容量提升方法</span>
+                                 </td>
+                             </tr>
+                           </table>
+                    </tr>
+                  </table></td>
+              </tr>
+            </table></td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+</body>
+</html>
+<script language="javascript">
+change();
+</script>
+<script language="javascript">
+if(window.attachEvent) {
+	window.attachEvent("onload", update_top);
+}
+else {
+	window.addEventListener("load", update_top, false);
+}
+
+function update_top() {
+	try {
+		var user_info = {"gold_coin":"33","strategy":"2131\/2100","perform":"2100\/2100","lead":"2100\/2100","user_level":"<span title=\"6\u7ea7\">\u5546\u4e1a\u83c1\u82f1<\/span>","vip_images":"<img src='images\/user\/vip_245.gif'\/>","user_times":648,"increase":0};
+		window.top.update_user(user_info);
+	}
+	catch (e) {
+		//alert(e);
+	}
+}
+</script>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 系统UI界面配置文件 -->
+<config>
+	<requestMovie view="mainUI.Request" />
+	
+	<loadBar view="mainUI.LoadBar" />
+	
+	<rim view="mainUI.Rim" />
+	
+	<chooseRole view="mainUI.ChoosePlayer" property='{"x":307, "y":187}' >
+		<title property='{"x":30, "y":50, "color":"0xE6DFD5", "bold":true, "size":14, "stroke":"0x28241B"}' />
+		<tips property='{"multiline":true, "x":30, "y":75, "width":320, "color":"0xCCCCCC", "stroke":"0x333333"}' />
+		<playerList property='{"x":45, "y":120}' itemHeight="28" itemStyle="radioButton1" />
+		<submitBtn property='{"x":260, "y":130}' style="button4" />
+	</chooseRole>
+	
+	<modifyName view="mainUI.ModifyName" property='{"x":307, "y":187}' >
+		<title property='{"x":45, "y":70, "color":"0xE6DFD5", "bold":true, "size":14, "stroke":"0x28241B"}' />
+		<tips property='{"x":45, "y":100, "color":"0xE6DFD5", "stroke":"0x28241B"}' />
+		<nameInput property='{"width":190, "height":16, "x":55, "y":153, "color":"0xCCCCCC"}' />
+		<submitBtn property='{"x":270, "y":145}' style="button4" />
+	</modifyName>
+	
+</config>

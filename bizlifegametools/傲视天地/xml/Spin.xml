@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- 纺织模块 -->
+<config>
+    <spinning>
+		<displayObject view="spin.base"/>
+		
+		<staticText property='{"x":33, "y":137, "color":"0x9B804D", "stroke":"0x29241b"}' textID="240103"/>
+		<staticText property='{"x":92, "y":137, "color":"0x9B804D", "stroke":"0x29241b"}' textID="240104"/>
+		<staticText property='{"x":155, "y":137, "color":"0x9B804D", "stroke":"0x29241b"}' textID="240105"/>
+		<staticText property='{"x":219, "y":137, "color":"0x9B804D", "stroke":"0x29241b"}' textID="240106"/>
+		<staticText property='{"x":415, "y":137, "color":"0x9B804D", "stroke":"0x29241b"}' textID="240107"/>
+		
+		
+		<text name="level" property='{"x":69, "y":137, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+		<text name="success" property='{"x":127, "y":137, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+		<text name="double" property='{"x":189, "y":137, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+		<text name="areaPrice" property='{"x":278, "y":137, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+		<text name="todayTimes" property='{"x":475, "y":137, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+		<text name="protectCD" property='{"x":527, "y":120, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+		<text name="spinCD" property='{"x":527, "y":137, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+		
+		<displayObject name="clearCD" view="gameUI.btn.ClearCD" property='{"x":120, "y":139, "visible":false}'/>
+		<displayObject name="addBtn" view="spin.AddBtn" property='{"x":512, "y":138, "visible":false}'/>
+		
+		<vegaList property='{"x":60, "y":67}'>
+			<VegaRenderer>
+				<text name="upgrade" property='{"x":13, "y":37, "autoSize":"center", "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			</VegaRenderer>
+		</vegaList>
+		
+		<VegaInfo property='{"y":65}'>
+			<displayObject view="spin.bubble"/>
+			
+			<displayObject name="closeBtn" view="spin.closeBtn" property='{"x":158, "y":1}'/>
+			<displayObject name="rebornBtn" view="spin.reborn" property='{"x":145, "y":18}'/>
+			
+			
+			<text name="nameText" property='{"x":30, "y":3, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="lvText" property='{"x":30, "y":18, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="skill1Text" property='{"x":30, "y":33, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="skill2Text" property='{"x":30, "y":49, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+		</VegaInfo>
+		<TextileList>
+			<displayObject view="spin.init"/>
+			<staticText property='{"x":25, "y":181, "size":14, "color":"0xE6E0D4", "stroke":"0x29241b", "bold":true}' textID="240102"/>
+			<staticText property='{"x":333, "y":236, "color":"0x9B804D", "stroke":"0x29241b"}' textID="240109"/>
+			<staticText property='{"x":333, "y":257, "color":"0x9B804D", "stroke":"0x29241b"}' textID="240110"/>
+			<staticText property='{"x":333, "y":278, "color":"0x9B804D", "stroke":"0x29241b"}' textID="240111"/>
+			<staticText property='{"x":433, "y":257, "color":"0x9B804D", "stroke":"0x29241b"}' textID="240112"/>
+			<staticText property='{"x":433, "y":278, "color":"0x9B804D", "stroke":"0x29241b"}' textID="240113"/>
+			
+			<list property='{"x":25, "y":208}'>
+				<SpinNameRenderer>
+				    <button name="bg1" style="button9" property='{"width":156}'/>
+				    <button name="bg2" style="button18" property='{"visible":false, "width":156}'/>
+					<text name="nameText" property='{"color":"0xE6E0D4", "x":5, "y":3,
+					"width":117, "height":16, "stroke":"0x29241b", "mouseEnabled":false}'/>
+				</SpinNameRenderer>
+			</list>
+			
+			<text name="intro" property='{"x":333, "y":215, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="level" property='{"x":368, "y":236, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="cost" property='{"x":368, "y":257, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="success" property='{"x":368, "y":278, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="price" property='{"x":468, "y":257, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="double" property='{"x":468, "y":278, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			
+			<pic name="textilePic" property='{"x":240, "y":215}' frame="gameUI.picCover" frameProp='{"mouseEnabled":false}' picProp='{"x":3, "y":1}' />
+			<page property='{"x":47, "y":385}'/>
+			
+			<button name="unitCreate" style="button1" labelID="240139" property='{"x":313, "y":356}'/>
+			<button name="teamPanel" style="button4" labelID="240140" property='{"x":418, "y":356}'/>
+		</TextileList>
+		
+		<SpinTeam>
+			<displayObject view="spin.team"/>
+			<TeamList>
+				<list property='{"x":24, "y":177}'>
+					<TeamRenderer>
+						<displayObject view="spin.teamListRenderer"/>
+					
+						<text name="ownerName" property='{"x":10, "y":8, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+						<text name="limit" property='{"x":10, "y":24, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+						<staticText property='{"x":10, "y":40, "color":"0x9B804D", "stroke":"0x29241b", "mouseEnabled":false}' textID="220115"/>
+						<text name="currentNum" property='{"x":69, "y":40, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+						
+						<button name="join" style="button13" labelID="220116" property='{"x":265, "y":5}'/>
+					</TeamRenderer>
+				</list>
+				<page property='{"x":131, "y":380}'/>
+			</TeamList>
+			
+			<CreatTeam>
+				<displayObject view="spin.create"/>
+				<staticText property='{"x":377, "y":215, "color":"0x9B804D", "stroke":"0x29241b", "mouseEnabled":false}' textID="240149"/>
+				<staticText property='{"x":377, "y":260, "color":"0x9B804D", "stroke":"0x29241b", "mouseEnabled":false}' textID="240150"/>
+				<staticText property='{"x":377, "y":285, "color":"0x9B804D", "stroke":"0x29241b", "mouseEnabled":false}' textID="240151"/>
+				
+				<text name="levelLimit"  property='{"autoSize":"none", "selectable":true, "type":"input", "width":53, "height":18,
+				"restrict":"0-9", "maxChars":3, "x":445, "y":260, "color":"0xE7E0D8", "stroke":"0x292317"}' />
+				
+				<radioGroup style="radioButton2" property='{"x":440}' ry="212"/>
+				<modelGroup style="radioButton2" property='{"x":440}' ry="310"/>
+				<checkBox style="checkBox1" property='{"x":440, "y":285}'/>
+				
+				<button name="creat" style="button4" labelID="240143" property='{"x":447, "y":370}'/>
+				<button name="back" style="button1" labelID="240144" property='{"x":552, "y":370}'/>
+			</CreatTeam>
+			
+			<MemberList>
+				<text name="detail" property='{"x":370, "y":180, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+				
+				<text name="num" property='{"x":605, "y":180, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false, "autoSize":"center"}'/>
+				<list property='{"x":370, "y":211}'>
+					<TeamMemberRenderer>
+						<displayObject name="normal" view="spin.memberListRenderer" property='{"visible":false}'/>
+						<displayObject name="self" view="spin.selfRenderer" property='{"visible":false}'/>
+						<text name="nameText" property='{"x":10, "y":4, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+						
+						<modelGroup style="radioButton2" property='{"x":10}' ry="23" gap="20"/>
+						<displayObject name="kick" view="spin.kick" property='{"x":235, "y":3, "visible":false}'/>
+					</TeamMemberRenderer>
+				</list>
+				<page style="page2" property='{"x":369, "y":380}'/>
+				
+				<button name="disband" style="button1" labelID="240145" property='{"x":447, "y":369, "visible":false}'/>
+				<button name="begin" style="button4" labelID="240146" property='{"x":552, "y":369, "visible":false}'/>
+				<button name="quit" style="button5" labelID="240147" property='{"x":552, "y":369, "visible":false}'/>
+			</MemberList>
+			
+			<SpinResult totalTime="6000">
+				<displayObject view="spin.TextileResultBG"/>
+				<gainTextLoc x="410" y="345" successDelay="1900" failDelay="2800"/>
+				<moneyTextLoc x="560" y="345" successDelay="2800" failDelay="4800"/>
+				<movieLoc property='{"x":0, "y":0}'/>
+			</SpinResult>
+		</SpinTeam>
+    </spinning>
+</config>

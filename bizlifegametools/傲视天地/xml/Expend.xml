@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- 消费模块配置文件 -->
+<config>
+	<pay>
+		<displayObject view="expend.pay.Background" property=''/>
+		<text name="amountText" property='{"x":60, "y":100, "textType":"htmlText", "color":"0xDED7CF", "stroke":"0x292317"}' />
+		<text name="tipsText" property='{"x":60, "y":165, "textType":"htmlText", "color":"0xD97237", "stroke":"0x292317"}' />
+		<text name="titleText" property='{"x":60, "y":200, "textType":"htmlText", "width":350, "color":"0xDED7CF", "stroke":"0x292317"}' />
+		<text name="contentText" property='{"x":60, "y":240, "textType":"htmlText", "width":350, "color":"0xDED7CF", "stroke":"0x292317"}' />
+		<text name="backText" property='{"x":60, "y":330, "textType":"htmlText", "color":"0xDED7CF", "stroke":"0x292317"}' />
+		<text name="awardText" property='{"x":407, "y":200, "textType":"htmlText", "multiline":true, "width":230, "color":"0xDED7CF", "stroke":"0x292317"}' />
+		<button name="payBtn" style="button6" labelID="170201" property='{"x":60, "y":120}'/>
+		<button name="backBtn" style="button6" labelID="170202" property='{"x":60, "y":350, "visible":false}'/>
+	</pay>
+	<gift>
+		<displayObject view="expend.gift.Background" property=''/>
+		<staticText property='{"x":222, "y":220, "autoSize":"right", "color":"0xDED7CF", "stroke":"0x292317"}' textID="170302"/>
+		<text name="tipsText" property='{"x":225, "y":190, "color":"0xC47652", "stroke":"0x292317"}' />
+		<text name="inputText" property='{"autoSize":"none", "selectable":true, "type":"input", "width":190, "height":18, "x":230, "y":220, "color":"0xDED7CF", "stroke":"0x292317"}' />
+		<button name="submitBtn" style="button4" labelID="170301" property='{"x":440, "y":206}'/>
+	</gift>
+</config>

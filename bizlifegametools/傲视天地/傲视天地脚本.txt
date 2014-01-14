@@ -1,0 +1,364 @@
+
+Dim g_key_handle,g_mouse_handle,zbX,zbY
+
+zbX	= 240
+zbY	= 0
+
+//f_handle = Plugin.Window.Foreground()
+g_mouse_handle = Plugin.Window.MousePoint()
+g_key_handle = Plugin.Window.GetKeyFocusWnd()
+
+
+For 10
+
+	Call 强化物品_金币加速_升级()
+
+Next
+
+
+//Call 征收()
+//Call 升级民房1()
+//Call 升级民房2()
+//Call 升级民房3()
+
+//Call 升级商店()
+//Call 升级主城()
+
+//Call 升级商店()
+Call 升级兵营()
+Call 升级军机处()
+
+//--------------- 升级部分 -----------
+
+
+Sub 强化物品_金币加速_升级()
+
+//483,383  295A4C
+//656,203  000000
+//453,344  21262B
+
+	//点升级
+	Call Plugin.Bkgnd.LeftClick(g_mouse_handle, 483,383)
+	Delay 1000
+
+	//点加速度
+	Call Plugin.Bkgnd.LeftClick(g_mouse_handle, 656,203)
+	Delay 500
+
+	//点加速度确定
+	Call Plugin.Bkgnd.LeftClick(g_mouse_handle, 453,344)
+	Delay 500
+
+End Sub
+
+
+Sub 升级主城()
+	Call 点击主城()
+	Delay 3000
+	Call 升级动作()
+	Delay 3000
+End Sub
+Sub 升级民房1()
+	Call 点击民居1()
+	Delay 3000
+	Call 升级动作()
+	Delay 3000
+End Sub
+Sub 升级民房2()
+	Call 点击民居2()
+	Delay 3000
+	Call 升级动作()
+	Delay 3000
+End Sub
+Sub 升级民房3()
+	Call 点击民居3()
+	Delay 3000
+	Call 升级动作()
+	Delay 3000
+End Sub
+Sub 升级民房4()
+	Call 点击民居4()
+	Delay 3000
+	Call 升级动作()
+	Delay 3000
+End Sub
+Sub 升级民房5()
+	Call 点击民居5()
+	Delay 3000
+	Call 升级动作()
+	Delay 3000
+End Sub
+Sub 升级民房6()
+	Call 点击民居6()
+	Delay 3000
+	Call 升级动作()
+	Delay 3000
+End Sub
+Sub 升级民房7()
+	Call 点击民居7()
+	Delay 3000
+	Call 升级动作()
+	Delay 3000
+End Sub
+Sub 升级军机处()
+	Call 点击军机处()
+	Delay 3000
+	Call 升级动作()
+	Delay 3000
+End Sub
+Sub 升级兵营()
+	Call 点击兵营()
+	Delay 3000
+	Call 升级动作()
+	Delay 3000
+End Sub
+Sub 升级校场()
+	Call 点击校场()
+	Delay 3000
+	Call 升级动作()
+	Delay 3000
+End Sub
+Sub 升级商店()
+	Call 点击商店()
+	Delay 3000
+	Call 升级动作()
+	Delay 3000
+End Sub
+Sub 升级市场()
+	Call 点击市场()
+	Delay 3000
+	Call 升级动作()
+	Delay 3000
+End Sub
+Sub 升级粮仓()
+	Call 点击粮仓()
+	Delay 3000
+	Call 升级动作()
+	Delay 3000
+End Sub
+Sub 升级银库()
+	Call 点击银库()
+	Delay 3000
+	Call 升级动作()
+	Delay 3000
+End Sub
+Sub 升级帐房()
+	Call 点击帐房()
+	Delay 3000
+	Call 升级动作()
+	Delay 3000
+End Sub
+//---------------升级部分结束-----------
+
+
+
+
+
+
+
+//-----------------建筑点击部分-----------
+Sub 点击主城()
+	Call Plugin.Bkgnd.LeftClick(g_mouse_handle, zbX+258,zbY+271)
+	Delay 1000
+	
+End Sub
+Sub 点击民居1()
+	Call Plugin.Bkgnd.LeftClick(g_mouse_handle, zbX+252,zbY+152)
+	Delay 1000
+	
+End Sub
+Sub 点击民居2()
+	Call Plugin.Bkgnd.LeftClick(g_mouse_handle, zbX+320,zbY+196)
+	Delay 1000
+	
+End Sub
+Sub 点击民居3()
+	Call Plugin.Bkgnd.LeftClick(g_mouse_handle, zbX+395,zbY+236)
+	Delay 1000
+	
+End Sub
+Sub 点击民居4()
+	Call Plugin.Bkgnd.LeftClick(g_mouse_handle, zbX+470,zbY+286)
+	Delay 1000
+	
+End Sub
+Sub 点击民居5()
+	Call Plugin.Bkgnd.LeftClick(g_mouse_handle, zbX+402,zbY+334)
+	Delay 1000
+	
+End Sub
+Sub 点击民居6()
+	Call Plugin.Bkgnd.LeftClick(g_mouse_handle, zbX+316,zbY+110)
+	Delay 1000
+	
+End Sub
+Sub 点击民居7()
+	Call Plugin.Bkgnd.LeftClick(g_mouse_handle, zbX+389,zbY+155)
+	Delay 1000
+	
+End Sub
+Sub 点击军机处()
+	Call Plugin.Bkgnd.LeftClick(g_mouse_handle, zbX+339,zbY+371)
+	Delay 1000
+	
+End Sub
+Sub 点击兵营()
+	Call Plugin.Bkgnd.LeftClick(g_mouse_handle, zbX+265,zbY+404)
+	Delay 1000
+	
+End Sub
+Sub 点击校场()
+	Call Plugin.Bkgnd.LeftClick(g_mouse_handle, zbX+196,zbY+365)
+	Delay 1000
+	
+End Sub
+Sub 点击商店()
+	Call Plugin.Bkgnd.LeftClick(g_mouse_handle, zbX+121,zbY+315)
+	Delay 1000
+	
+End Sub
+Sub 点击市场()
+	Call Plugin.Bkgnd.LeftClick(g_mouse_handle, zbX+52,zbY+301)
+	Delay 1000
+	
+End Sub
+Sub 点击粮仓()
+	Call Plugin.Bkgnd.LeftClick(g_mouse_handle, zbX+121,zbY+243)
+	Delay 1000
+	
+End Sub
+Sub 点击银库()
+	Call Plugin.Bkgnd.LeftClick(g_mouse_handle, zbX+185,zbY+188)
+	Delay 1000
+	
+End Sub
+Sub 点击帐房()
+	Call Plugin.Bkgnd.LeftClick(g_mouse_handle, zbX+113,zbY+149)
+	Delay 1000
+	
+End Sub
+Sub 点击军团()
+	Call Plugin.Bkgnd.LeftClick(g_mouse_handle, zbX+466,zbY+562)
+	Delay 1000
+	
+End Sub
+Sub 点击强化()
+	Call Plugin.Bkgnd.LeftClick(g_mouse_handle, zbX+505,zbY+560)
+	Delay 1000
+	
+End Sub
+Sub 点击任务()
+	Call Plugin.Bkgnd.LeftClick(g_mouse_handle, zbX+548,zbY+560)
+	Delay 1000
+	
+End Sub
+Sub 点击部队()
+	Call Plugin.Bkgnd.LeftClick(g_mouse_handle, zbX+587,zbY+558)
+	Delay 1000
+	
+End Sub
+Sub 点击主城字()
+	Call Plugin.Bkgnd.LeftClick(g_mouse_handle, zbX+634,zbY+551)
+	Delay 1000
+	
+End Sub
+Sub 点击征战()
+	Call Plugin.Bkgnd.LeftClick(g_mouse_handle, zbX+633,zbY+510)
+	Delay 1000
+	
+End Sub
+Sub 点击地区()
+	Call Plugin.Bkgnd.LeftClick(g_mouse_handle, zbX+653,zbY+471)
+	Delay 1000
+	
+End Sub
+Sub 点击世界()
+	Call Plugin.Bkgnd.LeftClick(g_mouse_handle, zbX+690,zbY+457)
+	Delay 1000
+	
+End Sub
+Sub 点击农田()
+	Call Plugin.Bkgnd.LeftClick(g_mouse_handle, zbX+733,zbY+466)
+	Delay 1000
+	
+End Sub
+
+Sub 升级动作()
+	Call Plugin.Bkgnd.LeftClick(g_mouse_handle,zbX+132,zbY+357 )
+	//点关闭按钮
+	Call 建筑_关闭()
+	Delay 1000
+End Sub
+
+Sub 建筑_关闭
+	Delay 100
+	//点关闭按钮
+	Call Plugin.Bkgnd.LeftClick(g_mouse_handle,672 ,216 )
+End Sub
+
+
+//-------------  征收部分-----------
+Sub 征收()
+	Delay 500
+	Call 点击主城()
+	Delay 1000
+
+	//点征收
+	Call Plugin.Bkgnd.LeftClick(g_mouse_handle,zbX+220,zbY+ 254 )
+	Delay 1000
+
+	//确认证收 
+	Call Plugin.Bkgnd.LeftClick(g_mouse_handle,zbX+307,zbY+225)
+	Delay 3000
+	
+	//关闭窗口 808,100  616B72
+	Call Plugin.Bkgnd.LeftClick(g_mouse_handle,zbX+568,zbY+ 100)
+
+//	FindPic 0,0,1024,768,"Attachment:\qd.bmp",0.9,aX,aY
+//	If ax > 0 And ay > 0 Then
+//	Call Plugin.Bkgnd.LeftClick(g_mouse_handle,zbX+255,zbY+225)
+
+//	MoveTo aX+5,aY+5
+//	Delay 1000
+//	LeftClick 1
+//	End If
+//	Delay 1000
+//	MoveTo zbX+567,zbY+92
+//	Delay 1000
+//	LeftClick 1
+End Sub
+//-------------征收部分结束-----------
+
+
+
+//------------------------------- other ----------------------------------
+//自动喊话
+Function auto_say(msg)
+	Call Plugin.Bkgnd.LeftClick(g_mouse_handle,109 ,571 )
+	Delay 200
+	Call Plugin.Bkgnd.SendString(g_key_handle, msg)
+	Call Plugin.Bkgnd.KeyPress(g_key_handle, 13)
+	Delay 200	
+End Function
+
+
+
+
+//得到当前窗口的相对坐标
+//Dim m_rect,client_left_x,client_left_y, tmp_rect_array
+//m_rect	= Plugin.Window.GetClientRect(m_handle)
+//tmp_rect_array	= Split(m_rect,"|")
+//client_left_x	= tmp_rect_array(0)
+//client_left_y	= tmp_rect_array(1)
+//client_left_x	= 0
+//client_left_y	= 0
+
+
+
+//MessageBox "得到当前最前面的窗口句柄为："&f_handle&"  当前标题为: " & s & "  类名: " & s1
+//MessageBox "得到鼠标指向的窗口句柄为"&m_handle
+
+
+Sub OnScriptExit()
+Call Plugin.Web.Tips("脚本停止运行")
+End Sub

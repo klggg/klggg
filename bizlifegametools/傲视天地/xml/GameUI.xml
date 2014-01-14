@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 游戏UI界面配置文件 -->
+<config>
+	<!--背景、退出按钮-->
+	<displayObject name="background" view="gameUI.view.Background" property='{"mouseEnabled":false}' />
+	<displayObject name="logoutBtn" view="gameUI.btn.CloseBtn" property='{"x":970, "y":11}' />
+	
+	<displayObject name="payBtn" view="gameUI.btn.Pay" property='{"x":185, "y":22}' />
+	<displayObject name="giftBtn" view="gameUI.btn.Gift" property='{"x":214, "y":20}' />
+	<button name="buyTokenBtn" style="button16" labelID="040211" property='{"x":209, "y":79}'/>
+	
+	<!--城市剪影-->
+	<displayObject name="cityPic" view="gameUI.pic.City" property='{"x":18, "y":11}' />
+	
+	<!--名字、等级显示文本-->
+	<text name="nameText" property='{"x":15, "y":60, "width":80, "height":18, "align":"center", "autoSize":"none", "color":"0xCCCCCC", "stroke":"0x333333"}' />
+	<text name="levelText" property='{"x":52, "y":74, "autoSize":"center", "color":"0xCCCCCC", "stroke":"0x333333", "mouseEnabled":false}' />
+	
+	<!--信件按钮-->
+	<gameButton name="mailBtn" labelID="040210" property='{"x":95, "y":80}' btn="gameUI.btn.MailBtn" labelProp='{"x":3, "y":2, "color":"0xFFFFFF", "stroke":"0x333333"}' />	
+	<displayObject name="newMailMC" view="gameUI.view.NewMailMovie" property='{"x":86, "y":71, "visible":false}' />
+	
+	<!--季节-->
+	<displayObject name="seasonBG" view="gameUI.view.SeasonBG" property='{"x":900, "y":500, "mouseEnabled":false}' />
+	<displayObject name="seasonIcon" view="gameUI.icon.Season" property='{"x":900, "y":500}' />
+	<text name="seasonText" property='{"x":920, "y":542, "color":"0xCCCCCC", "stroke":"0x333333", "mouseEnabled":false}' />
+	
+	<!--秘书、军团、强化、任务、部队-->
+	<gameButton name="secretaryBtn" labelID="040200" property='{"x":615, "y":535, "visible":false}' btn="gameUI.btn.Secretary" labelProp='{"x":12, "y":28, "color":"0xccbaa7", "stroke":"0x12100e"}' />
+	<gameButton name="legoinBtn" labelID="040201" property='{"x":660, "y":535}' btn="gameUI.btn.LegoinBtn" labelProp='{"x":12, "y":28, "color":"0xccbaa7", "stroke":"0x12100e"}' />
+	<gameButton name="strengthenBtn" labelID="040202" property='{"x":705, "y":535}' btn="gameUI.btn.StrengthenBtn" labelProp='{"x":12, "y":28, "color":"0xccbaa7", "stroke":"0x12100e"}' />
+	<gameButton name="taskBtn" labelID="040203" property='{"x":750, "y":535}' btn="gameUI.btn.TaskBtn" labelProp='{"x":12, "y":28, "color":"0xccbaa7", "stroke":"0x12100e"}' />
+	<gameButton name="generalBtn" labelID="040204" property='{"x":795, "y":535}' btn="gameUI.btn.GeneralBtn" labelProp='{"x":12, "y":28, "color":"0xccbaa7", "stroke":"0x12100e"}' />
+	
+	<!--主城、征战、地区、世界、农田-->
+	<gameButton name="mainCityBtn" labelID="040205" property='{"x":866, "y":554}' btn="gameUI.btn.MainCityBtn" labelProp='{"x":9, "y":23, "color":"0xccbaa7", "stroke":"0x12100e"}' />
+	<gameButton name="expeditionBtn" labelID="040206" property='{"x":858, "y":514}' btn="gameUI.btn.ExpeditionBtn" labelProp='{"x":9, "y":23, "color":"0xccbaa7", "stroke":"0x12100e"}' />
+	<gameButton name="areaBtn" labelID="040207" property='{"x":876, "y":478}' btn="gameUI.btn.AreaBtn" labelProp='{"x":9, "y":23, "color":"0xccbaa7", "stroke":"0x12100e"}' />
+	<gameButton name="worldBtn" labelID="040208" property='{"x":913, "y":461}' btn="gameUI.btn.WorldBtn" labelProp='{"x":9, "y":23, "color":"0xccbaa7", "stroke":"0x12100e"}' />
+	<gameButton name="farmlandBtn" labelID="040209" property='{"x":954, "y":465}' btn="gameUI.btn.FarmlandBtn" labelProp='{"x":9, "y":23, "color":"0xccbaa7", "stroke":"0x12100e"}' />
+	
+	<!--军令-->
+	<token view="gameUI.view.Token" property='{"x":125, "y":80}'>
+		<text property='{"x":10, "y":2, "color":"0xF6EAD4", "upColor":"#24B052", "downColor":"#B13F23"}' />
+	</token>
+	
+	<!--图标和文字-->
+	<gold>
+		<icon view="gameUI.icon.Gold" property='{"x":95, "y":23}' />
+		<text property='{"x":126, "y":21, "color":"0xF0D639", "upColor":"#24B052", "downColor":"#B13F23"}' />
+	</gold>
+	<copper>
+		<icon view="gameUI.icon.Copper" property='{"x":97, "y":54}' />
+		<text property='{"x":126, "y":51, "color":"0xD0CCCB", "upColor":"#24B052", "downColor":"#B13F23"}' />
+	</copper>
+	<force>
+		<icon view="gameUI.icon.Force" property='{"x":256, "y":17}' />
+		<text property='{"x":289, "y":21, "color":"0xD0CCCB", "upColor":"#24B052", "downColor":"#B13F23"}' />
+	</force>
+	<food>
+		<icon view="gameUI.icon.Food" property='{"x":254, "y":48}' />
+		<text property='{"x":289, "y":51, "color":"0xD0CCCB", "upColor":"#24B052", "downColor":"#B13F23"}' />
+	</food>
+	<junGong>
+		<icon view="gameUI.icon.JunGong" property='{"x":421, "y":21}' />
+		<text property='{"x":452, "y":21, "color":"0xD0CCCB", "upColor":"#24B052", "downColor":"#B13F23"}' />
+	</junGong>
+	<prestige>
+		<icon view="gameUI.icon.Prestige" property='{"x":416, "y":49}' />
+		<text property='{"x":452, "y":51, "color":"0xD0CCCB", "upColor":"#24B052", "downColor":"#B13F23"}' />
+	</prestige>
+	
+	<!--额外的征战军令-->
+	<extraZhengZhan property='{"x":250, "y":80, "toolTipID":"040110"}'>
+		<displayObject view="gameUI.view.ExtraToken" property='{}' />
+		<staticText property='{"x":4, "y":3, "color":"0xF6EAD4", "stroke":"0x5A4B36", "mouseEnabled":false}' textID="040105" />
+	</extraZhengZhan>
+	<extraNongTian property='{"x":275, "y":80, "toolTipID":"040111"}'>
+		<displayObject view="gameUI.view.ExtraToken" property='{}' />
+		<staticText property='{"x":4, "y":3, "color":"0xF6EAD4", "stroke":"0x5A4B36", "mouseEnabled":false}' textID="040106" />
+	</extraNongTian>
+	<extraGongJi property='{"x":300, "y":80, "toolTipID":"040112"}'>
+		<displayObject view="gameUI.view.ExtraToken" property='{}' />
+		<staticText property='{"x":4, "y":3, "color":"0xF6EAD4", "stroke":"0x5A4B36", "mouseEnabled":false}' textID="040107" />
+	</extraGongJi>
+	<extraYinKuang property='{"x":325, "y":80, "toolTipID":"040113"}'>
+		<displayObject view="gameUI.view.ExtraToken" property='{}' />
+		<staticText property='{"x":4, "y":3, "color":"0xF6EAD4", "stroke":"0x5A4B36", "mouseEnabled":false}' textID="040108" />
+	</extraYinKuang>
+	<extraZhengFu property='{"x":350, "y":80, "toolTipID":"040114"}'>
+		<displayObject view="gameUI.view.ExtraToken" property='{}' />
+		<staticText property='{"x":4, "y":3, "color":"0xF6EAD4", "stroke":"0x5A4B36", "mouseEnabled":false}' textID="040109" />
+	</extraZhengFu>
+	
+	<!--军令cd显示以及清除操作-->
+	<tokenCD property='{"x":380, "y":82}'>
+		<displayObject view="gameUI.view.TokenCDBG" property='{}' />
+		<text name="cdText" property='{"autoSize":"right", "x":43, "y":2, "color":"0xF6EAD4", "stroke":"0x5A4B36"}' />
+		<displayObject name="clearCDBtn" view="gameUI.btn.ClearCD" property='{"x":46, "y":4}' />
+	</tokenCD>
+	
+	
+	<!--聊天-->
+	<chat>
+		<!--背景-->
+		<displayObject view="gameUI.chat.ChatBG" property='{"x":13, "y":555}' />
+		<!--内容输入文本-->
+		<text name="inputText" property='{"autoSize":"none", "selectable":true, "type":"input", "width":185, "height":17, "x":83, "y":564, "color":"0xCCCCCC"}' />
+		<!--发送按钮-->
+		<displayObject name="sendBtn" view="gameUI.chat.SendBtn" property='{"x":277, "y":560}' />
+		<!--显示和隐藏聊天消息列表按钮-->
+		<displayObject name="showMsgBtn" view="gameUI.chat.ShowMsgBtn" property='{"x":30, "y":571}' />
+		<!--选择频道按钮-->
+		<displayObject name="channelBtn" view="gameUI.chat.ChannelBtn" property='{"x":44, "y":560}' />
+		<!--当前频道显示文本-->
+		<text name="nowChannelText" property='{"autoSize":"none", "align":"center", "width":33, "height":17, "x":44, "y":564, "textType":"htmlText", "mouseEnabled":false}' />
+		<!--提示文本-->
+		<tipsText property='{"x":83, "y":540, "stroke":"0x0"}' />
+		
+		
+		<!--频道选择列表-->
+		<channelList property='{"x":40, "y":422}'>
+			<displayObject view="gameUI.chat.ChannelListBG" property='' /><!--背景-->
+			<displayObject name="effectBG" view="gameUI.chat.EffectBG" property='' /><!--鼠标移上去时的效果背景-->
+			<text name="whisper" property='{"autoSize":"none", "align":"center", "width":43, "height":16, "y":8, "color":"0x5384FF"}' />
+			<text name="all" property='{"autoSize":"none", "align":"center", "width":43, "height":16, "y":26, "color":"0xFA9835"}' />
+			<text name="national" property='{"autoSize":"none", "align":"center", "width":43, "height":16, "y":44, "color":"0x82D755"}' />
+			<text name="area" property='{"autoSize":"none", "align":"center", "width":43, "height":16, "y":62, "color":"0xE8D785"}' />
+			<text name="vicinity" property='{"autoSize":"none", "align":"center", "width":43, "height":16, "y":80, "color":"0xF2C061"}' />
+			<text name="legion" property='{"autoSize":"none", "align":"center", "width":43, "height":16, "y":98, "color":"0x8792FB"}' />
+			<text name="campaign" property='{"autoSize":"none", "align":"center", "width":43, "height":16, "y":116, "color":"0xF5B487"}' />
+		</channelList>
+		
+		
+		<!--私聊名称输入对话框-->
+		<nameInput property='{"x":354, "y":212}'>
+			<displayObject view="gameUI.chat.NameInputBG" property='' /><!--背景-->
+			<staticText property='{"x":65, "y":57, "color":"0xCCCCCC"}' textID="040601"/><!--提示信息-->
+			<text name="inputText" property='{"autoSize":"none", "selectable":true, "type":"input", "width":158, "height":17, "x":66, "y":80, "color":"0xCCCCCC"}' /><!--名称输入文本-->
+			<button name="submitBtn" style="button3" labelID="040602" property='{"x":58, "y":112}'/>
+			<button name="cancelBtn" style="button3" labelID="040603" property='{"x":148, "y":112}'/>
+		</nameInput>
+		
+		
+		<!--聊天消息列表-->
+		<msgList view="gameUI.chat.MsgBG" vars='{"x":15, "width":290, "minHeight":150, "maxHeight":410, "paddingDown":48}'>
+			<dragArea vars='{"x":-5, "y":-8, "width":300, "height":25}' />
+			<autoMouseCursor view='gameUI.chat.AutoMouseCursor' property="" />
+			<scrollBar property='{"x":3, "y":5}' />
+			<text property='{"multiline":true, "width":260, "mouseWheelEnabled":false, "color":"0xCCCCCC", "stroke":"0x0A0805"}' />
+			<showArea vars='{"paddingLeft":24, "paddingTop":5, "paddingRight":5, "paddingDown":5}' />
+			<scrollBar vars='{"paddingLeft":3, "paddingTop":5, "paddingDown":5}' />
+		</msgList>
+		
+		
+		<!--自动消失聊天消息列表-->
+		<autoMsgList property='{"x":20}' startY="552" itemWidth="280" leading="1">
+			<text property='{"stroke":"0x0"}' duration="15" />
+			<mask property='{"x":20, "y":122, "width":280, "height":430}' />
+		</autoMsgList>
+	</chat>
+	
+	
+	<!--cd列表-->
+	<cdList property='{"x":15, "y":105, "rowGap":3, "padding":5}'>
+		<fcm property='{"paddingLeft":5}'><!--防沉迷-->
+			<displayObject view="gameUI.icon.FCM" property='{"mouseEnabled":false}'/>
+			<cdText property='{"x":23, "y":2, "stroke":"0x333333"}' style='{"color":"0x64BFDA", "overStyle":{"underline":true}}' />
+		</fcm>
+		
+		<collection property='{"paddingLeft":5}'><!--征收-->
+			<displayObject view="gameUI.icon.Collection" property='{"mouseEnabled":false}'/>
+			<displayObject name="clearCDBtn" view="gameUI.btn.ClearCD" property='{"y":4, "visible":false}' />
+			<cdText property='{"x":23, "y":2, "stroke":"0x333333"}' style1='{"color":"0x64BFDA", "overStyle":{"underline":true}}' style2='{"color":"0x86BA4E", "overStyle":{"underline":true}}' />
+		</collection>
+		<caravan property='{"paddingLeft":5}'><!--商队-->
+			<displayObject view="gameUI.icon.Caravan" property='{"mouseEnabled":false}'/>
+			<cdText property='{"x":23, "y":2, "stroke":"0x333333"}' style1='{"color":"0x64BFDA", "overStyle":{"underline":true}}' style2='{"color":"0x86BA4E", "overStyle":{"underline":true}}' style3='{"color":"0xFF9900", "overStyle":{"underline":true}}' />
+		</caravan>
+		<science property='{"paddingLeft":5}'><!--科技-->
+			<displayObject view="gameUI.icon.Science" property='{"mouseEnabled":false}'/>
+			<displayObject name="clearCDBtn" view="gameUI.btn.ClearCD" property='{"y":4, "visible":false}' />
+			<cdText property='{"x":23, "y":2, "stroke":"0x333333"}' style1='{"color":"0x64BFDA", "overStyle":{"underline":true}}' style2='{"color":"0x86BA4E", "overStyle":{"underline":true}}' />
+		</science>
+		<training property='{"paddingLeft":5}'><!--训练-->
+			<displayObject view="gameUI.icon.Training" property='{"mouseEnabled":false}'/>
+			<displayObject name="clearCDBtn" view="gameUI.btn.ClearCD" property='{"y":4, "visible":false}' />
+			<cdText property='{"x":23, "y":2, "stroke":"0x333333"}' style1='{"color":"0x64BFDA", "overStyle":{"underline":true}}' style2='{"color":"0x86BA4E", "overStyle":{"underline":true}}' />
+		</training>
+		<protection property='{"paddingLeft":5}'><!--保护(免战)-->
+			<displayObject view="gameUI.icon.Protection" property='{"mouseEnabled":false}'/>
+			<cdText property='{"x":23, "y":2, "stroke":"0x333333"}' style1='{"color":"0x64BFDA"}' style2='{"color":"0x86BA4E"}' />
+		</protection>
+		<refresh property='{"paddingLeft":5}'><!--刷新(精英部队)-->
+			<displayObject view="gameUI.icon.Refresh" property='{"mouseEnabled":false}'/>
+			<cdText property='{"x":23, "y":2, "stroke":"0x333333"}' style='{"color":"0x64BFDA"}' />
+		</refresh>
+	</cdList>
+	
+	
+	<!--征兵对话框-->
+	<conscriptionDialog property='{"x":307, "y":177}'>
+		<displayObject view="gameUI.view.ConscriptionDialogBG" property=''/>
+		<displayObject name="closeBtn" view="gameUI.btn.CloseBtn" property='{"x":355, "y":30}' />
+		
+		<staticText property='{"x":25, "y":45, "bold":true, "size":14, "color":"0xE7E0D8", "stroke":"0x292317"}' textID="040901"/>
+		<staticText property='{"x":25, "y":85, "color":"0xE7E0D8", "stroke":"0x292317"}' textID="040902"/>
+		<staticText property='{"x":30, "y":145, "color":"0xA07D53", "stroke":"0x292317"}' textID="040903"/>
+		<staticText property='{"x":205, "y":145, "color":"0xA07D53", "stroke":"0x292317"}' textID="040904"/>
+		
+		<text name="inputText" property='{"autoSize":"none", "selectable":true, "type":"input", "width":140, "height":18, "restrict":"0-9", "x":32, "y":114, "color":"0xE7E0D8", "stroke":"0x292317"}' />
+		<text name="soldierNumText" property='{"x":90, "y":146, "color":"0xE7E0D8", "stroke":"0x292317"}' />
+		<text name="foodNumText" property='{"x":265, "y":146, "color":"0xE7E0D8", "stroke":"0x292317"}' />
+		
+		<button name="addBtn" style="button10" labelID="040906" property='{"x":180, "y":102}'/>
+		<button name="lessBtn" style="button10" labelID="040907" property='{"x":225, "y":102}'/>
+		<button name="maxBtn" style="button3" labelID="040908" property='{"x":270, "y":102}'/>
+		<button name="submitBtn" style="button4" labelID="040909" property='{"x":105, "y":175}'/>
+		<button name="cancelBtn" style="button5" labelID="040910" property='{"x":205, "y":175}'/>
+		
+		<dragHitArea property='{"x":0, "y":20, "width":380, "height":40}' />
+	</conscriptionDialog>
+	
+	<!--玩家信息话框-->
+	<playerInfoDialog property=''>
+		<displayObject view="gameUI.view.PlayerInfoDialogBG" property=''/>
+		<displayObject name="cityPic" view="GameUI.pic.BigCity" property='{"x":23, "y":27}' />
+		
+		<staticText property='{"x":113, "y":36, "color":"0xA07D53", "stroke":"0x292317"}' textID="041101"/>
+		<staticText property='{"x":113, "y":56, "color":"0xA07D53", "stroke":"0x292317"}' textID="041102"/>
+		<staticText property='{"x":113, "y":76, "color":"0xA07D53", "stroke":"0x292317"}' textID="041103"/>
+		<staticText property='{"x":113, "y":96, "color":"0xA07D53", "stroke":"0x292317"}' textID="041104"/>
+		
+		<text name="nameText" property='{"x":113, "y":16, "bold":true, "color":"0xE7E0D8", "stroke":"0x292317"}' />
+		<text name="levelText" property='{"x":149, "y":36, "color":"0xE7E0D8", "stroke":"0x292317"}' />
+		<text name="officerText" property='{"x":149, "y":56, "color":"0xE7E0D8", "stroke":"0x292317"}' />
+		<text name="legionText" property='{"x":149, "y":76, "color":"0xE7E0D8", "stroke":"0x292317"}' />
+		<text name="positionText" property='{"x":149, "y":96, "color":"0xE7E0D8", "stroke":"0x292317"}' />
+		
+	</playerInfoDialog>
+	
+	
+	<!--游戏公告-->
+	<gameNotice property='{"x":845, "y":15, "maxHeight":44, "delay":80, "initY":114, "minY":70, "lessY":1}'>
+		<displayObject view="gameUI.view.NoticeBG" property=''/>
+		<text name="contentText" property='{"x":13, "y":70, "width":116, "selectable":true, "multiline":true, "textType":"htmlText", "color":"0xCC9966"}' />
+		<mask property='{"x":13, "y":70, "width":116, "height":42}' />
+	</gameNotice>
+	
+	<!--停服公告-->
+	<stopNotice property='{"x":535, "y":17, "visible":false}'>
+		<text name="contentText" property='{"width":300, "mouseEnabled":false, "multiline":true, "textType":"htmlText", "color":"0xFF6600", "stroke":"0x292317"}' />
+	</stopNotice>
+	
+	<!--大按钮列表-->
+	<bigButtonList property='{"x":870, "y":150, "rowGap":5, "showCampaignBtn":true}'>
+		<bigButton property=''>
+			<btn view="gameUI.bigBtn.{0}" property='' />
+			<text name="titleText" property='{"x":55, "y":7, "width":55, "mouseEnabled":false, "color":"0xF6ECE3", "bold":true}' />
+			<text name="introText" property='{"x":55, "y":23, "width":55, "height":32, "multiline":true, "mouseEnabled":false, "color":"0xF6ECE3"}' />
+		</bigButton>
+		<campaignBtn property='{"x":50}'>
+			<displayObject view="gameUI.bigBtn.Campaign2" property=''/>
+			<text name="titleText" property='{"x":8, "y":7, "width":55, "mouseEnabled":false, "color":"0xF6ECE3", "bold":true}' />
+			<text name="introText" property='{"x":8, "y":23, "width":55, "height":32, "multiline":true, "mouseEnabled":false, "color":"0xF6ECE3"}' />
+		</campaignBtn>
+	</bigButtonList>
+	
+	
+	<!--武将消息框-->
+	<generalMsg property='{"x":320, "y":260, "mtStyle1":{"visible":false}, "mtStyle2":{"alpha":0.01, "color":"0x0"} }' msgDelay="80">
+		<displayObject view="gameUI.view.GeneralMsgBG" property=''/>
+		<displayObject name="clickMovie" view="gameUI.view.ClickMovie" property='{"x":339, "y":54, "visible":false}'/>
+		<pic name="headPic" property='' frame="gameUI.picCover" frameProp='' picProp='{"x":3, "y":1}' />
+		<text name="nameText" property='{"x":5, "y":54, "size":14, "bold":true, "color":"0xFFFFFF", "stroke":"0x2C2105"}' />
+		<text name="msgText" property='{"width":270, "multiline":true, "textType":"htmlText", "x":86, "y":8, "color":"0xF0E9E3", "stroke":"0x2C2105"}' />
+	</generalMsg>
+</config>

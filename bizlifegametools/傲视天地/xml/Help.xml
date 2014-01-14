@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- 帮助系统文件 -->
+<config>
+	<!--目标-->
+	<target>
+		<displayObject view="help.target.Background" property='' />
+		<staticText property='{"x":95, "y":85, "bold":true, "color":"0xF4CFA3", "stroke":"0x272016"}' textID="160201"/>
+		<staticText property='{"x":95, "y":102, "textType":"htmlText", "color":"0xE3DCD4", "stroke":"0x272016"}' textID="160202"/>
+		<staticText property='{"x":95, "y":135, "bold":true, "color":"0xF4CFA3", "stroke":"0x272016"}' textID="160203"/>
+		<staticText property='{"x":95, "y":152, "textType":"htmlText", "color":"0xE3DCD4", "stroke":"0x272016"}' textID="160204"/>
+		<staticText property='{"x":95, "y":185, "bold":true, "color":"0xF4CFA3", "stroke":"0x272016"}' textID="160205"/>
+		<staticText property='{"x":95, "y":202, "textType":"htmlText", "color":"0xE3DCD4", "stroke":"0x272016"}' textID="160206"/>
+		<staticText property='{"x":95, "y":260, "bold":true, "color":"0xF4CFA3", "stroke":"0x272016"}' textID="160207"/>
+		<staticText property='{"x":95, "y":277, "textType":"htmlText", "color":"0xE3DCD4", "stroke":"0x272016"}' textID="160208"/>
+		<staticText property='{"x":95, "y":320, "bold":true, "color":"0xF4CFA3", "stroke":"0x272016"}' textID="160209"/>
+		<staticText property='{"x":95, "y":337, "textType":"htmlText", "color":"0xE3DCD4", "stroke":"0x272016"}' textID="160210"/>
+	</target>
+	
+	<!--攻略-->
+	<gongLue>
+		<displayObject view="help.gongLue.Background" property='' />
+		<text name="titleText" property='{"x":325, "y":103, "textType":"htmlText", "autoSize":"center", "size":14, "color":"0xEBE4DC", "stroke":"0x272016"}'/>
+		
+		<text name="name1Text" property='{"x":295, "y":180, "autoSize":"right", "color":"0xE4DDD3", "stroke":"0x272016"}'/>
+		<text name="level1Text" property='{"x":320, "y":180, "autoSize":"center", "color":"0xB4A79F", "stroke":"0x272016"}'/>
+		<text name="report1Text" property='{"x":345, "y":180, "textType":"htmlText", "selectable":true, "color":"0xFFCB67", "stroke":"0x272016"}'/>
+		
+		<text name="name2Text" property='{"x":295, "y":210, "autoSize":"right", "color":"0xE4DDD3", "stroke":"0x272016"}'/>
+		<text name="level2Text" property='{"x":320, "y":210, "autoSize":"center", "color":"0xB4A79F", "stroke":"0x272016"}'/>
+		<text name="report2Text" property='{"x":345, "y":210, "textType":"htmlText", "selectable":true, "color":"0xFFCB67", "stroke":"0x272016"}'/>
+		
+		<text name="name3Text" property='{"x":295, "y":240, "autoSize":"right", "color":"0xE4DDD3", "stroke":"0x272016"}'/>
+		<text name="level3Text" property='{"x":320, "y":240, "autoSize":"center", "color":"0xB4A79F", "stroke":"0x272016"}'/>
+		<text name="report3Text" property='{"x":345, "y":240, "textType":"htmlText", "selectable":true, "color":"0xFFCB67", "stroke":"0x272016"}'/>
+		
+		<text name="name4Text" property='{"x":295, "y":270, "autoSize":"right", "color":"0xE4DDD3", "stroke":"0x272016"}'/>
+		<text name="level4Text" property='{"x":320, "y":270, "autoSize":"center", "color":"0xB4A79F", "stroke":"0x272016"}'/>
+		<text name="report4Text" property='{"x":345, "y":270, "textType":"htmlText", "selectable":true, "color":"0xFFCB67", "stroke":"0x272016"}'/>
+		
+		<text name="name5Text" property='{"x":295, "y":300, "autoSize":"right", "color":"0xE4DDD3", "stroke":"0x272016"}'/>
+		<text name="level5Text" property='{"x":320, "y":300, "autoSize":"center", "color":"0xB4A79F", "stroke":"0x272016"}'/>
+		<text name="report5Text" property='{"x":345, "y":300, "textType":"htmlText", "selectable":true, "color":"0xFFCB67", "stroke":"0x272016"}'/>
+	</gongLue>
+</config>

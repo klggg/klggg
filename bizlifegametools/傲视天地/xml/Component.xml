@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 组件样式配置文件 -->
+<config>
+	<!-- 游戏中文本的默认样式 -->
+	<component id="gameTextField" style="{   &quot;font&quot;  : &quot;宋体&quot;,   &quot;size&quot;  : 12,   &quot;color&quot;  : &quot;0x0&quot;,   &quot;align&quot;  : &quot;left&quot;,   &quot;bold&quot;  : false,   &quot;underline&quot; : false,   &quot;leading&quot; : 3  }"/>
+	
+	
+	<!-- 金色 -->
+	<component id="button1" style="{   &quot;upSkin&quot; : &quot;skin.button1$up&quot;,   &quot;overSkin&quot; : &quot;skin.button1$over&quot;,   &quot;downSkin&quot; : &quot;skin.button1$down&quot;,   &quot;disabledSkin&quot; : &quot;skin.button1$disabled&quot;,   &quot;bold&quot;  : true,   &quot;color&quot;  : &quot;0xFFFFCC&quot;,   &quot;stroke&quot; : &quot;0x3D2F22&quot;,   &quot;overStyle&quot; : {&quot;color&quot;:&quot;0xFFFF99&quot;},   &quot;disabledStyle&quot; : {&quot;color&quot;:&quot;0x908762&quot;}  }"/>
+	<!-- 地区 转到该区域 -->
+	<component id="button2" style="{   &quot;upSkin&quot;  : &quot;skin.button2$up&quot;,   &quot;overSkin&quot;  : &quot;skin.button2$over&quot;,   &quot;downSkin&quot;  : &quot;skin.button2$down&quot;,   &quot;disabledSkin&quot; : &quot;skin.button2$disabled&quot;,   &quot;paddingRight&quot; : 27,   &quot;color&quot;   : &quot;0xFFFFCC&quot;,   &quot;stroke&quot;  : &quot;0x3D2F22&quot;,   &quot;overStyle&quot;  : {&quot;color&quot;:&quot;0xFFFF99&quot;},   &quot;disabledStyle&quot; : {&quot;color&quot;:&quot;0x7D755E&quot;}  }"/>
+	<!-- 黑色 -->
+	<component id="button3" style="{   &quot;upSkin&quot; : &quot;skin.button3$up&quot;,   &quot;overSkin&quot; : &quot;skin.button3$over&quot;,   &quot;downSkin&quot; : &quot;skin.button3$down&quot;,   &quot;disabledSkin&quot; : &quot;skin.button1$disabled&quot;,   &quot;bold&quot;  : true,   &quot;color&quot;  : &quot;0xFFFFCC&quot;,   &quot;stroke&quot; : &quot;0x3D2F22&quot;,   &quot;overStyle&quot; : {&quot;color&quot;:&quot;0xFFFF99&quot;},   &quot;disabledStyle&quot; : {&quot;color&quot;:&quot;0x908762&quot;}  }"/>
+	<!-- 青色 -->
+	<component id="button4" style="{   &quot;upSkin&quot; : &quot;skin.button4$up&quot;,   &quot;overSkin&quot; : &quot;skin.button4$over&quot;,   &quot;downSkin&quot; : &quot;skin.button4$down&quot;,   &quot;disabledSkin&quot; : &quot;skin.button1$disabled&quot;,   &quot;bold&quot;  : true,   &quot;color&quot;  : &quot;0xFFFFCC&quot;,   &quot;stroke&quot; : &quot;0x3D2F22&quot;,   &quot;overStyle&quot; : {&quot;color&quot;:&quot;0xFFFF99&quot;},   &quot;disabledStyle&quot; : {&quot;color&quot;:&quot;0x908762&quot;}  }"/>
+	<!-- 红色 -->
+	<component id="button5" style="{   &quot;upSkin&quot; : &quot;skin.button5$up&quot;,   &quot;overSkin&quot; : &quot;skin.button5$over&quot;,   &quot;downSkin&quot; : &quot;skin.button5$down&quot;,   &quot;disabledSkin&quot; : &quot;skin.button1$disabled&quot;,   &quot;bold&quot;  : true,   &quot;color&quot;  : &quot;0xFFFFCC&quot;,   &quot;stroke&quot; : &quot;0x3D2F22&quot;,   &quot;overStyle&quot; : {&quot;color&quot;:&quot;0xFFFF99&quot;},   &quot;disabledStyle&quot; : {&quot;color&quot;:&quot;0x908762&quot;}  }"/>
+	<!-- 紫色 -->
+	<component id="button6" style="{   &quot;upSkin&quot; : &quot;skin.button6$up&quot;,   &quot;overSkin&quot; : &quot;skin.button6$over&quot;,   &quot;downSkin&quot; : &quot;skin.button6$down&quot;,   &quot;disabledSkin&quot; : &quot;skin.button1$disabled&quot;,   &quot;bold&quot;  : true,   &quot;color&quot;  : &quot;0xFFFFCC&quot;,   &quot;stroke&quot; : &quot;0x3D2F22&quot;,   &quot;overStyle&quot; : {&quot;color&quot;:&quot;0xFFFF99&quot;},   &quot;disabledStyle&quot; : {&quot;color&quot;:&quot;0x908762&quot;}  }"/>
+	<!-- 征战 向左按钮 -->
+	<component id="button7" style="{   &quot;upSkin&quot;  : &quot;skin.button7$up&quot;,   &quot;overSkin&quot;  : &quot;skin.button7$over&quot;,   &quot;downSkin&quot;  : &quot;skin.button7$down&quot;,   &quot;disabledSkin&quot; : &quot;skin.button7$disabled&quot;,   &quot;paddingLeft&quot; : 27,   &quot;color&quot;   : &quot;0xFFFFCC&quot;,   &quot;stroke&quot;  : &quot;0x3D2F22&quot;,   &quot;overStyle&quot;  : {&quot;color&quot;:&quot;0xFFFF99&quot;},   &quot;disabledStyle&quot; : {&quot;color&quot;:&quot;0x7D755E&quot;}  }"/>
+	<!-- 征战 向右按钮 -->
+	<component id="button8" style="{   &quot;upSkin&quot;  : &quot;skin.button8$up&quot;,   &quot;overSkin&quot;  : &quot;skin.button8$over&quot;,   &quot;downSkin&quot;  : &quot;skin.button8$down&quot;,   &quot;disabledSkin&quot; : &quot;skin.button8$disabled&quot;,   &quot;paddingRight&quot; : 27,   &quot;color&quot;   : &quot;0xFFFFCC&quot;,   &quot;stroke&quot;  : &quot;0x3D2F22&quot;,   &quot;overStyle&quot;  : {&quot;color&quot;:&quot;0xFFFF99&quot;},   &quot;disabledStyle&quot; : {&quot;color&quot;:&quot;0x7D755E&quot;}  }"/>
+	<!-- item按钮 -->
+	<component id="button9" style="{   &quot;upSkin&quot;  : &quot;skin.button9$up&quot;,   &quot;overSkin&quot;  : &quot;skin.button9$over&quot;,   &quot;downSkin&quot;  : &quot;skin.button9$down&quot;,   &quot;disabledSkin&quot; : &quot;skin.button9$disabled&quot;  }"/>
+	<!-- 正方形小按钮 -->
+	<component id="button10" style="{   &quot;upSkin&quot; : &quot;skin.button10$up&quot;,   &quot;overSkin&quot; : &quot;skin.button10$over&quot;,   &quot;downSkin&quot; : &quot;skin.button10$down&quot;,   &quot;bold&quot;  : true,   &quot;color&quot;  : &quot;0xFFFFCC&quot;,   &quot;stroke&quot; : &quot;0x3D2F22&quot;,   &quot;overStyle&quot; : {&quot;color&quot;:&quot;0xFFFF99&quot;}  }"/>
+	<!-- 小灰按钮 -->
+	<component id="button11" style="{   &quot;upSkin&quot; : &quot;skin.button11$up&quot;,   &quot;overSkin&quot; : &quot;skin.button11$over&quot;,   &quot;downSkin&quot; : &quot;skin.button11$down&quot;,   &quot;bold&quot;  : true,   &quot;paddingRight&quot; : 4,   &quot;paddingBottom&quot; : 3,   &quot;color&quot;  : &quot;0xFFFFCC&quot;,   &quot;stroke&quot; : &quot;0x3D2F22&quot;,   &quot;overStyle&quot; : {&quot;color&quot;:&quot;0xFFFF99&quot;}  }"/>
+	<!-- 小红按钮 -->
+	<component id="button12" style="{   &quot;upSkin&quot; : &quot;skin.button12$up&quot;,   &quot;overSkin&quot; : &quot;skin.button12$over&quot;,   &quot;downSkin&quot; : &quot;skin.button12$down&quot;,   &quot;bold&quot;  : true,   &quot;paddingRight&quot; : 4,   &quot;paddingBottom&quot; : 3,   &quot;color&quot;  : &quot;0xFFFFCC&quot;,   &quot;stroke&quot; : &quot;0x3D2F22&quot;,   &quot;overStyle&quot; : {&quot;color&quot;:&quot;0xFFFF99&quot;}  }"/>
+	
+	<!-- 灰色方按钮 -->
+	<component id="button13" style="{   &quot;upSkin&quot; : &quot;skin.button13$up&quot;,   &quot;overSkin&quot; : &quot;skin.button13$over&quot;,   &quot;downSkin&quot; : &quot;skin.button13$down&quot;,   &quot;bold&quot;  : true,   &quot;size&quot;  : 15,   &quot;color&quot;  : &quot;0xE6E0D4&quot;,   &quot;stroke&quot; : &quot;0x29241b&quot;,   &quot;paddingBottom&quot; : 4  }"/>
+	
+	<!-- 建筑物升级按钮 -->
+	<component id="button14" style="{   &quot;upSkin&quot; : &quot;skin.button14$up&quot;,   &quot;overSkin&quot; : &quot;skin.button14$over&quot;,   &quot;downSkin&quot; : &quot;skin.button14$down&quot;,   &quot;disabledSkin&quot; : &quot;skin.button14$disabled&quot;,   &quot;bold&quot;  : true,   &quot;color&quot;  : &quot;0xE6E0D4&quot;,   &quot;disabledStyle&quot; : {&quot;color&quot;:&quot;0x888071&quot;},   &quot;size&quot;  : 14,   &quot;stroke&quot; : &quot;0x29241b&quot;,   &quot;paddingRight&quot; : 3,   &quot;paddingTop&quot; : 25  }"/>
+	
+	<!-- 长方形 灰色按钮 -->
+	<component id="button15" style="{   &quot;upSkin&quot;  : &quot;skin.button15$up&quot;,   &quot;overSkin&quot;  : &quot;skin.button15$over&quot;,   &quot;downSkin&quot;  : &quot;skin.button15$down&quot;,   &quot;disabledSkin&quot; : &quot;skin.button15$disabled&quot;,   &quot;color&quot;   : &quot;0xEAE3D9&quot;,   &quot;stroke&quot;  : &quot;0x2B241A&quot;,   &quot;overStyle&quot;  : {&quot;color&quot;:&quot;0xFFFF99&quot;},   &quot;disabledStyle&quot; : {&quot;color&quot;:&quot;0x999999&quot;},   &quot;paddingBottom&quot; : 2,   &quot;paddingRight&quot; : 2  }"/>
+	
+	<!-- 长方形 灰色 小按钮 -->
+	<component id="button16" style="{   &quot;upSkin&quot;  : &quot;skin.button16$up&quot;,   &quot;overSkin&quot;  : &quot;skin.button16$over&quot;,   &quot;downSkin&quot;  : &quot;skin.button16$down&quot;,   &quot;color&quot;   : &quot;0xF0D099&quot;,   &quot;stroke&quot;  : &quot;0x2B241A&quot;,   &quot;overStyle&quot;  : {&quot;color&quot;:&quot;0xFFFF99&quot;},   &quot;disabledStyle&quot; : {&quot;color&quot;:&quot;0x999999&quot;},   &quot;paddingBottom&quot; : 3  }"/>
+	
+	<!-- 长方形 红色按钮 -->
+	<component id="button17" style="{   &quot;upSkin&quot;  : &quot;skin.button17$up&quot;,   &quot;overSkin&quot;  : &quot;skin.button17$over&quot;,   &quot;downSkin&quot;  : &quot;skin.button17$down&quot;,   &quot;disabledSkin&quot; : &quot;skin.button15$disabled&quot;,   &quot;color&quot;   : &quot;0xEAE3D9&quot;,   &quot;stroke&quot;  : &quot;0x2B241A&quot;,   &quot;overStyle&quot;  : {&quot;color&quot;:&quot;0xFFFF99&quot;},   &quot;disabledStyle&quot; : {&quot;color&quot;:&quot;0x999999&quot;},   &quot;paddingBottom&quot; : 2,   &quot;paddingRight&quot; : 2  }"/>
+	
+	<!-- item2按钮 -->
+	<component id="button18" style="{   &quot;upSkin&quot;  : &quot;skin.button18$up&quot;,   &quot;overSkin&quot;  : &quot;skin.button18$over&quot;,   &quot;downSkin&quot;  : &quot;skin.button18$down&quot;,   &quot;disabledSkin&quot; : &quot;skin.button18$disabled&quot;  }"/>
+	
+	
+	
+	<!-- Alert -->
+	<component id="alert1" style="{   &quot;background&quot;  : &quot;skin.alert1$bg&quot;,   &quot;DragAreaHeight&quot; : 40,   &quot;defaultBtnStyle&quot; : &quot;button3&quot;,   &quot;okBtnStyle&quot;  : &quot;button3&quot;,   &quot;btnSpacing&quot;  : 5,   &quot;text&quot; : {&quot;x&quot;:40, &quot;y&quot;:40, &quot;width&quot;:210, &quot;height&quot;:75, &quot;align&quot;:&quot;center&quot;, &quot;color&quot;:&quot;0xFFF0B5&quot;, &quot;stroke&quot;:&quot;0x333333&quot;, &quot;wordWrap&quot;:true},   &quot;flagY&quot; : 115  }"/>
+	<component id="alert2" style="{   &quot;background&quot;  : &quot;skin.alert2$bg&quot;,   &quot;DragAreaHeight&quot; : 40,   &quot;defaultBtnStyle&quot; : &quot;button5&quot;,   &quot;okBtnStyle&quot;  : &quot;button4&quot;,   &quot;btnSpacing&quot;  : 5,   &quot;text&quot; : {&quot;x&quot;:40, &quot;y&quot;:40, &quot;width&quot;:210, &quot;height&quot;:75, &quot;align&quot;:&quot;center&quot;, &quot;color&quot;:&quot;0xFFF0B5&quot;, &quot;stroke&quot;:&quot;0x333333&quot;, &quot;wordWrap&quot;:true},   &quot;flagY&quot; : 115  }"/>
+	
+	<!-- InputConfirm(输入信息确认框) -->
+	<component id="inputConfirm1" style="{   &quot;background&quot;  : &quot;skin.inputConfirm1$bg&quot;,   &quot;DragAreaHeight&quot; : 40,   &quot;cancelStyle&quot;     : &quot;button5&quot;,   &quot;confirmStyle&quot;  : &quot;button4&quot;,   &quot;closeBtn&quot;          : &quot;gameUI.btn.CloseBtn&quot;,   &quot;title&quot;             : {&quot;x&quot;:25, &quot;y&quot;:45, &quot;size&quot;:14, &quot;bold&quot;:true, &quot;color&quot;:&quot;0xFFF0B5&quot;, &quot;stroke&quot;:&quot;0x333333&quot;},   &quot;inputTitle&quot;     : {&quot;x&quot;:130, &quot;y&quot;:111, &quot;color&quot;:&quot;0xFFF0B5&quot;, &quot;autoSize&quot;:&quot;right&quot;, &quot;stroke&quot;:&quot;0x333333&quot;},   &quot;input&quot;             : {&quot;x&quot;:147, &quot;y&quot;:109, &quot;type&quot;:&quot;input&quot;, &quot;selectable&quot;:true,     &quot;width&quot;:140, &quot;autoSize&quot;:&quot;none&quot;, &quot;height&quot;:20, &quot;color&quot;:&quot;0xFFF0B5&quot;, &quot;stroke&quot;:&quot;0x333333&quot;}  }"/>
+	
+	<!-- radio Button1 -->
+	<component id="radioButton1" style="{   &quot;iconSkin&quot;   : &quot;skin.radioButton1$icon&quot;,   &quot;upSkin&quot;   : &quot;skin.radioButton1$up&quot;,   &quot;overSkin&quot;   : &quot;skin.radioButton1$over&quot;,   &quot;downSkin&quot;   : &quot;skin.radioButton1$down&quot;,   &quot;disabledSkin&quot;  : &quot;skin.radioButton1$disabled&quot;,   &quot;color&quot;    : &quot;0xE6E0D4&quot;,   &quot;overStyle&quot;   : {&quot;color&quot;:&quot;0xFFFFFF&quot;},   &quot;disabledStyle&quot;  : {&quot;color&quot;:&quot;0xFFFFFF&quot;},   &quot;textLinkProperty&quot; : {&quot;x&quot;:23, &quot;y&quot;:1, &quot;stroke&quot;:&quot;0x2A2319&quot;}  }"/>
+	<component id="radioButton2" style="{   &quot;iconSkin&quot;   : &quot;skin.radioButton1$icon&quot;,   &quot;upSkin&quot;   : &quot;skin.radioButton1$up&quot;,   &quot;overSkin&quot;   : &quot;skin.radioButton1$over&quot;,   &quot;downSkin&quot;   : &quot;skin.radioButton1$down&quot;,   &quot;disabledSkin&quot;  : &quot;skin.radioButton1$disabled&quot;,   &quot;color&quot;    : &quot;0xE6DFD5&quot;,   &quot;overStyle&quot;   : {&quot;color&quot;:&quot;0xFFFFFF&quot;},   &quot;disabledStyle&quot;  : {&quot;color&quot;:&quot;0xFFFFFF&quot;},   &quot;textLinkProperty&quot; : {&quot;x&quot;:23, &quot;y&quot;:1, &quot;stroke&quot;:&quot;0x2A2319&quot;, &quot;textType&quot;:&quot;htmlText&quot;}  }"/>
+	
+	
+	<!-- checkBox -->
+	<component id="checkBox1" style="{   &quot;iconSkin&quot;   : &quot;skin.checkBox1$icon&quot;,   &quot;upSkin&quot;   : &quot;skin.checkBox1$up&quot;,   &quot;overSkin&quot;   : &quot;skin.checkBox1$over&quot;,   &quot;downSkin&quot;   : &quot;skin.checkBox1$down&quot;,   &quot;disabledSkin&quot;  : &quot;skin.checkBox1$disabled&quot;,   &quot;color&quot;       : &quot;0xffcc66&quot;,   &quot;stroke&quot;            : &quot;0x2D261E&quot;,   &quot;textLinkProperty&quot; : {&quot;x&quot;:22, &quot;y&quot;:1}   }"/>
+	
+	
+	<component id="vScrollBar1" style="{   &quot;arrowDown&quot; : &quot;skin.vScrollBar1$arrowDown&quot;,   &quot;arrowUp&quot; : &quot;skin.vScrollBar1$arrowUp&quot;,   &quot;thumb&quot;  : &quot;skin.vScrollBar1$thumb&quot;,   &quot;track&quot;  : &quot;skin.vScrollBar1$track&quot;,   &quot;trackPaddingTop&quot;  : 1,   &quot;arrowDownPaddingTop&quot; : 1  }"/>
+	
+	<component id="vScrollBar2" style="{   &quot;thumb&quot; : {&quot;upSkin&quot;:&quot;skin.vScrollBar2$thumbUp&quot;, &quot;overSkin&quot;:&quot;skin.vScrollBar2$thumbOver&quot;, &quot;downSkin&quot;:&quot;skin.vScrollBar2$thumbDown&quot;},   &quot;track&quot; : &quot;skin.vScrollBar2$track&quot;  }"/>
+	
+	
+	<!-- 选项卡按钮1 -->
+	<component id="tabButton1" style="{   &quot;upSkin&quot;  : &quot;skin.tabButton1$up&quot;,   &quot;overSkin&quot;  : &quot;skin.tabButton1$over&quot;,   &quot;downSkin&quot;  : &quot;skin.tabButton1$down&quot;,   &quot;selectedSkin&quot; : &quot;skin.tabButton1$selected&quot;,   &quot;paddingBottom&quot; : 2,   &quot;color&quot;   : &quot;0xE5DED4&quot;,   &quot;disabledStyle&quot; : {&quot;color&quot;:&quot;0xB5A598&quot;},   &quot;stroke&quot;        : &quot;0x2D261E&quot;  }"/>
+	
+	
+	
+	
+	<component id="window1" style="{   &quot;background&quot; : &quot;skin.window$bg&quot;,   &quot;tabBtns&quot;  : {&quot;x&quot;:7, &quot;y&quot;:7},   &quot;closeBtn&quot;  : {&quot;view&quot;:&quot;gameUI.btn.CloseBtn&quot;, &quot;property&quot;:{&quot;x&quot;:632, &quot;y&quot;:10}},   &quot;tabBtnStyle&quot; : &quot;tabButton1&quot;,   &quot;tabBtnPaddingRight&quot; : 5  }"/>
+	
+	<!-- 翻页组件 -->
+	<component id="page1" style="{   &quot;prevBtn&quot; : {&quot;view&quot;:&quot;skin.prevButton&quot;, &quot;property&quot;:{&quot;x&quot;:0, &quot;y&quot;:0}},   &quot;nextBtn&quot; : {&quot;view&quot;:&quot;skin.nextButton&quot;, &quot;property&quot;:{&quot;x&quot;:89, &quot;y&quot;:0}},   &quot;numBg&quot;     : {&quot;view&quot;:&quot;skin.numBg&quot;, &quot;property&quot;:{&quot;x&quot;:23, &quot;y&quot;:0}},   &quot;numText&quot;   : {&quot;x&quot;:52, &quot;y&quot;:4, &quot;size&quot;:12, &quot;color&quot;:&quot;0xFFFFFF&quot;, &quot;autoSize&quot;:&quot;center&quot;, &quot;stroke&quot;:&quot;0x000000&quot;}  }"/>
+	
+	<component id="page2" style="{   &quot;prevBtn&quot; : {&quot;view&quot;:&quot;skin.prevButton&quot;, &quot;property&quot;:{&quot;x&quot;:0, &quot;y&quot;:0}},   &quot;nextBtn&quot; : {&quot;view&quot;:&quot;skin.nextButton&quot;, &quot;property&quot;:{&quot;x&quot;:26, &quot;y&quot;:0}}  }"/>
+	
+	<!-- 工具提示 -->
+	<component id="toolTip1" style="{   &quot;background&quot; : &quot;skin.toolTip1$bg&quot;,   &quot;labelMaxWidth&quot; : 150,   &quot;paddingTop&quot; : 6,   &quot;paddingBottom&quot; : 4,   &quot;paddingLeft&quot; : 6,   &quot;paddingRight&quot; : 6,   &quot;labelStyle&quot; : {&quot;color&quot;:&quot;0xCCCCCC&quot;}  }"/>
+</config>

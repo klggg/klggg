@@ -1,0 +1,34 @@
+?package game.utils.zip
+{
+    import flash.utils.*;
+
+    public class ZipReader extends ZipFile
+    {
+        private var _names:Array;
+
+        public function ZipReader(param1:ByteArray) : void
+        {
+            _names = new Array();
+            super(param1);
+            var _loc_2:int = 0;
+            while (_loc_2 < entries.length)
+            {
+                
+                _names.push(ZipEntry(entries[_loc_2]).name);
+                _loc_2++;
+            }
+            return;
+        }// end function
+
+        public function get names() : Array
+        {
+            return _names;
+        }// end function
+
+        public function getFile(param1:String) : ByteArray
+        {
+            return getInput(getEntry(param1));
+        }// end function
+
+    }
+}

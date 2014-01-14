@@ -1,0 +1,1545 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>市场部活动</title>
+<script language="javascript" src="../lang/js/lang_js.js"></script>
+<link href="../css/css.css" rel="stylesheet" type="text/css" />
+<script language="javascript" src="../js/ralert.js"></script>
+<script language="javascript" src="../js/ajax.js"></script>
+<script type="text/javascript" src="../js/drag.js"></script>
+<script type="text/javascript" src="../js/common.js"></script>
+<script language="javascript" src="../js/word_description.js"></script>
+<script language="javascript" src="../js/div_page.js"></script>
+<script language="javascript">
+var invite = function(){
+	//alert('hello');
+	var is_check = false;
+	var sel = document.getElementsByName('sel_staff');
+	//var yzm =document.getElementById('yzm').value;
+	var yzm ="";
+	var heyue=0;
+	var hy_lis=document.getElementsByName('hy_lis');
+	for(var i=0;i<hy_lis.length;i++){
+		if(hy_lis[i].checked){
+			heyue=hy_lis[i].value;
+		}
+	}
+	
+	
+	var staff_id  = 0;
+	len = sel.length;
+	
+	/*if(heyue==446)
+	{
+		if(yzm==""){
+			ralert('董事长：<br><br>请您输入验证码','确定','');
+			return;
+		}
+	}*/	//验证码
+	
+	if(heyue==0){
+		ralert('董事长：<br><br>我们没有任何合约，请您先购买合约再进行联合宣传吧！','确定','');
+		return;
+	}
+	
+	
+	for(i=0; i<len; i++){
+		if(sel[i].checked) {
+			is_check = true;
+			staff_id = sel[i].value;
+		}
+	}
+	if(is_check){
+		var r = sendPost('/enterprise/inner-agree_send_staff.php','shop_id=51203&act_id=2&rec_id=14429&ajax=ajax&staff_id='+staff_id+'&yzm='+yzm+'&heyue='+heyue);
+		if(r == 'true'){
+			ralert('董事长：<br/><br/>您成功参与了店铺联合报纸宣传活动，有了我们的加入，这次活动成功的机会将会更大了。','确定','js:upt_parent();');
+		}
+		else
+		{
+			if(r.length>1000){
+				upt_parent();
+			}else{
+				ralert(r,'确定','');
+				return;
+			}
+		}
+	}else{
+		ralert('董事长：<br/><br/>想要参与店铺联合报纸宣传活动，您需要指派一名市场管理员来担任这次活动的筹备组长。','确定','');
+		return
+	}
+}
+
+var check = function()
+{
+	//检查玩家执行次数
+	var r = sendPost("../enterprise/glucose_ajax.php","act=check");
+		
+	if(trim(r)==""){
+		invite();
+		//return;
+	}	
+	var r=r.split("|||");
+	if(r[0]==240){	
+		ralert(r[1],"确定",'',"购买葡萄糖","../mall/item.php?id=240&return=%2Fenterprise%2Finner-agree_send_staff.php%3Fshop_id%3D51203%26act_id%3D2%26rec_id%3D14429" );
+	}else if(r[0]==2401){
+		ralert(r[1],"使用","js:sendPost('../company/management_item_detail.php?id="+r[2]+"','ajax=use_props');invite(); ","不使用","");
+	}
+	window.top.update_company();
+}
+var upt_parent = function()
+{
+	
+	if(window.parent.updateUnitHTML){
+		window.parent.updateUnitHTML(51203);
+	}
+	if(window.parent.update_propagandize){
+		window.parent.update_propagandize(51203,3);
+	}
+	window.parent.div_page_close();
+}
+
+function onchange_imgc(id)
+{
+	//用临时合约时出现验证码
+	/*if(id==446)
+	{
+		document.getElementById('sp_imgcode').style.display="";
+	}
+	else
+	{
+		document.getElementById('sp_imgcode').style.display="none";
+	}*/
+	;
+}
+
+function Buy(id){
+	window.parent.div_page2('../mall/item_inner.php?id='+id);	
+}
+
+</script>
+
+<style type="text/css">
+<!--
+.tableright1 {color: #004E7B;
+	font-size:13px;
+	background-color:#D3EEFF;
+	width:100%;
+	height:195px;
+}
+.poin{
+	cursor : pointer;
+}
+-->
+</style>
+</head>
+<body style="background:#B9E5FF;">
+<table width="100%" height="250" border="0" align="center" cellpadding="0" cellspacing="0">
+<tr><td height="10"></td></tr>
+      <tr>
+        <td valign="top">
+			<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" >
+              <tr>
+                <td valign="top"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td width="6" height="6"><img src="../images/tips_top1.gif" width="6" height="6" /></td>
+                    <td background="../images/tips_top2.gif"></td>
+                    <td width="6"><img src="../images/tips_top3_2.gif" width="6" height="6" /></td>
+                  </tr>
+                  <tr>
+                    <td background="../images/tips_center1.gif"></td>
+                    <td class="tips_bgcolor"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                      <tr>
+                        <td class="text_lb2_white">发起或参与街道联合宣传需缴纳活动经费1000G，且您需要指派一名市场管理员担任活动组长。</td>
+                      </tr>
+                      </table></td>
+                    <td background="../images/tips_center2.gif">&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td><img src="../images/tips_bottom1.gif" width="6" height="6" /></td>
+                    <td background="../images/tips_bottom2.gif"></td>
+                    <td><img src="../images/tips_bottom3_2.gif" width="6" height="6" /></td>
+                  </tr>
+                  </table></td>
+              </tr>
+              <tr>
+                <td height="8"></td>
+              </tr>
+              <tr>
+                <td ></td>
+              </tr>
+              <tr>
+                <td height="125" valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0" class="list_table">
+                <tr>
+                  <td height="125" valign="top"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td>
+                        <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+                          <tr>
+                            <td width="28%" background="../images/line1_bg.gif" class="list_top">&nbsp;&nbsp;员工/部门状态</td>
+                            <td width="22%" background="../images/line1_bg.gif" class="list_top">等级/经验</td>
+							<td width="20%" background="../images/line1_bg.gif" class="list_top">能力/忠诚</td>
+                            <td width="13%" background="../images/line1_bg.gif" class="list_top">状态</td>
+                            <td width="17%" background="../images/line1_bg.gif" class="list_top">选择</td>
+                          </tr>
+                          </table></td>
+                    </tr>
+                      <tr>
+                        <td><div class="tableright2" style="overflow: auto; height:125px">
+                        <table width="97%" border="0" cellpadding="0" cellspacing="0">
+                        							<tr class="list_word">
+								<td width="9%" height="53" align="center"><a href="../company/staff_info.php?lossid=30&staff_id=738033&return=%2Fenterprise%2Finner-agree_send_staff.php%3Fshop_id%3D51203%26act_id%3D2%26rec_id%3D14429&action="></a><img src="..//images/staff/female/3.jpg" width="32" height="42" class="list_tu_color2"/></td>
+								<td width="20%"><table border="0" cellpadding="0" cellspacing="0">
+								  <tr>
+								  <td><a href="../company/staff_info.php?lossid=30&staff_id=738033&return=%2Fenterprise%2Finner-agree_send_staff.php%3Fshop_id%3D51203%26act_id%3D2%26rec_id%3D14429&action="></a><strong>蔡浩玉</strong>(30)								</td>
+								  </tr>
+								  <tr>
+									<td>市场部</td>
+								  </tr>
+							  </table></td>
+								<td width="23%"><table width="0" border="0" cellspacing="0" cellpadding="0">
+								  <tr>
+									<td width="40">等级:</td>
+									<td width="60">
+										<table width="50" height="16" border="0" cellpadding="0" cellspacing="0" title="5级">
+  <tr>
+    <td background="../images/scale2_2_bg.gif" style="padding:0px;">
+      <table width="46" border="0" align="center" cellpadding="0" cellspacing="1">
+        <tr>
+          <td height="10" style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+									</td>
+								  </tr>
+								  <tr>
+									<td width="40">经验:</td>
+									<td width="60">
+										<div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="875/1600">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_green44.gif) no-repeat -20px; font-family:Arial; line-height:100%; text-align:center;">875</div>
+</div>
+									</td>
+								  </tr>
+							  </table></td>
+								<td width="21%"><table width="0" border="0" cellspacing="0" cellpadding="0">
+									<tr>
+									<td width="40">能力:</td>
+									<td width="60"><div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="876/1600">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_Purple44.gif) no-repeat -20px; font-family:Arial; line-height:100%; text-align:center;">876</div>
+</div>
+</td>
+								  </tr>
+								  <tr>
+									<td width="40">忠诚:</td>
+									<td width="60"><div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="866/1600">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_yellow44.gif) no-repeat -21px; font-family:Arial; line-height:100%; text-align:center;">866</div>
+</div>
+</td>
+								  </tr>
+							  </table></td>
+								<td width="12%">
+								正常</td>
+                                <td width="15%">
+                                                                	<input type="radio" name="sel_staff" value="738033" />
+                                </td>
+							</tr>
+														<tr class="list_word">
+								<td width="9%" height="53" align="center"><a href="../company/staff_info.php?lossid=25&staff_id=747352&return=%2Fenterprise%2Finner-agree_send_staff.php%3Fshop_id%3D51203%26act_id%3D2%26rec_id%3D14429&action="></a><img src="..//images/staff/female/9.jpg" width="32" height="42" class="list_tu_color2"/></td>
+								<td width="20%"><table border="0" cellpadding="0" cellspacing="0">
+								  <tr>
+								  <td><a href="../company/staff_info.php?lossid=25&staff_id=747352&return=%2Fenterprise%2Finner-agree_send_staff.php%3Fshop_id%3D51203%26act_id%3D2%26rec_id%3D14429&action="></a>杜凤敏(25)								</td>
+								  </tr>
+								  <tr>
+									<td>市场部</td>
+								  </tr>
+							  </table></td>
+								<td width="23%"><table width="0" border="0" cellspacing="0" cellpadding="0">
+								  <tr>
+									<td width="40">等级:</td>
+									<td width="60">
+										<table width="50" height="16" border="0" cellpadding="0" cellspacing="0" title="4级">
+  <tr>
+    <td background="../images/scale2_2_bg.gif" style="padding:0px;">
+      <table width="46" border="0" align="center" cellpadding="0" cellspacing="1">
+        <tr>
+          <td height="10" style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+									</td>
+								  </tr>
+								  <tr>
+									<td width="40">经验:</td>
+									<td width="60">
+										<div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="561/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_green44.gif) no-repeat -14px; font-family:Arial; line-height:100%; text-align:center;">561</div>
+</div>
+									</td>
+								  </tr>
+							  </table></td>
+								<td width="21%"><table width="0" border="0" cellspacing="0" cellpadding="0">
+									<tr>
+									<td width="40">能力:</td>
+									<td width="60"><div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="566/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_Purple44.gif) no-repeat -13px; font-family:Arial; line-height:100%; text-align:center;">566</div>
+</div>
+</td>
+								  </tr>
+								  <tr>
+									<td width="40">忠诚:</td>
+									<td width="60"><div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="495/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_yellow44.gif) no-repeat -17px; font-family:Arial; line-height:100%; text-align:center;">495</div>
+</div>
+</td>
+								  </tr>
+							  </table></td>
+								<td width="12%">
+								正常</td>
+                                <td width="15%">
+                                                                	<input type="radio" name="sel_staff" value="747352" />
+                                </td>
+							</tr>
+														<tr class="list_word">
+								<td width="9%" height="53" align="center"><a href="../company/staff_info.php?lossid=25&staff_id=747354&return=%2Fenterprise%2Finner-agree_send_staff.php%3Fshop_id%3D51203%26act_id%3D2%26rec_id%3D14429&action="></a><img src="..//images/staff/female/19.jpg" width="32" height="42" class="list_tu_color2"/></td>
+								<td width="20%"><table border="0" cellpadding="0" cellspacing="0">
+								  <tr>
+								  <td><a href="../company/staff_info.php?lossid=25&staff_id=747354&return=%2Fenterprise%2Finner-agree_send_staff.php%3Fshop_id%3D51203%26act_id%3D2%26rec_id%3D14429&action="></a>蔡春璃(25)								</td>
+								  </tr>
+								  <tr>
+									<td>市场部</td>
+								  </tr>
+							  </table></td>
+								<td width="23%"><table width="0" border="0" cellspacing="0" cellpadding="0">
+								  <tr>
+									<td width="40">等级:</td>
+									<td width="60">
+										<table width="50" height="16" border="0" cellpadding="0" cellspacing="0" title="4级">
+  <tr>
+    <td background="../images/scale2_2_bg.gif" style="padding:0px;">
+      <table width="46" border="0" align="center" cellpadding="0" cellspacing="1">
+        <tr>
+          <td height="10" style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+									</td>
+								  </tr>
+								  <tr>
+									<td width="40">经验:</td>
+									<td width="60">
+										<div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="567/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_green44.gif) no-repeat -13px; font-family:Arial; line-height:100%; text-align:center;">567</div>
+</div>
+									</td>
+								  </tr>
+							  </table></td>
+								<td width="21%"><table width="0" border="0" cellspacing="0" cellpadding="0">
+									<tr>
+									<td width="40">能力:</td>
+									<td width="60"><div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="568/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_Purple44.gif) no-repeat -13px; font-family:Arial; line-height:100%; text-align:center;">568</div>
+</div>
+</td>
+								  </tr>
+								  <tr>
+									<td width="40">忠诚:</td>
+									<td width="60"><div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="493/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_yellow44.gif) no-repeat -17px; font-family:Arial; line-height:100%; text-align:center;">493</div>
+</div>
+</td>
+								  </tr>
+							  </table></td>
+								<td width="12%">
+								正常</td>
+                                <td width="15%">
+                                                                	<input type="radio" name="sel_staff" value="747354" />
+                                </td>
+							</tr>
+														<tr class="list_word">
+								<td width="9%" height="53" align="center"><a href="../company/staff_info.php?lossid=25&staff_id=758198&return=%2Fenterprise%2Finner-agree_send_staff.php%3Fshop_id%3D51203%26act_id%3D2%26rec_id%3D14429&action="></a><img src="..//images/staff/female/3.jpg" width="32" height="42" class="list_tu_color2"/></td>
+								<td width="20%"><table border="0" cellpadding="0" cellspacing="0">
+								  <tr>
+								  <td><a href="../company/staff_info.php?lossid=25&staff_id=758198&return=%2Fenterprise%2Finner-agree_send_staff.php%3Fshop_id%3D51203%26act_id%3D2%26rec_id%3D14429&action="></a>范云钰(25)								</td>
+								  </tr>
+								  <tr>
+									<td>市场部</td>
+								  </tr>
+							  </table></td>
+								<td width="23%"><table width="0" border="0" cellspacing="0" cellpadding="0">
+								  <tr>
+									<td width="40">等级:</td>
+									<td width="60">
+										<table width="50" height="16" border="0" cellpadding="0" cellspacing="0" title="4级">
+  <tr>
+    <td background="../images/scale2_2_bg.gif" style="padding:0px;">
+      <table width="46" border="0" align="center" cellpadding="0" cellspacing="1">
+        <tr>
+          <td height="10" style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+									</td>
+								  </tr>
+								  <tr>
+									<td width="40">经验:</td>
+									<td width="60">
+										<div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="547/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_green44.gif) no-repeat -14px; font-family:Arial; line-height:100%; text-align:center;">547</div>
+</div>
+									</td>
+								  </tr>
+							  </table></td>
+								<td width="21%"><table width="0" border="0" cellspacing="0" cellpadding="0">
+									<tr>
+									<td width="40">能力:</td>
+									<td width="60"><div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="547/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_Purple44.gif) no-repeat -14px; font-family:Arial; line-height:100%; text-align:center;">547</div>
+</div>
+</td>
+								  </tr>
+								  <tr>
+									<td width="40">忠诚:</td>
+									<td width="60"><div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="486/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_yellow44.gif) no-repeat -18px; font-family:Arial; line-height:100%; text-align:center;">486</div>
+</div>
+</td>
+								  </tr>
+							  </table></td>
+								<td width="12%">
+								正常</td>
+                                <td width="15%">
+                                                                	<input type="radio" name="sel_staff" value="758198" />
+                                </td>
+							</tr>
+														<tr class="list_word">
+								<td width="9%" height="53" align="center"><a href="../company/staff_info.php?lossid=25&staff_id=758218&return=%2Fenterprise%2Finner-agree_send_staff.php%3Fshop_id%3D51203%26act_id%3D2%26rec_id%3D14429&action="></a><img src="..//images/staff/female/16.jpg" width="32" height="42" class="list_tu_color2"/></td>
+								<td width="20%"><table border="0" cellpadding="0" cellspacing="0">
+								  <tr>
+								  <td><a href="../company/staff_info.php?lossid=25&staff_id=758218&return=%2Fenterprise%2Finner-agree_send_staff.php%3Fshop_id%3D51203%26act_id%3D2%26rec_id%3D14429&action="></a>韩敏林(25)								</td>
+								  </tr>
+								  <tr>
+									<td>市场部</td>
+								  </tr>
+							  </table></td>
+								<td width="23%"><table width="0" border="0" cellspacing="0" cellpadding="0">
+								  <tr>
+									<td width="40">等级:</td>
+									<td width="60">
+										<table width="50" height="16" border="0" cellpadding="0" cellspacing="0" title="4级">
+  <tr>
+    <td background="../images/scale2_2_bg.gif" style="padding:0px;">
+      <table width="46" border="0" align="center" cellpadding="0" cellspacing="1">
+        <tr>
+          <td height="10" style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+									</td>
+								  </tr>
+								  <tr>
+									<td width="40">经验:</td>
+									<td width="60">
+										<div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="550/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_green44.gif) no-repeat -14px; font-family:Arial; line-height:100%; text-align:center;">550</div>
+</div>
+									</td>
+								  </tr>
+							  </table></td>
+								<td width="21%"><table width="0" border="0" cellspacing="0" cellpadding="0">
+									<tr>
+									<td width="40">能力:</td>
+									<td width="60"><div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="554/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_Purple44.gif) no-repeat -14px; font-family:Arial; line-height:100%; text-align:center;">554</div>
+</div>
+</td>
+								  </tr>
+								  <tr>
+									<td width="40">忠诚:</td>
+									<td width="60"><div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="484/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_yellow44.gif) no-repeat -18px; font-family:Arial; line-height:100%; text-align:center;">484</div>
+</div>
+</td>
+								  </tr>
+							  </table></td>
+								<td width="12%">
+								正常</td>
+                                <td width="15%">
+                                                                	<input type="radio" name="sel_staff" value="758218" />
+                                </td>
+							</tr>
+														<tr class="list_word">
+								<td width="9%" height="53" align="center"><a href="../company/staff_info.php?lossid=25&staff_id=758226&return=%2Fenterprise%2Finner-agree_send_staff.php%3Fshop_id%3D51203%26act_id%3D2%26rec_id%3D14429&action="></a><img src="..//images/staff/female/15.jpg" width="32" height="42" class="list_tu_color2"/></td>
+								<td width="20%"><table border="0" cellpadding="0" cellspacing="0">
+								  <tr>
+								  <td><a href="../company/staff_info.php?lossid=25&staff_id=758226&return=%2Fenterprise%2Finner-agree_send_staff.php%3Fshop_id%3D51203%26act_id%3D2%26rec_id%3D14429&action="></a>朴宪彩(25)								</td>
+								  </tr>
+								  <tr>
+									<td>市场部</td>
+								  </tr>
+							  </table></td>
+								<td width="23%"><table width="0" border="0" cellspacing="0" cellpadding="0">
+								  <tr>
+									<td width="40">等级:</td>
+									<td width="60">
+										<table width="50" height="16" border="0" cellpadding="0" cellspacing="0" title="4级">
+  <tr>
+    <td background="../images/scale2_2_bg.gif" style="padding:0px;">
+      <table width="46" border="0" align="center" cellpadding="0" cellspacing="1">
+        <tr>
+          <td height="10" style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+									</td>
+								  </tr>
+								  <tr>
+									<td width="40">经验:</td>
+									<td width="60">
+										<div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="538/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_green44.gif) no-repeat -15px; font-family:Arial; line-height:100%; text-align:center;">538</div>
+</div>
+									</td>
+								  </tr>
+							  </table></td>
+								<td width="21%"><table width="0" border="0" cellspacing="0" cellpadding="0">
+									<tr>
+									<td width="40">能力:</td>
+									<td width="60"><div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="540/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_Purple44.gif) no-repeat -15px; font-family:Arial; line-height:100%; text-align:center;">540</div>
+</div>
+</td>
+								  </tr>
+								  <tr>
+									<td width="40">忠诚:</td>
+									<td width="60"><div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="474/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_yellow44.gif) no-repeat -18px; font-family:Arial; line-height:100%; text-align:center;">474</div>
+</div>
+</td>
+								  </tr>
+							  </table></td>
+								<td width="12%">
+								正常</td>
+                                <td width="15%">
+                                                                	<input type="radio" name="sel_staff" value="758226" />
+                                </td>
+							</tr>
+														<tr class="list_word">
+								<td width="9%" height="53" align="center"><a href="../company/staff_info.php?lossid=25&staff_id=758248&return=%2Fenterprise%2Finner-agree_send_staff.php%3Fshop_id%3D51203%26act_id%3D2%26rec_id%3D14429&action="></a><img src="..//images/staff/male/11.jpg" width="32" height="42" class="list_tu_color2"/></td>
+								<td width="20%"><table border="0" cellpadding="0" cellspacing="0">
+								  <tr>
+								  <td><a href="../company/staff_info.php?lossid=25&staff_id=758248&return=%2Fenterprise%2Finner-agree_send_staff.php%3Fshop_id%3D51203%26act_id%3D2%26rec_id%3D14429&action="></a>关嘉允(25)								</td>
+								  </tr>
+								  <tr>
+									<td>市场部</td>
+								  </tr>
+							  </table></td>
+								<td width="23%"><table width="0" border="0" cellspacing="0" cellpadding="0">
+								  <tr>
+									<td width="40">等级:</td>
+									<td width="60">
+										<table width="50" height="16" border="0" cellpadding="0" cellspacing="0" title="4级">
+  <tr>
+    <td background="../images/scale2_2_bg.gif" style="padding:0px;">
+      <table width="46" border="0" align="center" cellpadding="0" cellspacing="1">
+        <tr>
+          <td height="10" style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+									</td>
+								  </tr>
+								  <tr>
+									<td width="40">经验:</td>
+									<td width="60">
+										<div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="538/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_green44.gif) no-repeat -15px; font-family:Arial; line-height:100%; text-align:center;">538</div>
+</div>
+									</td>
+								  </tr>
+							  </table></td>
+								<td width="21%"><table width="0" border="0" cellspacing="0" cellpadding="0">
+									<tr>
+									<td width="40">能力:</td>
+									<td width="60"><div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="540/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_Purple44.gif) no-repeat -15px; font-family:Arial; line-height:100%; text-align:center;">540</div>
+</div>
+</td>
+								  </tr>
+								  <tr>
+									<td width="40">忠诚:</td>
+									<td width="60"><div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="471/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_yellow44.gif) no-repeat -19px; font-family:Arial; line-height:100%; text-align:center;">471</div>
+</div>
+</td>
+								  </tr>
+							  </table></td>
+								<td width="12%">
+								正常</td>
+                                <td width="15%">
+                                                                	<input type="radio" name="sel_staff" value="758248" />
+                                </td>
+							</tr>
+														<tr class="list_word">
+								<td width="9%" height="53" align="center"><a href="../company/staff_info.php?lossid=25&staff_id=758250&return=%2Fenterprise%2Finner-agree_send_staff.php%3Fshop_id%3D51203%26act_id%3D2%26rec_id%3D14429&action="></a><img src="..//images/staff/male/12.jpg" width="32" height="42" class="list_tu_color2"/></td>
+								<td width="20%"><table border="0" cellpadding="0" cellspacing="0">
+								  <tr>
+								  <td><a href="../company/staff_info.php?lossid=25&staff_id=758250&return=%2Fenterprise%2Finner-agree_send_staff.php%3Fshop_id%3D51203%26act_id%3D2%26rec_id%3D14429&action="></a>尹杰德(25)								</td>
+								  </tr>
+								  <tr>
+									<td>市场部</td>
+								  </tr>
+							  </table></td>
+								<td width="23%"><table width="0" border="0" cellspacing="0" cellpadding="0">
+								  <tr>
+									<td width="40">等级:</td>
+									<td width="60">
+										<table width="50" height="16" border="0" cellpadding="0" cellspacing="0" title="4级">
+  <tr>
+    <td background="../images/scale2_2_bg.gif" style="padding:0px;">
+      <table width="46" border="0" align="center" cellpadding="0" cellspacing="1">
+        <tr>
+          <td height="10" style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+									</td>
+								  </tr>
+								  <tr>
+									<td width="40">经验:</td>
+									<td width="60">
+										<div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="547/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_green44.gif) no-repeat -14px; font-family:Arial; line-height:100%; text-align:center;">547</div>
+</div>
+									</td>
+								  </tr>
+							  </table></td>
+								<td width="21%"><table width="0" border="0" cellspacing="0" cellpadding="0">
+									<tr>
+									<td width="40">能力:</td>
+									<td width="60"><div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="547/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_Purple44.gif) no-repeat -14px; font-family:Arial; line-height:100%; text-align:center;">547</div>
+</div>
+</td>
+								  </tr>
+								  <tr>
+									<td width="40">忠诚:</td>
+									<td width="60"><div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="479/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_yellow44.gif) no-repeat -18px; font-family:Arial; line-height:100%; text-align:center;">479</div>
+</div>
+</td>
+								  </tr>
+							  </table></td>
+								<td width="12%">
+								正常</td>
+                                <td width="15%">
+                                                                	<input type="radio" name="sel_staff" value="758250" />
+                                </td>
+							</tr>
+														<tr class="list_word">
+								<td width="9%" height="53" align="center"><a href="../company/staff_info.php?lossid=25&staff_id=758251&return=%2Fenterprise%2Finner-agree_send_staff.php%3Fshop_id%3D51203%26act_id%3D2%26rec_id%3D14429&action="></a><img src="..//images/staff/female/11.jpg" width="32" height="42" class="list_tu_color2"/></td>
+								<td width="20%"><table border="0" cellpadding="0" cellspacing="0">
+								  <tr>
+								  <td><a href="../company/staff_info.php?lossid=25&staff_id=758251&return=%2Fenterprise%2Finner-agree_send_staff.php%3Fshop_id%3D51203%26act_id%3D2%26rec_id%3D14429&action="></a>鲁梅彩(25)								</td>
+								  </tr>
+								  <tr>
+									<td>市场部</td>
+								  </tr>
+							  </table></td>
+								<td width="23%"><table width="0" border="0" cellspacing="0" cellpadding="0">
+								  <tr>
+									<td width="40">等级:</td>
+									<td width="60">
+										<table width="50" height="16" border="0" cellpadding="0" cellspacing="0" title="4级">
+  <tr>
+    <td background="../images/scale2_2_bg.gif" style="padding:0px;">
+      <table width="46" border="0" align="center" cellpadding="0" cellspacing="1">
+        <tr>
+          <td height="10" style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+									</td>
+								  </tr>
+								  <tr>
+									<td width="40">经验:</td>
+									<td width="60">
+										<div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="547/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_green44.gif) no-repeat -14px; font-family:Arial; line-height:100%; text-align:center;">547</div>
+</div>
+									</td>
+								  </tr>
+							  </table></td>
+								<td width="21%"><table width="0" border="0" cellspacing="0" cellpadding="0">
+									<tr>
+									<td width="40">能力:</td>
+									<td width="60"><div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="547/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_Purple44.gif) no-repeat -14px; font-family:Arial; line-height:100%; text-align:center;">547</div>
+</div>
+</td>
+								  </tr>
+								  <tr>
+									<td width="40">忠诚:</td>
+									<td width="60"><div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="481/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_yellow44.gif) no-repeat -18px; font-family:Arial; line-height:100%; text-align:center;">481</div>
+</div>
+</td>
+								  </tr>
+							  </table></td>
+								<td width="12%">
+								正常</td>
+                                <td width="15%">
+                                                                	<input type="radio" name="sel_staff" value="758251" />
+                                </td>
+							</tr>
+														<tr class="list_word">
+								<td width="9%" height="53" align="center"><a href="../company/staff_info.php?lossid=30&staff_id=831600&return=%2Fenterprise%2Finner-agree_send_staff.php%3Fshop_id%3D51203%26act_id%3D2%26rec_id%3D14429&action="></a><img src="..//images/staff/female/6.jpg" width="32" height="42" class="list_tu_color2"/></td>
+								<td width="20%"><table border="0" cellpadding="0" cellspacing="0">
+								  <tr>
+								  <td><a href="../company/staff_info.php?lossid=30&staff_id=831600&return=%2Fenterprise%2Finner-agree_send_staff.php%3Fshop_id%3D51203%26act_id%3D2%26rec_id%3D14429&action="></a>马拉佑(30)								</td>
+								  </tr>
+								  <tr>
+									<td>市场部</td>
+								  </tr>
+							  </table></td>
+								<td width="23%"><table width="0" border="0" cellspacing="0" cellpadding="0">
+								  <tr>
+									<td width="40">等级:</td>
+									<td width="60">
+										<table width="50" height="16" border="0" cellpadding="0" cellspacing="0" title="5级">
+  <tr>
+    <td background="../images/scale2_2_bg.gif" style="padding:0px;">
+      <table width="46" border="0" align="center" cellpadding="0" cellspacing="1">
+        <tr>
+          <td height="10" style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+									</td>
+								  </tr>
+								  <tr>
+									<td width="40">经验:</td>
+									<td width="60">
+										<div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="477/1600">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_green44.gif) no-repeat -31px; font-family:Arial; line-height:100%; text-align:center;">477</div>
+</div>
+									</td>
+								  </tr>
+							  </table></td>
+								<td width="21%"><table width="0" border="0" cellspacing="0" cellpadding="0">
+									<tr>
+									<td width="40">能力:</td>
+									<td width="60"><div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="502/1600">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_Purple44.gif) no-repeat -31px; font-family:Arial; line-height:100%; text-align:center;">502</div>
+</div>
+</td>
+								  </tr>
+								  <tr>
+									<td width="40">忠诚:</td>
+									<td width="60"><div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="383/1600">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_yellow44.gif) no-repeat -34px; font-family:Arial; line-height:100%; text-align:center;">383</div>
+</div>
+</td>
+								  </tr>
+							  </table></td>
+								<td width="12%">
+								正常</td>
+                                <td width="15%">
+                                                                	<input type="radio" name="sel_staff" value="831600" />
+                                </td>
+							</tr>
+														<tr class="list_word">
+								<td width="9%" height="53" align="center"><a href="../company/staff_info.php?lossid=25&staff_id=831603&return=%2Fenterprise%2Finner-agree_send_staff.php%3Fshop_id%3D51203%26act_id%3D2%26rec_id%3D14429&action="></a><img src="..//images/staff/female/2.jpg" width="32" height="42" class="list_tu_color2"/></td>
+								<td width="20%"><table border="0" cellpadding="0" cellspacing="0">
+								  <tr>
+								  <td><a href="../company/staff_info.php?lossid=25&staff_id=831603&return=%2Fenterprise%2Finner-agree_send_staff.php%3Fshop_id%3D51203%26act_id%3D2%26rec_id%3D14429&action="></a>吴伦(25)								</td>
+								  </tr>
+								  <tr>
+									<td>市场部</td>
+								  </tr>
+							  </table></td>
+								<td width="23%"><table width="0" border="0" cellspacing="0" cellpadding="0">
+								  <tr>
+									<td width="40">等级:</td>
+									<td width="60">
+										<table width="50" height="16" border="0" cellpadding="0" cellspacing="0" title="4级">
+  <tr>
+    <td background="../images/scale2_2_bg.gif" style="padding:0px;">
+      <table width="46" border="0" align="center" cellpadding="0" cellspacing="1">
+        <tr>
+          <td height="10" style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+									</td>
+								  </tr>
+								  <tr>
+									<td width="40">经验:</td>
+									<td width="60">
+										<div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="477/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_green44.gif) no-repeat -18px; font-family:Arial; line-height:100%; text-align:center;">477</div>
+</div>
+									</td>
+								  </tr>
+							  </table></td>
+								<td width="21%"><table width="0" border="0" cellspacing="0" cellpadding="0">
+									<tr>
+									<td width="40">能力:</td>
+									<td width="60"><div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="497/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_Purple44.gif) no-repeat -17px; font-family:Arial; line-height:100%; text-align:center;">497</div>
+</div>
+</td>
+								  </tr>
+								  <tr>
+									<td width="40">忠诚:</td>
+									<td width="60"><div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="370/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_yellow44.gif) no-repeat -24px; font-family:Arial; line-height:100%; text-align:center;">370</div>
+</div>
+</td>
+								  </tr>
+							  </table></td>
+								<td width="12%">
+								正常</td>
+                                <td width="15%">
+                                                                	<input type="radio" name="sel_staff" value="831603" />
+                                </td>
+							</tr>
+														<tr class="list_word">
+								<td width="9%" height="53" align="center"><a href="../company/staff_info.php?lossid=25&staff_id=831605&return=%2Fenterprise%2Finner-agree_send_staff.php%3Fshop_id%3D51203%26act_id%3D2%26rec_id%3D14429&action="></a><img src="..//images/staff/female/15.jpg" width="32" height="42" class="list_tu_color2"/></td>
+								<td width="20%"><table border="0" cellpadding="0" cellspacing="0">
+								  <tr>
+								  <td><a href="../company/staff_info.php?lossid=25&staff_id=831605&return=%2Fenterprise%2Finner-agree_send_staff.php%3Fshop_id%3D51203%26act_id%3D2%26rec_id%3D14429&action="></a>尹雪华(25)								</td>
+								  </tr>
+								  <tr>
+									<td>市场部</td>
+								  </tr>
+							  </table></td>
+								<td width="23%"><table width="0" border="0" cellspacing="0" cellpadding="0">
+								  <tr>
+									<td width="40">等级:</td>
+									<td width="60">
+										<table width="50" height="16" border="0" cellpadding="0" cellspacing="0" title="4级">
+  <tr>
+    <td background="../images/scale2_2_bg.gif" style="padding:0px;">
+      <table width="46" border="0" align="center" cellpadding="0" cellspacing="1">
+        <tr>
+          <td height="10" style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+									</td>
+								  </tr>
+								  <tr>
+									<td width="40">经验:</td>
+									<td width="60">
+										<div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="477/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_green44.gif) no-repeat -18px; font-family:Arial; line-height:100%; text-align:center;">477</div>
+</div>
+									</td>
+								  </tr>
+							  </table></td>
+								<td width="21%"><table width="0" border="0" cellspacing="0" cellpadding="0">
+									<tr>
+									<td width="40">能力:</td>
+									<td width="60"><div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="497/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_Purple44.gif) no-repeat -17px; font-family:Arial; line-height:100%; text-align:center;">497</div>
+</div>
+</td>
+								  </tr>
+								  <tr>
+									<td width="40">忠诚:</td>
+									<td width="60"><div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="365/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_yellow44.gif) no-repeat -24px; font-family:Arial; line-height:100%; text-align:center;">365</div>
+</div>
+</td>
+								  </tr>
+							  </table></td>
+								<td width="12%">
+								正常</td>
+                                <td width="15%">
+                                                                	<input type="radio" name="sel_staff" value="831605" />
+                                </td>
+							</tr>
+														<tr class="list_word">
+								<td width="9%" height="53" align="center"><a href="../company/staff_info.php?lossid=25&staff_id=831608&return=%2Fenterprise%2Finner-agree_send_staff.php%3Fshop_id%3D51203%26act_id%3D2%26rec_id%3D14429&action="></a><img src="..//images/staff/female/1.jpg" width="32" height="42" class="list_tu_color2"/></td>
+								<td width="20%"><table border="0" cellpadding="0" cellspacing="0">
+								  <tr>
+								  <td><a href="../company/staff_info.php?lossid=25&staff_id=831608&return=%2Fenterprise%2Finner-agree_send_staff.php%3Fshop_id%3D51203%26act_id%3D2%26rec_id%3D14429&action="></a>容舞菲(25)								</td>
+								  </tr>
+								  <tr>
+									<td>市场部</td>
+								  </tr>
+							  </table></td>
+								<td width="23%"><table width="0" border="0" cellspacing="0" cellpadding="0">
+								  <tr>
+									<td width="40">等级:</td>
+									<td width="60">
+										<table width="50" height="16" border="0" cellpadding="0" cellspacing="0" title="4级">
+  <tr>
+    <td background="../images/scale2_2_bg.gif" style="padding:0px;">
+      <table width="46" border="0" align="center" cellpadding="0" cellspacing="1">
+        <tr>
+          <td height="10" style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+									</td>
+								  </tr>
+								  <tr>
+									<td width="40">经验:</td>
+									<td width="60">
+										<div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="477/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_green44.gif) no-repeat -18px; font-family:Arial; line-height:100%; text-align:center;">477</div>
+</div>
+									</td>
+								  </tr>
+							  </table></td>
+								<td width="21%"><table width="0" border="0" cellspacing="0" cellpadding="0">
+									<tr>
+									<td width="40">能力:</td>
+									<td width="60"><div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="495/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_Purple44.gif) no-repeat -17px; font-family:Arial; line-height:100%; text-align:center;">495</div>
+</div>
+</td>
+								  </tr>
+								  <tr>
+									<td width="40">忠诚:</td>
+									<td width="60"><div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="367/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_yellow44.gif) no-repeat -24px; font-family:Arial; line-height:100%; text-align:center;">367</div>
+</div>
+</td>
+								  </tr>
+							  </table></td>
+								<td width="12%">
+								正常</td>
+                                <td width="15%">
+                                                                	<input type="radio" name="sel_staff" value="831608" />
+                                </td>
+							</tr>
+														<tr class="list_word">
+								<td width="9%" height="53" align="center"><a href="../company/staff_info.php?lossid=25&staff_id=831610&return=%2Fenterprise%2Finner-agree_send_staff.php%3Fshop_id%3D51203%26act_id%3D2%26rec_id%3D14429&action="></a><img src="..//images/staff/female/11.jpg" width="32" height="42" class="list_tu_color2"/></td>
+								<td width="20%"><table border="0" cellpadding="0" cellspacing="0">
+								  <tr>
+								  <td><a href="../company/staff_info.php?lossid=25&staff_id=831610&return=%2Fenterprise%2Finner-agree_send_staff.php%3Fshop_id%3D51203%26act_id%3D2%26rec_id%3D14429&action="></a>郑如祖(25)								</td>
+								  </tr>
+								  <tr>
+									<td>市场部</td>
+								  </tr>
+							  </table></td>
+								<td width="23%"><table width="0" border="0" cellspacing="0" cellpadding="0">
+								  <tr>
+									<td width="40">等级:</td>
+									<td width="60">
+										<table width="50" height="16" border="0" cellpadding="0" cellspacing="0" title="4级">
+  <tr>
+    <td background="../images/scale2_2_bg.gif" style="padding:0px;">
+      <table width="46" border="0" align="center" cellpadding="0" cellspacing="1">
+        <tr>
+          <td height="10" style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+									</td>
+								  </tr>
+								  <tr>
+									<td width="40">经验:</td>
+									<td width="60">
+										<div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="463/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_green44.gif) no-repeat -19px; font-family:Arial; line-height:100%; text-align:center;">463</div>
+</div>
+									</td>
+								  </tr>
+							  </table></td>
+								<td width="21%"><table width="0" border="0" cellspacing="0" cellpadding="0">
+									<tr>
+									<td width="40">能力:</td>
+									<td width="60"><div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="478/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_Purple44.gif) no-repeat -18px; font-family:Arial; line-height:100%; text-align:center;">478</div>
+</div>
+</td>
+								  </tr>
+								  <tr>
+									<td width="40">忠诚:</td>
+									<td width="60"><div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="358/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_yellow44.gif) no-repeat -25px; font-family:Arial; line-height:100%; text-align:center;">358</div>
+</div>
+</td>
+								  </tr>
+							  </table></td>
+								<td width="12%">
+								正常</td>
+                                <td width="15%">
+                                                                	<input type="radio" name="sel_staff" value="831610" />
+                                </td>
+							</tr>
+														<tr class="list_word">
+								<td width="9%" height="53" align="center"><a href="../company/staff_info.php?lossid=25&staff_id=831611&return=%2Fenterprise%2Finner-agree_send_staff.php%3Fshop_id%3D51203%26act_id%3D2%26rec_id%3D14429&action="></a><img src="..//images/staff/female/7.jpg" width="32" height="42" class="list_tu_color2"/></td>
+								<td width="20%"><table border="0" cellpadding="0" cellspacing="0">
+								  <tr>
+								  <td><a href="../company/staff_info.php?lossid=25&staff_id=831611&return=%2Fenterprise%2Finner-agree_send_staff.php%3Fshop_id%3D51203%26act_id%3D2%26rec_id%3D14429&action="></a>江萍儿(25)								</td>
+								  </tr>
+								  <tr>
+									<td>市场部</td>
+								  </tr>
+							  </table></td>
+								<td width="23%"><table width="0" border="0" cellspacing="0" cellpadding="0">
+								  <tr>
+									<td width="40">等级:</td>
+									<td width="60">
+										<table width="50" height="16" border="0" cellpadding="0" cellspacing="0" title="4级">
+  <tr>
+    <td background="../images/scale2_2_bg.gif" style="padding:0px;">
+      <table width="46" border="0" align="center" cellpadding="0" cellspacing="1">
+        <tr>
+          <td height="10" style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+									</td>
+								  </tr>
+								  <tr>
+									<td width="40">经验:</td>
+									<td width="60">
+										<div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="478/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_green44.gif) no-repeat -18px; font-family:Arial; line-height:100%; text-align:center;">478</div>
+</div>
+									</td>
+								  </tr>
+							  </table></td>
+								<td width="21%"><table width="0" border="0" cellspacing="0" cellpadding="0">
+									<tr>
+									<td width="40">能力:</td>
+									<td width="60"><div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="494/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_Purple44.gif) no-repeat -17px; font-family:Arial; line-height:100%; text-align:center;">494</div>
+</div>
+</td>
+								  </tr>
+								  <tr>
+									<td width="40">忠诚:</td>
+									<td width="60"><div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="368/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_yellow44.gif) no-repeat -24px; font-family:Arial; line-height:100%; text-align:center;">368</div>
+</div>
+</td>
+								  </tr>
+							  </table></td>
+								<td width="12%">
+								正常</td>
+                                <td width="15%">
+                                                                	<input type="radio" name="sel_staff" value="831611" />
+                                </td>
+							</tr>
+														<tr class="list_word">
+								<td width="9%" height="53" align="center"><a href="../company/staff_info.php?lossid=25&staff_id=831628&return=%2Fenterprise%2Finner-agree_send_staff.php%3Fshop_id%3D51203%26act_id%3D2%26rec_id%3D14429&action="></a><img src="..//images/staff/female/7.jpg" width="32" height="42" class="list_tu_color2"/></td>
+								<td width="20%"><table border="0" cellpadding="0" cellspacing="0">
+								  <tr>
+								  <td><a href="../company/staff_info.php?lossid=25&staff_id=831628&return=%2Fenterprise%2Finner-agree_send_staff.php%3Fshop_id%3D51203%26act_id%3D2%26rec_id%3D14429&action="></a>容琳琪(25)								</td>
+								  </tr>
+								  <tr>
+									<td>市场部</td>
+								  </tr>
+							  </table></td>
+								<td width="23%"><table width="0" border="0" cellspacing="0" cellpadding="0">
+								  <tr>
+									<td width="40">等级:</td>
+									<td width="60">
+										<table width="50" height="16" border="0" cellpadding="0" cellspacing="0" title="4级">
+  <tr>
+    <td background="../images/scale2_2_bg.gif" style="padding:0px;">
+      <table width="46" border="0" align="center" cellpadding="0" cellspacing="1">
+        <tr>
+          <td height="10" style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+									</td>
+								  </tr>
+								  <tr>
+									<td width="40">经验:</td>
+									<td width="60">
+										<div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="477/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_green44.gif) no-repeat -18px; font-family:Arial; line-height:100%; text-align:center;">477</div>
+</div>
+									</td>
+								  </tr>
+							  </table></td>
+								<td width="21%"><table width="0" border="0" cellspacing="0" cellpadding="0">
+									<tr>
+									<td width="40">能力:</td>
+									<td width="60"><div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="498/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_Purple44.gif) no-repeat -17px; font-family:Arial; line-height:100%; text-align:center;">498</div>
+</div>
+</td>
+								  </tr>
+								  <tr>
+									<td width="40">忠诚:</td>
+									<td width="60"><div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="367/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_yellow44.gif) no-repeat -24px; font-family:Arial; line-height:100%; text-align:center;">367</div>
+</div>
+</td>
+								  </tr>
+							  </table></td>
+								<td width="12%">
+								正常</td>
+                                <td width="15%">
+                                                                	<input type="radio" name="sel_staff" value="831628" />
+                                </td>
+							</tr>
+														<tr class="list_word">
+								<td width="9%" height="53" align="center"><a href="../company/staff_info.php?lossid=25&staff_id=831629&return=%2Fenterprise%2Finner-agree_send_staff.php%3Fshop_id%3D51203%26act_id%3D2%26rec_id%3D14429&action="></a><img src="..//images/staff/female/13.jpg" width="32" height="42" class="list_tu_color2"/></td>
+								<td width="20%"><table border="0" cellpadding="0" cellspacing="0">
+								  <tr>
+								  <td><a href="../company/staff_info.php?lossid=25&staff_id=831629&return=%2Fenterprise%2Finner-agree_send_staff.php%3Fshop_id%3D51203%26act_id%3D2%26rec_id%3D14429&action="></a>孟儿民(25)								</td>
+								  </tr>
+								  <tr>
+									<td>市场部</td>
+								  </tr>
+							  </table></td>
+								<td width="23%"><table width="0" border="0" cellspacing="0" cellpadding="0">
+								  <tr>
+									<td width="40">等级:</td>
+									<td width="60">
+										<table width="50" height="16" border="0" cellpadding="0" cellspacing="0" title="4级">
+  <tr>
+    <td background="../images/scale2_2_bg.gif" style="padding:0px;">
+      <table width="46" border="0" align="center" cellpadding="0" cellspacing="1">
+        <tr>
+          <td height="10" style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+									</td>
+								  </tr>
+								  <tr>
+									<td width="40">经验:</td>
+									<td width="60">
+										<div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="478/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_green44.gif) no-repeat -18px; font-family:Arial; line-height:100%; text-align:center;">478</div>
+</div>
+									</td>
+								  </tr>
+							  </table></td>
+								<td width="21%"><table width="0" border="0" cellspacing="0" cellpadding="0">
+									<tr>
+									<td width="40">能力:</td>
+									<td width="60"><div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="494/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_Purple44.gif) no-repeat -17px; font-family:Arial; line-height:100%; text-align:center;">494</div>
+</div>
+</td>
+								  </tr>
+								  <tr>
+									<td width="40">忠诚:</td>
+									<td width="60"><div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="370/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_yellow44.gif) no-repeat -24px; font-family:Arial; line-height:100%; text-align:center;">370</div>
+</div>
+</td>
+								  </tr>
+							  </table></td>
+								<td width="12%">
+								正常</td>
+                                <td width="15%">
+                                                                	<input type="radio" name="sel_staff" value="831629" />
+                                </td>
+							</tr>
+														<tr class="list_word">
+								<td width="9%" height="53" align="center"><a href="../company/staff_info.php?lossid=25&staff_id=831631&return=%2Fenterprise%2Finner-agree_send_staff.php%3Fshop_id%3D51203%26act_id%3D2%26rec_id%3D14429&action="></a><img src="..//images/staff/female/5.jpg" width="32" height="42" class="list_tu_color2"/></td>
+								<td width="20%"><table border="0" cellpadding="0" cellspacing="0">
+								  <tr>
+								  <td><a href="../company/staff_info.php?lossid=25&staff_id=831631&return=%2Fenterprise%2Finner-agree_send_staff.php%3Fshop_id%3D51203%26act_id%3D2%26rec_id%3D14429&action="></a>金祥蕾(25)								</td>
+								  </tr>
+								  <tr>
+									<td>市场部</td>
+								  </tr>
+							  </table></td>
+								<td width="23%"><table width="0" border="0" cellspacing="0" cellpadding="0">
+								  <tr>
+									<td width="40">等级:</td>
+									<td width="60">
+										<table width="50" height="16" border="0" cellpadding="0" cellspacing="0" title="4级">
+  <tr>
+    <td background="../images/scale2_2_bg.gif" style="padding:0px;">
+      <table width="46" border="0" align="center" cellpadding="0" cellspacing="1">
+        <tr>
+          <td height="10" style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+									</td>
+								  </tr>
+								  <tr>
+									<td width="40">经验:</td>
+									<td width="60">
+										<div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="463/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_green44.gif) no-repeat -19px; font-family:Arial; line-height:100%; text-align:center;">463</div>
+</div>
+									</td>
+								  </tr>
+							  </table></td>
+								<td width="21%"><table width="0" border="0" cellspacing="0" cellpadding="0">
+									<tr>
+									<td width="40">能力:</td>
+									<td width="60"><div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="480/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_Purple44.gif) no-repeat -18px; font-family:Arial; line-height:100%; text-align:center;">480</div>
+</div>
+</td>
+								  </tr>
+								  <tr>
+									<td width="40">忠诚:</td>
+									<td width="60"><div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="361/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_yellow44.gif) no-repeat -25px; font-family:Arial; line-height:100%; text-align:center;">361</div>
+</div>
+</td>
+								  </tr>
+							  </table></td>
+								<td width="12%">
+								正常</td>
+                                <td width="15%">
+                                                                	<input type="radio" name="sel_staff" value="831631" />
+                                </td>
+							</tr>
+														<tr class="list_word">
+								<td width="9%" height="53" align="center"><a href="../company/staff_info.php?lossid=25&staff_id=831635&return=%2Fenterprise%2Finner-agree_send_staff.php%3Fshop_id%3D51203%26act_id%3D2%26rec_id%3D14429&action="></a><img src="..//images/staff/female/8.jpg" width="32" height="42" class="list_tu_color2"/></td>
+								<td width="20%"><table border="0" cellpadding="0" cellspacing="0">
+								  <tr>
+								  <td><a href="../company/staff_info.php?lossid=25&staff_id=831635&return=%2Fenterprise%2Finner-agree_send_staff.php%3Fshop_id%3D51203%26act_id%3D2%26rec_id%3D14429&action="></a>钱伦喜(25)								</td>
+								  </tr>
+								  <tr>
+									<td>市场部</td>
+								  </tr>
+							  </table></td>
+								<td width="23%"><table width="0" border="0" cellspacing="0" cellpadding="0">
+								  <tr>
+									<td width="40">等级:</td>
+									<td width="60">
+										<table width="50" height="16" border="0" cellpadding="0" cellspacing="0" title="4级">
+  <tr>
+    <td background="../images/scale2_2_bg.gif" style="padding:0px;">
+      <table width="46" border="0" align="center" cellpadding="0" cellspacing="1">
+        <tr>
+          <td height="10" style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+									</td>
+								  </tr>
+								  <tr>
+									<td width="40">经验:</td>
+									<td width="60">
+										<div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="478/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_green44.gif) no-repeat -18px; font-family:Arial; line-height:100%; text-align:center;">478</div>
+</div>
+									</td>
+								  </tr>
+							  </table></td>
+								<td width="21%"><table width="0" border="0" cellspacing="0" cellpadding="0">
+									<tr>
+									<td width="40">能力:</td>
+									<td width="60"><div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="494/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_Purple44.gif) no-repeat -17px; font-family:Arial; line-height:100%; text-align:center;">494</div>
+</div>
+</td>
+								  </tr>
+								  <tr>
+									<td width="40">忠诚:</td>
+									<td width="60"><div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="369/800">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_yellow44.gif) no-repeat -24px; font-family:Arial; line-height:100%; text-align:center;">369</div>
+</div>
+</td>
+								  </tr>
+							  </table></td>
+								<td width="12%">
+								正常</td>
+                                <td width="15%">
+                                                                	<input type="radio" name="sel_staff" value="831635" />
+                                </td>
+							</tr>
+														<tr class="list_word">
+								<td width="9%" height="53" align="center"><a href="../company/staff_info.php?lossid=30&staff_id=1629830&return=%2Fenterprise%2Finner-agree_send_staff.php%3Fshop_id%3D51203%26act_id%3D2%26rec_id%3D14429&action="></a><img src="..//images/staff/female/6.jpg" width="32" height="42" class="list_tu_color2"/></td>
+								<td width="20%"><table border="0" cellpadding="0" cellspacing="0">
+								  <tr>
+								  <td><a href="../company/staff_info.php?lossid=30&staff_id=1629830&return=%2Fenterprise%2Finner-agree_send_staff.php%3Fshop_id%3D51203%26act_id%3D2%26rec_id%3D14429&action="></a>韩舞利(30)								</td>
+								  </tr>
+								  <tr>
+									<td>市场部</td>
+								  </tr>
+							  </table></td>
+								<td width="23%"><table width="0" border="0" cellspacing="0" cellpadding="0">
+								  <tr>
+									<td width="40">等级:</td>
+									<td width="60">
+										<table width="50" height="16" border="0" cellpadding="0" cellspacing="0" title="5级">
+  <tr>
+    <td background="../images/scale2_2_bg.gif" style="padding:0px;">
+      <table width="46" border="0" align="center" cellpadding="0" cellspacing="1">
+        <tr>
+          <td height="10" style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+          <td style="padding:0px;" width="20%"><img src="../images/scale_red.gif" width="8" height="10" /></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+									</td>
+								  </tr>
+								  <tr>
+									<td width="40">经验:</td>
+									<td width="60">
+										<div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="553/1600">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_green44.gif) no-repeat -29px; font-family:Arial; line-height:100%; text-align:center;">553</div>
+</div>
+									</td>
+								  </tr>
+							  </table></td>
+								<td width="21%"><table width="0" border="0" cellspacing="0" cellpadding="0">
+									<tr>
+									<td width="40">能力:</td>
+									<td width="60"><div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="563/1600">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_Purple44.gif) no-repeat -29px; font-family:Arial; line-height:100%; text-align:center;">563</div>
+</div>
+</td>
+								  </tr>
+								  <tr>
+									<td width="40">忠诚:</td>
+									<td width="60"><div style="width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px;" title="1092/1600">
+  <div style="width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_yellow44.gif) no-repeat -14px; font-family:Arial; line-height:100%; text-align:center;">1092</div>
+</div>
+</td>
+								  </tr>
+							  </table></td>
+								<td width="12%">
+								正常</td>
+                                <td width="15%">
+                                                                	<input type="radio" name="sel_staff" value="1629830" />
+                                </td>
+							</tr>
+													</table>
+                        </div></td>
+                    </tr>
+                      </table></td>
+                  </tr>
+                  </table></td>
+              </tr>
+              <tr>
+    <td valign="top" height="8px"></td>
+  </tr>
+  <tr>
+    <td height="40">
+   <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="6"><img src="../images/boxs_top1.gif" width="6" height="6" /></td>
+          <td width="100%" background="../images/boxs_top2.gif"></td>
+          <td width="10"><img src="../images/boxs_top3.gif" width="6" height="6" /></td>
+        </tr>
+        <tr>
+          <td background="../images/boxs_center1.gif"></td>
+          <td class="box_bgcolor">
+          
+          <table width="100%">
+    <tr><td colspan="4">店铺联合报纸宣传,请选择宣传合约</td></tr>
+    <tr>
+    <td width="100%">
+    <table width="100%">
+    <tr>
+         <td width="20"><input type="radio" name="hy_lis" value="446" id="rad_446" checked="checked" onclick="onchange_imgc(446)"/></td>
+     <td width="215">
+     <label for="rad_446">临时宣传合约,加成持续时间4小时</label>
+     </td>
+     <td>（拥有8张，<span style="cursor:pointer; color:#F30" onclick="Buy(446)">购买</span>）
+     <span style="color:#F00">(需消耗董事长5点体力)</span>     </td>
+    </tr>
+         <td width="20"><input type="radio" name="hy_lis" value="447" id="rad_447" disabled="disabled" onclick="onchange_imgc(447)"/></td>
+     <td width="215">
+     <label for="rad_447">短期宣传合约,加成持续时间24小时</label>
+     </td>
+     <td>（拥有0张，<span style="cursor:pointer; color:#F30" onclick="Buy(447)">购买</span>）
+          </td>
+    </tr>
+         <td width="20"><input type="radio" name="hy_lis" value="448" id="rad_448" disabled="disabled" onclick="onchange_imgc(448)"/></td>
+     <td width="215">
+     <label for="rad_448">中期宣传合约,加成持续时间72小时</label>
+     </td>
+     <td>（拥有0张，<span style="cursor:pointer; color:#F30" onclick="Buy(448)">购买</span>）
+          </td>
+    </tr>
+        </table>
+    </td>
+    </tr>
+    </table>
+          
+          </td>
+          <td background="../images/boxs_center2.gif"></td>
+        </tr>
+        <tr>
+          <td><img src="../images/boxs_bottom1.gif" width="6" height="6" /></td>
+          <td background="../images/boxs_bottom2.gif"></td>
+          <td><img src="../images/boxs_bottom3.gif" width="6" height="6" /></td>
+        </tr>
+      </table>
+      
+    </td>
+  </tr>
+  <tr>
+  <td>
+  <table>
+      <tr>
+    	<td>
+             <input type="button" class="button_f2" value="确定" onclick="check();" />
+     <input type="button" class="button_f2" value="返回" onClick="window.location.href='./inner-shop_promote_2.php?shop_id=51203'" />
+        </td>
+    </tr>
+  </table>
+  </td>
+  </tr>     
+                
+              
+				
+          </table></td>
+  </tr>
+</table>
+<script type="text/javascript">
+var rads = document.getElementsByName('sel_staff');
+if(rads){
+	var len = rads.length;
+	for(var i = 0 ; i < len ; i++){
+		if(!rads[i].disabled){
+			rads[i].checked = true;
+			break;
+		}
+	}
+}
+</script>
+</body>
+</html>
+<script language="javascript">
+if(window.attachEvent) {
+	window.attachEvent("onload", update_top);
+}
+else {
+	window.addEventListener("load", update_top, false);
+}
+
+function update_top() {
+	try {
+		var user_info = {"gold_coin":"72","strategy":"2200\/2200","perform":"2200\/2200","lead":"2200\/2200","user_level":"<span title=\"7\u7ea7\">\u5546\u4e1a\u9886\u8896<\/span>","vip_images":"<img src='images\/user\/vip_245.gif'\/>","user_times":620,"increase":0};
+		window.top.update_user(user_info);
+	}
+	catch (e) {
+		//alert(e);
+	}
+}
+</script>

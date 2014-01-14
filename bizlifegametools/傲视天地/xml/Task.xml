@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- 任务界面配置文件 -->
+<config>
+	<!--列表ITEM-->
+	<taskItem>
+		<button name="bg1" style="button9" property='{"width":155}'/>
+		<button name="bg2" style="button18" property='{"visible":false, "width":155}'/>
+		<text name="nameText" style="button9" property='{"x":10, "y":3, "color":"0xE1DDD2", "stroke":"0x272018", "mouseEnabled":false}'/>
+		
+		<displayObject name="ask" view="task.view.ask" property='{"x":133, "y":2}'/>
+		<displayObject name="exclamation" view="task.view.exclamation" property='{"x":137, "y":2}'/>
+		<displayObject name="cross" view="task.view.cross" property='{"x":132, "y":2}'/>
+	</taskItem>
+	
+	
+	<!--主线-->
+	<main>
+		<displayObject view="task.view.MainView" property=''/>
+		
+		<staticText property='{"x":30, "y":58, "size":14, "bold":true, "color":"0xE1DDD2", "stroke":"0x272018"}' textID="110208"/>
+		<staticText property='{"x":250, "y":103, "color":"0x9D7D4C", "stroke":"0x272018"}' textID="110201"/>
+		<staticText property='{"x":250, "y":137, "color":"0x9D7D4C", "stroke":"0x272018"}' textID="110202"/>
+		<staticText property='{"x":250, "y":173, "color":"0x9D7D4C", "stroke":"0x272018"}' textID="110203"/>
+		<staticText property='{"x":250, "y":207, "color":"0x9D7D4C", "stroke":"0x272018"}' textID="110204"/>
+		<staticText property='{"x":250, "y":273, "color":"0x9D7D4C", "stroke":"0x272018"}' textID="110205"/>
+		
+		<button name="acceptBtn" style="button4" labelID="110206" property='{"x":385, "y":310, "visible":false}'/>
+		<button name="cancelBtn" style="button5" labelID="110207" property='{"x":385, "y":310, "visible":false}'/>
+		<button name="gainBtn" style="button4" labelID="110211" property='{"x":385, "y":310, "visible":false}'/>
+		
+		<text name="nameText" property='{"x":295, "y":103, "color":"0xE1DDD2", "stroke":"0x272018", "bold":true}'/>
+		<starContainer property='{"x":295, "y":137}' starView="task.view.star" gap="15"/>
+		<text name="descriptionText" property='{"x":295, "y":173, "color":"0xE1DDD2", "stroke":"0x272018"}'/>
+		<text name="introText" property='{"x":295, "y":207, "width":260, "color":"0xE1DDD2", "stroke":"0x272018", "multiline":true}'/>
+		<text name="rewardText" property='{"x":295, "y":273, "color":"0xE1DDD2", "stroke":"0x272018"}'/>
+		
+		<list property='{"x":25, "y":85}'/>
+		<page property='{"x":50, "y":388}'/>
+	</main>
+	
+	<!--日常-->
+	<daily>
+		<displayObject view="task.view.daily" property=''/>
+		<staticText property='{"x":30, "y":58, "size":14, "bold":true, "color":"0xE1DDD2", "stroke":"0x272018"}' textID="110208"/>
+		<text name="refreshCost" property='{"x":82, "y":364, "color":"0xffcc66", "stroke":"0x272018"}'/>
+		
+		<button name="refreshBtn" style="button6" labelID="110312" property='{"x":61, "y":380}'/>
+		<staticText property='{"x":232, "y":70, "color":"0xE1DDD2", "stroke":"0x272018"}' textID="110302"/>
+		<staticText property='{"x":232, "y":95, "color":"0xE1DDD2", "stroke":"0x272018"}' textID="110303"/>
+		<staticText property='{"x":251, "y":150, "color":"0x9D7D4C", "stroke":"0x272018"}' textID="110306"/>
+		<staticText property='{"x":251, "y":181, "color":"0x9D7D4C", "stroke":"0x272018"}' textID="110307"/>
+		<staticText property='{"x":251, "y":212, "color":"0x9D7D4C", "stroke":"0x272018"}' textID="110308"/>
+		<staticText property='{"x":251, "y":242, "color":"0x9D7D4C", "stroke":"0x272018"}' textID="110309"/>
+		<staticText property='{"x":251, "y":305, "color":"0x9D7D4C", "stroke":"0x272018"}' textID="110310"/>
+		
+		<text name="resetStar" property='{"x":350, "y":70, "color":"0x9D7D4C", "stroke":"0x272018"}'/>
+		<text name="nameText" property='{"x":295, "y":150, "color":"0xE1DDD2", "stroke":"0x272018", "bold":true}'/>
+		<maxContainer property='{"x":343, "y":70}' starView="task.view.star" gap="15"/>
+		<qualityContainer property='{"x":300, "y":181}' starView="task.view.star" gap="15"/>
+		<text name="descriptionText" property='{"x":298, "y":212, "color":"0xE1DDD2", "stroke":"0x272018"}'/>
+		<text name="introText" property='{"x":298, "y":242, "width":260, "color":"0xE1DDD2", "stroke":"0x272018", "multiline":true}'/>
+		<text name="rewardText" property='{"x":298, "y":305, "color":"0xE1DDD2", "stroke":"0x272018"}'/>
+		<text name="doneNum" property='{"x":343, "y":93, "size":14, "color":"0xffcc66", "stroke":"0x272018", "bold":true}'/>
+		
+		<button name="acceptBtn" style="button4" labelID="110206" property='{"x":383, "y":337, "visible":false}'/>
+		<button name="cancelBtn" style="button5" labelID="110207" property='{"x":484, "y":337, "visible":false}'/>
+		<button name="gainBtn" style="button4" labelID="110211" property='{"x":383, "y":337, "visible":false}'/>
+		
+		<text name="doneCost" property='{"x":337, "y":346, "color":"0xffcc66", "stroke":"0x272018"}'/>
+		<button name="icBtn" style="button4" labelID="110311" property='{"x":383, "y":337, "visible":false}'/>
+		
+		<page property='{"x":50, "y":330}'/>
+		<list property='{"x":25, "y":85}'/>
+	</daily>
+	
+	<!--活动-->
+	<activity>
+		<displayObject view="task.view.activity" property=''/>
+		
+		<pic name="activityPic" property='{"x":58, "y":113}' frame="task.view.picCover" frameProp='{"mouseEnabled":false}' picProp='{"x":2, "y":0}' />
+		
+		<staticText property='{"x":370, "y":75, "color":"0x9D7D4C", "stroke":"0x272018"}' textID="110401"/>
+		<staticText property='{"x":370, "y":211, "color":"0x9D7D4C", "stroke":"0x272018"}' textID="110402"/>
+		<staticText property='{"x":370, "y":308, "color":"0x9D7D4C", "stroke":"0x272018"}' textID="110403"/>
+		
+		<text name="activityName" property='{"x":185, "y":70, "autoSize":"center", "size":25, "color":"0xffcc66", "stroke":"0x272018", "bold":true}'/>
+		<text name="intro" property='{"x":370, "y":90, "multiline":true, "width":246, "color":"0xE1DDD2", "stroke":"0x272018"}'/>
+		<scrollBar property='{"size":68}' />
+		<showArea width="245" height="70"/>
+		<text name="reachScore" property='{"x":370, "y":150, "color":"0xE1DDD2", "stroke":"0x272018"}'/>
+		<text name="countDown" property='{"x":370, "y":180, "color":"0xE1DDD2", "stroke":"0x272018"}'/>
+		
+		<text name="currentScore" property='{"x":370, "y":226, "color":"0xE1DDD2", "stroke":"0x272018"}'/>
+		<text name="scoreRank" property='{"x":370, "y":242, "color":"0xE1DDD2", "stroke":"0x272018"}'/>
+		<text name="gain" property='{"x":370, "y":258, "color":"0xE1DDD2", "stroke":"0x272018"}'/>
+		<text name="gainStatus" property='{"x":611, "y":226, "color":"0xE1DDD2", "autoSize":"right", "stroke":"0x272018"}'/>
+		
+		<button name="gainBtn" style="button4" labelID="110409" property='{"x":522, "y":247}'/>
+		<list property='{"x":370, "y":324}'/>
+		<rankRenderer>
+		    <text name="rankAndName" property='{"color":"0xE1DDD2", "stroke":"0x272018"}'/>
+		    <text name="score" property='{"color":"0xE1DDD2", "x":250, "stroke":"0x272018", "autoSize":"right"}'/>
+		</rankRenderer>
+	</activity>
+</config>

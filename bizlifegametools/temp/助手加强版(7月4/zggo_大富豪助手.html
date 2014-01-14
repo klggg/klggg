@@ -1,0 +1,1730 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="content-language" content="utf-8" />
+<link href="./css/css.css" rel="stylesheet" type="text/css" />
+<link href="./css/tabs.css?v=1" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="./js/jquery-1.3.2.min.js"></script>
+<script language="javascript" src="./js/cg.js"></script>
+<title>大富豪助手  --清风无痕修改版</title>
+<style type="text/css">
+<!--
+.STYLE1 {color: #FF0000}
+-->
+</style>
+</head>
+
+
+<body >
+
+<!--input type="button" value='test' onclick="biz_auto_recover_strength_by_house();"  /-->
+<div id="skill_win"  style="background-color:#EEEEEE;position: absolute;display:none;left:0px;top:0px;z-index:50; width:500px;height:116px">
+<table width="100%" border="0" align="center" class="list_table" >
+  <tr>
+    <td align="right"><img src="images/close.jpg" width="17" height="17" onClick="close_skill_win();"></td>
+  </tr>
+  <tr>
+    <td align="center">员工技能深造转换</td>
+  </tr>
+  <tr>
+    <td>
+	<fieldset>
+      <legend>技能深造转换</legend>
+       员工：
+       <input name="staff_name_input" type="text" id="staff_name_input" value="" size="8"  disabled="disabled">
+ 	  <input name="" type="hidden" value="" id="staff_id_input">
+     技能：
+      <input name="skill_name_input" type="text" id="skill_name_input" size="4" disabled="disabled">
+ 	  <input name="" type="hidden" value="" id="skill_id_input">
+      提升到：
+      <input name="command_text3" type="text" id="uptolevel_input" size="2" value="5" >
+      级
+      <input name="up_skill_button" type="button" id="up_skill_button" onClick="up_skill();" value="深造" >
+      <input name="conver_skill_button" type="button" id="conver_skill_button" onClick="conver_skill();" value="转换" >
+      </fieldset> 
+	</td>
+  </tr>
+  <tr>
+    <td height="21" align="center">&nbsp;</td>
+  </tr>
+</table>
+</div>
+
+<div id="staff_level_win"  style="background-color:#EEEEEE;position: absolute;display:none;left:0px;top:0px;z-index:50; width:488px;height:114px">
+<table width="100%" border="0" align="center" class="list_table" >
+  <tr>
+    <td align="right"><img src="images/close.jpg" width="17" height="17" onClick="document.getElementById('staff_level_win').style.display='none';"></td>
+  </tr>
+  <tr>
+    <td align="center">员工等级进修及反省</td>
+  </tr>
+  <tr>
+    <td>
+	<fieldset>
+      <legend>进修反省</legend>
+       员工：
+       <input name="staff_name_input" type="text" id="staff_name_input2" value="" size="8"  disabled="disabled">
+ 	  <input name="" type="hidden" value="" id="staff_id_input2">
+     等级：
+      <input name="staff_level_input" type="text" id="staff_level_input" size="2" disabled="disabled">
+      提升到：
+      <input name="uptolevel_input" type="text" id="uptolevel_input2" size="2" value="5" disabled="disabled">
+      级
+      <input name="up_level_button" type="button" id="up_level_button" onClick="" value="进修"  disabled="disabled" >
+      <input name="staff_further_button" type="button" id="staff_further_button" onClick="staff_further();" value="反省" >
+      </fieldset> 
+	</td>
+  </tr>
+  <tr>
+    <td height="21" align="center">&nbsp;</td>
+  </tr>
+</table>
+</div>
+
+<div id="input_name"  style="background-color:#EEEEEE;position: absolute;display:none;left:451px;top:53px;z-index:50; width:294px;height:73px">
+<table width="100%" border="0" align="center" class="list_table" >
+  <tr>
+    <td height="21" align="right"><img src="images/close.jpg" width="17" height="17" onClick="input_name_close();"></td>
+  </tr>
+  <tr>
+    <td align="center">
+       输入员工姓名：
+         <input name="input_name_text" type="text" id="input_name_text" value="" size="15"  >
+         <input name="input_name_select_id" type="hidden" id="input_name_text" value="0"   >
+      <input name="nput_name_button" type="button" id="nput_name_button" onClick="biz_staff_sw_name(document.getElementById('input_name_text').value,document.getElementById('input_name_select_id').value);" value="确定" ></td>
+  </tr>
+  <tr>
+    <td height="21" align="center">&nbsp;</td>
+  </tr>
+</table>
+</div>
+
+<FORM NAME="form1">
+  <table align=center class="list_table" width="95%" cellspacing="0" cellpadding="0" border="0">
+    <tr>
+      <td class="list_top3" colspan='3' align=center>大富豪助手  --修改版 
+
+      <div id="upgradeDialog"  style="display:none;"></div>
+      (by  清风无痕)</td>
+    </tr>
+    <TR>
+      <TD width="148" height="30" align="right">所在服务器 </TD>
+      <TD height="30" colspan="2"><select onchange="biz_server_change(this)" id="host_list">
+        </select>
+        <select id="server_list" name="server_list">
+      </select></TD>
+    </TR>
+    <TR>
+      <TD align="right"> 操作项目 </TD>
+      <TD colspan="2" ><div id="batch_state_list"> </div>
+        <a  href="javascript:set_checkbox(document.form1,'all')">全选</a> <a  href="javascript:set_checkbox(document.form1,'or')">反选</a> <a  href="javascript:set_checkbox(document.form1,'no')">取消
+        
+      </a></TD>
+    </TR>
+    <!--TR>
+      <TD height="50"> 一次执行员工数 </TD>
+      <TD height="50"><INPUT TYPE="text" id="one_process_staff" value='15'>
+        每次批量最多能执行几个员工(按实际情况填,不清楚先按默认 ) </TD>
+    </TR-->
+    <!--TR>
+      <TD height="50"> 登录帐号 </TD>
+      <TD height="50"><INPUT TYPE="text" id="biz_user" value=''> 特殊功能单独开通,不清楚留空,不保证长期有效</TD>
+    </TR-->
+    <TR>
+      <TD height="30" align="right"> 当前体力值：</TD>
+      <TD width="" height="30">
+       <label id="user_power_now_label">--</label>
+      <INPUT TYPE="checkbox" id="to_min_power_check"   value='1'>
+      保留体力
+	  <input type="text" id="to_min_power_text" value="0" size="3" >
+	  点。
+	  
+	  <INPUT type="hidden" id="one_process_staff" value='30' size="3"> 
+      </TD>
+      <TD width="354" height="30">
+	  </TD>
+      
+    </TR>
+
+  </TABLE >
+</FORM>
+
+
+<div class='tab_card' >
+  <ul  class="tabs" >
+    <li class='active'><a class="current" href="javascript:void(0);">参数设置</a></li>
+    <li><a class="" href="javascript:void(0);">员工管理</a></li>
+    <li><a class="" href="javascript:void(0);">部门管理</a></li>
+    <li><a class="" href="javascript:void(0);">店铺采购</a></li>
+    <li><a class="" href="javascript:void(0);">每日任务</a></li>
+    <li><a class="" href="javascript:void(0);">操作日志</a></li>
+    <li><a class="" href="javascript:void(0);">版本信息</a></li>
+  </ul>
+
+    <div class="tabs_description">
+       <fieldset>
+      <legend>自动操作</legend>
+  <table> 
+    <TR>
+      <TD height="30" colspan="3" align="center" ><input type="button" value='自动任务交易' onclick="biz_auto_mall_trade();" id="auto_mall_trade" />
+        <input name="run_Prepare_button" type="button" value="酝酿策划" onClick="run_Prepare();">
+     <input name="skill_book_swap_bottn" type="button" id="skill_book_swap_bottn" onClick="skill_book_swap_click();" value="自动换书"> 
+     <img id="biz_sound_play" dynsrc="" start="fileopen" height=0 width=0 /></TD>
+    </TR>
+  </TABLE >
+
+      
+       </fieldset>
+      <p>&nbsp;</p>
+     <fieldset>
+      <legend>员工招聘</legend>
+	  类型:<select id="recruit_type">
+	    <option value="1">行政人事员</option>
+	    <option value="2">财务会计</option>
+	    <option value="3">策划员</option>
+	    <option value="4">市场管理员</option>
+	    <option value="5">公关</option>
+	    <option value="6">营业员</option>
+	    <option value="7">工厂职员</option>
+	  </select>
+	  人数:<input type="text"  id="recruit_num" value="0" size="5">
+		<input name="recruit_bottn" type="button" id="recruit_bottn" onClick="do_recruit();" value="批量招聘">
+
+	 </fieldset> 
+      <p>&nbsp;</p>
+     <fieldset>
+      <legend>自动参数</legend>
+      <INPUT TYPE="checkbox" id="auto_load_staff"   value='1'>
+      当前选择的所有员工无体力时重新加载新员工
+      <INPUT TYPE="checkbox" id="auto_club_card"   value='1' checked>
+      自动打卡
+      <INPUT TYPE="checkbox" id="auto_skip_staff"   value='1' checked>
+      员工三围满是否要跳过?
+      <INPUT TYPE="checkbox" id="auto_strength_add"   value='1' >
+      董事长体力不足自动喝葡萄糖(保证有足够的葡萄糖)
+      <INPUT TYPE="checkbox" id="auto_inspection"   value='1'>
+      自动开始巡视
+      <INPUT TYPE="checkbox" id="auto_recover_strength_by_house"   value='1' disabled="disabled">
+      豪宅自动体力恢复
+	  <!--INPUT TYPE="checkbox" id="auto_auto_imgcode"   value='1' checked >
+      自动输入验证码(火狐下无效,需要申请才能开通)
+	  -->
+      </fieldset>
+      <p>&nbsp;</p>
+      <fieldset style="display:none">
+      <input type="radio" name="auto_task_option" value='0' checked disabled="disabled">
+      <input type="radio" name="auto_task_option" value="1"  disabled="disabled">
+      </fieldset>
+      <fieldset style="display:none">
+      <img id="biz_sound_play" dynsrc="" start="fileopen" height=0 width=0 /> 声音提醒:
+      <select name="biz_sound" id="biz_sound">
+        <option value="">不提醒</option>
+        <option value="sound/xiaodao1.wav" selected>提醒1</option>
+        <option value="sound/xiaodao2.wav">提醒2</option>
+        <option value="sound/xiaodao3.wav">提醒3</option>
+      </select>
+      强制弹窗提醒
+      <INPUT TYPE="checkbox" id="biz_alert_force"   value='1' >
+      <input type="button" name="button" value="提醒测试" onClick="biz_sound_alert();">
+      </fieldset>
+	<fieldset>
+      <legend>执行命令</legend>
+       命令：
+       <input name="command_text1" type="text" id="command_text1" value="" size="50">
+      参数：
+      <input name="command_text2" type="text" id="command_text2">
+      周期：
+      <input name="command_text3" type="text" id="command_text3" value="0" size="8" disabled="disabled">
+      <input type="button" name="button" value="执行" onClick="run_command();" >
+      </fieldset>
+      <INPUT TYPE="checkbox" id="mrrw_1"   value='1' >
+  </div>
+    <div  class="tabs_description">
+      <ul  class="tabs" >
+        <li class='active'><a class="current" href="javascript:void(0);">刷三围</a></li>
+        <li><a class="" href="javascript:void(0);">已收藏的员工</a></li>
+        <li class='active'><a class="current" href="javascript:void(0);">技能操作</a></li>
+        <li class='active'><a class="current" href="javascript:void(0);">人才技能表</a></li>
+      </ul>
+      
+
+      <div  class="tabs_description">
+          <fieldset >
+          <legend>加载员工选项</legend>
+    <table width="100%" border="0">
+            <tr>
+              <td width="76%"><input type="button" name="Submit2" value="刷新部门列表"  onClick="biz_load_department_option('staff_load_department1')" >
+                <SELECT id="staff_load_department1">
+                  <option value="all" selected="selected">全公司</option>
+                  <option value="user_collection"> 标记员工</option>
+                  <option value="struct"> 公司架构</option>
+                  <option value="department"> 部门</option>
+                  <option value="dpt_competent">  部门主管</option>
+                  <option value="department||1">   行政人事部</option>
+                  <option value="department||2">   财务部</option>
+                  <option value="department||3">   策划部</option>
+                  <option value="department||4">   市场部</option>
+                  <option value="department||5">   公关部</option>
+                  <option value="shop"> 店铺</option>
+                  <option value="shop_competent">  店铺主管</option>
+                  <option value="build"> 建筑</option>
+                  <option value="build||1">   行政人才</option>
+                  <option value="build||2">   财务人才</option>
+                  <option value="build||3">   策划人才</option>
+                  <option value="build||4">   市场人才</option>
+                  <option value="build||5">   公关人才</option>
+                  <option value="club"> 商会</option>
+                  <option value="club||1">   行政人才</option>
+                  <option value="club||2">   财务人才</option>
+                  <option value="club||3">   策划人才</option>
+                  <option value="club||4">   市场人才</option>
+                  <option value="club||5">   公关人才</option>
+                  <option value="factory"> 工厂</option>
+                  <option value="fac_competent">  工厂高管</option>
+                  <option value="neg">谈判团</option>
+                  <option value="free"> 空闲员工</option>
+                </SELECT>
+                <SELECT id="staff_load_page1">
+                  <option  value="1">第1页</option>
+                  <option  value="2">第2页</option>
+                  <option  value="3">第3页</option>
+                  <option  value="4">第4页</option>
+                  <option  value="5">第5页</option>
+                  <option  value="6">第6页</option>
+                  <option  value="7">第7页</option>
+                  <option  value="8">第8页</option>
+                  <option  value="9">第9页</option>
+                  <option  value="10">第10页</option>
+                  <option  value="11">第11页</option>
+                  <option  value="12">第12页</option>
+                  <option  value="13">第13页</option>
+                  <option  value="14">第14页</option>
+                  <option  value="15">第15页</option>
+                  <option  value="16">第16页</option>
+                  <option  value="17">第17页</option>
+                  <option  value="18">第18页</option>
+                  <option  value="19">第19页</option>
+                  <option  value="20">第20页</option>
+                  <option  value="21">第21页</option>
+                </SELECT>
+                <label>排序</label>
+                <SELECT id="staff_load_order_by1">
+                  <option  value="level">等级</option>
+                  <option  value="loyalty">忠诚</option>
+                  <option  value="leftexec">体力</option>
+                  <option  value="experience">经验</option>
+                  <option  value="power">能力</option>
+                  <option  value="character">人品</option>
+                  <option  value="pay">周薪</option>
+                  <option  value="time_expired">合约</option>
+                  <option  value="skill">技能</option>
+                  <option  value="hobby">爱好</option>
+                </SELECT>
+                <SELECT id="staff_load_order1">
+                  <option  value="desc">从大到小↓</option>
+                  <option  value="asc">从小到大↑</option>
+                </SELECT>
+          <input type="button" value='加载员工' onclick="biz_get_staff(1);" id="button_load_staff1"/>
+          
+          <input type="button" value='收藏选中' onclick="biz_fav_from_staff();"/>
+				选中<font color=red  id="count_selected1">0</font>人			  </td>
+              <td width="24%" rowspan="2" align="center">
+			  <input type="button" value='开始运行!' name="switch_button1" /></td>
+            </tr>
+            <tr>
+              <td>
+          过滤:
+		   <input type="button" value="姓名过滤" onclick="input_name_show(1);"/>
+		   <input type="button" value="技能等级全满" onclick="biz_skill_sw_filt(1,1);"/>
+		   <input type="button" value="满经验" onclick="biz_staff_sw_filt(1,1);"/>
+		   <input type="button" value="满能力" onclick="biz_staff_sw_filt(2,1);"/>
+		   <input type="button" value="满忠诚"  onclick="biz_staff_sw_filt(3,1);"/>
+		   <input type="button" value="三围全满" onclick="biz_staff_sw_filt(0,1);"/>
+		   <input type="button" value="显示全部" onclick="biz_staff_sw_filt(-1,1);"/> <br>
+			 <INPUT TYPE="checkbox" id="auto_speed"   value='1'>自动加速
+			 <INPUT TYPE="checkbox" id="item410" value='410'>使用《氨基酸》
+			 <INPUT TYPE="checkbox" id="item13" value='13'>使用双倍卡(满体力员工适用)
+			   </td>
+            </tr>
+          </table>
+          </fieldset>
+
+		  <FORM NAME="staff_list_form" ID="staff_list_form1">
+            <table  class="list_table" align="center" width="100%" cellspacing="0" cellpadding="0" border="0">
+              <thead>
+                <tr>
+                  <td class="list_top3" align="center">序号</td>
+                  <td class="list_top3">姓名</td>
+                  <td class="list_top3">爱好</td>
+                  <td class="list_top3">单位</td>
+                  <td class="list_top3">等级</td>
+                  <td class="list_top3">经验</td>
+                  <td class="list_top3">能力</td>
+                  <td class="list_top3">忠诚</td>
+                  <td class="list_top3">人品</td>
+                  <td class="list_top3">体力</td>
+                  <td class="list_top3">周薪</td>
+                  <td class="list_top3">合约</td>
+                  <td align="center" class="list_top3">技能<span class="STYLE1">(单击技能名称可深造及转换) </span></td>
+                  <td class="list_top3" >
+				  <INPUT TYPE="checkbox" onclick="javascript:set_checkbox(document.staff_list_form1,'or');biz_staff_select_count(1);"/></td>
+                </tr>
+              </thead>
+              <tbody id="staff_list1" >
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan=12 height=30 align=right>
+				  <input type="button" value='批量进修选中员工' onclick="biz_staff_studio('#staff_list_form1');" />
+				  
+				  <input type="button" value='移除选中的员工' onclick="biz_remove_staff('staff_list_form1');" />
+                    <a  href="javascript:set_checkbox(document.staff_list_form1,'all');biz_staff_select_count(1);">全选</a> <a  href="javascript:set_checkbox(document.staff_list_form1,'or');biz_staff_select_count(1);">反选</a> <a  href="javascript:set_checkbox(document.staff_list_form1,'no');biz_staff_select_count(1);">取消</a>
+					 </td>
+                </tr>
+              </tfoot>
+            </table>
+          </FORM>
+      </div>
+	  
+	  
+	  
+
+	  
+	  
+	  
+	   <div  class="tabs_description">
+
+          <fieldset>
+			  <legend>操作</legend>
+
+			  文件名:<input type="text" value='staff_fav' size=10 id="biz_staff_save_filename"/>（可以自定义保存文件名，不清楚默认不要改）<!--去掉扩展名xml -->
+			  <br>
+			  <input type="button" value='从文件里加载已收藏的员工' onclick="biz_load_staff_fav();" />
+			  <input type="button" value='[save]保存收藏的员工' onclick="biz_staff_fav_save();" id="button_load_staff"/>
+			  <input type="button" value='&lt;&lt;选中员工到操作员工列表' onclick="biz_staff_from_fav();" />
+			  <input type="button" value='移除选中的员工' onclick="biz_remove_staff_fav();" />
+          </fieldset>
+
+
+		  <FORM NAME="staff_fav_list_form" id="staff_fav_list_form">
+            <table  class="list_table" align="center" width="100%" cellspacing="0" cellpadding="0" border="0">
+              <thead>
+                <tr>
+                  <td class="list_top3" align="center">序号</td>
+                  <td class="list_top3">姓名</td>
+                  <td class="list_top3">爱好</td>
+                  <td class="list_top3">单位</td>
+                  <td class="list_top3">等级</td>
+                  <td class="list_top3">经验</td>
+                  <td class="list_top3">能力</td>
+                  <td class="list_top3">忠诚</td>
+                  <td class="list_top3">人品</td>
+                  <td class="list_top3">体力</td>
+                  <td class="list_top3">周薪</td>
+                  <td class="list_top3">合约</td>
+                  <td align="center" class="list_top3">技能</td>
+                  <td class="list_top3" ><INPUT TYPE="checkbox" onclick="javascript:set_checkbox(document.staff_fav_list_form,'or')"/></td>
+                </tr>
+              </thead>
+              <tbody id="staff_fav_list" >
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan=12 height=30 align=right>
+				  <input type="button" value='批量进修选中员工' onclick="biz_staff_studio('#staff_fav_list_form');" />
+				  
+				  <input type="button" value='移除选中的员工' onclick="biz_remove_staff_fav();" />
+                    <a  href="javascript:set_checkbox(document.staff_fav_list_form,'all')">全选</a> <a  href="javascript:set_checkbox(document.staff_fav_list_form,'or')">反选</a> <a  href="javascript:set_checkbox(document.staff_fav_list_form,'no')">取消</a> </td>
+                </tr>
+              </tfoot>
+            </table>
+          </FORM>
+		
+		</div>
+      
+<div  class="tabs_description">
+<fieldset>
+          <legend>加载员工选项</legend>
+	      <table width="100%" border="0">
+            <tr>
+              <td width="76%"><input type="button" name="Submit22" value="刷新部门列表"  onClick="biz_load_department_option('staff_load_department2')" >
+                <SELECT id="staff_load_department2">
+                    <option value="all" selected="selected">全公司</option>
+                    <option value="user_collection"> 标记员工</option>
+                    <option value="struct"> 公司架构</option>
+                    <option value="department"> 部门</option>
+                    <option value="dpt_competent">  部门主管</option>
+                    <option value="department||1">   行政人事部</option>
+                    <option value="department||2">   财务部</option>
+                    <option value="department||3">   策划部</option>
+                    <option value="department||4">   市场部</option>
+                    <option value="department||5">   公关部</option>
+                    <option value="shop"> 店铺</option>
+                    <option value="shop_competent">  店铺主管</option>
+                    <option value="build"> 建筑</option>
+                    <option value="build||1">   行政人才</option>
+                    <option value="build||2">   财务人才</option>
+                    <option value="build||3">   策划人才</option>
+                    <option value="build||4">   市场人才</option>
+                    <option value="build||5">   公关人才</option>
+                    <option value="club"> 商会</option>
+                    <option value="club||1">   行政人才</option>
+                    <option value="club||2">   财务人才</option>
+                    <option value="club||3">   策划人才</option>
+                    <option value="club||4">   市场人才</option>
+                    <option value="club||5">   公关人才</option>
+                    <option value="factory"> 工厂</option>
+                    <option value="fac_competent">  工厂高管</option>
+                    <option value="neg">谈判团</option>
+                    <option value="free"> 空闲员工</option>
+                </SELECT>
+ 	         <SELECT id="staff_load_page2">
+                    <option  value="1">第1页</option>
+                    <option  value="2">第2页</option>
+                    <option  value="3">第3页</option>
+                    <option  value="4">第4页</option>
+                    <option  value="5">第5页</option>
+                    <option  value="6">第6页</option>
+                    <option  value="7">第7页</option>
+                    <option  value="8">第8页</option>
+                    <option  value="9">第9页</option>
+                    <option  value="10">第10页</option>
+                    <option  value="11">第11页</option>
+                    <option  value="12">第12页</option>
+                    <option  value="13">第13页</option>
+                    <option  value="14">第14页</option>
+                    <option  value="15">第15页</option>
+                    <option  value="16">第16页</option>
+                    <option  value="17">第17页</option>
+                    <option  value="18">第18页</option>
+                    <option  value="19">第19页</option>
+                    <option  value="20">第20页</option>
+                    <option  value="21">第21页</option>
+                </SELECT>
+                  <label>排序</label>
+          <SELECT id="staff_load_order_by2">
+                    <option  value="level">等级</option>
+                    <option  value="loyalty">忠诚</option>
+                    <option  value="leftexec">体力</option>
+                    <option  value="experience">经验</option>
+                    <option  value="power">能力</option>
+                    <option  value="character">人品</option>
+                    <option  value="pay">周薪</option>
+                    <option  value="time_expired">合约</option>
+                    <option  value="skill">技能</option>
+                    <option  value="hobby">爱好</option>
+                </SELECT>
+          <SELECT id="staff_load_order2">
+                    <option  value="desc">从大到小↓</option>
+                    <option  value="asc">从小到大↑</option>
+                </SELECT>
+          <input type="button" value='加载员工' onclick="biz_get_staff(2);" id="button_load_staff2"/>
+          
+          <input type="button" value='收藏选中' onclick="biz_fav_from_staff();"/>
+                选中<font color=red  id="count_selected2">0</font>人 </td>
+              <td width="24%"  align="center">技能深造<label id="skill_update_count" style="color:#FF0000"></label>次，成功<label id="skill_update_success_count" style="color:#FF0000"></label>次，成功率<label id="skill_update_probability" style="color:#FF0000"></label>%
+			  </td>
+            </tr>
+            <tr>
+              <td><input name="button32" type="button" onclick="input_name_show(2);" value="姓名过滤"/>
+                <input name="button32" type="button" onclick="biz_skill_sw_filt(1,2);" value="技能等级全满过滤"/>
+                人才过滤:
+                <select name="sw_filt_staff_type"  onChange="biz_skill_type_filt(this.value,2);">
+                  <option value="0" selected>选择人才类型</option>
+                  <option value="经营|管理|谈判|人际|鼓舞">CEO</option>
+                  <option value="经营|管理|谈判|人际">行政总监</option>
+                  <option value="经营|管理|谈判">行政经理</option>
+                  <option value="经营|管理">行政助理</option>
+                  <option value="经营|管理|学习|精算|核算">CFO</option>
+                  <option value="经营|管理|精算|核算">财务总监</option>
+                  <option value="经营|精算|核算">财务经理</option>
+                  <option value="精算|核算">财务助理</option>
+                  <option value="谈判|人际|精算|策划|营销">COO</option>
+                  <option value="谈判|人际|精算|营销">市场总监</option>
+                  <option value="人际|精算|营销">市场经理</option>
+                  <option value="人际|营销">市场助理</option>
+                  <option value="人际|学习|策划|鼓舞|营销">CPO</option>
+                  <option value="学习|策划|鼓舞|营销">策划总监</option>
+                  <option value="学习|策划|鼓舞">策划经理</option>
+                  <option value="策划|鼓舞">策划助理</option>
+                  <option value="谈判|人际|策划|鼓舞|营销">CGO</option>
+                  <option value="谈判|人际|策划|鼓舞">公关总监</option>
+                  <option value="谈判|人际|策划">公关经理</option>
+                  <option value="谈判|人际">公关助理</option>
+                  <option value="管理|学习">绿地</option>
+                  <option value="经营|精算|核算">停车场</option>
+                  <option value="管理|精算|核算|鼓舞">人工湖</option>
+                  <option value="管理|学习|精算|鼓舞">广场</option>
+                  <option value="管理|精算|策划|营销">球场</option>
+                  <option value="经营|学习|核算|鼓舞">图书馆</option>
+                  <option value="管理|精算|核算|鼓舞">妇幼</option>
+                  <option value="谈判|精算|核算|鼓舞|营销">艺术馆</option>
+                  <option value="经营|谈判|学习|精算|核算|鼓舞">博物馆</option>
+                  <option value="管理|谈判|人际|精算|核算|鼓舞">科学馆</option>
+                  <option value="谈判|精算|核算|策划|鼓舞|营销">车库</option>
+                  <option value="经营|学习|精算|策划|鼓舞|营销">大公园</option>
+                  <option value="经营|管理|谈判|学习|核算|策划|营销">水公园</option>
+                  <option value="经营|管理|谈判|人际|学习|核算|策划|营销">动物园</option>
+                  <option value="经营|管理|谈判|学习|精算|核算|策划|鼓舞|营销">福利房</option>
+                  <option value="经营|管理|谈判|人际|学习|精算|核算|策划|鼓舞|营销">大学</option>
+                  <option value="管理|谈判|人际|学习|精算鼓舞">公司大楼</option>
+			    </SELECT>
+                <select name="sw_filt_staff_type_num" id="sw_filt_staff_type_num">
+                  <option value="0" selected>全部相同</option>
+                  <option value="1">一个不同</option>
+                </select>
+                <input name="button32" type="button" onclick="biz_staff_sw_filt(-1,2);" value="显示全部"/>
+			  </td>
+              <td width="24%"  align="center">技能转换<label id="skill_conver_count" style="color:#FF0000"></label>次，成功<label id="skill_conver_success_count" style="color:#FF0000"></label>次，成功率<label id="skill_conver_probability" style="color:#FF0000"></label>%
+			  </td>
+	        </tr>
+          </table>
+	      <P></fieldset>
+		  
+<FORM NAME="staff_list_form2" ID="staff_list_form2">
+            <table  class="list_table" align="center" width="100%" cellspacing="0" cellpadding="0" border="0">
+              <thead>
+                <tr>
+                  <td class="list_top3" align="center">序号</td>
+                  <td class="list_top3">姓名</td>
+                  <td class="list_top3">爱好</td>
+                  <td class="list_top3">单位</td>
+                  <td class="list_top3">等级</td>
+                  <td class="list_top3">经验</td>
+                  <td class="list_top3">能力</td>
+                  <td class="list_top3">忠诚</td>
+                  <td class="list_top3">人品</td>
+                  <td class="list_top3">体力</td>
+                  <td class="list_top3">周薪</td>
+                  <td class="list_top3">合约</td>
+                  <td align="center" class="list_top3">技能<span class="STYLE1">(单击技能名称可深造及转换) </span></td>
+                  <td class="list_top3" >
+				  <INPUT TYPE="checkbox" onclick="javascript:set_checkbox(document.staff_list_form2,'or');biz_staff_select_count(2);"/></td>
+                </tr>
+                </tr>
+              </thead>
+              <tbody id="staff_list2" >
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan=12 height=30 align=right>
+				  <input type="button" value='批量进修选中员工' onclick="biz_staff_studio('#staff_list_form2');" />
+				  
+				  <input type="button" value='移除选中的员工' onclick="biz_remove_staff('staff_list_form2');" />
+                    <a  href="javascript:set_checkbox(document.staff_list_form2,'all');biz_staff_select_count(2);">全选</a> <a  href="javascript:set_checkbox(document.staff_list_form2,'or');biz_staff_select_count(2);">反选</a> <a  href="javascript:set_checkbox(document.staff_list_form2,'no');biz_staff_select_count(2);">取消</a> 
+					</td>
+                </tr>
+              </tfoot>
+            </table>
+      </FORM>	
+	    <p class="STYLE1">&nbsp;</p>
+		  <p class="STYLE1"> 　　操作提示：单击技能名称可深造及转换，单击员工等级可进行反省(三围需大于等于50%)。            <br>
+		   　　注意：技能操作时，员工列表不可以改变，运行技能操作时请勿重新加载员工及进行筛选操作。	</p>
+		  <p class="STYLE1">&nbsp;</p>
+</div>
+<div class="tabs_description">
+<br>
+<table class="list_table" align="center" width="800" cellspacing="0" cellpadding="0"   >
+  <tr>
+    <td colspan="6" align="center" class="list_top2">公司架构</td>
+    </tr>
+  <tr>
+    <td align="center" class="list_td">&nbsp;</td>
+    <td align="center" class="list_td">行政</td>
+    <td align="center" class="list_td">财务</td>
+    <td align="center" class="list_td">市场</td>
+    <td align="center" class="list_td">策划</td>
+    <td align="center" class="list_td">公关</td>
+  </tr>
+  <tr>
+    <td align="center" class="list_td">O</td>
+    <td align="center" class="list_td"><TABLE>
+      <TBODY>
+        <TR>
+          <TD><IMG title="经营" src="images/skill6_1.gif"></TD>
+          <TD><IMG title="管理" src="images/skill7_1.gif"></TD>
+          <TD><IMG title="谈判" src="images/skill8_1.gif"></TD>
+          <TD><IMG title="人际" src="images/skill9_1.gif"></TD>
+          <TD><IMG title="学习" src="images/skill10_2.gif"></TD>
+        </TR>
+        <TR>
+          <TD><IMG title="精算" src="images/skill11_2.gif"></TD>
+          <TD><IMG title="核算" src="images/skill12_2.gif"></TD>
+          <TD><IMG title="策划" src="images/skill13_2.gif"></TD>
+          <TD><IMG title="鼓舞" src="images/skill14_1.gif"></TD>
+          <TD><IMG title="营销" src="images/skill15_2.gif"></TD>
+        </TR>
+      </TBODY>
+    </TABLE></td>
+    <td align="center" class="list_td"><TABLE>
+      <TBODY>
+        <TR>
+          <TD><IMG title="经营" src="images/skill6_1.gif"></TD>
+          <TD><IMG title="管理" src="images/skill7_1.gif"></TD>
+          <TD><IMG src="images/skill8_2.gif"  title="谈判"></TD>
+          <TD><IMG src="images/skill9_2.gif"  title="人际"></TD>
+          <TD><IMG src="images/skill10_1.gif"  title="学习"></TD>
+        </TR>
+        <TR>
+          <TD><IMG src="images/skill11_1.gif"  title="精算"></TD>
+          <TD><IMG src="images/skill12_1.gif"  title="核算"></TD>
+          <TD><IMG title="策划" src="images/skill13_2.gif"></TD>
+          <TD><IMG title="鼓舞" src="images/skill14_2.gif"></TD>
+          <TD><IMG title="营销" src="images/skill15_2.gif"></TD>
+        </TR>
+      </TBODY>
+    </TABLE></td>
+    <td align="center" class="list_td"><TABLE>
+      <TBODY>
+        <TR>
+          <TD><IMG src="images/skill6_2.gif"  title="经营"></TD>
+          <TD><IMG src="images/skill7_2.gif"  title="管理"></TD>
+          <TD><IMG title="谈判" src="images/skill8_1.gif"></TD>
+          <TD><IMG title="人际" src="images/skill9_1.gif"></TD>
+          <TD><IMG title="学习" src="images/skill10_2.gif"></TD>
+        </TR>
+        <TR>
+          <TD><IMG src="images/skill11_1.gif"  title="精算"></TD>
+          <TD><IMG title="核算" src="images/skill12_2.gif"></TD>
+          <TD><IMG src="images/skill13_1.gif"  title="策划"></TD>
+          <TD><IMG title="鼓舞" src="images/skill14_2.gif"></TD>
+          <TD><IMG src="images/skill15_1.gif"  title="营销"></TD>
+        </TR>
+      </TBODY>
+    </TABLE></td>
+    <td align="center" class="list_td"><TABLE>
+      <TBODY>
+        <TR>
+          <TD><IMG src="images/skill6_2.gif"  title="经营"></TD>
+          <TD><IMG src="images/skill7_2.gif"  title="管理"></TD>
+          <TD><IMG src="images/skill8_2.gif"  title="谈判"></TD>
+          <TD><IMG title="人际" src="images/skill9_1.gif"></TD>
+          <TD><IMG src="images/skill10_1.gif"  title="学习"></TD>
+        </TR>
+        <TR>
+          <TD><IMG title="精算" src="images/skill11_2.gif"></TD>
+          <TD><IMG title="核算" src="images/skill12_2.gif"></TD>
+          <TD><IMG src="images/skill13_1.gif"  title="策划"></TD>
+          <TD><IMG title="鼓舞" src="images/skill14_1.gif"></TD>
+          <TD><IMG src="images/skill15_1.gif"  title="营销"></TD>
+        </TR>
+      </TBODY>
+    </TABLE></td>
+    <td align="center" class="list_td"><TABLE>
+      <TBODY>
+        <TR>
+          <TD><IMG src="images/skill6_2.gif"  title="经营"></TD>
+          <TD><IMG src="images/skill7_2.gif"  title="管理"></TD>
+          <TD><IMG title="谈判" src="images/skill8_1.gif"></TD>
+          <TD><IMG title="人际" src="images/skill9_1.gif"></TD>
+          <TD><IMG title="学习" src="images/skill10_2.gif"></TD>
+        </TR>
+        <TR>
+          <TD><IMG title="精算" src="images/skill11_2.gif"></TD>
+          <TD><IMG title="核算" src="images/skill12_2.gif"></TD>
+          <TD><IMG src="images/skill13_1.gif"  title="策划"></TD>
+          <TD><IMG title="鼓舞" src="images/skill14_1.gif"></TD>
+          <TD><IMG src="images/skill15_1.gif"  title="营销"></TD>
+        </TR>
+      </TBODY>
+    </TABLE></td>
+  </tr>
+  <tr>
+    <td align="center" class="list_td">总监</td>
+    <td align="center" class="list_td"><TABLE>
+      <TBODY>
+        <TR>
+          <TD><IMG title="经营" src="images/skill6_1.gif"></TD>
+          <TD><IMG title="管理" src="images/skill7_1.gif"></TD>
+          <TD><IMG title="谈判" src="images/skill8_1.gif"></TD>
+          <TD><IMG title="人际" src="images/skill9_1.gif"></TD>
+          <TD><IMG title="学习" src="images/skill10_2.gif"></TD>
+        </TR>
+        <TR>
+          <TD><IMG title="精算" src="images/skill11_2.gif"></TD>
+          <TD><IMG title="核算" src="images/skill12_2.gif"></TD>
+          <TD><IMG title="策划" src="images/skill13_2.gif"></TD>
+          <TD><IMG title="鼓舞" src="images/skill14_2.gif"></TD>
+          <TD><IMG title="营销" src="images/skill15_2.gif"></TD>
+        </TR>
+      </TBODY>
+    </TABLE></td>
+    <td align="center" class="list_td"><TABLE>
+      <TBODY>
+        <TR>
+          <TD><IMG title="经营" src="images/skill6_1.gif"></TD>
+          <TD><IMG title="管理" src="images/skill7_1.gif"></TD>
+          <TD><IMG src="images/skill8_2.gif"  title="谈判"></TD>
+          <TD><IMG src="images/skill9_2.gif"  title="人际"></TD>
+          <TD><IMG title="学习" src="images/skill10_2.gif"></TD>
+        </TR>
+        <TR>
+          <TD><IMG src="images/skill11_1.gif"  title="精算"></TD>
+          <TD><IMG src="images/skill12_1.gif"  title="核算"></TD>
+          <TD><IMG title="策划" src="images/skill13_2.gif"></TD>
+          <TD><IMG title="鼓舞" src="images/skill14_2.gif"></TD>
+          <TD><IMG title="营销" src="images/skill15_2.gif"></TD>
+        </TR>
+      </TBODY>
+    </TABLE></td>
+    <td align="center" class="list_td"><TABLE>
+      <TBODY>
+        <TR>
+          <TD><IMG src="images/skill6_2.gif"  title="经营"></TD>
+          <TD><IMG src="images/skill7_2.gif"  title="管理"></TD>
+          <TD><IMG title="谈判" src="images/skill8_1.gif"></TD>
+          <TD><IMG title="人际" src="images/skill9_1.gif"></TD>
+          <TD><IMG title="学习" src="images/skill10_2.gif"></TD>
+        </TR>
+        <TR>
+          <TD><IMG src="images/skill11_1.gif"  title="精算"></TD>
+          <TD><IMG title="核算" src="images/skill12_2.gif"></TD>
+          <TD><IMG src="images/skill13_2.gif"  title="策划"></TD>
+          <TD><IMG title="鼓舞" src="images/skill14_2.gif"></TD>
+          <TD><IMG src="images/skill15_1.gif"  title="营销"></TD>
+        </TR>
+      </TBODY>
+    </TABLE></td>
+    <td align="center" class="list_td"><TABLE>
+      <TBODY>
+        <TR>
+          <TD><IMG src="images/skill6_2.gif"  title="经营"></TD>
+          <TD><IMG src="images/skill7_2.gif"  title="管理"></TD>
+          <TD><IMG src="images/skill8_2.gif"  title="谈判"></TD>
+          <TD><IMG src="images/skill9_2.gif"  title="人际"></TD>
+          <TD><IMG src="images/skill10_1.gif"  title="学习"></TD>
+        </TR>
+        <TR>
+          <TD><IMG title="精算" src="images/skill11_2.gif"></TD>
+          <TD><IMG title="核算" src="images/skill12_2.gif"></TD>
+          <TD><IMG src="images/skill13_1.gif"  title="策划"></TD>
+          <TD><IMG title="鼓舞" src="images/skill14_1.gif"></TD>
+          <TD><IMG src="images/skill15_1.gif"  title="营销"></TD>
+        </TR>
+      </TBODY>
+    </TABLE></td>
+    <td align="center" class="list_td"><TABLE>
+      <TBODY>
+        <TR>
+          <TD><IMG src="images/skill6_2.gif"  title="经营"></TD>
+          <TD><IMG src="images/skill7_2.gif"  title="管理"></TD>
+          <TD><IMG title="谈判" src="images/skill8_1.gif"></TD>
+          <TD><IMG title="人际" src="images/skill9_1.gif"></TD>
+          <TD><IMG title="学习" src="images/skill10_2.gif"></TD>
+        </TR>
+        <TR>
+          <TD><IMG title="精算" src="images/skill11_2.gif"></TD>
+          <TD><IMG title="核算" src="images/skill12_2.gif"></TD>
+          <TD><IMG src="images/skill13_1.gif"  title="策划"></TD>
+          <TD><IMG title="鼓舞" src="images/skill14_1.gif"></TD>
+          <TD><IMG src="images/skill15_2.gif"  title="营销"></TD>
+        </TR>
+      </TBODY>
+    </TABLE></td>
+  </tr>
+  <tr>
+    <td align="center" class="list_td">经理</td>
+    <td align="center" class="list_td"><TABLE>
+      <TBODY>
+        <TR>
+          <TD><IMG title="经营" src="images/skill6_1.gif"></TD>
+          <TD><IMG title="管理" src="images/skill7_1.gif"></TD>
+          <TD><IMG title="谈判" src="images/skill8_1.gif"></TD>
+          <TD><IMG src="images/skill9_2.gif"  title="人际"></TD>
+          <TD><IMG title="学习" src="images/skill10_2.gif"></TD>
+        </TR>
+        <TR>
+          <TD><IMG title="精算" src="images/skill11_2.gif"></TD>
+          <TD><IMG title="核算" src="images/skill12_2.gif"></TD>
+          <TD><IMG title="策划" src="images/skill13_2.gif"></TD>
+          <TD><IMG title="鼓舞" src="images/skill14_2.gif"></TD>
+          <TD><IMG title="营销" src="images/skill15_2.gif"></TD>
+        </TR>
+      </TBODY>
+    </TABLE></td>
+    <td align="center" class="list_td"><TABLE>
+      <TBODY>
+        <TR>
+          <TD><IMG title="经营" src="images/skill6_1.gif"></TD>
+          <TD><IMG src="images/skill7_2.gif"  title="管理"></TD>
+          <TD><IMG src="images/skill8_2.gif"  title="谈判"></TD>
+          <TD><IMG src="images/skill9_2.gif"  title="人际"></TD>
+          <TD><IMG title="学习" src="images/skill10_2.gif"></TD>
+        </TR>
+        <TR>
+          <TD><IMG src="images/skill11_1.gif"  title="精算"></TD>
+          <TD><IMG src="images/skill12_1.gif"  title="核算"></TD>
+          <TD><IMG title="策划" src="images/skill13_2.gif"></TD>
+          <TD><IMG title="鼓舞" src="images/skill14_2.gif"></TD>
+          <TD><IMG title="营销" src="images/skill15_2.gif"></TD>
+        </TR>
+      </TBODY>
+    </TABLE></td>
+    <td align="center" class="list_td"><TABLE>
+      <TBODY>
+        <TR>
+          <TD><IMG src="images/skill6_2.gif"  title="经营"></TD>
+          <TD><IMG src="images/skill7_2.gif"  title="管理"></TD>
+          <TD><IMG src="images/skill8_2.gif"  title="谈判"></TD>
+          <TD><IMG title="人际" src="images/skill9_1.gif"></TD>
+          <TD><IMG title="学习" src="images/skill10_2.gif"></TD>
+        </TR>
+        <TR>
+          <TD><IMG src="images/skill11_1.gif"  title="精算"></TD>
+          <TD><IMG title="核算" src="images/skill12_2.gif"></TD>
+          <TD><IMG src="images/skill13_2.gif"  title="策划"></TD>
+          <TD><IMG title="鼓舞" src="images/skill14_2.gif"></TD>
+          <TD><IMG src="images/skill15_1.gif"  title="营销"></TD>
+        </TR>
+      </TBODY>
+    </TABLE></td>
+    <td align="center" class="list_td"><TABLE>
+      <TBODY>
+        <TR>
+          <TD><IMG src="images/skill6_2.gif"  title="经营"></TD>
+          <TD><IMG src="images/skill7_2.gif"  title="管理"></TD>
+          <TD><IMG src="images/skill8_2.gif"  title="谈判"></TD>
+          <TD><IMG src="images/skill9_2.gif"  title="人际"></TD>
+          <TD><IMG src="images/skill10_1.gif"  title="学习"></TD>
+        </TR>
+        <TR>
+          <TD><IMG title="精算" src="images/skill11_2.gif"></TD>
+          <TD><IMG title="核算" src="images/skill12_2.gif"></TD>
+          <TD><IMG src="images/skill13_1.gif"  title="策划"></TD>
+          <TD><IMG title="鼓舞" src="images/skill14_1.gif"></TD>
+          <TD><IMG src="images/skill15_2.gif"  title="营销"></TD>
+        </TR>
+      </TBODY>
+    </TABLE></td>
+    <td align="center" class="list_td"><TABLE>
+      <TBODY>
+        <TR>
+          <TD><IMG src="images/skill6_2.gif"  title="经营"></TD>
+          <TD><IMG src="images/skill7_2.gif"  title="管理"></TD>
+          <TD><IMG title="谈判" src="images/skill8_1.gif"></TD>
+          <TD><IMG title="人际" src="images/skill9_1.gif"></TD>
+          <TD><IMG title="学习" src="images/skill10_2.gif"></TD>
+        </TR>
+        <TR>
+          <TD><IMG title="精算" src="images/skill11_2.gif"></TD>
+          <TD><IMG title="核算" src="images/skill12_2.gif"></TD>
+          <TD><IMG src="images/skill13_1.gif"  title="策划"></TD>
+          <TD><IMG title="鼓舞" src="images/skill14_2.gif"></TD>
+          <TD><IMG src="images/skill15_2.gif"  title="营销"></TD>
+        </TR>
+      </TBODY>
+    </TABLE></td>
+  </tr>
+  <tr>
+    <td align="center" class="list_td">助理</td>
+    <td align="center" class="list_td"><TABLE>
+      <TBODY>
+        <TR>
+          <TD><IMG title="经营" src="images/skill6_1.gif"></TD>
+          <TD><IMG title="管理" src="images/skill7_1.gif"></TD>
+          <TD><IMG src="images/skill8_2.gif"  title="谈判"></TD>
+          <TD><IMG src="images/skill9_2.gif"  title="人际"></TD>
+          <TD><IMG title="学习" src="images/skill10_2.gif"></TD>
+        </TR>
+        <TR>
+          <TD><IMG title="精算" src="images/skill11_2.gif"></TD>
+          <TD><IMG title="核算" src="images/skill12_2.gif"></TD>
+          <TD><IMG title="策划" src="images/skill13_2.gif"></TD>
+          <TD><IMG title="鼓舞" src="images/skill14_2.gif"></TD>
+          <TD><IMG title="营销" src="images/skill15_2.gif"></TD>
+        </TR>
+      </TBODY>
+    </TABLE></td>
+    <td align="center" class="list_td"><TABLE>
+      <TBODY>
+        <TR>
+          <TD><IMG src="images/skill6_2.gif"  title="经营"></TD>
+          <TD><IMG src="images/skill7_2.gif"  title="管理"></TD>
+          <TD><IMG title="谈判" src="images/skill8_1.gif"></TD>
+          <TD><IMG title="人际" src="images/skill9_1.gif"></TD>
+          <TD><IMG title="学习" src="images/skill10_2.gif"></TD>
+        </TR>
+        <TR>
+          <TD><IMG src="images/skill11_1.gif"  title="精算"></TD>
+          <TD><IMG src="images/skill12_1.gif"  title="核算"></TD>
+          <TD><IMG title="策划" src="images/skill13_2.gif"></TD>
+          <TD><IMG title="鼓舞" src="images/skill14_1.gif"></TD>
+          <TD><IMG title="营销" src="images/skill15_2.gif"></TD>
+        </TR>
+      </TBODY>
+    </TABLE></td>
+    <td align="center" class="list_td"><TABLE>
+      <TBODY>
+        <TR>
+          <TD><IMG src="images/skill6_2.gif"  title="经营"></TD>
+          <TD><IMG src="images/skill7_2.gif"  title="管理"></TD>
+          <TD><IMG src="images/skill8_2.gif"  title="谈判"></TD>
+          <TD><IMG title="人际" src="images/skill9_1.gif"></TD>
+          <TD><IMG title="学习" src="images/skill10_2.gif"></TD>
+        </TR>
+        <TR>
+          <TD><IMG src="images/skill11_2.gif"  title="精算"></TD>
+          <TD><IMG title="核算" src="images/skill12_2.gif"></TD>
+          <TD><IMG src="images/skill13_2.gif"  title="策划"></TD>
+          <TD><IMG title="鼓舞" src="images/skill14_2.gif"></TD>
+          <TD><IMG src="images/skill15_1.gif"  title="营销"></TD>
+        </TR>
+      </TBODY>
+    </TABLE></td>
+    <td align="center" class="list_td"><TABLE>
+      <TBODY>
+        <TR>
+          <TD><IMG src="images/skill6_2.gif"  title="经营"></TD>
+          <TD><IMG src="images/skill7_2.gif"  title="管理"></TD>
+          <TD><IMG src="images/skill8_2.gif"  title="谈判"></TD>
+          <TD><IMG src="images/skill9_2.gif"  title="人际"></TD>
+          <TD><IMG src="images/skill10_2.gif"  title="学习"></TD>
+        </TR>
+        <TR>
+          <TD><IMG title="精算" src="images/skill11_2.gif"></TD>
+          <TD><IMG title="核算" src="images/skill12_2.gif"></TD>
+          <TD><IMG src="images/skill13_1.gif"  title="策划"></TD>
+          <TD><IMG title="鼓舞" src="images/skill14_1.gif"></TD>
+          <TD><IMG src="images/skill15_2.gif"  title="营销"></TD>
+        </TR>
+      </TBODY>
+    </TABLE></td>
+    <td align="center" class="list_td"><TABLE>
+      <TBODY>
+        <TR>
+          <TD><IMG src="images/skill6_2.gif"  title="经营"></TD>
+          <TD><IMG src="images/skill7_2.gif"  title="管理"></TD>
+          <TD><IMG title="谈判" src="images/skill8_1.gif"></TD>
+          <TD><IMG title="人际" src="images/skill9_1.gif"></TD>
+          <TD><IMG title="学习" src="images/skill10_2.gif"></TD>
+        </TR>
+        <TR>
+          <TD><IMG title="精算" src="images/skill11_2.gif"></TD>
+          <TD><IMG title="核算" src="images/skill12_2.gif"></TD>
+          <TD><IMG src="images/skill13_2.gif"  title="策划"></TD>
+          <TD><IMG title="鼓舞" src="images/skill14_2.gif"></TD>
+          <TD><IMG src="images/skill15_2.gif"  title="营销"></TD>
+        </TR>
+      </TBODY>
+    </TABLE></td>
+  </tr>
+</table>
+<br>
+<table class="list_table" align="center" width="800" cellspacing="0" cellpadding="0" >
+  <tr>
+    <td colspan="10" align="center" valign="middle"><p class="list_top2">建筑人才</p>
+      </td>
+    </tr>
+  <tr>
+    <td align="center" valign="middle" class="list_td">建筑名称</td>
+    <td align="center" class="list_td">技能</td>
+    <td align="center" class="list_td">建造费用</td>
+    <td align="center" class="list_td">维护费用</td>
+    <td align="center" class="list_td">效果</td>
+    <td align="center" class="list_td">建筑名称</td>
+    <td align="center" class="list_td">技能</td>
+    <td align="center" class="list_td">建造费用</td>
+    <td align="center" class="list_td">维护费用</td>
+    <td align="center" class="list_td">效果</td>
+  </tr>
+  <tr>
+    <td align="center" class="list_td">绿地</td>
+    <td align="center" class="list_td"><TABLE>
+      <TBODY>
+        <TR>
+          <TD><IMG src="images/skill6_2.gif" width="14" height="14" title="经营"></TD>
+          <TD><IMG src="images/skill7_1.gif" width="14" height="14" title="管理"></TD>
+          <TD><IMG src="images/skill8_2.gif" width="14" height="14" title="谈判"></TD>
+          <TD><IMG src="images/skill9_2.gif" width="14" height="14" title="人际"></TD>
+          <TD><IMG src="images/skill10_1.gif" width="14" height="14" title="学习"></TD>
+        </TR>
+        <TR>
+          <TD><IMG title="精算" src="images/skill11_2.gif"></TD>
+          <TD><IMG title="核算" src="images/skill12_2.gif"></TD>
+          <TD><IMG title="策划" src="images/skill13_2.gif"></TD>
+          <TD><IMG src="images/skill14_2.gif" width="14" height="14" title="鼓舞"></TD>
+          <TD><IMG title="营销" src="images/skill15_2.gif"></TD>
+        </TR>
+      </TBODY>
+    </TABLE></td>
+    <td align="center" class="list_td">600</td>
+    <td align="center" class="list_td">60</td>
+    <td align="center" class="list_td">1125</td>
+    <td align="center" class="list_td">博物馆</td>
+    <td align="center" class="list_td"><TABLE>
+      <TBODY>
+        <TR>
+          <TD><IMG src="images/skill6_1.gif" width="14" height="14" title="经营"></TD>
+          <TD><IMG src="images/skill7_2.gif" width="14" height="14" title="管理"></TD>
+          <TD><IMG src="images/skill8_1.gif" width="14" height="14" title="谈判"></TD>
+          <TD><IMG src="images/skill9_2.gif" width="14" height="14" title="人际"></TD>
+          <TD><IMG title="学习" src="images/skill10_1.gif"></TD>
+        </TR>
+        <TR>
+          <TD><IMG title="精算" src="images/skill11_1.gif"></TD>
+          <TD><IMG title="核算" src="images/skill12_1.gif"></TD>
+          <TD><IMG src="images/skill13_2.gif" width="14" height="14" title="策划"></TD>
+          <TD><IMG src="images/skill14_1.gif" width="14" height="14" title="鼓舞"></TD>
+          <TD><IMG src="images/skill15_2.gif" width="14" height="14" title="营销"></TD>
+        </TR>
+      </TBODY>
+    </TABLE></td>
+    <td align="center" class="list_td">10000</td>
+    <td align="center" class="list_td">1000</td>
+    <td align="center" class="list_td">9000</td>
+  </tr>
+  <tr>
+    <td align="center" class="list_td">停车场</td>
+    <td align="center" class="list_td"><TABLE>
+      <TBODY>
+        <TR>
+          <TD><IMG src="images/skill6_1.gif" width="14" height="14" title="经营"></TD>
+          <TD><IMG src="images/skill7_2.gif" width="14" height="14" title="管理"></TD>
+          <TD><IMG src="images/skill8_2.gif" width="14" height="14" title="谈判"></TD>
+          <TD><IMG src="images/skill9_2.gif" width="14" height="14" title="人际"></TD>
+          <TD><IMG title="学习" src="images/skill10_2.gif"></TD>
+        </TR>
+        <TR>
+          <TD><IMG src="images/skill11_1.gif" width="14" height="14" title="精算"></TD>
+          <TD><IMG src="images/skill12_1.gif" width="14" height="14" title="核算"></TD>
+          <TD><IMG title="策划" src="images/skill13_2.gif"></TD>
+          <TD><IMG src="images/skill14_2.gif" width="14" height="14" title="鼓舞"></TD>
+          <TD><IMG title="营销" src="images/skill15_2.gif"></TD>
+        </TR>
+      </TBODY>
+    </TABLE></td>
+    <td align="center" class="list_td">1000</td>
+    <td align="center" class="list_td">100</td>
+    <td align="center" class="list_td">1800</td>
+    <td align="center" class="list_td">科学馆</td>
+    <td align="center" class="list_td"><TABLE>
+      <TBODY>
+        <TR>
+          <TD><IMG src="images/skill6_2.gif" width="14" height="14" title="经营"></TD>
+          <TD><IMG src="images/skill7_1.gif" width="14" height="14" title="管理"></TD>
+          <TD><IMG src="images/skill8_1.gif" width="14" height="14" title="谈判"></TD>
+          <TD><IMG src="images/skill9_1.gif" width="14" height="14" title="人际"></TD>
+          <TD><IMG src="images/skill10_2.gif" width="14" height="14" title="学习"></TD>
+        </TR>
+        <TR>
+          <TD><IMG title="精算" src="images/skill11_1.gif"></TD>
+          <TD><IMG title="核算" src="images/skill12_1.gif"></TD>
+          <TD><IMG src="images/skill13_2.gif" width="14" height="14" title="策划"></TD>
+          <TD><IMG src="images/skill14_1.gif" width="14" height="14" title="鼓舞"></TD>
+          <TD><IMG src="images/skill15_2.gif" width="14" height="14" title="营销"></TD>
+        </TR>
+      </TBODY>
+    </TABLE></td>
+    <td align="center" class="list_td">15000</td>
+    <td align="center" class="list_td">1500</td>
+    <td align="center" class="list_td">9675</td>
+  </tr>
+  <tr>
+    <td align="center" class="list_td">人工湖</td>
+    <td align="center" class="list_td"><TABLE>
+      <TBODY>
+        <TR>
+          <TD><IMG src="images/skill6_2.gif" width="14" height="14" title="经营"></TD>
+          <TD><IMG src="images/skill7_1.gif" width="14" height="14" title="管理"></TD>
+          <TD><IMG src="images/skill8_2.gif" width="14" height="14" title="谈判"></TD>
+          <TD><IMG src="images/skill9_2.gif" width="14" height="14" title="人际"></TD>
+          <TD><IMG title="学习" src="images/skill10_2.gif"></TD>
+        </TR>
+        <TR>
+          <TD><IMG src="images/skill11_1.gif" width="14" height="14" title="精算"></TD>
+          <TD><IMG src="images/skill12_1.gif" width="14" height="14" title="核算"></TD>
+          <TD><IMG title="策划" src="images/skill13_2.gif"></TD>
+          <TD><IMG src="images/skill14_1.gif" width="14" height="14" title="鼓舞"></TD>
+          <TD><IMG title="营销" src="images/skill15_2.gif"></TD>
+        </TR>
+      </TBODY>
+    </TABLE></td>
+    <td align="center" class="list_td">2000</td>
+    <td align="center" class="list_td">200</td>
+    <td align="center" class="list_td">3375</td>
+    <td align="center" class="list_td">车库</td>
+    <td align="center" class="list_td"><TABLE>
+      <TBODY>
+        <TR>
+          <TD><IMG src="images/skill6_2.gif" width="14" height="14" title="经营"></TD>
+          <TD><IMG src="images/skill7_2.gif" width="14" height="14" title="管理"></TD>
+          <TD><IMG src="images/skill8_1.gif" width="14" height="14" title="谈判"></TD>
+          <TD><IMG src="images/skill9_2.gif" width="14" height="14" title="人际"></TD>
+          <TD><IMG src="images/skill10_2.gif" width="14" height="14" title="学习"></TD>
+        </TR>
+        <TR>
+          <TD><IMG title="精算" src="images/skill11_1.gif"></TD>
+          <TD><IMG title="核算" src="images/skill12_1.gif"></TD>
+          <TD><IMG title="策划" src="images/skill13_1.gif"></TD>
+          <TD><IMG src="images/skill14_1.gif" width="14" height="14" title="鼓舞"></TD>
+          <TD><IMG title="营销" src="images/skill15_1.gif"></TD>
+        </TR>
+      </TBODY>
+    </TABLE></td>
+    <td align="center" class="list_td">20000</td>
+    <td align="center" class="list_td">2000</td>
+    <td align="center" class="list_td">10125</td>
+  </tr>
+  <tr>
+    <td align="center" class="list_td">球场</td>
+    <td align="center" class="list_td"><TABLE>
+      <TBODY>
+        <TR>
+          <TD><IMG src="images/skill6_2.gif" width="14" height="14" title="经营"></TD>
+          <TD><IMG src="images/skill7_1.gif" width="14" height="14" title="管理"></TD>
+          <TD><IMG src="images/skill8_2.gif" width="14" height="14" title="谈判"></TD>
+          <TD><IMG src="images/skill9_2.gif" width="14" height="14" title="人际"></TD>
+          <TD><IMG src="images/skill10_1.gif" width="14" height="14" title="学习"></TD>
+        </TR>
+        <TR>
+          <TD><IMG src="images/skill11_1.gif" width="14" height="14" title="精算"></TD>
+          <TD><IMG title="核算" src="images/skill12_2.gif"></TD>
+          <TD><IMG title="策划" src="images/skill13_2.gif"></TD>
+          <TD><IMG src="images/skill14_1.gif" width="14" height="14" title="鼓舞"></TD>
+          <TD><IMG title="营销" src="images/skill15_2.gif"></TD>
+        </TR>
+      </TBODY>
+    </TABLE></td>
+    <td align="center" class="list_td">6000</td>
+    <td align="center" class="list_td">600</td>
+    <td align="center" class="list_td">5625</td>
+    <td align="center" class="list_td">大公园</td>
+    <td align="center" class="list_td"><TABLE>
+      <TBODY>
+        <TR>
+          <TD><IMG src="images/skill6_1.gif" width="14" height="14" title="经营"></TD>
+          <TD><IMG src="images/skill7_2.gif" width="14" height="14" title="管理"></TD>
+          <TD><IMG src="images/skill8_2.gif" width="14" height="14" title="谈判"></TD>
+          <TD><IMG src="images/skill9_2.gif" width="14" height="14" title="人际"></TD>
+          <TD><IMG title="学习" src="images/skill10_1.gif"></TD>
+        </TR>
+        <TR>
+          <TD><IMG title="精算" src="images/skill11_1.gif"></TD>
+          <TD><IMG src="images/skill12_2.gif" width="14" height="14" title="核算"></TD>
+          <TD><IMG title="策划" src="images/skill13_1.gif"></TD>
+          <TD><IMG src="images/skill14_1.gif" width="14" height="14" title="鼓舞"></TD>
+          <TD><IMG title="营销" src="images/skill15_1.gif"></TD>
+        </TR>
+      </TBODY>
+    </TABLE></td>
+    <td align="center" class="list_td">15000</td>
+    <td align="center" class="list_td">1500</td>
+    <td align="center" class="list_td">16200</td>
+  </tr>
+  <tr>
+    <td align="center" class="list_td">广场</td>
+    <td align="center" class="list_td"><TABLE>
+      <TBODY>
+        <TR>
+          <TD><IMG src="images/skill6_2.gif" width="14" height="14" title="经营"></TD>
+          <TD><IMG src="images/skill7_1.gif" width="14" height="14" title="管理"></TD>
+          <TD><IMG src="images/skill8_2.gif" width="14" height="14" title="谈判"></TD>
+          <TD><IMG src="images/skill9_2.gif" width="14" height="14" title="人际"></TD>
+          <TD><IMG title="学习" src="images/skill10_2.gif"></TD>
+        </TR>
+        <TR>
+          <TD><IMG title="精算" src="images/skill11_2.gif"></TD>
+          <TD><IMG src="images/skill12_1.gif" width="14" height="14" title="核算"></TD>
+          <TD><IMG src="images/skill13_1.gif" width="14" height="14" title="策划"></TD>
+          <TD><IMG src="images/skill14_2.gif" width="14" height="14" title="鼓舞"></TD>
+          <TD><IMG src="images/skill15_1.gif" width="14" height="14" title="营销"></TD>
+        </TR>
+      </TBODY>
+    </TABLE></td>
+    <td align="center" class="list_td">4000</td>
+    <td align="center" class="list_td">400</td>
+    <td align="center" class="list_td">4500</td>
+    <td align="center" class="list_td">水公园</td>
+    <td align="center" class="list_td"><TABLE>
+      <TBODY>
+        <TR>
+          <TD><IMG src="images/skill6_1.gif" width="14" height="14" title="经营"></TD>
+          <TD><IMG src="images/skill7_1.gif" width="14" height="14" title="管理"></TD>
+          <TD><IMG src="images/skill8_1.gif" width="14" height="14" title="谈判"></TD>
+          <TD><IMG src="images/skill9_2.gif" width="14" height="14" title="人际"></TD>
+          <TD><IMG title="学习" src="images/skill10_1.gif"></TD>
+        </TR>
+        <TR>
+          <TD><IMG src="images/skill11_2.gif" width="14" height="14" title="精算"></TD>
+          <TD><IMG title="核算" src="images/skill12_1.gif"></TD>
+          <TD><IMG title="策划" src="images/skill13_1.gif"></TD>
+          <TD><IMG src="images/skill14_2.gif" width="14" height="14" title="鼓舞"></TD>
+          <TD><IMG title="营销" src="images/skill15_1.gif"></TD>
+        </TR>
+      </TBODY>
+    </TABLE></td>
+    <td align="center" class="list_td">24000</td>
+    <td align="center" class="list_td">2400</td>
+    <td align="center" class="list_td">19440</td>
+  </tr>
+  <tr>
+    <td align="center" class="list_td">图书馆</td>
+    <td align="center" class="list_td"><TABLE>
+      <TBODY>
+        <TR>
+          <TD><IMG src="images/skill6_1.gif" width="14" height="14" title="经营"></TD>
+          <TD><IMG src="images/skill7_2.gif" width="14" height="14" title="管理"></TD>
+          <TD><IMG src="images/skill8_2.gif" width="14" height="14" title="谈判"></TD>
+          <TD><IMG src="images/skill9_2.gif" width="14" height="14" title="人际"></TD>
+          <TD><IMG src="images/skill10_1.gif" width="14" height="14" title="学习"></TD>
+        </TR>
+        <TR>
+          <TD><IMG title="精算" src="images/skill11_2.gif"></TD>
+          <TD><IMG src="images/skill12_1.gif" width="14" height="14" title="核算"></TD>
+          <TD><IMG title="策划" src="images/skill13_2.gif"></TD>
+          <TD><IMG src="images/skill14_1.gif" width="14" height="14" title="鼓舞"></TD>
+          <TD><IMG title="营销" src="images/skill15_2.gif"></TD>
+        </TR>
+      </TBODY>
+    </TABLE></td>
+    <td align="center" class="list_td">8000</td>
+    <td align="center" class="list_td">800</td>
+    <td align="center" class="list_td">6750</td>
+    <td align="center" class="list_td">动物园</td>
+    <td align="center" class="list_td"><TABLE>
+      <TBODY>
+        <TR>
+          <TD><IMG src="images/skill6_1.gif" width="14" height="14" title="经营"></TD>
+          <TD><IMG src="images/skill7_1.gif" width="14" height="14" title="管理"></TD>
+          <TD><IMG src="images/skill8_1.gif" width="14" height="14" title="谈判"></TD>
+          <TD><IMG src="images/skill9_1.gif" width="14" height="14" title="人际"></TD>
+          <TD><IMG title="学习" src="images/skill10_1.gif"></TD>
+        </TR>
+        <TR>
+          <TD><IMG src="images/skill11_2.gif" width="14" height="14" title="精算"></TD>
+          <TD><IMG title="核算" src="images/skill12_1.gif"></TD>
+          <TD><IMG title="策划" src="images/skill13_1.gif"></TD>
+          <TD><IMG src="images/skill14_2.gif" width="14" height="14" title="鼓舞"></TD>
+          <TD><IMG title="营销" src="images/skill15_1.gif"></TD>
+        </TR>
+      </TBODY>
+    </TABLE></td>
+    <td align="center" class="list_td">33000</td>
+    <td align="center" class="list_td">3300</td>
+    <td align="center" class="list_td">22680</td>
+  </tr>
+  <tr>
+    <td align="center" class="list_td">妇幼</td>
+    <td align="center" class="list_td"><TABLE>
+      <TBODY>
+        <TR>
+          <TD><IMG src="images/skill6_2.gif" width="14" height="14" title="经营"></TD>
+          <TD><IMG src="images/skill7_1.gif" width="14" height="14" title="管理"></TD>
+          <TD><IMG src="images/skill8_2.gif" width="14" height="14" title="谈判"></TD>
+          <TD><IMG src="images/skill9_2.gif" width="14" height="14" title="人际"></TD>
+          <TD><IMG title="学习" src="images/skill10_2.gif"></TD>
+        </TR>
+        <TR>
+          <TD><IMG src="images/skill11_1.gif" width="14" height="14" title="精算"></TD>
+          <TD><IMG src="images/skill12_1.gif" width="14" height="14" title="核算"></TD>
+          <TD><IMG title="策划" src="images/skill13_2.gif"></TD>
+          <TD><IMG src="images/skill14_1.gif" width="14" height="14" title="鼓舞"></TD>
+          <TD><IMG title="营销" src="images/skill15_2.gif"></TD>
+        </TR>
+      </TBODY>
+    </TABLE></td>
+    <td align="center" class="list_td">12000</td>
+    <td align="center" class="list_td">1200</td>
+    <td align="center" class="list_td">7650</td>
+    <td align="center" class="list_td">福利房</td>
+    <td align="center" class="list_td"><TABLE>
+      <TBODY>
+        <TR>
+          <TD><IMG src="images/skill6_1.gif" width="14" height="14" title="经营"></TD>
+          <TD><IMG src="images/skill7_1.gif" width="14" height="14" title="管理"></TD>
+          <TD><IMG src="images/skill8_1.gif" width="14" height="14" title="谈判"></TD>
+          <TD><IMG src="images/skill9_2.gif" width="14" height="14" title="人际"></TD>
+          <TD><IMG title="学习" src="images/skill10_1.gif"></TD>
+        </TR>
+        <TR>
+          <TD><IMG title="精算" src="images/skill11_1.gif"></TD>
+          <TD><IMG title="核算" src="images/skill12_1.gif"></TD>
+          <TD><IMG title="策划" src="images/skill13_1.gif"></TD>
+          <TD><IMG src="images/skill14_1.gif" width="14" height="14" title="鼓舞"></TD>
+          <TD><IMG title="营销" src="images/skill15_1.gif"></TD>
+        </TR>
+      </TBODY>
+    </TABLE></td>
+    <td align="center" class="list_td">39000</td>
+    <td align="center" class="list_td">3900</td>
+    <td align="center" class="list_td">25920</td>
+  </tr>
+  <tr>
+    <td align="center" class="list_td">艺术馆</td>
+    <td align="center" class="list_td"><TABLE>
+      <TBODY>
+        <TR>
+          <TD><IMG src="images/skill6_2.gif" width="14" height="14" title="经营"></TD>
+          <TD><IMG src="images/skill7_2.gif" width="14" height="14" title="管理"></TD>
+          <TD><IMG src="images/skill8_1.gif" width="14" height="14" title="谈判"></TD>
+          <TD><IMG src="images/skill9_2.gif" width="14" height="14" title="人际"></TD>
+          <TD><IMG src="images/skill10_2.gif" width="14" height="14" title="学习"></TD>
+        </TR>
+        <TR>
+          <TD><IMG src="images/skill11_1.gif" width="14" height="14" title="精算"></TD>
+          <TD><IMG src="images/skill12_1.gif" width="14" height="14" title="核算"></TD>
+          <TD><IMG title="策划" src="images/skill13_2.gif"></TD>
+          <TD><IMG src="images/skill14_1.gif" width="14" height="14" title="鼓舞"></TD>
+          <TD><IMG src="images/skill15_1.gif" width="14" height="14" title="营销"></TD>
+        </TR>
+      </TBODY>
+    </TABLE></td>
+    <td align="center" class="list_td">20000</td>
+    <td align="center" class="list_td">2000</td>
+    <td align="center" class="list_td">9675</td>
+    <td align="center" class="list_td">大学</td>
+    <td align="center" class="list_td"><TABLE>
+      <TBODY>
+        <TR>
+          <TD><IMG src="images/skill6_1.gif" width="14" height="14" title="经营"></TD>
+          <TD><IMG src="images/skill7_1.gif" width="14" height="14" title="管理"></TD>
+          <TD><IMG src="images/skill8_1.gif" width="14" height="14" title="谈判"></TD>
+          <TD><IMG src="images/skill9_1.gif" width="14" height="14" title="人际"></TD>
+          <TD><IMG title="学习" src="images/skill10_1.gif"></TD>
+        </TR>
+        <TR>
+          <TD><IMG title="精算" src="images/skill11_1.gif"></TD>
+          <TD><IMG title="核算" src="images/skill12_1.gif"></TD>
+          <TD><IMG title="策划" src="images/skill13_1.gif"></TD>
+          <TD><IMG src="images/skill14_1.gif" width="14" height="14" title="鼓舞"></TD>
+          <TD><IMG title="营销" src="images/skill15_1.gif"></TD>
+        </TR>
+      </TBODY>
+    </TABLE></td>
+    <td align="center" class="list_td">60000</td>
+    <td align="center" class="list_td">6000</td>
+    <td align="center" class="list_td">32400</td>
+  </tr>
+ <tr>
+    <td align="center" class="list_td">公司大楼</td>
+    <td align="center" class="list_td"><TABLE>
+      <TBODY>
+        <TR>
+          <TD><IMG src="images/skill6_2.gif" width="14" height="14" title="经营"></TD>
+          <TD><IMG src="images/skill7_1.gif" width="14" height="14" title="管理"></TD>
+          <TD><IMG src="images/skill8_1.gif" width="14" height="14" title="谈判"></TD>
+          <TD><IMG src="images/skill9_1.gif" width="14" height="14" title="人际"></TD>
+          <TD><IMG src="images/skill10_1.gif" width="14" height="14" title="学习"></TD>
+        </TR>
+        <TR>
+          <TD><IMG src="images/skill11_1.gif" width="14" height="14" title="精算"></TD>
+          <TD><IMG src="images/skill12_2.gif" width="14" height="14" title="核算"></TD>
+          <TD><IMG title="策划" src="images/skill13_2.gif"></TD>
+          <TD><IMG src="images/skill14_1.gif" width="14" height="14" title="鼓舞"></TD>
+          <TD><IMG src="images/skill15_2.gif" width="14" height="14" title="营销"></TD>
+        </TR>
+      </TBODY>
+    </TABLE></td>
+    <td align="center" class="list_td">11000</td>
+    <td align="center" class="list_td">2000</td>
+    <td align="center" class="list_td">&nbsp;</td>
+    <td align="center" class="list_td">研究院</td>
+    <td align="center" class="list_td"><TABLE>
+      <TBODY>
+        <TR>
+          <TD><IMG src="images/skill6_2.gif" width="14" height="14" title="经营"></TD>
+          <TD><IMG src="images/skill7_1.gif" width="14" height="14" title="管理"></TD>
+          <TD><IMG src="images/skill8_2.gif" width="14" height="14" title="谈判"></TD>
+          <TD><IMG src="images/skill9_2.gif" width="14" height="14" title="人际"></TD>
+          <TD><IMG src="images/skill10_1.gif" width="14" height="14" title="学习"></TD>
+        </TR>
+        <TR>
+          <TD><IMG src="images/skill11_1.gif" width="14" height="14" title="精算"></TD>
+          <TD><IMG title="核算" src="images/skill12_2.gif"></TD>
+          <TD><IMG src="images/skill13_1.gif" width="14" height="14" title="策划"></TD>
+          <TD><IMG src="images/skill14_2.gif" width="14" height="14" title="鼓舞"></TD>
+          <TD><IMG src="images/skill15_1.gif" width="14" height="14" title="营销"></TD>
+        </TR>
+      </TBODY>
+    </TABLE></td>
+    <td align="center" class="list_td">4000</td>
+    <td align="center" class="list_td">400</td>
+    <td align="center" class="list_td">&nbsp;</td>
+  </tr>
+   <tr>
+    <td align="center" class="list_td">&nbsp;</td>
+    <td align="center" class="list_td">&nbsp;</td>
+    <td align="center" class="list_td">&nbsp;</td>
+    <td align="center" class="list_td">&nbsp;</td>
+    <td align="center" class="list_td">&nbsp;</td>
+    <td align="center" class="list_td">&nbsp;</td>
+    <td align="center" class="list_td">&nbsp;</td>
+    <td align="center" class="list_td">&nbsp;</td>
+    <td align="center" class="list_td">&nbsp;</td>
+    <td align="center" class="list_td">&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="center" class="list_td">商会副经理</td>
+    <td align="center" class="list_td"><TABLE>
+      <TBODY>
+        <TR>
+          <TD><IMG title="经营" src="images/skill6_1.gif"></TD>
+          <TD><IMG title="管理" src="images/skill7_1.gif"></TD>
+          <TD><IMG title="谈判" src="images/skill8_1.gif"></TD>
+          <TD><IMG title="人际" src="images/skill9_1.gif"></TD>
+          <TD><IMG title="学习" src="images/skill10_2.gif"></TD>
+        </TR>
+        <TR>
+          <TD><IMG title="精算" src="images/skill11_2.gif"></TD>
+          <TD><IMG title="核算" src="images/skill12_2.gif"></TD>
+          <TD><IMG title="策划" src="images/skill13_2.gif"></TD>
+          <TD><IMG src="images/skill14_2.gif" width="14" height="14" title="鼓舞"></TD>
+          <TD><IMG src="images/skill15_1.gif" width="14" height="14" title="营销"></TD>
+        </TR>
+      </TBODY>
+    </TABLE></td>
+    <td align="center" class="list_td">&nbsp;</td>
+    <td align="center" class="list_td">&nbsp;</td>
+    <td align="center" class="list_td">&nbsp;</td>
+    <td align="center" class="list_td">商会经理</td>
+    <td align="center" class="list_td"><TABLE>
+      <TBODY>
+        <TR>
+          <TD><IMG src="images/skill6_1.gif" width="14" height="14" title="经营"></TD>
+          <TD><IMG src="images/skill7_1.gif" width="14" height="14" title="管理"></TD>
+          <TD><IMG src="images/skill8_1.gif" width="14" height="14" title="谈判"></TD>
+          <TD><IMG src="images/skill9_1.gif" width="14" height="14" title="人际"></TD>
+          <TD><IMG src="images/skill10_2.gif" width="14" height="14" title="学习"></TD>
+        </TR>
+        <TR>
+          <TD><IMG title="精算" src="images/skill11_1.gif"></TD>
+          <TD><IMG title="核算" src="images/skill12_1.gif"></TD>
+          <TD><IMG src="images/skill13_2.gif" width="14" height="14" title="策划"></TD>
+          <TD><IMG src="images/skill14_1.gif" width="14" height="14" title="鼓舞"></TD>
+          <TD><IMG title="营销" src="images/skill15_1.gif"></TD>
+        </TR>
+      </TBODY>
+    </TABLE></td>
+    <td align="center" class="list_td">&nbsp;</td>
+    <td align="center" class="list_td">&nbsp;</td>
+    <td align="center" class="list_td">&nbsp;</td>
+  </tr>
+</table>
+
+</div>      
+    </div>
+	
+	
+    <div  class="tabs_description">
+      <FORM NAME="department_from">
+        <table  class="list_table" align="center" width="100%" cellspacing="0" cellpadding="0" border="0">
+
+		  <thead>
+            <tr>
+              <td colspan=12 height=30 align=right>
+			  <span id="inspection_stauts"> </span> 
+			  <span id="inspection_leave_time"> </span>
+&nbsp;&nbsp;
+			  <a  href="javascript:set_checkbox(document.department_from,'all')">全选</a> <a  href="javascript:set_checkbox(document.department_from,'or')">反选</a> <a  href="javascript:set_checkbox(document.department_from,'no')">取消</a>
+                <input type="button" value='加载公司、部门' onclick="biz_load_department();" />
+                <input type="button" value='巡视' onclick="biz_inspection_click();" id="biz_inspection_click_button"/>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="list_top3" align="center">序号</td>
+              <td class="list_top3">部门/店铺</td>
+              <td class="list_top3">员工</td>
+              <td class="list_top3">级别</td>
+              <td class="list_top3">士气</td>
+              <td class="list_top3">能力</td>
+              <td class="list_top3">忠诚</td>
+              <td class="list_top3" ><INPUT TYPE="checkbox"  onclick="javascript:set_checkbox(document.department_from,'or')"/></td>
+            </tr>
+          </thead>
+			<tbody id="department_list" >
+			</tbody>
+
+        </table>
+      </FORM>
+    </div>
+	
+<div  class="tabs_description">
+        <table  class="list_table" align="center" width="100%" cellspacing="0" cellpadding="0" border="0">
+
+		  <thead>
+            <tr>
+              <td height=30 colspan=12 align="center">
+			  <span id="inspection_stauts"> </span> 
+			  <span id="inspection_leave_time"> </span>
+              <label>
+              <input type="checkbox"  NAME="select_area_array" value="a" />
+              A区</label> 
+              <label>
+              <input type="checkbox"  NAME="select_area_array" value="b" />
+              B区</label>
+              <label>
+              <input type="checkbox"  NAME="select_area_array" value="c" />
+              C区</label>
+              <label>
+              <input type="checkbox"  NAME="select_area_array" value="d" />
+              D区</label>
+              <label>
+              <input type="checkbox"  NAME="select_area_array" value="e" />
+              E区</label>
+              <label>
+              <input type="checkbox"  NAME="select_area_array" value="f" />
+              F区</label>
+              <label>
+              <input type="checkbox"  NAME="select_area_array" value="g" />
+              G区</label>
+              <label>
+              <input type="checkbox"  NAME="select_area_array" value="h" />
+              H区</label>
+              <label>
+              <input  NAME="select_area_array" type="checkbox" value="3" />
+              3区</label>
+              <label>
+              <input  NAME="select_area_array" type="checkbox" value="9" />
+              9区</label>
+			 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			  </td>
+            </tr>
+
+      <FORM NAME="shop_from">
+            <tr> 
+              <td height=30 colspan=12 align="center">
+			  <a  href="javascript:set_checkbox(document.shop_from,'all')">全选</a> <a  href="javascript:set_checkbox(document.shop_from,'or')">反选</a> <a  href="javascript:set_checkbox(document.shop_from,'no')">取消</a>
+                <input type="button" value='加载店铺' onclick="biz_load_shop();" />
+              <input type="button" value='采购' onclick="shop_purchase();" id="shop_purchase_click_button"/>             
+			  </td>
+            </tr>
+
+            <tr>
+              <td width="40" align="center" class="list_top3">序号</td>
+			  <td width="40" align="center" class="list_top3">地区</td>
+              <td align="center" class="list_top3">店铺名称</td>
+              <td class="list_top3">人流量</td>
+              <td class="list_top3">加成</td>
+              <td class="list_top3">当前库存</td>
+              <td class="list_top3">最大库存</td>
+              <td class="list_top3">今日已消耗</td>
+              <td class="list_top3">销售/小时</td>
+              <td class="list_top3">结束时间</td>
+              <td width="6%" align="center" class="list_top3" ><INPUT TYPE="checkbox"  onclick="javascript:set_checkbox(document.shop_from,'or')"/></td>
+            </tr>
+          </thead>
+			<tbody id="shop_list" >
+			</tbody>
+      </FORM>
+
+    </table>
+  </div>
+    <div  class="tabs_description">
+	
+      <table  width="100%" border="1" align="center" cellspacing="0" class="list_table" id="mrrw_table">
+            <tr> 
+              <td height=30 colspan=12 align="center">
+              <input type="button" value='开始任务' id="mrrw_run_button" onclick="mrrw_start();" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <label>
+               <input type="checkbox" name="checkbox" id="mrrw_autoreload" value="1">
+              次日零点自动继续</label></td>
+            </tr>
+        <tr>
+          <td align="center" class="list_top3">任务名称</td>
+          <td align="center" class="list_top3">执行次数</td>
+          <td align="center" class="list_top3">任务加成</td>
+          <td align="center" class="list_top3">执行时间(秒)</td>
+          <td align="center" class="list_top3">加成延续</td>
+        </tr>
+		  <tbody id="mrrw_list_table" >
+		  </tbody>
+      </table>
+  </div>
+	
+    <div  class="tabs_description">
+      <input type="button" value='清空日志信息' onclick="biz_clear_process();" />
+		<input type="button" value='显示最新秘书消息' onclick="biz_get_secretary_msg();"  />
+
+	  <div id="process" ></div>
+    </div>
+	
+	    <div  class="tabs_description">
+      <div id="version_info" class="scroll_list">
+        <pre>
+[2010-7-1  清风无痕修改版]
+1.增加反省
+2.增加技能深造转换成功率统计
+3.增加人才技能对照表
+4.增加自动换书
+5.修复一些BUG
+
+[2010-6-28  清风无痕修改版]
+1.增加技能操作的单独界面，刷技能和三围两不误
+2.增加技能等级全满过滤
+3.增加按人才类型过滤
+4.增加使用员工双倍卡
+
+[2010-6-27  清风无痕修改版]
+1.增加店铺装饰
+2.增加保留体力
+3.增加技能等级全满过滤
+4.日常任务更新
+
+[2010-6-25  清风无痕修改版]
+1.部门列表加入建筑人才等
+
+[2010-6-24  清风无痕修改版]
+1.优化员工技能深造及转换操作界面。
+2.修复店铺员工技能深造。
+
+[2010-6-15  清风无痕修改版]
+1.去除广告，启动速度更快。
+2.增加店铺采购。
+3.增加每日任务。
+4.增加策划酝酿。
+5.增加员工技能深造及转换。
+6.增加员工培训、深造、沟通时的自动加速（要付GB的哦）。
+7.支持动态刷新部门列表，操作员工更方便。
+</pre>
+
+      </div>
+    </div>
+</div>
+<div id="upgradeDialog" class="dialog" align="center" style="display:none;"> <br>
+  <font color="red">已发现升级版本，请您立刻升级</font> <br>
+  <br>
+  <div id="biz_version"></div>
+  <div style="width:50%;" align="center">
+    <input type="button" value="我知道啦！" onClick="closeDialog('upgradeDialog')"/>
+  </div>
+</div>
+
+<table cellspacing="0" cellpadding="0" border="0" align="center" width="900px">
+<tbody><tr><td align="center">
+<script type="text/javascript"><!--
+google_ad_client = "pub-3532402732606778";
+/* 大富豪助手 10-1-8 */
+google_ad_slot = "0456564331";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+
+</td></tr>
+
+<tr><td align="center">
+<p>&nbsp;</p>
+
+<div style="font-weight: bold"> 申明：《大富豪助手》仅限于技术交流，下载试用的朋友，请在下载本软件24小时内删除；若被用于不法之途或商业经营，《大富豪助手》开发团队不承担任何责任；《大富豪助手》若侵害到他人利益，请立即与《大富豪助手》开发团队联系！ </div>
+
+</td></tr>
+
+</tbody></table>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<script type="text/javascript" src="./js/jquery.tools.min.js"></script>
+<script type="text/javascript" src="./js/http_request.js"></script>
+<script type="text/javascript" src="./js/tools.js?v=2009-12-15"></script>
+<script type="text/javascript" src="./js/biz_staff.js?v=2010-2-22"></script>
+<script type="text/javascript" src="./js/biz.js?v=2010-5-13"></script>
+<script type="text/javascript" src="./js/ajax.js"></script>
+<script language="javascript" src="./js/ralert.js"></script>
+<script language="javascript" src="./js/c_select.js"></script>
+
+</body>
+</html>

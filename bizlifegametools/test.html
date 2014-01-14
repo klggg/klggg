@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="content-language" content="utf-8" />
+<link href="./css/css.css?v=2010-6-24" rel="stylesheet" type="text/css" />
+<link href="./css/tabs.css?v=2010-6-24" rel="stylesheet" type="text/css" />
+<link href="./css/themes/blue/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="./js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="./js/jquery.tablesorter.min.js"></script>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+var g_interval	= {};
+
+
+//显示工作状态
+function test_biz_show_process(value)
+{
+	var today = new Date();
+	var seconds	= today.getSeconds();
+	if(seconds < 10)	seconds	= '0'+seconds;
+
+	var minutes	= today.getMinutes();
+	if(minutes < 10)	minutes	= '0'+minutes;
+
+	var curr_time	= today.getFullYear() +'-'+(today.getMonth()+1) +'-'+ today.getDate() +' '+ today.getHours() +':'+  minutes +':'+  seconds;
+	$('#process').prepend('<p>'+curr_time+' '+value+' </p>');
+
+}
+
+
+
+//运行命令
+function test_biz_run_command_click(){
+
+	//再次点击,停止
+	if(g_interval['auto_command'])
+	{
+
+		window.clearInterval(g_interval['auto_command']);
+		g_interval['auto_command']	 = false;
+		test_biz_show_process("<span style='color:red'>运行命令 </span>: 停止");
+		$('#command_button').val('执行'); 
+
+		return false;
+	}
+
+
+	$('#command_button').val('正在执行中,点击停止'); 
+
+	if(!test_biz_run_command())
+	{
+		return false;
+	}
+
+	var command_spend_time	 = parseInt($('#command_spend_time').val()) ;
+
+	g_interval['auto_command']	 = window.setInterval(
+		function(){
+
+			!test_biz_run_command();
+
+		}
+	, 1000 * command_spend_time );
+
+}
+
+
+
+//运行命令
+function test_biz_run_command(){
+
+	var command_1=$('#command_text1').val().replace(/(^\s*)|(\s*$)/g, '');
+	var command_2=$('#command_text2').val().replace(/(^\s*)|(\s*$)/g, '');
+
+
+
+	if(command_1=='' ){
+		test_biz_show_process("<span style='color:blue'>运行命令 </span>: URL地址不能为空");
+		return true;
+	}
+
+	var r	= HttpRequest.Post(command_1,command_2);
+	if('undefined' == typeof(r))
+	{
+		test_biz_show_process("<span style='color:blue'>运行命令 </span>: "+command_1+":undefined  ");
+	}
+	test_biz_show_process("<span style='color:blue'>运行命令 </span>: "+command_1+":" +r.replace(/<br>/gi,"  "));
+	return true;
+
+
+}
+
+
+//-->
+</SCRIPT>
+
+<title>bizlife 商业人生 大富豪助手 by ggg</title>
+</head>
+<body >
+
+	<fieldset>
+      <legend>执行命令</legend>
+       URL地址：
+       <input name="command_text1" type="text" id="command_text1" size="60" value="http://astd04.game.qidian.com/root/battle!battleArmy.action?1295045632332">
+      Post数据：
+      <input name="command_text2" type="text" id="command_text2" size="30" value="armyId=1317">
+
+	  间隔时间:
+      <input type="text" id="command_spend_time" size="5" value="1200"> 秒
+
+      <input type="button" name="button" value="执行" onClick="test_biz_run_command_click();" id="command_button" >
+      </fieldset>
+
+
+
+</div>
+<div id="process"></div>
+
+
+</body>
+
+<script type="text/javascript" src="./js/jquery-ui-1.8.2.custom.min.js"></script>
+<script type="text/javascript" src="./js/jquery.tools.min.js"></script>
+<script type="text/javascript" src="./js/http_request.js"></script>
+<script type="text/javascript" src="./js/tools.js?v=2010-8-7"></script>
+
+</html>

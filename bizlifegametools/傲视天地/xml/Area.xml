@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- 地区场景配置文件 -->
+<config>
+	<silver bgStartID="100" bgNum="0" />
+	
+	<displayObject name="cityList" view="area.view.CityList" property='' />
+	<displayObject name="scopeInputBG" view="area.view.ScopeInputBG" property='{"x":441, "y":505, "visible":false}' />
+	
+	<button name="silverBtn" style="button7" labelID="090101" property='{"x":326, "y":505, "visible":false}'/>
+	<button name="gotoBtn" style="button2" labelID="090102" property='{"x":501, "y":505, "visible":false}'/>
+	<button name="prevBtn" style="button7" labelID="090103" property='{"x":346, "y":550, "visible":false}'/>
+	<button name="nextBtn" style="button8" labelID="090104" property='{"x":481, "y":550, "visible":false}'/>
+	
+	<text name="scopeInputText" property='{"type":"input", "selectable":true, "restrict":"0-9", "x":468, "y":514, "autoSize":"center", "size":14, "color":"0xFEFDCF", "stroke":"0x3D2F22", "visible":false}'/>
+	
+	
+	<!--城市、银矿详情-->
+	<cityInfo property='{"x":307, "y":177}'>
+		<displayObject view="area.view.CityInfoBG" property='' />
+		<displayObject name="closeBtn" view="gameUI.btn.CloseBtn" property='{"x":355, "y":30}' />
+		<displayObject name="cityPic" view="GameUI.pic.BigCity" property='{"x":35, "y":45}' />
+		<displayObject name="arrowIcon" view="area.icon.Arrow" property='{"visible":false}' />
+		
+		<gameButton name="enterBtn" labelID="090105" property='{"x":35, "y":130, "visible":false}' btn="area.btn.Enter" labelProp='{"x":13, "y":30, "color":"0xE5DFD3", "stroke":"0x272018"}' />
+		<gameButton name="flagBtn" labelID="090106" property='{"x":100, "y":130, "visible":false}' btn="area.btn.Flag" labelProp='{"x":13, "y":30, "color":"0xE5DFD3", "stroke":"0x272018"}' />
+		<gameButton name="messageBtn" labelID="090107" property='{"x":165, "y":130, "visible":false}' btn="area.btn.Message" labelProp='{"x":13, "y":30, "color":"0xE5DFD3", "stroke":"0x272018"}' />
+		<gameButton name="vassalBtn" labelID="090108" property='{"x":230, "y":130, "visible":false}' btn="area.btn.Vassal" labelProp='{"x":13, "y":30, "color":"0xE5DFD3", "stroke":"0x272018"}' />
+		<gameButton name="absolutionBtn" labelID="090109" property='{"x":295, "y":130, "visible":false}' btn="area.btn.Absolution" labelProp='{"x":13, "y":30, "color":"0xE5DFD3", "stroke":"0x272018"}' />
+		
+		
+		<gameButton name="mailBtn" labelID="090110" property='{"x":35, "y":130, "visible":false}' btn="area.btn.Mail" labelProp='{"x":13, "y":30, "color":"0xE5DFD3", "stroke":"0x272018"}' />
+		<gameButton name="caravanBtn" labelID="090111" property='{"x":100, "y":130, "visible":false}' btn="area.btn.Caravan" labelProp='{"x":13, "y":30, "color":"0xE5DFD3", "stroke":"0x272018"}' />
+		<gameButton name="subdueBtn" labelID="090112" property='{"x":165, "y":130, "visible":false}' btn="area.btn.Subdue" labelProp='{"x":13, "y":30, "color":"0xE5DFD3", "stroke":"0x272018"}' />
+		
+		
+		<gameButton name="attackBtn" labelID="090113" property='{"x":35, "y":130, "visible":false}' btn="area.btn.Attack" labelProp='{"x":13, "y":30, "color":"0xE5DFD3", "stroke":"0x272018"}' />
+		
+		
+		<gameButton name="occupyBtn" labelID="090114" property='{"x":35, "y":130, "visible":false}' btn="area.btn.Occupy" labelProp='{"x":13, "y":30, "color":"0xE5DFD3", "stroke":"0x272018"}' />
+		<gameButton name="abandonBtn" labelID="090115" property='{"x":100, "y":130, "visible":false}' btn="area.btn.Abandon" labelProp='{"x":13, "y":30, "color":"0xE5DFD3", "stroke":"0x272018"}' />
+		
+		
+		<introText property='{"x":41, "y":203, "color":"0xE8DFCE", "stroke":"0x292317"}' iconStyleList = '[{ "visible":false },
+			{ "x":49, "y":182, "visible":true },
+			{ "x":114, "y":182, "visible":true },
+			{ "x":179, "y":182, "visible":true },
+			{ "x":245, "y":182, "visible":true },
+			{ "x":309, "y":182, "visible":true },
+			
+			{ "x":49, "y":182, "visible":true },
+			{ "x":114, "y":182, "visible":true },
+			{ "x":179, "y":182, "visible":true },
+			
+			{ "x":49, "y":182, "visible":true },
+			
+			{ "x":49, "y":182, "visible":true },
+			{ "x":114, "y":182, "visible":true }
+		]'/>
+		
+		<view1><!--本国-->
+			<staticText property='{"x":135, "y":85, "color":"0x978148", "stroke":"0x2E2017"}' textID="090201"/>
+			<staticText property='{"x":135, "y":105, "color":"0x978148", "stroke":"0x2E2017"}' textID="090202"/>
+			<text name="nameText" property='{"x":135, "y":43, "textType":"htmlText",  "size":14, "bold":true, "color":"0xE8DFCE", "stroke":"0x292317"}'/>
+			<text name="bannerText" property='{"x":135, "y":65, "executeTest":true, "width":220, "height":18, "color":"0xE8DFCE", "stroke":"0x292317"}'/>
+			<text name="ownerText" property='{"x":170, "y":85, "color":"0xE8DFCE", "stroke":"0x292317"}'/>
+			<text name="vassalText" property='{"x":170, "y":105, "color":"0xE8DFCE", "stroke":"0x292317"}'/>
+		</view1>
+		
+		<view2><!--敌国-->
+			<staticText property='{"x":135, "y":75, "color":"0x978148", "stroke":"0x2E2017"}' textID="090203"/>
+			<staticText property='{"x":135, "y":95, "color":"0x978148", "stroke":"0x2E2017"}' textID="090204"/>
+			<text name="nameText" property='{"x":135, "y":50, "textType":"htmlText", "size":14, "bold":true, "color":"0xE8DFCE", "stroke":"0x292317"}'/>
+			<text name="hostilityText" property='{"x":170, "y":75, "color":"0xE8DFCE", "stroke":"0x292317"}'/>
+			<text name="protectionText" property='{"x":170, "y":95, "color":"0xE8DFCE", "stroke":"0x292317"}'/>
+		</view2>
+		
+		<view3><!--银矿-->
+			<staticText property='{"x":170, "y":50, "color":"0x978148", "stroke":"0x2E2017"}' textID="090205"/>
+			<staticText property='{"x":170, "y":70, "color":"0x978148", "stroke":"0x2E2017"}' textID="090206"/>
+			<staticText property='{"x":170, "y":90, "color":"0x978148", "stroke":"0x2E2017"}' textID="090207"/>
+			<text name="taxRateText" property='{"x":205, "y":50, "color":"0xE8DFCE", "stroke":"0x292317"}'/>
+			<text name="timeText" property='{"x":205, "y":70, "color":"0xE8DFCE", "stroke":"0x292317"}'/>
+			<text name="occupantText" property='{"x":205, "y":90, "textType":"htmlText", "bold":true, "color":"0xE8DFCE", "stroke":"0x292317"}'/>
+		</view3>
+		
+		
+		<vassalList><!--属臣列表面板-->
+			<displayObject view="area.view.VassalListBG" property='' />
+			<displayObject name="closeBtn" view="gameUI.btn.CloseBtn" property='{"x":178, "y":12}' />
+			<staticText property='{"x":10, "y":12, "bold":true, "size":14, "color":"0xE8DFCE", "stroke":"0x292317", "mouseEnabled":false}' textID="090406"/>
+			<itemText property='{"x":35, "y":55, "color":"0xE8DFCE", "stroke":"0x292317"}' addY="25"/>
+			<dragHitArea property='{"width":215, "height":30}' />
+		</vassalList>
+		
+		<editFlag><!--修改旗号对话框-->
+			<displayObject view="area.view.EditBG" property='' />
+			<displayObject name="closeBtn" view="gameUI.btn.CloseBtn" property='{"x":355, "y":30}' />
+			<staticText property='{"x":25, "y":45, "bold":true, "size":14, "color":"0xE8DFCE", "stroke":"0x292317", "mouseEnabled":false}' textID="090408"/>
+			<staticText property='{"x":100, "y":111, "color":"0xE8DFCE", "stroke":"0x292317"}' textID="090409"/>
+			<text name="inputText" property='{"autoSize":"none", "selectable":true, "type":"input", "width":140, "height":18, "maxChars":1, "x":147, "y":109, "color":"0xCCCCCC"}' />
+			<button name="submitBtn" style="button4" labelID="010301" property='{"x":105, "y":170}'/>
+			<button name="cancelBtn" style="button5" labelID="010302" property='{"x":205, "y":170}'/>
+			<dragHitArea property='{"x":0, "y":20, "width":380, "height":40}' />
+		</editFlag>
+		
+		<editMessage><!--修改留言对话框-->
+			<displayObject view="area.view.EditBG" property='' />
+			<displayObject name="closeBtn" view="gameUI.btn.CloseBtn" property='{"x":355, "y":30}' />
+			<staticText property='{"x":25, "y":45, "bold":true, "size":14, "color":"0xE8DFCE", "stroke":"0x292317", "mouseEnabled":false}' textID="090411"/>
+			<staticText property='{"x":100, "y":111, "color":"0xE8DFCE", "stroke":"0x292317"}' textID="090412"/>
+			<text name="inputText" property='{"autoSize":"none", "selectable":true, "type":"input", "width":140, "height":18, "maxChars":30, "x":147, "y":109, "color":"0xCCCCCC"}' />
+			<button name="submitBtn" style="button4" labelID="010301" property='{"x":105, "y":170}'/>
+			<button name="cancelBtn" style="button5" labelID="010302" property='{"x":205, "y":170}'/>
+			<dragHitArea property='{"x":0, "y":20, "width":380, "height":40}' />
+		</editMessage>
+		
+	</cityInfo>
+	
+	
+	<!--场景提示-->
+	<sceneTips view="area.view.SceneTips" duration="1.5" property='{"x":422, "y":247}'>
+		<nameText property='{"x":78, "y":35, "size":14, "bold":true, "autoSize":"center", "stroke":"0xD9C5A2"}' />
+		<scopeText property='{"x":78, "y":57, "autoSize":"center", "stroke":"0xD9C5A2"}' />
+	</sceneTips>
+</config>

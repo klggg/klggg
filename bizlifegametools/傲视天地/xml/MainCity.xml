@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- 主城界面配置文件 -->
+<config>
+	
+	<mainCity view="mainCity.display"/>
+	<cdGoneBtn view="mainCity.cdKiller"/>
+	<buildingInfo view="mainCity.buildInfo">
+	    <closeBtn view="gameUI.btn.CloseBtn" property='{"x":355, "y":30}' />
+		<buildingPic property='{"x":15, "y":35}'/>
+		<text name="nameText" property='{"color":"0xE6E0D4", "selectable":false, "autoSize":"center", "x":65, "y":130, "stroke":"0x29241b"}'/>
+		<upgradeBtn view="mainCity.functionButton.upgrade" property='{"x":35, "y":155}' nameId="030101"/>
+		<buttonList property='{"x":125, "y":50}'/>
+		<ButtonRenderer>
+		    <label property='{"color":"0xE6E0D4", "mouseEnabled":false, "autoSize":"center", "x":25, "y":30, "stroke":"0x29241b"}'/>
+		</ButtonRenderer>
+		<text name="functionIntro" property='{"color":"0xE6E0D4", "selectable":false, "x":130, "y":130, 
+		"stroke":"0x29241b", "multiline":true, "width":217}'/>
+		
+		<gameButton name="upgrade" labelID="030101" property='{"x":35, "y":155}' btn="mainCity.functionButton.upgrade"
+		labelProp='{"x":16, "y":35, "size":14, "color":"0xE5DFD3", "stroke":"0x272018", "bold":true}' />
+		<!-- 官府 -->
+		<government>
+		    <imposeButton view="mainCity.functionButton.impose" nameId="030102" introId="030202"/>
+		    <riseButton view="mainCity.functionButton.rise" nameId="030103" introId="030203" initFun="initRise"/>
+		    <ministerButton view="mainCity.functionButton.minister" nameId="030104" introId="030204" levelLimit="31"/>
+		</government>
+		<!-- 兵营 -->
+		<barracks>
+		    <conscriptionButton view="mainCity.functionButton.conscription" nameId="030105" introId="030205"/>
+		    <volunteerButton view="mainCity.functionButton.volunteer" nameId="030106" introFun="volunteerButton" initFun="initVolunteer"/>
+		</barracks>
+		<!-- 校场 -->
+		<drillGround>
+		    <trainingButton view="mainCity.functionButton.training" nameId="030107" introId="030207"/>
+		    <cultureButton view="mainCity.functionButton.culture" nameId="030108" introId="030208" levelLimit="11"/>
+		</drillGround>
+		<!-- 市场 -->
+		<market>
+		    <buyFoodButton view="mainCity.functionButton.buy" nameId="030109" introId="030209"/>
+		    <sellFoodButton view="mainCity.functionButton.depot" nameId="030110" introId="030210"/>
+		</market>
+		<!-- 军机处 -->
+		<militaryScience>
+		    <scienceButton view="mainCity.functionButton.science" nameId="030111" introId="030211"/>
+		</militaryScience>
+		<!-- 商店 -->
+		<shop>
+		    <buyButton view="mainCity.functionButton.buy" nameId="030112" introId="030212"/>
+		    <depotButton view="mainCity.functionButton.depot" nameId="030113" introId="030213"/>
+		    <strengthButton view="mainCity.functionButton.strength" nameId="030114" introId="030214"/>
+			<accredication view="mainCity.functionButton.accredication" nameId="030115" introId="030215" levelLimit="30"/>
+		</shop>
+		<!-- 驿站 -->
+		<postHouse>
+		    <caravanButton view="mainCity.functionButton.caravan" nameId="030116" introId="030216"/>
+		</postHouse>
+		<!-- 钱庄 -->
+		<bank/>
+		<!-- 账房 -->
+		<accountant/>
+		<!-- 铸币厂 -->
+		<maintage/>
+		<!-- 粮仓 -->
+		<barn/>
+		<!-- 银库 -->
+		<cashbox/>
+		<!-- 纺织局 -->
+		<spinningHouse>
+		    <spinningButton view="mainCity.functionButton.spinning" selfLv="82" nameId="030117" introId="030217"/>
+		</spinningHouse>
+	</buildingInfo> 
+	
+	<!-- 建造队伍 -->
+	<constructionTeam property='{"paddingLeft":5}'>
+		<displayObject view="gameUI.icon.ConstructionTeam" property='{"mouseEnabled":false}'/>
+	    <displayObject name="clearCDBtn" view="gameUI.btn.ClearCD" property='{"y":4, "visible":false}' />
+		<text name="cdText" property='{"x":23, "y":2, "color":"0xffffff", "stroke":"0x333333", "selectable":false}'/>
+		<addTextStyle mouseOver='{"underline":true, "y":2}' mouseOut='{"underline":false, "y":2}'/>
+	</constructionTeam>
+	
+	<!--场景提示-->
+	<sceneTips view="mainCity.view.SceneTips" duration="1" property='{"x":422, "y":247}'>
+		<nameText property='{"x":78, "y":45, "size":14, "bold":true, "autoSize":"center", "stroke":"0xD9C5A2"}' />
+	</sceneTips>
+</config>

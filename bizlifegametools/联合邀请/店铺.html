@@ -1,0 +1,1317 @@
+	
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache,must-revalidate">
+<meta http-equiv="expires" content="0">
+<title>我的店铺</title>
+<script language="javascript" src="../lang/js/lang_js.js"></script>
+<link href="../css/css.css" rel="stylesheet" type="text/css" />
+
+<script src='shop.common.js'></script>
+<script language="javascript" src="../js/common.js"></script>
+<script language="javascript" src="../js/ralert.js"></script>
+<script language="javascript" src="../js/ajax.js"></script>
+<script language="javascript" src="../js/word_description.js"></script>
+<script language="javascript" src="../js/div_page.js"></script>
+<script language="javascript" src="../js/action.js"></script>
+<script language="javascript">
+<!--改变库存-->
+function update_storage(shop_id, shop_name, inventory, purchase_max, pid, purchase_num, time) { //更新库存TD
+	var td_storage = document.getElementById("stock_" + shop_id);
+	if (!td_storage) {
+		return;
+	}
+	
+	if (time <= 0) {
+		inventory += parseInt(purchase_num);
+	}
+	else {
+		//setTimeout("update_storage(" + shop_id + ", '" + shop_name + "', " + inventory + ", " + purchase_max + ", " + pid + ", " + purchase_num + ", 0)", time * 1000);
+	}
+	
+	var str_inventory = "";
+	if (inventory > 0) {
+		str_inventory =inventory+"件";
+	}
+	else {
+		str_inventory = "空";
+	}
+	
+	if (purchase_max > inventory) {
+		if (pid <= 0 || time == 0) {
+			str_inventory = "<a href=\"javascript:div_page('shop_purchase.php?id=" + shop_id + "', '" + shop_name + "采购',580, 390);\"><img src=\"../images/xico_4.gif\" width=\"12\" height=\"12\" /> " + str_inventory + "</a>";
+		}
+		else {
+			str_inventory = "<a href=\"javascript:div_page2('../progress_inner.php?pid=" + pid + "', '" + shop_name + "采购中');\"><img src=\"../images/xico_4_2.gif\" width=\"12\" height=\"12\" /> " + str_inventory + "</a>";
+		}
+	}
+	
+	td_storage.innerHTML = str_inventory;
+}
+
+function update_population() {
+	show_loading();
+	ajaxSendPost("update_population.php", "area=b", update_population_done);
+}
+function update_population_done(str) {
+	if (str == "ok") {
+		window.location.reload();
+	}
+	else {
+		alert("更新竞争力失败，请重试。");
+	}
+}
+
+function update_quality_all() {
+	show_loading();
+	ajaxSendPost("update_quality.php", "area=b", update_quality_done);
+}
+function update_quality_done(str) {
+	if (str == "ok") {
+		window.location.reload();
+	}
+	else {
+		alert("更新服务品质失败，请重试。");
+	}
+}
+
+function update_shop_add(shop_id, num) {
+	var a_shop_add = document.getElementById("shop_add_" + shop_id);
+	if (!a_shop_add) {
+		return;
+	}
+	a_shop_add.innerHTML = (num > 0 ? num : 0) + "%";
+}
+
+<!--更新加成 叠加式-->
+function update_shop_add2(shop_id, num) {
+	
+	var a_shop_add = document.getElementById("span_shop_add" + shop_id);
+	
+	if (!a_shop_add) {
+		return;
+	}
+	if(num>0){
+		a_shop_add.innerHTML = (parseInt(a_shop_add.innerHTML)+parseInt(num));
+	}
+}
+
+function update_quality(shop_id, num) {
+	var div_quality = document.getElementById("quality_" + shop_id);
+	if (!div_quality) {
+		return;
+	}
+	var p = ((1 - (num / 1000)) * 44);
+	
+	var shop_str3='当前库存';
+	
+	shop_str3=shop_str3.replace('{str}',shop_id);
+	
+	div_quality.innerHTML = '<div class="percent_bar" onclick="show_operation(' + shop_id + ', 2)" onmousemove="show_description(\''+shop_str3+'\')" onmouseout="hide_description()"><div style="background-position:-' + p + 'px;background-image:url(../images/scale_Purple44.gif);">' + num + '</div></div>';
+}
+function update_morale(shop_id, num) {
+	var div_morale = document.getElementById("morale_" + shop_id);
+	if (!div_morale) {
+		return;
+	}
+	var p = ((1 - (num / 1000)) * 44);
+	var shop1_str='今日已消耗{str}件。';
+	shop1_str=shop1_str.replace('{str}',shop_id);
+	div_morale.innerHTML = '<div class="percent_bar" onclick="show_operation(' + shop_id + ', 1)" onmousemove="show_description(\''+shop1_str+'\')" onmouseout="hide_description()"><div style="background-position:-' + p + 'px;">' + num + '</div></div>';
+	
+}
+function update_famous(shop_id, num) {
+	var div_famous = document.getElementById("famous_" + shop_id);
+	if (!div_famous) {
+		return;
+	}
+	var p = ((1 - (num / 1000)) * 44);
+	div_famous.innerHTML = '<div class="percent_bar" onclick="show_operation(' + shop_id + ', 3)" onmousemove="show_description(\'当前认知：' + num + '/1000<br>点击查看增加认知的方法。\')" onmouseout="hide_description()"><div style="background-position:-' + p + 'px;background-image:url(../images/scale_yellow44.gif);">' + num + '</div></div>';
+}
+
+
+</script>
+<style type="text/css">
+.tableright1 {
+	color: #004E7B;
+	font-size:13px;
+	border: 0px Solid #8BD4FF;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-right: 0px;
+	padding-left: 0px;
+	background-color:#D3EEFF;
+	width:740px;
+	height:380px;
+	overflow-y:scroll;
+}
+.shop {
+	width:720px;
+	margin:0px;
+	margin-bottom:5px;
+	height:50px;
+	overflow:hidden;
+}
+.shop div{
+}
+.shop_td {
+	height:44px;
+	float:left;
+	padding:5px;
+}
+.shop_td_tr {
+	padding-top:5px;
+}
+
+
+
+.level_bar { 
+	background:url(../images/scale2_2_bg.gif);
+	width:46px;
+	height:10px;
+	padding:3px 2px 3px 2px !important;
+	padding:3px 2px 3px 1px;
+	cursor:pointer;
+	overflow:hidden;
+}
+.level_bar div {
+	width:8px; float:left; margin-left:1px; height:10px; overflow:hidden;
+}
+
+.percent_bar {
+	width:44px; height:10px; background:url(../images/scale_2_bg.gif); padding:3px; cursor:pointer;
+}
+.percent_bar div {
+	width:44px; height:10px; font-size:9px; color:#333; background:url(../images/scale_green44.gif) no-repeat; font-family:Arial; line-height:100%; text-align:center;
+}
+
+
+
+</style>
+</head>
+<body>
+<table width="764" height="515" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="34" valign="bottom" background="../images/zk_main_menu.gif"><table height="25" border="0" cellpadding="0" cellspacing="1" style="margin-left:10px;">
+                <tr>
+                  <td width="3"></td>
+                                    <td><table height="25" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td width="7"><img src="../images/list_menu2_1.gif" width="7" height="25" /></td>
+                      <td background="../images/list_menu2_2.gif" ><a href="/enterprise/shop.php?area=a" class="link_listmenu2">A区(1)</a></td>
+                      <td width="7"><img src="../images/list_menu2_3.gif" width="7" height="25" /></td>
+                    </tr>
+                  </table></td>
+                                    <td><table height="25" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td width="7"><img src="../images/list_menu1_1.gif" width="7" height="25" /></td>
+                      <td background="../images/list_menu1_2.gif" ><a href="/enterprise/shop.php?area=b" class="link_listmenu1">B区(2)</a></td>
+                      <td width="7"><img src="../images/list_menu1_3.gif" width="7" height="25" /></td>
+                    </tr>
+                  </table></td>
+                                    <td><table height="25" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td width="7"><img src="../images/list_menu2_1.gif" width="7" height="25" /></td>
+                      <td background="../images/list_menu2_2.gif" ><a href="/enterprise/shop.php?area=c" class="link_listmenu2">C区(3)</a></td>
+                      <td width="7"><img src="../images/list_menu2_3.gif" width="7" height="25" /></td>
+                    </tr>
+                  </table></td>
+                                    <td><table height="25" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td width="7"><img src="../images/list_menu2_1.gif" width="7" height="25" /></td>
+                      <td background="../images/list_menu2_2.gif" ><a href="/enterprise/shop.php?area=d" class="link_listmenu2">D区(9)</a></td>
+                      <td width="7"><img src="../images/list_menu2_3.gif" width="7" height="25" /></td>
+                    </tr>
+                  </table></td>
+                                    <td><table height="25" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td width="7"><img src="../images/list_menu2_1.gif" width="7" height="25" /></td>
+                      <td background="../images/list_menu2_2.gif" ><a href="/enterprise/shop.php?area=e" class="link_listmenu2">E区(18)</a></td>
+                      <td width="7"><img src="../images/list_menu2_3.gif" width="7" height="25" /></td>
+                    </tr>
+                  </table></td>
+                                    <td><table height="25" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td width="7"><img src="../images/list_menu2_1.gif" width="7" height="25" /></td>
+                      <td background="../images/list_menu2_2.gif" ><a href="/enterprise/shop.php?area=f" class="link_listmenu2">F区(0)</a></td>
+                      <td width="7"><img src="../images/list_menu2_3.gif" width="7" height="25" /></td>
+                    </tr>
+                  </table></td>
+                                    <td><table height="25" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td width="7"><img src="../images/list_menu2_1.gif" width="7" height="25" /></td>
+                      <td background="../images/list_menu2_2.gif" ><a href="/enterprise/shop.php?area=g" class="link_listmenu2">G区(0)</a></td>
+                      <td width="7"><img src="../images/list_menu2_3.gif" width="7" height="25" /></td>
+                    </tr>
+                  </table></td>
+                                    <td><table height="25" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td width="7"><img src="../images/list_menu2_1.gif" width="7" height="25" /></td>
+                      <td background="../images/list_menu2_2.gif" ><a href="/enterprise/shop.php?area=h" class="link_listmenu2">H区(0)</a></td>
+                      <td width="7"><img src="../images/list_menu2_3.gif" width="7" height="25" /></td>
+                    </tr>
+                  </table></td>
+                                    <td><table height="25" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td width="7"><img src="../images/list_menu2_1.gif" width="7" height="25" /></td>
+                      <td background="../images/list_menu2_2.gif" ><a href="/enterprise/shop.php?area=z" class="link_listmenu2">商会发展区(0)</a></td>
+                      <td width="7"><img src="../images/list_menu2_3.gif" width="7" height="25" /></td>
+                    </tr>
+                  </table></td>
+                                  </tr>
+              </table></td>
+  </tr>
+  <tr>
+    <td height="481" valign="top">
+    
+    <table width="740" height="453" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td height="10"></td>
+      </tr>
+      <tr><td height="443" valign="top">
+      <table width="100%" border="0" cellpadding="0" cellspacing="0" class="list_table">
+              <tr>
+                <td background="../images/line1_bg.gif"><table width="740" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td width="52" background="../images/line1_bg.gif" class="list_top3"><table border="0" cellspacing="0" cellpadding="0">
+                          <tr>
+                            <td class="list_top_font"><a href="javascript:order_by('type','asc')" class="link_listtop">&nbsp;店铺</a></td>
+                            <td width="12" align="center"><table border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                  <td><a href="javascript:order_by('type','asc')"><img src="../images/j2_up.gif" width="7" height="4" border="0"   name="sortpic" id="sortpic_type_up" /></a></td>
+                                </tr>
+                                <tr>
+                                  <td><a href="javascript:order_by('type','desc')"><img src="../images/j2_down.gif" width="7" height="4" border="0"  name="sortpic" id="sortpic_type_down" /></a></td>
+                                </tr>
+                              </table></td>
+                          </tr>
+                          <tr>
+                            <td class="list_top_font">&nbsp;</td>
+                            <td align="center">&nbsp;</td>
+                          </tr>
+                        </table></td>
+                      <td width="112" background="../images/line1_bg.gif" class="list_top3"><table border="0" cellspacing="0" cellpadding="0">
+                          <tr>
+                            <td class="list_top_font"><a href="javascript:order_by('scale','asc')" class="link_listtop">规模</a></td>
+                            <td width="12" align="center"><table border="0" cellspacing="1" cellpadding="0">
+                                <tr>
+                                  <td><a href="javascript:order_by('scale','asc')"><img src="../images/j2_up.gif" width="7" height="4" border="0"   name="sortpic" id="sortpic_scale_up"  /></a></td>
+                                </tr>
+                                <tr>
+                                  <td><a href="javascript:order_by('scale','desc')"><img src="../images/j2_down.gif" width="7" height="4" border="0"  name="sortpic" id="sortpic_scale_down"  /></a></td>
+                                </tr>
+                              </table></td>
+                          </tr>
+                          <tr>
+                            <td class="list_top_font">&nbsp;</td>
+                            <td align="center">&nbsp;</td>
+                          </tr>
+                        </table></td>
+                      <td width="65" background="../images/line1_bg.gif" class="list_top3"><table border="0" cellspacing="0" cellpadding="0">
+                          <tr>
+                            <td class="list_top_font"><a href="javascript:order_by('pople','asc')" class="link_listtop">人流量</a></td>
+                            <td>
+                            	<table border="0" cellspacing="1" cellpadding="0">
+                                      <tr>
+                                        <td><a href="javascript:order_by('pople','asc')"><img src="../images/j2_up.gif" width="7" height="4" border="0"  name="sortpic" id="sortpic_level_up" /></a></td>
+                                      </tr>
+                                      <tr>
+                                        <td><a href="javascript:order_by('pople','desc')"><img src="../images/j2_down.gif" width="7" height="4" border="0"  name="sortpic" id="sortpic_level_down"   /></a></td>
+                                      </tr>
+                              </table>                            </td>
+                          </tr>
+                          <tr>
+                            <td class="list_top_font">主管</td>
+                            <td align="center">&nbsp;</td>
+                          </tr>
+                        </table></td>
+                      <td width="61" background="../images/line1_bg.gif" class="list_top3"><table border="0" cellspacing="0" cellpadding="0">
+                          <tr>
+                            <td class="list_top_font"><table border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                  <td class="list_top_font"><a href="javascript:order_by('level','asc')" class="link_listtop">等级</a></td>
+                                  <td width="12" align="center"><table border="0" cellspacing="1" cellpadding="0">
+                                      <tr>
+                                        <td><a href="javascript:order_by('level','asc')"><img src="../images/j2_up.gif" width="7" height="4" border="0"  name="sortpic" id="sortpic_level_up" /></a></td>
+                                      </tr>
+                                      <tr>
+                                        <td><a href="javascript:order_by('level','desc')"><img src="../images/j2_down.gif" width="7" height="4" border="0" name="sortpic" id="sortpic_level_down"   /></a></td>
+                                      </tr>
+                                    </table></td>
+                                </tr>
+                              </table></td>
+                          </tr>
+                          <tr>
+                            <td><table border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                  <td class="list_top_font"><a href="javascript:order_by('morale','asc')" class="link_listtop">士气</a></td>
+                                  <td width="10" align="center"><table border="0" cellspacing="1" cellpadding="0">
+                                      <tr>
+                                        <td><a href="javascript:order_by('morale','asc')"><img src="../images/j2_up.gif" width="7" height="4" border="0"  name="sortpic" id="sortpic_morale_up"  /></a></td>
+                                      </tr>
+                                      <tr>
+                                        <td><a href="javascript:order_by('morale','desc')"><img src="../images/j2_down.gif" width="7" height="4" border="0"  name="sortpic" id="sortpic_morale_down"  /></a></td>
+                                      </tr>
+                                    </table></td>
+                                </tr>
+                              </table></td>
+                          </tr>
+                        </table></td>
+                      <td width="59" background="../images/line1_bg.gif" class="list_top3"><table border="0" cellspacing="0" cellpadding="0">
+                          <tr>
+                            <td class="list_top_font"><table border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                  <td class="list_top_font"><a href="javascript:order_by('quality','asc')" class="link_listtop">服务</a></td>
+                                  <td width="12" align="center"><table border="0" cellspacing="1" cellpadding="0">
+                                      <tr>
+                                        <td><a href="javascript:order_by('quality','asc')"><img src="../images/j2_up.gif" width="7" height="4" border="0"  name="sortpic" id="sortpic_quality_up"  /></a></td>
+                                      </tr>
+                                      <tr>
+                                        <td><a href="javascript:order_by('quality','desc')"><img src="../images/j2_down.gif" width="7" height="4" border="0"  name="sortpic" id="sortpic_quality_down"  /></a></td>
+                                      </tr>
+
+                                    </table></td>
+                                </tr>
+                              </table></td>
+                          </tr>
+                          <tr>
+                            <td><table border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                  <td class="list_top_font"><a href="javascript:order_by('famous','asc')" class="link_listtop">认知</a></td>
+                                  <td width="10" align="center"><table border="0" cellspacing="1" cellpadding="0">
+                                      <tr>
+                                        <td><a href="javascript:order_by('famous','asc')"><img src="../images/j2_up.gif" width="7" height="4" border="0" name="sortpic" id="sortpic_famous_up"  /></a></td>
+                                      </tr>
+                                      <tr>
+                                        <td><a href="javascript:order_by('famous','desc')"><img src="../images/j2_down.gif" width="7" height="4" border="0"  name="sortpic" id="sortpic_famous_down"  /></a></td>
+                                      </tr>
+                                    </table></td>
+                                </tr>
+                              </table></td>
+                          </tr>
+                        </table></td>
+                      <td width="53" background="../images/line1_bg.gif" class="list_top3"><table border="0" cellspacing="0" cellpadding="0">
+                          <tr>
+                            <td class="list_top_font"><table border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                  <td class="list_top_font"><a href="javascript:order_by('add','asc')" class="link_listtop">加成</a></td>
+                                  <td width="12" align="center"><table border="0" cellspacing="1" cellpadding="0">
+                                      <tr>
+                                        <td><a href="javascript:order_by('add','asc')"><img src="../images/j2_up.gif" width="7" height="4" border="0"  name="sortpic" id="sortpic_add_up"  /></a></td>
+                                      </tr>
+                                      <tr>
+                                        <td><a href="javascript:order_by('add','desc')"><img src="../images/j2_down.gif" width="7" height="4" border="0"  name="sortpic" id="sortpic_add_down"  /></a></td>
+                                      </tr>
+                                    </table></td>
+                                </tr>
+                              </table></td>
+                          </tr>
+                          <tr>
+                            <td><table border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                  <td class="list_top_font"><a href="javascript:order_by('count_staff','asc')" class="link_listtop">员工</a></td>
+                                  <td width="12" align="center"><table border="0" cellspacing="1" cellpadding="0">
+                                      <tr>
+                                        <td><a href="javascript:order_by('count_staff','asc')"><img src="../images/j2_up.gif" width="7" height="4" border="0"  name="sortpic" id="sortpic_staff_up"  /></a></td>
+                                      </tr>
+                                      <tr>
+                                        <td><a href="javascript:order_by('count_staff','desc')"><img src="../images/j2_down.gif" width="7" height="4" border="0" name="sortpic" id="sortpic_staff_down"  /></a></td>
+                                      </tr>
+                                    </table></td>
+                                </tr>
+                              </table></td>
+                          </tr>
+                        </table></td>
+                      <td width="78" background="../images/line1_bg.gif" class="list_top3"><table border="0" cellspacing="0" cellpadding="0">
+                          <tr>
+                            <td class="list_top_font"><a href="javascript:order_by('compete','asc')" class="link_listtop">竞争力</a></td>
+                            <td width="12" align="center"><table border="0" cellspacing="1" cellpadding="0">
+                                <tr>
+                                  <td><a href="javascript:order_by('compete','asc')"><img src="../images/j2_up.gif" width="7" height="4" border="0"  name="sortpic" id="sortpic_compe_up"   /></a></td>
+                                </tr>
+                                <tr>
+                                  <td><a href="javascript:order_by('compete','desc')"><img src="../images/j2_down.gif" width="7" height="4" border="0"  name="sortpic" id="sortpic_compe_down"   /></a></td>
+                                </tr>
+                              </table></td>
+                          </tr>
+                          <tr>
+                            <td class="list_top_font"><a href="javascript:order_by('price_index','asc')" class="link_listtop">价格指数</a></td>
+                            <td align="center"><table border="0" cellspacing="1" cellpadding="0">
+                                <tr>
+                                  <td><a href="javascript:order_by('price_index','asc')"><img src="../images/j2_up.gif" width="7" height="4" border="0"  name="sortpic" id="sortpic_price_index_up"   /></a></td>
+                                </tr>
+                                <tr>
+                                  <td><a href="javascript:order_by('price_index','desc')"><img src="../images/j2_down.gif" width="7" height="4" border="0" name="sortpic" id="sortpic_price_index_down"   /></a></td>
+                                </tr>
+                              </table></td>
+                          </tr>
+                        </table></td>
+                      <td width="120" background="../images/line1_bg.gif" class="list_top3"><table border="0" cellspacing="0" cellpadding="0">
+                          <tr>
+                            <td class="list_top_font"><a href="javascript:order_by('earn_day','asc')" class="link_listtop">今日收入</a></td>
+                            <td width="12" align="center"><table border="0" cellspacing="1" cellpadding="0">
+                                <tr>
+                                  <td><a href="javascript:order_by('earn_day','asc')"><img src="../images/j2_up.gif" width="7" height="4" border="0" name="sortpic" id="sortpic_earn_up"   /></a></td>
+                                </tr>
+                                <tr>
+                                  <td><a href="javascript:order_by('earn_day','desc')"><img src="../images/j2_down.gif" width="7" height="4" border="0"  name="sortpic" id="sortpic_earn_down"   /></a></td>
+                                </tr>
+                              </table></td>
+                          </tr>
+                          <tr>
+                            <td class="list_top_font"><a href="javascript:order_by('inventory','asc')" class="link_listtop">库存</a></td>
+                            <td align="center"><table border="0" cellspacing="1" cellpadding="0">
+                                <tr>
+                                  <td><a href="javascript:order_by('inventory','asc')"><img src="../images/j2_up.gif" width="7" height="4" border="0"  name="sortpic"  id="sortpic_ku_up"  /></a></td>
+                                </tr>
+                                <tr>
+                                  <td><a href="javascript:order_by('inventory','desc')"><img src="../images/j2_down.gif" width="7" height="4" border="0"  name="sortpic" id="sortpic_ku_down"   /></a></td>
+                                </tr>
+                              </table></td>
+                          </tr>
+                        </table></td>
+                      <td width="47" background="../images/line1_bg.gif" class="list_top3"><table width="43" border="0" cellpadding="0" cellspacing="0">
+                          <tr>
+                            <td width="54" class="list_top_font">抢生意</td>
+                          </tr>
+                          <tr>
+                            <td class="list_top_font">&nbsp;</td>
+                          </tr>
+                        </table></td>
+                      <td width="40" background="../images/line1_bg.gif" class="list_top3"><table border="0" cellspacing="0" cellpadding="0">
+                          <tr>
+                            <td class="list_top_font">冠名</td>
+                          </tr>
+                          <tr>
+                            <td class="list_top_font">宣传</td>
+                          </tr>
+                        </table></td>
+                      <td background="../images/line1_bg.gif" class="list_top3"><table border="0" cellspacing="0" cellpadding="0">
+                          <tr>
+                            <td class="list_top_font">操作</td>
+                          </tr>
+                          <tr>
+                            <td class="list_top_font">&nbsp;</td>
+                          </tr>
+                        </table></td>
+                    </tr>
+                  </table></td>
+              </tr>
+              <tr>
+                <td height="365" valign="top"><div class="tableright1">
+                               <div class="shop" id="shop_51209">
+                  <div class="shop_td" style="width:44px;"><a href='javascript:show_shop(51209,"B-88-92  B区88大道92街1、2、4、5、7、8号","b","88","92")'><img src="../images/shop/34.gif" width="40" height="40" border="0" class="list_tu_color"/></a></div>
+                  <div class="shop_td" style="width:105px; padding-left:0px;">
+                    <div class="shop_td_tr"><a href='javascript:show_shop(51209,"B-88-92  B区88大道92街1、2、4、5、7、8号","b","88","92")'>
+                      B-88-92                      </a>
+                    </div>
+                    <div class="shop_td_tr">大型英语学校</div>
+                  </div>
+                  <div class="shop_td" style="width:40px;">
+                    <div class="shop_td_tr" id="pople_51209" style="overflow:hidden">
+                      5828                    </div>
+                    <div class="shop_td" id="shop_head_51209">
+                                            <a href='javascript:show_staff(738539)'><img src="../images/mico/xico_zg1.gif" width="14" height="14" /></a>
+                                          </div>
+                  </div>
+                  <div class="shop_td" style="width:50px;">
+                    <div class="shop_td_tr">
+                                            <div id="element_level_bar" style="width:100%">
+                      <div class="level_bar"  id="level_bar_51209"  onclick="update_level(51209,4,0)" onmousemove="show_description('店铺当前为4级。已经达到升级所需时间。<br>点击进行升级。')" onmouseout="hide_description()">
+                        <div style="background:url(../images/scale_red.gif);"></div><div style="background:url(../images/scale_red.gif);"></div><div style="background:url(../images/scale_red.gif);"></div><div style="background:url(../images/scale_red.gif);"></div>                        <div></div>
+                                              </div></div>
+                    </div>
+                    <div class="shop_td_tr" id="morale_51209">
+                      <div class="percent_bar" onclick="show_operation(51209,1)"  onmousemove="show_description('当前士气：1000/1000<br>点击查看增加士气的方法。')" onmouseout="hide_description()">
+                        <div style="background-position:-0px;">
+                          1000                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="shop_td" style="width:50px;">
+                    <div class="shop_td_tr" id="quality_51209">
+                      <div id="element_quality_bar" class="percent_bar" onclick="show_operation(51209,2)" onmousemove="show_description('当前服务品质：900/1000<br>点击查看增加服务品质的方法。')" onmouseout="hide_description()">
+                        <div style="background-position:-4.4px; background-image:url(../images/scale_Purple44.gif);">
+                          900                        </div>
+                      </div>
+                    </div>
+                    <div class="shop_td_tr" id="famous_51209">
+                      <div class="percent_bar" onclick="show_operation(51209,3)" onmousemove="show_description('当前认知：938/1000<br>点击查看增加认知的方法。')" onmouseout="hide_description()">
+                        <div style="background-position:-2.728px; background-image:url(../images/scale_yellow44.gif);">
+                          938                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="shop_td" style="width:57px;">
+                    <div class="shop_td_tr" style="overflow:hidden"><a href="javascript:show_add(51209)" onmousemove="show_description('店铺当前收入加成情况，点击后查看具体的收入加成。')" onmouseout="hide_description()" id="shop_add_51209">
+                      <span id="span_shop_add51209">928.1</span>%</a></div>
+                    <div class="shop_td_tr"> <a href="javascript:show_operation(51209,4)" 
+                    onmousemove="show_description('店铺当前员工数，点击后对店员进行管理。');" onmouseout="hide_description();">
+                      <div id="element2" style=" cursor:pointer; width:70%"><span id="tips_staff_count">12/12</span></div>
+                    </a> </div>
+                  </div>
+                  <div class="shop_td" style="width:55px;">
+                    <div class="shop_td_tr"><a href="javascript:check_compete(51209)" style="color:gray" class="link_up_green" id="compete_51209" >
+                      100%</a></div>
+                    <div class="shop_td_tr" onmousemove="show_description('调整店铺当前价格指数，以求获得更高的收入。');" onmouseout="hide_description();"><a href="javascript:adjust_price(51209)">
+                                            <img src="../images/xico_3.gif" /></a>
+                      <a style="color:gray" href="javascript:adjust_price(51209)" class="link_up_green" id ="price_51209">+50%                    </a> 
+                    
+                    </div>
+                  </div>
+                  <div class="shop_td" style="width:120px;">
+                    <div class="shop_td_tr" style="overflow:hidden"><a href="javascript:day_earn(51209)"  
+                    onmousemove="show_description('店铺当日的营业收入，点击后查看店铺的收入分析图。')" onmouseout="hide_description()">
+                      253,607                    </a></div>
+                    <div class="shop_td_tr" id="stock_51209" onmousemove="show_description('当前库存12544/13500，今日已消耗537件。店铺升级后库存容量可扩充到18000件。')" onmouseout="hide_description()">
+                                                    <a href="javascript:div_page('shop_purchase.php?id=51209', 'B-88-92英语学校 采购',580, 390);"><img src="../images/xico_4.gif" width="12" height="12" /> 12544件 约24天</a>
+                                            </div>
+                  </div>
+                  <div class="shop_td" style="width:30px;">
+                                        <div class="shop_td_tr" id="go_businnes_51209">
+                      <img src="../images/mico/xico_qsy1_2.gif" onclick="grab_business(51209)" onmousemove="show_description('可以招揽其它同类型店铺顾客，增加店铺收入，点击抢生意。')" onmouseout="hide_description()" style="cursor:pointer;" />
+                    </div>
+                                        <div class="shop_td_tr" id="out_businnes_51209">
+                      <img src="../images/mico/xico_qsy2_2.gif" onmousemove="show_description('店铺没有受到影响。')" onmouseout="hide_description()" onclick=""  />
+                    </div>
+                  </div>
+                  <div class="shop_td" style="width:25px;">
+                                        <div class="shop_td_tr" id="stree_51209"><a href='javascript:street(51209)'><img src="../images/mico/xico_bid1.gif" /></a></div>
+                    
+                                        <div class="shop_td_tr" id="propagandize_51209"> <a href="javascript:show_operation(51209,5,0)"> <img src="../images/mico/xico_lhxc1.gif" /></a> </div>
+                  </div>
+                  <div class="shop_td" style="width:35px;">
+                    <div class="shop_td_tr">
+                      <a href="javascript:show_operation('51209',7)">公关</a> </div>
+                                        <div class="shop_td_tr">
+                      <span id="promotion_51209" style="color:#c0c0c0" onmousemove="show_description('今明两日天气良好，无需开展促销活动。')" onmouseout="hide_description()">
+                      促销                      </span>
+                      <input name="hidden" type="hidden" id="today_51209" value="0"/>
+                      <input name="hidden" type="hidden" id="tomro_51209" value="0"/>
+                    </div>
+                  </div>
+                </div>
+                               <div class="shop" id="shop_51856">
+                  <div class="shop_td" style="width:44px;"><a href='javascript:show_shop(51856,"B-97-102  B区97大道102街1、2、4、5、7、8号","b","97","102")'><img src="../images/shop/34.gif" width="40" height="40" border="0" class="list_tu_color"/></a></div>
+                  <div class="shop_td" style="width:105px; padding-left:0px;">
+                    <div class="shop_td_tr"><a href='javascript:show_shop(51856,"B-97-102  B区97大道102街1、2、4、5、7、8号","b","97","102")'>
+                      B-97-102                      </a>
+                    </div>
+                    <div class="shop_td_tr">大型英语学校</div>
+                  </div>
+                  <div class="shop_td" style="width:40px;">
+                    <div class="shop_td_tr" id="pople_51856" style="overflow:hidden">
+                      6053                    </div>
+                    <div class="shop_td" id="shop_head_51856">
+                                            <a href='javascript:show_staff(750428)'><img src="../images/mico/xico_zg1.gif" width="14" height="14" /></a>
+                                          </div>
+                  </div>
+                  <div class="shop_td" style="width:50px;">
+                    <div class="shop_td_tr">
+                                            <div id="element_level_bar" style="width:100%">
+                      <div class="level_bar"  id="level_bar_51856"  onmousemove="show_description('店铺当前为5级。')" onmouseout="hide_description()">
+                        <div style="background:url(../images/scale_red.gif);"></div><div style="background:url(../images/scale_red.gif);"></div><div style="background:url(../images/scale_red.gif);"></div><div style="background:url(../images/scale_red.gif);"></div><div style="background:url(../images/scale_red.gif);"></div>                      </div></div>
+                    </div>
+                    <div class="shop_td_tr" id="morale_51856">
+                      <div class="percent_bar" onclick="show_operation(51856,1)"  onmousemove="show_description('当前士气：1000/1000<br>点击查看增加士气的方法。')" onmouseout="hide_description()">
+                        <div style="background-position:-0px;">
+                          1000                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="shop_td" style="width:50px;">
+                    <div class="shop_td_tr" id="quality_51856">
+                      <div id="element_quality_bar" class="percent_bar" onclick="show_operation(51856,2)" onmousemove="show_description('当前服务品质：834/1000<br>点击查看增加服务品质的方法。')" onmouseout="hide_description()">
+                        <div style="background-position:-7.304px; background-image:url(../images/scale_Purple44.gif);">
+                          834                        </div>
+                      </div>
+                    </div>
+                    <div class="shop_td_tr" id="famous_51856">
+                      <div class="percent_bar" onclick="show_operation(51856,3)" onmousemove="show_description('当前认知：924/1000<br>点击查看增加认知的方法。')" onmouseout="hide_description()">
+                        <div style="background-position:-3.344px; background-image:url(../images/scale_yellow44.gif);">
+                          924                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="shop_td" style="width:57px;">
+                    <div class="shop_td_tr" style="overflow:hidden"><a href="javascript:show_add(51856)" onmousemove="show_description('店铺当前收入加成情况，点击后查看具体的收入加成。')" onmouseout="hide_description()" id="shop_add_51856">
+                      <span id="span_shop_add51856">930.1</span>%</a></div>
+                    <div class="shop_td_tr"> <a href="javascript:show_operation(51856,4)" 
+                    onmousemove="show_description('店铺当前员工数，点击后对店员进行管理。');" onmouseout="hide_description();">
+                      <div id="element2" style=" cursor:pointer; width:70%"><span id="tips_staff_count">12/12</span></div>
+                    </a> </div>
+                  </div>
+                  <div class="shop_td" style="width:55px;">
+                    <div class="shop_td_tr"><a href="javascript:check_compete(51856)" style="color:gray" class="link_up_green" id="compete_51856" >
+                      100%</a></div>
+                    <div class="shop_td_tr" onmousemove="show_description('调整店铺当前价格指数，以求获得更高的收入。');" onmouseout="hide_description();"><a href="javascript:adjust_price(51856)">
+                                            <img src="../images/xico_3.gif" /></a>
+                      <a style="color:gray" href="javascript:adjust_price(51856)" class="link_up_green" id ="price_51856">+50%                    </a> 
+                    
+                    </div>
+                  </div>
+                  <div class="shop_td" style="width:120px;">
+                    <div class="shop_td_tr" style="overflow:hidden"><a href="javascript:day_earn(51856)"  
+                    onmousemove="show_description('店铺当日的营业收入，点击后查看店铺的收入分析图。')" onmouseout="hide_description()">
+                      264,017                    </a></div>
+                    <div class="shop_td_tr" id="stock_51856" onmousemove="show_description('当前库存17006/18000，今日已消耗559件。')" onmouseout="hide_description()">
+                                                    <a href="javascript:div_page('shop_purchase.php?id=51856', 'B-97-102英语学校 采购',580, 390);"><img src="../images/xico_4.gif" width="12" height="12" /> 17006件 约31天</a>
+                                            </div>
+                  </div>
+                  <div class="shop_td" style="width:30px;">
+                                        <div class="shop_td_tr" id="go_businnes_51856">
+                      <img src="../images/mico/xico_qsy1_2.gif" onclick="grab_business(51856)" onmousemove="show_description('可以招揽其它同类型店铺顾客，增加店铺收入，点击抢生意。')" onmouseout="hide_description()" style="cursor:pointer;" />
+                    </div>
+                                        <div class="shop_td_tr" id="out_businnes_51856">
+                      <img src="../images/mico/xico_qsy2_2.gif" onmousemove="show_description('店铺没有受到影响。')" onmouseout="hide_description()" onclick=""  />
+                    </div>
+                  </div>
+                  <div class="shop_td" style="width:25px;">
+                                        <div class="shop_td_tr" id="stree_51856"><a href='javascript:street(51856)'><img src="../images/mico/xico_bid1.gif" /></a></div>
+                    
+                                        <div class="shop_td_tr" id="propagandize_51856"> <a href="javascript:show_operation(51856,5,0)"> <img src="../images/mico/xico_lhxc3.gif" /></a> </div>
+                  </div>
+                  <div class="shop_td" style="width:35px;">
+                    <div class="shop_td_tr">
+                      <a href="javascript:show_operation('51856',7)">公关</a> </div>
+                                        <div class="shop_td_tr">
+                      <span id="promotion_51856" style="color:#c0c0c0" onmousemove="show_description('今明两日天气良好，无需开展促销活动。')" onmouseout="hide_description()">
+                      促销                      </span>
+                      <input name="hidden" type="hidden" id="today_51856" value="0"/>
+                      <input name="hidden" type="hidden" id="tomro_51856" value="0"/>
+                    </div>
+                  </div>
+                </div>
+                <div style="padding-left:5px;width:300px; margin-top:5px;">
+						 <div class="page_links">
+</div>
+                    </div>
+				                   </div>                </td>
+              </tr>
+              <tr>
+                <td height="35" valign="top" class="list_page">
+                <table width="731">
+                	<tr>
+                   	  <td width="85" style="padding-top:5px;">
+                                        		    <input type="button" class="button_f4" value="批量操作" onclick="div_page('shop_batch_operate.php','店铺批量操作',600,400);"/>
+                                           	  </td>
+                     <!--<td style="padding-top:5px;">
+                      	<input name="btn" type="button" class="button_f4" value="批量采购" onclick="all_purchases()" style="margin-bottom:2px;" />
+                          </td>
+                      -->
+              <td width="90" style="padding-top:5px;">
+                              <input name="btn" type="button" class="button_f2" value="开店" onclick="go_map()" style="margin-bottom:2px;" />
+			                </td>
+              <td width="280" style="padding-top:5px;">
+                <input type="button" value="更新竞争力" class="button_f5" onclick="update_population()" />
+                <input type="button" value="更新服务品质" class="button_f6" onclick="update_quality_all()" />
+              </td>
+           <td align="right" style="padding-right:10px;padding-top:5px;">
+           						                                B区收入累计：517,624 G  </td>
+                 </tr>
+                </table>                </td>
+              </tr>
+            </table>
+      </td></tr> 
+    </table>
+    </td>
+  </tr>
+</table>
+</body>
+</html>
+<script>
+function buy_item(type){
+	if(type == 'buy'){
+		div_page('../mall/item_inner.php?id=240','购买道具', 580, 400);
+	}
+	else if(type == 'use'){
+		var r = sendPost("../company/ajax_use_glucose.php", "t=1");
+		if (r == "1") {
+			ralert("董事长：<br><br>您服用了一罐葡萄糖，恢复了10点体力值。", "确定");
+		}
+		window.top.update_index();
+	}
+}
+	var shop_list=new Array();
+								 shop_list['51209']=new Array();
+						
+											shop_list['51209']['id']='51209';
+						
+											shop_list['51209']['type']='34';
+						
+											shop_list['51209']['scale']='3';
+						
+											shop_list['51209']['level']='4';
+						
+											shop_list['51209']['quality']='900';
+						
+											shop_list['51209']['morale']='1000';
+						
+											shop_list['51209']['famous']='938';
+						
+											shop_list['51209']['price_index']='50';
+						
+											shop_list['51209']['inventory']='1254395.000';
+						
+											shop_list['51209']['count_staff']='12';
+						
+											shop_list['51209']['add']='808.1';
+						
+											shop_list['51209']['earn_day']='253607';
+						
+											shop_list['51209']['compete']='100';
+						
+											shop_list['51209']['pople']='5828';
+						
+												 shop_list['51856']=new Array();
+						
+											shop_list['51856']['id']='51856';
+						
+											shop_list['51856']['type']='34';
+						
+											shop_list['51856']['scale']='3';
+						
+											shop_list['51856']['level']='5';
+						
+											shop_list['51856']['quality']='834';
+						
+											shop_list['51856']['morale']='1000';
+						
+											shop_list['51856']['famous']='924';
+						
+											shop_list['51856']['price_index']='50';
+						
+											shop_list['51856']['inventory']='1700565.000';
+						
+											shop_list['51856']['count_staff']='12';
+						
+											shop_list['51856']['add']='810.1';
+						
+											shop_list['51856']['earn_day']='264017';
+						
+											shop_list['51856']['compete']='100';
+						
+											shop_list['51856']['pople']='6053';
+						
+					
+	/*显视加成页面的方法 sid:店铺ID*/
+	function show_add(sid){
+		if(parseInt(sid)<1){
+			return;
+		}
+		div_page1('shop_add.php?shop_id='+sid, '店铺加成');
+	}
+	
+	
+	<!--店铺开会--->
+	function get_meetting(sid1){
+		div_page1(url, '调配员工');
+	}
+	
+	<!--跑去抢生意--->
+	function grab_business(sid){
+		div_page1('business_shop_list.php?shop_id='+sid, '抢生意');
+	}
+	<!--抢到那些生意--->
+	function show_grab_business(sid){
+		div_page1('business_shop_list.php?shop_id='+sid, '抢生意');
+	}
+	
+	<!--被抢那些生意--->
+	function grab_out(sid){
+		div_page1('business_out.php?shop_id='+sid, '店铺生意被抢导致收入减少');
+	}
+	
+	<!--显视窗体--->
+	function show_operation(sid,type,state){
+			var title="";
+			var width=665;
+			var height=420;
+			switch(parseInt(type)){
+			   case 1://士气
+			   		title= "提升店铺士气";
+			   		break;
+			   case 2://服务
+			   		title= "提升店铺服务品质";
+				    break;
+			   case 3://认知
+			   		title= "提升店铺认知";
+			   		break;
+			   case 4://员工
+			   		title= "店铺员工管理";
+			   		break;
+			   case 5://街道宣传
+			   		title= "店铺宣传";
+			   		break;
+			   case 6://开会
+			   		title= "开会";
+			   		break;
+			   case 7://公关
+			  	    title= "公关";
+					// width=665;
+					// height=420;
+				    break;
+			   case 8://公关
+			   		break;
+			}
+			if(parseInt(state)<1){
+				state=0;
+			}
+			if(parseInt(state)==2){
+				div_page('shop_list_show.php?shop_id='+sid+'&type='+type+'&state='+state+'&times='+Math.round((Math.random()*10000),8),title,665,420);
+			}
+			else{
+					div_page('shop_list_show.php?shop_id='+sid+'&type='+type+'&state='+state+'&times='+Math.round((Math.random()*10000),8),title,width,height); //760,500  650,427		
+			}
+	}
+	
+	<!--显视店铺信息-->
+	function show_shop(sid,title,area,row,col){
+		var titles='<a href="javascript:map(\''+area+'\','+row+','+col+')">'+title+'</a>';
+		div_page('inner-shop_info2.php?shop_id='+sid,titles,680,440);
+	}
+	
+	<!--显视员工信息-->
+	function show_staff(staff_id){
+		
+		div_page('../company/staff_info-2.php?staff_id='+staff_id,'员工信息',600,400);
+	}
+	
+	<!--调配主管的信息-->
+	function adjust_moniter(shop_id){
+		div_page1('../company/inner-adjust_moniter.php?shop_id='+shop_id+'&n='+Math.random(),'主管任命');
+	}
+	
+	<!--跳转到地图的页面-->
+	function map(area,row,col){
+		window.location.href="../map/area.php?area="+area+"&row="+row+"&col="+col;	
+	}
+	
+	<!--街道竞标-->
+	function street(shop_id){
+		div_page('../enterprise/shop_tender.php?shop_id='+shop_id,'街道冠名',600,330);
+	}
+	
+	<!--调整价格-->
+	function adjust_price(shop_id){
+		div_page('../enterprise/shop_set_price.php?shop_id='+shop_id,'调整价格',400,170);
+	}
+	
+	<!--收入分析图-->
+	function day_earn(shop_id){
+		div_page1('../enterprise/inner-shop-earn.php?shop_id='+shop_id,'收入分析');
+	}
+	
+	<!--批量采购-->
+	 function all_purchases(){
+		window.location.href="./shop_purchase_batch_select.php";
+	}
+
+	<!--一般用来显视-->
+	function divLayer(url ,title){
+		if(!title){
+			title = "查看进程";
+		}
+		div_page(url, title,580,370);
+	}
+	
+	<!--子窗体调用这个方法-->
+	function extcute(url ,title , hight, width){
+		div_page(url, title, hight, width);
+	}
+	
+	<!--更新主管(图片)-->
+	/*
+		如果想去到主管，staff_id传一个负数或0。。
+		如果想加上主管，staff_id传一个有用的正数。
+	*/
+	function update_head_shop_staff(shop_id,staff_id){
+		if(parseInt(staff_id)<1){
+			var msg="<a href='javascript:adjust_moniter("+shop_id+")'><img src='../images/mico/xico_zg2.gif' width='14' height='14' /></a>";
+			document.getElementById('shop_head_'+shop_id).innerHTML=msg;
+		}
+		else{
+			var msg="<a href='javascript:show_staff("+staff_id+")'><img src='../images/mico/xico_zg1.gif' width='14' height='14' /></a>";
+			document.getElementById('shop_head_'+shop_id).innerHTML=msg;
+		}
+	}
+	
+	<!--显视竞争力-->
+	function check_compete(shop_id){
+		div_page1('../enterprise/inner-shop-3_div.php?shop_id='+shop_id+'&menuSub=2','竞争影响');
+	}
+	
+	<!--巡视与开会显视进程-->
+	function show_progress_1(id,v) {
+		if(parseInt(v)==23){
+			var msg= "巡视";
+		}
+		else{
+			var msg= "开会";	
+		}
+		//ralert("董事长：<br><br>您正在00012音乐学校"+msg+"中......","确定","","查看进程","js:show_progress_2("+id+",'"+msg+"')");
+		show_progress_2(id,msg);
+	}
+	function show_progress_2(p_id,msg){
+		
+		div_page('../progress_inner.php?pid='+p_id+'&n='+Math.round(Math.random()*1000,5),msg,580,370);
+		
+	}
+	
+	<!--价格调整-->
+	/*
+		参数一:店铺ID
+		参数二:价格指数值
+		参数三:竞争力的值
+	*/
+	function adjust_this_price(shop_id,values,compete){
+		var this_price=document.getElementById('price_'+shop_id);//价格指数 值 
+		var this_compete=document.getElementById('compete_'+shop_id);//竞争力的值
+		if(!(values)){
+			this_price=0;
+		}
+		if(!(compete)){
+			this_compete=0;
+		}
+		var classnames=parseInt(values)<0?'link_up_green':(parseInt(values)>0?'link_down_red':'');
+		if(parseInt(values)==0){
+				this_price.innerHTML= "正常";
+		}
+		else if(parseInt(values)>0){
+			this_price.innerHTML="+"+values+"%";
+		}
+		else{
+			this_price.innerHTML=values+"%";
+		}
+		shop_list[shop_id]['price_index']=values;
+		shop_list[shop_id]['compete']=compete;
+		this_price.className=classnames;
+		this_compete.innerHTML=compete+"%";
+	}
+	
+	<!--抢生意的-->
+	//抢别人的
+	function update_businnes_in(sid, p_num) {
+		var obj = document.getElementById("go_businnes_" + sid);
+		if (obj == null) {
+			return;
+		}
+		if (p_num > 0) {
+			obj.innerHTML = '<img src="../images/mico/xico_qsy1.gif" onclick="show_grab_business('+sid+')" onmousemove="show_description(\'正在招揽顾客，店铺收入大大提升，点击可查看详情。\')" onmouseout="hide_description()" style="cursor:pointer;" />';
+		}
+		else {
+			obj.innerHTML = '<img src="../images/mico/xico_qsy1_2.gif" onclick="grab_business('+sid+')" onmousemove="show_description(\'可以招揽其它同类型店铺顾客，增加店铺收入，点击抢生意。\')" onmouseout="hide_description()" style="cursor:pointer;" />';
+		}
+	}
+	//被抢的
+	function update_businnes_out(sid, sid1){
+		var obj = document.getElementById('out_businnes_' + sid);
+		if (obj == null) {
+			return;
+		}
+		if (sid1 > 0) {
+			obj.innerHTML = '<img src="../images/mico/xico_qsy2.gif" onclick="grab_out('+sid+')" onmousemove="show_description(\'店铺生意遭到抢夺，收入减少。点击驱逐对方员工。\')" onmouseout="hide_description()" style="cursor:pointer;" />';
+		}
+		else {
+			obj.innerHTML = '<img src="../images/mico/xico_qsy2_2.gif" onmousemove="show_description(\'店铺没有受到影响。\')" onmouseout="hide_description()" />';
+		}
+	}
+	
+	
+	<!--更新人流-->
+	function update_pople(sid,polpe){
+		var obj=document.getElementById("pople_"+sid);
+		if(!(obj)){
+			return;
+		}
+		if(parseInt(polpe)>0){
+			var add_pople=polpe;
+		}
+		else{
+			var add_pople=0;
+		}
+		shop_list[sid]['pople']=polpe;
+		obj.innerHTML=add_pople;
+	}
+	<!--shop_buy配用采购的页面-->
+	function shop_buy(sid){
+		div_page('../enterprise/inner-shop_purchase.php?id='+sid+'&return=shop.php','店铺采购',604,380);
+	}
+	<!--采购成功返馈执行-->
+	function purchaseReturn(url){//alert();
+		div_page_close();//alert();
+		div_page(url, "店铺采购",580,370); 
+	}
+	<!--查看采购中的数据-->
+	function go_purchase(pid){
+		var url="../progress_inner.php?parent=update&pid="+pid;
+		 purchaseReturn(url);
+	}
+	<!--促销-->
+	function chuXiao(sid){
+		div_page('promotions_inner.php?sid='+sid,'促销',420,190);
+	}
+	<!--促销更新-->
+	function update_chuxiao(sid,state,day_num){
+			
+			var obj1="";
+			if(parseInt(state)<1){//更新一家
+				var obj=document.getElementById('promotion_'+sid);
+				if(!(obj)){
+					return;	
+				}
+				obj.innerHTML= "促销";
+				obj.style.color="#33AA55";
+				obj.onmousemove=function (){
+					show_description('店铺正在举办促销活动。')	;
+				}
+			    obj.onmouseout=function (){
+					hide_description();
+			    }
+			}
+			else{
+				for(var obj in shop_list){
+					obj1=document.getElementById('promotion_'+obj);
+					if(obj1){
+						obj1.innerHTML= "促销";
+						obj1.style.color="#33AA55";
+						obj1.onmousemove=function (){
+							show_description('店铺正在举办促销活动。')	;
+						}
+						obj1.onmouseout=function (){
+							hide_description();
+						}
+					}
+				}
+			}
+				
+	}
+	<!--街道竞标更新-->
+	function update_street(sid,type){
+		var obj=document.getElementById('stree_'+sid);
+		if(!(obj)){
+			return;	
+		}
+		var images='';
+		switch(parseInt(type)){
+			case 2:
+				images='xico_bid2.gif';
+				break;
+			case 3:
+				images='xico_bid3.gif';
+				break;
+			case 4:
+				images='xico_bid4.gif';
+				break;
+			default:
+				images='xico_bid1.gif';
+				//type=1
+				break;
+		}
+		if(images){
+			obj.innerHTML='<a href="javascript:street('+sid+')"><img src="../images/mico/'+images+'" /></a>'
+		}
+	}
+	<!--店铺巡视-->
+	function get_patrol(sid,return_type){
+		if(parseInt(sid)<1){
+			return;
+		}
+		var values = "?shops=" + sid +"&shop_list_state=1&return_type="+parseInt(return_type);
+		
+		var r=sendPost('../company/inspection_ajax.php'+values+'&n='+Math.round(Math.random()*1000,5));
+		
+
+		if (isNaN(r)) {
+		var a = r.split("|||");
+			if (a[2]) {
+				div_page_close();
+				ralert(a[1],"确定","","查看","js:show_div("+a[2]+",'巡视中...')");
+			}
+			else {
+				ralert(a[1], "确定");
+			}
+		}
+		else {
+			
+			show_div(r,"巡视中...");
+		}
+		
+	}
+	
+	function show_div(pid,title){
+		div_page(' ../progress_inner.php?pid='+pid,title,580,370);
+	}
+	<!--商会宣传更新-->
+	function update_propagandize(sid,state){
+		var obj=document.getElementById('propagandize_'+sid);
+		if(!(obj)){
+			return;	
+		}
+		var type=0;
+		var images="xico_lhxc1.gif";
+		switch(parseInt(state)){
+			case 1:
+			    images="xico_lhxc4.gif";
+				type=1;
+				break;
+			case 2:
+				images="xico_lhxc2.gif";
+				type=1;
+				break;
+			case 3:
+				images="xico_lhxc5.gif";
+				type=1;
+				break;
+			case 4:
+				images="xico_lhxc3.gif";
+				break;
+			default:
+				images="xico_lhxc1.gif";
+				break;
+		}
+		obj.innerHTML='<a href="javascript:show_operation('+sid+',5,'+type+')"><img src="../images/mico/'+images+'" /></a>';
+	}
+	<!--更新店铺巡视与开会的(进行中的更新)-->
+	function  update_getmeeting(sid,state,pid){
+			if(parseInt(sid)<1){
+				return;	
+			}
+			var patrol='';
+			var meetting='';
+			if(pid){
+				var ss=pid.split("|||");
+				if(parseInt(ss[2])>0){
+					pid=ss[2];	
+				}
+			}
+			if(parseInt(pid)<1){
+				pid=sendPost("check_shop_pepole.php","ajax=seled_pid&sid="+sid);
+				if(pid){
+					pid=pid.substr(3,pid.length);
+				}
+			}
+			if(parseInt(pid)<1){
+				return;	
+			}
+			for(var obj in shop_list){
+				patrol=document.getElementById('patrol_'+obj);//巡视的
+				meetting=document.getElementById('meetting_'+obj);//开会的
+				if(patrol&&meetting){
+					if(parseInt(sid)==parseInt(obj)){//这个店铺正在进行中
+						if(parseInt(state)==23){//这个店铺正在巡视中
+							meetting.style.color="#c0c0c0";
+							meetting.innerHTML= "开会";
+							patrol.style.color="";
+							patrol.innerHTML="<a href='javascript:show_progress_1("+pid+",23)' class='link_up_green'>巡视中</a>";
+						}
+						else{//这个店铺正在开会中
+							patrol.style.color="#c0c0c0";
+							patrol.innerHTML= "巡视";
+							meetting.style.color="";
+							meetting.innerHTML="<a href='javascript:show_progress_1("+pid+",6)' class='link_up_green'>开会中</a>";
+						}
+					}
+					else{
+						patrol.style.color="#c0c0c0";
+						patrol.innerHTML= "巡视";
+						meetting.style.color="#c0c0c0";
+						meetting.innerHTML= "开会";
+					}
+				}
+			}		
+	}
+	<!--更新店铺巡视与开会的(完成后的更新)-->
+	function  update_getmeeting_finish(){
+			var patrol='';
+			var meetting='';
+			for(var obj in shop_list){
+				patrol=document.getElementById('patrol_'+obj);//巡视的
+				meetting=document.getElementById('meetting_'+obj);//开会的
+				if(patrol && meetting){
+					meetting.style.color="";
+					meetting.innerHTML='<a href="javascript:show_operation('+obj+',6)">开会</a>';
+					patrol.style.color="";
+					patrol.innerHTML='<a href="javascript:get_patrol('+obj+')">巡视</a>';
+				}
+			}
+	}
+	<!--更新店铺等级-->
+	function update_level(sid,level,type){
+		div_page('inner-shop-8.php?shop_id='+sid,"升级店铺",580,370);
+		return;
+	}
+	<!--更新店铺的等级-->
+	
+	var shop_level_time=new Array();
+			shop_level_time[1]="0天";
+			shop_level_time[2]="6小时";
+			shop_level_time[3]="3天";
+			shop_level_time[4]="10天";
+			shop_level_time[5]="40天";
+		
+	function update_this_shop_level(sid,level){
+		var obj=document.getElementById('level_bar_'+sid);
+		var msg='';
+		if(obj){
+			if(parseInt(level)+1>=5){
+				obj.onclick="";	
+			}
+			for(var i=1;i<=5;i++){
+					if(i<=(parseInt(level)+1)){
+						msg='<div style="background:url(../images/scale_red.gif); overflow:hidden;"></div>'+msg;
+					}
+					else{
+						msg=msg+'<div></div>';
+					}
+			}
+			obj.innerHTML=msg;
+			if((parseInt(level)+1)>=5){
+				obj.onmousemove=function(){
+				
+				var shop_str1='店铺当前为{str}级。';	
+				shop_str1=shop_str1.replace('{str}',(parseInt(level)+1));
+						show_description(shop_str1)};
+						
+			}
+			else{	
+				obj.onmousemove=function(){
+				var shop_str='店铺当前为{str}级。升级还需要{str1}。<br>点击进行升级。';
+				shop_str=shop_str.replace('{str}',(parseInt(level)+1));
+				shop_str=shop_str.replace('{str1}',shop_level_time[(parseInt(level)+2)]);
+					//
+						show_description(shop_str)};
+						
+			}
+		}
+	}
+	<!--去地图上-->
+	function go_map(){
+		if('b'=='z'){
+			window.location.href="../club/club_area_list.php";
+			return;
+		}
+		window.location.href="../map/area.php?area=b&row=110&col=185";
+	}
+	<!--排序方法-->
+	function order_by(type,order){
+		window.location.href="/enterprise/shop.php?type="+type+"&order="+order+"&page=";
+	}
+	<!--本页提示-->
+	function show_msg(msg){
+			window.div_page_close();
+			window.ralert(msg,"确定","");	
+	}
+	
+	
+	<!--新手任务闪烁提示-->
+		
+		
+	//element_quality_bar
+		
+			
+	
+</script>

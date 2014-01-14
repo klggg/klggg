@@ -1,0 +1,438 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache,must-revalidate">
+<meta http-equiv="expires" content="0">
+<title>秘书提示</title>
+<script language="javascript" src="../lang/js/lang_js.js"></script>
+<link href="../css/css.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+<!--
+.tableright1 {color: #004E7B;
+	font-size:13px;
+	padding-right: 10px;
+	padding-left: 10px;
+	height:245px;
+	overflow-y: auto;
+}
+-->
+</style>
+</head>
+<script language="javascript" src="../js/common.js"></script>
+<script language="javascript" src="../js/ajax.js"></script>
+<script language="javascript" src="../js/ralert.js"></script>
+<script language="javascript" src="../js/div_page.js"></script>
+<script language="javascript">
+try {
+	window.attachEvent("onload", check_obj);
+}
+catch (e) {
+	window.addEventListener("load", check_obj, false);
+}
+function delete_daily(id) {
+	ralert("董事长：<br><br>您确定要删除这条事件提示吗？", "确定", "js:delete_daily2("+id+");", "取消");
+}
+function delete_daily2(id) {
+	sendPost("work_daily_delete.php", "id=" + id);
+	/* window.location.href = "/office/work_daily.php"; */
+	window.parent.location.href = window.parent.location.href.replace(/id=\d+&?/i, "");
+	window.parent.div_page_close();
+	
+}
+
+
+// =======同意或取消操作==========
+//----------同意-------------------
+var do_agree = function(param , fun)
+{
+	var msg = '董事长：<br/><br/>您确定要接受对方的购地请求？'
+	if(!fun){
+		fun = 'agree';
+		msg = $GLOBALS['lang_msg3']['10619f3bfd565fce91943d63f9b936020'];
+	}
+	ralert(msg,'确定','js:'+fun+'(\''+param+'\');','取消','');
+}
+// 同意投资请求
+function agree(param)
+{
+	var ret = sendGet('../map/ajax_agree_invest.php?do=agree&wid=3911081&key='+encodeURIComponent(param));
+	ralert(ret,'确定','js:del_dail();');
+}
+// 同意购地请求
+function land_agree(param)
+{
+	var ret = sendGet('../map/agree_sell_land.php?do=agree&wid=3911081&key='+encodeURIComponent(param));
+	window.top.update_ground_num();
+	window.top.update_company();
+	ralert(ret,'确定','js:del_dail();');
+}
+//-----------------------------------
+//----------取消-------------------
+var do_del = function(param , fun)
+{
+	var msg = '董事长：<br/><br/>您确定要拒绝对方的购地请求？';
+	if(!fun){
+		fun = 'del';
+		msg = '董事长：<br/><br/>您确定要拒绝此次的投资？';
+	}
+	ralert(msg,'确定','js:'+fun+'(\''+param+'\');','取消','');
+}
+// 取消投资请求
+function del(param)
+{
+	var ret = sendGet('../map/ajax_agree_invest.php?do=del&wid=3911081&key='+encodeURIComponent(param));
+	ralert(ret,'确定','js:del_dail();');
+}
+// 取消购地请求
+function land_del(param)
+{
+	var ret = sendGet('../map/agree_sell_land.php?do=cancel&wid=3911081&key='+encodeURIComponent(param));
+	ralert(ret,'确定','js:del_dail();');
+}
+
+function del_dail()
+{
+	window.parent.location.href = window.parent.location.href.replace(/id=\d+&?/i, "");
+}
+//-----------------------------------
+// =======END==========
+
+function go_shop(shop_id){
+	
+	var r = sendPost("/office/work_daily_read.php","shop_id="+shop_id);
+	var msg =r.split("|||");
+	
+	if(msg[0]=="ok"){
+		window.parent.location.href="../enterprise/shop-sigle-other.php?shop_id2="+shop_id+"&return=..%2Foffice%2Fwork_daily.php";	
+	}
+	else{
+		ralert(msg[1],"确定","");
+	}
+}
+function check_shop(shop_id,type){
+	var r = sendPost("/office/work_daily_read.php?rand="+Math.random(),"shop_id="+shop_id);
+	var msg =r.split("|||");
+	
+	if(msg[0]=="ok"){
+		if(parseInt(type)==1){
+		 if(window.parent){
+			window.parent.location.href="../enterprise/shop-sigle-other.php?shop_id2="+shop_id+"&return=..%2Foffice%2Fwork_daily.php";	
+		 }
+		 else{
+			window.location.href="../enterprise/shop-sigle-other.php?shop_id2="+shop_id+"&return=..%2Foffice%2Fwork_daily.php";	 
+			}
+		}
+		else if(parseInt(type)==2){
+			 if(window.parent){
+				window.parent.location.href="../enterprise/shop_business_list_out.php?shop_id="+shop_id;
+			 }
+			 else{
+				window.location.href="../enterprise/shop_business_list_out.php?shop_id="+shop_id;	 
+			}
+		}
+	}
+	else{
+		ralert(msg[1],"确定","");
+	}
+}
+function agree_cancel(id,name)
+{
+	var r = sendPost('../enterprise/shop-sigle-other-13.php?uid='+id);
+	if(r == 'true')
+	{
+		ralert('董事长：<br/><br/>我们与'+name+'取消了敌对，今后不再是商场上的仇敌，甚至还有机会开展商业上的合作。','确定','');	
+	}else{
+		ralert('董事长：<br/><br/>我们与'+name+'已经不是敌对的关系。','确定');	
+	}
+}
+
+function update_sth(datas){
+	div_page_close();	
+}
+
+function child_ralert(msg){
+	div_page_close();
+	ralert(msg,'确定');
+}
+function check_obj(){
+	var obj=window.parent.document.getElementById("3911081");
+	if(obj){//更新父窗体的图片(是在index.php的那五条数据)
+		if(obj.innerHTML)
+ 			obj.innerHTML="";
+	}
+	var show_obj=window.parent.document.getElementById("show_3911081");//这是秘书提示页面的的更新
+	if(show_obj){
+		if(show_obj.innerHTML!="是"){
+			show_obj.innerHTML="是";
+		}
+	}
+}
+
+function street_promote(act_id, rec_id, shop_id)
+{
+	parent.div_page_title('店铺宣传');
+	window.location.href = '../enterprise/inner-agree_send_staff.php?act_id='+act_id+'&rec_id='+rec_id+'&shop_id='+shop_id;
+}
+
+function ajax_send(aurl,val){
+	if(typeof(val)=='undefined'){
+		val = 'daily_id=3911081';	
+	}else{
+		val +='&daily_id=3911081';	
+	}
+	r  = sendPost(aurl,val);
+	r = r.split('|||');
+	if(r[0]=='1'){
+		ralert(r[1],'确定','js:del_dail();');
+		window.top.update_company();
+	}else if(r[0]=='0'){
+		ralert(r[1],'确定');	
+	}else if(r[0]=='2'){
+		window.parent.div_close_func = function(){ 
+			window.parent.location.reload();	
+		}
+		ralert(r[1],'确定','js:del_dail();');
+		window.top.update_company();
+	}else if( !isNaN(parseInt(r[0])) ){
+		ralert(r[1],'确定');	
+	}
+	
+}
+
+var get_fund = function(cid , type , area , name , uid)
+{
+	var ret = sendPost('../official/ajax_get_fund.php' , 'wid=3911081&cid='+cid+'&type='+type+'&area='+area+'&name='+name+'&uid='+uid);
+	var r_arr = ret.split('|||');
+	//alert(ret);return;
+	if(parseInt(r_arr[0]) ==1){
+		ralert(r_arr[1] , '去投票' , "js:go_vote('"+type+"', '"+area+"', "+uid+")",'取消','js:del_dail();');
+		window.top.update_income();
+	}else{
+		ralert(r_arr[1], '确定' , 'js:del_dail();');
+	}
+}
+
+var go_vote = function (type , area , uid)
+{
+	window.parent.div_page1("../official/inner-hall_vote.php?type="+type+"&area="+area+"&who="+uid, '投票');
+}
+
+
+function page_open(id ,title)
+{
+	window.parent.div_page('../enterprise/inner-shop_info2.php?shop_id='+id, title, 680, 430);
+}
+
+function page_turn(url,title)
+{
+	var ret = true;
+	if(ret)
+	{
+		parent.div_page_title(title);
+		window.location.href = url;
+	}
+	else
+	{
+		ralert("董事长：<br><br>这家店铺已经关门停业，您无法查看店铺的情况。",'确定','');	
+	}
+}
+
+
+function check_club(user){
+	var r=sendPost("/office/work_daily_read.php","ajax=check_club&user_id="+user);
+	var msg=r.split("|||");
+	if(msg[0]=="ok"){
+		window.parent.location.href="../club/club-my-6.php";	
+	}
+	else if(msg[0]=="no1"){
+		ralert('董事长：<br><br>您已经不再是商会的会长了，无法对'+msg[1]+'的入会申请进行批复。','确定','');	
+		return;
+	}
+	else {
+		ralert('董事长：<br><br>'+msg[1]+'已经取消了入会的申请，您无法将他纳为商会的一员。','确定','');	
+		return;
+	}
+	
+}
+
+function check_club_user(){
+	var r=sendPost("/office/work_daily_read.php","ajax=check_club_user");
+	var msg=r.split("|||");
+	if(parseInt(msg)>0){
+		window.parent.location.href="../club/club_wait_user_list.php";
+	}
+	else{
+		
+		ralert("董事长：<br><br>您已不是该商会的会长或会长任命的副会长，无法执行审批操作。","确定","");
+		return;
+	}
+}
+
+//是否同意添加为好友
+function MakeFriend(id,type){
+	if(id==''){
+		return;
+	}
+	
+	if(type==1){
+		var r = sendPost("../relation/relation.ajax.php","action=firend_agree&daily_id=3911081&id="+id);
+	}else{
+		var r = sendPost("../relation/relation.ajax.php","action=firend_refuse&daily_id=3911081&id="+id);
+	}
+	
+	// alert(r);
+	// return;
+	var r_arr=r.split('|||');
+	
+	if(r_arr[0]==1){
+		ralert(r_arr[1],"确定",'js:del_dail();');
+	}else{
+		ralert(r_arr[1],"确定",'js:del_dail();');
+	}
+	
+}
+
+//是否同意收徒
+function Accept_apprentice(id,type){
+	if(id==''){
+		return;
+	}
+	
+	if(type==1){
+		var r = sendPost("../relation/relation.ajax.php","action=master_agree&daily_id=3911081&id="+id);
+	}else{
+		var r = sendPost("../relation/relation.ajax.php","action=master_refuse&daily_id=3911081&id="+id);
+	}
+	
+	var r_arr=r.split('|||');
+	
+	if(r_arr[0]==1){
+		ralert(r_arr[1],"确定",'js:del_dail();');
+	}else{
+		ralert(r_arr[1],"确定",'js:del_dail();');
+	}
+	
+}
+
+//是否同意合作
+function Accept_cooperate(id,type){
+	if(id==''){ return;}
+	
+	if(type==1){
+		var r = sendPost("../relation/relation.ajax.php","action=cooperate_agree&daily_id=3911081&id="+id);
+	}else{
+		var r = sendPost("../relation/relation.ajax.php","action=cooperate_refuse&daily_id=3911081&id="+id);
+	}
+	
+	// alert(r);
+	// return;
+	var r_arr=r.split('|||');
+	
+	if(r_arr[0]==1){
+		ralert(r_arr[1],"确定",'js:del_dail();');
+	}else{
+		ralert(r_arr[1],"确定",'js:del_dail();');
+	}
+	
+}
+//是否同意解除敌对关系
+function Accept_enemy(id,type){
+	if(id==''){ return;}
+	
+	if(type==1){
+		var r = sendPost("../relation/relation.ajax.php","action=enemy_agree&daily_id=3911081&id="+id);
+	}else{
+		var r = sendPost("../relation/relation.ajax.php","action=enemy_refuse&daily_id=3911081&id="+id);
+	}
+	var r_arr=r.split('|||');
+	
+	if(r_arr[0]==1){
+		ralert(r_arr[1],"确定",'js:del_dail();');
+	}else{
+		ralert(r_arr[1],"确定",'js:del_dail();');
+	}
+}
+
+var is_cancel_neg = 0;
+
+//拒绝商会求援
+function cancel_neg(uid,nrid){
+	var r = sendPost("../negotiate/negotiate_receive.php","wid=3911081&cancel_neg_club=cancel_neg_club&uid="+uid+"&nrid="+nrid);
+	var r_arr=r.split('|||');
+	if(r_arr[0]==1){
+		is_cancel_neg = 1;
+		ralert(r_arr[1],"确定","js:del_dail();");
+	}else{
+		is_cancel_neg = r_arr[0];
+		ralert(r_arr[1],"确定");
+	}
+}
+
+function jieshou_neg(nrid,huid){
+	if(is_cancel_neg == 1){
+		ralert("董事长：<br><br>您已经拒绝了对方的商会求援，不能在接受对方的商会求援。","确定","js:del_dail();");
+	}else if(is_cancel_neg == 2){
+		ralert("董事长：<br><br>您与对方已经不在同一个商会里，您不能接受对方的商会求援。","确定","js:del_dail();");
+	}else{
+		window.parent.location.href="../negotiate/negotiate.php?type=2&wid=3911081&nrid="+nrid+"&huid="+huid;
+	}
+}
+</script>
+<base target="main_iframe">
+<body style="background:#B9E5FF;">
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td  bgcolor="#B9E5FF" height="10">
+	
+	</td>
+	</tr>
+  <tr>
+    <td valign="top">
+	<table width="100%" border="0" cellpadding="0" cellspacing="0" class="list_table">
+      <tr>
+        <td  valign="top">
+		<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+            <tr>
+              <td height="50" align="center" class="msbt">店铺宣传邀请</td>
+            </tr>
+            <tr>
+              <td height="2" background="../images/line2.gif"></td>
+            </tr>
+            <tr>
+              <td valign="top" >
+                  <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+				  	<tr>
+                      <td height="20" align="center"><span class="text_lb3" style="padding-right:10px;">
+                        2011-04-27</span></td>
+                      </tr>
+                    <tr>
+                      <td height="10">&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td class="text_lb3"><div class="tableright1"><div class="daily_content">
+                          董事长：<br/><br/><b>东北半球</b>公司董事长<font color=#FF0000 ><a href="../enterprise/shop-sigle-other.php?uid=252987">春和景明</a></font>发起了店铺联合街道宣传活动，并邀请我们公司旗下的<b>D-119-80</b>店铺参加。<br/><br/>如果您决定参加该活动，请尽快指派员工。<a href="javascript:;" onclick="street_promote(1,14516,53398);">点击这里参加活动</a>！ 活动举办成功的话，店铺会获得<b>30％</b>的收入加成。</div>
+                      </div></td>
+                    </tr>
+                  </table>
+              </td>
+            </tr>
+        </table></td>
+      </tr>
+    </table>
+	</td>
+  </tr>
+  <tr>
+    <td valign="bottom" bgcolor="#B9E5FF" height="30">              <input name="button" type="button" class="button_f3" onclick="window.location='/office/work_daily_read.php?id=3911088'" value="上一条" />
+              <input name="button2" type="button" class="button_f3b" onclick="" value="下一条" />
+              <input name="button2" type="button" class="button_f2" id="btn_del_msg" onclick="delete_daily(3911081)" value="删除" />
+				&nbsp;&nbsp;
+                    <input name="button22" type="button" class="button_f2" onclick="window.parent.div_page_close();" value="关闭" /></td>
+  </tr>
+</table>
+</body>
+</html>
+<script language="javascript">
+window.top.update_secretary();
+</script>

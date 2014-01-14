@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>商业人生</title>
+<script language="javascript" src="../lang/js/lang_js.js"></script>
+<link href="../css/css.css" rel="stylesheet" type="text/css" />
+<script language="javascript" src="../js/ajax.js"></script>
+<script language="javascript" src="../js/ralert.js"></script>
+<script type="text/JavaScript">
+function parent_function(sid,state){
+	if(parseInt(state)==23){
+		if(window.parent.get_patrol){		
+				window.parent.get_patrol(sid,23);	
+		}
+	}
+}
+
+function location_go(urls,type,title,ajax){
+	
+	try{
+			window.top.clear_tips_div();
+	}catch(e){}	
+		
+	var url = urls+"&n="+Math.round(Math.random()*10000);
+	if(parseInt(ajax)>0){//开会时用的
+			var r=sendPost(url);	
+			var msg =r.split("|||");
+			if(parseInt(msg[0])<1 && msg[1]){
+				window.parent.show_msg(msg[1]);
+				return;
+			}
+			if(parseInt(msg[2])>0){
+				r=msg[2];
+			}
+			if(r){
+				if(window.parent.update_getmeeting){
+					window.parent.update_getmeeting(51856,6,r);	
+				}
+				if(window.parent.div_page){
+					window.parent.div_page('../progress_inner.php?pid='+r,titles,580,370);
+				}
+			}
+			else{
+				if(window.parent.div_page_close){
+					window.parent.div_page_close();
+				}
+			}
+			return;
+	}
+	if(parseInt(type)>0){
+		
+		if(parseInt(type)>=2){
+			if(parseInt(type)==2){
+				var titles=	"主管任命";
+				var width="420";
+				var height="680";
+			}
+			else{
+				var titles=	title;
+				var width="420";
+				var height="665";	
+			}
+			/*if(window.parent.extcute){
+				
+				window.parent.extcute(url,titles,height,width);	
+			}
+			*/
+			
+			window.location.href=url;
+		
+		}
+		else{
+			window.parent.location.href=url;
+		}
+		
+	}
+	else{
+		window.location.href=url;
+	}
+	
+}
+
+try{
+	document.addEventListener('DOMMouseScroll',wheel,false);           //ff
+	document.onmousewheel=wheel;     
+}catch(e){}
+	
+
+
+
+
+</script>
+<style type="text/css">
+
+.tableright1 {color: #004E7B;
+	font-size:13px;
+  border: 0px Solid #8BD4FF;
+	padding-top: 8px;
+	padding-bottom: 0px;
+	padding-right: 0px;
+	padding-left: 0px;
+	background-color:#;
+	width:100%;
+	height:350px;
+}
+
+
+</style>
+</head>
+<body style="background:#B9E5FF;">
+         <div id="div_content" style="overflow-y: auto;" class="tableright1">
+           <table width="96%" border="0" align="center" cellpadding="0" cellspacing="0">
+                         <tr>
+               <td width="13%" height="65" align="center"><img src="../images/hint/shop_street.jpg" width="50" height="50" border="0" class="list_tu_color2"/></td>
+               <td width="77%" ><a href="#" ></a>
+                   <table border="0" cellspacing="0" cellpadding="0">
+                     <tr>
+                       <td height="22" class="font-center_text">店铺联合街道宣传</td>
+                     </tr>
+                     <tr>
+                       <td>联合辐射区域内或者同商会数家店铺进行街道宣传，使店铺获得30%的收入加成。<br/>宣传成功后，发起人将有30%的几率获得金钥匙一把。
+</td>
+                     </tr>
+                 </table></td>
+               <td width="10%" class="list_word5"><input  name="Submit222" type="submit" class="button_f2" value="执行" onclick="location_go('../enterprise/inner-shop_invite_list.php?shop_id=51856&event_id=1','3','店铺宣传','0')" /></td>
+             </tr>
+                          <tr>
+               <td width="13%" height="65" align="center"><img src="../images/hint/shop_newspaper.jpg" width="50" height="50" border="0" class="list_tu_color2"/></td>
+               <td width="77%" ><a href="#" ></a>
+                   <table border="0" cellspacing="0" cellpadding="0">
+                     <tr>
+                       <td height="22" class="font-center_text">店铺联合报纸宣传</td>
+                     </tr>
+                     <tr>
+                       <td><a class="link_blue" href="javascript:location_go('inner-shop_promote_2.php?shop_id=51856',3,'店铺宣传')">收到1个邀请，点击处理邀请</a></td>
+                     </tr>
+                 </table></td>
+               <td width="10%" class="list_word5"><input  name="Submit222" type="submit" class="button_f2" value="执行" onclick="location_go('../enterprise/inner-shop_invite_list.php?shop_id=51856&event_id=2','3','店铺宣传','0')" /></td>
+             </tr>
+                          <tr>
+               <td width="13%" height="65" align="center"><img src="../images/hint/shop_tv.jpg" width="50" height="50" border="0" class="list_tu_color2"/></td>
+               <td width="77%" ><a href="#" ></a>
+                   <table border="0" cellspacing="0" cellpadding="0">
+                     <tr>
+                       <td height="22" class="font-center_text">店铺联合电视宣传</td>
+                     </tr>
+                     <tr>
+                       <td>联合辐射区域内或者同商会数家店铺进行街道宣传，使店铺获得100%的收入加成。<br/>宣传成功后，发起人将有100%的几率获得金钥匙一把。
+</td>
+                     </tr>
+                 </table></td>
+               <td width="10%" class="list_word5"><input  name="Submit222" type="submit" class="button_f2" value="执行" onclick="location_go('../enterprise/inner-shop_invite_list.php?shop_id=51856&event_id=3','3','店铺宣传','0')" /></td>
+             </tr>
+                        </table>
+         </div>
+</body>
+</html>
+<script>
+
+
+
+
+//招兵买马
+
+//生财之道
+
+window.onmouseup=function (){
+	if(document.getElementById('div_content').scrollTop > 0){
+		try{
+			window.top.clear_tips_div();
+		}catch(e){}	
+	}
+}
+
+function wheel(){
+
+	if(document.getElementById('div_content').scrollTop > 0){
+		try{
+			window.top.clear_tips_div();
+		}catch(e){}	
+	}
+
+}
+
+</script>
+

@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- 物品系统界面配置文件 -->
+<config>
+    <!-- 仓库 -->
+    <depot>
+	    <displayObject view="item.depot"/>
+		<staticText property='{"x":30, "y":61, "size":14, "color":"0xE6E0D4", "stroke":"0x29241b", "bold":true}' textID="140201"/>
+		
+		<text name="spaceDes" property='{"x":153, "y":62, "color":"0xffcc66", "stroke":"0x29241b"}'/>
+		<text name="addSpaceCost" property='{"x":259, "y":62, "color":"0xffcc66", "stroke":"0x29241b"}'/>
+		
+		<button name="addSpace" style="button6" labelID="140203" property='{"x":305, "y":52}'/>
+		
+		<list property='{"x":32, "y":105}'>
+			<equipNameRender>
+				<button name="bg1" style="button9"/>
+				<button name="bg2" style="button18" property='{"visible":false}'/>
+				<text name="equipName" property='{"color":"0xE6E0D4", "x":5, "y":3, "width":95, "height":16, 
+				"align":"left", "stroke":"0x29241b"}'/>
+				<displayObject name="templeIcon" view="item.templeIcon" property='{"visible":false, "x":99, "y":4}'/>
+			</equipNameRender>
+		</list>
+		<page property='{"x":153, "y":386}'/>
+		
+		<itemSelected>
+		    <staticText property='{"x":421, "y":57, "size":14, "color":"0xE6E0D4", "stroke":"0x29241b", "bold":true, "mouseEnabled":false}' textID="140204"/>
+		    <staticText property='{"x":503, "y":107, "color":"0x9D7D4C", "stroke":"0x29241b", "mouseEnabled":false}' textID="140206"/>
+		    <staticText property='{"x":503, "y":127, "color":"0x9D7D4C", "stroke":"0x29241b", "mouseEnabled":false}' textID="140207"/>
+		    <staticText property='{"x":503, "y":166, "color":"0x9D7D4C", "stroke":"0x29241b", "mouseEnabled":false}' textID="140208"/>
+			
+		    <pic name="equipPic" property='{"x":424, "y":107}' frame="gameUI.picCover" frameProp='{"mouseEnabled":false}' picProp='{"x":3, "y":1}' />
+			
+			<text name="itemName" property='{"x":425, "y":88, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false, "bold":true}'/>
+			<text name="numDes" property='{"x":532, "y":88, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="lvDes" property='{"x":540, "y":107, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="major" property='{"x":540, "y":127, "color":"0xFF6565", "stroke":"0x29241b", "mouseEnabled":false, "leading":7}'/>
+			<text name="assistant" property='{"x":540, "y":166, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="limitDes" property='{"x":429, "y":188, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="intro" property='{"x":429, "y":212, "color":"0xE6E0D4", "stroke":"0x29241b",
+			"multiline":true, "width":194, "height":44}'/>
+			
+	    	<button name="sell" style="button4" labelID="140211" property='{"x":432, "y":274}'/>
+	    	<button name="degrade" style="button1" labelID="140219" property='{"x":535, "y":274}'/>
+	    	<button name="moveToEquip" style="button4" labelID="140212" property='{"x":319, "y":383}'/>
+	    	<button name="receive" style="button4" labelID="140222" property='{"x":535, "y":362}'/>
+			
+	        <displayObject name="arrow" view="item.arrow"/>
+			<introText property='{"x":429, "y":330, "color":"0xE6E0D4", "stroke":"0x29241b", "multiline":true, "width":192}' iconStyleList = '[
+				{ "visible":false },
+				{ "x":460, "y":310, "visible":true, "rotation":0},
+				{ "x":562, "y":310, "visible":true, "rotation":0},
+				{ "x":588, "y":364, "visible":true, "rotation":180}
+			]'/>
+		</itemSelected>
+    </depot>
+    <!-- 商店 -->
+    <shop>
+	    <displayObject view="item.shop"/>
+		<staticText property='{"x":30, "y":61, "size":14, "color":"0xE6E0D4", "stroke":"0x29241b", "bold":true}' textID="140201"/>
+		
+		<text name="spaceDes" property='{"x":153, "y":62, "color":"0xffcc66", "stroke":"0x29241b"}'/>
+		<text name="addSpaceCost" property='{"x":259, "y":62, "color":"0xffcc66", "stroke":"0x29241b"}'/>
+		
+		<button name="addSpace" style="button6" labelID="140203" property='{"x":305, "y":52}'/>
+		
+		<list property='{"x":32, "y":105}'>
+			<equipNameRender>
+				<button name="bg" style="button9"/>
+				<text name="equipName" property='{"color":"0xE6E0D4", "autoSize":"none", "y":3, "width":117, "height":16, "align":"center", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			</equipNameRender>
+		</list>
+		<page property='{"x":153, "y":386}'/>
+		
+		<itemSelected>
+		    <staticText property='{"x":421, "y":57, "size":14, "color":"0xE6E0D4", "stroke":"0x29241b", "bold":true, "mouseEnabled":false}' textID="140204"/>
+		    <staticText property='{"x":503, "y":117, "color":"0x9D7D4C", "stroke":"0x29241b", "mouseEnabled":false}' textID="140206"/>
+		    <staticText property='{"x":503, "y":137, "color":"0x9D7D4C", "stroke":"0x29241b", "mouseEnabled":false}' textID="140207"/>
+		    <staticText property='{"x":503, "y":176, "color":"0x9D7D4C", "stroke":"0x29241b", "mouseEnabled":false}' textID="140208"/>
+		    <staticText property='{"x":429, "y":278, "color":"0x9D7D4C", "stroke":"0x29241b", "mouseEnabled":false}' textID="140502"/>
+			
+		    <pic name="equipPic" property='{"x":424, "y":117}' frame="gameUI.picCover" frameProp='{"mouseEnabled":false}' picProp='{"x":3, "y":1}' />
+			
+			<text name="itemName" property='{"x":425, "y":98, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false, "bold":true}'/>
+			<text name="numDes" property='{"x":532, "y":98, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="lvDes" property='{"x":540, "y":117, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="major" property='{"x":540, "y":137, "color":"0xFF6565", "stroke":"0x29241b", "mouseEnabled":false, "leading":7}'/>
+			<text name="assistant" property='{"x":540, "y":176, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="limitDes" property='{"x":429, "y":198, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="intro" property='{"x":429, "y":222, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false, "multiline":true, "width":192}'/>
+			<text name="price" property='{"x":466, "y":278, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			
+			<button name="buy" style="button1" labelID="140501" property='{"x":432, "y":296}'/>
+			
+	        <displayObject name="arrow" view="item.arrow"/>
+			<introText property='{"x":429, "y":356, "color":"0xE6E0D4", "stroke":"0x29241b", "multiline":true, "width":192}' iconStyleList = '[
+				{ "visible":false },
+				{ "x":460, "y":333, "visible":true, "rotation":0}
+			]'/>
+		</itemSelected>
+    </shop>
+    <!-- 商城 -->
+    <store>
+	    <displayObject view="item.store"/>
+		<staticText property='{"x":30, "y":61, "size":14, "color":"0xE6E0D4", "stroke":"0x29241b", "bold":true}' textID="140201"/>
+		
+		<text name="spaceDes" property='{"x":153, "y":62, "color":"0xffcc66", "stroke":"0x29241b"}'/>
+		<text name="addSpaceCost" property='{"x":259, "y":62, "color":"0xffcc66", "stroke":"0x29241b"}'/>
+		
+		<button name="addSpace" style="button6" labelID="140203" property='{"x":305, "y":52}'/>
+		
+		<list property='{"x":32, "y":105}'>
+			<equipNameRender>
+				<button name="bg" style="button9"/>
+				<text name="equipName" property='{"color":"0xE6E0D4", "autoSize":"none", "y":3, "width":117, "height":16, "align":"center", "stroke":"0x29241b"}'/>
+			</equipNameRender>
+		</list>
+		<page property='{"x":153, "y":386}'/>
+		
+		<itemSelected>
+		    <staticText property='{"x":421, "y":57, "size":14, "color":"0xE6E0D4", "stroke":"0x29241b", "bold":true, "mouseEnabled":false}' textID="140204"/>
+		    <staticText property='{"x":503, "y":117, "color":"0x9D7D4C", "stroke":"0x29241b", "mouseEnabled":false}' textID="140206"/>
+		    <staticText property='{"x":503, "y":137, "color":"0x9D7D4C", "stroke":"0x29241b", "mouseEnabled":false}' textID="140207"/>
+		    <staticText property='{"x":503, "y":176, "color":"0x9D7D4C", "stroke":"0x29241b", "mouseEnabled":false}' textID="140208"/>
+		    <staticText property='{"x":429, "y":278, "color":"0x9D7D4C", "stroke":"0x29241b", "mouseEnabled":false}' textID="140502"/>
+			
+		    <pic name="equipPic" property='{"x":424, "y":117}' frame="gameUI.picCover" frameProp='{"mouseEnabled":false}' picProp='{"x":3, "y":1}' />
+			
+			<text name="itemName" property='{"x":425, "y":98, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false, "bold":true}'/>
+			<text name="numDes" property='{"x":532, "y":98, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="lvDes" property='{"x":540, "y":117, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="major" property='{"x":540, "y":137, "color":"0xFF6565", "stroke":"0x29241b", "mouseEnabled":false, "leading":7}'/>
+			<text name="assistant" property='{"x":540, "y":176, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="limitDes" property='{"x":429, "y":198, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			<text name="intro" property='{"x":429, "y":222, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false, "multiline":true, "width":192}'/>
+			<text name="price" property='{"x":466, "y":278, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+			
+			<text name="numLimit" property='{"x":510, "y":59, "color":"0xE6E0D4", "multiline":true, "stroke":"0x29241b", "mouseEnabled":false, "width":127, "height":30}'/>
+			<text name="buyCD" property='{"x":529, "y":306, "color":"0xE6E0D4", "stroke":"0x29241b"}'/>
+			
+			<button name="buy" style="button6" labelID="140501" property='{"x":432, "y":296, "visible":false}'/>
+			
+	        <displayObject name="arrow" view="item.arrow"/>
+			<introText property='{"x":429, "y":356, "color":"0xE6E0D4", "stroke":"0x29241b", "multiline":true, "width":192}' iconStyleList = '[
+				{ "visible":false },
+				{ "x":460, "y":333, "visible":true, "rotation":0}
+			]'/>
+		</itemSelected>
+    </store>
+    <!-- 强化 -->
+    <strengthen>
+	    <displayObject view="item.strengthen"/>
+		<staticText property='{"x":28, "y":54, "size":14, "color":"0xE6E0D4", "stroke":"0x29241b", "bold":true, "mouseEnabled":false}' textID="140204"/>
+		
+		<list property='{"x":24, "y":84}'>
+		    <WidthNameRender>
+				<button name="bg1" style="button9" property='{"width":156}'/>
+				<button name="bg2" style="button18" property='{"visible":false, "width":156}'/>
+				<text name="equipName" property='{"color":"0xE6E0D4", "autoSize":"none", "y":3,
+				"width":142, "height":16, "align":"center", "stroke":"0x29241b"}'/>/>
+		    </WidthNameRender>
+		</list>
+		<page property='{"x":46, "y":388}'/>
+		
+		<StrengthenDetail>
+		    <text name="strengthenDes" property='{"x":292, "y":57, "stroke":"0x29241b", "mouseEnabled":false, "bold":true}'/>
+		    <equipInfo property='{"x":296, "y":142}'/>
+			<checkBox style="checkBox1" property='{"x":350, "y":255}'/>
+			
+			<text name="upgradeCD" property='{"x":348, "y":115, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false, "bold":true}'/>
+			
+	        <displayObject name="clearCD" view="gameUI.btn.ClearCD" property='{"y":117, "visible":false}'/>
+	        <displayObject name="progressBar" view="item.progressBar" property='{"x":428, "y":231}'/>
+			
+			<text name="successRatio" property='{"x":415, "y":91, "color":"0xffffff", "stroke":"0x29241b", "mouseEnabled":false, "autoSize":"center"}'/>
+			
+			<button name="upgrade" style="button4" labelID="140308" property='{"x":275, "y":283, "visible":false}'/>
+			<button name="degrade" style="button5" labelID="140309" property='{"x":378, "y":283, "visible":false}'/>
+			<button name="bind" style="button4" labelID="140310" property='{"x":482, "y":283, "visible":false}'/>
+			<button name="unbind" style="button5" labelID="140314" property='{"x":482, "y":283, "visible":false}'/>
+			<button name="stopUnbinding" style="button5" labelID="140315" property='{"x":482, "y":283, "visible":false}'/>
+			
+	        <displayObject name="arrow" view="item.arrow"/>
+			<introText property='{"x":216, "y":340, "textType":"htmlText", "color":"0xE6E0D4", "stroke":"0x29241b", "multiline":true, "width":406}' iconStyleList = '[
+				{ "visible":false },
+				{ "x":304, "y":319, "visible":true},
+				{ "x":407, "y":319, "visible":true},
+				{ "x":509, "y":319, "visible":true},
+				{ "x":509, "y":319, "visible":true},
+				{ "x":509, "y":319, "visible":true}
+			]'/>
+		</StrengthenDetail>
+    </strengthen>
+    <!-- 委派 -->
+    <assign>
+	    <displayObject view="item.assign"/>
+		<horseList property='{"x":50, "y":84}'>
+		    <AssignRenderer>
+	            <displayObject view="item.listBg" property='{"x":3, "y":1}'/>
+		        <pic name="sPic" property='{"x":0, "y":0}' frame="gameUI.picCover" frameProp='{"mouseEnabled":false}' picProp='{"x":3, "y":1}' />
+		    </AssignRenderer>
+		</horseList>
+		<mantleList property='{"x":50, "y":159}'>
+		    <AssignRenderer>
+	            <displayObject view="item.listBg" property='{"x":3, "y":1}'/>
+		        <pic name="sPic" property='{"x":0, "y":0}' frame="gameUI.picCover" frameProp='{"mouseEnabled":false}' picProp='{"x":3, "y":1}' />
+		    </AssignRenderer>
+		</mantleList>
+		
+		<text name="free" property='{"x":455, "y":176, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false, "visible":false}'/>
+		
+		<button name="assignBtn" style="button4" labelID="140402" property='{"x":475, "y":197}'/>
+		<button name="confirmBtn" style="button1" labelID="140403" property='{"x":475, "y":269}'/>
+		<button name="sellBtn" style="button5" labelID="140404" property='{"x":475, "y":319}'/>
+		
+		<text name="mongerName" property='{"x":442, "y":90, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false, "bold":true}'/>
+		<text name="mongerIntro" property='{"x":442, "y":105, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false, "multiline":true, "width":165}'/>
+		<text name="cost" property='{"x":442, "y":148, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+		<text name="assignCD" property='{"x":442, "y":176, "color":"0xE6E0D4", "stroke":"0x29241b", "mouseEnabled":false}'/>
+		
+	    <displayObject name="clearCD" view="gameUI.btn.ClearCD" property='{"y":178, "visible":false}'/>
+		
+		<equipInfo property='{"x":52, "y":266, "visible":false}'/>
+		
+		<displayObject name="arrow" view="item.arrow"/>
+		<introText property='{"x":304, "y":276, "color":"0xE6E0D4", "stroke":"0x29241b", "multiline":true, "width":144}' iconStyleList = '[
+			{ "visible":false },
+			{ "x":468, "y":275, "rotation":90, "visible":true},
+			{ "x":468, "y":323, "rotation":90, "visible":true}
+		]'/>
+    </assign>
+</config>

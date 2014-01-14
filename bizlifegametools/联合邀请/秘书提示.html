@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache,must-revalidate">
+<meta http-equiv="expires" content="0">
+<title>秘书提示</title>
+<script language="javascript" src="../lang/js/lang_js.js"></script>
+<link href="../css/css.css" rel="stylesheet" type="text/css" />
+</head>
+<script language="javascript" src="../js/common.js"></script>
+<script language="javascript" src="../js/ajax.js"></script>
+<script language="javascript" src="../js/ralert.js"></script>
+<script language="javascript" src="../js/div_page.js"></script>
+<script language="javascript">
+function delete_daily(id) {
+	ralert("董事长：<br><br>您确定要删除这条事件提示吗？", "确定", "js:delete_daily2("+id+");", "取消");
+}
+function delete_daily2(id) {
+	sendPost("work_daily_delete.php", "id=" + id);
+	window.location.reload();
+}
+function delete_all() {
+	ralert("董事长：<br><br>您确定要删除所有事件提示吗？", "确定", "js:delete_all2();", "取消");
+}
+function delete_all2() {
+	sendPost("work_daily_delete_all.php", "ajax=delete_all");
+	window.location.href = window.location.href.replace(/id=\d+&?/i, "");
+}
+
+function check_shop(shop_id,type){
+	var r = sendPost("/office/work_daily.php","shop_id="+shop_id);
+	var msg =r.split("|||");
+	
+	if(msg[0]=="ok"){
+		if(parseInt(type)==1){
+			window.location.href="../enterprise/shop-sigle-other.php?shop_id2="+shop_id+"&return=..%2Foffice%2Fwork_daily.php";
+		}
+		else if(parseInt(type)==2){
+			window.location.href="../enterprise/shop_business_list_out.php?shop_id="+shop_id;
+		}
+	}
+	else{
+		page_close_and_alert(msg[1],"确定","");
+		//ralert(msg[1],"确定","");
+	}
+}
+
+function check_all(){
+	var check_one=document.getElementsByName("check_del[]");
+	var check_all=document.getElementById("del_all");
+	for(var i=0;i<check_one.length;i++){
+		check_one[i].checked=check_all.checked;
+	}
+}
+function check(){
+	var check_all=document.getElementById("del_all");
+	if(check_all.checked){
+		check_all.checked=false;
+	}
+}
+var arr_ids=new Array();
+function del_check(){
+	arr_ids=new Array();
+	var flag=false;
+	var obj=document.getElementsByName("check_del[]");
+	for(var i=0;i<obj.length;i++){
+		if(obj[i].checked){
+			arr_ids[obj[i].value]=obj[i].value;
+			flag=true;
+		}
+	}
+	if(flag){
+		ralert("董事长：<br><br>您确定要删除所选的秘书提示吗？", "确定", "js:delete_check()", "取消");
+	}else{
+		ralert("董事长：<br><br>请选择您要删除的秘书提示。", "确定");
+	}
+	
+}
+function delete_check(){
+		var str="";
+		for(var idx in arr_ids){str+="&ids[]="+idx;}
+		sendPost("work_daily_delete_all.php", "ajax=del_check"+str);
+		window.location.reload();
+}
+
+</script>
+<body >
+<table width="764" height="515" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="34" background="../images/zk_main_menu.gif" class="font-center_title1">秘书提示</td>
+  </tr>
+  <tr>
+    <td height="481" valign="top"><table width="740" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td height="10"></td>
+      </tr>
+      <tr>
+        <td height="430" valign="top"><table width="100%" border="0" cellpadding="0" cellspacing="0" class="list_table">
+            <tr>
+              <td height="395" valign="top"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <td width="45%"  class="list_top2">标题</td>
+                    <td width="30%"  class="list_top2">日期</td>
+                    <td width="10%" class="list_top2">已读</td>
+                    <td width="5%" class="list_top2">操作</td>
+					<td width="10%" class="list_top2"><input type="checkbox" name="del_all" id="del_all" onclick="check_all();" />全选</td>
+                  </tr>
+                  <tr>
+                    <td height="5"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="list_word2">
+                    <td><a href="javascript:div_page1('work_daily_read.php?id=3911092','秘书提示');">店铺宣传邀请</a></td>
+                    <td>2011-04-27</td>
+                    <td><label id="show_3911092"><b>否</b></label></td>
+                    <td><a href="javascript:delete_daily(3911092);">删除</a></td>
+					<td><input type="checkbox" name="check_del[]" value="3911092" onclick="check();"/></td>
+                  </tr>
+                  <tr>
+                    <td height="5"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="list_word2">
+                    <td><a href="javascript:div_page1('work_daily_read.php?id=3911088','秘书提示');">店铺宣传邀请</a></td>
+                    <td>2011-04-27</td>
+                    <td><label id="show_3911088"><b>否</b></label></td>
+                    <td><a href="javascript:delete_daily(3911088);">删除</a></td>
+					<td><input type="checkbox" name="check_del[]" value="3911088" onclick="check();"/></td>
+                  </tr>
+                  <tr>
+                    <td height="5"></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  <tr class="list_word2">
+                    <td><a href="javascript:div_page1('work_daily_read.php?id=3911081','秘书提示');">店铺宣传邀请</a></td>
+                    <td>2011-04-27</td>
+                    <td><label id="show_3911081"><b>否</b></label></td>
+                    <td><a href="javascript:delete_daily(3911081);">删除</a></td>
+					<td><input type="checkbox" name="check_del[]" value="3911081" onclick="check();"/></td>
+                  </tr>
+              </table></td>
+            </tr>
+            <tr>
+              <td class="list_page"><div class="page_links">
+</div>
+</td>
+            </tr>
+        </table></td>
+      </tr>
+      <tr>
+        <td valign="bottom" height="30">
+          <input class="button_f5" onclick="window.location.href='/office/work_daily.php?state=0';" type="button" value="只显示未读"/>
+          &nbsp;
+          <input id='btn_clear' class="button_f6" onclick="delete_all();" type="button" value="清空事件提示"/>
+		  <input id='btn_clear' class="button_f6" onclick="del_check();" type="button" value="删除所选提示"/>
+		  </td>
+      </tr>
+    </table></td>
+  </tr>
+</table>
+</body>
+</html>
+<script language="javascript">
+window.top.update_secretary();
+</script>

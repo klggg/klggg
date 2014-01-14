@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- 创建角色配置文件 -->
+<config property='{"showBody":false, "showMovie":false}'>
+	<displayObject name="inputName" view="createRole.view.InputName" property='{"x":500, "y":300}' />
+	<displayObject name="selectedGeneral" view="createRole.view.SelectedGeneral" property='{}' />
+	
+	<body property='' />
+	<movie property='' />
+</config>

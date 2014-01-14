@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- 邮件系统界面配置文件 -->
+<config>
+    <PublicMailUI>
+	    <MailList>
+			<displayObject view="mail.mailList"/>
+		    <list property='{"x":23, "y":51}'>
+			    <MailRenderer>
+					<displayObject name="readed" view="mail.readed" property='{"visible":false}'/>
+					<displayObject name="unread" view="mail.unread" property='{"visible":false}'/>
+					
+					<text name="fromNameAndTitle" property='{"x":64, "y":9, "color":"0x000000"}'/>
+					<text name="summary" property='{"x":64, "y":28, "color":"0x000000", "autoSize":"none", "width":191, "height":16, "mouseEnabled":false}'/>
+					
+					<text name="unreadText" property='{"x":13, "y":32, "color":"0xFCCE00", "stroke":"0x29241b", "visible":false, "bold":true}'/>
+					<text name="readedText" property='{"x":13, "y":32, "color":"0xCACFC9", "stroke":"0x29241b", "visible":false, "bold":true}'/>
+			    </MailRenderer>
+		    </list>
+			
+			<text name="noMail" property='{"x":111, "y":202, "color":"0xE6E0D4"}'/>
+			
+			<page property='{"x":175, "y":390}'/>
+	    </MailList>
+		
+		<ReadMail>
+			<displayObject view="mail.read"/>
+			<staticText property='{"x":320, "y":63, "color":"0x000000"}' textID="190112"/>
+			<staticText property='{"x":320, "y":79, "color":"0x000000"}' textID="190113"/>
+			
+			<text name="fromName" property='{"x":379, "y":63, "color":"0x000000", "bold":true}'/>
+			<text name="title" property='{"x":379, "y":79, "color":"0x000000", "bold":true}'/>
+			<text name="content" property='{"x":320, "y":122, "color":"0x000000", "multiline":true, "width":302, "selectable":true}'/>
+			
+			
+			<button name="writeBack" style="button11" labelID="190107" property='{"x":307, "y":337}'/>
+			<button name="save" style="button11" labelID="190108" property='{"x":385, "y":337}'/>
+			<button name="deleteMail" style="button12" labelID="190109" property='{"x":572, "y":337}'/>
+		</ReadMail>
+		
+		<WriteMail>
+			<displayObject view="mail.write"/>
+			<staticText property='{"x":322, "y":63, "color":"0xE6E0D4"}' textID="190114"/>
+			<staticText property='{"x":322, "y":93, "color":"0xE6E0D4"}' textID="190115"/>
+			<staticText property='{"x":322, "y":123, "color":"0xE6E0D4"}' textID="190116"/>
+			
+			<text name="toName" property='{"x":391, "y":63, "color":"0xE6E0D4", "width":224, "height":18, "type":"input", "autoSize":"none", "selectable":true, "maxChars":10}'/>
+			<text name="title" property='{"x":391, "y":93, "color":"0xE6E0D4", "width":224, "height":18, "type":"input", "autoSize":"none", "selectable":true, "maxChars":100}'/>
+			<text name="content" property='{"x":391, "y":123, "color":"0xE6E0D4", "multiline":true, "width":224, "height":200, "type":"input",
+			"autoSize":"none", "selectable":true, "maxChars":500}'/>
+			
+			<button name="send" style="button11" labelID="190117" property='{"x":384, "y":337}'/>
+			<button name="close" style="button12" labelID="190118" property='{"x":558, "y":337}'/>
+		</WriteMail>
+		
+		<button name="deleteAll" style="button5" labelID="190110" property='{"x":18, "y":384}'/>
+		<button name="newMail" style="button4" labelID="190111" property='{"x":307, "y":384}'/>
+    </PublicMailUI>
+</config>

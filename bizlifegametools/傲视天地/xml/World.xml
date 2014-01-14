@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- 世界界面配置文件 -->
+<config>
+	
+	<world view="world.display"/>
+	<SelectedInfo view="world.selectedInfo">
+	    <closeBtn view="gameUI.btn.CloseBtn" property='{"x":355, "y":30}' />
+		<areaDetail>
+		    <staticText property='{"x":132, "y":45, "color":"0x9D7D4C", "stroke":"0x29241b"}' textID="011405"/>
+		    <staticText property='{"x":132, "y":65, "color":"0x9D7D4C", "stroke":"0x29241b"}' textID="011407"/>
+		    <staticText property='{"x":295, "y":45, "color":"0x9D7D4C", "stroke":"0x29241b", "autoSize":"right"}' textID="011406"/>
+		    <staticText property='{"x":295, "y":65, "color":"0x9D7D4C", "stroke":"0x29241b", "autoSize":"right"}' textID="011408"/>
+			
+			
+			<picLoc property='{"x":54, "y":61}'/>
+		    <text name="prosperous" property='{"x":171, "y":45, "color":"0xE6E0D4", "stroke":"0x272018"}'/>
+		    <text name="trait" property='{"x":171, "y":65, "color":"0xE6E0D4", "stroke":"0x272018"}'/>
+		    <text name="own" property='{"x":296, "y":45, "color":"0xE6E0D4", "stroke":"0x272018"}'/>
+		    <text name="prices" property='{"x":296, "y":65, "color":"0xE6E0D4", "stroke":"0x272018"}'/>
+			
+		    <text name="intro" property='{"x":132, "y":84, "color":"0xE6E0D4", "stroke":"0x272018", "multiline":true, "width":197}'/>
+					
+			<gameButton name="comeIn" labelID="011401" property='{"x":34, "y":130}' btn="world.comeInBtn" labelProp='{"x":12, "y":30, "color":"0xE8DFCE", "stroke":"0x292317", "bold":true}' />
+			<gameButton name="moveTo" labelID="011402" property='{"x":100, "y":130}' btn="world.moveToBtn" labelProp='{"x":12, "y":30, "color":"0xE8DFCE", "stroke":"0x292317", "bold":true}' />
+			<gameButton name="invest" labelID="011403" property='{"x":166, "y":130}' btn="world.investBtn" labelProp='{"x":12, "y":30, "color":"0xE8DFCE", "stroke":"0x292317", "bold":true}' />
+			<gameButton name="localWar" labelID="011404" property='{"x":232, "y":130}' btn="world.localWarBtn" labelProp='{"x":12, "y":30, "color":"0xE8DFCE", "stroke":"0x292317", "bold":true}' />
+			
+			
+		</areaDetail>
+		<resDetail>
+		    <staticText property='{"x":132, "y":53, "color":"0x9D7D4C", "stroke":"0x29241b"}' textID="011413"/>
+		    <staticText property='{"x":132, "y":73, "color":"0x9D7D4C", "stroke":"0x29241b"}' textID="011414"/>
+			
+		    <text name="output" property='{"x":171, "y":53, "color":"0xE6E0D4", "stroke":"0x272018"}'/>
+		    <text name="resOwner" property='{"x":171, "y":73, "color":"0xE6E0D4", "stroke":"0x272018"}'/>
+			
+			<picLoc property='{"x":54, "y":61}'/>
+			<gameButton name="gain" labelID="011415" property='{"x":34, "y":130}' btn="world.gainBtn" labelProp='{"x":12, "y":30, "color":"0xE8DFCE", "stroke":"0x292317", "bold":true}' />
+			<gameButton name="occupy" labelID="011416" property='{"x":100, "y":130}' btn="world.localWarBtn" labelProp='{"x":12, "y":30, "color":"0xE8DFCE", "stroke":"0x292317", "bold":true}' />
+			<gameButton name="abandon" labelID="011417" property='{"x":166, "y":130}' btn="world.cancelBtn" labelProp='{"x":12, "y":30, "color":"0xE8DFCE", "stroke":"0x292317", "bold":true}' />
+			
+			<text name="gainCD" property='{"x":132, "y":108, "color":"0xE6E0D4", "stroke":"0x272018"}'/>
+	        <displayObject name="clearCDBtn" view="gameUI.btn.ClearCD" property='{"x":150, "y":110}' />
+			
+			<text name="gainTitle" property='{"x":132, "y":92, "color":"0x9D7D4C", "stroke":"0x272018"}'/>
+			<text name="gainStatus" property='{"x":171, "y":92, "color":"0xE6E0D4", "stroke":"0x272018"}'/>
+		</resDetail>
+		<displayObject name="arrow" view="world.arrow" property='{"visible":false}'/>
+		<introText property='{"x":44, "y":202, "color":"0xE6E0D4", "stroke":"0x29241b"}' iconStyleList = '[
+			{ "visible":false },
+			{ "x":48, "y":182, "visible":true },
+			{ "x":114, "y":182, "visible":true },
+			{ "x":180, "y":182, "visible":true },
+			{ "x":246, "y":182, "visible":true }
+		]'/>
+		
+	</SelectedInfo>
+	
+	<investSelect>
+		<displayObject view="world.investSelect"/>
+	    <displayObject name="closeBtn" view="gameUI.btn.CloseBtn" property='{"x":355, "y":30}' />
+		<text name="title" property='{"x":27, "y":47, "size":14, "color":"0xE6E0D4", "stroke":"0x272018", "bold":true}'/>
+		<radioGroup style="radioButton2" property='{"x":60, "y":80}' gap="25"/>
+		<button name="confirm" style="button4" labelID="011431" property='{"x":98, "y":183}'/>
+		<button name="cancel" style="button5" labelID="011432" property='{"x":212, "y":183}'/>
+	</investSelect>
+	
+	<displayObject name="silverWarBtn" view="world.btn.SilverWarBtn" property='{"x":500, "y":100}' />
+	
+	<sceneTips view="world.view.SceneTips" duration="1" property='{"x":422, "y":247}'>
+		<nameText property='{"x":78, "y":45, "size":14, "bold":true, "autoSize":"center", "stroke":"0xD9C5A2"}' />
+	</sceneTips>
+	
+</config>

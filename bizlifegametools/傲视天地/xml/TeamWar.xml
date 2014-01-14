@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- 团队战系统配置文件 -->
+<config>
+	<background url="assets/{language}/img/teamWar/{0}.jpg" num="1" property='' />
+	<displayObject name="startWarMovie" view="teamWar.movie.StartWar" property='{"x":500, "y":300}' />
+	
+	<battleField5 property='{"x":117, "y":250}' />
+	<battleField3 property='{"x":269, "y":308}' />
+	<battleField1 property='{"x":331, "y":418}' />
+	<battleField2 property='{"x":483, "y":476}' />
+	<battleField4 property='{"x":544, "y":584}' />
+	
+	<forceList property='{"attArmyNum":26, "defArmyNum":16, "attMaxArmyNum":50, "defMaxArmyNum":50}'>
+		<displayObject name="list" view="teamWar.view.ForceList" />
+	</forceList>
+	
+	<effectControl>
+		<gameButton name="openEffBtn" labelID="180103" property='{"x":930, "y":530, "visible":false}' btn="teamWar.btn.OpenEffBtn" labelProp='{"multiline":true, "width":30, "x":12, "y":12, "color":"0xCDB9A0", "stroke":"0x0"}' />
+	<gameButton name="closeEffBtn" labelID="180104" property='{"x":930, "y":530, "visible":false}' btn="teamWar.btn.CloseEffBtn" labelProp='{"multiline":true, "width":30, "x":12, "y":12, "color":"0xCDB9A0", "stroke":"0x0"}' />
+		<gameButton name="endBtn" labelID="050105" property='{"x":880, "y":530, "visible":false}' btn="teamWar.btn.End" labelProp='{"x":12, "y":21, "color":"0xCDB9A0", "stroke":"0x0"}' />
+	</effectControl>
+	
+	<finishView property=''>
+		<victoryImg property='{"x":500, "y":310}' att='teamWar.img.AttVictory' def='teamWar.img.DefVictory' />
+		<text name="itemText" property='{"x":500, "y":345, "autoSize":"center", "textType":"htmlText", "color":"0xE8DFCE", "stroke":"0x292317", "mouseEnabled":false}'/>
+		<button name="quitBtn" style="button5" labelID="180101" property='{"x":900, "y":550}'/>
+		<button name="replayBtn" style="button3" labelID="180102" property='{"x":810, "y":550}'/>
+	</finishView>
+	
+	<generalMsgDlg>
+		<displayObject view="teamWar.view.GeneralMsgDlgBG" />
+		<text name="msgText" property='{"x":47, "y":8, "width":190, "multiline":true, "textType":"htmlText", "color":"0xE8DFCE", "stroke":"0x292317"}'/>
+		<pic property='{"x":3, "y":3}' width="39" height="39" />
+	</generalMsgDlg>
+	
+	<army>
+		<displayObject name="attLevelIcon" view="teamWar.icon.AttLevel" property='{"x":-30, "y":-5, "visible":false}' /><!--鼓舞攻击等级图标-->
+		<displayObject name="defLevelIcon" view="teamWar.icon.DefLevel" property='{"x":5, "y":-5, "visible":false}' /><!--鼓舞防守等级图标-->
+		<text name="attLevelText" property='{"x":-18, "y":-5, "color":"0xC97872", "stroke":"0x292317", "mouseEnabled":false}'/>
+		<text name="defLevelText" property='{"x":19, "y":-5, "color":"0x72AAC9", "stroke":"0x292317", "mouseEnabled":false}'/>
+		<text name="nameText" property='{"y":-20, "autoSize":"center", "color":"0xE8DFCE", "stroke":"0x292317", "mouseEnabled":false}'/>
+		<pic property='{"x":-120, "y":-70}' />
+		<textMovie property='{"font":"Arial", "size":16, "bold":true, "x":-25, "y":-30, "stroke":"0x151515"}' yTo="-45" color1="0x00FF00" color2="0xEE2222" />
+	</army>
+	
+	<waitInfo>
+		<displayObject view="teamWar.view.WaitInfoBG" property='{}' />
+		<displayObject name="inspireIcon" view="teamWar.icon.Inspire" property='{"x":29, "y":127}' /><!--鼓舞-->
+		<displayObject name="troopsIcon" view="teamWar.icon.Troops" property='{"x":34, "y":184}' /><!--兵力-->
+		<displayObject name="attLevelIcon" view="teamWar.icon.AttLevel" property='{"x":78, "y":129}' /><!--鼓舞攻击等级-->
+		<displayObject name="defLevelIcon" view="teamWar.icon.DefLevel" property='{"x":126, "y":134}' /><!--鼓舞防守等级-->
+		<displayObject name="suZhanIcon" view="teamWar.icon.SuZhan" property='{"x":68, "y":153}' /><!--速战-->
+		<displayObject name="tieBiIcon" view="teamWar.icon.TieBi" property='{"x":95, "y":153}' /><!--铁壁-->
+		<displayObject name="lianZhanIcon" view="teamWar.icon.LianZhan" property='{"x":122, "y":153}' /><!--连战-->
+		<displayObject name="chiJiuIcon" view="teamWar.icon.ChiJiu" property='{"x":149, "y":153}' /><!--持久-->
+		
+		<displayObject name="junGongInspireBtn" view="teamWar.btn.JunGongInspire" property='{"x":179, "y":119}' /><!--军功鼓舞按钮-->
+		<displayObject name="goldInspireBtn" view="teamWar.btn.GoldInspire" property='{"x":212, "y":119, "visible":false}' /><!--金币鼓舞按钮-->
+		<displayObject name="conscriptionBtn" view="teamWar.btn.Conscription" property='{"x":179, "y":178}' /><!--征兵按钮-->
+		
+		<text name="titleText" property='{"x":100, "y":50, "autoSize":"center", "size":14, "bold":true, "color":"0xB7A496", "stroke":"0x4F3F2F"}'/>
+		<text name="attNameText" property='{"x":60, "y":75, "autoSize":"center", "color":"0xF5626C", "stroke":"0x4F3F2F"}'/>
+		<text name="defNameText" property='{"x":140, "y":75, "autoSize":"center", "color":"0xA2CBFF", "stroke":"0x4F3F2F"}'/>
+		<text name="attArmyNumText" property='{"x":60, "y":95, "autoSize":"center", "color":"0xF3E4CF", "stroke":"0x4F3F2F"}'/>
+		<text name="defArmyNumText" property='{"x":140, "y":95, "autoSize":"center", "color":"0xF3E4CF", "stroke":"0x4F3F2F"}'/>
+		<text name="attLevelText" property='{"x":90, "y":132, "color":"0xC97872", "stroke":"0x4F3F2F"}'/>
+		<text name="defLevelText" property='{"x":141, "y":132, "color":"0x72AAC9", "stroke":"0x4F3F2F"}'/>
+		<text name="troopsText" property='{"x":71, "y":190, "textType":"htmlText", "color":"0xEEE8D8", "stroke":"0x4F3F2F"}'/>
+		<text name="inspireCDText" property='{"x":185, "y":157, "color":"0xE8DFCE", "stroke":"0x292317", "mouseEnabled":false}'/>
+		<text name="battleCDText" property='{"x":500, "y":289, "autoSize":"center", "textType":"htmlText", "color":"0xE8DFCE", "stroke":"0x292317", "mouseEnabled":false}'/>
+		
+		<button name="quitBtn" style="button5" labelID="180105" property='{"x":900, "y":550}'/>
+		<gameButton name="secretaryBtn" labelID="180106" property='{"x":15, "y":210, "visible":false}' btn="teamWar.btn.Secretary" labelProp='{"x":12, "y":28, "color":"0xDBD08E", "stroke":"0x292317"}' />
+	</waitInfo>
+	
+	<reportList property='{"x":15, "y":20, "addY":2, "duration":20}'>
+		<text property='{"textType":"htmlText", "color":"0x33CC00", "stroke":"0x292317"}' />
+	</reportList>
+</config>

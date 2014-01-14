@@ -1,0 +1,303 @@
+?package game.common
+{
+    import com.adobe.serialization.json.*;
+    import flash.events.*;
+    import flash.utils.*;
+    import game.utils.zip.*;
+
+    public class Config extends EventDispatcher implements IConfig
+    {
+        private var _resConfig:XML;
+        private var _fightList:XML;
+        private var _uiConfig:XML;
+        private var _languageXML:XML;
+        private var _config:XML;
+        private var _unTimer:Timer;
+        private var _style:Dictionary;
+        private var _unNum:int = 0;
+        private var _language:Dictionary;
+        private static var __instance:Config;
+
+        public function Config(param1:ConfigEnforcer)
+        {
+            if (!param1)
+            {
+                throw new Error("单例，请使用getInstance()获取实例");
+            }
+            _unTimer = new Timer(80);
+            _unTimer.addEventListener(TimerEvent.TIMER, unTimerHandler);
+            return;
+        }// end function
+
+        public function initConfig() : void
+        {
+            _config = Common.res.getXML("config", true);
+            Common.service = _config.serviceURL.@content;
+            Common.language = _config.language.@content;
+            return;
+        }// end function
+
+        public function loadXmlUIConfig() : void
+        {
+            Common.res.addRes("UIConfig", "assets/{language}/xml/UIConfig.xml", Constants.RES_TYPE_XML);
+            Common.res.addRes("Component", "assets/{language}/xml/Component.xml", Constants.RES_TYPE_XML);
+            Common.res.addRes("FightList", "assets/{language}/xml/FightList.xml", Constants.RES_TYPE_XML);
+            Common.res.addRes("MainUI", "assets/{language}/xml/MainUI.xml", Constants.RES_TYPE_XML);
+            Common.res.addRes("GameUI", "assets/{language}/xml/GameUI.xml", Constants.RES_TYPE_XML);
+            Common.res.addRes("MainCity", "assets/{language}/xml/MainCity.xml", Constants.RES_TYPE_XML);
+            Common.res.addRes("World", "assets/{language}/xml/World.xml", Constants.RES_TYPE_XML);
+            Common.res.addRes("Expedition", "assets/{language}/xml/Expedition.xml", Constants.RES_TYPE_XML);
+            Common.res.addRes("Area", "assets/{language}/xml/Area.xml", Constants.RES_TYPE_XML);
+            Common.res.addRes("Farmland", "assets/{language}/xml/Farmland.xml", Constants.RES_TYPE_XML);
+            Common.res.addRes("Fight", "assets/{language}/xml/Fight.xml", Constants.RES_TYPE_XML);
+            Common.res.addRes("TeamWar", "assets/{language}/xml/TeamWar.xml", Constants.RES_TYPE_XML);
+            Common.res.addRes("SilverWar", "assets/{language}/xml/SilverWar.xml", Constants.RES_TYPE_XML);
+            Common.res.addRes("Campaign", "assets/{language}/xml/Campaign.xml", Constants.RES_TYPE_XML);
+            Common.res.addRes("CreateRole", "assets/{language}/xml/CreateRole.xml", Constants.RES_TYPE_XML);
+            Common.res.addRes("Guide", "assets/{language}/xml/Guide.xml", Constants.RES_TYPE_XML);
+            Common.res.addRes("General", "assets/{language}/xml/General.xml", Constants.RES_TYPE_XML);
+            Common.res.addRes("Task", "assets/{language}/xml/Task.xml", Constants.RES_TYPE_XML);
+            Common.res.addRes("Economy", "assets/{language}/xml/Economy.xml", Constants.RES_TYPE_XML);
+            Common.res.addRes("Item", "assets/{language}/xml/Item.xml", Constants.RES_TYPE_XML);
+            Common.res.addRes("Help", "assets/{language}/xml/Help.xml", Constants.RES_TYPE_XML);
+            Common.res.addRes("Legion", "assets/{language}/xml/Legion.xml", Constants.RES_TYPE_XML);
+            Common.res.addRes("Expend", "assets/{language}/xml/Expend.xml", Constants.RES_TYPE_XML);
+            Common.res.addRes("Mail", "assets/{language}/xml/Mail.xml", Constants.RES_TYPE_XML);
+            Common.res.addRes("WarTeam", "assets/{language}/xml/WarTeam.xml", Constants.RES_TYPE_XML);
+            Common.res.addRes("Spin", "assets/{language}/xml/Spin.xml", Constants.RES_TYPE_XML);
+            Common.res.addRes("Secretary", "assets/{language}/xml/Secretary.xml", Constants.RES_TYPE_XML);
+            Common.res.addRes("CampaignTeam", "assets/{language}/xml/CampaignTeam.xml", Constants.RES_TYPE_XML);
+            Common.res.addRes("Blacksmith", "assets/{language}/xml/Blacksmith.xml", Constants.RES_TYPE_XML);
+            Common.res.addRes("ActivityGift", "assets/{language}/xml/ActivityGift.xml", Constants.RES_TYPE_XML);
+            return;
+        }// end function
+
+        public function initLanguage() : void
+        {
+            var _loc_1:ZipReader = null;
+            if (Common.config.getConfig("configType") == "zip")
+            {
+                _loc_1 = Common.res.getZIP("language");
+                _languageXML = new XML(_loc_1.getFile("Language.xml"));
+            }
+            else
+            {
+                _languageXML = Common.res.getXML("language");
+            }
+            _language = new Dictionary();
+            unTimerHandler();
+            return;
+        }// end function
+
+        public function getStyle(param1:String) : Object
+        {
+            return _style[param1];
+        }// end function
+
+        public function getResConfig(param1:String) : XMLList
+        {
+            return _resConfig[param1];
+        }// end function
+
+        public function initUIConfig() : void
+        {
+            var _loc_1:XML = null;
+            var _loc_3:ZipReader = null;
+            if (getConfig("configType") == Constants.RES_TYPE_ZIP)
+            {
+                _loc_3 = Common.res.getZIP("UIConfig");
+                _uiConfig = new XML(_loc_3.getFile("UIConfig.xml"));
+                _loc_1 = new XML(_loc_3.getFile("Component.xml"));
+                _fightList = new XML(_loc_3.getFile("FightList.xml"));
+                Constants.UIC_MAIN_UI = new XML(_loc_3.getFile("MainUI.xml"));
+                Constants.UIC_GAME_UI = new XML(_loc_3.getFile("GameUI.xml"));
+                Constants.UIC_MAIN_CITY = new XML(_loc_3.getFile("MainCity.xml"));
+                Constants.UIC_WORLD = new XML(_loc_3.getFile("World.xml"));
+                Constants.UIC_EXPEDITION = new XML(_loc_3.getFile("Expedition.xml"));
+                Constants.UIC_AREA = new XML(_loc_3.getFile("Area.xml"));
+                Constants.UIC_FARMLAND = new XML(_loc_3.getFile("Farmland.xml"));
+                Constants.UIC_FIGHT = new XML(_loc_3.getFile("Fight.xml"));
+                Constants.UIC_TEAM_WAR = new XML(_loc_3.getFile("TeamWar.xml"));
+                Constants.UIC_SILVER_WAR = new XML(_loc_3.getFile("SilverWar.xml"));
+                Constants.UIC_CAMPAIGN = new XML(_loc_3.getFile("Campaign.xml"));
+                Constants.UIC_CREATE_ROLE = new XML(_loc_3.getFile("CreateRole.xml"));
+                Constants.UIC_GUIDE = new XML(_loc_3.getFile("Guide.xml"));
+                Constants.UIC_GENERAL = new XML(_loc_3.getFile("General.xml"));
+                Constants.UIC_TASK = new XML(_loc_3.getFile("Task.xml"));
+                Constants.UIC_ECONOMY = new XML(_loc_3.getFile("Economy.xml"));
+                Constants.UIC_ITEM = new XML(_loc_3.getFile("Item.xml"));
+                Constants.UIC_HELP = new XML(_loc_3.getFile("Help.xml"));
+                Constants.UIC_LEGION = new XML(_loc_3.getFile("Legion.xml"));
+                Constants.UIC_EXPEND = new XML(_loc_3.getFile("Expend.xml"));
+                Constants.UIC_MAIL = new XML(_loc_3.getFile("Mail.xml"));
+                Constants.UIC_WAR_TEAM = new XML(_loc_3.getFile("WarTeam.xml"));
+                Constants.UIC_SPIN = new XML(_loc_3.getFile("Spin.xml"));
+                Constants.UIC_SECRETARY = new XML(_loc_3.getFile("Secretary.xml"));
+                Constants.UIC_CAMPAIGN_TEAM = new XML(_loc_3.getFile("CampaignTeam.xml"));
+                Constants.UIC_BLACKSMITH = new XML(_loc_3.getFile("Blacksmith.xml"));
+                Constants.UIC_ACTIVITY_GIFT = new XML(_loc_3.getFile("ActivityGift.xml"));
+            }
+            else
+            {
+                _uiConfig = Common.res.getXML("UIConfig");
+                _loc_1 = Common.res.getXML("Component");
+                _fightList = Common.res.getXML("FightList");
+                Constants.UIC_MAIN_UI = Common.res.getXML("MainUI");
+                Constants.UIC_GAME_UI = Common.res.getXML("GameUI");
+                Constants.UIC_MAIN_CITY = Common.res.getXML("MainCity");
+                Constants.UIC_WORLD = Common.res.getXML("World");
+                Constants.UIC_EXPEDITION = Common.res.getXML("Expedition");
+                Constants.UIC_AREA = Common.res.getXML("Area");
+                Constants.UIC_FARMLAND = Common.res.getXML("Farmland");
+                Constants.UIC_FIGHT = Common.res.getXML("Fight");
+                Constants.UIC_TEAM_WAR = Common.res.getXML("TeamWar");
+                Constants.UIC_SILVER_WAR = Common.res.getXML("SilverWar");
+                Constants.UIC_CAMPAIGN = Common.res.getXML("Campaign");
+                Constants.UIC_CREATE_ROLE = Common.res.getXML("CreateRole");
+                Constants.UIC_GUIDE = Common.res.getXML("Guide");
+                Constants.UIC_GENERAL = Common.res.getXML("General");
+                Constants.UIC_TASK = Common.res.getXML("Task");
+                Constants.UIC_ECONOMY = Common.res.getXML("Economy");
+                Constants.UIC_ITEM = Common.res.getXML("Item");
+                Constants.UIC_HELP = Common.res.getXML("Help");
+                Constants.UIC_LEGION = Common.res.getXML("Legion");
+                Constants.UIC_EXPEND = Common.res.getXML("Expend");
+                Constants.UIC_MAIL = Common.res.getXML("Mail");
+                Constants.UIC_WAR_TEAM = Common.res.getXML("WarTeam");
+                Constants.UIC_SPIN = Common.res.getXML("Spin");
+                Constants.UIC_SECRETARY = Common.res.getXML("Secretary");
+                Constants.UIC_CAMPAIGN_TEAM = Common.res.getXML("CampaignTeam");
+                Constants.UIC_BLACKSMITH = Common.res.getXML("Blacksmith");
+                Constants.UIC_ACTIVITY_GIFT = Common.res.getXML("ActivityGift");
+            }
+            _style = new Dictionary();
+            var _loc_2:int = 0;
+            while (_loc_2 < _loc_1.component.length())
+            {
+                
+                _style[String(_loc_1.component[_loc_2].@id)] = JSON.decode(_loc_1.component[_loc_2].@style);
+                _loc_2++;
+            }
+            return;
+        }// end function
+
+        public function getHostilityColor(param1:int) : uint
+        {
+            var _loc_2:* = _uiConfig.hostilityColor.@colors;
+            return _loc_2.split(",")[param1];
+        }// end function
+
+        public function getPropertyColor(param1:int, param2:String = "0x") : String
+        {
+            var _loc_3:* = _uiConfig.propertyColor.@colors;
+            var _loc_4:* = _loc_3.split(",")[param1];
+            if (param2 == "0x")
+            {
+                return _loc_4;
+            }
+            var _loc_5:* = _loc_4.replace("0x", param2);
+            return _loc_4.replace("0x", param2);
+        }// end function
+
+        public function initResConfig() : void
+        {
+            _resConfig = Common.res.getXML("resConfig", true);
+            Common.version = _resConfig.version;
+            return;
+        }// end function
+
+        public function legionPositionToColor(param1:int) : uint
+        {
+            var _loc_2:* = _uiConfig.legionPosition.@colors;
+            var _loc_3:* = _loc_2.split(",");
+            var _loc_4:* = param1 - 2;
+            if (_loc_3[_loc_4])
+            {
+                return uint(_loc_3[_loc_4]);
+            }
+            return uint(_uiConfig.legionPosition.@defaultColor);
+        }// end function
+
+        public function getLanguage(param1:String) : String
+        {
+            return _language[param1];
+        }// end function
+
+        public function getFight(param1:int) : XML
+        {
+            return _fightList.fight[param1].copy();
+        }// end function
+
+        public function getGoodColor(param1:int, param2:String = "0x") : String
+        {
+            var _loc_3:* = _uiConfig.goodColor.@colors;
+            var _loc_4:* = _loc_3.split(",")[param1];
+            if (param2 == "0x")
+            {
+                return _loc_4;
+            }
+            var _loc_5:* = _loc_4.replace("0x", param2);
+            return _loc_4.replace("0x", param2);
+        }// end function
+
+        public function getConfig(param1:String) : String
+        {
+            if (!_config)
+            {
+                return "";
+            }
+            return _config[param1].@content;
+        }// end function
+
+        private function unTimerHandler(event:TimerEvent = null) : void
+        {
+            var _loc_4:String = null;
+            _unTimer.reset();
+            var _loc_2:* = _unNum + 300;
+            if (_loc_2 > _languageXML.item.length())
+            {
+                _loc_2 = _languageXML.item.length() - _unNum;
+            }
+            var _loc_3:* = _unNum;
+            while (_loc_3 < _loc_2)
+            {
+                
+                _loc_4 = String(_languageXML.item[_loc_3]).replace(/\[br\]""\[br\]/g, "\n");
+                _language[String(_languageXML.item[_loc_3].@id)] = _loc_4;
+                _loc_3++;
+            }
+            _unNum = _loc_2;
+            if (_unNum < _languageXML.item.length())
+            {
+                _unTimer.start();
+            }
+            else
+            {
+                _languageXML = null;
+                this.dispatchEvent(new Event("initLanguageComplete"));
+            }
+            return;
+        }// end function
+
+        public static function getInstance() : Config
+        {
+            if (__instance == null)
+            {
+                __instance = new Config(new ConfigEnforcer());
+            }
+            return __instance;
+        }// end function
+
+    }
+}
+
+class ConfigEnforcer extends Object
+{
+
+    function ConfigEnforcer()
+    {
+        return;
+    }// end function
+
+}
+

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- 游戏指导配置文件 -->
+<config>
+	<noviceGuideMaxStep value="8" /><!--新手指导最大步骤-->
+
+	<step0 view="guide.view.Step0" property='' />
+	<step1 view="guide.view.Step1" property='' />
+	<step2 view="guide.view.Step2" property='' />
+	<step3 view="guide.view.Step3" property='' />
+	<step4 view="guide.view.Step4" property='' />
+	<step5 view="guide.view.Step5" property='' />
+	<step6 view="guide.view.Step6" property='' />
+	<step7 view="guide.view.Step7" property='' />
+	<step8 view="guide.view.Step8" property='' />
+	
+	<step101 view="guide.view.Step101" property='' />
+	<step102 view="guide.view.Step102" property='' />
+	<step103 view="guide.view.Step103" property='' />
+	
+	<step201 view="guide.view.Step201" property='' />
+	<step202 view="guide.view.Step202" property='' />
+	<step203 view="guide.view.Step203" property='' />
+	<step204 view="guide.view.Step204" property='' />
+	<step205 view="guide.view.Step205" property='' />
+	<step206 view="guide.view.Step206" property='' />
+	
+	<step301 view="guide.view.Step301" property='' />
+	
+	<button name="skipNoviceGuideBtn" style="button5" labelID="210001" property='{"x":460, "y":550, "visible":false}'/>
+</config>

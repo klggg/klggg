@@ -1,0 +1,642 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache,must-revalidate">
+<meta http-equiv="expires" content="0">
+<title>经营任务</title>
+<link href="../css/css.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+.tableright1 {color: #004E7B;
+	font-size:13px;
+    border: 0px Solid #8BD4FF;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-right: 0px;
+	padding-left: 0px;
+	backgr618px;
+	height:425px;
+}
+</style>
+<script language="javascript" src="../js/ralert_index_daily.js"></script>
+<script language="javascript" src="../js/ajax.js"></script>
+<script language="javascript" src="../js/common.js"></script>
+<script language="javascript" src="../js/word_description.js"></script>
+<script language="javascript" src="../js/div_page_daily.js"></script>
+<script language="javascript">
+
+function check(id){
+	var id = id;
+	if(''!=id && ''!=''){
+		ralert('董事长:<br><br>您珍惜时间是件好事！可是，这里不能一心二用，您的任务没完成，不能执行新的任务。','确定','');
+	}else{
+		var r=sendPost("/mission/index_daily.php?id="+id,"sell=3");
+		var msg= r.split("|||");	
+		if(msg[0]==0){
+			ralert(msg[1],'确定','')
+		}else if(msg[0]==1){
+			sell(id); 
+		}	
+	}
+}
+function sell(id) {
+	div_page("daily_implement.php?id=" + id, "执行单个任务", 600, 345);
+}
+
+
+</script>
+
+<script language="JavaScript">
+<!-- //时间倒计时
+
+var i='';
+if(i<0){
+	i=0;
+}
+
+function GetRTime(){
+	if(i==''){
+		return;
+	}else{
+		document.getElementById("RemainS").innerHTML=i+'';
+		document.getElementById('countdown').value=i;	
+	}
+	
+if(i==1){
+	update_to_msg1('','');
+}
+if(i>=0)
+{
+	setTimeout("GetRTime()",1000);
+}
+i--;
+}
+window.onload=GetRTime;
+// -->
+
+function update_level(id,name){
+
+		var id = id;
+		var name = name;
+		var msg = Math.ceil(document.getElementById('countdown').value/60);
+		var arr_rep = new Array();
+		arr_rep["[msg]"] = msg;
+		arr_rep["[name]"] = name;
+		var msg2 = strtr("董事长：<br><br>当前正在执行[name]，是否使用[msg]金币加速执行?", arr_rep);
+		
+	if(""=='')
+		{
+			ralert("董事长:<br><br>由于当前执行时间为零，您无需再执行加速。","取消");
+		}else
+		{	
+			if(msg>"28"){
+			
+				ralert("董事长:<br><br><br>公司目前的金币数量不足，无法支付加速的费用。", "确定", "", "充值", "js:window.top.charge();");
+					
+			}else{
+				
+				ralert(msg2,"确定","js:update_to_msg("+id+",'"+name+"');","取消","");
+				
+			}
+			
+		}	
+
+		return;
+}
+
+function update_to_msg(id,name){
+		
+	var id = id;
+	var name = name;
+
+	var r=sendPost("/mission/index_daily.php?id="+id,"sell=2");
+	var msg= r.split("|||");
+	window.top.sub_gold_coin(msg[2]);
+	if(parseInt(msg[0])==2){
+		var str_txt = "恭喜你,你已经完成"+name+",同时你的所有店铺都获得5%收入的加成";
+		window.top.show_flash_msg(str_txt);
+	}	
+	if(parseInt(msg[0])==3){
+		var str_txt1 = "恭喜你,你已经完成全部任务,同时你的所有店铺都获得40%完美收入加成";
+		window.top.show_flash_msg(str_txt1);
+	}		
+	
+	if(parseInt(msg[0])>0){
+		
+		try {
+		}
+		catch (e) {
+		}		
+	}		
+		ralert(msg[1], "确定",'js:location_go()');
+		
+}
+
+function update_to_msg1(id,name){
+		
+	var id = id;
+	var name = name;
+	var r=sendPost("/mission/index_daily.php?id="+id,"sell=4");
+	var msg= r.split("|||");
+
+	if(parseInt(msg[0])==2){
+		var str_txt = "恭喜你,你已经完成"+name+",同时你的所有店铺都获得5%收入的加成";
+		window.top.show_flash_msg(str_txt);
+	}	
+	if(parseInt(msg[0])==3){
+		var str_txt1 = "恭喜你,你已经完成全部任务,同时你的所有店铺都获得40%完美收入加成";
+		window.top.show_flash_msg(str_txt1);
+	}		
+	
+	if(parseInt(msg[0])>0){
+		
+		try {
+		}
+		catch (e) {
+		}		
+	}		
+		setTimeout("location_go()",2000);
+		
+		
+}
+function location_go(){
+	window.location.href="index_daily.php";	
+}	
+</script>
+
+</head>
+<body>
+
+
+<table width="764" height="515" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td height="34" background="../images/zk_main_menu.gif" valign="bottom" ><table height="25" border="0" cellpadding="0" cellspacing="1" style="margin-left:10px;">
+            <tr>
+              <td width="3"></td>
+              <td><table height="25" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width="7"><img src="../images/list_menu2_1.gif" width="7" height="25" /></td>
+                  <td background="../images/list_menu2_2.gif" ><a href="index.php" class="link_listmenu2">经营任务</a></td>
+                  <td width="7"><img src="../images/list_menu2_3.gif" width="7" height="25" /></td>
+                </tr>
+              </table></td>
+              <td><table height="25" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td width="7"><img src="../images/list_menu1_1.gif" width="7" height="25" /></td>
+                  <td background="../images/list_menu1_2.gif"><a href="index_daily.php"  class="link_listmenu1">日常任务</a></td>
+                  <td width="7"><img src="../images/list_menu1_3.gif" width="7" height="25" /></td>
+                </tr>
+              </table></td>
+			  </tr>
+			  </table></td>
+  </tr>
+  <tr>
+    <td height="481" valign="top"><table width="740" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td height="10"></td>
+      </tr>
+      <tr>
+        <td><table width="740" height="340" border="0" align="center" cellpadding="0" cellspacing="0">
+      <tr>
+        <td height="10"><table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+            <tr>
+              <td width="6" height="6"><img src="../images/tips_top1.gif" width="6" height="6" /></td>
+              <td background="../images/tips_top2.gif"></td>
+              <td width="6"><img src="../images/tips_top3_2.gif" width="6" height="6" /></td>
+            </tr>
+            <tr>
+              <td background="../images/tips_center1.gif"></td>
+              <td class="tips_bgcolor"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td class="text_lb2_white"><div style="padding-left:10px;">完成每项任务可以获得24小时5%的任务加成，所有任务都完成后可获得40%的完美任务加成。</div></td>
+                  </tr>
+              </table></td>
+              <td background="../images/tips_center2.gif">&nbsp;</td>
+            </tr>
+            <tr>
+              <td><img src="../images/tips_bottom1.gif" width="6" height="6" /></td>
+              <td background="../images/tips_bottom2.gif"></td>
+              <td><img src="../images/tips_bottom3_2.gif" width="6" height="6" /></td>
+            </tr>
+        </table></td>
+      </tr>
+      <tr>
+        <td height="8"></td>
+      </tr>
+      <tr>
+        <td valign="top" ><table width="100%"  border="0" cellpadding="0" cellspacing="0" class="list_table"  >
+            <tr>
+              <td valign="top" ><div style="overflow-y: scroll; height:415px;" class="tableright1" >
+                <table width="720" border="0" cellpadding="0" cellspacing="0" >
+                  <tr class="list_word">
+                                        <td width="350" valign="top" ><div style="padding:6px;">
+                        <table border="0" cellpadding="0" cellspacing="0">
+                          <tr>
+                            <td width="66" height="91" ><table width="66" height="84" border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                  <td align="center" background="../images/head_bg4.gif">                                      <img src="../images/mission/daily/1.jpg" width="58" height="76" />
+                                                                        </td>
+                                </tr>
+                            </table></td>
+                            <td width="12">&nbsp;</td>
+                            <td valign="top"><table border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                  <td width="72" height="21" class="font-center_text">新闻阅读：</td>
+                                  <td>[
+                                    4/4                                    ]</td>
+                                </tr>
+                                <tr>
+                                  <td height="21" >任务加成：</td>
+                                  <td>5%</td>
+                                </tr>
+                                <tr>
+                                  <td height="21" >加成延续：</td>
+                                  <td>2010-07-02 08:45:58</td>
+                                </tr>
+                                <tr>
+                                  <td colspan="2" id="sty">                                    任务已全部完成
+                                                                      </td>
+                                </tr>
+                            </table></td>
+                          </tr>
+                        </table>
+                    </div></td>
+                                                            <td width="350" valign="top" ><div style="padding:6px;">
+                        <table border="0" cellpadding="0" cellspacing="0">
+                          <tr>
+                            <td width="66" height="91" ><table width="66" height="84" border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                  <td align="center" background="../images/head_bg4.gif">                                      <img src="../images/mission/daily/2.jpg" width="58" height="76" />
+                                                                        </td>
+                                </tr>
+                            </table></td>
+                            <td width="12">&nbsp;</td>
+                            <td valign="top"><table border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                  <td width="72" height="21" class="font-center_text">秘书沟通：</td>
+                                  <td>[
+                                    3/3                                    ]</td>
+                                </tr>
+                                <tr>
+                                  <td height="21" >任务加成：</td>
+                                  <td>5%</td>
+                                </tr>
+                                <tr>
+                                  <td height="21" >加成延续：</td>
+                                  <td>2010-07-02 09:20:41</td>
+                                </tr>
+                                <tr>
+                                  <td colspan="2" id="sty">                                    任务已全部完成
+                                                                      </td>
+                                </tr>
+                            </table></td>
+                          </tr>
+                        </table>
+                    </div></td>
+                                      </tr>
+                  <tr class="list_word">
+                                                            <td width="350" valign="top" ><div style="padding:6px;">
+                        <table border="0" cellpadding="0" cellspacing="0">
+                          <tr>
+                            <td width="66" height="91" ><table width="66" height="84" border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                  <td align="center" background="../images/head_bg4.gif">                                      <img src="../images/mission/daily/3.jpg" width="58" height="76" />
+                                                                        </td>
+                                </tr>
+                            </table></td>
+                            <td width="12">&nbsp;</td>
+                            <td valign="top"><table border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                  <td width="72" height="21" class="font-center_text">运营分析：</td>
+                                  <td>[
+                                    10/10                                    ]</td>
+                                </tr>
+                                <tr>
+                                  <td height="21" >任务加成：</td>
+                                  <td>5%</td>
+                                </tr>
+                                <tr>
+                                  <td height="21" >加成延续：</td>
+                                  <td>2010-07-02 10:04:01</td>
+                                </tr>
+                                <tr>
+                                  <td colspan="2" id="sty">                                    任务已全部完成
+                                                                      </td>
+                                </tr>
+                            </table></td>
+                          </tr>
+                        </table>
+                    </div></td>
+                                                            <td width="350" valign="top" ><div style="padding:6px;">
+                        <table border="0" cellpadding="0" cellspacing="0">
+                          <tr>
+                            <td width="66" height="91" ><table width="66" height="84" border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                  <td align="center" background="../images/head_bg4.gif">                                      <img src="../images/mission/daily/4.jpg" width="58" height="76" />
+                                                                        </td>
+                                </tr>
+                            </table></td>
+                            <td width="12">&nbsp;</td>
+                            <td valign="top"><table border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                  <td width="72" height="21" class="font-center_text">高层会议：</td>
+                                  <td>[
+                                    5/5                                    ]</td>
+                                </tr>
+                                <tr>
+                                  <td height="21" >任务加成：</td>
+                                  <td>5%</td>
+                                </tr>
+                                <tr>
+                                  <td height="21" >加成延续：</td>
+                                  <td>2010-07-02 15:25:38</td>
+                                </tr>
+                                <tr>
+                                  <td colspan="2" id="sty">                                    任务已全部完成
+                                                                      </td>
+                                </tr>
+                            </table></td>
+                          </tr>
+                        </table>
+                    </div></td>
+                                      </tr>
+                  <tr class="list_word">
+                                                            <td width="350" valign="top" ><div style="padding:6px;">
+                        <table border="0" cellpadding="0" cellspacing="0">
+                          <tr>
+                            <td width="66" height="91" ><table width="66" height="84" border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                  <td align="center" background="../images/head_bg4.gif">                                      <img src="../images/mission/daily/5.jpg" width="58" height="76" />
+                                                                        </td>
+                                </tr>
+                            </table></td>
+                            <td width="12">&nbsp;</td>
+                            <td valign="top"><table border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                  <td width="72" height="21" class="font-center_text">业务规划：</td>
+                                  <td>[
+                                    4/4                                    ]</td>
+                                </tr>
+                                <tr>
+                                  <td height="21" >任务加成：</td>
+                                  <td>5%</td>
+                                </tr>
+                                <tr>
+                                  <td height="21" >加成延续：</td>
+                                  <td>2010-07-02 16:06:05</td>
+                                </tr>
+                                <tr>
+                                  <td colspan="2" id="sty">                                    任务已全部完成
+                                                                      </td>
+                                </tr>
+                            </table></td>
+                          </tr>
+                        </table>
+                    </div></td>
+                                                            <td width="350" valign="top" ><div style="padding:6px;">
+                        <table border="0" cellpadding="0" cellspacing="0">
+                          <tr>
+                            <td width="66" height="91" ><table width="66" height="84" border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                  <td align="center" background="../images/head_bg4.gif">                                      <img src="../images/mission/daily/6.jpg" width="58" height="76" />
+                                                                        </td>
+                                </tr>
+                            </table></td>
+                            <td width="12">&nbsp;</td>
+                            <td valign="top"><table border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                  <td width="72" height="21" class="font-center_text">市场调查：</td>
+                                  <td>[
+                                    2/2                                    ]</td>
+                                </tr>
+                                <tr>
+                                  <td height="21" >任务加成：</td>
+                                  <td>5%</td>
+                                </tr>
+                                <tr>
+                                  <td height="21" >加成延续：</td>
+                                  <td>2010-07-02 16:36:21</td>
+                                </tr>
+                                <tr>
+                                  <td colspan="2" id="sty">                                    任务已全部完成
+                                                                      </td>
+                                </tr>
+                            </table></td>
+                          </tr>
+                        </table>
+                    </div></td>
+                                      </tr>
+                  <tr class="list_word">
+                                                            <td width="350" valign="top" ><div style="padding:6px;">
+                        <table border="0" cellpadding="0" cellspacing="0">
+                          <tr>
+                            <td width="66" height="91" ><table width="66" height="84" border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                  <td align="center" background="../images/head_bg4.gif">                     					<a href="#" onclick="check('7')"><img src="../images/mission/daily/7.jpg" width="58" height="76" /></a>	
+										                                  </td>
+                                </tr>
+                            </table></td>
+                            <td width="12">&nbsp;</td>
+                            <td valign="top"><table border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                  <td width="72" height="21" class="font-center_text">竞争分析：</td>
+                                  <td>[
+                                    0/2                                    ]</td>
+                                </tr>
+                                <tr>
+                                  <td height="21" >任务加成：</td>
+                                  <td>5%</td>
+                                </tr>
+                                <tr>
+                                  <td height="21" >加成延续：</td>
+                                  <td><a  onmousemove=show_description("任务尚未执行满额，暂无加成延续") onmouseout=hide_description()>暂无</a></td>
+                                </tr>
+                                <tr>
+                                  <td colspan="2" id="sty">                                    <input name="Submit232222" type="submit" class="button_f2" value="执行" onclick="check('7')" />
+                                                                      </td>
+                                </tr>
+                            </table></td>
+                          </tr>
+                        </table>
+                    </div></td>
+                                                            <td width="350" valign="top" ><div style="padding:6px;">
+                        <table border="0" cellpadding="0" cellspacing="0">
+                          <tr>
+                            <td width="66" height="91" ><table width="66" height="84" border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                  <td align="center" background="../images/head_bg4.gif">                     					<a href="#" onclick="check('8')"><img src="../images/mission/daily/8.jpg" width="58" height="76" /></a>	
+										                                  </td>
+                                </tr>
+                            </table></td>
+                            <td width="12">&nbsp;</td>
+                            <td valign="top"><table border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                  <td width="72" height="21" class="font-center_text">合作规划：</td>
+                                  <td>[
+                                    0/3                                    ]</td>
+                                </tr>
+                                <tr>
+                                  <td height="21" >任务加成：</td>
+                                  <td>5%</td>
+                                </tr>
+                                <tr>
+                                  <td height="21" >加成延续：</td>
+                                  <td><a  onmousemove=show_description("任务尚未执行满额，暂无加成延续") onmouseout=hide_description()>暂无</a></td>
+                                </tr>
+                                <tr>
+                                  <td colspan="2" id="sty">                                    <input name="Submit232222" type="submit" class="button_f2" value="执行" onclick="check('8')" />
+                                                                      </td>
+                                </tr>
+                            </table></td>
+                          </tr>
+                        </table>
+                    </div></td>
+                                      </tr>
+                  <tr class="list_word">
+                                                            <td width="350" valign="top" ><div style="padding:6px;">
+                        <table border="0" cellpadding="0" cellspacing="0">
+                          <tr>
+                            <td width="66" height="91" ><table width="66" height="84" border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                  <td align="center" background="../images/head_bg4.gif">                     					<a href="#" onclick="check('9')"><img src="../images/mission/daily/9.jpg" width="58" height="76" /></a>	
+										                                  </td>
+                                </tr>
+                            </table></td>
+                            <td width="12">&nbsp;</td>
+                            <td valign="top"><table border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                  <td width="72" height="21" class="font-center_text">客户调查：</td>
+                                  <td>[
+                                    0/6                                    ]</td>
+                                </tr>
+                                <tr>
+                                  <td height="21" >任务加成：</td>
+                                  <td>5%</td>
+                                </tr>
+                                <tr>
+                                  <td height="21" >加成延续：</td>
+                                  <td><a  onmousemove=show_description("任务尚未执行满额，暂无加成延续") onmouseout=hide_description()>暂无</a></td>
+                                </tr>
+                                <tr>
+                                  <td colspan="2" id="sty">                                    <input name="Submit232222" type="submit" class="button_f2" value="执行" onclick="check('9')" />
+                                                                      </td>
+                                </tr>
+                            </table></td>
+                          </tr>
+                        </table>
+                    </div></td>
+                                                            <td width="350" valign="top" ><div style="padding:6px;">
+                        <table border="0" cellpadding="0" cellspacing="0">
+                          <tr>
+                            <td width="66" height="91" ><table width="66" height="84" border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                  <td align="center" background="../images/head_bg4.gif">                     					<a href="#" onclick="check('10')"><img src="../images/mission/daily/10.jpg" width="58" height="76" /></a>	
+										                                  </td>
+                                </tr>
+                            </table></td>
+                            <td width="12">&nbsp;</td>
+                            <td valign="top"><table border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                  <td width="72" height="21" class="font-center_text">政府沟通：</td>
+                                  <td>[
+                                    0/5                                    ]</td>
+                                </tr>
+                                <tr>
+                                  <td height="21" >任务加成：</td>
+                                  <td>5%</td>
+                                </tr>
+                                <tr>
+                                  <td height="21" >加成延续：</td>
+                                  <td><a  onmousemove=show_description("任务尚未执行满额，暂无加成延续") onmouseout=hide_description()>暂无</a></td>
+                                </tr>
+                                <tr>
+                                  <td colspan="2" id="sty">                                    <input name="Submit232222" type="submit" class="button_f2" value="执行" onclick="check('10')" />
+                                                                      </td>
+                                </tr>
+                            </table></td>
+                          </tr>
+                        </table>
+                    </div></td>
+                                      </tr>
+                  <tr class="list_word">
+                                                            <td width="350" valign="top" ><div style="padding:6px;">
+                        <table border="0" cellpadding="0" cellspacing="0">
+                          <tr>
+                            <td width="66" height="91" ><table width="66" height="84" border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                  <td align="center" background="../images/head_bg4.gif">                     					<a href="#" onclick="check('11')"><img src="../images/mission/daily/11.jpg" width="58" height="76" /></a>	
+										                                  </td>
+                                </tr>
+                            </table></td>
+                            <td width="12">&nbsp;</td>
+                            <td valign="top"><table border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                  <td width="72" height="21" class="font-center_text">财务预测：</td>
+                                  <td>[
+                                    0/3                                    ]</td>
+                                </tr>
+                                <tr>
+                                  <td height="21" >任务加成：</td>
+                                  <td>5%</td>
+                                </tr>
+                                <tr>
+                                  <td height="21" >加成延续：</td>
+                                  <td><a  onmousemove=show_description("任务尚未执行满额，暂无加成延续") onmouseout=hide_description()>暂无</a></td>
+                                </tr>
+                                <tr>
+                                  <td colspan="2" id="sty">                                    <input name="Submit232222" type="submit" class="button_f2" value="执行" onclick="check('11')" />
+                                                                      </td>
+                                </tr>
+                            </table></td>
+                          </tr>
+                        </table>
+                    </div></td>
+                                                            <td width="350" valign="top" ><div style="padding:6px;">
+                        <table border="0" cellpadding="0" cellspacing="0">
+                          <tr>
+                            <td width="66" height="91" ><table width="66" height="84" border="0" cellpadding="0" cellspacing="0">
+                                <tr>
+                                  <td align="center" background="../images/head_bg4.gif">                     					<a href="#" onclick="check('12')"><img src="../images/mission/daily/12.jpg" width="58" height="76" /></a>	
+										                                  </td>
+                                </tr>
+                            </table></td>
+                            <td width="12">&nbsp;</td>
+                            <td valign="top"><table border="0" cellspacing="0" cellpadding="0">
+                                <tr>
+                                  <td width="72" height="21" class="font-center_text">演讲：</td>
+                                  <td>[
+                                    0/3                                    ]</td>
+                                </tr>
+                                <tr>
+                                  <td height="21" >任务加成：</td>
+                                  <td>5%</td>
+                                </tr>
+                                <tr>
+                                  <td height="21" >加成延续：</td>
+                                  <td><a  onmousemove=show_description("任务尚未执行满额，暂无加成延续") onmouseout=hide_description()>暂无</a></td>
+                                </tr>
+                                <tr>
+                                  <td colspan="2" id="sty">                                    <input name="Submit232222" type="submit" class="button_f2" value="执行" onclick="check('12')" />
+                                                                      </td>
+                                </tr>
+                            </table></td>
+                          </tr>
+                        </table>
+                    </div></td>
+                                      </tr>
+                  <tr class="list_word">
+                                                          </tr>
+                  <tr class="list_word">
+                    <td valign="top" ></td>
+                    <td valign="top" ></td>
+                  </tr>
+                </table>
+              </div> </td>
+  </tr >
+</table>
+</body>
+</html>
+<body>
+<script>
+</script>

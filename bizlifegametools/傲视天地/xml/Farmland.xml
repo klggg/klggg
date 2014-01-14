@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- 农田场景配置文件 -->
+<config>
+	<displayObject view="farmland.view.Background" property='' />
+	<displayObject name="fieldList" view="farmland.view.FieldList" property='' />
+	
+	<!--农田详情-->
+	<fieldInfo property='{"x":307, "y":177}'>
+		<displayObject view="farmland.view.FieldInfoBG" property='' />
+		<displayObject name="closeBtn" view="gameUI.btn.CloseBtn" property='{"x":355, "y":30}' />
+		<displayObject name="fieldPic" view="farmland.view.FieldPic" property='{"x":30, "y":75}' />
+		<displayObject name="arrowIcon" view="farmland.icon.Arrow" property='{"visible":false}' />
+		
+		
+		<gameButton name="occupyBtn" labelID="120101" property='{"x":188, "y":130}' btn="farmland.btn.Occupy" labelProp='{"x":13, "y":30, "color":"0xE5DFD3", "stroke":"0x272018"}' />
+		<gameButton name="abandonBtn" labelID="120102" property='{"x":255, "y":130}' btn="farmland.btn.Abandon" labelProp='{"x":13, "y":30, "color":"0xE5DFD3", "stroke":"0x272018"}' />
+		
+		<staticText property='{"x":190, "y":55, "color":"0x978148", "stroke":"0x2E2017"}' textID="120201"/>
+		<staticText property='{"x":190, "y":77, "color":"0x978148", "stroke":"0x2E2017"}' textID="120202"/>
+		<staticText property='{"x":190, "y":99, "color":"0x978148", "stroke":"0x2E2017"}' textID="120203"/>
+		
+		<text name="yieldText" property='{"x":225, "y":55, "color":"0xE8DFCE", "stroke":"0x292317"}'/>
+		<text name="timeText" property='{"x":225, "y":77, "color":"0xE8DFCE", "stroke":"0x292317"}'/>
+		<text name="occupantText" property='{"x":225, "y":99, "bold":true, "color":"0xE8DFCE", "stroke":"0x292317"}'/>
+		
+		<introText property='{"x":41, "y":203, "color":"0xE8DFCE", "stroke":"0x292317"}' iconStyleList = '[
+			{ "visible":false },
+			{ "x":201, "y":182, "visible":true },
+			{ "x":268, "y":182, "visible":true }
+		]'/>
+	</fieldInfo>
+	
+	<!--场景提示-->
+	<sceneTips view="farmland.view.SceneTips" duration="1" property='{"x":422, "y":247}'>
+		<nameText property='{"x":78, "y":45, "size":14, "bold":true, "autoSize":"center", "stroke":"0xD9C5A2"}' />
+	</sceneTips>
+</config>
