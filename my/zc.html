@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8" />
 <link rel="stylesheet" href="http://demos.jquerymobile.com/1.4.1/css/themes/default/jquery.mobile-1.4.1.min.css">
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script src="http://demos.jquerymobile.com/1.4.1/js/jquery.mobile-1.4.1.min.js"></script>
 <style type="text/css">
- .numb_font {font-size: 10px}
+ .numb_font {font-size: 6px}
 </style>
-<TITLE>超强大脑</TITLE>
+<TITLE>超强大脑,疯狂找茬</TITLE>
 </head>
 <body>
 <div data-role="page" id="pageone">
   <div data-role="header">
-    <h1>超强大脑</h1>
+    <h1>超强大脑,疯狂找茬</h1>
   </div>
 
   <div data-role="content" id="content">
@@ -20,19 +21,13 @@
 	<div class="ui-grid-a">
 	    <div class="ui-block-a"><div class="ui-bar ui-bar-a"  id="block_a">
 
-	    		<p>aaa</p>
-	    		<p>aaa</p>
-	    		<p>aaa</p>
-	    		<p>aaa</p>
-	    		<p>aaa</p>	   
+	    		<p>瞌睡虫</p>
+
 	    </div></div>
 	    <div class="ui-block-b">
 	    	<div class="ui-bar ui-bar-a" style="" id="block_b">
-	    		<p>aaa</p>
-	    		<p>aaa</p>
-	    		<p>aaa</p>
-	    		<p>aaa</p>
-	    		<p>aaa</p>	    			    		
+	    		<p>瞌睡虫</p>
+			    		
 	    	</div>
 	    </div>
 	</div>
@@ -69,6 +64,8 @@
 		colors:["#ff0000","#00ff00","#0000ff","#000000","#483D8B","#4682B4","#458B00","#006400","#FFEC8B","#A0522D","#00B2EE","#8B008B","#68838B"]
 		,rols : 10
 		,cols : 10		
+		,domA : "#block_a"
+		,domB : "#block_b"
 		,grips_a : []
 		,grips_b : []
 
@@ -76,7 +73,8 @@
 
 			if(this.grips_a[i][j] != this.grips_b[i][j])
 			{
-				alert('恭喜，您也是超强大脑。\n\n所在座标：'+i+"行,"+(j+1)+"列");
+				alert('恭喜，您也是超强大脑。\n\n所在座标：'+i+"行,"+(j+1)+"列\n\n点击确定后重新开始");
+				this.restart();
 			}
 			else
 				alert('不对哟，再找找。')
@@ -84,11 +82,16 @@
 			// alert(this.grips_a[i][j] +":" +this.grips_b[i][j]);
 
 		}
+		,restart: function(){
+			this.run(this.rols,this.cols,this.domA,this.domB);
+		}
 
 		,run: function(rols,cols,domA,domB){
 
 			this.rols = rols+1;
 			this.cols = cols;
+			this.domA = domA;
+			this.domB = domB;
 
 			// alert(parseInt(Math.random()*(3-1+1)+1));
 			this.make(this.rols,this.cols,domA,domB);
@@ -126,10 +129,12 @@
 
 			var new_color = this.replaceColor(old_color);
 
-			console.log(this.grips_a[rand_i][rand_j]);
-
 			// this.grips_b[rand_i][rand_j] = "#ffffff";
 			this.grips_b[rand_i][rand_j] = new_color;
+
+
+			console.log(old_color);
+			console.log(new_color);
 
 			this.draw(domA,this.grips_a);
 			this.draw(domB,this.grips_b);
@@ -190,7 +195,7 @@
 		}
 	}
 
-	zhaoca.run(20,33,"#block_a","#block_b");
+	zhaoca.run(20,26,"#block_a","#block_b");
 
 </script>
 </html>
