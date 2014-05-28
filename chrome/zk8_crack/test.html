@@ -1,0 +1,29 @@
+<html><head>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>aaaaa</title>
+
+<script type="text/javascript">
+     function disableSelection(target){
+
+alert("hi");
+          if (typeof target.onselectstart!="undefined") //IE route
+             target.onselectstart=function(){return false}
+          else if (typeof target.style.MozUserSelect!="undefined") //Firefox route
+             target.style.MozUserSelect="none"
+          else //All other route (ie: Opera)
+             target.onmousedown=function(){return false}
+          target.style.cursor = "default"
+     }
+
+
+</script>
+</head>
+
+<body id="iframecontent" onselectstart="return false" oncopy="alert('本站数据版权所有，请尊重我们的劳动成果，谢绝复制');return false;" oncut="alert('本站数据版权所有，请尊重我们的劳动成果，谢绝复制');return false;" style="cursor: default;">
+<script type="text/javascript"> disableSelection(document.body); </script>
+
+<p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p><p>test</p>
+
+</body>
+</html>

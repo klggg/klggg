@@ -48,6 +48,9 @@ return array(
 				array(
 					'class'=>'CFileLogRoute',
 					'levels'=>'trace,info,error,warning',
+                    'logFile' =>'script.log',
+                    'maxFileSize' =>'502400', //502400
+                    'maxLogFiles' =>'10',   					
 /*                       'logPath' =>G_LOG_PATH.'/script/',
                        'logFile' =>'status.log',
                        'maxFileSize' =>'502400', //502400

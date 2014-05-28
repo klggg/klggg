@@ -1,0 +1,392 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>已登录会员-00147vip人力资源管理（一）（2014年7/10月保过精华版）-第一章人力资源管理导论知识点：[领会]人力资源有哪些特征及作用？</title>
+<link rel="stylesheet" type="text/css" href="skin/default/jooyea/css/iframe.css">
+<script type="text/javascript" language="javascript" src="skin/default/js/jquery-1.3.2.min.js"></script>
+<script language=JavaScript src="skin/default/js/jooyea.js"></script>
+<SCRIPT language=JavaScript src="servtools/kindeditor/kindeditor.js"></SCRIPT>
+<script type="text/javascript">
+parent.hiddenDiv();
+
+function apMenuShow03(isShow)
+{
+	var apMenu = document.getElementById('ap_menu03');
+	if(apMenu)
+	{
+		if(isShow)
+		{
+			apMenu.style.display = '';
+		}
+		else
+		{
+			apMenu.style.display = 'none';
+		}
+	}
+}
+function apMenuShow04(isShow)
+{
+	var apMenu = document.getElementById('ap_menu04');
+	if(apMenu)
+	{
+		if(isShow)
+		{
+			apMenu.style.display = '';
+		}
+		else
+		{
+			apMenu.style.display = 'none';
+		}
+	}
+}
+
+
+var keyStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
+function base64decode(Str) {
+    var output = "";
+    var chr1, chr2, chr3 = "";
+    var enc1, enc2, enc3, enc4 = "";
+    var i = 0;
+    var base64test = /[^A-Za-z0-9\+\/\=]/g;
+    if (base64test.exec(Str)){}
+    Str = Str.replace(/[^A-Za-z0-9\+\/\=]/g, "");
+    do {
+        enc1 = keyStr.indexOf(Str.charAt(i++));
+        enc2 = keyStr.indexOf(Str.charAt(i++));
+        enc3 = keyStr.indexOf(Str.charAt(i++));
+        enc4 = keyStr.indexOf(Str.charAt(i++));
+        chr1 = (enc1 << 2) | (enc2 >> 4);
+        chr2 = ((enc2 & 15) << 4) | (enc3 >> 2);
+        chr3 = ((enc3 & 3) << 6) | enc4;
+        output = output + String.fromCharCode(chr1);
+        if (enc3 != 64) {output = output + String.fromCharCode(chr2);}
+        if (enc4 != 64) {output = output + String.fromCharCode(chr3);}
+        chr1 = chr2 = chr3 = "";
+        enc1 = enc2 = enc3 = enc4 = "";
+    } while (i < Str.length);
+    return decodeURI(output);
+}
+
+
+function click() {
+	alert('本站数据版权所有，请尊重我们的劳动成果，谢绝复制！');
+}
+function click1() {
+	if (event.button==2) {alert('本站数据版权所有，请尊重我们的劳动成果，谢绝复制');}
+}
+//function CtrlKeyDown(){
+//	if (event.ctrlKey) {alert('本站数据版权所有，请尊重我们的劳动成果，谢绝复制');}
+//}
+
+//document.onkeydown=CtrlKeyDown;
+document.onselectstart=click;
+document.onmousedown=click1;
+
+
+
+document.oncontextmenu=function(e){return false;}
+
+
+function tab(num,count,name){
+  for(i=1; i<=count; i++){
+    document.getElementById(name + 't' + i).className = 'nor';
+	document.getElementById(name + 'c' + i).style.display = "none";
+  }
+    document.getElementById(name + 't' + num).className = 'act';
+	document.getElementById(name + 'c' + num).style.display = "block";
+}
+</script>
+<style>
+body   {
+-moz-user-select:none;
+}
+</style>
+<script type="text/javascript">
+     function disableSelection(target){
+          if (typeof target.onselectstart!="undefined") //IE route
+             target.onselectstart=function(){return false}
+          else if (typeof target.style.MozUserSelect!="undefined") //Firefox route
+             target.style.MozUserSelect="none"
+          else //All other route (ie: Opera)
+             target.onmousedown=function(){return false}
+          target.style.cursor = "default"
+     }
+
+
+//获取主题
+function list_learn_discuss(is_more,TypeId,wiki_id){
+	hidden_obj('none_data');
+	show_obj('affair_info');
+	var recent_affair_div=$("sec_Content");
+
+	var start_num=parseInt($('affair_start_num').value);
+	$('affair_start_num').value=parseInt($('affair_start_num').value)+5;
+
+	jQuery.get("modules.php?app=wiki_learn_discuss",{TypeId:TypeId,wiki_id:wiki_id,start_num:start_num},function(c){
+		hidden_obj('none_data');show_obj('affair_info');
+		if(is_more==1){
+			recent_affair_div.innerHTML=recent_affair_div.innerHTML+c;
+		}else{
+			recent_affair_div.innerHTML=c;
+		}
+		if(c==''){
+			show_obj('none_data');
+			hidden_obj('affair_info');
+		}else{
+			parent.pick_script(c);
+		}
+	});
+}
+
+//发表主题
+function restore_discuss(TypeId,chapterid,wiki_id){
+		var r_content=$('reply_input').value;
+		var user_id='';
+
+		if(trim(r_content)==''){
+			parent.Dialog.alert('内容不能为空');
+		}else{
+
+		jQuery.post("do.php?act=wiki_discuss_add&TypeId="+TypeId+"&wiki_id="+wiki_id+"&chapterid="+chapterid,{content:r_content},function(c){
+				$("sec_Content").innerHTML=c+$("sec_Content").innerHTML;
+				KE.html('reply_input','');
+			});
+		}
+}
+
+//支持反对
+function approve_or_oppose(comment_id,val,cat){
+		jQuery.get("do.php?act=wiki_approve",{comment_id:comment_id,val:val,cat:cat},function(c){
+			if(c!='no'){
+				var div_name=(val==1?'approve':'oppose')+'_'+comment_id;
+				$(div_name).innerHTML=$(div_name).innerHTML*1+1;
+				parent.Dialog.alert(c);
+			}
+			else{
+				parent.Dialog.alert('您已经点过啦');
+			}
+		});
+
+}
+
+//封锁用户所有评论
+function set_comment_hidden(userid,val,cat,TypeId){
+	if(confirm('确定封锁此用户的所有评论？')){
+		jQuery.get("do.php?act=wiki_approve",{userid:userid,val:val,cat:cat,TypeId:TypeId},function(c){
+			if(c=='yes')
+				window.location.reload();
+			else
+				parent.Dialog.alert(c);
+		});
+	}
+
+}
+
+//显示隐藏编辑框
+function edit_form_show(com_id,show){
+	if(show==1){
+		KE.init({
+			id:'edit_content_'+com_id,
+			resizeMode:0
+		});
+		KE.create('edit_content_'+com_id);
+
+		document.getElementById('record_0_'+com_id).style.display='none';
+		document.getElementById('edit_text_'+com_id).style.display='block';
+	}
+	else{
+		document.getElementById('record_0_'+com_id).style.display='block';
+		document.getElementById('edit_text_'+com_id).style.display='none';
+		KE.remove('edit_content_'+com_id,0);
+	}
+}
+//修改回复
+function edit_com(com_id,TypeId){
+	var content=document.getElementById('edit_content_'+com_id).value;
+
+	jQuery.post("do.php?act=wiki_com_edit",{id:com_id,content:content,TypeId:TypeId},function(c){document.getElementById('com_content_'+com_id).innerHTML='<p class="left">'+c+'</p>';edit_form_show(com_id,0);});
+}
+
+//采纳并奖励
+function adoption_and_award(com_id,userid,username){
+	var diag = new parent.Dialog();
+	diag.Width = 300;
+	diag.Height = 150;
+	diag.Top="50%";
+	diag.Left="50%";
+	diag.Title = "知识点建议采纳奖励";
+	diag.InnerHtml= '<div class="report_notice"><span class="sj">奖励威望:</span>'+
+	'<select id="weiwang" style="width:100px;text-align:center;" ><option value="0" >&nbsp;&nbsp;0&nbsp;&nbsp;</option><option value="1" >&nbsp;&nbsp;1&nbsp;&nbsp;</option><option value="2" >&nbsp;&nbsp;2&nbsp;&nbsp;</option><option value="3" >&nbsp;&nbsp;3&nbsp;&nbsp;</option><option value="4" >&nbsp;&nbsp;4&nbsp;&nbsp;</option><option value="5" >&nbsp;&nbsp;5&nbsp;&nbsp;</option><option value="6" >&nbsp;&nbsp;6&nbsp;&nbsp;</option><option value="7" >&nbsp;&nbsp;7&nbsp;&nbsp;</option><option value="8" >&nbsp;&nbsp;8&nbsp;&nbsp;</option><option value="9" >&nbsp;&nbsp;9&nbsp;&nbsp;</option><option value="10" >&nbsp;&nbsp;10&nbsp;&nbsp;</option></select><br/>'+
+	'<span class="sj">奖励金钱:</span><select id="money" style="width:100px;text-align:center;" ><option value="0"  >&nbsp;&nbsp;0&nbsp;&nbsp;</option><option value="1" >&nbsp;&nbsp;1&nbsp;&nbsp;</option><option value="2" >&nbsp;&nbsp;2&nbsp;&nbsp;</option><option value="3" >&nbsp;&nbsp;3&nbsp;&nbsp;</option><option value="4" >&nbsp;&nbsp;4&nbsp;&nbsp;</option><option value="5" >&nbsp;&nbsp;5&nbsp;&nbsp;</option><option value="6" >&nbsp;&nbsp;6&nbsp;&nbsp;</option><option value="7" >&nbsp;&nbsp;7&nbsp;&nbsp;</option><option value="8" >&nbsp;&nbsp;8&nbsp;&nbsp;</option><option value="9" >&nbsp;&nbsp;9&nbsp;&nbsp;</option><option value="10" >&nbsp;&nbsp;10&nbsp;&nbsp;</option></select></div>';
+	diag.OKEvent = function(){
+		var weiwang=parent.document.getElementById('weiwang').value;
+		var money=parent.document.getElementById('money').value;
+
+		jQuery.post("do.php?act=wiki_adoption",{com_id:com_id,userid:userid,username:username,honor:weiwang,money:money},function(c){
+			if(c == 'ok') {
+				parent.Dialog.alert("操作成功!");
+				window.location.reload();
+			} else {
+				parent.Dialog.alert(c);
+			}
+			diag.close();
+		});
+
+	};
+	diag.show();
+
+}
+
+</script>
+
+</head>
+<body id="iframecontent" onselectstart="return false" oncopy="alert('本站数据版权所有，请尊重我们的劳动成果，谢绝复制');return false;" oncut="alert('本站数据版权所有，请尊重我们的劳动成果，谢绝复制');return false;">
+<script type="text/javascript"> disableSelection(document.body); </script>
+<!--<a href="modules.php?app=wiki_book">未通过审核</a>
+<a href="modules.php?app=wiki_study">通过审核</a>-->
+<div class="create_button">
+	<a href="modules.php?app=wiki_free&id=991">返回课程首页</a>
+	<!--  <a onclick="parent.show_share(9,303880,'[领会]人力资源有哪些特征及作用？','','');" href="javascript:void(0);">分享</a>  -->
+</div>
+<h2 class="app_wiki" style="background:url(skin/default/jooyea/images/wiki.gif) 0 5px no-repeat; _background:url(skin/default/jooyea/images/wiki.gif) 0 10px no-repeat; padding-top:0; margin-top:-10px;"><form action="modules.php" method="get" name="search_form">在线学习<input type="text" name="name" class="app_search" style="margin-left:50px; padding:5px; height:12px; line-height:12px; border:1px solid #ddd; width:250px; margin-right:5px;"/><input type="hidden" name="app" value="wiki_search" /><input type="hidden" name="id" value="991" /><input type="submit" value="搜索知识点" class="app_btn" style="width:93px; height:30px; border:0; background:url(skin/default/jooyea/images/create_bg.gif) no-repeat; font-size:14px; font-weight:bold; cursor:pointer;"/></form>
+	</h2>
+<div class="wiki_study">
+<div class="tabs">
+   <ul>
+						<li class="active"><a>正在学习保过精华版</a></li>
+		<li><a href="http://b.qq.com/webc.htm?new=0&sid=800002864&eid=&o=&q=7" target="_blank">点击与在线老师沟通</a>
+</li>
+				<li><a href="main.php?app=user_comment&id=991" target="_blank">会员评价</a></li>
+	</ul>
+</div>
+<h4>您正在学习的是：00147vip人力资源管理（一）（2014年7/10月保过精华版），本在线学习课程于2013年11月更新制作完成，使用的教材是：《人力资源管理（一）》教材作者：赵凤敏 出版社：高等教育出版社。
+	<br />知识点总数：<strong style="color:#CE1221;">144</strong>个(已学:<strong style="color:red;">8</strong>个，掌握<strong style="color:red;">0</strong>个，记忆不牢固<strong style="color:red;">8</strong>个，还有<strong style="color:red;">0</strong>个知识点要复习)
+</h4>
+<div class="jindu">
+<div class="jindu_left"></div>
+<div class="jindu_x" style="width:37.222222222222px;"></div>
+<div class="jindu_btn">5%</div>
+</div>
+<div class="wiki_study_li">
+<label>问题：</label><div class="wiki_study_li_textarea" style="font-family:Microsoft YaHei, SimHei, SimSun, Verdana, Arial, Helvetica, sans-serif; font-size:16px; width:810px; padding:5px;"><script>window.document.write(base64decode("JTNDcCUzRSU1QiVFOSVBMiU4NiVFNCVCQyU5QSU1RCVFNCVCQSVCQSVFNSU4QSU5QiVFOCVCNSU4NCVFNiVCQSU5MCVFNiU5QyU4OSVFNSU5MyVBQSVFNCVCQSU5QiVFNyU4OSVCOSVFNSVCRSU4MSVFNSU4RiU4QSVFNCVCRCU5QyVFNyU5NCVBOCVFRiVCQyU5RiUzQy9wJTNF"));</script></div>
+</div>
+<div  id="question" style="display:block; text-align:left; padding-left:55px;">
+<input type="button" value="先想想答案是什么？再单击这里查看答案" onClick="show_question()" class="regular-btn" style="width:273px; height:30px; border:0; color:#742c00; background:url(skin/default/jooyea/images/btn_bg02.gif) no-repeat; font-size:12px; cursor:pointer;">
+
+</div>
+<!--隐藏答案按钮开始-->
+<div id="show_question" style="display:none">
+<!--概念知识点显示内容开始-->
+
+	<div style=" width:780px; text-align:left; display:inline; margin:0 auto; margin-top:15px; float:left; margin-bottom:5px; margin-left:56px;">
+			<input type="image" src="skin/default/jooyea/images/1111_7777.gif"  onClick="remind_review('00147vip','303880');" title="设置下次复习该知识点"/>
+		<input type="image" src="skin/default/jooyea/images/1111_5555.gif" onClick="next_wiki('up');" title="学习上一个知识点"/>
+		<input type="image" src="skin/default/jooyea/images/1111_6666.gif" onClick="next_wiki('next');" title="学习下一个知识点"/>
+		</div>
+
+<div class="clear"></div>
+
+<div class="wiki_study_li">
+<label>答案：</label><div style="font-family:Microsoft YaHei, SimHei, SimSun, Verdana, Arial, Helvetica, sans-serif; font-size:16px; line-height:1.5;float:left; width:800px; padding:10px; border:1px solid #ddd;"><script>window.document.write(base64decode("JTNDcCUzRSVFNCVCOCU4MCVFMyU4MCU4MSVFNCVCQSVCQSVFNSU4QSU5QiVFOCVCNSU4NCVFNiVCQSU5MCVFNSU5MCU4QyVFNSU4NSVCNiVFNCVCQiU5NiVFOCVCNSU4NCVFNiVCQSU5MCVFNyU5QiVCOCVFNiVBRiU5NCVFNSU4NSVCNyVFNiU5QyU4OSVFNSVBNiU4MiVFNCVCOCU4QiVFNyU4OSVCOSVFNSVCRSU4MSVFRiVCQyU5QSUzQy9wJTNFJTNDcCUzRTElRTMlODAlODElM0NzcGFuJTIwc3R5bGU9JTIyY29sb3I6cmVkJTIyJTNFJUU3JTk0JTlGJUU2JTg4JTkwJTNDL3NwYW4lM0UlRTglQkYlODclRTclQTglOEIlRTclOUElODQlM0NzcGFuJTIwc3R5bGU9JTIyY29sb3I6cmVkJTIyJTNFJUU2JTk3JUI2JUU0JUJCJUEzJTNDL3NwYW4lM0UlRTYlODAlQTclM0MvcCUzRSUzQ3AlM0UyJUUzJTgwJTgxJTNDc3BhbiUyMHN0eWxlPSUyMmNvbG9yOnJlZCUyMiUzRSVFNSVCQyU4MCVFNSU4RiU5MSUzQy9zcGFuJTNFJUU1JUFGJUI5JUU4JUIxJUExJUU3JTlBJTg0JTNDc3BhbiUyMHN0eWxlPSUyMmNvbG9yOnJlZCUyMiUzRSVFOCU4MyVCRCVFNSU4QSVBOCUzQy9zcGFuJTNFJUU2JTgwJUE3JTNDL3AlM0UlM0NwJTNFMyVFMyU4MCU4MSUzQ3NwYW4lMjBzdHlsZT0lMjJjb2xvcjpyZWQlMjIlM0UlRTQlQkQlQkYlRTclOTQlQTglM0Mvc3BhbiUzRSVFOCVCRiU4NyVFNyVBOCU4QiVFNyU5QSU4NCUzQ3NwYW4lMjBzdHlsZT0lMjJjb2xvcjpyZWQlMjIlM0UlRTYlOTclQjYlRTYlOTUlODglM0Mvc3BhbiUzRSVFNiU4MCVBNyUzQy9wJTNFJTNDcCUzRTQlRTMlODAlODElM0NzcGFuJTIwc3R5bGU9JTIyY29sb3I6cmVkJTIyJTNFJUU1JUJDJTgwJUU1JThGJTkxJTNDL3NwYW4lM0UlRTglQkYlODclRTclQTglOEIlRTclOUElODQlM0NzcGFuJTIwc3R5bGU9JTIyY29sb3I6cmVkJTIyJTNFJUU2JThDJTgxJUU3JUJCJUFEJTNDL3NwYW4lM0UlRTYlODAlQTclM0MvcCUzRSUzQ3AlM0U1JUUzJTgwJTgxJTNDc3BhbiUyMHN0eWxlPSUyMmNvbG9yOnJlZCUyMiUzRSVFOSU5NyVCMiVFNyVCRCVBRSUzQy9zcGFuJTNFJUU4JUJGJTg3JUU3JUE4JThCJUU3JTlBJTg0JTNDc3BhbiUyMHN0eWxlPSUyMmNvbG9yOnJlZCUyMiUzRSVFNiVCNiU4OCVFOCU4MCU5NyUzQy9zcGFuJTNFJUU2JTgwJUE3JTNDL3AlM0UlM0NwJTNFJUU0JUJBJThDJUUzJTgwJTgxJUU0JUJBJUJBJUU1JThBJTlCJUU4JUI1JTg0JUU2JUJBJTkwJUU3JTlBJTg0JUU3JUFBJTgxJUU1JTg3JUJBJUU0JUJEJTlDJUU3JTk0JUE4JUU0JUI4JUJCJUU4JUE2JTgxJUU0JUJEJTkzJUU3JThFJUIwJUU1JTlDJUE4JUU0JUJCJUE1JUU0JUI4JThCJUU1JTg3JUEwJUU2JTk2JUI5JUU5JTlEJUEyJUVGJUJDJTlBJTNDL3AlM0UlM0NwJTNFMSVFMyU4MCU4MSVFNCVCQSVCQSVFNSU4QSU5QiVFOCVCNSU4NCVFNiVCQSU5MCVFNiU5OCVBRiVFNyU4RSVCMCVFNCVCQiVBMyUzQ3NwYW4lMjBzdHlsZT0lMjJjb2xvcjpyZWQlMjIlM0UlRTclQkIlODQlRTclQkIlODclRTQlQjglQUQlRTYlOUMlODAlRTklODclOEQlRTglQTYlODElRTclOUElODQlRTglQjUlODQlRTYlQkElOTAlM0Mvc3BhbiUzRSUzQy9wJTNFJTNDcCUzRTIlRTMlODAlODElRTQlQkElQkElRTUlOEElOUIlRTglQjUlODQlRTYlQkElOTAlRTYlOTglQUYlM0NzcGFuJTIwc3R5bGU9JTIyY29sb3I6cmVkJTIyJTNFJUU3JUJCJThGJUU2JUI1JThFJUU1JUEyJTlFJUU5JTk1JUJGJUU3JTlBJTg0JUU0JUI4JUJCJUU4JUE2JTgxJUU1JThBJUE4JUU1JThBJTlCJTNDL3NwYW4lM0UlM0MvcCUzRSUzQ3AlM0UzJUUzJTgwJTgxJUU0JUJBJUJBJUU1JThBJTlCJUU4JUI1JTg0JUU2JUJBJTkwJUU2JTk4JUFGJTNDc3BhbiUyMHN0eWxlPSUyMmNvbG9yOnJlZCUyMiUzRSVFOCVCNCVBMiVFNSVBRiU4QyVFNSVCRCVBMiVFNiU4OCU5MCVFNyU5QSU4NCVFNSU4NSVCMyVFOSU5NCVBRSVFOCVBNiU4MSVFNyVCNCVBMCUzQy9zcGFuJTNFJTNDL3AlM0U="));</script></div>
+</div>
+
+<div class="wiki_study_li">
+<label>窍门：</label><div style="font-family:Microsoft YaHei, SimHei, SimSun, Verdana, Arial, Helvetica, sans-serif; font-size:16px; line-height:1.5; float:left; width:800px; padding:10px; border:1px solid #ddd;"><script>window.document.write(base64decode("JTNDcCUzRSVFNCVCOCU4MCVFMyU4MCU4MSVFNCVCQSVCQSVFNSU4QSU5QiVFOCVCNSU4NCVFNiVCQSU5MCVFNyU5QSU4NCVFNyU4OSVCOSVFNSVCRSU4MSVFRiVCQyU4QyVFNSU4RiVBRiVFOSU4MCU5QSVFOCVCRiU4NyVFNCVCOCVCMiVFOCU4MSU5NCVFNyVBRCU5NCVFNiVBMSU4OCVFOCVBNiU4MSVFNyU4MiVCOSVFNyU5QSU4NCVFNSU4NSVCMyVFOSU5NCVBRSVFOCVBRiU4RCVFOCVCRiU5QiVFOCVBMSU4QyVFOCVBRSVCMCVFNSVCRiU4NiVFRiVCQyU5QSUzQy9wJTNFJTNDcCUzRSVFNCVCQyU4MSVFNCVCOCU5QSVFNSU5QyVBOCVFNSVCQyU4MCVFNSU4RiU5MSVFNCVCQSVCQSVFNSU4QSU5QiVFOCVCNSU4NCVFNiVCQSU5MCVFNiU5NyVCNiVFRiVCQyU4QyVFOCVBNiU4MSVFNSU4NSVCMyVFNiVCMyVBOCVFNSU4NSVCNiUzQ3NwYW4lMjBzdHlsZT0lMjJjb2xvcjpyZWQlMjIlM0UlRTclOTQlOUYlRTYlODglOTAlRTYlOTclQjYlRTQlQkIlQTMlM0Mvc3BhbiUzRSVFRiVCQyU4QyVFNSU5MCU4QyVFNiU5NyVCNiVFOCVBNiU4MSVFOSU5MiU4OCVFNSVBRiVCOSUzQ3NwYW4lMjBzdHlsZT0lMjJjb2xvcjpyZWQlMjIlM0UlRTglODMlQkQlRTUlOEElQTglM0Mvc3BhbiUzRSVFNiU4MCVBNyVFOCVCRSU4MyVFOSVBQiU5OCVFNyU5QSU4NCUzQ3NwYW4lMjBzdHlsZT0lMjJjb2xvcjpyZWQlMjIlM0UlRTUlQUYlQjklRTglQjElQTElM0Mvc3BhbiUzRSVFOCVCRiU5QiVFOCVBMSU4QyVFOSU4NyU4RCVFNyU4MiVCOSVFNSVCQyU4MCVFNSU4RiU5MSVFRiVCQyU4QyVFNSU5QiVBMCVFNCVCOCVCQSVFNCVCQiU5NiVFNCVCQiVBQyVFNCVCQyU5QSVFNyVCQiU5OSVFNCVCQyU4MSVFNCVCOCU5QSVFNSVCOCVBNiVFNiU5RCVBNSVFNiU5QiVCNCVFNSVBNCU5QSVFNyU5QSU4NCVFNSU4OCVBOSVFNyU5QiU4QSVFMyU4MCU4MiVFNSU5MCU4QyVFNiU5NyVCNiVFOCVCRiU5OSVFNCVCOCVBQSUzQ3NwYW4lMjBzdHlsZT0lMjJjb2xvcjpyZWQlMjIlM0UlRTUlQkMlODAlRTUlOEYlOTElRTglQkYlODclRTclQTglOEIlM0Mvc3BhbiUzRSVFNSVCRiU4NSVFOSVBMSVCQiVFNiU5OCVBRiUzQ3NwYW4lMjBzdHlsZT0lMjJjb2xvcjpyZWQlMjIlM0UlRTYlOEMlODElRTclQkIlQUQlM0Mvc3BhbiUzRSVFNyU5QSU4NCVFRiVCQyU4QyVFNCVCOCU4MCVFNiU5NyVBNiUzQ3NwYW4lMjBzdHlsZT0lMjJjb2xvcjpyZWQlMjIlM0UlRTklOTclQjIlRTclQkQlQUUlM0Mvc3BhbiUzRSVFNSVCMCVCMSVFNiU5OCVBRiUzQ3NwYW4lMjBzdHlsZT0lMjJjb2xvcjpyZWQlMjIlM0UlRTYlQjYlODglRTglODAlOTclM0Mvc3BhbiUzRSVFNCVCQyU4MSVFNCVCOCU5QSVFNyU5QSU4NCVFOCVCNSU4NCVFNiVCQSU5MCVFRiVCQyU4QyVFNSU5QyVBOCUzQ3NwYW4lMjBzdHlsZT0lMjJjb2xvcjpyZWQlMjIlM0UlRTQlQkQlQkYlRTclOTQlQTglM0Mvc3BhbiUzRSVFNiU5NyVCNiVFNCVCOSU5RiVFOCVBNiU4MSVFNiVCMyVBOCVFNiU4NCU4RiUzQ3NwYW4lMjBzdHlsZT0lMjJjb2xvcjpyZWQlMjIlM0UlRTYlOTclQjYlRTYlOTUlODglM0Mvc3BhbiUzRSVFMyU4MCU4MiUzQy9wJTNFJTNDcCUzRSVFNCVCQSU4QyVFMyU4MCU4MSVFNCVCQSVCQSVFNSU4QSU5QiVFOCVCNSU4NCVFNiVCQSU5MCVFNyU5QSU4NCVFNCVCRCU5QyVFNyU5NCVBOCVFRiVCQyU4QyVFNSU4RiVBRiVFOSU4MCU5QSVFOCVCRiU4NyVFNCVCOCVCMiVFOCU4MSU5NCVFNyVBRCU5NCVFNiVBMSU4OCVFOCVBNiU4MSVFNyU4MiVCOSVFNyU5QSU4NCVFNSU4NSVCMyVFOSU5NCVBRSVFOCVBRiU4RCVFOCVCRiU5QiVFOCVBMSU4QyVFOCVBRSVCMCVFNSVCRiU4NiVFRiVCQyU5QSUzQy9wJTNFJTNDcCUzRSVFNCVCQSVCQSVFNSU4QSU5QiVFOCVCNSU4NCVFNiVCQSU5MCVFNCVCRCU5QyVFNCVCOCVCQSUzQ3NwYW4lMjBzdHlsZT0lMjJjb2xvcjpyZWQlMjIlM0UlRTclQkIlODQlRTclQkIlODclRTQlQjglQUQlRTYlOUMlODAlRTklODclOEQlRTglQTYlODElRTclOUElODQlRTglQjUlODQlRTYlQkElOTAlM0Mvc3BhbiUzRSVFRiVCQyU4QyVFNCVCOCVCQSVFNCVCQyU4MSVFNCVCOCU5QSVFNSU4OCU5QiVFOSU4MCVBMCVFNCVCQSU4NiVFOCVCNiU4NSVFOSVBMiU5RCVFNSU4OCVBOSVFNiVCNiVBNiVFRiVCQyU4QyVFNiU4OCU5MCVFNCVCOCVCQSVFNCVCQyU4MSVFNCVCOCU5QSUzQ3NwYW4lMjBzdHlsZT0lMjJjb2xvcjpyZWQlMjIlM0UlRTglQjQlQTIlRTUlQUYlOEMlRTUlQkQlQTIlRTYlODglOTAlRTclOUElODQlRTUlODUlQjMlRTklOTQlQUUlRTglQTYlODElRTclQjQlQTAlM0Mvc3BhbiUzRSVFRiVCQyU4QyVFNSU5MCU4QyVFNiU5NyVCNiVFNCVCOSU5RiVFNiU5OCVBRiVFNSU5QiVCRCVFNSVBRSVCNiUzQ3NwYW4lMjBzdHlsZT0lMjJjb2xvcjpyZWQlMjIlM0UlRTclQkIlOEYlRTYlQjUlOEUlRTUlQTIlOUUlRTklOTUlQkYlRTclOUElODQlRTQlQjglQkIlRTglQTYlODElRTUlOEElQTglRTUlOEElOUIlM0Mvc3BhbiUzRSVFMyU4MCU4MiUzQy9wJTNF"));</script></div>
+</div>
+<div class="clear"></div>
+
+
+
+
+	<div style=" width:780px; text-align:left; margin:0 auto; margin-top:5px; float:left; margin-bottom:15px; margin-left:56px; display:inline;">
+			<input type="image" src="skin/default/jooyea/images/1111_7777.gif"  onClick="remind_review('00147vip','303880');" title="设置下次复习该知识点"/>
+		<input type="image" src="skin/default/jooyea/images/1111_5555.gif" onClick="next_wiki('up');" title="学习上一个知识点"/>
+		<input type="image" src="skin/default/jooyea/images/1111_6666.gif" onClick="next_wiki('next');" title="学习下一个知识点"/>
+		</div>
+
+	<div class="clear"></div>
+
+<!--概念知识点显示内容结束-->
+
+<!--数学类型知识点显示内容开始-->
+<!--数学类型知识点显示内容结束-->
+
+</div>
+<!--隐藏答案按钮结束-->
+<div style="clear:both;"></div>
+<!--讨论区开始-->
+<div class="taolun" style="margin-top:15px;display:none;" id="taolun">
+<table cellpadding="0" cellspacing="0" border="0" width="100%">
+<tr><td style="font-size:16px; text-align:left; width:60px" valign="top">讨论：</td><td style="border:1px solid #ddd; padding:10px;">
+分享你学习本知识点的经验/反馈疑问/提出改进建议，不要害羞哦，大胆发言吧！<br />
+<input type='hidden' id='affair_type' value=0 />
+<input type='hidden' id='affair_start_num' value=0 />
+<div class="feedcontainer">
+	<ul id="sec_Content"></ul>
+	<div id='none_data' style="display:none;" class="gray mt20">没有讨论主题</div>
+	<div title="查看更多讨论" id="affair_info" onClick="list_learn_discuss(1,991,303880);" class="more" ></div>
+</div>
+
+
+	<div class="reply">
+			<img class="figure" src="http://qzapp.qlogo.cn/qzapp/223380/B87B13B46FCAE64C2A4C5F8B04C72C03/100" />
+			<p><textarea type="text" id="reply_input" name="reply_input" style="height:120px"></textarea></p>
+			<div class="replybt">
+				<input class="left button" onClick="restore_discuss(991,10195,303880);show('face_list_menu',200)" type="submit" name="button" id="button" value="提交" />
+				<a id="reply_a_303880_input" class="right" href="javascript: void(0);" onClick=" showFace(this,'face_list_menu','reply_input');">表情</a>
+			</div>
+			<div class="clear"></div>
+	</div>
+
+	<script type="text/javascript">
+	KE.show({
+		id:'reply_input',
+		resizeMode:0,
+		width:'700px'
+	});
+	</script>
+
+<!-- face begin -->
+	<div id="face_list_menu" class="emBg" style="display:none;z-index:100;">
+	</div>
+<!-- face end -->
+</td></tr></table>
+</div>
+<!--讨论区结束-->
+
+
+
+<script type="text/javascript">
+function show_question(){
+	document.getElementById("show_question").style.display="";
+	document.getElementById("taolun").style.display="";
+	document.getElementById("question").style.display="none";
+	list_learn_discuss('',991,303880);
+}
+
+function learn(grade,review){
+	window.location.href="modules.php?app=wiki_free_study&id=991&wiki_id=303880&grade="+grade+"&review=1";
+}
+function next_wiki(next){
+	window.location.href="modules.php?app=wiki_free_study&id=991&wiki_id=303880&next="+next+"&review=0";
+}
+
+//提示我复习
+function remind_review(kcdm,wiki_id){
+		jQuery.get("do.php?act=wiki_remind_review",{kcdm:kcdm,wiki_id:wiki_id },function(c){
+			alert(c);
+		});
+
+}
+
+//调取main页面右边栏内容
+parent.right_content('wiki_study','991');
+
+</script>
+
+</body>
+</html>
+

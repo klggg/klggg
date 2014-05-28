@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>WebSocket 临时剪贴板</title>
+  <script src="/client.js" type="text/javascript" charset="utf-8"></script>
+  <link rel="stylesheet" href="/client.css">
+</head>
+<body>
+  <h1>临时剪贴板</h1>
+  
+  
+  
+  <textarea name="content" id="content" onkeyup="sendContent();"  style="margin: 2px; width: 634px; height: 342px;"></textarea>
+  
+  
+  <p>
+    <button onclick="erase()"  >清除</button>
+   </p>
+  
+  <script>
+    var client = new Whiteboard('whiteboardCanvas');
+    client.connect();
+	function sendContent() {
+    
+          client.sendContent(document.getElementById("content").value);
+    }
+    
+    function erase() {
+      client.sendClear();
+    }
+    
+        
+  </script>
+</body>
+</html>
