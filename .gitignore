@@ -1,6 +1,7 @@
+/site/crawl/protected/runtime/*
 assets/
 protected/runtime/
 themes/classic/views/
 */protected/runtime/*
-/vendor/
 vendor/*
+*.swp
