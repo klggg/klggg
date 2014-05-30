@@ -1,0 +1,202 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+<link rel="stylesheet" href="http://demos.jquerymobile.com/1.4.1/css/themes/default/jquery.mobile-1.4.1.min.css">
+<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script src="http://demos.jquerymobile.com/1.4.1/js/jquery.mobile-1.4.1.min.js"></script>
+<style type="text/css">
+ .numb_font {font-size: 6px}
+</style>
+<TITLE>超强大脑,疯狂找茬</TITLE>
+</head>
+<body>
+<div data-role="page" id="pageone">
+  <div data-role="header">
+    <h1>超强大脑,疯狂找茬</h1>
+  </div>
+
+  <div data-role="content" id="content">
+  
+	<div class="ui-grid-a">
+	    <div class="ui-block-a"><div class="ui-bar ui-bar-a"  id="block_a">
+
+	    		<p>瞌睡虫</p>
+
+	    </div></div>
+	    <div class="ui-block-b">
+	    	<div class="ui-bar ui-bar-a" style="" id="block_b">
+	    		<p>瞌睡虫</p>
+			    		
+	    	</div>
+	    </div>
+	</div>
+
+
+  </div>
+
+  <div data-role="footer">
+    <h1>by ggg,致亲爱的瞌睡虫同学</h1>
+  </div>
+</div> 
+
+</body>
+
+
+<script type="text/javascript">
+
+
+/*	var a = ['a','b','c'];
+	var b = a.slice();
+	b[1] = 'ggg';
+
+	console.log(a);
+	console.log(b);	*/
+/*
+	1.定义所用到的颜色块
+	2.定义几行几列,并随机初始化每个单元格颜色块，放于二维数组
+	3.绘制座标，标明哪行哪列
+	4.先绘制左侧效果,改变某几单元颜色后再用来绘制右侧效果
+	5.处理左右每个单元的点击事件，如果点击的单元有不同，提示并标志当前单元
+*/
+	var zhaoca = {
+
+		colors:["#ff0000","#00ff00","#0000ff","#000000","#483D8B","#4682B4","#458B00","#006400","#FFEC8B","#A0522D","#00B2EE","#8B008B","#68838B"]
+		,rols : 10
+		,cols : 10		
+		,domA : "#block_a"
+		,domB : "#block_b"
+		,grips_a : []
+		,grips_b : []
+
+		,click: function(i,j){
+
+			if(this.grips_a[i][j] != this.grips_b[i][j])
+			{
+				alert('恭喜，您也是超强大脑。\n\n所在座标：'+i+"行,"+(j+1)+"列\n\n点击确定后重新开始");
+				this.restart();
+			}
+			else
+				alert('不对哟，再找找。')
+
+			// alert(this.grips_a[i][j] +":" +this.grips_b[i][j]);
+
+		}
+		,restart: function(){
+			this.run(this.rols,this.cols,this.domA,this.domB);
+		}
+
+		,run: function(rols,cols,domA,domB){
+
+			this.rols = rols+1;
+			this.cols = cols;
+			this.domA = domA;
+			this.domB = domB;
+
+			// alert(parseInt(Math.random()*(3-1+1)+1));
+			this.make(this.rols,this.cols,domA,domB);
+
+		}
+		,make: function(rols,cols,domA,domB){
+
+			var color_count = this.colors.length;
+
+			var tmp_htmls = [];
+			var tmp_color = 0;
+
+			for (var i = 0; i < rols; i++) {
+
+				this.grips_a[i] = [];
+				this.grips_b[i] = [];
+
+				var tmp_htmls_cols = [];
+
+				for (var j = 0; j < cols; j++) {
+
+					tmp_color = Math.floor(Math.random() * color_count);
+
+					this.grips_a[i][j] = this.colors[tmp_color];
+					this.grips_b[i][j] = this.colors[tmp_color];
+				}
+			}
+
+			var rand_i = Math.floor(Math.random() * rols);
+			var rand_j = Math.floor(Math.random() * cols);
+			console.log(rand_i);
+			console.log(rand_j+1);
+			
+			var old_color = this.grips_b[rand_i][rand_j];
+
+			var new_color = this.replaceColor(old_color);
+
+			// this.grips_b[rand_i][rand_j] = "#ffffff";
+			this.grips_b[rand_i][rand_j] = new_color;
+
+
+			console.log(old_color);
+			console.log(new_color);
+
+			this.draw(domA,this.grips_a);
+			this.draw(domB,this.grips_b);
+			// console.log(this.grips_a[rand_i][rand_j]);
+			// console.log(this.grips_b[rand_i][rand_j]);
+
+		}
+		,replaceColor: function(oldColor){
+			var new_colors = [];
+			var color_count = this.colors.length;
+			for (var i = 0; i < color_count; i++) {
+
+				// console.log(this.colors[i]);
+				if( oldColor == this.colors[i])
+				{
+					continue;
+				}
+				new_colors.push(this.colors[i]);
+			}
+			return new_colors[Math.floor(Math.random() * new_colors.length)];
+		}
+		,draw: function(whereDom,grips){
+
+			var tmp_var = 0;
+
+			var tmp_htmls = [];
+			rols = this.rols;
+			cols = this.cols;
+
+			for (var i = 0; i < rols; i++) {
+
+				var tmp_htmls_cols = [];
+
+				if(i == 0)
+				{
+					tmp_htmls_cols.push('<td class="numb_font">&nbsp;</td>');
+				}
+				else
+					tmp_htmls_cols.push('<td class="numb_font">'+(i)+'</td>');	
+
+				if(i == 0)
+				{
+					for (var j = 0; j < cols; j++) {
+						tmp_htmls_cols.push('<td class="numb_font"> '+(j+1)+'</td>');	
+					}
+				}
+				else
+				{
+					for (var j = 0; j < cols; j++) {
+						tmp_htmls_cols.push('<td onclick="zhaoca.click('+i+','+j+')" style="cursor: pointer;background:'+grips[i][j]+'">&nbsp;</td>');
+					}
+				}
+
+				tmp_htmls.push('<tr>'+tmp_htmls_cols.join(' ')+'</tr>');
+			}
+			var tmp_html = '<table width="100%" border=1>'+tmp_htmls.join('')+"</table>";
+			$(whereDom).html(tmp_html);
+		}
+	}
+
+	zhaoca.run(20,26,"#block_a","#block_b");
+
+</script>
+</html>
