@@ -19,6 +19,35 @@
  */
 class Zk8Subject extends CActiveRecord
 {
+
+	const STATUS_PENDDING = 0; //待处理
+	const STATUS_DOING = 1; //正在处理
+	const STATUS_DONE = 2; //已处理
+	const STATUS_DELETED = 3; //已删除
+
+   //定义select要用的字段映射
+	public static $fieldListMap = array(
+
+		'status'	 => array(
+			self::STATUS_PENDDING => '待处理',
+			self::STATUS_DOING => '正在处理',
+			self::STATUS_DONE => '已处理',
+			self::STATUS_DELETED => '已删除',
+		),
+		'courses'	 => array(
+			991 => '00147vip 人力资源管理（一）（2014年7/10月保过精华版）',
+			1068 => '00341vip 公文写作与处理(2014年7/10月保过精华版)',
+			1254 => '03350vip 社会研究方法(2014年7/10月保过精华版)',
+			1282 => '00163vip 管理心理学(2014年7/10月保过精华版)',
+			1311 => '00312vip 政治学概论(2014年7/10月保过精华版)',
+			993 => '03706vip 思想道德修养与法律基础（2014年7/10月保过精华版)',
+			998 => '03707vip 毛泽东思想、邓小平理论和“三个代表”重要思想概论（2014年7/10月保过精华版）',			
+			
+			
+		),		
+	);
+	
+		
 	/**
 	 * @return string the associated database table name
 	 */
@@ -36,16 +65,16 @@ class Zk8Subject extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('question', 'required'),
-			array('course_id, subject_id, status, category', 'numerical', 'integerOnly'=>true),
+			array('course_id, subject_id, status, category,page_numb', 'numerical', 'integerOnly'=>true),
 			array('question', 'length', 'max'=>1000),
 			array('create_time, update_time', 'length', 'max'=>10),
 			array('user', 'length', 'max'=>60),
-			array('from_url', 'length', 'max'=>200),
+			array('from_url,chapter', 'length', 'max'=>200),
 			array('mark', 'length', 'max'=>50),
 			array('answer, hint,resolve', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, course_id, subject_id, question, answer, hint, status, category, create_time, update_time, user, from_url,mark', 'safe', 'on'=>'search'),
+			array('id, course_id, subject_id,page_numb, question, answer, hint, status, category, create_time, update_time, user,chapter, from_url,mark', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -69,6 +98,7 @@ class Zk8Subject extends CActiveRecord
 			'id' => 'ID',
 			'course_id' => 'Course',
 			'subject_id' => 'Subject',
+			'page_numb' => 'page_numb',
 			'question' => 'Question',
 			'answer' => 'Answer',
 			'hint' => 'Hint',
@@ -79,6 +109,7 @@ class Zk8Subject extends CActiveRecord
 			'update_time' => 'Update Time',
 			'user' => 'User',
 			'from_url' => 'From Url',
+			'chapter' => 'chapter',
 			'mark' => 'mark',
 			
 		);
@@ -105,6 +136,7 @@ class Zk8Subject extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('course_id',$this->course_id);
 		$criteria->compare('subject_id',$this->subject_id);
+		$criteria->compare('page_numb',$this->page_numb);		
 		$criteria->compare('question',$this->question,true);
 		$criteria->compare('answer',$this->answer,true);
 		$criteria->compare('hint',$this->hint,true);
@@ -115,6 +147,7 @@ class Zk8Subject extends CActiveRecord
 		$criteria->compare('update_time',$this->update_time,true);
 		$criteria->compare('user',$this->user,true);
 		$criteria->compare('from_url',$this->from_url,true);
+		$criteria->compare('chapter',$this->chapter,true);		
 		$criteria->compare('mark',$this->mark,true);
 
 		return new CActiveDataProvider($this, array(
