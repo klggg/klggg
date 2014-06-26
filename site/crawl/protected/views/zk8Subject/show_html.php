@@ -7,11 +7,18 @@ $this->breadcrumbs=array(
 	$model->id,
 );
 
-$search_str = "/media/ggg/bak1/git/github_klggg/site/crawl/protected/commands/../runtime/crawl/zk8/png/";
-$replace_str = "/resolve_png/";
-$model->answer = str_replace($search_str,$replace_str,$model->resolve);
-$model->hint = str_replace($search_str,$replace_str,$model->resolve);
-$model->resolve = str_replace($search_str,$replace_str,$model->resolve);
+//$search_str = "/media/ggg/bak1/git/github_klggg/site/crawl/protected/commands/../runtime/crawl/zk8/png/";
+//$replace_str = "/resolve_png/";
+
+$search_str = "src='";
+$replace_str = "src='/zk8/";
+
+$model->setWebPath($model);
+
+//$model->question = $model->getWebPath($model->question);
+//$model->answer = $model->getWebPath($model->answer);
+//$model->hint = $model->getWebPath($model->resolve);
+//$model->resolve = $model->getWebPath($model->resolve);
 
 //<img src="/media/ggg/bak1/git/github_klggg/site/crawl/protected/commands/../runtime/crawl/zk8/png/4a/4ab0c7ed99b4af8cc7c5734943b282eb.png" alt="">
 
@@ -29,6 +36,7 @@ $model->resolve = str_replace($search_str,$replace_str,$model->resolve);
 
 
 <?php
+
  /*$this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
@@ -48,7 +56,6 @@ $model->resolve = str_replace($search_str,$replace_str,$model->resolve);
 		'user',
 		'from_url',
 		'mark',
-		'zk8_subjectcol',
 	),
 )); 
 */

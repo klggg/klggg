@@ -13,10 +13,6 @@ if(isset($courses[$model->course_id])){
 }
 
 
-$search_str = "/media/ggg/bak1/git/github_klggg/site/crawl/protected/commands/../runtime/crawl/zk8/png/";
-$replace_str = "/resolve_png/";
-
-
 ?>
 
 
@@ -25,9 +21,8 @@ $tmp_i = 0;
 $prev_chapter = '';
 foreach ( $records as  $record ) {
 
-$record->answer = str_replace($search_str,$replace_str,$record->answer);
-$record->hint = str_replace($search_str,$replace_str,$record->hint);
-$record->resolve = str_replace($search_str,$replace_str,$record->resolve);
+$model->setWebPath($record);
+
 
 //<img src="/media/ggg/bak1/git/github_klggg/site/crawl/protected/commands/../runtime/crawl/zk8/png/4a/4ab0c7ed99b4af8cc7c5734943b282eb.png" alt="">
 
@@ -73,7 +68,6 @@ echo '<hr />';
 		'user',
 		'from_url',
 		'mark',
-		'zk8_subjectcol',
 	),
 )); 
 */

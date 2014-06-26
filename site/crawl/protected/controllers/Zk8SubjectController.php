@@ -91,6 +91,7 @@ class Zk8SubjectController extends Controller
 			$this->pageTitle = $courses[$model->course_id];
 		}
 
+
 				
 		$this->layout='//layouts/empty';
 		$this->render('chapter_list',array(

@@ -70,9 +70,6 @@
 	<?php echo CHtml::encode($data->mark); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('zk8_subjectcol')); ?>:</b>
-	<?php echo CHtml::encode($data->zk8_subjectcol); ?>
-	<br />
 
 	*/ ?>
 

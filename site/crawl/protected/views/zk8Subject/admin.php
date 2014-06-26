@@ -62,7 +62,6 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'user',
 		'from_url',
 		'mark',
-		'zk8_subjectcol',
 		*/
 		array(
 			'class'=>'CButtonColumn',
@@ -75,7 +74,7 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
                     )
                     ,'chapterList' => array(
                          'label'=>'查看课程',
-                         'url'=>' Yii::app()->createUrl("zk8Subject/chapterList", array("id" => $data->id)) ',
+                         'url'=>' Yii::app()->createUrl("zk8Subject/chapterList", array("id" => $data->course_id)) ',
                          'visible'=>'1',
                     )                    
                     

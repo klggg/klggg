@@ -109,11 +109,6 @@
 		<?php echo $form->error($model,'mark'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'zk8_subjectcol'); ?>
-		<?php echo $form->textField($model,'zk8_subjectcol',array('size'=>45,'maxlength'=>45)); ?>
-		<?php echo $form->error($model,'zk8_subjectcol'); ?>
-	</div>
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>

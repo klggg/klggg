@@ -36,12 +36,14 @@ class Zk8Subject extends CActiveRecord
 		),
 		'courses'	 => array(
 			991 => '00147vip 人力资源管理（一）（2014年7/10月保过精华版）',
+			992 => '00020 高等数学（一）微积分（2014年7/10月保过精华版）新版',
 			1068 => '00341vip 公文写作与处理(2014年7/10月保过精华版)',
 			1254 => '03350vip 社会研究方法(2014年7/10月保过精华版)',
 			1282 => '00163vip 管理心理学(2014年7/10月保过精华版)',
 			1311 => '00312vip 政治学概论(2014年7/10月保过精华版)',
 			993 => '03706vip 思想道德修养与法律基础（2014年7/10月保过精华版)',
 			998 => '03707vip 毛泽东思想、邓小平理论和“三个代表”重要思想概论（2014年7/10月保过精华版）',			
+			1134 => '00037vip 美学(2014年7/10月保过精华版)	',			
 			
 			
 		),		
@@ -166,6 +168,21 @@ class Zk8Subject extends CActiveRecord
 		return parent::model($className);
 	}
     
+    
+	public function setWebPath(&$record)
+	{
+		$search_str = "src='";
+		$replace_str = "src='/zk8/{$record->course_id}/";
+//		return  str_replace($search_str,$replace_str,$content);
+		
+
+		$record->question = str_replace($search_str,$replace_str,$record->question);
+		$record->answer = str_replace($search_str,$replace_str,$record->answer);
+		$record->resolve = str_replace($search_str,$replace_str,$record->resolve);
+		$record->hint = str_replace($search_str,$replace_str,$record->hint);
+
+		
+	}    
     public function behaviors()
     {
           return array( 

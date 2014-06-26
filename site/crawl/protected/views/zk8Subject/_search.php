@@ -91,10 +91,6 @@
 		<?php echo $form->textField($model,'mark',array('size'=>50,'maxlength'=>50)); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->label($model,'zk8_subjectcol'); ?>
-		<?php echo $form->textField($model,'zk8_subjectcol',array('size'=>45,'maxlength'=>45)); ?>
-	</div>
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Search'); ?>

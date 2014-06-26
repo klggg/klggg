@@ -14,7 +14,7 @@ $this->menu=array(
 	array('label'=>'Delete Zk8Subject', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
 	array('label'=>'Manage Zk8Subject', 'url'=>array('admin')),
 	array('label'=>'查看该题', 'url'=>array('showHtml','id'=>$model->id)),
-	array('label'=>'查看课程', 'url'=>array('chapterList','id'=>$model->id)),
+	array('label'=>'查看课程', 'url'=>array('chapterList','id'=>$model->course_id)),
 );
 ?>
                     
@@ -39,6 +39,5 @@ $this->menu=array(
 		'user',
 		'from_url',
 		'mark',
-		'zk8_subjectcol',
 	),
 )); ?>
