@@ -37,9 +37,10 @@ $config['path']['unkown'] = $config['path']['root'].'/unkown';	//·ÇÕÕÆ¬ÎÄ¼þÒÆµ½Ä
 //$photo_source_path = 'F:/tmp';
 //$photo_source_path = 'K:/¼ÒÍ¥ÕÕÆ¬Â¼Ïñ';
 //$photo_source_path = 'K:/¼ÒÍ¥ÕÕÆ¬';
-$photo_source_path = 'H:/kuaipan/[MobileBackup]/[Pictures]/[Camera Album]';
+//$photo_source_path = 'H:/kuaipan/[MobileBackup]/[Pictures]/[Camera Album]'; //android
+$photo_source_path = 'H:/kuaipan/[Pictures]'; //pad
+
 //$photo_source_path = 'H:/kuaipan/ggg/pic_new_month/pic/1970-01';
-//$photo_source_path = 'H:/kuaipan/[Pictures]';
 //$photo_source_path = 'H:/kuaipan/ggg/pic_new_month/unkown';
 
 //³õÊ¼»¯logÏà¹Ø
@@ -79,7 +80,10 @@ else
 
 
 $PhotoMove_obj=  new PhotoMove($config,$log);
-$PhotoMove_obj->run($photo_source_path);
+$PhotoMove_obj->run( 'H:/kuaipan/[MobileBackup]/[Pictures]/[Camera Album]');
+$PhotoMove_obj->run('H:/kuaipan/[Pictures]');
+
+
 echo "done";
 
 class PhotoMove {
