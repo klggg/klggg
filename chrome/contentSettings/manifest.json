@@ -1,0 +1,17 @@
+{
+  "name" : "Content settings",
+  "version" : "0.2",
+  "description" : "Shows the content settings for the current site.",
+  "permissions": [ "contentSettings", "tabs" ],
+  "browser_action": {
+     "default_icon": "contentSettings.png",
+     "default_popup": "popup.html"
+  },
+
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+
+  "manifest_version": 2
+}

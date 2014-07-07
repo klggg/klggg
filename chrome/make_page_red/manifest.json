@@ -1,0 +1,25 @@
+{
+  "name": "zk8 crack for kl",
+  "description": "zk8 crack",
+  "version": "2.0",
+  "permissions": [
+    "activeTab","http://*/*"
+  ],
+  "background": {
+    "scripts": ["jquery-2.0.0.min.js","background.js"],
+    "persistent": false
+  },
+
+  "content_scripts":[{
+		"matches":["http://www.zk8.com.cn/*"],
+		"js":[ "content_script.js"],
+		"run_at":"document_idle"
+
+	}],
+
+  "browser_action": {
+    "default_title": "zk8 crack",
+    "default_icon": "icon.png"
+  },
+  "manifest_version": 2
+}

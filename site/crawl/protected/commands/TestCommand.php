@@ -17,7 +17,9 @@ class TestCommand extends CConsoleCommand
 		//Yii::trace('trace',__METHOD__);        
 		Yii::log('test',CLogger::LEVEL_TRACE,__METHOD__);        
 		Yii::log('test',CLogger::LEVEL_WARNING,__METHOD__);        
-		//Yii::log('test',CLogger::LEVEL_ERROR,__METHOD__);        
+		//Yii::log('test',CLogger::LEVEL_ERROR,__METHOD__);      
+		
+		print_r($args);  
 	
     }
 
