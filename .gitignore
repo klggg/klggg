@@ -3,5 +3,8 @@ assets/
 protected/runtime/
 themes/classic/views/
 */protected/runtime/*
+site/crawl/protected/config/console.php
 vendor/*
 *.swp
+*~
+*.*~
