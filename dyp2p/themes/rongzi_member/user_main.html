@@ -1,0 +1,115 @@
+{include file="header_user_main.html"}
+{get module="users" function="GetEmailActiveOne" user_id="$_G.user_id"}
+{if $var.status!=1}<script>alert("您还没有激活邮箱，不能发布借款信息！");location.href='/index.php?user&q=reg&type=email';</script>{/if}
+{/get}
+
+  
+  
+  <div class="bodyer clearfix">
+            	<div class="vipcenter box1000">
+                {include file="user_menu.html"}
+                	
+                    <dl class="vipcenter_right">
+					<dt class="hh_top">
+						 {articles module="account" function="GetOne" var="var" user_id="$_G.user_id"}
+						 可用余额：<font color="#ff6600">￥{$var.balance|round:"2,3"|default:0.00}</font>
+						&nbsp;&nbsp;&nbsp; <a href="/?user&q=code/account/recharge_new"><img src="{$tempdir}/zhuliu/images/vipcenter_10.jpg" alt="充值" /></a>&nbsp; <a href="/?user&q=code/account/cash_new" ><img src="{$tempdir}/zhuliu/images/vipcenter_12.jpg" alt="提现" /></a>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 最近代收款金额：<font color="#ff6600">￥{$var.await|round:"2,3"|default:0.00}</font>{/articles}
+						</dt>
+                    	<dt><span><a href="/?user&q=code/rating/basic">修改个人信息</a></span>我的个人信息 
+						
+						</dt>
+                        <dd>
+                        	<div class="Personal">
+                            	<div class="Personal_mg"><a href="/?user&q=code/users/avatar" title="点击修改头像"><img src="{$_G.user_id|avatar}" width="100" height="100" /></a></div>
+                  				<div class="Personal_tl">
+                                	<p><b>{$_G.user_result.username}</b>，欢迎您! {articles module="borrow" function="GetBorrowCredit" var="Cvar" user_id=$_G.user_id}
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>信用等级：</strong>{$Cvar.approve_credit|credit:"credit"}
+                     {/articles}</p>
+                              <p><strong>用户类型：</strong>{articles module="users" function="GetUsersVip" var="Vvar" user_id="$_G.user_id"}
+				{if $Vvar.status==1}
+					{if $Vvar.vip_type==1}
+						<strong style="color:blue">Vip会员</strong>
+					{else}
+						<strong style="color:blue">高级Vip会员</strong>
+					{/if}
+				{else}
+					普通会员&nbsp;<a href="/vip/index.html" style="color:#0000ff;">申请VIP</a>
+				{/if}
+			{/articles}</p>
+            				  <p><strong>注册时间：</strong>{$_G.user_result.reg_time|date_format:"Y-m-d"}&nbsp;&nbsp;&nbsp;&nbsp;<strong>最后登录时间：</strong>{$_G.user_result.last_time|date_format:"Y-m-d"}</p>
+                                 {articles module="borrow" function="GetUserCount" var="var" user_id="$_G.user_id"}
+                              <p><strong>个人统计：</strong><b class="red">{$var.borrow_times|default:"0"}</b> 条借款记录&nbsp;&nbsp;&nbsp;&nbsp;<b class="red">{$var.tender_times|default:"0"}</b> 条投标记录</p>{/articles}
+                            </div>
+<div class="Personal_link">
+                                	<p><strong>快捷通道</strong></p>
+                      <p><img src="{$tempdir}/zhuliu/images/center_17.jpg" width="24" height="20" style="margin-bottom:-4px;" /> <a href="/?user&q=code/account/recharge_new">账号充值</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="{$tempdir}/zhuliu/images/center_19.jpg" width="24" height="20" style="margin-bottom:-4px;" /> <a href="/?user&q=code/account/cash_new">申请提现</a></p>
+                      <p><img src="{$tempdir}/zhuliu/images/center_26.jpg" width="24" height="19" style="margin-bottom:-4px;" /> <a href="/?user&q=code/account/tender_count">投资记录</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="{$tempdir}/zhuliu/images/center_25.jpg" width="24" height="21" style="margin-bottom:-4px;" /> <a href="/?user&q=code/borrow/repaylog">借款统计</a></p>
+                    </div>
+                          </div>
+                            <dl class="mation">
+                            	<dt><strong></strong>安全中心</dt>
+                                <dd>
+                                	<ul>
+      
+                                    	<li><strong>邮箱认证：</strong>  {if $_G.user_info.email_status==1}<img src="{$tempdir}/zhuliu/images/center_35.gif" width="36" height="25" style="margin-bottom:-8px;" /> {$_G.user_result.email}{else}<a href="/?user&q=code/approve/email_status"><img src="{$tempdir}/zhuliu/images/center_34.gif" width="36" height="25" style="margin-bottom:-8px;" /></a> 您还未进行邮箱认证{/if}</li>
+                                        <li><strong>手机认证：</strong>  {if $_G.user_info.phone_status==1}<img src="{$tempdir}/zhuliu/images/center_33.gif" width="33" height="31" style="margin-bottom:-12px;" /> {$_G.user_info.phone}{else}<a href="/borrow_phone/index.html"><img src="{$tempdir}/zhuliu/images/center_32.gif" width="33" height="31" style="margin-bottom:-12px;" /></a> 您还未进行手机认证{/if}</li>
+                                        <li><strong>身份认证：</strong> {if $_G.user_info.realname_status==1}<img src="{$tempdir}/zhuliu/images/center_43.gif" width="36" height="26" style="margin-bottom:-8px;" /> {$_G.user_info.realname}{else}<a href="/borrow_app/index.html"><img src="{$tempdir}/zhuliu/images/center_42.gif" width="36" height="26" style="margin-bottom:-8px;" /> </a>您还未进行身份认证{/if}</li>
+                                        <li><strong>视频认证：</strong>  {if $_G.user_info.video_status==1}<img src="{$tempdir}/zhuliu/images/center_41.gif" width="33" height="29" style="margin-bottom:-10px;" /> 您已经进行视频认证{else}<a href="/borrow_video/index.html"><img src="{$tempdir}/zhuliu/images/center_40.gif" width="33" height="29" style="margin-bottom:-10px;" /> </a>您还未进行视频认证{/if}</li>
+                                    </ul>
+                                </dd>
+                            </dl>
+                            <dl class="mation">
+                            	<dt><strong></strong>账户概况</dt>
+                                <dd>
+                                
+                                {articles module="account" function="GetOne" var="var" user_id="$_G.user_id"}
+									<p><span>账户总额: <strong>￥{$var.total|round:"2,3"|default:0.00}</strong></span><span>可用余额: <strong>￥{$var.balance|round:"2,3"|default:0.00}</strong></span><span>冻结余额: <strong>￥{$var.frost|round:"2,3"|default:0.00}</strong></span></p>
+                                    <p><span>待收金额: <strong>￥{$var.await|round:"2,3"|default:0.00}</strong></span>
+                                    <span>提现成功总额: <strong>￥{$var.account_log.cash_success.account|default:0.00}({$var.account_log.cash_success.num|default:0}笔)</strong></span>
+                                     {/articles}
+                                     {article module="borrow" function="GetRechargeCount_log" user_id="$_G.user_id" var="var"}
+                                    <span>充值成功总额: <strong>￥{$var.recharge_all|default:0}</strong></span></p>
+                                   
+                                    <p><span>在线充值总额: <strong>￥{$var.recharge_all_up|default:0}</strong></span><span>线下充值总额: <strong>￥{$var.recharge_all_down|default:0}</strong></span><span>手动充值总额: <strong>￥{$var.recharge_all_other|default:0}</strong></span></p> 
+                                    
+                                    {/articles}
+                                    
+                                   {articles module="borrow" function="GetBorrowCredit" var="Cvar" user_id=$_G.user_id}
+				                   {articles module="borrow" function="GetAmountUsers" user_id=$_G.user_id var="var"} 
+                                    <p><span>信用额度: <strong>{if $var.borrow_amount< 0}0{else}{$var.borrow_amount}{/if}</strong></span><span>可用额度: <strong>{if $var.borrow_amount_use< 0}0{else}{$var.borrow_amount_use}{/if}</strong></span></p>
+                                    {/articles}
+				                    {/articles}
+                                    
+                                
+                                
+                                </dd>
+                            </dl>
+                            
+                            {articles module="borrow" function="GetUserCount" user_id="$_G.user_id" var="item"}
+                            <dl class="mation">
+                            	<dt><strong></strong><span><a href="/?user&q=code/account/tender_count">投资统计</a></span>收益详情</dt>
+                                <dd>
+									<p><span>已赚利息: <strong>{ $item.tender_interest_yes|default:0.00}元</strong></span><span>已赚罚息: <strong>{$item.all_late_interest|default:0.00}元</strong></span><span>已赚违约金
+
+: <strong>{$item.weiyue|default:0.00}元</strong></span></p>
+                                    <p><span>已赚奖励: <strong>{ $item.award_add|default:0.00}元</strong></span><span>待回收本息: <strong>{ $item.tender_recover_wait|default:0.00}元</strong></span><span>已回收本息: <strong>{ $item.tender_recover_yes|default:0.00}元</strong></span></p>
+                                    
+                                </dd>
+                            </dl>
+                            {/articles}
+                            {articles module="borrow" function="GetUserCount" user_id="$_G.user_id" var="item"}
+                            <dl class="mation">
+                            	<dt><strong></strong><span><a href="/?user&q=code/borrow/repaylog">借款统计</a></span>借款详情</dt>
+                                <dd>
+									<p><span>借款总额: <strong>{$item.borrow_account|default:0.00}元</strong></span><span>发布借款笔数: <strong>{$item.borrow_times|default:0} 笔</strong></span><span>已还本息: <strong>{$item.borrow_repay_yes|default:0.00}元</strong></span><span>待还本息: <strong>{ $item.borrow_repay_wait|default:0.00}元</strong></span></p>
+                                   
+                                
+                                    
+                                </dd>
+                            </dl>
+                             {/articles}
+                        </dd>
+                  </dl>
+                </div>
+            </div>
+{include file="user_footer.html"}

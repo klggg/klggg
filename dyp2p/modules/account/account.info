@@ -1,0 +1,10 @@
+<?
+	$code = "account";
+	$name = "资金账号管理";
+	$description = "资金账号管理";
+	$version = "4.2";
+	$author = "youyi";
+	$date = "2011-11-26";
+	$update = "在原来的基础上做了很大的升级";
+	$type = "account";
+?>

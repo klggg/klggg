@@ -1,0 +1,41 @@
+/* CSS Document */
+
+.sc_b_bor{ float:left; width:775px; height:235px; overflow:hidden}
+.sc_sort{ background:url(../images/100zp.jpg) no-repeat; width:175px; height:235px; overflow:hidden; float:right}
+.sc_sort h1{ height:33px; line-height:33px; padding-left:15px; font-size:14px; color:#FFFFFF}
+.sc_sort ul{ margin-top:8px;}
+.sc_sort li{ border-bottom:#F8EAB4 solid 1px; height:29px; vertical-align:middle; width:173px; overflow:hidden; margin:0px auto}
+.sc_sort li a{ width:173px; display:block; padding-left:15px; height:29px; line-height:29px; font-weight:bold; color:#B33535; background:url(../images/arrow11.gif) no-repeat 145px center;}
+.sc_sort li a:hover{background:url(../images/arrow111.gif) no-repeat 145px center; text-decoration:none}
+
+.sc_b_left{ background:url(../images/sc_bg.jpg) no-repeat; width:197px; height:263px; padding:15px 25px 0 13px;}
+.sc_lin{ margin-top:5px;}
+.sc_lin a{ line-height:18px;}
+.sc_pri{ font-family:Arial, Helvetica, sans-serif; font-size:30px; color:#F45702; padding:10px 0}
+.qg{ position:absolute; right:-25px; top:-90px;}
+.sc_tit_bg{ background:url(../images/sc_tit_bg.jpg) no-repeat; height:32px; overflow:hidden}
+.sc_tit_bg h1{ float:left; font-size:14px; color:#D72D2C; margin-top:10px; padding-left:25px;}
+.sc_tit_bg span{ float:right; margin-top:10px; padding-right:20px;}
+.sc_tit_bg span a{ color:#D72D2C;}
+td.sc_cen{ border-left:#E3E3E3 solid 1px; border-right:#E3E3E3 solid 1px; background:#fff}
+
+.sc_new_list{ margin-top:15px}
+.sc_new_list li{ width:150px; margin:5px 8px 0px; overflow:hidden; display:inline; float:left}
+.sc_new_list li span{color:#D72D2C}
+.sc_new_list li a{ color:#666666; line-height:18px;}
+.sc_pri1{ margin-top:0px; font-family:Arial, Helvetica, sans-serif}
+.sc_pri1 span{ font-weight:bold}
+.sc_pri1 em{ font-style:normal; text-decoration:line-through; color:#999999}
+
+.sc_tit1{ background:url(../images/sc_r_tit.gif) no-repeat; height:31px; overflow:hidden}
+.sc_tit1 h1{ height:31px; line-height:31px; float:left; padding-left:25px; font-size:14px; color:#CE2C2B; font-size:13px;}
+.sc_tit1 span{ float:right; height:31px; line-height:31px; padding-right:15px; }
+.sc_tit1 span a{color:#CE2C2B; line-height:31px;}
+
+.sc_r_list{ padding:8px 10px 5px;}
+.sc_r_list li{ color:#999999; font-family:"ËÎÌו"}
+.sc_r_list li a{ color:#666666}
+.sc_r_list a:hover{ color:#CE2C2B}
+.sc_l_tit{ background:url(../images/sc_l_tit.gif) no-repeat; height:30px; line-height:38px; font-weight:bold; font-size:14px; color:#E13736; padding-left:15px; overflow:hidden;}
+.lq_list{}
+.lq_list li{ text-align:center; margin-top:7px; font-size:0px; line-height:0px;}

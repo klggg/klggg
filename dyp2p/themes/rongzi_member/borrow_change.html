@@ -1,0 +1,168 @@
+{if $_G.user_id==""}
+<script>
+location.href='/?user&q=login';
+</script>
+{/if}
+{if $magic.request.id!=""}
+<form id="login-form" action="/?user&q=code/borrow/change&id={$magic.request.id}" method="post">
+<p><label>转让金额：<input id="account" name="account" type="text" size="8" value="{$magic.request.account}"></label></p>
+<p><label>支付密码：<input id="paypassword" name="paypassword" type="password"></label></p>
+<p><label>转让理由：<input id="remark" name="remark" type="text"></label></p>
+</form>
+{elseif $magic.request.cancel_id!=""}
+<form id="login-form" action="/?user&q=code/borrow/change&cancel_id={$magic.request.cancel_id}" method="post">
+<p><label>撤销理由：<input id="cancel_remark" name="cancel_remark" type="text"></label></p>
+<p><label>支付密码：<input id="paypassword" name="paypassword" type="password"></label></p>
+</form>
+{elseif $magic.request.buy_id!=""}
+<form id="login-form" action="/?user&q=code/borrow/change&buy_id={$magic.request.buy_id}" method="post">
+<p><label>购买金额：￥{$magic.request.account}</p>
+<p><label>支付密码：<input id="paypassword" name="paypassword" type="password"></label></p>
+</form>
+{elseif $magic.request.web_id!=""}
+<form id="login-form" action="/?user&q=code/borrow/change&web_id={$magic.request.web_id}" method="post">
+<p><label>转让给网站的价格为：{$magic.request.account}，是否确认转让？</label></p>
+<p><label>支付密码：<input id="paypassword" name="paypassword" type="password"></label></p>
+
+</form>
+{/if}
+<!-- IE8 style 标签写在HTML片段下方才能生效 -->
+{literal}
+<style>
+#login-form p { padding:5px;  }
+#login-form input { width:15em; padding:4px; border:1px solid #CCC; }
+#login-form input:focus { border-color:#426DC9; }
+#login-form .login-form-error { background:#FFFBFC; border-color:#F00 !important; }
+</style>
+<!--
+	1、 标准script的标签将会被执行，这里要注意此处定义的变量会污染全局
+    2、 本页编码要与对话框所在页面编码保持一致
+-->
+<script type="text/javascript">
+
+{/literal}
+var id='{$magic.request.id}';
+var cancel_id='{$magic.request.cancel_id}';
+var web_id='{$magic.request.web_id}';
+var buy_id='{$magic.request.buy_id}';
+{literal}
+var api = lhgdialog.focus, //返回当前最顶层窗口实例对象
+	$$ = function(id){return document.getElementById(id)},
+	form = $$('login-form'),
+	account = $$('account'),
+	paypassword = $$('paypassword'),
+	cancel_remark = $$('cancel_remark');
+
+if (id!=''){
+
+// 操作对话框
+api.title('债权转让')
+	// 自定义按钮
+	.button(
+		{
+			name: '确认',
+			callback: function(){
+				if (check(account) && check(paypassword) )form.submit();
+				return false;
+			},
+			focus: true
+		},
+		{
+			name: '取消'
+		}
+		/*, 更多按钮.. */
+	)
+	// 锁屏
+	.lock();
+}else if (web_id!=""){
+	// 操作对话框
+	api.title('转让给网站')
+	// 自定义按钮
+	.button(
+		{
+			name: '同意转让',
+			callback: function(){
+				if (check(paypassword) )form.submit();
+				return false;
+			},
+			focus: true
+		},
+		{
+			name: '取消'
+		}
+		/*, 更多按钮.. */
+	)
+	// 锁屏
+	.lock();
+}else if (cancel_id!=""){
+	// 操作对话框
+	api.title('撤销债权转让')
+	// 自定义按钮
+	.button(
+		{
+			name: '确认撤销',
+			callback: function(){
+			
+				if (check(paypassword)) form.submit();
+				return false;
+			},
+			focus: true
+		},
+		{
+			name: '取消'
+		}
+		/*, 更多按钮.. */
+	)
+	// 锁屏
+	.lock();
+}else if (buy_id!=""){
+	// 操作对话框
+	api.title('确定购买此债权')
+	// 自定义按钮
+	.button(
+		{
+			name: '确认购买',
+			callback: function(){
+				form.submit();
+				
+			},
+			focus: true
+		},
+		{
+			name: '取消'
+		}
+		/*, 更多按钮.. */
+	)
+	// 锁屏
+	.lock();
+}
+// 表单验证
+var check = function (input) {
+	alert(1);
+	if (input.value === '') {
+		inputError(input);
+		input.focus();
+		return false;
+	} else {
+		return true;
+	};
+};
+
+// 输入错误提示
+var inputError = function (input) {
+	clearTimeout(inputError.timer);
+	var num = 0;
+	var fn = function () {
+		inputError.timer = setTimeout(function () {
+			input.className = input.className === '' ? 'login-form-error' : '';
+			if (num === 5) {
+				input.className === '';
+			} else {
+				fn(num ++);
+			};
+		}, 150);
+	};
+	fn();
+};
+</script>
+{/literal}

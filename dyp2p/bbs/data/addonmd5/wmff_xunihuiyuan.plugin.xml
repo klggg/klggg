@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Addon MD5]]></item>
+	<item id="ID"><![CDATA[wmff_xunihuiyuan.plugin]]></item>
+	<item id="RevisionID"><![CDATA[387]]></item>
+	<item id="SN"><![CDATA[2013041023MxMwWjx8fJ]]></item>
+	<item id="RevisionDateline"><![CDATA[1329177868]]></item>
+	<item id="Data">
+		<item id="/discuz_plugin_wmff_xunihuiyuan_SC_GBK.xml"><![CDATA[744b8a58127dce7a719bfd88c790239e]]></item>
+		<item id="/discuz_plugin_wmff_xunihuiyuan_SC_UTF8.xml"><![CDATA[8bd85fb4cb82477d4ab2364ed69d9317]]></item>
+		<item id="/discuz_plugin_wmff_xunihuiyuan_TC_BIG5.xml"><![CDATA[57a36188c08a291c607f449042bb8bd7]]></item>
+		<item id="/discuz_plugin_wmff_xunihuiyuan_TC_UTF8.xml"><![CDATA[e8289ea26ad28e3c71c9dc028d625b96]]></item>
+		<item id="/index.class.php"><![CDATA[ed91634fee65ffc763dfbb2d04a01ff2]]></item>
+	</item>
+</root>

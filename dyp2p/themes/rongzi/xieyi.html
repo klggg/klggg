@@ -1,0 +1,248 @@
+{include file="header.html"}
+{if $_G.site_result.nid=="protocol"}
+{articles module="borrow" function="GetOne" borrow_nid="$_G.article_id" var="var"}
+<div class="clearfix con_box">
+
+	<div>
+		<div class="con_bor">
+			<div class="pos_bor"><span>借款协议书</span></div>
+			<div class="con1">
+				<div class="con">
+	<div class="t20">
+    <div class="user_main_title1">贷款号：{$var.borrow_nid}<br/>借款人： {$var.username}<br />还款方式： {$var.borrow_style|linkages:"borrow_style"}<br />出借人：详见本协议第一条<br />签订日期：{$var.borrow_success_time|date_format:"Y-m-d"}<br /></div>
+	</div>
+	<div class="t20">
+	第一条：<br>
+		  1、出借人名录：
+          <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabyel">
+              <tr class="head">
+                <td>出借人</td>
+                <td>借款金额</td>
+                <td>借款期限</td>
+                <td>年利率</td>
+                <td>借款开始日</td>
+                <td>借款到期日</td>
+                <td>月截止还款日</td>
+                <td>总还款本息</td>
+              </tr>
+			{loop module="borrow" var="bor" function="GetTenderList" borrow_nid="$_G.article_id" limit="all" }
+              <tr {if $key%2==1} class="ynow"{/if}>
+                <td>{$bor.username}</td>
+				<td>{$bor.account}元</td>
+				<td>{if $var.borrow_period == 0.03}1天
+                            	{elseif $var.borrow_period == 0.06}2天
+                            	{elseif $var.borrow_period == 0.10}3天
+                            	{elseif $var.borrow_period == 0.13}4天
+                            	{elseif $var.borrow_period == 0.16}5天
+                            	{elseif $var.borrow_period == 0.20}6天
+                            	{elseif $var.borrow_period == 0.23}7天
+                            	{elseif $var.borrow_period == 0.26}8天
+                            	{elseif $var.borrow_period == 0.30}9天
+                            	{elseif $var.borrow_period == 0.33}10天
+                            	{elseif $var.borrow_period == 0.36}11天
+                            	{elseif $var.borrow_period == 0.40}12天
+                            	{elseif $var.borrow_period == 0.43}13天
+                            	{elseif $var.borrow_period == 0.46}14天
+                            	{elseif $var.borrow_period == 0.50}15天
+                            	{elseif $var.borrow_period == 0.53}16天
+                            	{elseif $var.borrow_period == 0.56}17天
+                            	{elseif $var.borrow_period == 0.60}18天
+                            	{elseif $var.borrow_period == 0.63}19天
+                            	{elseif $var.borrow_period == 0.66}20天
+                            	{elseif $var.borrow_period == 0.70}21天
+                            	{elseif $var.borrow_period == 0.73}22天
+                            	{elseif $var.borrow_period == 0.76}23天
+                            	{elseif $var.borrow_period == 0.80}24天
+                            	{elseif $var.borrow_period == 0.83}25天
+                            	{elseif $var.borrow_period == 0.86}26天
+                            	{elseif $var.borrow_period == 0.90}27天
+                            	{elseif $var.borrow_period == 0.93}28天
+                            	{elseif $var.borrow_period == 0.96}29天
+                            	{elseif $var.borrow_period == 0.10}30天
+                            	{elseif $var.borrow_period >= 1 && $var.borrow_period<10 }{$var.borrow_period|truncate:1}个月
+                            	{else}{$var.borrow_period|truncate:2}个月
+                            	{/if}</td>
+				<td>{$var.borrow_apr}%</td>
+				<td>
+				
+				{if $var.is_flow==1}
+				{$bor.addtime|date_format:"Y-m-d"}
+				{else}
+				{$var.borrow_success_time|date_format:"Y-m-d"}
+				{/if}
+				
+				</td>
+				<td>
+				{if $var.is_flow==1}
+				   {if $var.borrow_period >= 1}
+				 
+				   {$bor.addtime+$var.borrow_period*30*24*60*60|date_format:"Y-m-d"|default:"-"}
+				   {else}
+				   
+				                {if $var.borrow_period == 0.03}{$bor.addtime+1*24*60*60|date_format:"Y-m-d"|default:"-"}
+                            	{elseif $var.borrow_period == 0.06}{$bor.addtime+2*24*60*60|date_format:"Y-m-d"|default:"-"}
+                            	{elseif $var.borrow_period == 0.10}{$bor.addtime+3*24*60*60|date_format:"Y-m-d"|default:"-"}
+                            	{elseif $var.borrow_period == 0.13}{$bor.addtime+4*24*60*60|date_format:"Y-m-d"|default:"-"}
+                            	{elseif $var.borrow_period == 0.16}{$bor.addtime+5*24*60*60|date_format:"Y-m-d"|default:"-"}
+                            	{elseif $var.borrow_period == 0.20}{$bor.addtime+6*24*60*60|date_format:"Y-m-d"|default:"-"}
+                            	{elseif $var.borrow_period == 0.23}{$bor.addtime+7*24*60*60|date_format:"Y-m-d"|default:"-"}
+                            	{elseif $var.borrow_period == 0.26}{$bor.addtime+8*24*60*60|date_format:"Y-m-d"|default:"-"}
+                            	{elseif $var.borrow_period == 0.30}{$bor.addtime+9*24*60*60|date_format:"Y-m-d"|default:"-"}
+                            	{elseif $var.borrow_period == 0.33}{$bor.addtime+10*24*60*60|date_format:"Y-m-d"|default:"-"}
+                            	{elseif $var.borrow_period == 0.36}{$bor.addtime+11*24*60*60|date_format:"Y-m-d"|default:"-"}
+                            	{elseif $var.borrow_period == 0.40}{$bor.addtime+12*24*60*60|date_format:"Y-m-d"|default:"-"}
+                            	{elseif $var.borrow_period == 0.43}{$bor.addtime+13*24*60*60|date_format:"Y-m-d"|default:"-"}
+                            	{elseif $var.borrow_period == 0.46}{$bor.addtime+14*24*60*60|date_format:"Y-m-d"|default:"-"}
+                            	{elseif $var.borrow_period == 0.50}{$bor.addtime+15*24*60*60|date_format:"Y-m-d"|default:"-"}
+                            	{elseif $var.borrow_period == 0.53}{$bor.addtime+16*24*60*60|date_format:"Y-m-d"|default:"-"}
+                            	{elseif $var.borrow_period == 0.56}{$bor.addtime+17*24*60*60|date_format:"Y-m-d"|default:"-"}
+                            	{elseif $var.borrow_period == 0.60}{$bor.addtime+18*24*60*60|date_format:"Y-m-d"|default:"-"}
+                            	{elseif $var.borrow_period == 0.63}{$bor.addtime+19*24*60*60|date_format:"Y-m-d"|default:"-"}
+                            	{elseif $var.borrow_period == 0.66}{$bor.addtime+20*24*60*60|date_format:"Y-m-d"|default:"-"}
+                            	{elseif $var.borrow_period == 0.70}{$bor.addtime+21*24*60*60|date_format:"Y-m-d"|default:"-"}
+                            	{elseif $var.borrow_period == 0.73}{$bor.addtime+22*24*60*60|date_format:"Y-m-d"|default:"-"}
+                            	{elseif $var.borrow_period == 0.76}{$bor.addtime+23*24*60*60|date_format:"Y-m-d"|default:"-"}
+                            	{elseif $var.borrow_period == 0.80}{$bor.addtime+24*24*60*60|date_format:"Y-m-d"|default:"-"}
+                            	{elseif $var.borrow_period == 0.83}{$bor.addtime+25*24*60*60|date_format:"Y-m-d"|default:"-"}
+                            	{elseif $var.borrow_period == 0.86}{$bor.addtime+26*24*60*60|date_format:"Y-m-d"|default:"-"}
+                            	{elseif $var.borrow_period == 0.90}{$bor.addtime+27*24*60*60|date_format:"Y-m-d"|default:"-"}
+                            	{elseif $var.borrow_period == 0.93}{$bor.addtime+28*24*60*60|date_format:"Y-m-d"|default:"-"}
+                            	{elseif $var.borrow_period == 0.96}{$bor.addtime+29*24*60*60|date_format:"Y-m-d"|default:"-"}
+                            	{elseif $var.borrow_period == 0.10}{$bor.addtime+30*24*60*60|date_format:"Y-m-d"|default:"-"}
+								{/if}
+				   
+				  
+				   {/if}
+				{else}
+				{$var.r_time_h|date_format:"Y-m-d"|default:"-"}
+				{/if}
+				</td>
+				<td>{$var.repay_each_time}</td>
+				<td>{$bor.recover_account_all} 元</td>
+              </tr>
+			{/loop}
+			<tr>
+				<td><strong>总金额：</strong></td>
+				<td><strong>{$var.account}元</strong></td>
+				<td><strong>{if $var.borrow_period == 0.03}1天
+                            	{elseif $var.borrow_period == 0.06}2天
+                            	{elseif $var.borrow_period == 0.10}3天
+                            	{elseif $var.borrow_period == 0.13}4天
+                            	{elseif $var.borrow_period == 0.16}5天
+                            	{elseif $var.borrow_period == 0.20}6天
+                            	{elseif $var.borrow_period == 0.23}7天
+                            	{elseif $var.borrow_period == 0.26}8天
+                            	{elseif $var.borrow_period == 0.30}9天
+                            	{elseif $var.borrow_period == 0.33}10天
+                            	{elseif $var.borrow_period == 0.36}11天
+                            	{elseif $var.borrow_period == 0.40}12天
+                            	{elseif $var.borrow_period == 0.43}13天
+                            	{elseif $var.borrow_period == 0.46}14天
+                            	{elseif $var.borrow_period == 0.50}15天
+                            	{elseif $var.borrow_period == 0.53}16天
+                            	{elseif $var.borrow_period == 0.56}17天
+                            	{elseif $var.borrow_period == 0.60}18天
+                            	{elseif $var.borrow_period == 0.63}19天
+                            	{elseif $var.borrow_period == 0.66}20天
+                            	{elseif $var.borrow_period == 0.70}21天
+                            	{elseif $var.borrow_period == 0.73}22天
+                            	{elseif $var.borrow_period == 0.76}23天
+                            	{elseif $var.borrow_period == 0.80}24天
+                            	{elseif $var.borrow_period == 0.83}25天
+                            	{elseif $var.borrow_period == 0.86}26天
+                            	{elseif $var.borrow_period == 0.90}27天
+                            	{elseif $var.borrow_period == 0.93}28天
+                            	{elseif $var.borrow_period == 0.96}29天
+                            	{elseif $var.borrow_period == 0.10}30天
+                            	{elseif $var.borrow_period >= 1 && $var.borrow_period<10 }{$var.borrow_period|truncate:1}个月
+                            	{else}{$var.borrow_period|truncate:2}个月
+                            	{/if}</strong></td>
+				<td><strong>{$var.borrow_apr}%</strong></td>
+				<td><strong>{$var.borrow_success_time|date_format:"Y-m-d"}</strong></td>
+				<td><strong>{if $var.borrow_success_time!="0"}
+				{$var.r_time_h|date_format:"Y-m-d"|default:"-"}
+				{/if}</strong></td>
+				<td><strong>总还款本息：</strong></td>
+				<td><strong>{$var.repay_account_all} 元</strong></td>
+			</tr>
+          </table>
+		  </div>
+		  <div class="t20">
+		  2、还款明细：
+		  <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabyel">
+              <tr class="head">
+                <td>借款期数</td>
+                <td>年利率</td>
+                <td>应还时间</td>
+                <td>还款本息</td>
+                <td>还款本金</td>
+                <td>还款利息</td>
+              </tr>
+			{loop module="borrow" var="bor" function="GetBorrowRepayList" borrow_nid="$_G.article_id" limit="all" order="order"}
+              <tr {if $key%2==1} class="ynow"{/if}>
+				<td>{$bor.repay_period+1}</td>
+				<td>{$var.borrow_apr}%</td>
+				<td>{$bor.repay_time|date_format:"Y-m-d"}</td>
+				<td>{$bor.repay_account}</td>
+				<td>{$bor.repay_capital}</td>
+				<td>{$bor.repay_interest}</td>
+              </tr>
+			{/loop}
+          </table>
+			</div>
+	<div class="t20">{$_G.page_result.contents}</div>
+	</div>
+					</div>
+				</div>
+			</div>
+		</div>
+{/articles}
+{elseif $_G.site_result.nid=="debt_protocol"}
+{articles module="borrow" function="GetChangeOne" id="$_G.article_id" status='1' var="var"}
+<div class="clearfix con_box">
+
+	<div>
+		<div class="con_bor">
+			<div class="pos_bor"><span>债权转让协议书</span></div>
+			<div class="con1">
+				<div class="con">
+	<div class="t20">
+    <div class="user_main_title1">
+	债权转让协议号：{$var.change_nid}<br />转让人：{$var.username}<br />受让人：{if $var.web_status==2}易信云投{else}{$var.change_username}{/if}<br />签订日期：{$var.buy_time|date_format:"Y-m-d"}<br /></div>
+	</div>
+			<div class="t20">
+		第一条：<br>	
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabyel">
+		 <tr class="head">
+				<td  >投标标题</td>
+				<td  >利率</td>
+				<td  >待还期数/总期数</td>
+				<td  >待收本息</td>
+				<td  >转让价格</td>
+				<td  >转让时间</td>
+				<td  >购买者</td>
+			</tr>
+			{list module='borrow' function='GetChangeList' id="$_G.article_id"  status='1' var="item"  user_id='$var.user_id' var="loop"}
+			{foreach from="$loop.list" item="item"}
+			<tr>
+				<td  ><a href="/invest/a{$item.borrow_nid}.html">{$item.borrow_name}</a></td>
+				<td  >{$item.borrow_apr}%</td>
+				<td  >{$item.count_all}/{$item.borrow_period}</td>
+				<td  >{$item.recover_account_all}</td>
+				<td  >{if $item.web_status==2}{$item.web_buy}{else}{$item.account}{/if}</td>
+				<td  >{$item.buy_time|date_format}</td>
+				<td  ><a href="/u/{$item.buy_userid}">{$item.buy_username|default:"网站"}</a></td>
+
+			</tr>
+			{/foreach}
+		</table>
+		{/list}
+	<div class="t20">{$_G.page_result.contents}</div>
+	</div>
+					</div>
+				</div>
+			</div>
+		</div>
+{/articles}
+{/if}
+{include file="footer.html"}

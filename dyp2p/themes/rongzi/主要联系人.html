@@ -1,0 +1,105 @@
+{articles module="rating" function="GetContactOne" user_id="$_G.user_id" var="var"}
+<div style="padding:20px 80px;" id="li_list_detail_5" >
+{articles module="credit" function="GetCreditCount" var="cvar" user_id=$_G.user_id}
+{if $cvar.info_credit==0 || $cvar.info_credit==""}
+<div style="font-size:12px;float:right;"><strong style="color:#ff0000">提醒：</strong>完成个人详情才能发起借款，更有利于您接下来上传证明材料的快速核实并审核通过发起借款。</div>
+{elseif $cvar.work_credit==0 || $cvar.work_credit==""}
+<div style="font-size:12px;float:right;"><strong style="color:#ff0000">提醒：</strong>完成工作信息或私营业主信息才能发起借款，更有利于您接下来上传证明材料的快速核实并审核通过发起借款。</div>
+{elseif $cvar.finance_credit==0 || $cvar.finance_credit==""}
+<div style="font-size:12px;float:right;"><strong style="color:#ff0000">提醒：</strong>最少填写一笔财务信息才能发起借款，更有利于您接下来上传证明材料的快速核实并审核通过发起借款。</div>
+{elseif $var.status!=1}
+<div style="font-size:12px;float:right;">请完成主要联系人。</div>
+{else}
+	{if $_G.site_result.nid=="amount_contact"}
+	<div style="font-size:12px;float:right;">恭喜您，已填写完成基本信息。<a href="/amount_att/index.html" style="color:#0000ff;">点击此处进入下一步</a>。</div>
+	{else}
+	<div style="font-size:12px;float:right;">恭喜您，已填写完成基本信息。<a href="/borrow_att/index.html" style="color:#0000ff;">点击此处进入下一步</a>。</div>
+	{/if}
+{/if}
+{/articles}
+			        <table width="100%"  border="0" cellpadding="0" cellspacing="0" class="jk_tab">
+  <form action="/?user&q=code/rating/contact" method="post" onsubmit="return ck();" name="formx" id="formx">
+  <tr>
+    <td width="24%" align="right"><span>*</span>配偶姓名：</td>
+    <td width="76%" align="left"><input type="text" name="linkman2" id="linkman2" value="{$var.linkman2}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></td>
+  </tr>
+  <tr>
+    <td width="24%" align="right"><span>*</span>配偶电话：</td>
+    <td width="76%" align="left"><input type="text" name="phone2" value="{$var.phone2}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></td>
+  </tr>
+  <tr>
+    <td width="24%" align="right"><span>*</span>直系亲属姓名：</td>
+    <td width="76%" align="left"><input type="text" name="linkman3" value="{$var.linkman3}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></td>
+  </tr>
+  <tr>
+    <td width="24%" align="right"><span>*</span>直系亲属电话：</td>
+    <td width="76%" align="left"><input type="text" name="phone3" value="{$var.phone3}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></td>
+  </tr>  
+  <tr>
+    <td width="24%" align="right"><span>*</span>同事姓名：</td>
+    <td width="76%" align="left"><input type="text" name="linkman4" value="{$var.linkman4}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></td>
+  </tr>
+  <tr>
+    <td width="24%" align="right"><span>*</span>同事电话：</td>
+    <td width="76%" align="left"><input type="text" name="phone4" value="{$var.phone4}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></td>
+  </tr>  <tr>
+    <td width="24%" align="right"><span>*</span>紧急联系人姓名：</td>
+    <td width="76%" align="left"><input type="text" name="linkman5" value="{$var.linkman5}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></td>
+  </tr>
+  <tr>
+    <td width="24%" align="right"><span>*</span>紧急联系人电话：</td>
+    <td width="76%" align="left"><input type="text" name="phone5" value="{$var.phone5}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></td>
+  </tr>
+  <tr>
+    <td>&nbsp;{if $_G.site_result.nid=="amount_contact"}<input type="hidden" name="web" value="amount">{elseif $_G.site_result.nid=="borrow_contact"}<input type="hidden" name="web" value="borrow">{/if}</td>
+    <td><input type="submit" name="submit" value="提交并继续" class="btn1" /> <span>*</span>为必填项</td>
+  </tr>
+  </form>
+</table>
+			   </div>
+			   {/articles}
+{literal}
+			<script>
+			function ck(){
+				 var frm = document.forms['formx'];
+				 var linkman2 = frm.elements['linkman2'].value;
+				 var linkman3 = frm.elements['linkman3'].value;
+				 var linkman4 = frm.elements['linkman4'].value;
+				 var linkman5 = frm.elements['linkman5'].value;
+				 var phone2 = frm.elements['phone2'].value;
+				 var phone3 = frm.elements['phone3'].value;
+				 var phone4 = frm.elements['phone4'].value;
+				 var phone5 = frm.elements['phone5'].value;
+				 var errorMsg = '';
+				  if (linkman2.length == 0 ) {
+					errorMsg += '* 配偶姓名不能为空' + '\n';
+				  }
+				  if (linkman3.length == 0 ) {
+					errorMsg += '* 直系亲属姓名不能为空' + '\n';
+				  }
+				  if (linkman4.length == 0 ) {
+					errorMsg += '* 同事姓名不能为空' + '\n';
+				  }
+				  if (linkman5.length == 0 ) {
+					errorMsg += '* 紧急联系人姓名不能为空' + '\n';
+				  }
+				  if (phone2.length == 0 ) {
+					errorMsg += '* 配偶电话不能为空' + '\n';
+				  }
+				  if (phone3.length == 0 ) {
+					errorMsg += '* 直系亲属电话不能为空' + '\n';
+				  }
+				  if (phone4.length == 0 ) {
+					errorMsg += '* 同事电话不能为空' + '\n';
+				  }
+				  if (phone5.length == 0 ) {
+					errorMsg += '* 紧急联系人电话不能为空' + '\n';
+				  }
+				  if (errorMsg.length > 0){
+					alert(errorMsg); return false;
+				  } else{  
+					return true;
+				  }
+			}
+			</script>
+			{/literal}

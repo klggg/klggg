@@ -1,0 +1,316 @@
+{include file="user_header.html"}
+<!--用户中心的主栏目 开始-->
+<div class="wrap950 ">
+	<!--左边的导航 开始-->
+	<div class="mi_content">
+	<div class="mi_c_left">
+		{include file="user_menu.html"}
+	</div>
+	<!--左边的导航 结束-->
+	
+	<!--右边的内容 开始-->
+	<div class="user_right">
+		<div class="user_right_menu">
+			
+			<ul>
+				<li class="title" ><a href="{$_U.query_url}">配股信息</a></li>
+				<li {if $_U.query_type=="list"} class="current"{/if}><a href="{$_U.query_url}">配股详情</a></li>
+				<li {if $_U.query_type=="buy"} class="current"{/if}><a href="{$_U.query_url}/buy">我要购买</a></li>
+				<li {if $_U.query_type=="buy_detail"} class="current"{/if}><a href="{$_U.query_url}/buy_detail">购买明细</a></li>
+				<li {if $_U.query_type=="sell_detail"} class="current"{/if}><a href="{$_U.query_url}/sell_detail">出售明细</a></li>
+			</ul>
+			
+		</div>
+		
+		<div class="user_right_main">
+		
+	
+		{if $_U.query_type=="list"}
+		<!--正在招标 开始-->
+		{if $_U.peigu_result==""}
+		<div class="user_main_title" style="height:30px; padding-top:7px;"> 
+		你还没有配股的权限，请跟您的客服联系。
+		</div>
+		{else}
+		<div class="user_main_title" style="height:30px; padding-top:7px;"> 
+		配股说明：
+		</div>
+		<form action="" method="post">
+		<div class="user_right_border">
+			<div class="e">己购买配股数：</div>
+			<div class="c">
+				{$_U.peigu_result.buy_num|default:0}股
+			</div>
+		</div>
+		<div class="user_right_border">
+			<div class="e">己卖出配股数：</div>
+			<div class="c">
+				{$_U.peigu_result.sell_yes|default:0}股
+			</div>
+		</div>
+		<div class="user_right_border">
+			<div class="e">己卖出配股总额 ：</div>
+			<div class="c">
+				{$_U.peigu_result.sell_acount|default:0}元
+			</div>
+		</div>
+		<div class="user_right_border">
+			<div class="e">现有配股数：</div>
+			<div class="c">
+				{$_U.peigu_result.sell_num|default:0}股
+			</div>
+		</div>
+		<div class="user_right_border">
+			<div class="e">现有配股总额：</div>
+			<div class="c">
+				{$_U.peigu_result.sell_num*$_U.peigu_money|default:0}元
+			</div>
+		</div>
+		<div class="user_right_border">
+			<div class="e">购买每股金额：</div>
+			<div class="c">
+				￥{$_U.peigu_money|default:0}
+			</div>
+		</div>
+		
+		
+		<div class="user_right_border">
+			<div class="e"></div>
+			<div class="c">
+				<input type="button" onclick="javascript:location.href='index.php?user&q=code/peigu/buy'" value="我要购买" />
+			</div>
+		</div>
+		</form>
+		
+		{/if}
+		
+		{elseif $_U.query_type=="buy_detail"}
+		<div class="user_main_title" style="height:30px; padding-top:7px;"> 
+		购买时间：<input type="text" name="dotime1" id="dotime1" value="{$magic.request.dotime1}" size="15" onclick="change_picktime()"/> 到 <input type="text"  name="dotime2" value="{$magic.request.dotime2}" id="dotime2" size="15" onclick="change_picktime()"/>  
+		<input value="搜索"  class="xinbuton" 
+type="submit" onclick="sousuo('{$_U.query_url}/publish')" />
+		</div>
+		<table  border="0"  cellspacing="1" class="user_list_table" style="width:98%">
+			  <form action="" method="post">
+				<tr class="head" >
+					<td  >序号</td>
+					<td  >数量</td>
+					<td  >购买金额</td>
+					<td  >总额</td>
+					<td  >购买时间</td>
+					<td  >可卖时间</td>
+					<td  >状态</td>
+					<td  >操作</td>
+				</tr>
+				{list module="peigu" var="loop" function ="GetDetailList" showpage="3" user_id="0" keywords="request" dotime1="request" dotime2="request" type="buy"}
+				{foreach from="$loop.list" item="item"}
+				<tr {if $key%2==1} class="tr1"{/if}>
+					<td  >{$key+1}</td>
+					<td  >{$item.total}股</td>
+					<td  >￥{$item.money}</td>
+					<td  >￥{$item.money*$item.total}</td>
+					<td  >{$item.addtime|date_format} </td>
+					<td  >{$item.sell_time|date_format} </td>
+					<td  >{$item.state}</td>
+					<td  >{if $item.status==1 && $item.sell>0}<a href="{$_U.query_url}/sell&id={$item.id}" >出售</a>{else}-{/if}</td>
+				</tr>
+				{/foreach}
+				<tr >
+					<td colspan="8" class="page">
+						{$loop.showpage}
+					</td>
+				</tr>
+				{/list}
+			</form>	
+		</table>
+		
+		
+		
+		{elseif $_U.query_type=="sell_detail"}
+		<div class="user_main_title" style="height:30px; padding-top:7px;"> 
+		出售时间：<input type="text" name="dotime1" id="dotime1" value="{$magic.request.dotime1}" size="15" onclick="change_picktime()"/> 到 <input type="text"  name="dotime2" value="{$magic.request.dotime2}" id="dotime2" size="15" onclick="change_picktime()"/> 
+		<input value="搜索"  class="xinbuton" 
+type="submit" onclick="sousuo('{$_U.query_url}/publish')" />
+		</div>
+		<table  border="0"  cellspacing="1" class="user_list_table" style="width:98%">
+			  <form action="" method="post">
+				<tr class="head" >
+					<td  >序号</td>
+					<td  >数量</td>
+					<td  >出售金额</td>
+					<td  >总额</td>
+					<td  >出售时间</td>
+					<td  >状态</td>
+				</tr>
+				{list module="peigu" var="loop" function ="GetDetailList" showpage="3" user_id="0" keywords="request" dotime1="request" dotime2="request" type="sell"}
+				{foreach from="$loop.list" item="item"}
+				<tr {if $key%2==1} class="tr1"{/if}>
+					<td  >{$key+1}</td>
+					<td  >{$item.total}股</td>
+					<td  >￥{$item.money}</td>
+					<td  >￥{$item.money*$item.total}</td>
+					<td  >{$item.addtime|date_format} </td>
+					<td  >{$item.state}</td>
+				</tr>
+				{/foreach}
+				<tr >
+					<td colspan="8" class="page">
+						{$loop.showpage}
+					</td>
+				</tr>
+				{/list}
+			</form>	
+		</table>
+		<!--尚未发布 结束-->
+		
+		{elseif $_U.query_type=="buy"}
+		<!--额度申请 开始-->
+		<div class="user_main_title"> 
+		购买的配股在一定的时间内不能卖出。
+		</div>
+		<form action="" method="post">
+		<div class="user_right_border">
+			<div class="e">你现在的可用金额为：</div>
+			<div class="c">
+				￥{$_U.account_result.use_money|default:0}
+			</div>
+		</div>
+		<div class="user_right_border">
+			<div class="e">你可购买的股数：</div>
+			<div class="c">
+				{$_U.peigu_result.use|default:0}股
+			</div>
+		</div>
+		<div class="user_right_border">
+			<div class="e">目前每股的金额：</div>
+			<div class="c">
+				￥{$_U.peigu_money|default:0}
+			</div>
+		</div>
+		<div class="user_right_border">
+			<div class="e"> 购买数量：</div>
+			<div class="c">
+				<input type="text" name="total" value="" onkeyup="this.value=this.value.replace(/\D/g,'')" /> 
+			</div>
+		</div>
+		
+		
+		
+		<div class="user_right_border">
+			<div class="e">购买备注：</div>
+			<div class="c">
+			<textarea rows="5" cols="40" name="remark"></textarea>
+			</div>
+		</div>
+		
+		<div class="user_right_border">
+			<div class="e">验证码：</div>
+			<div class="c">
+			<input   name="valicode" type="text" size="8" maxlength="4" style=" padding-top:4px; height:16px; width:70px;"/>&nbsp;<img src="/plugins/index.php?q=imgcode" alt="点击刷新" onClick="this.src='/plugins/index.php?q=imgcode&t=' + Math.random();" align="absmiddle" style="cursor:pointer" />
+			</div>
+		</div>
+		
+		
+		<div class="user_right_border">
+			<div class="e"></div>
+			<div class="c">
+				<input type="submit" name="name"  value="确认提交"  class="xinbuton" 
+ size="30" /> 
+			</div>
+		</div>
+		</form>
+		{elseif $_U.query_type=="sell"}
+		<div class="user_main_title"> 
+		要卖出的股数只有达到一定时间后才可以卖出
+		</div>
+		<form action="" method="post">
+		<div class="user_right_border">
+			<div class="e">购买时间：</div>
+			<div class="c">
+				{$_U.detail_result.addtime|date_format}
+			</div>
+		</div>
+		<div class="user_right_border">
+			<div class="e">目前每股的金额：</div>
+			<div class="c">
+				￥{$_U.peigu_money}
+			</div>
+		</div>
+		<div class="user_right_border">
+			<div class="e">你可卖出的股数：</div>
+			<div class="c">
+				{$_U.detail_result.sell}股
+			</div>
+		</div>
+		<div class="user_right_border">
+		<div class="e">可卖时间：</div>
+			<div class="c">
+				{$_U.detail_result.sell_time|date_format}
+			</div>
+		</div>
+		<div class="user_right_border">
+			<div class="e">卖出数量：</div>
+			<div class="c">
+				<input type="text" name="total" value="" onkeyup="this.value=this.value.replace(/\D/g,'')" /> 
+			</div>
+		</div>
+		
+		<div class="user_right_border">
+			<div class="e">出售备注：</div>
+			<div class="c">
+			<textarea rows="5" cols="40" name="remark"></textarea>
+			</div>
+		</div>
+			
+		<div class="user_right_border">
+			<div class="e">验证码：</div>
+			<div class="c">
+			<input   name="valicode" type="text" size="8" maxlength="4" style=" padding-top:4px; height:16px; width:70px;"/>&nbsp;<img src="/plugins/index.php?q=imgcode" alt="点击刷新" onClick="this.src='/plugins/index.php?q=imgcode&t=' + Math.random();" align="absmiddle" style="cursor:pointer" />
+			</div>
+		</div>
+		
+		<div class="user_right_border">
+			<div class="e"></div>
+			<div class="c">
+				<input type="submit" name="name"  value="确认提交"  class="xinbuton" 
+ size="30" /> 
+			</div>
+		</div>
+		</form>
+		
+		
+		
+		
+		
+		{/if}
+		<script>
+var url = "{$_U.query_url}/{$_U.query_type}";
+{literal}
+function sousuo(){
+	var _url = "";
+	var dotime1 = $("#dotime1").val();
+	var keywords = $("#keywords").val();
+	var username = $("#username").val();
+	var dotime2 = $("#dotime2").val();
+	if (username!=null){
+		 _url += "&username="+username;
+	}
+	if (keywords!=null){
+		 _url += "&keywords="+keywords;
+	}
+	if (dotime1!=null){
+		 _url += "&dotime1="+dotime1;
+	}
+	if (dotime2!=null){
+		 _url += "&dotime2="+dotime2;
+	}
+	location.href=url+_url;
+}
+
+</script>
+{/literal}
+</div>
+</div>
+</div>
+<!--用户中心的主栏目 结束-->
+{include file="user_footer.html"}

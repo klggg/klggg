@@ -1,0 +1,97 @@
+{articles module="rating" function="GetJobOne" user_id="$_G.user_id" var="var"}
+<div class="user_main_title1">
+{if $_G.site_result.nid=="amount_job"}
+<strong style="color:#ff0000">温馨提示：</strong>如您是私营业主，请直接点击<a href="/amount_company/index.html"><strong style="color:#0000ff">进入填写私营业主信息</strong></a>
+{else}
+<strong style="color:#ff0000">温馨提示：</strong>如您是私营业主，请直接点击<a href="/borrow_company/index.html"><strong style="color:#0000ff">进入填写私营业主信息</strong></a>
+{/if}
+</div>
+<div style="padding:20px 80px;" id="li_list_detail_2" >
+			        <table width="100%"  border="0" cellpadding="0" cellspacing="0" class="jk_tab">
+  <form action="/?user&q=code/rating/job" method="post" onsubmit="return formck();" name="formx" id="formx">
+  <tr>
+    <td width="24%" align="right"><span>*</span>单位名称：</td>
+    <td width="76%" align="left"><input type="text" name="name" value="{$var.name}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></td>
+  </tr>
+  <tr>
+    <td width="24%" align="right"><span>*</span>性质：</td>
+    <td width="76%" align="left"><input type="text" name="type" value="{$var.type}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></td>
+  </tr>
+  <tr>
+    <td width="24%" align="right"><span>*</span>行业：</td>
+    <td width="76%" align="left"><input type="text" name="industry" value="{$var.industry}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></td>
+  </tr>
+  <tr>
+    <td width="24%" align="right"><span>*</span>人员规模：</td>
+    <td width="76%" align="left"><input type="text" name="peoples" value="{$var.peoples}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></td>
+  </tr>
+  <tr>
+    <td width="24%" align="right"><span>*</span>入职时间：</td>
+    <td width="76%" align="left"><input type="text" name="worktime1" value="{$var.worktime1}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></td>
+  </tr>
+  <tr>
+    <td width="24%" align="right"><span>*</span>职务：</td>
+    <td width="76%" align="left"><input type="text" name="office" value="{$var.office}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></td>
+  </tr>
+  <tr>
+    <td width="24%" align="right"><span>*</span>单位地址：</td>
+    <td width="76%" align="left"><input type="text" name="address" value="{$var.address}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></td>
+  </tr>
+  <tr>
+    <td width="24%" align="right"><span>*</span>单位电话：</td>
+    <td width="76%" align="left"><input type="text" name="tel" value="{$var.tel}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></td>
+  </tr>
+  <tr>
+    <td>&nbsp;{if $_G.site_result.nid=="amount_job"}<input type="hidden" name="web" value="amount">{elseif $_G.site_result.nid=="borrow_job"}<input type="hidden" name="web" value="borrow">{/if}</td>
+    <td><input type="submit" name="submit" value="提交并继续" class="btn1" /> <span>*</span>为必填项</td>
+  </tr>
+  </form>
+</table>
+
+			   </div>
+			   {/articles}
+			{literal}
+			<script>
+			function formck(){
+				 var frm = document.forms['formx'];
+				 var tel = frm.elements['tel'].value;
+				 var address = frm.elements['address'].value;
+				 var office = frm.elements['office'].value;
+				 var worktime1 = frm.elements['worktime1'].value;
+				 var peoples = frm.elements['peoples'].value;
+				 var industry = frm.elements['industry'].value;
+				 var type = frm.elements['type'].value;
+				 var name = frm.elements['name'].value;
+				 var errorMsg = '';
+				  if (tel.length == 0 ) {
+					errorMsg += '* 单位电话不能为空' + '\n';
+				  }
+				  if (address.length == 0 ) {
+					errorMsg += '* 单位地址不能为空' + '\n';
+				  }
+				  if (office.length == 0 ) {
+					errorMsg += '* 工作职位不能为空' + '\n';
+				  }
+				  if (worktime1.length == 0 ) {
+					errorMsg += '* 入职时间不能为空' + '\n';
+				  }
+				  if (peoples.length == 0 ) {
+					errorMsg += '* 公司人数不能为空' + '\n';
+				  }
+				  if (industry.length == 0 ) {
+					errorMsg += '* 行业不能为空' + '\n';
+				  }
+				  if (type.length == 0 ) {
+					errorMsg += '* 单位性质不能为空' + '\n';
+				  }
+				  if (name.length == 0 ) {
+					errorMsg += '* 单位名称不能为空' + '\n';
+				  }
+				  if (errorMsg.length > 0){
+					alert(errorMsg); return false;
+				  } else{  
+					return true;
+				  }
+			}
+			</script>
+			{/literal}

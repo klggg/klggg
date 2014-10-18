@@ -1,0 +1,25 @@
+{include file="header.html"}
+
+<div class="clearfix con_box">
+
+	<div class="log_bor">
+		<h1>获得额度</h1>
+		<div style="padding:40px">
+			<div style="background:#F6F4F4; padding:25px">
+				<div style="width:560px; margin:20px auto; ">
+				<div style="color:#AE0606; line-height:28px; font-size:14px">您的资料已提交成功，审核人员将于2个工作日内尽快通过审核，请您耐心等待！如急需通过审核，请直接联系客服人员。</div>
+				<div style="color:#AE0606; line-height:28px; font-size:14px">
+				{articles module="borrow" function="GetAmountUsers" user_id=$_G.user_id var="var"}
+				当前您的信用额度：{$var.borrow_amount} 可用额度：{$var.borrow_amount_use}
+				{/articles}
+				</div>
+				<div style="text-align:center; margin-top:15px;"><a href="/amount_att/index.html"><img src="{$tempdir}/images/sqjk_11.gif" /></a> <a href="/borrow/index.html"><img src="{$tempdir}/images/sqjk_22.gif" /></a></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="con_box t20"></div>
+
+{include file="footer.html"}

@@ -1,0 +1,140 @@
+{include file="header.html"}
+
+
+    
+      <link rel="stylesheet" type="text/css" href="{$tempdir}/zhongchou/0d449e0e38e4f9a69794ff0a81b6f530.css"> 
+      <link rel="stylesheet" type="text/css" href="{$tempdir}/zhongchou/b583e0815af8988ed8bef1ad1d0b9a9e.css">
+ {articles module="borrow" function="GetraiseOne" var="var" id=$magic.request.article_id hits_status="1"}
+      <div class="wrap"> 
+	                       {literal}
+    <script>
+
+    function borrowRaise(type){
+	var api=$.dialog({
+		id: 'LHG1976D',
+		lock:true
+	});
+
+	/* jQuery ajax */
+	$.ajax({
+		url:'/?user&q=code/borrow/raise&'+type,
+		success:function(data){
+			api.content(data);
+		},
+		cache:false
+	});
+}
+  
+  </script>
+  {/literal}
+  
+	<!-- Main -->
+	<div class="main">
+		<div class="mainbody">
+
+
+<div class="ntit">
+	<h1> 
+	{$var.raise_name} <span class="czz">{if $var.status==0}筹资中{elseif $var.status==1}筹资成功{elseif $var.status==2}筹资失败{else}审核中{/if}</span>  
+	</h1>
+</div>
+
+
+
+			<div class="newcont">
+			{$var.raise_contents}
+			</div>
+			<span class="blank20"></span>
+			<div class="comment">
+				<div class="flbq">
+					<div class="flei">分类：
+						{$var.raise_type|linkages:"raise_type"}
+					</div>
+					<div class="bqian"> 标签：
+												{$var.tags}
+											</div>
+					<div class="fr">
+						<span class="fl"> 分享到：</span>
+						<!-- JiaThis Button BEGIN -->
+						<div class="jiathis_style"> <a class="jiathis_button_qzone"></a> <a class="jiathis_button_tsina"></a> <a class="jiathis_button_tqq"></a> <a class="jiathis_button_renren"></a> <a class="jiathis_button_kaixin001"></a>  </div>
+						<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1374471022460738" charset="utf-8"></script> 
+						<!-- JiaThis Button END --> 
+					</div>
+					
+				</div>
+	
+			</div>
+		</div>
+	    <div class="sidebar">
+	<div class="zcart">
+		<div class="gzhu">
+			<li>
+									<a href="javascript:void(0);" rel="34" class="btn-gz" onclick="borrowRaise('buy_id={$var.id}','');">  <span>马上支持</span> </a>
+							</li>
+		</div>
+		<div class="fot"> 目标
+			<span>{$var.raise_period}天 &nbsp;&nbsp;￥{$var.raise_account}</span>
+		</div>
+		<div class="bra">
+			<span class="bsp">
+			{if $var.raise_account_scale==100}
+			<!--当进度是100%时-->
+			<span style="width:100%;display:none" class="csp csp100"></span>
+			<!--//当进度是100%时--> 
+			{else}
+			<span class="csp" style="width:{$var.raise_account_scale}%"></span>
+			{/if}
+			
+			
+			</span>
+		</div>
+		<div class="rate">
+			<span class="m01">
+			<!--<span class="cu"><span>0</span>人</span>-->
+			<span class="cu" id="right_focus_num">{$var.tender_times}人</span>
+			<br>
+			支持</span>
+			<span class="m02">
+			<span class="red">￥<span>{$var.raise_account_yes}</span></span>
+			<br>
+			已筹资</span>
+			<span class="m03">
+			<span class="cu">
+								{if $var.end_day>= 0}{$var.end_day}天{else}已结束{/if}	</span>				<br>
+					
+					 {if $var.end_day>= 0}剩余{else}{/if}		</span>
+		</div>
+	</div>
+	<span class="blank10"></span>
+	<!--循环-->
+	 {list module="borrow" function="GetRauseTenderList" var="loop" epage="10" rause_id="$var.id"}
+
+		<!-- 循环 -->	
+			{foreach from="$loop.list" item="rvar"}
+
+
+			<div class="zchi {if $key+1== $loop.total}bnone{/if}">
+			<div class="je">
+				{$rvar.username} 支持<span>￥{$rvar.tender_account}</span>
+				
+			</div>
+						<div class="jj">{$rvar.message|truncate:50}</div>
+			<div class="hbpic">
+							</div>
+			<div class="btn-zc">
+									<a href="javascript:void(0);" onclick="borrowRaise('buy_id={$var.id}','');" class="bred" target="_blank">
+						<span>我也支持</span>
+					</a>
+									
+			</div>
+		</div>
+		{/foreach} 
+		
+		{/list} 	
+		</div>
+		<span class="blank20"></span>
+	</div>
+	<!-- End of Main --> 
+</div>
+{/articles}
+{include file="footer.html"}

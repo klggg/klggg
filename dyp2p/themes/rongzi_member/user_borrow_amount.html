@@ -1,0 +1,156 @@
+{if $_U.query_type=="amount"}
+
+<!--额度申请 开始-->
+
+	<div class="user_main_title1">额度一个月只能申请一次，一次原则最多1万</div>
+		{articles module="borrow" function="GetAmountUsers" user_id="$_G.user_id" var="_amount"}
+
+			<div style="line-height:50px; border-bottom:1px dashed #999999">您目前的可用额度：<strong>{$_amount.borrow_amount_use|default:0}</strong>元</div>
+	
+	{articles module="borrow" function="GetAmountApplyOne" user_id="0" var="var"}
+	
+	<form action="/?user&q=code/borrow/amount" method="post" id="borrow_amount_form">
+	
+	<div class="user_right_border">
+		<div class="e">申请者：</div>
+		<div class="c">{$_G.user_result.username}</div>
+	</div>
+	{if $var.status==2}
+	<div class="user_right_border">
+		<div class="e"> 状态：</div>
+		<div class="c">正在审核中</div>
+	</div>
+	
+	<div class="user_right_border" >
+		<div class="e"> 申请类型：</div>
+		<div class="c">{if $var.type=="vouch"}投资担保额度{elseif $var.type=="borrowvouch"}借款担保额度{else}借款信用额度{/if}</div>
+	</div>
+	
+	<div class="user_right_border">
+		<div class="e"> 申请金额：</div>
+		<div class="c">{$var.account}</div>
+	</div>
+	<div class="user_right_border">
+		<div class="e">详细说明：</div>
+		<div class="c">{$var.content}</div>
+	</div>
+	
+	<div class="user_right_border">
+		<div class="e">其它地方借款详细说明：</div>
+		<div class="c">{$var.remark}</div>
+	</div>
+	
+	{else}
+	{literal}
+	<script>
+	function num_only(field) {
+var result = new String();
+var numbers = "0123456789";
+var chars = field.value.split(""); // create array 
+for (i = 0; i < chars.length; i++) {
+if (numbers.indexOf(chars[i]) != -1) result += chars[i];
+}
+if (field.value != result) field.value = result;
+}
+	</script>
+	{/literal}
+	<div class="user_right_border">
+		<div class="e"> 申请类型：</div>
+		<div class="c">
+		<select name="amount_type">
+			<option value="borrow" {if $magic.request.type=="borrow"} selected="selected"{/if}>借款信用额度</option>
+		</select>
+		</div>
+	</div>
+	<div class="user_right_border">
+		<div class="e"> 申请金额：</div>
+		<div class="c"><input type="text" name="amount_account" value=""   onblur="num_only(this)"/> </div>
+	</div>
+	
+	<div class="user_right_border">
+		<div class="e">详细说明：</div>
+		<div class="c"><textarea rows="5" cols="40" name="content"></textarea></div>
+	</div>
+	
+	<div class="user_right_border">
+		<div class="e">其它地方借款详细说明：</div>
+		<div class="c"><textarea rows="5" cols="40" name="remark"></textarea></div>
+	</div>
+	
+	<div class="user_right_border">
+		<div class="e"></div>
+		<div class="c"><input type="submit" name="name"  value="确认提交"  class="xinbuton" 
+ class="xinbuton" size="30" /><input type="hidden" name="ajax" value="1" /> </div>
+	</div>
+	{/if}
+</form>
+
+{/articles}
+
+
+{elseif $_U.query_type=="amount_list"}
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabyel">
+	<form action="" method="post">
+		<tr class="ytit1" >
+		<td  >申请时间</td>
+		<td  >申请类型</td>
+		<td  >申请金额(元)</td>
+		<td  >通过金额(元)</td>
+		<td  >备注说明</td>
+		<td  >状态</td>
+		<td  >审核时间</td>
+		<td  >审核备注</td>
+	</tr>
+	{list module="borrow" var="loop" function ="GetAmountApplyList" showpage="3" user_id="0"  }
+	{foreach from="$loop.list" item="item"}
+	<tr {if $key%2==1} class="ynow"{/if}>
+		<td  >{$item.addtime|date_format:"m-d H:i"}</td>
+		<td >{if $item.type=="tender_vouch"}投资担保额度{elseif $item.type=="borrow_vouch"}借款担保额度{else}借款信用额度{/if}</td>
+		<td  >{$item.amount_account}</td>
+		<td  >{$item.account|default:-}</td>
+		<td  >{$item.content}</td>
+		<td  >{if $item.status==0}正在审核{elseif $item.status==1}审核通过{else}审核不通过{/if}</td>
+		<td  >{$item.verify_time|date_format|default:-} </td>
+		<td  >{$item.verify_remark|default:-}</td></tr>
+		{/foreach}
+		<tr ><td colspan="8" class="page">{$loop.pages|showpage}</td>
+	</tr>
+	{/list}
+	</form>	
+	</table>
+	<div class="user_right_foot">* 温馨提示：额度申请后 无论申请是否批准 必须隔一个月后才能再次申请，每个月只能申请一次如有问题,请与我们联系</div><!--额度申请 结束-->
+	
+	{literal}<script>deayou.use("borrow",function(e){e.amount();});</script>{/literal}
+{elseif $_U.query_type=="amount_log"}
+{articles module="borrow" function="GetAmountUsers" user_id="$_G.user_id" var="_amount"}
+		<div class="user_main_title1">你目前的总借款信用额度为：￥{$_amount.borrow_amount|default:0}，可用额度为：￥{$_amount.borrow_amount_use|default:0}</div>
+		{/articles}
+	<div class="t20">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabyel">
+			<tr class="ytit1">
+				<td>额度类型</td>
+				<td>增加</td>
+				<td>减少</td>
+				<td>冻结</td>
+				<td>返回</td>
+				
+				<td>备注</td>
+			</tr>
+			{loop module="borrow"  function="GetAmountLogList" limit="all" var="var" user_id="0"  }
+			<tr>
+				<td>信用额度</td>
+				<td>{if $var.oprate=="add"}￥{$var.account}{/if}</td>
+				<td>{if $var.oprate=="reduce"}￥{$var.account}{/if}</td>
+				<td>{if $var.oprate=="frost"}￥{$var.account}{/if}</td>
+				<td>{if $var.oprate=="return"}￥{$var.account}{/if}</td>
+				
+				<td>{$var.remark}</td>
+			</tr>
+			{/loop}
+			
+			</tr>
+		</table>
+	</div>
+	</div>
+
+{/if}

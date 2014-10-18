@@ -1,0 +1,51 @@
+{include file="header.html"}
+<div class="clearfix con_box">
+
+	<div class="log_bor">
+		<h1>客服中心</h1>
+      <div class="section">
+        <div class="section_con conts">
+          <dl>
+          <dd>
+          <h5>如果您在使用爱丽丝网站建设过程中对功能产生疑问或出现错误提示，请与我们的客服人员联系。</h5>
+          <h5>工作时间：周一至周五  10:00-18:00</h5>
+          </dd>
+          <dd>
+          <h5>&nbsp;</h5>
+          联系方式：<a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=400072343&site=qq&menu=yes"><img border="0" src="{$tempdir}/images/ico_qq.gif" alt="点击这里给我发消息" title="点击这里给我发消息"></a><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="{$tempdir}/images/ico_dh.gif"  />
+          </dd>
+          <dd>&nbsp;
+          
+          </dd>
+          <dd>
+          <h5>商务合作/媒体采访</h5>
+          <p>欢迎优势互补的公司与我们合作开拓业务，也欢迎各个媒体和我们一起探讨业务，请将您的意向发送到：service@xxxxxx.com 我们会尽快给您回复，谢谢您对爱丽丝网站建设的关心！</p>
+          </dd>
+          <dd>
+          <h5>我要提问</h5>
+          <p>请先使用搜索帮助功能，大多问题可以从中得到解决。</p>
+<form action="/index.php?user&q=code/liuyan/add" method="post">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td height="34">留言类型</td>
+    <td>{linkages name="type" nid="liuyan_type" type="value"}</td>
+  </tr>
+  <tr>
+    <td valign="top">用户名称</td>
+    <td valign="top">{$_G.user_result.username}<br /><textarea name="content" cols="50" rows="8"></textarea></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td height="40"><input type="submit" value="提交" name="submit" class="btn1" /></td>
+  </tr>
+</table>
+</form>
+          </dd>
+          </dl>
+        </div>
+      </div>
+    <div class="clear"></div>
+  </div>
+  </div>
+{include file="footer.html"}

@@ -1,0 +1,26 @@
+/* CSS Document */
+
+
+
+.zhuce_bor1{background:url(../images/user_bggg.gif) no-repeat;width:972px;margin:0 auto;overflow:hidden;}
+.zhuce_bor1 .zc_top{height:70px;width:972px;}
+.zhuce_bor1 .zc_top img{margin:23px 0 0 120px;}
+.zhuce_bor1 .zc_content{margin:15px 0 0 0;height:306px;*height:305px;_height:305px;overflow:hidden;}
+
+.in_text{ line-height:28px;border:none; width:230px;height:28px; background:url(../images/input_bgg.gif) no-repeat;padding:0px 0 0 4px;}
+.in_text_yanzheng{ line-height:28px;border:none; width:120px;height:28px; background:url(../images/inputt_bgg.gif) no-repeat;padding:0px 0 0 4px;}
+.in_text_tiaoli{vertial-align:middle;height:28px;line-height:28px;}
+
+ DIV {margin: 0px;padding: 0px;position: relative;}
+table.zc_tab{width:755px;}
+table.zc_tab tr{ height:40px;line-height:40px;vertial-align:middle;}
+table.zc_tab tr td{font-size:13px;height:42px;line-height:42px;vertial-align:middle;}
+table.zc_tab tr td a{color:#767676;margin-left:10px;}
+table.zc_tab tr td a:hover{text-decoration:none;}
+table.zc_tab tr td a.atiaoli{color:blue;margin:0 1px;}
+table.zc_tab tr td a.atiaoli:hover{text-decoration:underline;}
+
+.ur_tip{width:232px;height:34px;border:1px solid #dbccb2;background:#fff9d4;color:#797874;padding:2px;line-height:18px;}
+.user_action_error{  color:#FF0000;overflow:hidden; padding:0px; margin:0px;}
+.user_action_error img{padding:0px; margin:0px;}
+.reg_button { background:url(../images/lijizhuce.gif); width:91px; height:43px; border:none}

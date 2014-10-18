@@ -1,0 +1,77 @@
+{include file="header.html"}
+
+<div class="clearfix con_box">
+
+	<div>
+	<div class="con_bor">
+		<div class="pos_bor"><span><a href="#">我要借款</a> > 借款规则学习</span>	</div>
+		<div class="con2">
+			 <div style="width:897px; margin:20px auto">
+				
+				<div style="margin:20px">
+					<div class="question">
+					<form action="/?user&q=code/attestations/study" method="post" onsubmit="return check()">
+					    <ul>
+						<li><font color="#FF0000">通过以下资料学习,全对后才能借款进入下一步.</font></li>
+							{loop module="vote" function="GetVoteList" limit="all" var="item" status="1" type_id="2"}
+							<li>
+								<div>{$key+1}.{$item.title} {if $item.input=="radio"}单选{else}多选{/if}</div>
+									<div style="padding:10px 0 0 10px">
+									{loop module="vote" function="GetVoteAnswerList" limit="all" var="var" vote_id="$item.id"}
+										{if $item.input=="radio"}
+										{$var.nid}、<input name="q{$var.vote_id}" type="radio" value="{$var.answer_status}" />{$var.title}<br />
+										{else}
+										{$var.nid}、<input name="q{$var.vote_id}" type="checkbox" value="{$var.answer_status}" />{$var.title}<br />
+										{/if}
+									{/loop}
+									</div>
+								<div class="gou" id="yes{$item.id}" style="display:none"><img src="{$tempdir}/images/gou.gif" />正确</div>
+								<div class="gou" id="no{$item.id}" style="display:none"><img src="{$tempdir}/images/ca.gif" />错误</div>
+							</li>
+							{/loop}
+							<li>详见网站<a href="/jczs/a19.html" style="color:#0000ff">产品说明</a>和<a href="/jcxg/index.html" style="color:#0000ff">借款相关问题</a></li>
+							
+							<li><input type="hidden" name="type" value="borrow_study"><input type="hidden" name="nid" value="borrow_study"><input type="submit" name="submit" value="提交答案" class="btn1"></li>
+							<li><a href="javascript:da()" style="color:#0000ff">参考答案</a></li>
+							<li style="display:none" id="da">(1)A  (2)ABCD  (3)A  (4)C  (5)A  (6)ABCD  (7)ABCD  (8)B</li>
+					     </ul>
+					</form>
+					</div>
+				 <div style="text-align:center; margin-top:20px;"></div>
+				</div>
+			 </div>
+		</div>
+	</div>
+	</div>
+</div>
+{literal}
+<script>
+function da(){
+	$("#da").show();
+}
+function check(){
+	{/literal}
+	var error="";
+	{loop module="vote" function="GetVoteList" limit="all" var="item" status="1" type_id="2"}
+		var num = {$item.id};
+		{literal}
+		if ($('input[name="q'+num+'"]:checked').val()!=1 || $('input[name="q'+num+'"]:checked').val()==""){
+			$("#no"+num+"").show();
+			$("#yes"+num+"").hide();
+			error+="isfalse";
+		}else{
+			$("#yes"+num+"").show();
+			$("#no"+num+"").hide();
+		}
+		{/literal}
+	{/loop}
+	{literal}
+	if (error.length > 0){
+		return false;
+	}else{
+		return true;
+	}
+}
+</script>
+{/literal}
+{include file="footer.html"}

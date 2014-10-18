@@ -1,0 +1,38 @@
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" class="jk_list">
+  {loop module="group" function="GetGroupMemberList" limit="all" group_id="$_G.article_id" var="var_m" status=1}
+{if $var_m.username==$_G.user_result.username}
+  <tr>
+	<td width="20%" align="center">&nbsp;</td>
+	<td width="20%" align="center">&nbsp;</td>
+	<td width="20%" align="center">&nbsp;</td>
+	<td width="20%" align="center">&nbsp;</td>
+	<td width="20%"><input type="button" onclick="location.href='/borrow_list/index.html&group_id={$_G.article_id}'" style="cursor:pointer" value="发起圈内借款" class="btn1" /></td>
+  </tr>
+{/if}
+  {/loop}
+  <tr class="jk_list_tit">
+    <td width="12%" align="center">图片</td>
+    <td width="30%" align="left">标题  / 借款人 </td>
+    <td width="26%" align="center"><a >金额</a> / <a >期限</a> / <a >利率</a></td>
+    <td width="13%" align="center"><a >信用等级</a></td>
+    <td width="19%" align="center"><a>进度</a> / <a h>剩余时间</a></td>
+  </tr>
+{list module="borrow" function="GetList" var="loop" epage="6" status=1 group_status=1 group_id="$_G.article_id"}
+	{foreach from="$loop.list" item="var" }
+		<tr>
+			<td align="center" valign="top"><img src="{$var.user_id|avatar}" width="65" height="65" class="userhead"/></td>
+			<td align="left" valign="top"><div><a href="/invest/a{$var.borrow_nid}.html"><b>{$var.name}</b></a></div>
+			<div><a href="/u/{$var.user_id}">{$var.username}</a></div></td>
+			<td align="center" valign="top"><div><b>￥{$var.account}</b></div><div>{$var.borrow_period}个月，{$var.borrow_apr}%</div></td>
+			<td align="center" valign="top">{$var.credit.approve_credit|credit:"credit"}</td>
+			<td valign="top">
+			<div class="press_bor">
+			<div class="press_bor1"><div class="press_bg" style="width:{$var.borrow_account_scale}%"></div></div>
+			<div class="press_num">{$var.borrow_account_scale}%</div>
+			</div>
+			</td>
+		</tr>
+	{/foreach}
+{/list}
+  </table>
+  

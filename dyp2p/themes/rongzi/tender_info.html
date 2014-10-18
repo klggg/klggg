@@ -1,0 +1,175 @@
+{include file="header.html"}
+{if $_G.user_id==""}
+	<script>alert("你还没有登录，请先登录再查看");location.href='/index.php?user&q=login';</script>
+{/if}
+{if $_G.user_info.phone_status==1}
+	<script>location.href='/tender_study/index.html';</script>
+{/if}
+<div class="clearfix con_box">
+
+	      <div class="con_bor">
+		       <div class="pos_bor"><span><a href="#">我要投资</a> > 成为投资人</span></div>
+			   <div class="con1" style="padding:30px 0">
+	{articles module="approve" function="GetRealnameOne" var="Rvar" user_id="$_G.user_id"}
+			        <table width="90%" border="0" align="center" cellpadding="0" cellspacing="0" style="margin:0px auto">
+  <tr>
+    <td width="67%" align="center" valign="top">
+	    <div><img src="{$tempdir}/images/s1.gif" /></div>
+		<div class="t20">
+		<form action="/?user&q=code/approve/phone_status" method="post" onsubmit="return checkform()" name="formx">
+		     <table width="535" height="220" border="0" cellpadding="0" cellspacing="0">
+			 <tr>
+    <td align="right" valign="middle"><font color="#ff0000">*</font>真实姓名：</td>
+    <td colspan="2" align="left" valign="middle"><input name="realname" id="realname" type="text" class="in_text" style="width:135px;" value="{$Rvar.realname}"/></td>
+  </tr>
+  <tr>
+    <td align="right" valign="middle"><font color="#ff0000">*</font>身 份 证：</td>
+    <td colspan="2" align="left" valign="middle"><input name="card_id" id="card_id" value="{$Rvar.card_id}" type="text" class="in_text" style="width:135px;" onblur="checkrealname()"/></td>
+  </tr>
+{/articles}
+  <tr>
+    <td width="167" align="right" valign="middle"><font color="#ff0000">*</font>手机号码：</td>
+	{if $_G.user_info.phone_status!=1}
+	<td width="143" align="left" valign="middle" id="phone_n"><input name="phone_new" id="phone_new" type="text" class="in_text" style="width:135px;" onblur="checkphone()" value="{$_G.user_info.phone}"/></td>
+    <td width="355" align="left" valign="middle"><span id="fasong"><a href="javascript:void(0);" onclick="checksms()" class="mob_code">发送手机验证码</a></span></td>
+	{else}
+	<td width="143" align="left" valign="middle">{$_G.user_info.phone}</td>
+    <td width="355" align="left" valign="middle">&nbsp;</td>
+	{/if}
+  </tr>
+  <tr>
+    <td align="right" valign="middle"><span id="code1" style="display:none"><font color="#ff0000">*</font>验 证 码：</span></td>
+    <td colspan="3" align="left" valign="middle">
+	<span id="code2" style="display:none; width:500px">
+	<input name="sms_code" id="sms_code" type="text" class="in_text" style="width:60px; float:left; margin-right:5px;"/> 
+    <span style="color:#ff0000; float:left; width:100px; overflow:hidden" >请输入6位验证码</span>
+	</span>
+	</td>
+  </tr>
+  <tr>
+    <td>&nbsp;<input type="hidden" name="type" value="tender"></td>
+    <td colspan="2" align="left"><input type="submit" name="Submit" value="成为投资用户" class="btn1" onclick="return checkform()"/>
+      <a href="/?user&q=code/account/recharge_new" style="color:#0170D7" target="_blank">我要充值</a> | <a href="/?user&q=code/account/log" target="_blank" style="color:#0170D7">账户余额</a></td>
+  </tr>
+</table>
+<div class="user_main_title1"><strong style="color:#ff0000">温馨提示：</strong>进行手机认证后，本手机号将作为爱丽丝网站建设和您确认贷款的途径之一，请使用您常用的手机号码进行认证，您的手机号码不会以任何形式被泄露。 
+			   如果您收不到手机验证码，请拨打客服电话：4008-888-888<br><span style="color:red">请填写真实姓名，将来提取现金要与该名一致</span></div>
+</form>
+		</div>
+	</td>
+    <td width="33%" align="right" valign="top"><img src="{$tempdir}/images/moneytree.jpg" width="280" height="313" /></td>
+  </tr>
+</table>
+			   </div>
+	   </div>
+</div>
+
+
+<script>
+var phonenum = '{$_G.user_info.phone|default:0}';
+{literal}
+function checksms(){
+	var newphone=$("#phone_new").val();
+	if (newphone==""){
+		alert("请填写手机号码！");
+		return false;
+  	}
+	$.get("/?user&q=code/users/checkphone",{phone:newphone},function(result){
+		if (result==true){
+			alert("手机号码已存在！");
+			return false;
+		}else{
+		  $.post("/?user&q=code/approve/phone_status&style=ajax",{phone:newphone},function(data){
+				if (data!=1){
+		  			alert(data);
+				}
+				else{
+					alert("短信发送成功，请注意查收");
+					$("#code1").show();
+					$("#code2").show();
+					$("#fasong").hide();
+				}
+			});
+		}
+	});
+}
+
+function checkcode(){
+  var newphone=$("#phone_new").val();
+  var sms_code=$("#sms_code").val();
+  if (newphone==""){
+	alert("请填写手机号码！");
+	return false;
+  }
+  if (sms_code==""){
+	alert("请填写验证码！");
+	return false;
+  }
+	  $.post("/?user&q=code/approve/phone_status&style=ajax",{phone_new:newphone,sms_code:sms_code},function(data){
+		if(data=="认证成功"){
+			$('#phone_status').val(1);
+			$("#code1").hide();
+			$("#code2").hide();
+			$("#fasong").hide();
+			$('#phone_n').html(newphone);
+		}
+			
+			
+		
+		});
+	
+}
+
+function checkrealname(){
+  var rname=$("#card_id").val();
+  $.get("/?user&q=code/approve/checkcard",{card_id:rname},function(result){
+		if (result==true){
+			alert("身份证号已存在！");
+		}
+  });
+}
+
+function checkphone(){
+  var newphone=$("#phone_new").val();
+	$.get("/?user&q=code/users/checkphone",{phone:newphone},function(result){
+		if (result==true){
+			alert("手机号码已存在！");
+		}
+	});
+}
+
+function checkform(){
+	 var frm = document.forms['formx'];
+	 var realname = frm.elements['realname'].value;
+	 var card_id = frm.elements['card_id'].value;
+	 var phone_new = frm.elements['phone_new'].value;
+	 var sms_code = frm.elements['sms_code'].value;
+	 var errorMsg = '';
+	  if (phonenum==0){
+		  if (phone_new.length == 0 ) {
+			errorMsg += '* 手机号码不能为空' + '\n';
+		  }
+		  if (sms_code.length == 0 ) {
+			errorMsg += '* 验证码不能为空' + '\n';
+		  }
+	  }
+		$.get("/?user&q=code/users/checkphone",{phone:phone_new},function(result){
+			if (result==true){
+				errorMsg += '* 手机号码已存在！' + '\n';
+			}
+		});
+		$.get("/?user&q=code/approve/checkcard",{card_id:card_id},function(result){
+			if (result==true){
+				errorMsg += '* 身份证号已存在！' + '\n';
+			}
+		});
+	  if (errorMsg.length > 0){
+		alert(errorMsg); return false;
+	  } else{  
+		return true;
+	  }
+}
+</script>
+{/literal}
+
+{include file="footer.html"}

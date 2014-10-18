@@ -1,0 +1,37 @@
+        	<dl class="sidebar">
+            	<dt>
+                
+                <img src="{$tempdir}/new/images/index_09.jpg" width="8" height="5" style="margin-bottom:6px;"/> 使用须知<span>USE</span>
+                
+                
+                </dt>
+                <dd>
+                	<ul>
+                     {foreach from="$_G.site_sub_list_1" item="_item"}
+                        <li><a href="/{$_item.nid}/index.html" {if ($_G.site_result.id==$_item.id)} class="xin"{/if}>{$_item.name}</a></li>
+                        {/foreach}
+                        
+                    </ul>
+                </dd>
+            </dl>
+            <dl class="sidebar">
+            	<dt><img src="{$tempdir}/new/images/index_09.jpg" width="8" height="5" style="margin-bottom:6px;"/> 新闻中心<span>NEWS</span></dt>
+                <dd>
+                	<ul>
+                    	    {foreach from="$_G.site_sub_list_164" item="_item"}
+                        <li><a href="/{$_item.nid}/index.html" {if ($_G.site_result.id==$_item.id)} class="xin"{/if}>{$_item.name}</a></li>
+                        {/foreach}
+                    </ul>
+                </dd>
+            </dl>
+            <dl class="sidebar">
+            	<dt><img src="{$tempdir}/new/images/index_09.jpg" width="8" height="5" style="margin-bottom:6px;"/> 关于我们<span>ABOUT</span></dt>
+                <dd>
+                	<ul>
+                    	 {foreach from="$_G.site_sub_list_129" item="_item"}
+                        <li><a href="/{$_item.nid}/index.html" {if ($_G.site_result.id==$_item.id)} class="xin"{/if}>{$_item.name}</a></li>
+                        {/foreach}
+                    </ul>
+                </dd>
+            </dl>
+ 

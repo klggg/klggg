@@ -1,0 +1,113 @@
+{articles module="rating" function="GetInfoOne" user_id="$_G.user_id" var="var"}
+<div style="padding:20px 80px" id="li_list_detail_1">
+<table width="100%"  border="0" cellpadding="0" cellspacing="0" class="jk_tab">
+  <form action="/?user&q=code/rating/info" method="post" name="formx" id="formx" onsubmit="return check();">
+  <tr>
+    <td width="24%" align="right"><span>*</span>真实姓名：</td>
+    <td width="76%" align="left"><input type="text" name="realname" id="realname" value="{$var.realname}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></td>
+  </tr>
+  <tr>
+    <td width="24%" align="right"><span>*</span>身份证号：</td>
+    <td width="76%" align="left"><input type="text" name="card_id" id="card_id" value="{$var.card_id}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></td>
+  </tr>
+  <tr>
+    <td width="24%" align="right"><span>*</span>手机号码：</td>
+    <td width="76%" align="left"><input type="text" name="phone_num" id="phone_num" value="{$var.phone_num}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></td>
+  </tr>
+  <tr>
+    <td width="24%" align="right"><span>*</span>性别：</td>
+    <td width="76%" align="left">{linkages nid="rating_sex" name="sex" value="$var.sex" type="value"  style="width:150px; border:#BFBFBF solid 1px; height:18px;"}</td>
+  </tr>
+  <tr>
+    <td width="24%" align="right"><span>*</span>出生日期：</td>
+    <td width="76%" align="left"><input type="text" name="birthday" id="birthday" value="{$var.birthday}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></td>
+  </tr>
+  <tr>
+    <td width="24%" align="right"><span>*</span>最高学历：</td>
+    <td width="76%" align="left">{linkages nid="rating_education" name="edu" value="$var.edu" type="value" style="width:150px; border:#BFBFBF solid 1px; height:18px;"}</td>
+  </tr>
+  <tr>
+    <td width="24%" align="right"><span>*</span>入学年份：</td>
+    <td width="76%" align="left"><input type="text" name="school_year" id="school_year" value="{$var.school_year}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></td>
+  </tr>
+  <tr>
+    <td width="24%" align="right"><span>*</span>毕业院校：</td>
+    <td width="76%" align="left"><input type="text" name="school" id="school" value="{$var.school}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></td>
+  </tr>
+  <tr>
+    <td width="24%" align="right"><span>*</span>婚姻状况：</td>
+    <td width="76%" align="left">{linkages nid="rating_marry" name="marry" type="value" value="$var.marry"  style="width:150px; border:#BFBFBF solid 1px; height:18px;"}</td>
+  </tr>
+  <tr>
+    <td width="24%" align="right"><span>*</span>有无子女：</td>
+    <td width="76%" align="left">{linkages nid="rating_children" name="children" value="$var.children" type="value"  style="width:150px; border:#BFBFBF solid 1px; height:18px;"}</td>
+  </tr>
+  <tr>
+    <td width="24%" align="right"><span>*</span>是否有房：</td>
+    <td width="76%" align="left">{linkages nid="rating_house" name="house" value="$var.house" type="value"  style="width:150px; border:#BFBFBF solid 1px; height:18px;"}</td>
+  </tr>
+  <tr>
+    <td width="24%" align="right"><span>*</span>是否有车：</td>
+    <td width="76%" align="left">{linkages nid="rating_car" name="is_car" value="$var.is_car" type="value"  style="width:150px; border:#BFBFBF solid 1px; height:18px;"}</td>
+  </tr>
+  <tr>
+    <td width="24%" align="right"><span>*</span>户口所在地：</td>
+    <td width="76%" align="left">{areas type="p,c" value="$var.city"}</td>
+  </tr>
+  <tr>
+    <td width="24%" align="right"><span>*</span>居住地址：</td>
+    <td width="76%" align="left"><input type="text" name="address" id="address" value="{$var.address}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></td>
+  </tr>
+  <tr>
+    <td width="24%" align="right"><span>&nbsp;</span>居住电话：</td>
+    <td width="76%" align="left"><input type="text" name="phone" id="phone"  value="{$var.phone}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></td>
+  </tr>
+  <tr>
+    <td>&nbsp;{if $_G.site_result.nid=="amount_info"}<input type="hidden" name="web" value="amount">{elseif $_G.site_result.nid=="borrow_info"}<input type="hidden" name="web" value="borrow">{/if}</td>
+    <td><input type="submit" name="submit" value="提交并继续" class="btn1" /> <span>*</span>为必填项</td>
+  </tr>
+  </form>
+</table>
+</div>
+{/articles}
+{literal}
+<script>
+function check(){
+	 var frm = document.forms['formx'];
+	 var realname = frm.elements['realname'].value;
+	 var card_id = frm.elements['card_id'].value;
+	 var phone_num = frm.elements['phone_num'].value;
+	 var birthday = frm.elements['birthday'].value;
+	 var school_year = frm.elements['school_year'].value;
+	 var school = frm.elements['school'].value;
+	 var address = frm.elements['address'].value;
+	 var errorMsg = '';
+	  if (realname.length == 0 ) {
+		errorMsg += '* 真实姓名不能为空' + '\n';
+	  }
+	  if (card_id.length == 0 ) {
+		errorMsg += '* 身份证号不能为空' + '\n';
+	  }
+	  if (phone_num.length == 0 ) {
+		errorMsg += '* 手机号码不能为空' + '\n';
+	  }
+	  if (birthday.length == 0 ) {
+		errorMsg += '* 出生日期不能为空' + '\n';
+	  }
+	  if (school_year.length == 0 ) {
+		errorMsg += '* 入学年份不能为空' + '\n';
+	  }
+	  if (school.length == 0 ) {
+		errorMsg += '* 毕业院校不能为空' + '\n';
+	  }
+	  if (address.length == 0 ) {
+		errorMsg += '* 居住地址不能为空' + '\n';
+	  }
+	  if (errorMsg.length > 0){
+		alert(errorMsg); return false;
+	  } else{  
+		return true;
+	  }
+}
+</script>
+{/literal}

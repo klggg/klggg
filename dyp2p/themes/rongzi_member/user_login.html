@@ -1,0 +1,91 @@
+{include file="user_header.html"}
+{literal}
+<script>
+
+ function check_login(obj){
+					  
+					  if(obj.placeholder=='请输入用户名' || obj.placeholder=='请输入密码' ){
+						  obj.placeholder='';
+					  }
+					  
+					  } 
+function login_in_form_h(){
+
+					 var frm = document.forms['login_in_form'];
+
+					 var login_keywords = frm.elements['keywords'].value;
+
+                     var login_password = frm.elements['password'].value;
+					 
+					 var errorMsg = '';
+
+					  if (login_keywords.length == 0 ) {
+
+						errorMsg += '* 用户名不能为空' + '\n';
+
+					  }
+                     if (login_password.length == 0 ) {
+
+						errorMsg += '* 密码不能为空' + '\n';
+
+					  }
+					
+
+					  if (errorMsg.length > 0){
+
+						alert(errorMsg); 
+						return false;
+
+					  } else{  
+
+						return true;
+
+					  }
+					   
+					}
+</script>
+{/literal}
+	
+            <div class="bodyer clearfix">
+            	<div class="login-left"><img src="{$tempdir}/longbao/images/login_03.jpg" width="496" height="320" /></div>
+                  <form action="/index.php?user&q=login" method="post"  name="login_in_form" >
+                <div class="login-right">
+                	<div class="control_group mb20">
+				<label class="control_label"> 登录名 </label>
+				<div class="controls">
+					<input type="text" name="keywords" id="keywords" class="inputBox" placeholder="请输入用户名">
+				</div>
+			</div>
+            <div class="control_group mb10">
+				<label class="control_label"> 密码 </label>
+				<div class="controls">
+					<input type="password" code="ie_psw1" class="inputBox password_new" placeholder="请输入密码" name="password" id="password" value="">
+				</div>
+			</div>
+            <div class="control_group mb20 mt20">
+				<label class="control_label"></label>
+				<div class="controls">
+					<div class="clearfjx w244">
+						<label class="l"><input name="remember" class="vn" id="remember" type="checkbox" checked="checked"> 一周内自动登录</label>
+		                <input type="hidden" name="url" value="/index.php?user"/>
+					</div>
+				</div>
+			</div>
+            <div class="control_group mb20">
+				<label class="control_label"></label>
+				<div class="controls">
+					<button class="btn_xlarge btn"  type="submit" id="submitButton" >立即登录</button>
+				</div>
+			</div>
+            <div class="control_group">
+				<label class="control_label"></label>
+				<div class="controls">
+					<p class="lable-text">
+						还没有账号？&nbsp;&nbsp;立即 <a href="/index.php?user&q=reg">免费注册</a> <a href="/?user&q=getpwd">忘记密码</a>
+					</p>
+				</div>
+			</div>
+                </div>
+                </form>
+</div>
+         {include file="user_footer.html"}

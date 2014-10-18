@@ -1,0 +1,167 @@
+{include file="user_header.html"}
+{get module="users" function="GetEmailActiveOne" user_id="$_G.user_id"}
+{if $var.status!=1}<script>alert("您还没有激活邮箱，不能发布借款信息！");location.href='/index.php?user&q=reg&type=email';</script>{/if}
+{/get}
+<div class="clearfix con_box">
+
+<div class="mi_content">
+     <div class="mi_c_left">
+		{include file="user_menu.html"}
+	 </div>
+	 <div class="user_right">
+	      <div class="us_r_bor">
+	        <div class="us_r_tit">
+			        <h1>我的个人信息</h1>
+				 <span><a href="/?user&q=code/rating/basic" style="font-weight:bold; color:#FF6D00; padding-right:10px;">>>修改我的个人信息</a></span></div>
+				 <div class="us_infor">
+				      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="20%" align="left" valign="top"><a href="/?user&q=code/users/avatar"><img src="{$_G.user_id|avatar}" width="128" height="128" style="border:1px solid #999999"/></a></td>
+    <td width="80%" align="left" valign="top"><table width="100%" border="0" cellspacing="5" cellpadding="0">
+      <tr>
+        <td width="13%" align="right">用 户 名：</td>
+        <td width="87%" align="left">{$_G.user_result.username}</td>
+      </tr>
+	  {articles module="borrow" function="GetBorrowCredit" var="Cvar" user_id=$_G.user_id}
+      <tr>
+        <td align="right">信用积分：</td>
+        <td align="left">{$Cvar.borrow_credit|credit:"credit"}</td>
+      </tr>
+	  {/articles}
+	  {articles module="credit" function="GetGoldCount" var="Gvar" user_id=$_G.user_id}
+	  <tr>
+        <td align="right">获得金币：</td>
+        <td align="left">{$Gvar.total}</td>
+      </tr>
+	  {/articles}
+      <tr>
+        <td align="right">角    &nbsp;&nbsp;&nbsp;色：</td>
+        <td align="left">
+			{articles module="users" function="GetUsersVip" var="Vvar" user_id="$_G.user_id"}
+				{if $Vvar.status==1}
+					{if $Vvar.vip_type==1}
+						<strong style="color:blue">Vip会员</strong>
+					{else}
+						<strong style="color:blue">高级Vip会员</strong>
+					{/if}
+				{else}
+					普通会员
+				{/if}
+			{/articles}
+		</td>
+      </tr>
+      <tr>
+        <td align="right">注册时间：</td>
+        <td align="left">{$_G.user_result.reg_time|date_format:"Y-m-d"}</td>
+      </tr>
+	  {articles module="borrow" function="GetUserCount" var="var" user_id="$_G.user_id"}
+      <tr>
+        <td align="right">个人统计：</td>
+        <td align="left"><b class="red">{$var.borrow_times|default:"0"}</b> 条借款记录， <b class="red">{$var.tender_times|default:"0"}</b> 条投标记录</td>
+      </tr>
+	  {/articles}
+    </table>
+	</td>
+  </tr>
+</table>
+				 </div>
+		  </div>
+{literal}
+<script>
+function change_detail(i){
+	for(j=1;j<=4;j++){
+		$("#li_list_"+j).removeClass();
+		$("#li_list_detail_"+j).hide();
+	}
+	$("#li_list_"+i).addClass("onn");
+	$("#li_list_detail_"+i).show();
+}
+</script>
+{/literal}
+<div class="t10">
+	<div class="m_change">
+		<ul>
+			<li><a href="javascript:change_detail(1);" id="li_list_1" class="onn">我的动态</a></li>
+			<li><a href="javascript:change_detail(2);" id="li_list_2" >成功的投标</a></li>
+			<li><a href="javascript:change_detail(3);" id="li_list_3" >成功的借款</a></li>
+			<li><a href="javascript:change_detail(4);" id="li_list_4" >好友动态</a></li>
+		</ul>
+	</div>
+	<div class="us_r_bor1" id="li_list_detail_1">
+		<div class="my_news">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			{list module="users" function="GetUserslogList" var="loop"  showpage="3" user_id="$_G.user_id" epage="10"}
+			{if $loop.total>0}
+			{foreach from="$loop.list" item="item"}
+				<tr>
+					<td width="81%" align="left">{$item.content}</td>
+					<td width="19%" align="right" class="time">{$item.addtime|date_format:"Y-m-d H:i"}</td>
+				</tr>
+			{/foreach}
+			{else}
+			<tr><td width="100" align="center">暂无相关记录</td></tr>
+			{/if}
+			{/list}
+			</table>
+		</div>
+	</div>
+	<div class="us_r_bor1" id="li_list_detail_2" style="display:none">
+		<div class="my_news">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			{list module="borrow" function="GetTenderList" var="loop"  showpage="3" user_id="$_G.user_id" status="1" epage="10"}
+			{if $loop.total>0}
+			{foreach from="$loop.list" item="item"}
+				<tr>
+					<td width="81%" align="left">成功投资<a href="/invest/a{$item.borrow_nid}.html">{$item.borrow_name}</a>，{$item.account}元</td>
+					<td width="19%" align="right" class="time">{$item.addtime|date_format:"Y-m-d H:i"}</td>
+				</tr>
+			{/foreach}
+			{else}
+			<tr><td width="100" align="center">暂无相关记录</td></tr>
+			{/if}
+			{/list}
+			</table>
+		</div>
+	</div>
+	<div class="us_r_bor1" id="li_list_detail_3" style="display:none">
+		<div class="my_news">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			{list module="borrow" function="GetList" var="loop"  showpage="3" user_id="$_G.user_id" status="3" epage="10"}
+			{if $loop.total>0}
+			{foreach from="$loop.list" item="var"}
+				<tr>
+					<td width="81%" align="left">发布<a href="/invest/a{$var.borrow_nid}.html">{$var.name}</a>，成功借款{$var.account}元</td>
+					<td width="19%" align="right" class="time">{$var.addtime|date_format:"Y-m-d H:i"}</td>
+				</tr>
+			{/foreach}
+			{else}
+			<tr><td width="100" align="center">暂无相关记录</td></tr>
+			{/if}
+			{/list}
+			</table>
+		</div>
+	</div>
+	<div class="us_r_bor1" id="li_list_detail_4" style="display:none">
+	<div class="my_news">
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	{list module="users" function="GetUsersFriendsLog" var="loop" user_id="$_G.user_id" showpage="3"}
+	{if $loop.total>0}
+	{foreach from="$loop.list" item="Lvar"}
+	<tr>
+		<td width="81%" align="left"><a href="/u/{$Lvar.user_id}">{$Lvar.username}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$Lvar.content}</td>
+		<td width="19%" align="right" class="time">{$Lvar.addtime|date_format:"Y-m-d H:i:s"}</td>
+	</tr>
+	{/foreach}
+	{else}
+	<tr><td width="100" align="center">暂无相关的好友</td></tr>
+	{/if}
+	{/list}
+	</table>
+	</div>
+	</div>
+</div>
+	 </div>
+	 </div>
+     <div class="cle"></div>
+</div>
+{include file="user_footer.html"}

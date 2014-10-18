@@ -1,0 +1,55 @@
+ <div class="m_change">
+  {if $_G.site_result.nid=="amount_info" || $_G.site_result.nid=="amount_job" || $_G.site_result.nid=="amount_company" || $_G.site_result.nid=="amount_finance" || $_G.site_result.nid=="amount_contact"}
+  <ul>
+	 <li>
+	 <a href="/amount_info/index.html" {if $_G.site_result.nid=="amount_info"}class="onn" {/if}>个人详细信息</a>
+	 </li>
+	 <li>
+	 {articles module="rating" function="GetInfoOne" user_id="$_G.user_id" var="Ivar"}
+	 <a {if $Ivar.status==1}href="/amount_job/index.html"{else}href="javascript:void(0);"{/if} {if $_G.site_result.nid=="amount_job"}class="onn" {/if}>工作单位信息</a>
+	 {/articles}
+	 </li>
+	 {articles module="rating" function="GetCompanyOne" user_id="$_G.user_id" var="Cvar"}
+	 {articles module="rating" function="GetJobOne" user_id="$_G.user_id" var="Jvar"}
+	 <li>
+	 <a {if $Jvar.status==1 || $Cvar.status==1}href="/amount_company/index.html"{else}href="javascript:void(0);"{/if} {if $_G.site_result.nid=="amount_company"}class="onn" {/if}>私营业主信息</a>
+	 </li>
+	 <li>
+	 <a {if $Cvar.status==1 || $Jvar.status==1}href="/amount_finance/index.html"{else}href="javascript:void(0);"{/if} {if $_G.site_result.nid=="amount_finance"}class="onn" {/if}>财务状况</a>
+	 </li>
+	 {/articles}
+	 {/articles}
+	 <li>
+	 {articles module="rating" function="GetFinanceOne" user_id="$_G.user_id" var="Fvar" status="1"}
+	 <a {if $Fvar.status==1}href="/amount_contact/index.html"{else}href="javascript:void(0);"{/if} {if $_G.site_result.nid=="amount_contact"}class="onn" {/if}>主要联系人</a>
+	 {/articles}
+	 </li>
+ </ul>
+  {else}
+ <ul>
+	 <li>
+	 <a href="/borrow_info/index.html" {if $_G.site_result.nid=="borrow_info"}class="onn" {/if}>个人详细信息</a>
+	 </li>
+	 <li>
+	 {articles module="rating" function="GetInfoOne" user_id="$_G.user_id" var="Ivar"}
+	 <a {if $Ivar.status==1}href="/borrow_job/index.html"{else}href="javascript:void(0);"{/if} {if $_G.site_result.nid=="borrow_job"}class="onn" {/if}>工作单位信息</a>
+	 {/articles}
+	 </li>
+	 <li>
+	 {articles module="rating" function="GetJobOne" user_id="$_G.user_id" var="Jvar"}
+	 <a {if $Jvar.status==1}href="/borrow_company/index.html"{else}href="javascript:void(0);"{/if} {if $_G.site_result.nid=="borrow_company"}class="onn" {/if}>私营业主信息</a>
+	 {/articles}
+	 </li>
+	 <li>
+	 {articles module="rating" function="GetCompanyOne" user_id="$_G.user_id" var="Cvar"}
+	 <a {if $Cvar.status==1}href="/borrow_finance/index.html"{else}href="javascript:void(0);"{/if} {if $_G.site_result.nid=="borrow_finance"}class="onn" {/if}>财务状况</a>
+	 {/articles}
+	 </li>
+	 <li>
+	 {articles module="rating" function="GetFinanceOne" user_id="$_G.user_id" var="Fvar" status="1"}
+	 <a {if $Fvar.status==1}href="/borrow_contact/index.html"{else}href="javascript:void(0);"{/if} {if $_G.site_result.nid=="borrow_contact"}class="onn" {/if}>主要联系人</a>
+	 {/articles}
+	 </li>
+ </ul>
+ {/if}
+</div>

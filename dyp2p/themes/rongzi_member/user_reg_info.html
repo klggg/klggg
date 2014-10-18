@@ -1,0 +1,69 @@
+{include file="user_header.html"}
+<script type="text/javascript" src="{$tempdir}/js/user.js"></script>
+
+<div class="clearfix con_box">
+
+     <div class="zhuce_bor">
+	      <h1>免费注册</h1>
+		  <div style="background:#F7F6F6; margin:5px; padding:10px; text-align:center"><img src="{$tempdir}/images/zc_step.gif" /></div>
+		  <div style="margin-top:10px">
+		       <div style="width:600px; float:left; border-right:#EFEFEF solid 1px; margin-bottom:20px">
+			   
+			   <form action="" method="post" name="formUser" onsubmit="return userReg();">
+		       <table width="440" border="0" align="center" cellpadding="0" cellspacing="0" class="zc_tab">
+  <tr>
+    <td width="23%" align="center" valign="middle">邮&nbsp;&nbsp;&nbsp;&nbsp;箱：</td>
+    <td width="37%" valign="middle"><input  maxLength=32 onblur="checkEmail(this.value);" class="in_text" name=email id=email>
+	<input name="invite_userid" type="hidden" value="{$magic.session.reginvite_user_id}" />
+				 </td>
+		<td width="150"><div class=user_action_error id=email_notice><font color="#999999">请输入您常用的邮箱地址</font></div></td>
+  </tr>
+  <tr>
+    <td align="center" valign="middle">用 户 名：</td>
+    <td valign="middle"> <input maxLength=15 onblur="checkUsername(this.value);" class="in_text" name=username id=username ></td>
+	<td width="120"><div class=user_action_error id=username_notice><font color="#999999">请输入您网站的用户名</font></div></td>
+  </tr>
+  <tr>
+    <td align="center" valign="middle">密&nbsp;&nbsp;&nbsp;&nbsp;码：</td>
+    <td valign="middle"><input class="in_text" onblur="checkPassword(this.value);"  type=password maxLength=16 name=password id=password ></td>
+	<td width="120"><div class=user_action_error id=password_notice><font color="#999999">请输入6到16位密码</font></div></td>
+  </tr>
+  <tr>
+    <td align="center" valign="middle">确认密码：</td>
+    <td valign="middle"><input class="in_text" onblur="checkConformPassword(this.value);" type=password maxLength=16 name=confirm_password id=conform_password></td>
+	<td width="120"><div class=user_action_error id=conform_password_notice><font color="#999999">请重复输入上面的密码</font></div></td>
+  </tr>
+  <tr>
+    <td align="center" valign="middle">验 证 码：</td>
+    <td valign="middle"><input  class="in_text"  name="valicode" type="text" size="8" maxlength="4" style=" padding-top:4px; height:16px; width:70px;"/>&nbsp;<img src="/plugins/index.php?q=imgcode" alt="点击刷新" onClick="this.src='/plugins/index.php?q=imgcode&t=' + Math.random();" style="cursor:pointer" /></td>
+  </tr>
+  
+  <tr>
+    <td colspan="3" align="right" valign="middle">
+	    <div class="yinsi">
+		<b>*</b> 我们重视您的隐私，您所填写的信息仅为了您在本站的方便
+使用，我们不会泄露您的任何信息给任何第三方。		</div>	</td>
+    </tr>
+  <tr>
+    <td colspan="2" align="center" valign="middle"><br /><input type="image"  name="Submit" id="submit" src="{$tempdir}/images/agree.gif" width="170" height="29" /><input name="type_id" type="hidden" value="2" /><div class="xieyi">分分贷<a href="#">《服务协议》</a>及<a href="#">《隐私条款》</a></div></td>
+    </tr>
+</table>
+</form>
+		  </div>
+		  <div  style="float:left; width:260px; margin-left:40px; display:inline; margin-top:20px">
+		        <div><img src="{$tempdir}/images/icon6.gif" align="absmiddle" /> <b style="font-size:14px; color:#93B902">您还没有注册?</b></div>
+				<div style="margin:10px 0">* 帮助他人 快乐自己 收获利息<br />
+* 助您创业 资金周转 分期偿还<br />
+* 收益稳定可靠回报高<br />
+* 交易安全快捷有保障</div>
+<div><a href="/index.php?user&q=action/login"><img src="{$tempdir}/images/dl_go.gif" border="0" /></a></div>
+		  </div>
+		  <div style="clear:both"></div>
+		  </div>
+	 </div>
+</div>
+
+
+
+
+{include file="user_footer.html"}

@@ -1,0 +1,301 @@
+{include file="user_header.html"}
+<div class="clearfix con_box">
+
+<div class="mi_content">
+	<div class="mi_c_left">
+		{include file="user_menu.html"}
+	</div>
+	<div class="user_right">
+	   <div>
+		   <div class="m_change">
+
+			<ul>
+
+				<li><a href="{$_U.query_url}" {if $_U.query_type=="list"} class="onn"{/if}>证明材料</a></li>
+
+				<li><a href="{$_U.query_url}/one" {if $_U.query_type=="one"} class="onn"{/if}>单个资料上传</a></li>
+
+				<li><a href="{$_U.query_url}/more" {if $_U.query_type=="more"} class="onn"{/if}>多个资料上传</a></li>
+				
+			</ul>
+
+			</div>
+
+		
+		<div class="us_r_bor1">
+		<!--收件箱 开始-->
+
+		{if $_U.query_type=="list"}
+
+	
+
+		
+
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabyel">
+
+			<form action="" method="post" id="form1">
+
+				<tr class="head" >
+
+				<td>说明信息 </td>
+
+				<td>资料类型</td>
+
+				<td>上传时间 </td>
+
+				<td>审核时间</td>
+
+				<td>审核说明</td>
+
+				<td>积分 </td>
+
+				<td>状态</td>
+
+				<td>操作</td>
+
+				</tr>
+
+			{list module="attestations" function="GetAttestationsList" var="_loop" user_id="$_G.user_id" epage=20}
+
+				{ foreach from=$_loop.list item=item}
+				<tr  {if  $key==0} class="trtdcolor"{elseif $key%2==1} class="ynow"{/if}>
+
+				<td>{$item.name|default:-}</td>
+
+				<td>{$item.type_name}</td>
+
+				<td>{ $item.addtime|date_format:"Y-m-d H:i"}</td>
+
+				<td>{ $item.verify_time|date_format:"Y-m-d H:i"|default:-}</td>
+
+				<td>{$item.verify_remark|default:-}</td>
+
+				<td>{$item.credit|default:0} 分</td>
+
+				<td>{if $item.status==0}未审核{elseif $item.status==2}审核失败{else}已审核{/if}</td>
+
+				<td><a href="{$item.fileurl}" target="_blank">查看</a></td>
+				</tr>
+				{ /foreach}
+
+				<tr >
+
+					<td colspan="11" class="page">
+
+						{$_loop.pages|showpage}
+
+					</td>
+
+				</tr>
+
+				{/list}
+
+			</form>	
+
+			</table>
+
+			<!--收件箱 结束-->
+
+		<!--我的客户 开始-->
+
+		{elseif $_U.query_type=="myuser"}
+
+			<table  border="0"  cellspacing="0" class="user_list_table">
+
+			<form action="" method="post" id="form1">
+
+				<tr class="head" >
+
+				<td>说明信息 </td>
+
+				<td>资料类型</td>
+
+				<td>上传时间 </td>
+
+				<td>审核时间</td>
+
+				<td>审核说明</td>
+
+				<td>积分 </td>
+
+				<td>状态</td>
+
+				</tr>
+
+				{ loop  module="attestations" function="GetAttestationsList" user_id="$magic.request.user_id" kefu_userid="$_G.user_id" var="item" limit="all"}
+
+				<tr  {if $key%2==1} class="tr1"{/if}>
+
+				<td>{$item.name|default:-}</td>
+
+				<td>{$item.type_name}</td>
+
+				<td>{ $item.addtime|date_format:"Y-m-d H:i"}</td>
+
+				<td>{ $item.verify_time|date_format:"Y-m-d H:i"|default:-}</td>
+
+				<td>{$item.verify_remark|default:-}</td>
+
+				<td>{$item.jifen|default:0} 分</td>
+
+				<td>{if $item.status==0}未审核{elseif $item.status==2}审核失败{else}已审核{/if}</td>
+
+				
+
+				
+
+				</tr>
+
+				{ /loop}
+
+			</form>	
+
+			</table>
+
+		{elseif $_U.query_type=="one"}
+
+			<form action="" name="form1" method="post" onsubmit="return check_form()" enctype="multipart/form-data">
+
+			<div class="user_main_title1"><font color="#FF0000">*</font> 必须是本人的相关资料<br />
+
+			<font color="#FF0000">*</font> 真实 有效<br /></div>
+
+			<div class="user_right_border">
+
+				<div class="l">资料上传：</div>
+
+				<div class="c">
+
+					<input type="file" name="pic[]" tabindex="1" /> 上传最大的图片为1M，上传的格式为jpg.gif
+
+				</div>
+
+			</div>
+
+			<div class="user_right_border">
+
+				<div class="l">上传类型：</div>
+
+				<div class="c">
+
+					<select name="type_id"  tabindex="2">
+
+					{loop module="attestations" function="GetAttestationsTypeList" limit="all" }
+			<option value="{$var.id}" {if $magic.request.nid==$var.nid} selected="selected"{/if}>{$var.name}</option>
+			{/loop}
+
+					</select>
+
+				</div>
+
+			</div>
+
+			<div class="user_right_border" style="height:100px; overflow:hidden">
+
+				<div class="l">备注说明：</div>
+
+				<div class="c" >
+
+					<textarea cols="50" rows="5" name="name" style="width:400px; height:80px;"  tabindex="3"></textarea>
+
+				</div>
+
+			</div>
+
+			
+
+			<div class="user_right_border">
+
+				<div class="l"></div>
+
+				<div class="c">
+
+					<input type="submit"  value="确认提交"  class="xinbuton" 
+ size="30" /> 
+
+				</div>
+
+			</div>
+
+			</form>
+
+			<div class="user_right_foot">
+
+			* 温馨提示：我们将严格对用户的所有资料进行保密
+
+			</div>
+
+			{literal}<script>
+
+				function check_form(){
+
+					 var frm = document.forms['form1'];
+
+					 var file = frm.elements['litpic'].value;
+
+					 var errorMsg = '';
+
+					  if (file.length == 0 ) {
+
+						errorMsg += '* 图片不能为空' + '\n';
+
+					  }
+
+					 
+
+					  if (errorMsg.length > 0){
+
+						alert(errorMsg); return false;
+
+					  } else{  
+
+						return true;
+
+					}
+
+				
+
+				}
+
+			</script>{/literal}
+
+			<!--修改登录密码 结束-->
+
+			
+
+		{elseif $_U.query_type=="more"}
+
+
+			<div class="user_main_title1"><font color="#FF0000">*</font> 必须是本人的相关资料<br />
+
+					<font color="#FF0000">*</font> 真实 有效<br />
+
+			</div>
+
+			
+<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" width="700" height="500">
+
+  <param name="movie" value="/plugins/swfupload/swfupload.swf?config=/%3Fuser%26q=plugins%26ac=swfupload%26code=attestations%26user_id={$_G.user_id}" />
+
+  <param name="quality" value="high" />
+
+  <embed src="/plugins/swfupload/swfupload.swf?config=/%3Fuser%26q=plugins%26ac=swfupload%26code=attestations%26user_id={$_G.user_id}" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="700" height="500"></embed>
+
+</object>
+
+
+	
+
+	
+
+	
+
+		{/if}
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="cle"></div>
+{include file="user_footer.html"}

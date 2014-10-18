@@ -1,0 +1,390 @@
+{include file="header.html"}
+
+{if $_G.user_id==""}
+	<script>alert("你还没有登录，请先登录再查看");location.href='/index.php?user&q=login';</script>
+{/if}
+<div class="con_box">
+     <div>
+	      <div class="con_bor">
+		       <div class="pos_bor"><span><a href="/borrow/index.html">我要借款</a> > 借款认证</span>	</div>
+		    <div class="con2">
+			     <div style="width:897px; margin:20px auto">
+				
+				 <div style="margin:20px 0">
+		              <div class="m_change">
+			         <ul>
+					     <li><a href="/borrow_app/index.html" {if $_G.site_result.nid=="borrow_app"}class="onn"{/if}>实名认证</a></li>
+						 <li><a href="/borrow_phone/index.html" {if $_G.site_result.nid=="borrow_phone"}class="onn"{/if}>手机认证</a></li>
+						<!-- <li><a href="/borrow_edu/index.html" {if $_G.site_result.nid=="borrow_edu"}class="onn"{/if}>学历认证</a></li>-->
+						 <li><a href="/borrow_video/index.html" {if $_G.site_result.nid=="borrow_video"}class="onn"{/if}>视频认证</a></li>
+					 </ul>
+			   </div>
+			   {if $_G.site_result.nid=="borrow_app"}
+				<div style="padding:20px 80px">
+				{if $_G.user_info.realname_status==1}
+				
+	<div class="user_main_title1"><font color="#FF0000">*</font>您已通过身份认证！</div>
+				{else}
+			   {articles module="approve" function="GetRealnameOne" var="Rvar" user_id="$_G.user_id"}
+    <form action="/?user&q=code/approve/realname" method="post" enctype="multipart/form-data" onsubmit="return formck();" name="formx" id="formx">
+	<table width="100%"  border="0" cellpadding="0" cellspacing="0" class="jk_tab">
+		<tr>
+		<td width="24%" align="right">&nbsp;</td>
+		<td width="76%" align="left">{if $_G.system.con_id5_realname_fee>0}第一次无需扣费，若错误，第二次扣费{$_G.system.con_id5_realname_fee}元{/if}
+		{if $_G.userinfo.realname_times>$_G.system.con_id5_realname_times && $_G.system.con_id5_realname_fee>0}
+		<br /><font color="#FF0000">你已提交过{$_G.userinfo.realname_times}次，如果再次提交将扣除{$_G.system.con_id5_realname_fee}元手续费</font>
+		{/if}
+		</td>
+	  </tr>
+	  <tr>
+		<td width="24%" align="right"><span>*</span>真实姓名：</td>
+		<td width="76%" align="left"><input type="text" name="realname" value="{$Rvar.realname}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></td>
+	  </tr>
+	  <tr>
+		<td width="24%" align="right"><span>*</span>性 别 ：</td>
+		<td width="76%" align="left"><input type="radio" name="sex" value="男" {if $Rvar.sex=="男"}checked="checked"{/if}/>男 <input type="radio" name="sex" value="女" {if $Rvar.sex!="男"}checked="checked"{/if}/>女 </td>
+	  </tr>
+	  <tr>
+		<td width="24%" align="right"><span>*</span>证件号码：</td>
+		<td width="76%" align="left"><input type="text" name="card_id" value="{$Rvar.card_id}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></td>
+	  </tr>
+	  <tr>
+		<td width="24%" align="right"> 身份证正面上传：</td>
+		<td width="76%" align="left"><input type="file" name="card_pic1" size="14"/>
+{if $Rvar.card_pic1!=""}<font color="#FF0000"><a href="/{$Rvar.card_pic1_url}" target="_blank">已上传图片</a></font>{/if}</td>
+	  </tr>
+	  <tr>
+		<td width="24%" align="right"> 身份证背面上传：</td>
+		<td width="76%" align="left"><input type="file" name="card_pic2" size="14"/>
+{if $Rvar.card_pic2!=""}<font color="#FF0000"><a href="/{$Rvar.card_pic1_url}" target="_blank">已上传图片</a></font>{/if}</td>
+	  </tr>
+	  {articles module="account" function="GetOne" var="var" user_id="$_G.user_id"}
+			{if $var.balance<$_G.system.con_id5_realname_fee && $_G.userinfo.realname_times>$_G.system.con_id5_realname_times}
+				余额不足{$_G.system.con_id5_realname_fee}元，无法认证。请先<a href="/?user&q=code/account/recharge_new">充值</a>。
+			{else}
+			  <tr>
+				<td>&nbsp;</td>
+				<td><input type="submit" name="Submit" value="提交并继续" class="btn1" /></td>
+			  </tr>
+			{/if}
+			{/articles}
+	</table>
+		{literal}
+<script>
+function formck(){
+	var frm = document.forms['formx'];
+	var realname = frm.elements['realname'].value;
+	var card_id = frm.elements['card_id'].value;
+	var card_pic1 = frm.elements['card_pic1'].value;
+		var card_pic2 = frm.elements['card_pic2'].value;
+	var errorMsg = '';
+	if (realname.length == 0 ) {
+		errorMsg += '* 真实姓名不能为空' + '\n';
+	}
+	if (card_id.length == 0 ) {
+		errorMsg += '* 身份证号不能为空' + '\n';
+	}
+	//if (card_pic1.length == 0 ) {
+//		errorMsg += '* 请上传身份证正面！' + '\n';
+//	}
+//	if (card_pic2.length == 0 ) {
+//		errorMsg += '* 请上传身份证反面！' + '\n';
+//	}
+	if (errorMsg.length > 0){
+		alert(errorMsg); return false;
+	}else{  
+		return true;
+	}
+}
+</script>
+{/literal}
+	{/if}
+			</div>
+			{elseif $_G.site_result.nid=="borrow_edu"}
+			   <div style="padding:20px 80px">
+				{articles module="approve" function="GetEduOne" var="Evar" user_id="$_G.user_id"}
+				{if $_G.user_info.education_status==0}
+			   <form action="/?user&q=code/approve/edu_status" method="post" enctype="multipart/form-data" onsubmit="return formck();" name="formx" id="formx">
+	<table width="100%"  border="0" cellpadding="0" cellspacing="0" class="jk_tab">
+	
+		
+	  <tr>
+		<td width="24%" align="right"><span>*</span>用户名：</td>
+		<td width="76%" align="left">{$_G.user_result.username}</td>
+	  </tr>
+	  <tr>
+		<td width="24%" align="right"><span>*</span>毕业院校：</td>
+		<td width="76%" align="left"><input type="text" name="graduate" value="{$Evar.graduate}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></td>
+	  </tr>
+	  <tr>
+		<td width="24%" align="right"><span>*</span>专业：</td>
+		<td width="76%" align="left"><input type="text" name="speciality" value="{$Evar.speciality}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></td>
+	  </tr>
+	  <tr>
+		<td width="24%" align="right"><span>*</span>学历：</td>
+		<td width="76%" align="left"><input type="text" name="degree" value="{$Evar.degree}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></td>
+	  </tr>
+	  <tr>
+		<td width="24%" align="right"><span>*</span>入学时间：</td>
+		<td width="76%" align="left"><input type="text"  name="enrol_date" value="{$Evar.enrol_date}" readonly="readonly" onclick="change_picktime()" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></td>
+	  </tr>
+	  <tr>
+		<td width="24%" align="right"><span>*</span>毕业时间：</td>
+		<td width="76%" align="left"><input type="text" name="graduate_date" value="{$Evar.graduate_date}"  readonly="readonly" onclick="change_picktime()"  style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></td>
+	  </tr>
+	  <tr>
+		<td width="24%" align="right"><span>*</span>上传证书：</td>
+		<td width="76%" align="left">{if $Evar.edu_pic=="" || $Evar.edu_pic==0}<input type="file" name="edu_pic" />{else}<a href="/{ $Evar.edu_pic_url}" target="_blank" title="有图片">有图片</a>{/if}</td>
+	  </tr>
+          <tr>
+				<td>&nbsp;</td>
+				<td><input type="submit" name="Submit" value="提交并继续" class="btn1" /></td>
+			  </tr>
+
+	</table>
+	{literal}
+<script>
+function formck(){
+	var frm = document.forms['formx'];
+	var graduate = frm.elements['graduate'].value;
+	var speciality = frm.elements['speciality'].value;
+	var degree = frm.elements['degree'].value;
+	var enrol_date = frm.elements['enrol_date'].value;
+	var graduate_date = frm.elements['graduate_date'].value;
+	var edu_pic = frm.elements['edu_pic'].value;
+	var errorMsg = '';
+	if (graduate.length == 0 ) {
+		errorMsg += '* 毕业院校不能为空' + '\n';
+	}
+	if (speciality.length == 0 ) {
+		errorMsg += '* 专业不能为空' + '\n';
+	}
+	if (degree.length == 0 ) {
+		errorMsg += '* 学历不能为空' + '\n';
+	}
+	if (enrol_date.length == 0 ) {
+		errorMsg += '* 入学时间不能为空' + '\n';
+	}
+	if (graduate_date.length == 0 ) {
+		errorMsg += '* 毕业年份不能为空' + '\n';
+	}
+	if (edu_pic.length == 0 ) {
+		errorMsg += '* 学历图片不能为空' + '\n';
+	}
+	if (errorMsg.length > 0){
+		alert(errorMsg); return false;
+	}else{  
+		return true;
+	}
+}
+</script>
+{/literal}
+	{else}
+	<div class="user_main_title1"><font color="#FF0000">*</font>您已通过学历认证！<br /></div>
+	{/if}
+				{/articles}
+			   </div>
+			   {elseif $_G.site_result.nid=="borrow_phone"}
+			   <div style="padding:20px 80px">
+{if $_G.user_info.phone_status==0}
+{if $magic.request.phone!=""}
+			   <form action="/?user&q=code/approve/phone_status" method="post" name="formx" id="formx">
+<table width="100%"  border="0" cellpadding="0" cellspacing="0" class="jk_tab" id="checksms">
+  <tr>
+    <td width="24%" align="right"><span>*</span>手机号码：</td>
+    <td width="76%" align="left"><span>{$magic.request.phone}</span></td>
+  </tr>
+  <tr>
+    <td width="24%" align="right"><span>*</span>输入短信验证码：</td>
+    <td width="76%" align="left"><input type="text" name="sms_code" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/><input name="phone_new" type="hidden" value="{$magic.request.phone}"></td>
+  </tr>  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" name="submit" value="提交并继续" class="btn1" /></td>
+  </tr>
+</table>
+</form>
+{literal}
+<script>
+function formck(){
+	var frm = document.forms['formx'];
+	var sms_code = frm.elements['sms_code'].value;
+	var errorMsg = '';
+	if (sms_code.length == 0 ) {
+		errorMsg += '* 验证码不能为空' + '\n';
+	}
+	if (errorMsg.length > 0){
+		alert(errorMsg); return false;
+	}else{  
+		return true;
+	}
+}
+</script>
+{/literal}
+
+{else}
+{literal}
+<script>
+function checksms(){
+  var newphone=$("#phone").val();
+  if (newphone==""){
+		alert("请填写手机号码！");
+		return false;
+	  }
+  $.get("/?user&q=code/users/checkphone",{phone:newphone},function(result){
+		if (result==true){
+			alert("手机号码已存在！");
+			return false;
+		}else{
+		  $.post("/?user&q=code/approve/phone_status",{phone:newphone},function(data){
+			  location.href='/borrow_phone/index.html&phone='+newphone;
+		});
+		}
+	});
+}
+</script>
+{/literal}
+<table width="100%"  border="0" cellpadding="0" cellspacing="0" class="jk_tab" id="newphonetable">
+  <tr>
+    <td width="24%" align="right"><span>*</span>手机号码：</td>
+    <td width="76%" align="left"><input type="text" name="phone" id="phone" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" name="submit" onclick="checksms()" value="获取验证码" class="btn1" /></td>
+  </tr>
+</table>
+{/if}
+{elseif $_G.user_info.phone_status==1}
+
+{if $magic.request.new_phone!=""}
+			   <form action="/?user&q=code/approve/phone_status" method="post" name="formx" id="formx">
+<table width="100%"  border="0" cellpadding="0" cellspacing="0" class="jk_tab" id="checksms">
+
+  <tr>
+    <td width="24%" align="right"><span>*</span>旧手机号码：</td>
+    <td width="76%" align="left"><span>{$_G.user_info.phone}</span></td>
+  </tr>
+  <tr>
+    <td width="24%" align="right"><span>*</span>新手机号码：</td>
+    <td width="76%" align="left"><span>{$magic.request.new_phone}</span></td>
+  </tr>
+  <tr>
+    <td width="24%" align="right"><span>*</span>输入短信验证码：</td>
+    <td width="76%" align="left"><input type="text" name="sms_code" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/><input name="phone_new" type="hidden" value="{$magic.request.new_phone}"></td>
+  </tr>  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" name="submit" value="提交并继续" class="btn1" /></td>
+  </tr>
+</table>
+</form>
+{literal}
+<script>
+function formck(){
+	var frm = document.forms['formx'];
+	var sms_code = frm.elements['sms_code'].value;
+	var errorMsg = '';
+	if (sms_code.length == 0 ) {
+		errorMsg += '* 验证码不能为空' + '\n';
+	}
+	if (errorMsg.length > 0){
+		alert(errorMsg); return false;
+	}else{  
+		return true;
+	}
+}
+</script>
+{/literal}
+{else}
+
+<div class="user_main_title1"><font color="#FF0000">*</font>您已通过手机认证！<br /></div>
+
+
+{literal}
+
+<script>
+function checksms(){
+
+  var newphone=$("#phone").val();
+  if (newphone==""){
+		alert("请填写手机号码！");
+		return false;
+	  }
+	 
+  $.post("/?user&q=code/users/checkphone",{phone:newphone},function(result){
+		if (result==true){
+			alert("手机号码已存在！");
+			return false;
+		}else{
+		  $.post("/?user&q=code/approve/phone_status",{new_phone:newphone},function(data){
+		     if (data==1){
+			  location.href='/borrow_phone/index.html&new_phone='+newphone;
+			 
+			  }else{
+			  alert(data);
+			  return false;
+			  }
+		  });
+		}
+	});
+}
+</script>
+{/literal}
+<table width="100%"  border="0" cellpadding="0" cellspacing="0" class="jk_tab" id="newphonetable">
+  <tr>
+    <td width="14%" align="right" style="text-align:right;"><span>*</span>新手机号码：</td>
+    <td width="76%" align="left"><input type="text" name="phone" id="phone" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" name="submit" onclick="checksms()" value="获取验证码" class="btn1" />，验证码会发至{$_G.user_info.phone}</td>
+  </tr>
+</table>
+{/if}
+
+{/if}
+			   </div>
+			   {elseif $_G.site_result.nid=="borrow_video"}
+			   <div style="padding:20px 80px">
+			   {if $_G.user_info.video_status==0}
+			   {if $magic.request.action=="ok"}
+<div class="user_main_title1">
+<strong style="color:red;">您目前已提交了所有信用认证，客服人员将于1~3个工作日内尽快审核，审核通过后即可发布借款！<br>
+您可以<a href="/amount_att/index.html">点击此处</a>，上传可选信用证明，提升借款额度。
+</strong>
+</div>
+			{else}
+<table width="100%"  border="0" cellpadding="0" cellspacing="0" class="jk_tab">
+  <tr>
+    <td width="24%" align="right"><span>*</span>&nbsp;</td>
+    <td width="76%" align="left">您的视频认证提交后，客服人员会及时的跟你联系。</td>
+  </tr>
+  <tr>
+    <td width="24%" align="right"><span>*</span>视频认证：</td>
+    <td width="76%" align="left"><input type="submit" name="submit" onclick="checkvideo()" value="提交申请" class="btn1" /></td>
+  </tr>
+</table>
+{literal}
+<script>
+function checkvideo(){
+  $.post("/?user&q=code/approve/video_status",{submit:1},function(result){
+		location.href='/borrow_video/index.html&action=ok';
+  });
+}
+</script>
+{/literal}
+			{/if}
+				{elseif $_G.user_info.video_status==1}
+				<div class="user_main_title1"><font color="#FF0000">*</font>您已通过视频认证！<br /></div>
+				{/if}
+			   </div>
+			   {/if}
+			   </form>
+			     </div>
+		</div>
+				 </div>
+			</div>
+	   </div>
+     </div>
+</div>
+
+{include file="footer.html"}

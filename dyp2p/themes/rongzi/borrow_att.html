@@ -1,0 +1,247 @@
+{include file="header.html"}
+
+{articles module="attestations" function="GetAttestationsUserCredit" user_id=$_G.user_id var="user_att"}
+{if $_G.site_result.nid=="amount_att"}
+<div class="con_box">
+     <div>
+	      <div class="con_bor">
+		       <div class="pos_bor"><span><a href="#">我要借款</a> > 认证资料上传</span>	</div>
+		    <div class="con2">
+			     <div style="width:897px; margin:20px auto">
+		
+				 <div style="margin:20px 0">
+				       <div style="width:897px; margin:0px auto">
+					        <div class="warning1">
+							<span>温馨提示：</span>易信云投对于用户上传的所有信息，都将进行加密处理。您可以在此放心上传个人材料，您的个人信用将不会被以任何形式外泄。上传图片格式要求为.jpg或.gif,大小为500K以内。 
+							</div>
+							<div class="t20">
+							<div class="sm_tit">必要信用认证(<strong>以下六项必要村料均需上传并认证通过，缺失其中一项均无法发起借款。</strong>)</div>
+							<div class="xy_list">
+							     <ul>
+								     <li>
+									 <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="32%"><img src="{$tempdir}/images/icon1.gif" /></td>
+    <td width="68%">
+	    <b style="font-size:14px">户口本认证</b>
+        <a href="javascript:void(0);" onClick="tipsWindown('户口认证','url:get?/addatt/index.html&nid=hukou','700','320','true','','true','text');"><img src="{$tempdir}/images/upload.gif" border="0" /></a><br>{if $user_att.hukou.status==""}<font color="#ff0000">待上传</font>{elseif $user_att.hukou.status==0}<font color="#ff0000">待审核</font>{elseif $user_att.hukou.num>0}审核通过{elseif $user_att.hukou.status==2}<font color="#ff0000">未通过，请重新上传</font>{/if}</td>
+  </tr>
+</table>
+									 </li>
+									 <li>
+									 <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="32%"><img src="{$tempdir}/images/icon2.gif" /></td>
+    <td width="68%">
+	    <b style="font-size:14px">工作认证</b>
+        <a href="javascript:void(0);" onClick="tipsWindown('工作认证','url:get?/addatt/index.html&nid=work','700','320','true','','true','text');"><img src="{$tempdir}/images/upload.gif" border="0" /></a><br>{if $user_att.work.status==""}<font color="#ff0000">待上传</font>{elseif $user_att.work.status==0}<font color="#ff0000">待审核</font>{elseif $user_att.work.num>0}审核通过{elseif $user_att.work.status==2}<font color="#ff0000">未通过，请重新上传</font>{/if}</td>
+  </tr>
+</table>
+									 </li>
+									 <li>
+									 <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="32%"><img src="{$tempdir}/images/icon3.gif" /></td>
+    <td width="68%">
+	    <b style="font-size:14px">收入证明</b>
+        <a href="javascript:void(0);" onClick="tipsWindown('收入证明','url:get?/addatt/index.html&nid=income','700','320','true','','true','text');"><img src="{$tempdir}/images/upload.gif" border="0" /></a><br>{if $user_att.income.status==""}<font color="#ff0000">待上传</font>{elseif $user_att.income.status==0}<font color="#ff0000">待审核</font>{elseif $user_att.income.num>0}审核通过{elseif $user_att.income.status==2}<font color="#ff0000">未通过，请重新上传</font>{/if}</td>
+  </tr>
+</table>
+									 </li>
+									 <li>
+									 <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="32%"><img src="{$tempdir}/images/icon4.gif" /></td>
+    <td width="68%">
+	    <b style="font-size:14px">近6个月银行资金流水</b>
+        <a href="javascript:void(0);" onClick="tipsWindown('近6个月银行资金流水','url:get?/addatt/index.html&nid=bank_six','700','320','true','','true','text');"><img src="{$tempdir}/images/upload.gif" border="0" /></a><br>{if $user_att.bank_six.status==""}<font color="#ff0000">待上传</font>{elseif $user_att.bank_six.status==0}<font color="#ff0000">待审核</font>{elseif $user_att.bank_six.num>0}审核通过{elseif $user_att.bank_six.status==2}<font color="#ff0000">未通过，请重新上传</font>{/if}</td>
+  </tr>
+</table>
+									 </li>
+									 <li>
+									 <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="32%"><img src="{$tempdir}/images/icon5.gif" /></td>
+    <td width="68%">
+	    <b style="font-size:14px">央行信用报告</b>
+        <a href="javascript:void(0);" onClick="tipsWindown('央行信用报告','url:get?/addatt/index.html&nid=bank_report','700','320','true','','true','text');"><img src="{$tempdir}/images/upload.gif" border="0" /></a> <span style="display:none;"><a href="javascript:web()" style="color:blue">网站代查</a>(<a href="javascript:void(0)" style="color:red" title="网站代查收费30元">?</a>)</span><br>{if $user_att.bank_report.status==""}<font color="#ff0000">待上传</font>{elseif $user_att.bank_report.status==0}<font color="#ff0000">待审核</font>{elseif $user_att.bank_report.num>0}审核通过{elseif $user_att.bank_report.status==2}<font color="#ff0000">未通过，请重新上传</font>{/if}</td>
+  </tr>
+</table>
+									 </li>
+									 <li>
+									 <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="32%"><img src="{$tempdir}/images/ico_zzi.gif" /></td>
+    <td width="68%">
+	    <b style="font-size:14px">住址认证</b>
+        <a href="javascript:void(0);" onClick="tipsWindown('住址认证','url:get?/addatt/index.html&nid=live','700','320','true','','true','text');"><img src="{$tempdir}/images/upload.gif" border="0" /></a><br>{if $user_att.live.status==""}<font color="#ff0000">待上传</font>{elseif $user_att.live.status==0}<font color="#ff0000">待审核</font>{elseif $user_att.live.num>0}审核通过{elseif $user_att.live.status==2}<font color="#ff0000">未通过，请重新上传</font>{/if}</td>
+  </tr>
+</table>
+									 </li>
+								 </ul>
+								 <div class="cle"></div>
+							</div>
+							</div>
+							
+							<div class="t20">
+							<div class="sm_tit">可选信用认证(<strong>你可选择上传以下认证项目，通过可选认证，将会提高您的信用等级和借款额度。</strong>)</div>
+							<div class="rz_list">
+							     <ul>
+	 <li>·<a href="javascript:void(0);" onClick="tipsWindown('技术职称认证','url:get?/addatt/index.html&nid=professional','700','320','true','','true','text');">技术职称认证</a>({if $user_att.professional.status==""}<font color="#ff0000">待上传</font>{elseif $user_att.professional.status==0}<font color="#ff0000">待审核</font>{elseif $user_att.professional.num>0}审核通过{elseif $user_att.professional.status==2}<font color="#ff0000">未通过</font>{/if})</li>
+	 <li>·<a href="javascript:void(0);" onClick="tipsWindown('自有房产证明','url:get?/addatt/index.html&nid=house','700','320','true','','true','text');">自有房产证明</a>({if $user_att.house.status==""}<font color="#ff0000">待上传</font>{elseif $user_att.house.status==0}<font color="#ff0000">待审核</font>{elseif $user_att.house.num>0}审核通过{elseif $user_att.house.status==2}<font color="#ff0000">未通过</font>{/if})</li>
+	 <li>·<a href="javascript:void(0);" onClick="tipsWindown('购车证明','url:get?/addatt/index.html&nid=car','700','320','true','','true','text');">购车证明</a>({if $user_att.car.status==""}<font color="#ff0000">待上传</font>{elseif $user_att.car.status==0}<font color="#ff0000">待审核</font>{elseif $user_att.car.num>0}审核通过{elseif $user_att.car.status==2}<font color="#ff0000">未通过</font>{/if})</li>
+	 <li>·<a href="javascript:void(0);" onClick="tipsWindown('结婚证明','url:get?/addatt/index.html&nid=marry','700','320','true','','true','text');">结婚证明</a>({if $user_att.marry.status==""}<font color="#ff0000">待上传</font>{elseif $user_att.marry.status==0}<font color="#ff0000">待审核</font>{elseif $user_att.marry.num>0}审核通过{elseif $user_att.marry.status==2}<font color="#ff0000">未通过</font>{/if})</li>
+	 <li>·<a href="javascript:void(0);" onClick="tipsWindown('直系亲属认证','url:get?/addatt/index.html&nid=kinsfolk','700','320','true','','true','text');">直系亲属认证</a>({if $user_att.kinsfolk.status==""}<font color="#ff0000">待上传</font>{elseif $user_att.kinsfolk.status==0}<font color="#ff0000">待审核</font>{elseif $user_att.kinsfolk.num>0}审核通过{elseif $user_att.kinsfolk.status==2}<font color="#ff0000">未通过</font>{/if})</li>
+	 <li>·<a href="javascript:void(0);" onClick="tipsWindown('其他借款记录','url:get?/addatt/index.html&nid=linkman','700','320','true','','true','text');">其他借款记录</a>({if $user_att.linkman.status==""}<font color="#ff0000">待上传</font>{elseif $user_att.linkman.status==0}<font color="#ff0000">待审核</font>{elseif $user_att.linkman.num>0}审核通过{elseif $user_att.linkman.status==2}<font color="#ff0000">未通过</font>{/if})</li>
+	 <li>·<a href="javascript:void(0);" onClick="tipsWindown('现场认证','url:get?/addatt/index.html&nid=spot','700','320','true','','true','text');">现场认证</a>({if $user_att.spot.status==""}<font color="#ff0000">待上传</font>{elseif $user_att.spot.status==0}<font color="#ff0000">待审核</font>{elseif $user_att.spot.num>0}审核通过{elseif $user_att.spot.status==2}<font color="#ff0000">未通过</font>{/if})</li>
+	 <li>·<span style="color:blue"><a href="javascript:void(0);" onClick="tipsWindown('微博/QQ认证','url:get?/addatt/index.html&nid=weibo','700','320','true','','true','text');">微博/QQ认证</a>({if $user_att.weibo.status==""}<font color="#ff0000">待上传</font>{elseif $user_att.weibo.status==0}<font color="#ff0000">待审核</font>{elseif $user_att.weibo.num>0}审核通过{elseif $user_att.weibo.status==2}<font color="#ff0000">未通过</font>{/if})</span></li>
+	 <li>·<a href="javascript:void(0);" onClick="tipsWindown('其他有价值认证','url:get?/addatt/index.html&nid=other','700','320','true','','true','text');">其他有价值认证</a>({if $user_att.other.status==""}<font color="#ff0000">待上传</font>{elseif $user_att.other.status==0}<font color="#ff0000">待审核</font>{elseif $user_att.other.num>0}审核通过{elseif $user_att.other.status==2}<font color="#ff0000">未通过</font>{/if})</li>
+	 <li>·<a href="javascript:void(0);" onClick="tipsWindown('还款承诺书','url:get?/addatt/index.html&nid=hkxys','700','320','true','','true','text');">还款承诺书</a>({if $user_att.hkxys.status==""}<font color="#ff0000">待上传</font>{elseif $user_att.hkxys.status==0}<font color="#ff0000">待审核</font>{elseif $user_att.hkxys.num>0}审核通过{elseif $user_att.hkxys.status==2}<font color="#ff0000">未通过</font>{/if})</li>
+								 </ul>
+								 <div class="cle"></div>
+							</div>
+							</div>
+							
+							<div class="t20"><span style="color:#FF0000">注意：</span>如果文件较大或数量较多 您可以通过邮件发送到易信云投客服<span style="float:right;"><a href="/?user&q=code/approve/myapp" style="color:#0000ff">&gt;&gt;返回认证中心</a></span></div>
+					   </div>
+			     </div>
+		</div>
+				 </div>
+			</div>
+	   </div>
+     </div>
+</div>
+{else}
+<div class="con_box">
+     <div>
+	      <div class="con_bor">
+		       <div class="pos_bor"><span><a href="#">我要借款</a> > 认证资料上传</span>	</div>
+		    <div class="con2">
+			     <div style="width:897px; margin:20px auto">
+		
+				 <div style="margin:20px 0">
+				       <div style="width:897px; margin:0px auto">
+					        <div class="warning1">
+							<span>温馨提示：</span>易信云投对于用户上传的所有信息，都将进行加密处理。您可以在此放心上传个人材料，您的个人信用将不会被以任何形式外泄。上传图片格式要求为.jpg或.gif,大小为500K以内。 
+							</div>
+							<div class="t20">
+							<div class="sm_tit">必要信用认证(<strong>以下六项必要村料均需上传并认证通过，缺失其中一项均无法发起借款。</strong>)</div>
+							<div class="xy_list">
+							     <ul>
+								     <li>
+									 <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="32%"><img src="{$tempdir}/images/icon1.gif" /></td>
+    <td width="68%">
+	    <b style="font-size:14px">户口本认证</b>
+        <a href="javascript:void(0);" onClick="tipsWindown('户口认证','url:get?/addatt/index.html&nid=hukou','700','320','true','','true','text');"><img src="{$tempdir}/images/upload.gif" border="0" /></a><br>{if $user_att.hukou.status==""}<font color="#ff0000">待上传</font>{elseif $user_att.hukou.status==0}<font color="#ff0000">待审核</font>{elseif $user_att.hukou.num>0}审核通过{elseif $user_att.hukou.status==2}<font color="#ff0000">未通过，请重新上传</font>{/if}</td>
+  </tr>
+</table>
+									 </li>
+									 <li>
+									 <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="32%"><img src="{$tempdir}/images/icon2.gif" /></td>
+    <td width="68%">
+	    <b style="font-size:14px">工作认证</b>
+        <a href="javascript:void(0);" onClick="tipsWindown('工作认证','url:get?/addatt/index.html&nid=work','700','320','true','','true','text');"><img src="{$tempdir}/images/upload.gif" border="0" /></a><br>{if $user_att.work.status==""}<font color="#ff0000">待上传</font>{elseif $user_att.work.status==0}<font color="#ff0000">待审核</font>{elseif $user_att.work.num>0}审核通过{elseif $user_att.work.status==2}<font color="#ff0000">未通过，请重新上传</font>{/if}</td>
+  </tr>
+</table>
+									 </li>
+									 <li>
+									 <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="32%"><img src="{$tempdir}/images/icon3.gif" /></td>
+    <td width="68%">
+	    <b style="font-size:14px">收入证明</b>
+        <a href="javascript:void(0);" onClick="tipsWindown('收入证明','url:get?/addatt/index.html&nid=income','700','320','true','','true','text');"><img src="{$tempdir}/images/upload.gif" border="0" /></a><br>{if $user_att.income.status==""}<font color="#ff0000">待上传</font>{elseif $user_att.income.status==0}<font color="#ff0000">待审核</font>{elseif $user_att.income.num>0}审核通过{elseif $user_att.income.status==2}<font color="#ff0000">未通过，请重新上传</font>{/if}</td>
+  </tr>
+</table>
+									 </li>
+									 <li>
+									 <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="32%"><img src="{$tempdir}/images/icon4.gif" /></td>
+    <td width="68%">
+	    <b style="font-size:14px">近6个月银行资金流水</b>
+        <a href="javascript:void(0);" onClick="tipsWindown('近6个月银行资金流水','url:get?/addatt/index.html&nid=bank_six','700','320','true','','true','text');"><img src="{$tempdir}/images/upload.gif" border="0" /></a><br>{if $user_att.bank_six.status==""}<font color="#ff0000">待上传</font>{elseif $user_att.bank_six.status==0}<font color="#ff0000">待审核</font>{elseif $user_att.bank_six.num>0}审核通过{elseif $user_att.bank_six.status==2}<font color="#ff0000">未通过，请重新上传</font>{/if}</td>
+  </tr>
+</table>
+									 </li>
+									 <li>
+									 <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="32%"><img src="{$tempdir}/images/icon5.gif" /></td>
+    <td width="68%">
+	    <b style="font-size:14px">央行信用报告</b>
+        <a href="javascript:void(0);" onClick="tipsWindown('央行信用报告','url:get?/addatt/index.html&nid=bank_report','700','320','true','','true','text');"><img src="{$tempdir}/images/upload.gif" border="0" /></a> <span style="display:none;"><a href="javascript:web()" style="color:blue">网站代查</a>(<a href="javascript:void(0)" style="color:red" title="网站代查收费30元">?</a>)</span><br>{if $user_att.bank_report.status==""}<font color="#ff0000">待上传</font>{elseif $user_att.bank_report.status==0}<font color="#ff0000">待审核</font>{elseif $user_att.bank_report.num>0}审核通过{elseif $user_att.bank_report.status==2}<font color="#ff0000">未通过，请重新上传</font>{/if}</td>
+  </tr>
+</table>
+									 </li>
+									 <li>
+									 <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="32%"><img src="{$tempdir}/images/ico_zzi.gif" /></td>
+    <td width="68%">
+	    <b style="font-size:14px">住址认证</b>
+        <a href="javascript:void(0);" onClick="tipsWindown('住址认证','url:get?/addatt/index.html&nid=live','700','320','true','','true','text');"><img src="{$tempdir}/images/upload.gif" border="0" /></a><br>{if $user_att.live.status==""}<font color="#ff0000">待上传</font>{elseif $user_att.live.status==0}<font color="#ff0000">待审核</font>{elseif $user_att.live.num>0}审核通过{elseif $user_att.live.status==2}<font color="#ff0000">未通过，请重新上传</font>{/if}</td>
+  </tr>
+</table>
+									 </li>
+								 </ul>
+								 <div class="cle"></div>
+							</div>
+							</div>
+							
+							<div class="t20">
+							<div class="sm_tit">可选信用认证(<strong>你可选择上传以下认证项目，通过可选认证，将会提高您的信用等级和借款额度。</strong>)</div>
+							<div class="rz_list">
+							     <ul>
+	 <li>·<a href="javascript:void(0);" onClick="tipsWindown('技术职称认证','url:get?/addatt/index.html&nid=professional','700','320','true','','true','text');">技术职称认证</a>({if $user_att.professional.status==""}<font color="#ff0000">待上传</font>{elseif $user_att.professional.status==0}<font color="#ff0000">待审核</font>{elseif $user_att.professional.num>0}审核通过{elseif $user_att.professional.status==2}<font color="#ff0000">未通过</font>{/if})</li>
+	 <li>·<a href="javascript:void(0);" onClick="tipsWindown('自有房产证明','url:get?/addatt/index.html&nid=house','700','320','true','','true','text');">自有房产证明</a>({if $user_att.house.status==""}<font color="#ff0000">待上传</font>{elseif $user_att.house.status==0}<font color="#ff0000">待审核</font>{elseif $user_att.house.num>0}审核通过{elseif $user_att.house.status==2}<font color="#ff0000">未通过</font>{/if})</li>
+	 <li>·<a href="javascript:void(0);" onClick="tipsWindown('购车证明','url:get?/addatt/index.html&nid=car','700','320','true','','true','text');">购车证明</a>({if $user_att.car.status==""}<font color="#ff0000">待上传</font>{elseif $user_att.car.status==0}<font color="#ff0000">待审核</font>{elseif $user_att.car.num>0}审核通过{elseif $user_att.car.status==2}<font color="#ff0000">未通过</font>{/if})</li>
+	 <li>·<a href="javascript:void(0);" onClick="tipsWindown('结婚证明','url:get?/addatt/index.html&nid=marry','700','320','true','','true','text');">结婚证明</a>({if $user_att.marry.status==""}<font color="#ff0000">待上传</font>{elseif $user_att.marry.status==0}<font color="#ff0000">待审核</font>{elseif $user_att.marry.num>0}审核通过{elseif $user_att.marry.status==2}<font color="#ff0000">未通过</font>{/if})</li>
+	 <li>·<a href="javascript:void(0);" onClick="tipsWindown('直系亲属认证','url:get?/addatt/index.html&nid=kinsfolk','700','320','true','','true','text');">直系亲属认证</a>({if $user_att.kinsfolk.status==""}<font color="#ff0000">待上传</font>{elseif $user_att.kinsfolk.status==0}<font color="#ff0000">待审核</font>{elseif $user_att.kinsfolk.num>0}审核通过{elseif $user_att.kinsfolk.status==2}<font color="#ff0000">未通过</font>{/if})</li>
+	 <li>·<a href="javascript:void(0);" onClick="tipsWindown('其他借款记录','url:get?/addatt/index.html&nid=linkman','700','320','true','','true','text');">其他借款记录</a>({if $user_att.linkman.status==""}<font color="#ff0000">待上传</font>{elseif $user_att.linkman.status==0}<font color="#ff0000">待审核</font>{elseif $user_att.linkman.num>0}审核通过{elseif $user_att.linkman.status==2}<font color="#ff0000">未通过</font>{/if})</li>
+	 <li>·<a href="javascript:void(0);" onClick="tipsWindown('现场认证','url:get?/addatt/index.html&nid=spot','700','320','true','','true','text');">现场认证</a>({if $user_att.spot.status==""}<font color="#ff0000">待上传</font>{elseif $user_att.spot.status==0}<font color="#ff0000">待审核</font>{elseif $user_att.spot.num>0}审核通过{elseif $user_att.spot.status==2}<font color="#ff0000">未通过</font>{/if})</li>
+	 <li>·<span style="color:blue"><a href="javascript:void(0);" onClick="tipsWindown('微博/QQ认证','url:get?/addatt/index.html&nid=weibo','700','320','true','','true','text');">微博/QQ认证</a>({if $user_att.weibo.status==""}<font color="#ff0000">待上传</font>{elseif $user_att.weibo.status==0}<font color="#ff0000">待审核</font>{elseif $user_att.weibo.num>0}审核通过{elseif $user_att.weibo.status==2}<font color="#ff0000">未通过</font>{/if})</span></li>
+	 <li>·<a href="javascript:void(0);" onClick="tipsWindown('其他有价值认证','url:get?/addatt/index.html&nid=other','700','320','true','','true','text');">其他有价值认证</a>({if $user_att.other.status==""}<font color="#ff0000">待上传</font>{elseif $user_att.other.status==0}<font color="#ff0000">待审核</font>{elseif $user_att.other.num>0}审核通过{elseif $user_att.other.status==2}<font color="#ff0000">未通过</font>{/if})</li>
+	 <li>·<a href="javascript:void(0);" onClick="tipsWindown('还款承诺书','url:get?/addatt/index.html&nid=hkxys','700','320','true','','true','text');">还款承诺书</a>({if $user_att.hkxys.status==""}<font color="#ff0000">待上传</font>{elseif $user_att.hkxys.status==0}<font color="#ff0000">待审核</font>{elseif $user_att.hkxys.num>0}审核通过{elseif $user_att.hkxys.status==2}<font color="#ff0000">未通过</font>{/if})</li>
+								 </ul>
+								 <div class="cle"></div>
+							</div>
+							</div>
+							
+							<div class="t20"><span style="color:#FF0000">注意：</span>如果文件较大或数量较多 您可以通过邮件发送到易信云投客服<span style="float:right;"><a href="/?user&q=code/approve/myapp" style="color:#0000ff">&gt;&gt;返回认证中心</a></span></div>
+					   </div>
+			     </div>
+		</div>
+				 </div>
+			</div>
+	   </div>
+     </div>
+</div>
+{/if}
+{/articles}
+<script>
+{articles module="account" function="GetOne" var="var" user_id="$_G.user_id"}
+	var money="{$var.balance|default:0.00}";
+	var user="{$_G.user_id}";
+{/articles}
+{literal}
+function web(){
+	if (money>=30){
+		if(confirm('网站代查将扣除代查费30元，是否授权网站代查？')){
+			$.post("/?user&q=code/account/web",{user_id:user},function(){
+				if(confirm('代查申请成功，是否现在就去下载代查授权书？')){
+					location.href="/xzai/index.html";
+				}
+			});
+		}
+	}else{
+		alert('网站代查将扣除代查费30元，您的余额不足。');
+	}
+}
+</script>
+{/literal}
+{include file="footer.html"}

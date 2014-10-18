@@ -1,0 +1,25 @@
+{include file="user_header.html"}
+<div class="con_box">
+	<div class="login_container_left">
+    
+    </div>
+    <form action="/index.php?user&q=login" method="post">
+	<div class="login_container_right">
+    	<div class="d1">
+        	<input name="keywords" type="text" class="in_text" style="width:170px;"/>
+        </div>
+        <div class="d2">
+        	<input name="password" type="password" class="in_text" style="width:170px;"/>
+        </div>
+        <div class="d3">
+        	<input name="remember" type="checkbox" checked="checked" class="in_chk" style=""/><font color="#666666">下次自动登录</font>&nbsp;<a href="/?user&q=getpwd">忘记密码</a>
+        </div>
+        <div class="d4">
+        	<input type="image" src="{$tempdir}/images/login_btn.gif" onmousemove="this.src='{$tempdir}/images/login_btn_hover.gif'" onmouseout="this.src='{$tempdir}/images/login_btn.gif'" />
+           <img src="{$tempdir}/images/login_reg.gif" onclick="window.location.href='/index.php?user&q=reg'" style="cursor:pointer;" /> 
+        </div>
+    </div>
+    </form>
+</div>
+<div class="con_box t20"></div><div class="cle"></div>
+{include file="user_footer.html"}

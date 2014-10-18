@@ -1,0 +1,339 @@
+{include file="header.html"}
+<div class="clearfix con_box">
+
+	 <div style="float:left;width:750px;">
+		{if $magic.request.type==""}
+	      <div class="us_r_bor">
+	        <div class="us_r_tit">
+				<h1>我的个人信息</h1>
+				<span><a href="/u/{$magic.request.user_id}&type=app" style="font-weight:bold; color:#0774E4; padding-right:10px;">>>查看我的认证信息</a></span>
+			</div>
+				 <div class="us_infor">
+				      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="20%" align="left" valign="top"><img src="{$magic.request.user_id|avatar}" width="128" height="128" style="border:1px solid #999999"/></td>
+    <td width="80%" align="left" valign="top"><table width="100%" border="0" cellspacing="5" cellpadding="0">
+	{articles module="users" function="GetUsers" user_id="$magic.request.user_id" var="Uvar"}
+      <tr>
+        <td width="13%" align="right">用 户 名：</td>
+        <td width="87%" align="left">{$Uvar.username}</td>
+      </tr>
+	  {articles module="borrow" function="GetBorrowCredit" var="Cvar" user_id=$magic.request.user_id}
+      <tr>
+        <td align="right">信用等级：</td>
+        <td align="left">{$Cvar.approve_credit|credit:"credit"}</td>
+      </tr>
+      <tr>
+        <td align="right">还款积分：</td>
+        <td align="left">{$Cvar.borrow_credit|default:"0"|credit:"borrow"}</td>
+      </tr>
+	  {/articles}
+	  {articles module="credit" function="GetGoldCount" var="Gvar" user_id=$magic.request.user_id}
+	  <tr>
+        <td align="right">获得金币：</td>
+        <td align="left">{$Gvar.total}</td>
+      </tr>
+	  {/articles}
+      <tr>
+        <td align="right">角    &nbsp;&nbsp;&nbsp;色：</td>
+        <td align="left">
+			{articles module="users" function="GetUsersVip" var="Vvar" user_id="$magic.request.user_id"}
+				{if $Vvar.status==1}
+					{if $Vvar.vip_type==1}
+						<strong style="color:blue">VIP会员</strong>
+					{else}
+						<strong style="color:blue">高级VIP会员</strong>
+					{/if}
+				{else}
+					普通会员
+				{/if}
+			{/articles}
+		</td>
+      </tr>
+      <tr>
+        <td align="right">注册时间：</td>
+        <td align="left">{$Uvar.reg_time|date_format:"Y-m-d"}</td>
+      </tr>
+	  {articles module="borrow" function="GetUserCount" var="var" user_id="$magic.request.user_id"}
+      <tr>
+        <td align="right">个人统计：</td>
+        <td align="left"><b class="red">{$var.borrow_times|default:"0"}</b> 条借款记录， <b class="red">{$var.tender_times|default:"0"}</b> 条投标记录</td>
+      </tr>
+	  {/articles}
+    </table>
+	</td>
+  </tr>
+</table>
+				 </div>
+		  </div>
+{literal}
+<script>
+function change_detail(i){
+	for(j=1;j<=4;j++){
+		$("#li_list_"+j).removeClass();
+		$("#li_list_detail_"+j).hide();
+	}
+	$("#li_list_"+i).addClass("onn");
+	$("#li_list_detail_"+i).show();
+}
+</script>
+{/literal}
+<div class="t10">
+	<div class="m_change">
+		<ul>
+			<li><a href="javascript:change_detail(1);" id="li_list_1" class="onn">我的动态</a></li>
+			<li><a href="javascript:change_detail(2);" id="li_list_2" >成功的投标</a></li>
+			<li><a href="javascript:change_detail(3);" id="li_list_3" >成功的借款</a></li>
+			<li><a href="javascript:change_detail(4);" id="li_list_4" >好友动态</a></li>
+		</ul>
+	</div>
+	<div class="us_r_bor1" id="li_list_detail_1">
+		<div class="my_news">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			{list module="users" function="GetUserslogList" var="loop"  showpage="3" user_id="$magic.request.user_id" epage="10"}
+			{if $loop.total>0}
+			{foreach from="$loop.list" item="item"}
+				<tr>
+					<td width="81%" align="left">{$item.content}</td>
+					<td width="19%" align="right" class="time">{$item.addtime|date_format:"Y-m-d H:i"}</td>
+				</tr>
+			{/foreach}
+			{else}
+			<tr><td width="100" align="center">暂无相关记录</td></tr>
+			{/if}
+			{/list}
+			</table>
+		</div>
+	</div>
+	<div class="us_r_bor1" id="li_list_detail_2" style="display:none">
+		<div class="my_news">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			{list module="borrow" function="GetTenderList" var="loop"  showpage="3" user_id="$magic.request.user_id" status="1" epage="10"}
+			{if $loop.total>0}
+			{foreach from="$loop.list" item="item"}
+				<tr>
+					<td width="81%" align="left">成功投资<a href="/invest/a{$item.borrow_nid}.html">{$item.borrow_name}</a>，{$item.account}元</td>
+					<td width="19%" align="right" class="time">{$item.addtime|date_format:"Y-m-d H:i"}</td>
+				</tr>
+			{/foreach}
+			{else}
+			<tr><td width="100" align="center">暂无相关记录</td></tr>
+			{/if}
+			{/list}
+			</table>
+		</div>
+	</div>
+	<div class="us_r_bor1" id="li_list_detail_3" style="display:none">
+		<div class="my_news">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0">
+			{list module="borrow" function="GetList" var="loop"  showpage="3" user_id="$magic.request.user_id" status="3" epage="10"}
+			{if $loop.total>0}
+			{foreach from="$loop.list" item="var"}
+				<tr>
+					<td width="81%" align="left">发布<a href="/invest/a{$var.borrow_nid}.html">{$var.name}</a>，成功借款{$var.account}元</td>
+					<td width="19%" align="right" class="time">{$var.addtime|date_format:"Y-m-d H:i"}</td>
+				</tr>
+			{/foreach}
+			{else}
+			<tr><td width="100" align="center">暂无相关记录</td></tr>
+			{/if}
+			{/list}
+			</table>
+		</div>
+	</div>
+	<div class="us_r_bor1" id="li_list_detail_4" style="display:none">
+	<div class="my_news">
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	{list module="users" function="GetFriendsList" var="loop" epage=12 user_id="$magic.request.user_id" showpage="3"}
+	{if $loop.total>0}
+	{foreach from="$loop.list" item="Lvar"}
+	<tr>
+		<td width="70%" align="left"><a href="/u/{$Lvar.user_id}">{$Lvar.username}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$Lvar.content}</td>
+		<td width="30%" align="right" class="time">{$Lvar.addtime|date_format:"Y-m-d H:i:s"}</td>
+	</tr>
+	{/foreach}
+	{else}
+	<tr><td width="100" align="center">暂无相关的好友</td></tr>
+	{/if}
+	{/list}
+	</table>
+	</div>
+	</div>
+</div>
+	{else}
+	      <div class="con_bor">
+		    <div class="con2">
+		       <div class="us_r_tit">
+					<h1>我的认证信息</h1>
+					<span><a href="/u/{$magic.request.user_id}" style="font-weight:bold; color:#0774E4; padding-right:10px;">>>查看我的个人信息</a></span>
+				</div>
+		      <div style="padding:0px 40px"><table width="600" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="70%" align="left">
+		{articles module="borrow" function="GetBorrowCredit" var="Cvar" user_id=$magic.request.user_id}
+		{articles module="borrow" function="GetAmountUsers" user_id=$_G.user_id var="var"}
+		信用总分（等级）：{$Cvar.approve_credit|default:"0"}（{$Cvar.approve_credit|default:"0"|credit:"credit"}）&nbsp;&nbsp;信用额度：{if $var.borrow_amount<0}0{else}{$var.borrow_amount}{/if}( 可用额度：{if $var.borrow_amount_use<0}0{else}{$var.borrow_amount_use}{/if} )
+		{/articles}
+		{/articles}
+	</td>
+  </tr>
+</table>
+
+<div class="t20">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabyel">
+			<tr class="ytit1">
+				<td width="21%">&nbsp;</td>
+				<td width="51%">项目</td>
+				<td width="15%">状态</td>
+				<td width="13%">信用分数</td>
+			</tr>
+			<tr>
+				<td rowspan="6">基本信用认证</td>
+				<td>手机绑定（2分）</td>
+				<td>{if $_G.user_info.phone_status==1}<strong style="color:#ff0000">已通过</strong>{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+				<td>{if $_G.user_info.phone_status==1}<strong style="color:#ff0000">2分</strong>{else}0分{/if}</td>
+			</tr>
+			<tr>
+				<td>身份证认证（5分）</td>
+				<td>{if $_G.user_info.realname_status==1}<strong style="color:#ff0000">已通过</strong>{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+				<td>{if $_G.user_info.realname_status==1}<strong style="color:#ff0000">5分</strong>{else}0分{/if}</td>
+			</tr>
+			<tr>
+				<td>学历认证（10分）</td>
+				<td>{if $_G.user_info.education_status==1}<strong style="color:#ff0000">已通过</strong>{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+				<td>{if $_G.user_info.education_status==1}<strong style="color:#ff0000">10分</strong>{else}0分{/if}</td>
+			</tr>
+			<tr>
+				<td>视频认证（3分）</td>
+				<td>{if $_G.user_info.video_status==1}<strong style="color:#ff0000">已通过</strong>{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+				<td>{if $_G.user_info.video_status==1}<strong style="color:#ff0000">3分</strong>{else}0分{/if}</td>
+			</tr>
+			{articles module="credit" function="GetCreditCount" var="Cvar" user_id=$_G.user_id}
+			<tr>
+				<td>借入学习（5分）</td>
+				<td>{if $Cvar.borrow_study.num>0}<strong style="color:#ff0000">已通过</strong>{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+				<td>{if $Cvar.borrow_study.num>0}<strong style="color:#ff0000">{$Cvar.borrow_study.num}分</strong>{else}0分{/if}</td>
+			</tr>
+			<tr>
+				<td>完善个人信息（2分）、工作信息（3分）、财产信息（5分）</td>
+				<td>{if $Cvar.info_credit.num>0 && $Cvar.work_credit.num>0 && $Cvar.finance_credit.num>0}<strong style="color:#ff0000">已通过</strong>{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+				<td>{if $Cvar.info_credit.num>0 && $Cvar.work_credit.num>0 && $Cvar.finance_credit.num>0}<strong style="color:#ff0000">10分</strong>{else}0分{/if}</td>
+			</tr>
+			{/articles}
+			{articles module="attestations" function="GetAttestationsUserCredit" var="Avar" user_id=$_G.user_id}
+			<tr>
+				<td rowspan="6" height="114">必要信用审核</td>
+				<td>户口本认证（5分）</td>
+				<td>{if $Avar.hukou.num>0}<strong style="color:#ff0000">已通过</strong>{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+				<td>{if $Avar.hukou.num>0}<strong style="color:#ff0000">{$Avar.hukou.num}分</strong>{else}0分{/if}</td>
+			</tr>
+			<tr>
+				<td>工作认证（10分）</td>
+				<td>{if $Avar.work.num>0}<strong style="color:#ff0000">已通过</strong>{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+				<td>{if $Avar.work.num>0}<strong style="color:#ff0000">{$Avar.work.num}分</strong>{else}0分{/if}</td>
+			</tr>
+			<tr>
+				<td>收入认证（10分）</td>
+				<td>{if $Avar.income.num>0}<strong style="color:#ff0000">已通过</strong>{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+				<td>{if $Avar.income.num>0}<strong style="color:#ff0000">{$Avar.income.num}分</strong>{else}0分{/if}</td>
+			</tr>
+			<tr>
+				<td>近6个月的银行资金流水（10分）</td>
+				<td>{if $Avar.bank_six.num>0}<strong style="color:#ff0000">已通过</strong>{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+				<td>{if $Avar.bank_six.num>0}<strong style="color:#ff0000">{$Avar.bank_six.num}分</strong>{else}0分{/if}</td>
+			</tr>
+			<tr>
+				<td>住址证明（5分）</td>
+				<td>{if $Avar.live.num>0}<strong style="color:#ff0000">已通过</strong>{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+				<td>{if $Avar.live.num>0}<strong style="color:#ff0000">{$Avar.live.num}分</strong>{else}0分{/if}</td>
+			</tr>
+			<tr>
+				<td>央行信用报告认证（15分）</td>
+				<td>{if $Avar.bank_report.num>0}<strong style="color:#ff0000">已通过</strong>{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+				<td>{if $Avar.bank_report.num>0}<strong style="color:#ff0000">{$Avar.bank_report.num}分</strong>{else}0分{/if}</td>
+			</tr>
+			<tr>
+				<td rowspan="9" height="190">可选信用审核</td>
+				<td>技术职称认证（5分）</td>
+				<td>{if $Avar.professional.num>0}<strong style="color:#ff0000">已通过</strong>{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+				<td>{if $Avar.professional.num>0}<strong style="color:#ff0000">{$Avar.professional.num}分</strong>{else}0分{/if}</td>
+			</tr>
+			<tr>
+				<td>自有房产证明（15分）</td>
+				<td>{if $Avar.house.num>0}<strong style="color:#ff0000">已通过</strong>{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+				<td>{if $Avar.house.num>0}<strong style="color:#ff0000">{$Avar.house.num}分</strong>{else}0分{/if}</td>
+			</tr>
+			<tr>
+				<td>购车证明（5分）</td>
+				<td>{if $Avar.car.num>0}<strong style="color:#ff0000">已通过</strong>{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+				<td>{if $Avar.car.num>0}<strong style="color:#ff0000">{$Avar.car.num}分</strong>{else}0分{/if}</td>
+			</tr>
+			<tr>
+				<td>结婚证明（5分）</td>
+				<td>{if $Avar.marry.num>0}<strong style="color:#ff0000">已通过</strong>{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+				<td>{if $Avar.marry.num>0}<strong style="color:#ff0000">{$Avar.marry.num}分</strong>{else}0分{/if}</td>
+			</tr>
+			<tr>
+				<td>直系亲属认证（每个5分）</td>
+				<td>{if $Avar.kinsfolk.num>0}<strong style="color:#ff0000">已通过</strong>{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+				<td>{if $Avar.kinsfolk.num>0}<strong style="color:#ff0000">{$Avar.kinsfolk.num}分</strong>{else}0分{/if}</td>
+			</tr>
+			<tr>
+				<td>其他联系人（朋友、同学、同事每个1分,最多5分）</td>
+				<td>{if $Avar.linkman.num>0}<strong style="color:#ff0000">已通过</strong>{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+				<td>{if $Avar.linkman.num>0}<strong style="color:#ff0000">{$Avar.linkman.num}分</strong>{else}0分{/if}</td>
+			</tr>
+			<tr>
+				<td>社区网、微博、QQ认证（每个1分，最多5分）</td>
+				<td>{if $Avar.weibo.num>0}<strong style="color:#ff0000">已通过</strong>{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+				<td>{if $Avar.weibo.num>0}<strong style="color:#ff0000">{$Avar.weibo.num}分</strong>{else}0分{/if}</td>
+			</tr>
+			<tr>
+				<td>现场认证（10分）</td>
+				<td>{if $Avar.spot.num>0}<strong style="color:#ff0000">已通过</strong>{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+				<td>{if $Avar.spot.num>0}<strong style="color:#ff0000">{$Avar.spot.num}分</strong>{else}0分{/if}</td>
+			</tr>
+			<tr>
+				<td>其他有价值的认证（每个2分）</td>
+				<td>{if $Avar.other.num>0}<strong style="color:#ff0000">已通过</strong>{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+				<td>{if $Avar.other.num>0}<strong style="color:#ff0000">{$Avar.other.num}分</strong>{else}0分{/if}</td>
+			</tr>
+			{/articles}
+		</table>
+
+	</div>
+		      </div>
+			</div>
+	   </div>
+	{/if}
+	 </div>
+	 <div style="float:right;width:200px;">
+		<div>
+		<div class="r_tit">我的好友</div>
+		<div class="r_cen">
+			<div class="inf_right">
+				<ul>
+				{loop module="users" function="GetFriendsList" user_id="$magic.request.user_id" limit="8" var="Fvar"}
+					<li style="float:left;width:80px"><a href="/u/{$Fvar.friends_userid}"><img src="{$Fvar.friends_userid|avatar}" width="60" height="60" style="border:1px solid #999999"/><br>{$Fvar.friendname}</a></li>
+				{/loop}
+				</ul>
+			</div>
+		</div>
+		<div class="r_bot"></div>
+		<div class="r_tit" style="margin-top:10px;">使用技巧<span style="float:right;font-weight:normal;"><a href="/usekey/index.html">更多>></a>&nbsp;</span></div>
+		<div class="r_cen">
+			<div class="inf_right">
+				<ul>
+				{loop module="articles" function="GetList" var="var" limit="all" type_id="25"}
+					<li>·<a href="/usekey/a{$var.id}.html">{$var.name}</a></li>
+				{/loop}
+				</ul>
+			</div>
+		</div>
+		<div class="r_bot"></div>
+		</div>
+	 </div>
+     <div class="cle"></div>
+</div>
+
+{include file="footer.html"}

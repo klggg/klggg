@@ -1,0 +1,56 @@
+/* CSS Document */
+.wj_paihang_box{margin:10px 0; border:1px solid #DCDCDC; border-top:3px solid #4190C0; background:#FFF; height:355px; overflow:hidden;}
+.wj_paihang_title {
+    background: url("icon.gif") no-repeat scroll 3px 0 transparent;
+    border-bottom: 1px dashed #CCCCCC;
+    color: #4190C0;
+    font-size: 14px;
+    font-weight: bold;
+    height: 37px;
+    line-height: 37px;
+    padding-left: 40px;
+}
+.wj_paihang_body{
+	padding:10px 15px;
+	}
+.wj_paihang_left{
+	width:350px; float:left;
+	}
+.wj_paihang_center{
+	width:350px; float:left;
+	}
+.wj_paihang_right{
+	width:225px; float:right;
+	}
+.wj_paihang_btn{width:77px; height:26px; background:url(btnblue.gif); border:0; font-weight:bold; color:#fff;}
+.wj_paihang_lsb{background:url(point.gif) repeat-y right; margin-right:10px; padding-top:10px;}
+.wj_paihang_ph{background:url(num.gif) no-repeat -5px 2px; }
+.wj_paihang_ph a{ display:block; float:left; width:260px;}
+.wj_paihang_ph li {
+    line-height: 26px;
+	height:26px;
+    padding-left: 18px;
+	vertical-align:bottom;
+}
+.wj_paihang_ph span {
+    color: #727272;
+    float: right;
+	text-align:right;
+	width:45px;
+	display:block;
+    padding-right: 15px;
+}
+.wj_paihang_ph font {
+    color: #727272;
+    float: right;
+    padding-right: 0px;
+	font-size:12px;
+}
+.wj_paihang_ph .wj_paihang_fname{width:80px; float:left; overflow:hidden;}
+.wj_paihang_ph .wj_paihang_jindu {
+    float: left;
+    overflow: hidden;
+    padding: 12px 0 0 5px;
+    width: 60px;
+}
+.wj_paihang_ph .wj_paihang_jindu em{display:block; height:5px;}

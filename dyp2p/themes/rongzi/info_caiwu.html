@@ -1,0 +1,80 @@
+<div class="user_main_title1"><strong style="color:#ff0000">温馨提示：</strong>请如实添加您的收支状况并尽量完善，如情况核实不符，将有可能取消借款资格！</div>
+<div style="padding:20px 80px;" id="li_list_detail_4" >
+			       <table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabyel">
+				<tr class="ytit">
+				{if $_G.site_result.nid=="amount_finance"}
+					<td colspan="5">您的个人收入一览（<a href="javascript:void(0);" onClick="tipsWindown('添加收入状况','url:get?/addrevenue/index.html&type=amount','700','320','true','','true','text');">添加收入状况</a>）</td>
+				{else}
+					<td colspan="5">您的个人收入一览（<a href="javascript:void(0);" onClick="tipsWindown('添加收入状况','url:get?/addrevenue/index.html&type=borrow','700','320','true','','true','text');">添加收入状况</a>）</td>
+				{/if}
+				</tr>
+			
+				<tr class="ytit1" >
+					<td  >收入类型</td>
+					<td  >收入名称</td>
+					<td  >金额</td>
+					<td  >其他说明</td>
+					<td  >操作</td>
+				</tr>
+				{list module="rating" var="loop" function ="GetFinanceList" user_id="0" use_type="1"}
+				{foreach from="$loop.list" item="item"}
+				<tr {if $key%2==1} class="tr1"{/if} >
+					<td>{$item.type|linkages:"rating_revenue"}</td>
+					<td>{$item.name}</td>
+					<td>{$item.account}</td>
+					<td>{$item.other}</td>
+					{if $_G.site_result.nid=="amount_finance"}
+					<td><a href="javascript:void(0);" onClick="tipsWindown('添加收入状况','url:get?/addrevenue/index.html&edit={$item.id}&type=amount','700','320','true','','true','text');">编辑</a>/<a href="#" onClick="javascript:if(confirm('确定要删除吗?删除后将不可恢复')) location.href='/?user&q=code/rating/finance&del={$item.id}&type=borrow'">删除</a></td>
+					{else}
+					<td><a href="javascript:void(0);" onClick="tipsWindown('添加收入状况','url:get?/addrevenue/index.html&edit={$item.id}&type=borrow','700','320','true','','true','text');">编辑</a>/<a href="#" onClick="javascript:if(confirm('确定要删除吗?删除后将不可恢复')) location.href='/?user&q=code/rating/finance&del={$item.id}&type=amount'">删除</a></td>
+					{/if}
+				</tr>
+				{/foreach}
+			</table>
+			<br>
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabyel">
+				<tr class="ytit">
+				{if $_G.site_result.nid=="amount_finance"}
+					<td colspan="5">您的个人支出一览（<a href="javascript:void(0);" onClick="tipsWindown('添加支出状况','url:get?/addpayment/index.html&type=amount','700','320','true','','true','text');">添加支出状况</a>）</td>
+				{else}
+					<td colspan="5">您的个人支出一览（<a href="javascript:void(0);" onClick="tipsWindown('添加支出状况','url:get?/addpayment/index.html&type=borrow','700','320','true','','true','text');">添加支出状况</a>）</td>
+				{/if}
+				</tr>
+				<tr class="ytit1" >
+					<td  >支出类型</td>
+					<td  >支出名称</td>
+					<td  >金额</td>
+					<td  >其他说明</td>
+					<td  >操作</td>
+				</tr>
+				{list module="rating" var="floop" function ="GetFinanceList" user_id="0" use_type="2"}
+				{foreach from="$floop.list" item="item"}
+				<tr {if $key%2==1} class="tr1"{/if} >
+					<td>{$item.type|linkages:"rating_payment"}</td>
+					<td>{$item.name}</td>
+					<td>{$item.account}</td>
+					<td>{$item.other}</td>
+					{if $_G.site_result.nid=="amount_finance"}
+					<td><a href="javascript:void(0);" onClick="tipsWindown('添加收入状况','url:get?/addpayment/index.html&edit={$item.id}&type=amount','700','300','true','','true','text');">编辑</a>/<a href="#" onClick="javascript:if(confirm('确定要删除吗?删除后将不可恢复')) location.href='/?user&q=code/rating/finance&del={$item.id}&type=amount'">删除</a></td>
+					{else}
+					<td><a href="javascript:void(0);" onClick="tipsWindown('添加收入状况','url:get?/addpayment/index.html&edit={$item.id}&type=borrow','700','300','true','','true','text');">编辑</a>/<a href="#" onClick="javascript:if(confirm('确定要删除吗?删除后将不可恢复')) location.href='/?user&q=code/rating/finance&del={$item.id}&type=borrow'">删除</a></td>
+					{/if}
+				</tr>
+				{/foreach}
+			</table>
+			<br>
+			<div style="text-align:right">
+			支出和收入必须最少填写一项，完成后点此进入
+			{if $floop.total==0 && $loop.total==0}
+			<a href="javascript:alert('支出和收入均需填写一项');" style="color:#0000ff">下一步</a>
+			{else}
+				{if $_G.site_result.nid=="amount_finance"}
+					<a href="/amount_contact/index.html" style="color:#0000ff">下一步</a>
+				{else}
+					<a href="/borrow_contact/index.html" style="color:#0000ff">下一步</a>
+				{/if}
+			{/if}
+			</div>
+			{/list}
+			{/list}
+</div>
