@@ -1,0 +1,28 @@
+
+{include file="user_header.html"}
+
+<div class="clearfix con_box">
+
+     <div class="zhuce_bor">
+	      <h1>免费注册</h1>
+		  <div style="background:#F7F6F6; margin:5px; padding:10px; text-align:center"><img src="{$tempdir}/images/zc_step.gif" /></div>
+		  <div style="margin-top:10px">
+		      <div class="user_action_reg_form" align="center">
+			<strong>{$_U.sendemail}</strong> 将收到一封认证邮件，请查收。
+成功认证后，你就可以畅快使用站内所有功能。<br /><br />
+
+<a href="{$_U.emailurl}" target="_blank"><img src="{$tempdir}/images/renzheng.png" align="absmiddle" border="0" /></a><br /><br />
+
+如果没有收到邮箱，请点击此 <a href="javascript:void(0);" onclick='tipsWindown("邮件激活","url:get?index.php?user&q=action/reg_send_email",300,100,"true","","true","text")'><font color="#FF0000">重新激活</font></a>你的邮箱。<br />
+<a href="/index.php?user&q=action/reg_email&jump=true">如果不想认证，请点击这里跳过去</a>
+			</div>
+		 
+		  <div style="clear:both"></div>
+		  </div>
+	 </div>
+</div>
+
+
+
+
+{include file="user_footer.html"}

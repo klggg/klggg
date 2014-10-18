@@ -1,0 +1,45 @@
+{include file="user_header.html"}
+<div class="clearfix con_box">
+
+  <div class="getpwd_bor">
+    <div class="gt_top"> <img src="{$tempdir}/images/user_fpwd.gif" /> </div>
+    <div class="gt_content">
+      <div style="width:765px; float:left; margin-bottom:20px;font-size:13px;">
+        <form action="" method="post">
+          <table border="0" align="center" cellpadding="0" cellspacing="0" class="gt_tab">
+            <tr>
+              <td width="150"></td>
+              <td width="450" colspan="2" align="left" valign="middle">请输入您注册时使用的Email地址，我们将给您发送重置密码邮件。</td>
+            </tr>
+            <tr>
+              <td></td>
+              <td width="60" align="left" valign="middle">用&nbsp;户&nbsp;名：</td>
+              <td width="390" align="left" valign="middle"><input class="in_text" name="username" maxLength=16 / >
+                </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td align="left" valign="middle">注册邮箱：</td>
+              <td align="left" valign="middle"><input class="in_text" name="email" maxLength=32 >
+                </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td colspan="2" align="left" valign="middle"><input name="Submit" type="submit" title="点击我" value="" id="submit" class="find_button" style="cursor: pointer" /></td>
+            </tr>
+          </table>
+        </form>
+      </div>
+      <div style="float:right;background:url({$tempdir}/images/shuxian.gif) no-repeat;width:175px; height:120px;margin-left:0px; border-left:1px solid #dedede; overflow:hidden; margin-top:20px;padding:80px 0 0 20px;">
+        <div>
+          <form action="/index.php?user&q=reg" method="post">
+            <input type="submit" name="Submit" value=""  class="getp_btn"/>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="cle"></div>
+{include file="user_footer.html"}
+

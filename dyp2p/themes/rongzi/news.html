@@ -1,0 +1,42 @@
+{include file="header.html"}
+<link href="{$tempdir}/css/help.css" rel="stylesheet" type="text/css" />
+<!--中间部分开始-->
+<center>
+  <div id="middle_user">
+    <!--左边导航开始-->
+    <div id="middle_user_left">
+      <ul class="user_ul ">
+        <li class="user_li_01">新闻中心</li>
+		        <li class="user_li_02"><a href="/latest/index.html">最近公告</a></li>
+        <li class="user_li_02"><a href="/reports/index.html">媒体报道</a></li>
+		  <li class="user_li_02"><a href="/sense/index.html">金融常识</a></li>
+		  
+      </ul>
+       {include file="kefu_bottom.html"}
+    </div>
+    <!--左边导航结束-->
+    <!--右边导航开始-->
+    <div id="middle_user_right" class="conts" style="float:right">
+     
+      <div class="section" style="margin-top:0px;">
+ 
+        <div class="section_con">
+         	{loop module="articles" function="GetList" var="var" limit="all" type_id="13"}
+        &middot;<a href="/news/{$var.nid}/a{$var.id}.html">{$var.name}&nbsp;&nbsp;<font color="#CCCCCC">{$var.addtime|date_format:"Y-m-d H:i:s"}</font></a><br />
+		{/loop}
+         	{loop module="articles" function="GetList" var="var" limit="all" type_id="14" }
+        &middot;<a href="/news/{$var.nid}/a{$var.id}.html">{$var.name}&nbsp;&nbsp;<font color="#CCCCCC">{$var.addtime|date_format:"Y-m-d H:i:s"}</font></a><br />
+		{/loop}
+            	{loop module="articles" function="GetList" var="var" limit="all" type_id="25"}
+        &middot;<a href="/news/{$var.nid}/a{$var.id}.html">{$var.name}&nbsp;&nbsp;<font color="#CCCCCC">{$var.addtime|date_format:"Y-m-d H:i:s"}</font></a><br />
+		{/loop}
+          <div class="clear"></div>
+        </div>
+      </div>
+	  </div>
+      <!--右边导航结束-->
+    <div class="clear"></div>
+  </div>
+</center>
+<!--中间部分结束-->
+{include file="footer.html"}

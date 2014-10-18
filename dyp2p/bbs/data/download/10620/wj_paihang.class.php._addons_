@@ -1,0 +1,117 @@
+<?php
+/**
+ *	[简洁首页N格排行(wj_paihang.{modulename})] (C)2012-2099 Powered by wangjins.com.
+ *	Version: 1
+ *	Date: 2013-1-14 18:20:52
+ */
+
+if(!defined('IN_DISCUZ')) {
+	exit('Access Denied');
+}
+class plugin_wj_paihang_forum {
+	//TODO - Insert your code here
+	function index_top(){
+		global $_G;
+		$time = time();
+		$skin = empty($_G['cache']['plugin']['wj_paihang']['skin'])?'blue':$_G['cache']['plugin']['wj_paihang']['skin'];
+		$wtext = explode('|', $_G['cache']['plugin']['wj_paihang']['wtext']);
+		if($_G['setting']['version']=='X2')
+		{
+			if(!file_exists(DISCUZ_ROOT.'./data/cache/cache_wj_paihang_subject.php'))
+			{
+				$this->retie();
+				$this->huifu();
+				$this->bankuai();
+			}
+			require_once(DISCUZ_ROOT.'./data/cache/cache_wj_paihang_subject.php');
+			require_once(DISCUZ_ROOT.'./data/cache/cache_wj_paihang_replies.php');
+			require_once(DISCUZ_ROOT.'./data/cache/cache_wj_paihang_forum.php');
+		}else
+		{
+			if(!file_exists(DISCUZ_ROOT.'./data/sysdata/cache_wj_paihang_subject.php'))
+			{
+				$this->retie();
+				$this->huifu();
+				$this->bankuai();
+			}
+			
+			require_once(DISCUZ_ROOT.'./data/sysdata/cache_wj_paihang_subject.php');
+			require_once(DISCUZ_ROOT.'./data/sysdata/cache_wj_paihang_replies.php');
+			require_once(DISCUZ_ROOT.'./data/sysdata/cache_wj_paihang_forum.php');
+		}
+		$hotsubject = $csubject['data'];
+		$hotreplies = $creplies['data'];
+		$hotforum = $cforum['data'];
+		if( ($time-$csubject['lasttime']) > $_G['cache']['plugin']['wj_paihang']['cachetime'] ){
+			$this->retie();
+			$this->huifu();
+			$this->bankuai();
+		}
+		include template('wj_paihang:wj');
+		return $return;
+	}
+	//获取热帖
+	function retie()
+	{
+		global $_G;
+		require_once libfile('function/cache');
+		$arr = array();
+		$db_sql = "select tid, subject, views, replies from ".DB::table('forum_thread')." where isgroup=0 and status<>3 and closed=0 order by views desc limit 10;";
+		$query = DB::query($db_sql);
+		while($result = DB::fetch($query)) {
+			$result['subject'] = cutstr($result['subject'], 36);
+			$arr[] = $result;
+		}
+		$carr = array('lasttime'=>time(),'data'=>$arr);
+		$cachearr = "\$csubject=".arrayeval($carr).";\n\n";
+		writetocache('wj_paihang_subject', $cachearr);
+	}
+	//获取热门回复
+	function huifu()
+	{
+		global $_G;
+		require_once libfile('function/cache');
+		$arr = array();
+		$db_sql = "select tid, subject, views, replies from ".DB::table('forum_thread')." where isgroup=0 and status<>3 and closed=0 order by replies desc limit 10;";
+		$query = DB::query($db_sql);
+		while($result = DB::fetch($query)) {
+			$result['subject'] = cutstr($result['subject'], 36);
+			$arr[] = $result;
+		}
+		$carr = array('lasttime'=>time(),'data'=>$arr);
+		$cachearr .= "\$creplies=".arrayeval($carr).";\n\n";
+		writetocache('wj_paihang_replies', $cachearr);
+	}
+	//热门板块
+	function bankuai()
+	{
+		global $_G;
+		require_once libfile('function/cache');
+		$arr = array();
+		$forumorder = $_G['cache']['plugin']['wj_paihang']['forumorder'];
+		if($forumorder=='1')
+			$ostr = 'posts';
+		else
+			$ostr = 'todayposts';
+		$db_sql = "select `fid`,`name`,`posts`,`todayposts` from ".DB::table('forum_forum')." where `type`='forum' and status=1 order by ".$ostr." desc limit 10;";
+		$query = DB::query($db_sql);
+		while($result = DB::fetch($query)) {
+			$result['name'] = cutstr($result['name'], 12, '');
+			$result['clicks'] = $result[$ostr];
+			$result['processcolor'] = '#DCDCDC';
+			$arr[] = $result;
+		}
+		foreach($arr as $key=>$val)
+		{
+			$arr[$key]['process'] = intval($arr[$key]['clicks']/$arr[0]['clicks']*100);
+		}
+		$arr[0]['processcolor'] = '#ff7c00';
+		$arr[1]['processcolor'] = '#FEBB01';
+		$arr[2]['processcolor'] = '#FCE61A';
+		$carr = array('lasttime'=>time(),'data'=>$arr);
+		$cachearr .= "\$cforum=".arrayeval($carr).";\n\n";
+		writetocache('wj_paihang_forum', $cachearr);
+	}
+}
+
+?>

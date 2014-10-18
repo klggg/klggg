@@ -1,0 +1,1127 @@
+{include file="user_header.html"}
+<div class="clearfix con_box">
+
+<div class="mi_content">
+	<div class="mi_c_left">
+		{include file="user_menu.html"}
+	</div>
+	<div class="user_right">
+	   <div>
+		   <div class="m_change">
+			{if $_U.query_type=="myapp" || $_U.query_type=="borrow_credit" || $_U.query_type=="gold"}
+
+			<ul>
+				<li><a href="{$_U.query_url}/myapp" {if $_U.query_type=="myapp"} class="onn"{/if}>我的认证</a></li>
+				<!-- 屏蔽2个TAB，hummer modify 201309060039
+				<li><a href="{$_U.query_url}/borrow_credit" {if $_U.query_type=="borrow_credit"} class="onn"{/if}>还款积分</a></li>
+				<li><a href="{$_U.query_url}/gold" {if $_U.query_type=="gold"} class="onn"{/if}>奖励金币</a></li>
+				结束-->
+				
+				
+				<!--<li><a href="{$_U.query_url}/realname" {if $_U.query_type=="realname"} class="onn"{/if}>实名认证</a></li>
+
+				<li><a href="{$_U.query_url}/email_status" {if $_U.query_type=="email_status"} class="onn"{/if}>邮箱认证</a></li>
+
+				<li><a href="{$_U.query_url}/phone_status" {if $_U.query_type=="phone_status"} class="onn"{/if}>手机认证</a></li>
+
+				<li><a href="{$_U.query_url}/edu_status" {if $_U.query_type=="edu_status"} class="onn"{/if}>学历认证</a></li>
+
+				<li><a href="{$_U.query_url}/video_status" {if $_U.query_type=="video_status"} class="onn"{/if}>视频认证</a></li>-->
+
+			</ul>
+		<!--流转标 2-->
+			{elseif $_U.query_type=="phone_status" || $_U.query_type=="realname" || $_U.query_type=="email_status" || $_U.query_type=="edu_status" || $_U.query_type=="video_status"  || $_U.query_type=="flow_status"}
+
+			<ul>
+<li><a href="{$_U.query_url}/email_status" {if $_U.query_type=="email_status"} class="onn"{/if}>邮箱认证</a></li>
+                <!--流转标 2-->
+                <li><a href="{$_U.query_url}/flow_status" {if $_U.query_type=="flow_status"} class="onn"{/if}>流转认证</a></li>
+			</ul>
+
+			{/if}
+
+		</div>
+
+		<div class="us_r_bor1">
+		
+		{if $_U.query_type=="realname"}
+
+		<!--修改登录密码 开始-->
+
+		{if $_G.userinfo.realname_status==1} 
+
+		<div class="user_main_title1">
+		{if $_U.realname_result.status==1}
+			注意：您已经通过了实名认证，如要修改请跟客服联系。
+		{else}
+			注意：您已经提交实名认证，请等待审核。
+		{/if}</div>
+
+		<div class="user_right_border">
+
+			<div class="l">用户名：</div>
+
+			<div class="c">
+
+				{$_G.user_result.username} 
+
+			</div>
+
+		</div>
+
+		<div class="user_right_border">
+
+			<div class="l">真实姓名：</div>
+
+			<div class="c">
+
+				{$_U.realname_result.realname} 
+
+			</div>
+
+		</div>
+		
+		<div class="user_right_border">
+
+			<div class="l">证件号码：</div>
+
+			<div class="c">
+
+				{$_U.realname_result.card_id}
+
+			</div>
+
+		</div>
+		{else}
+
+		
+
+		<form action="" name="form1" method="post" onsubmit="return check_form()" enctype="multipart/form-data">
+
+		<div class="user_main_title1">注意：请认真填写以下的内容，一旦通过实名认证以下信息将不能修改。{if $_G.system.con_realname_status==1}实名认证费用为<strong style="color:red">5块钱</strong>。{/if}你现在的可用<strong style="color:red">余额为{$_G.user_result.use_money} [<a href="/?user&q=code/account/recharge_new" target="_blank">我要充值</a>]</strong>。<br /><strong>通过身份认证(直接对接全国公民身份信息系统)，您可以获得以下:</strong><br /> 通过身份认证的用户借款成功率增加了<strong style="color:red">60%</strong>。<br />
+		
+
+通过身份认证的用户借款完成速度提高了<strong style="color:red">50%</strong>。<br />同时也将得到的关注度是未通过身份用户的<strong style="color:red">3倍</strong>。<br />上传最大的图片为1M，上传的格式为jpg.gif。</div>
+
+		
+
+		{if $_G.system.con_realname_status==1}<div class="user_right_border">
+
+		<div class="l"></div>
+
+			<div class="c" style="font-weight:bold">{if $_G.user_result.use_money<5} 您的余额为{$_G.user_result.use_money},请先 <a href="/index.php?user&q=code/account/recharge_new"><font color="#FF0000">充值</font></a>。{/if}</div>
+
+		</div>
+
+		{/if}
+
+		<div class="user_right_border">
+
+			<div class="l">用户名：</div>
+
+			<div class="c">
+
+				{$_G.user_result.username} 
+
+			</div>
+
+		</div>
+
+		
+
+		<div class="user_right_border">
+
+			<div class="l">真实姓名：</div>
+
+			<div class="c">
+
+				<input type="text" name="realname" value="{$_U.realname_result.realname}" /> <font color="#FF0000">*</font> 
+
+			</div>
+
+		</div>
+
+		
+
+		<div class="user_right_border">
+
+			<div class="l">性 别 ：</div>
+
+			<div class="c">
+
+				<input type="radio" name="sex" value="男" {if $_U.realname_result.sex=="1" || $_U.realname_result.sex==""}checked="checked" {/if} />男 <input type="radio" name="sex" value="女"  {if $_U.realname_result.sex=="2"}checked="checked" {/if} />女 <font color="#FF0000">*</font> 
+
+			</div>
+
+		</div>
+		<div class="user_right_border">
+
+			<div class="l">证件号码：</div>
+
+			<div class="c">
+
+				<input type="text" name="card_id" value="{$_U.realname_result.card_id}" />  <font color="#FF0000">*</font> 
+
+			</div>
+
+		</div>
+		
+		
+
+		<div class="user_right_border">
+
+			<div class="l">身份证正面上传：</div>
+
+			<div class="c">
+
+				<input type="file" name="card_pic1" size="20" class="input_border"/> {if $_U.realname_result.card_pic1_url!=""}<a href="./{ $_U.realname_result.card_pic1_url}" target="_blank" title="有图片"><img src="{ $tempdir }/images/42.gif" border="0"  /></a>{/if}  上传最大的图片为1M，上传的格式为jpg.gif<font color="#FF0000">*</font> 
+
+			</div>
+
+		</div>
+       <div class="user_right_border">
+
+			<div class="l">身份证背面上传：</div>
+
+			<div class="c">
+
+			
+<input type="file" name="card_pic2" size="20" class="input_border"/> {if $_U.realname_result.card_pic2_url!=""}<a href="./{ $_U.realname_result.card_pic2_url}" target="_blank" title="有图片"><img src="{ $tempdir }/images/42.gif" border="0"  /></a>{/if} 上传最大的图片为1M，上传的格式为jpg.gif <font color="#FF0000">*</font> 
+			</div>
+
+		</div>
+		<div class="user_right_border">
+
+			<div class="e"></div>
+
+			<div class="c">
+
+			{if $_G.system.con_realname_status==1}
+
+				{if $_G.user_result.use_money>=5}<input type="submit" name="name"  value="确认提交"  class="xinbuton" 
+ size="30" />（注意，若审核结果为身份证号码姓名不一致，也将扣除5元资费！）{else} 您的余额为{$_G.user_result.use_money},请先 <a href="/index.php?user&q=code/account/recharge_new"><font color="#FF0000">充值</font></a>。{/if}
+
+			{else}
+			{articles module="account" function="GetOne" var="var" user_id="$_G.user_id"}
+			{if $var.balance<5 && $_G.userinfo.realname_times>1}
+				余额不足5元，无法认证。请先<a href="/?user&q=code/account/recharge_new">充值</a>。
+			{else}
+				<input type="submit" name="name"  value="确认提交"  class="xinbuton" 
+ size="30" />
+			{/if}
+			{/articles}
+
+			{/if}
+
+			</div>
+
+		</div>
+
+		</form>{/if}
+
+		<div class="user_right_foot">
+
+		<strong style=" color:#FF0000">* 温馨提示：我们将严格对用户的所有资料进行保密</strong>
+
+		</div>
+
+		{literal}<script>
+
+			function check_form(){
+
+				 var frm = document.forms['form1'];
+
+				 var realname = frm.elements['realname'].value;
+
+				 var card_id = frm.elements['card_id'].value;
+
+				 var errorMsg = '';
+
+				  if (realname.length == 0 ) {
+
+					errorMsg += '* 真实姓名不能为空' + '\n';
+
+				  }
+
+				  if (card_id.length == 0 ) {
+
+					errorMsg += '* 证件号码不能为空' + '\n';
+
+				  }
+				  
+				  if (errorMsg.length > 0){
+
+					alert(errorMsg); return false;
+
+				  } else{  
+
+					return true;
+
+				}
+
+			
+
+			}
+
+		</script>{/literal}
+
+		<!--修改登录密码 结束-->
+
+		
+
+			
+
+		{elseif $_U.query_type=="edu_status"}
+		{if $_U.edu_result.status==1} 
+
+		<div class="user_main_title1">注意：您已经通过了学历认证，如要修改请跟客服联系。</div>
+
+		<div class="user_right_border">
+
+			<div class="l">用户名：</div>
+
+			<div class="c">
+
+				{$_G.user_result.username} 
+
+			</div>
+
+		</div>
+
+
+		<div class="user_right_border">
+
+			<div class="l">真实姓名：</div>
+
+			<div class="c">
+
+				{$_U.edu_result.realname} 
+
+			</div>
+
+		</div>
+		
+
+		<div class="user_right_border">
+			<div class="l">毕业院校：</div>
+			<div class="c">
+					{$_U.edu_result.graduate}
+			</div>
+		</div>
+
+		<div class="user_right_border">
+			<div class="l">专业：</div>
+			<div class="c">
+					{$_U.edu_result.speciality}
+			</div>
+		</div>
+
+		<div class="user_right_border">
+			<div class="l">学历：</div>
+			<div class="c">
+					{$_U.edu_result.degree}
+			</div>
+		</div>
+
+		<div class="user_right_border">
+			<div class="l">入学时间：</div>
+			<div class="c">
+					{$_U.edu_result.enrol_date}
+			</div>
+		</div>
+
+		<div class="user_right_border">
+			<div class="l">毕业时间：</div>
+			<div class="c">
+					{$_U.edu_result.graduate_date}
+			</div>
+		</div>
+
+		
+
+		{else}
+
+		
+
+		<form action="" name="form1" method="post" enctype="multipart/form-data">
+
+		<div class="user_main_title1">{if $_G.user_result.edu_status==2}您的学历认证审核中，请耐心等待。{else}学历认证申请。{/if}</div>
+
+		<div class="user_right_border">
+
+			<div class="l">用户名：</div>
+
+			<div class="c">
+
+				{$_G.user_result.username} 
+
+			</div>
+
+		</div>
+
+		
+
+		
+
+		<div class="user_right_border">
+
+			<div class="l">真实姓名：</div>
+
+			<div class="c">
+
+				{$_U.edu_result.realname} 
+
+			</div>
+
+		</div>
+
+		
+		<div class="user_right_border">
+
+
+			<div class="l">毕业院校：</div>
+
+
+			<div class="c">
+
+
+					<input type="text" name="graduate" id="graduate" value="{$_U.edu_result.graduate}">
+
+
+			</div>
+
+
+		</div>
+		
+		<div class="user_right_border">
+
+
+			<div class="l">专业：</div>
+
+
+			<div class="c">
+
+
+					<input type="text" name="speciality" id="speciality" value="{$_U.edu_result.speciality}">
+
+
+			</div>
+
+
+		</div>
+
+		<div class="user_right_border">
+
+			<div class="l">学历：</div>
+
+			<div class="c">
+
+					<input type="text" name="degree" id="degree" value="{$_U.edu_result.degree}">
+
+			</div>
+
+		</div>
+		
+		<div class="user_right_border">
+
+
+			<div class="l">入学时间：</div>
+
+
+			<div class="c">
+
+
+					<input type="text" name="enrol_date" id="enrol_date" value="{$_U.edu_result.enrol_date}">
+
+
+			</div>
+
+
+		</div>
+		
+		<div class="user_right_border">
+
+
+			<div class="l">毕业年份：</div>
+
+
+			<div class="c">
+
+
+					<input type="text" name="graduate_date" id="graduate_date" value="{$_U.edu_result.graduate_date}">
+
+
+			</div>
+
+
+		</div>
+		
+		
+		<div class="user_right_border">
+
+
+			<div class="l">上传证书：</div>
+
+
+			<div class="c">
+
+
+					{if $_U.edu_result.edu_pic==""}<input type="file" name="edu_pic" id="edu_pic">{else}有图片{/if}
+
+
+			</div>
+
+
+		</div>
+
+		
+
+		<div class="user_right_border">
+
+			<div class="l"></div>
+
+			<div class="c">
+
+				<input type="submit" name="name"  value="确认提交"  class="xinbuton" 
+ size="30" />
+
+			</div>
+
+		</div>
+
+		
+
+		<div class="user_right_border">
+
+			<div class="l"></div>
+
+			<div class="c">
+
+				注：学历认证每次2元，请不要重复提交；将直接通过ID5查找国家教育部学历学位系统，仅限2001年后毕业的高等院校教育信息核实；
+
+			</div>
+
+		</div>
+
+		
+
+		
+
+		</form>
+
+		
+
+		{/if}
+
+		<div class="user_right_foot">
+
+		<strong style=" color:#FF0000">* 温馨提示：我们将严格对用户的所有资料进行保密</strong>
+
+		</div>
+
+		
+
+		<!--学历认证 结束-->
+
+		
+
+		{elseif $_U.query_type=="email_status"}
+
+		<!--邮箱认证 开始-->
+
+		{if $_G.user_info.email_status==1}
+
+		<div class="user_main_title1">您的邮箱已经通过认证：<b>{$_G.user_result.email}</b> </div>
+
+		<div class="user_right_border">
+
+			<div class="c">
+
+				<form action="" method="post" onsubmit="this.elements['submit'].disabled='disabled';return true;">
+
+				重设邮箱：<input type="text" name="email" value="{$_G.user_result.email}" />  <input type="submit" class="xinbuton"  name="submit" value="重新激活"  />
+
+				</form>
+
+			</div>
+
+		</div>
+
+		{else}
+
+		<div class="user_main_title1">您的邮箱还没通过认证：<b>{$_U.user_result.email}</b></div>
+
+		<div class="user_right_border">
+
+			<div class="c">
+
+				<form action="" method="post" onsubmit="this.elements['submit'].disabled='disabled';return true;">
+
+				重设邮箱：<input type="text" name="email" value="{$_G.user_result.email}" />  <input  class="xinbuton"  type="submit" name="submit" value="重新激活"  />
+
+				</form>
+
+			</div>
+
+		</div>
+
+		{/if}
+
+		<!--邮箱认证 结束-->
+
+		
+
+		
+
+		{elseif $_U.query_type=="phone_status"}
+
+		<!--邮箱认证 开始-->
+
+		{if $_G.user_info.phone_status==1}
+
+		<div class="user_main_title1">您的手机已经通过认证，认证的手机号码为：<b>{$_G.user_info.phone}</b></div>
+
+		{else}
+
+		<div class="user_main_title1">
+
+		{if $_G.user_info.phone_status!=0}您的手机客服正在审核中，请耐心等待。手机号：<font color="#FF0000">{$_G.user_info.phone}</font>。{else}您的手机还没通过认证。{/if}</b></div>
+
+		{/if}
+<script>
+var phonenum = '{$_G.user_info.phone|default:0}';
+{literal}
+function checksms(){
+  var newphone=$("#phone").val();
+  if (newphone==""){
+	alert("请填写手机号码！");
+	return false;
+  }
+	$.get("/?user&q=code/users/checkphone",{phone:newphone},function(result){
+		if (result==true){
+			alert("手机号码已存在！");
+			return false;
+		}else{
+		   // $.post("/?user&q=code/approve/phone_status",{phone:newphone},function(data){
+				location.href="/?user&q=code/approve/phone_status&style=sms&phone="+newphone;
+		//});
+		}
+	});
+}
+</script>
+{/literal}
+		{if $magic.request.style=="sms"}
+		<div class="user_right_border">
+
+
+			<div class="c">
+
+
+				<form action="" method="post">手机号码：{$magic.request.phone}     <br>
+				输入验证码：<input type="text" name="sms_code"/><br>
+				<input type="hidden" name="phone_new" value="{$magic.request.phone}" />
+				<input type="hidden" name="app" value="1" />
+				<input type="submit" value="确认提交"  class="xinbuton" 
+ /><br /><br />
+				<font color="#FF0000">温馨提示：进行手机认证后，本手机号将作为易信云投和您确认贷款的途径之一，请使用您常用的手机号码进行认证，您的手机号码不会以任何形式被泄露。 如果您收不到手机验证码，请拨打客服电话：4000-120-632</font>
+				</form>
+
+
+
+
+
+			</div>
+
+
+		</div>
+		{else}
+		<div class="user_right_border">
+
+			<div class="c">
+
+				手机号码：<input type="text" name="phone" id="phone"/> <input type="submit" value="确认提交"  class="xinbuton" 
+ onclick="checksms()"/><br /><br />
+
+
+
+			</div>
+
+		</div>
+		{/if}
+		<!--邮箱认证 结束-->
+
+		
+		{elseif $_U.query_type=="borrow_credit"}
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabyel">
+			<tr class="ytit">
+			{articles module="borrow" function="GetBorrowCredit" var="Cvar" user_id=$_G.user_id}
+				<td colspan="4">还款积分：<font color="red">{$Cvar.borrow_credit|default:"0"}分</font> {$Cvar.borrow_credit|default:"0"|credit:"borrow"}</td>
+			</tr>
+			{/articles}
+			<tr class="ytit1">
+				<td width="33%">项目名称</td>
+				<td width="33%">累积规则</td>
+				<td width="33%">所获积分</td>
+			</tr>
+			{articles module="credit" function="GetCreditCount" var="cvar" user_id=$_G.user_id}
+			<tr>
+				<td>还款记录</td>
+				<td>成功还款，每100元积1分</td>
+				<td>{$cvar.repay_all|default:"0"}分</td>
+			</tr>
+			<tr>
+				<td>迟还款(指逾期1-3天的还款)</td>
+				<td>每次扣100分</td>
+				<td>{$cvar.borrow_repay_slow|default:"0"}分</td>
+			</tr>
+			<tr>
+				<td>一般逾期还款(指逾期3-30天的还款)</td>
+				<td>每次扣200分</td>
+				<td>{$cvar.borrow_repay_late_common|default:"0"}分</td>
+			</tr>
+			<tr>
+				<td>严重逾期还款(指逾期30-90天的还款)</td>
+				<td>每次扣300分</td>
+				<td>{$cvar.borrow_repay_late_serious|default:"0"}分</td>
+			</tr>
+			<tr>
+				<td>恶意逾期还款(指逾期90天以上的还款)</td>
+				<td>每次扣400分</td>
+				<td>{$cvar.borrow_repay_late_spite|default:"0"}分</td>
+			</tr>
+			{/articles}
+		</table>
+		{elseif $_U.query_type=="gold"}
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabyel">
+			{articles module="credit" function="GetGoldCount" user_id="$_G.user_id" var="Cvar"}
+			<tr class="ytit">
+				<td colspan="4">获得的金币 {$Cvar.total}</td>
+			</tr>
+			<tr class="ytit1">
+				<td width="33%">项目名称</td>
+				<td width="33%">累积规则</td>
+				<td width="33%">所获金币</td>
+			</tr>
+			<tr>
+				<td>会员注册</td>
+				<td>30金币（仅一次）</td>
+				<td>{$Cvar.reg|default:0}</td>
+			</tr>
+			<tr>
+				<td>邀请注册成功（并成为VIP）</td>
+				<td>10金币/个</td>
+				<td>{$Cvar.invite_gold|default:0}</td>
+			</tr>
+			<tr>
+				<td>邀请人投标成功</td>
+				<td>1金币/5000元</td>
+				<td>{$Cvar.invite_tender|default:0}</td>
+			</tr>
+			<tr>
+				<td>成功投标</td>
+				<td>1金币/10000元</td>
+				<td>{$Cvar.tender|default:0}</td>
+			</tr>
+			<tr>
+				<td>Vip冲抵</td>
+				<td>-20/次</td>
+				<td>{$Cvar.vip_gold|default:0}</td>
+			</tr>
+			{/articles}
+		</table>
+		{elseif $_U.query_type=="myapp"}
+		<!--信用积分显示，原来显示，现在暂时屏蔽。hummer modify 201309060016 
+		<div>
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabyel">
+				<tr class="ytit">
+					<td colspan="8">信用等级及对应信用分数</td>
+				</tr>
+				<tr class="ytit1">
+					<td width="20%">信用等级</td>
+					<td width="10%"><img src="{$tempdir}/images/credit_aa.gif" width="28" height="28" /></td>
+					<td width="10%"><img src="{$tempdir}/images/credit_a.gif" width="28" height="28" /></td>
+					<td width="10%"><img src="{$tempdir}/images/credit_b.gif" width="28" height="28" /></td>
+					<td width="10%"><img src="{$tempdir}/images/credit_c.gif" width="28" height="28" /></td>
+					<td width="10%"><img src="{$tempdir}/images/credit_d.gif" width="28" height="28" /></td>
+					<td width="10%"><img src="{$tempdir}/images/credit_e.gif" width="28" height="28" /></td>
+					<td width="10%"><img src="{$tempdir}/images/credit_hr.gif" width="28" height="28" /></td>
+				</tr>
+				<tr>
+					<td>信用分数</td>
+					<td>165及以上</td>
+					<td>164-150</td>
+					<td>149-135</td>
+					<td>134-125</td>
+					<td>124-115</td>
+					<td>114-105</td>
+					<td>104-0</td>
+				</tr>
+			</table>
+		</div>
+		结束 信用积分屏蔽-->		 
+	<div class="t20">
+		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabyel">
+			<tr class="ytit">
+				{articles module="borrow" function="GetBorrowCredit" var="Cvar" user_id=$_G.user_id}
+				{articles module="borrow" function="GetAmountUsers" user_id=$_G.user_id var="var"}
+				<!--原来有信用总分，hummer modify 201309060038 
+				<td colspan="4">信用总分（等级）：{$Cvar.approve_credit}（{$Cvar.approve_credit|credit:"credit"}）&nbsp;&nbsp;信用额度：{if $var.borrow_amount<0}0{else}{$var.borrow_amount}{/if}( 可用额度：{if $var.borrow_amount_use<0}0{else}{$var.borrow_amount_use}{/if} ) </td>
+				-->
+				
+				<td colspan="4">信用额度：{if $var.borrow_amount<0}0{else}{$var.borrow_amount}{/if}( 可用额度：{if $var.borrow_amount_use<0}0{else}{$var.borrow_amount_use}{/if} ) </td>
+				{/articles}
+				{/articles}
+			</tr>
+			<tr class="ytit1">
+				<td width="21%">&nbsp;</td>
+				<!-- 项目宽度 改为：64%=51+13%，hummer modify 201309060038 -->
+				<td width="51%">项目</td>
+				<td width="15%">状态</td>
+				
+				<td width="13%">信用分数</td>
+				
+			</tr>
+			<tr>
+			<!-- 基本信用认证 改为：会员信用认证，hummer modify 201309060034 -->
+				<td rowspan="9">会员信用认证状态</td>
+				<!-- 手机绑定2,身份证认证5, 学历认证2,视频认证3,举例：手机绑定</a>（2分） hummer modify 201309060032-->
+
+				<td><a href="/borrow_app/index.html">①实名认证</a></td>
+				<td>{if $_G.user_info.realname_status==1}<strong style="color:#ff0000">已通过</strong>{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+			
+				<td>{if $_G.user_info.realname_status==1}<strong style="color:#ff0000">5分</strong>{else}0分{/if}</td>
+			
+
+			</tr>
+			<tr>
+				<td><a href="/borrow_phone/index.html">②手机认证</a></td>
+				<td>{if $_G.user_info.phone_status==1}<strong style="color:#ff0000">已通过</strong>{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+				
+				<td>{if $_G.user_info.phone_status==1}<strong style="color:#ff0000">2分</strong>{else}0分{/if}</td>
+			
+			</tr>
+			
+			
+			
+			<!--<tr>
+
+				<td><a href="/borrow_edu/index.html">③学历认证</a></td>
+
+				<td>{if $_G.user_info.education_status==1}<strong style="color:#ff0000">已通过</strong>{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+				
+				<td>{if $_G.user_info.education_status==1}<strong style="color:#ff0000">2分</strong>{else}0分{/if}</td>
+				
+			</tr>-->
+			<tr>
+
+				<td><a href="/borrow_video/index.html">③视频认证</a></td>
+
+				<td>{if $_G.user_info.video_status==1}<strong style="color:#ff0000">已通过</strong>{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+				
+				<td>{if $_G.user_info.video_status==1}<strong style="color:#ff0000">3分</strong>{else}0分{/if}</td>
+				
+			</tr>
+			
+			
+			<tr>
+				<td><a href="{$_U.query_url}/email_status">④邮箱认证</a></td>
+				<td>{if $_G.user_info.email_status==1}<strong style="color:#ff0000">已通过</strong>{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+			
+				<td>{if $_G.user_info.email_status==1}<strong style="color:#ff0000">2分</strong>{else}0分{/if}</td>
+			
+			</tr>
+			
+			<tr>
+			
+                <!-- 
+				<td><a href="/?user&q=code/approve/flow_status">⑤流转认证</a></td>
+				 -->
+				 <td><a href="/?user&q=code/approve/flow_status">★流转认证</a></td>
+				<td>{if $_G.user_info.flow_status==1}<strong style="color:#ff0000">已通过</strong>{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+				
+				<td>{if $_G.user_info.flow_status==1}<strong style="color:#ff0000">-</strong>{else}-{/if}</td>
+			
+			</tr>
+			
+			
+				
+			{articles module="credit" function="GetCreditCount" var="Cvar" user_id=$_G.user_id}
+			
+			
+			<tr>
+				<td><a href="/?user&q=code/rating/basic">完善个人信息（2分）</a></td>
+				<td>{if $Cvar.info_credit.num>0}<strong style="color:#ff0000">已通过</strong>{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+				<td>{if $Cvar.info_credit.num>0}<strong style="color:#ff0000">{$Cvar.info_credit.num}分</strong>{else}0分{/if}</td>
+			</tr>
+			<tr>
+				<td><a href="/?user&q=code/rating/job">工作信息(或企业信息)（3分）</a></td>
+				<td>{if $Cvar.work_credit.num>0}<strong style="color:#ff0000">已通过</strong>{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+				<td>{if $Cvar.work_credit.num>0}<strong style="color:#ff0000">{$Cvar.work_credit.num}分</strong>{else}0分{/if}</td>
+			</tr>
+			<tr>
+				<td><a href="/?user&q=code/rating/finance">财产状况（5分）</a></td>
+				<td>{if $Cvar.finance_credit.num>0}<strong style="color:#ff0000">已通过</strong>{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+				<td>{if $Cvar.finance_credit.num>0}<strong style="color:#ff0000">{$Cvar.finance_credit.num}分</strong>{else}0分{/if}</td>
+			</tr>
+			<tr>
+				<td><a href="/?user&q=code/rating/contact">联系人信息（5分）</a></td>
+				<td>{if $Cvar.contact_credit.num>0}<strong style="color:#ff0000">已通过</strong>{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+				<td>{if $Cvar.contact_credit.num>0}<strong style="color:#ff0000">{$Cvar.contact_credit.num}分</strong>{else}0分{/if}</td>
+			</tr>
+			{/articles}
+			{articles module="attestations" function="GetAttestationsUserCredit" var="Avar" user_id=$_G.user_id}
+			<tr>
+				<td rowspan="6" height="114">必要信用审核</td>
+				<td>户口本认证（{$Avar.hukou.num}分）</td>
+				<td>{if $Avar.hukou.num>0}<strong style="color:#ff0000">已通过</strong>{elseif $Avar.hukou.status==2}未通过{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+				<td>{if $Avar.hukou.num>0}<strong style="color:#ff0000">{$Avar.hukou.num}分</strong>{else}0分{/if}</td>
+			</tr>
+			<tr>
+				<td>工作认证（{$Avar.work.num}分）</td>
+				<td>{if $Avar.work.num>0}<strong style="color:#ff0000">已通过</strong>{elseif $Avar.work.status==2}未通过{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+				<td>{if $Avar.work.num>0}<strong style="color:#ff0000">{$Avar.work.num}分</strong>{else}0分{/if}</td>
+			</tr>
+			<tr>
+				<td>收入认证（{$Avar.income.num}分）</td>
+				<td>{if $Avar.income.num>0}<strong style="color:#ff0000">已通过</strong>{elseif $Avar.income.status==2}未通过{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+				<td>{if $Avar.income.num>0}<strong style="color:#ff0000">{$Avar.income.num}分</strong>{else}0分{/if}</td>
+			</tr>
+			<tr>
+				<td>近6个月的银行资金流水（10分）</td>
+				<td>{if $Avar.bank_six.num>0}<strong style="color:#ff0000">已通过</strong>{elseif $Avar.bank_six.status==2}未通过{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+				<td>{if $Avar.bank_six.num>0}<strong style="color:#ff0000">{$Avar.bank_six.num}分</strong>{else}0分{/if}</td>
+			</tr>
+			<tr>
+				<td>住址证明（5分）</td>
+				<td>{if $Avar.live.num>0}<strong style="color:#ff0000">已通过</strong>{elseif $Avar.live.status==2}未通过{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+				<td>{if $Avar.live.num>0}<strong style="color:#ff0000">{$Avar.live.num}分</strong>{else}0分{/if}</td>
+			</tr>
+			<tr>
+				<td>央行信用报告认证（15分）</td>
+				<td>{if $Avar.bank_report.num>0}<strong style="color:#ff0000">已通过</strong>{elseif $Avar.bank_report.status==2}未通过{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+				<td>{if $Avar.bank_report.num>0}<strong style="color:#ff0000">{$Avar.bank_report.num}分</strong>{else}0分{/if}</td>
+			</tr>
+			<tr>
+				<td rowspan="10" height="190">可选信用审核</td>
+				<td>技术职称认证（5分）</td>
+				<td>{if $Avar.professional.num>0}<strong style="color:#ff0000">已通过</strong>{elseif $Avar.professional.status==2}未通过{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+				<td>{if $Avar.professional.num>0}<strong style="color:#ff0000">{$Avar.professional.num}分</strong>{else}0分{/if}</td>
+			</tr>
+			<tr>
+				<td>自有房产证明（15分）</td>
+				<td>{if $Avar.house.num>0}<strong style="color:#ff0000">已通过</strong>{elseif $Avar.house.status==2}未通过{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+				<td>{if $Avar.house.num>0}<strong style="color:#ff0000">{$Avar.house.num}分</strong>{else}0分{/if}</td>
+			</tr>
+			<tr>
+				<td>购车证明（5分）</td>
+				<td>{if $Avar.car.num>0}<strong style="color:#ff0000">已通过</strong>{elseif $Avar.car.status==2}未通过{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+				<td>{if $Avar.car.num>0}<strong style="color:#ff0000">{$Avar.car.num}分</strong>{else}0分{/if}</td>
+			</tr>
+			<tr>
+				<td>结婚证明（5分）</td>
+				<td>{if $Avar.marry.num>0}<strong style="color:#ff0000">已通过</strong>{elseif $Avar.marry.status==2}未通过{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+				<td>{if $Avar.marry.num>0}<strong style="color:#ff0000">{$Avar.marry.num}分</strong>{else}0分{/if}</td>
+			</tr>
+			<tr>
+				<td>直系亲属认证（每个5分，最高10分）</td>
+				<td>{if $Avar.kinsfolk.num>0}<strong style="color:#ff0000">已通过</strong>{elseif $Avar.kinsfolk.status==2}未通过{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+				<td>{if $Avar.kinsfolk.num>0}<strong style="color:#ff0000">{$Avar.kinsfolk.num}分</strong>{else}0分{/if}</td>
+			</tr>
+			<tr>
+				<td>其他借款记录（5分）</td>
+				<td>{if $Avar.linkman.num>0}<strong style="color:#ff0000">已通过</strong>{elseif $Avar.linkman.status==2}未通过{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+				<td>{if $Avar.linkman.num>0}<strong style="color:#ff0000">{$Avar.linkman.num}分</strong>{else}0分{/if}</td>
+			</tr>
+			<tr>
+				<td>社区网、微博、QQ认证（每个1分，最高5分）</td>
+				<td>{if $Avar.weibo.num>0}<strong style="color:#ff0000">已通过</strong>{elseif $Avar.weibo.status==2}未通过{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+				<td>{if $Avar.weibo.num>0}<strong style="color:#ff0000">{$Avar.weibo.num}分</strong>{else}0分{/if}</td>
+			</tr>
+			<tr>
+				<td>现场认证（10分）</td>
+				<td>{if $Avar.spot.num>0}<strong style="color:#ff0000">已通过</strong>{elseif $Avar.spot.status==2}未通过{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+				<td>{if $Avar.spot.num>0}<strong style="color:#ff0000">{$Avar.spot.num}分</strong>{else}0分{/if}</td>
+			</tr>
+			<tr>
+				<td>其他有价值的认证（每个2分）</td>
+				<td>{if $Avar.other.num>0}<strong style="color:#ff0000">已通过</strong>{elseif $Avar.other.status==2}未通过{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+				<td>{if $Avar.other.num>0}<strong style="color:#ff0000">{$Avar.other.num}分</strong>{else}0分{/if}</td>
+			</tr>
+			<tr>
+				<td>还款承诺书（10分）</td>
+				<td>{if $Avar.hkxys.num>0}<strong style="color:#ff0000">已通过</strong>{elseif $Avar.hkxys.status==2}未通过{else}<img width="32px" height="32px" title="待完成" alt="待完成" src="{$tempdir}/images/credit_warning.png" />{/if}</td>
+				<td>{if $Avar.hkxys.num>0}<strong style="color:#ff0000">{$Avar.hkxys.num}分</strong>{else}0分{/if}</td>
+			</tr>
+			{/articles}
+			
+		</table>
+
+	</div>
+
+      <!--流转标 2-->
+        	{elseif $_U.query_type=="flow_status"}
+		<!--流转认证 开始-->
+		{if $_U.flow_result.status==1}
+		<div class="user_help">您已经通过了流转认证</div>
+		{else}
+		<div class="user_help">
+		
+		{if $_U.flow_result.id>0}您的流转认证已经提交，客服人员会及时的跟你联系。</font>。{else}欢迎进行流转认证。<div class="user_right_border">
+			<div class="c">
+				<form action="" method="post">
+				
+				如果你需要流转认证，请点按钮提交。<input type="submit" class="xinbuton" value="提交申请" name="submit" /></form>
+
+			</div>
+		</div>{/if}</div>
+		{/if}
+		<!--流转认证 结束-->
+
+		{elseif $_U.query_type=="video_status"}
+
+		<!--视频认证 开始-->
+
+		{if $_U.video_result.status==1}
+
+		<div class="user_main_title1">您已经通过了视频认证</div>
+
+		{else}
+
+		<div class="user_main_title1">
+
+		{if $_U.video_result.id!=""}您的视频认证已经提交，客服人员会及时的跟你联系。</font>{else}您尚未通过视频认证。
+
+		<div  >
+
+			
+
+				如果你需要视频认证，请点按钮提交。<form action="" method="post"><input type="submit" value="提交申请" name="submit" />
+
+				<br /></form>
+
+
+
+			
+
+		</div>{/if}</div>
+
+		{/if}
+
+		<!--视频认证 结束-->
+
+		
+
+		{elseif $_U.query_type=="scene_status"}
+
+		<!--视频认证 开始-->
+
+		{if $_G.user_result.vip_status!=1}
+
+		<div class="user_main_title1">你还不是VIP会员不能做现场认证。
+
+		<div >
+
+			如要申请成为VIP会员，请点按钮提交到VIP申请页。<input type="button" onclick="javacript:location.href='/vip/index.html'" value="申请VIP会员"  /><br /><br />
+
+			
+
+		</div>
+
+		</div>
+
+		{elseif $_G.user_result.scene_status==1}
+
+		<div class="user_main_title1">您已经通过了现场认证</div>
+
+		
+
+		{elseif $_G.user_result.scene_status==2}
+
+			<div class="user_main_title1">你已经申请了现场认证，请等待管理员审核。</div>
+
+		{else}
+
+		<div class="user_main_title1">如果您需要申请现场认证，请下载现场认证申请表，填写完成后请交予您的客服 ( 
+
+<a href="{$tempdir}/down/现场认证申请表.xls"  style="color:red" target="_blank">现场认证申请表下载</a>)。<br />
+
+现场认证考察收费标准请下载以下文件 （<a href="{$tempdir}/down/现场认证收费标准.doc" style="color:red" target="_blank">现场认证收费标准下载</a>）。
+
+		<div  >
+
+			同时请点击下面的按钮，我们也会让客服直接与您联系。<form action="" method="post"><input type="submit" value="提交申请" name="submit" />
+
+				<br /></form>
+
+
+
+			
+
+		</div>
+
+		</div>
+
+		{/if}
+
+		<!--视频认证 结束-->
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		<!--信用积分 开始-->
+
+		{elseif $_U.query_type=="credit"}
+
+		<div class="user_main_title1" > 
+
+		<strong>信用总得分：</strong> <font size="3" color="#FF0000"><strong>{$_G.user_result.credit}</strong></font>  {$_G.user_result.credit|credit}
+
+		</div>
+
+		<table  border="0"  cellspacing="1" class="user_list_table" style="width:98%">
+
+			  <form action="" method="post">
+
+				<tr class="head" >
+
+					<td  >积分类型</td>
+
+					<td  >积分</td>
+
+					<td  >备注</td>
+
+				</tr>
+				<tr >
+
+					<td colspan="4" class="page">
+
+						<div class="list_table_page">{$_U.show_page}</div>
+
+					</td>
+
+				</tr>
+
+			</form>	
+
+		</table>
+
+		<!--信用积分 结束-->
+
+		{/if}
+
+</div>
+
+</div>
+</div>
+</div>
+
+<!--用户中心的主栏目 结束-->
+<div style="clear:both;"></div>
+{include file="user_footer.html"}

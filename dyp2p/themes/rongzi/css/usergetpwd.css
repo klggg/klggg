@@ -1,0 +1,19 @@
+/* CSS Document */
+
+
+
+.getpwd_bor{background:url(../images/user_bggg.gif) no-repeat;height:396px;width:972px;margin:0 auto;}
+.getpwd_bor .gt_top{height:70px;width:972px;}
+.getpwd_bor .gt_top img{margin:23px 0 0 120px;}
+.getpwd_bor .gt_content{margin:28px 0 0 0;}
+
+.in_text{ line-height:28px;border:none; width:226px;height:28px;overflow:hidden; background:url(../images/input_bgg.gif) no-repeat;padding:0px 0 0 4px;}
+
+table.gt_tab{width:765px;margin-top:20px;}
+table.gt_tab tr{ height:50px;line-height:50px;vertial-align:middle;}
+table.gt_tab tr td{font-size:14px;height:50px;line-height:50px;vertial-align:middle;}
+table.gt_tab tr td a{color:#767676;margin-left:10px;}
+table.gt_tab tr td a:hover{text-decoration:none;}
+
+.find_button { background:url(../images/findpwd.gif) no-repeat; width:91px; height:43px; border:none;margin-top:10px;cursor:pointer;}
+.getp_btn{background:url(../images/rereg.gif) no-repeat;width:91px; height:43px; border:none;cursor:pointer;}

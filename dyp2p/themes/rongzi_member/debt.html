@@ -1,0 +1,197 @@
+{include file="user_header.html"}
+
+<div class="clearfix con_box">
+
+     <div class="con_left">
+	      <div class="m_change">
+			         <ul>
+					     <li><a href="#" class="onn">转让中的债权</a></li>
+						 <li><a href="#">成功转让的债权</a></li>
+					 </ul>
+			   </div>
+			   <div class="us_r_bor2">
+			   <div class="zq_list">
+			        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr class="zqtit">
+    <td width="9%">债权人</td>
+    <td width="31%">投标标题</td>
+    <td width="11%">利率</td>
+    <td width="14%">待还期数/总期数</td>
+    <td width="16%">待收本金/利息</td>
+    <td width="11%">转让价格</td>
+    <td width="8%">购买债权</td>
+  </tr>
+  <script>
+  {literal}
+function borrowChange(type,userid){
+	var api=$.dialog({
+		id: 'LHG1976D',
+		lock:true
+	});
+
+	/* jQuery ajax */
+	$.ajax({
+		url:'/?user&q=code/borrow/change&'+type,
+		success:function(data){
+			api.content(data);
+		},
+		cache:false
+	});
+}
+  {/literal}
+  </script>
+ {list module="borrow" function="GetChangeList" var="loop" epage=20 status=2 borrow_type="request" account_status="request" borrow_name="request" order="request" borrow_name="request" apr="request"}
+ {foreach from="$loop.list" item="item"}
+  <tr {if $key%2==0} class="oushu"{/if}>
+    <td><a href="/u/{$item.user_id}" target="_blank">{$item.username}</a></td>
+    <td><a href="/invest/a{$item.borrow_nid}.html">{$item.borrow_name}</a> </td>
+    <td>{$item.borrow_apr}%</td>
+	<td  >{$item.wait_times}/{$item.borrow_period}</td>
+    <td>￥{$item.recover_account_capital_wait}/￥{$item.recover_account_interest_wait}</td>
+    <td><em>￥{$item.account}</em></td>
+    <td>
+		<span>
+		{if $_G.user_id==$item.user_id}
+		-
+		{else}
+			{if $_G.user_info.tender_status==1}
+				<a href="javascript:void(0)" onclick="borrowChange('buy_id={$item.id}&account={$item.account}','');">购买</a>
+			{else}
+				<a href="javascript:alert('请先成为投资人再进行债权购买。');">购买</a>
+			{/if}
+		{/if}
+		</span>
+	</td>
+  </tr>
+  {/foreach}
+</table>
+
+			   </div>
+			     <div style="padding:20px 0; text-align:center">{$loop.pages|showpage:"3,dy"}</div>
+			   </div>
+			   {/list}
+	 </div>
+	 <div class="con_right">
+	       <div>
+		        <div class="r_tit">按条件搜索</div>
+				<div class="r_cen">
+				<table width="100%" border="0" cellspacing="0" cellpadding="5">
+				<form action="" method="post">
+					<tr>
+						<td width="41%" align="right">借款类型</td>
+						<td width="59%">{linkages name="borrow_type" nid="borrow_type" type="value" default="不限" value="$magic.request.borrow_type"}</td>
+					</tr>
+					<tr>
+						<td align="right">待还本金</td>
+						<td><select name="account_status">
+						<option>不限</option>
+						<option value="1" {if $magic.request.account_status==1}selected="selected"{/if}>2000-5000</option>
+						<option value="2" {if $magic.request.account_status==2}selected="selected"{/if}>5000-10000</option>
+						<option value="3" {if $magic.request.account_status==3}selected="selected"{/if}>1万-3万</option>
+						<option value="4" {if $magic.request.account_status==4}selected="selected"{/if}>3万-5万</option>
+						<option value="5" {if $magic.request.account_status==5}selected="selected"{/if}>5万以上</option></select></td>
+					</tr>
+					<tr>
+						<td align="right">利率</td>
+						<td><select name="apr">
+						<option>不限</option>
+						<option value="apr_up" {if $magic.request.apr=="apr_up"}selected="selected"{/if}>从高到低</option>
+						<option value="apr_down" {if $magic.request.apr=="apr_down"}selected="selected"{/if}>从低到高</option></option></select></td>
+					</tr>
+					<tr>
+						<td align="right">剩余时间</td>
+						<td>
+						<select name="order">
+							<option>从新到旧</option>
+							<option value="time_up" {if $magic.request.order=="time_up"}selected="selected"{/if}>从旧到新</option>
+						</select></td>
+					</tr>
+  <tr>
+    <td align="right">关键字</td>
+    <td><input type="text" name="borrow_name" value="{$magic.request.borrow_name|urldecode}" style="width:90px; border:#BFBFBF solid 1px; height:18px;"/></td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" name="Submit" value="查询" /></td>
+  </tr>
+				</form>
+</table>
+				</div>
+				<div class="r_bot"></div>
+		   </div>
+		{literal}
+		<?
+		$account = isset($_REQUEST['show_account'])?$_REQUEST['show_account']:"";
+		$lilv = isset($_REQUEST['show_apr'])?$_REQUEST['show_apr']:"";
+		$times = isset($_REQUEST['show_time'])?$_REQUEST['show_time']:"";
+		?>
+		{/literal}
+		<div class="t5">
+		<div class="r_tit">借出计算器</div>
+			<div class="r_cen">
+				<form action="" method="post">
+				<table width="100%" border="0" cellspacing="0" cellpadding="5">
+					<tr>
+						<td width="41%" align="right">初始投资</td>
+						<td width="59%"><input type="text" name="show_account" value="{$magic.request.show_account}" id="show_account" style="width:60px; border:#BFBFBF solid 1px; height:18px;"/>
+						元</td>
+					</tr>
+					<tr>
+						<td align="right">年利率</td>
+						<td><input type="text" name="show_apr" id="show_apr" value="{$magic.request.show_apr}" style="width:60px; border:#BFBFBF solid 1px; height:18px;"/>
+						%</td>
+					</tr>
+					<tr>
+						<td align="right">投资期限</td>
+						<td><input type="text" name="show_time" id="show_time" value="{$magic.request.show_time}" style="width:60px; border:#BFBFBF solid 1px; height:18px;"/>
+						月</td>
+					</tr>
+					<tr>
+						<td>&nbsp;</td>
+						<td><input type="submit" name="submit" value="查询" /></td>
+					</tr>
+				</table>
+				</form>
+				{literal}
+				<?
+					require_once(ROOT_PATH."modules/borrow/borrow.class.php");
+					$data['account'] = $account;
+					$data['apr'] = $lilv;
+					$data['period'] = $times;
+					$data['time'] = time();
+					$list = EqualInterest($data);
+					$data['type'] = "all";
+					$result = EqualInterest($data);
+					if ($result!="" && is_array($list)){
+				?>
+			<div style="text-align:center"><b>到期价值</b> <font style="color:#FF0000"><span id="show"><? echo $result['account_total'];?></span>元</font></div>
+			<? }?>
+			{/literal}
+			</div>
+		<div class="r_bot"></div>
+		</div>
+	</div>
+	 <div class="cle"></div>
+</div>
+
+
+{literal}
+<script>
+function JqueryAjaxs(q,action){
+var api = $.dialog({id:'L360'});
+
+$.ajax({
+
+    url:'/?user&q='+q+action,
+    success:function(data){
+        api.content(data);
+
+    }
+
+});
+
+}
+</script>
+{/literal}
+
+{include file="footer.html"}

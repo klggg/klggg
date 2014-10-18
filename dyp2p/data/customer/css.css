@@ -1,0 +1,35 @@
+﻿body{margin:0px;font-size:12px;}
+
+.main_head {
+	BACKGROUND: url(images/2.png) no-repeat
+}
+* + HTML .main_head {
+	BACKGROUND: url(images/2.png) no-repeat
+}
+.info {
+	PADDING-BOTTOM: 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND: url(images/3.png) repeat-y; PADDING-TOP: 5px
+}
+* + HTML .info {
+	PADDING-BOTTOM: 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; BACKGROUND: url(images/3.png) repeat-y; PADDING-TOP: 5px
+}
+.down_kefu {
+	WIDTH: 157px; BACKGROUND: url(images/4.png) no-repeat; HEIGHT: 8px
+}
+* + HTML .down_kefu {
+	WIDTH: 157px; BACKGROUND: url(images/4.png) no-repeat; HEIGHT: 8px
+}
+.Obtn {
+	MARGIN-TOP: 104px; WIDTH: 32px; BACKGROUND: url(images/1.png) no-repeat; FLOAT: left; HEIGHT: 139px; MARGIN-LEFT: -5px
+}
+* + HTML .Obtn {
+	MARGIN-TOP: 104px; WIDTH: 32px; BACKGROUND: url(images/1.png) no-repeat; FLOAT: left; HEIGHT: 139px; MARGIN-LEFT: -5px
+}
+.qqtable SPAN {
+	PADDING-BOTTOM: 5px; LINE-HEIGHT: 20px; PADDING-LEFT: 0px; WIDTH: 100px; PADDING-RIGHT: 0px; COLOR: #ff6600; FONT-SIZE: 13px; FONT-WEIGHT: bold; PADDING-TOP: 5px
+}
+.qqtable A {
+	TEXT-DECORATION: none
+}
+.qqtable A:hover {
+	TEXT-DECORATION: none
+}

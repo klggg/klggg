@@ -1,0 +1,54 @@
+{include file="user_header.html"}
+<div class="clearfix con_box">
+
+	<div class="log_bor">
+		<h1>重设密码</h1>
+			<div style="padding:20px">
+				<div class="uppw">
+				<form action="" method="post">
+					{if $_U.updatepwd_msg!=""}
+					<table width="100%" border="0" cellspacing="3" cellpadding="0">
+					<tr><td align="center"><font color="#FF0000" style="font-size:14px;">{$_U.updatepwd_msg}</font></td></tr>
+					<tr><td align="center"><a href="/index.php?user&q=login" style="font-size:14px;"><input type="button" class="btn" value="返回登录" /></a></td></tr>
+					</table>
+{literal}
+<script>
+setInterval("testTime()",3000); 
+function testTime() { 
+	location.href = '/index.php?user&q=login';
+} 
+
+</script>
+{/literal}
+					{else}
+					<table width="100%" border="0" cellspacing="3" cellpadding="0">
+						<tr>
+							<td colspan="2" align="center">
+							{if $_U.update_msg==""}请重新设置你的登录密码{else}<font color="#FF0000">{$_U.update_msg}</font>{/if}
+							</td>
+						</tr>
+						<tr>
+							<td width="39%" align="right">用户名：</td>
+							<td width="61%"><strong style="font-size:16px;">{$_U.user_result.username}</strong></td>
+						</tr>
+						<tr>
+							<td width="39%" align="right">密码：</td>
+							<td width="61%"><input type="password" maxLength=15  style="border:#C2C2C2 solid 1px; background:#fff; height:20px; width:200px" name=password id=password ></td>
+						</tr>
+						<tr>
+							<td width="39%" align="right">确认密码：</td>
+							<td width="61%"><input type="password"  maxLength=15  style="border:#C2C2C2 solid 1px; background:#fff; height:20px; width:200px" name=confirm_password id=confirm_password  ></td>
+						</tr>
+					</table>
+					<input type="hidden" name="id" value="{$magic.request.id}" />
+					<div style="margin:30px auto 0; text-align:center"><input name="Submit" type="submit"  value="提 交" /></div>
+					{/if}
+				</form>
+				</div>
+			</div>
+	</div>
+</div>
+
+<div class="con_box t20"></div>
+{include file="user_footer.html"}
+

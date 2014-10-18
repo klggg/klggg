@@ -1,0 +1,70 @@
+{if $_G.site_result.nid=="addpayment"}
+{if $magic.request.edit!=""}
+<form action="/?user&q=code/rating/addpayment&edit={$magic.request.edit}" method="post">
+{else}
+<form action="/?user&q=code/rating/addpayment" method="post">
+{/if}
+	{articles module="rating" function="GetFinanceOne" user_id="$_G.user_id" var="var" id="$magic.request.edit"}
+	<div class="user_main_title1"><font color="#FF0000">*</font>请填写您的支出信息<br /></div>
+	<div class="user_right_border">
+		<div class="l">支出类别：</div>
+		<div class="c">{linkages name="type" nid="rating_payment" type="value" value="$var.type"} <font color="#ff0000">*</font>
+		</div>
+	</div>
+	<div class="user_right_border">
+		<div class="l">支出名称：</div>
+		<div class="c"><input type="text" name="name" value="{$var.name}" id="name"> <font color="#ff0000">*</font>
+		</div>
+	</div>
+	<div class="user_right_border">
+		<div class="l">金额：</div>
+		<div class="c"><input type="text" name="account" value="{$var.account}" id="account"> <font color="#ff0000">*</font>
+		</div>
+	</div>
+	<div class="user_right_border">
+		<div class="l">其他：</div>
+		<div class="c"><textarea cols="30" rows="5" name="other">{$var.other}</textarea><font color="#ff0000">*</font>
+		</div>
+	</div>
+	<div class="user_right_border">
+		<div class="l"><input type="hidden" name="use_type" value="2" id="use_type">{if $magic.request.type=="amount"}<input type="hidden" name="web" value="amount">{else}<input type="hidden" name="web" value="borrow">{/if}</div>
+		<div class="c"><input type="hidden" name="submit" value="submit"><input type="submit" name="submit" value="提交" class="xinbuton"></div>
+	</div>
+	<div class="user_right_foot">
+		* 温馨提示：我们将严格对用户的所有资料进行保密
+	</div>
+	
+{elseif $_G.site_result.nid=="addrevenue"}
+{if $magic.request.edit!=""}
+<form action="/?user&q=code/rating/addrevenue&edit={$magic.request.edit}" method="post">
+{else}
+<form action="/?user&q=code/rating/addrevenue" method="post">
+{/if}
+	{articles module="rating" function="GetFinanceOne" user_id="$_G.user_id" var="var" id="$magic.request.edit"}
+	<div class="user_main_title1"><font color="#FF0000">*</font>请填写您的收入信息<br /></div>
+	<div class="user_right_border">
+		<div class="l">收入类别：</div>
+		<div class="c">{linkages name="type" nid="rating_revenue" type="value" value="$var.type"} <font color="#ff0000">*</font></div>
+	</div>
+	<div class="user_right_border">
+		<div class="l">收入名称：</div>
+		<div class="c"><input type="text" name="name" value="{$var.name}" id="name"> <font color="#ff0000">*</font></div>
+	</div>
+	<div class="user_right_border">
+		<div class="l">金额：</div>
+		<div class="c"><input type="text" name="account" value="{$var.account}" id="account"> <font color="#ff0000">*</font></div>
+	</div>
+	<div class="user_right_border">
+		<div class="l">其他：</div>
+		<div class="c"><textarea cols="30" rows="5" name="other">{$var.other}</textarea><font color="#ff0000">*</font></div>
+	</div>
+	<div class="user_right_border">
+		<div class="l"><input type="hidden" name="use_type" value="1" id="use_type">{if $magic.request.type=="amount"}<input type="hidden" name="web" value="amount">{else}<input type="hidden" name="web" value="borrow">{/if}</div>
+		<div class="c"><input type="hidden" name="submit" value="submit"><input type="submit" name="submit" value="提交" class="xinbuton"></div>
+	</div>
+	<div class="user_right_foot">
+		* 温馨提示：我们将严格对用户的所有资料进行保密
+	</div>
+{/if}
+</form>
+{/articles}

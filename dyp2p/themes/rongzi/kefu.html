@@ -1,0 +1,38 @@
+{include file="header.html"}
+<div class="bodyer clearfix">
+       	    	<div class="form-container box1000 mian">
+					<div class="mianleft">
+                    	  {include file="about_left.html"}
+                      <div class="line"></div>
+                        <div class="contact-information">
+			 <div class="mail">123456@qq.com</div>
+			 <div class="phone">010-88888888</div>
+			 </div>
+             <div class="line"></div>
+             <div><img src="{$tempdir}/zhuliu/images/about_03.jpg" width="202" height="220" /></div>
+                    </div>
+                    <div class="mianright">
+                    	<h2>{$_G.site_result.name|truncate:6}<span><a href="/">首页</a> > 爱丽丝网站建设 > {$_G.site_result.name}</span></h2>
+                        <p><img src="{$tempdir}/zhuliu/images/about_02.jpg" width="650" height="130" /></p>
+                        <p> <dl class="kfcenter">
+    	         {loop module="users" function="GetListhh" limit="20" type_id="3,16"}
+                    <dd>
+        	<div class="kfmg"><img src="{$var.user_id|avatar}" width="108" height="128" /></div>
+            <div style="float:left">部门：{$var.type_name} <br />
+姓名：{$var.adminname}  <br />          
+电话：{$var.phone}     <br />      
+Q  Q： <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin={$var.qq}&site=qq&menu=yes">
+                                                    <img border="0" src="http://wpa.qq.com/pa?p=2:{$var.qq}:41" alt="点击这里给我发消息" title="点击这里给我发消息"></a><br />
+在线时间：9:00至18:00
+</div>
+<div style="float:right; width:250px;">主要任务：<br />
+{$var.remark}</div></dd>
+	                  {/loop}
+
+                     </dl></p>
+                    </div>	
+                </div>
+
+            </div>
+<div class="cle"></div>
+{include file="footer.html"}

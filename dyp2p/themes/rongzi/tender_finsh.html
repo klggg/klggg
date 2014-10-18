@@ -1,0 +1,15 @@
+{include file="header.html"}
+{if $_G.user_id==""}
+	<script>alert("你还没有登录，请先登录再查看");location.href='/index.php?user&q=login';</script>
+{/if}
+<div class="clearfix con_box">
+
+	      <div class="con_bor">
+		       <div class="pos_bor"><span><a href="#">我要投资</a> > 成为投资人</span></div>
+			   <div class="con1">
+			        <div style="text-align:center; padding:10px 0 20px"><img src="{$tempdir}/images/pic99.jpg" border="0" usemap="#Map2" />
+<map name="Map2" id="Map2"><area shape="rect" coords="361,192,516,229" href="/invest/index.html" /><area shape="rect" coords="361,319,513,359" href="/?user&q=code/account/recharge_new" /></map></div>
+			   </div>
+	   </div>
+</div>
+{include file="footer.html"}

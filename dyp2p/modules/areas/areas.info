@@ -1,0 +1,10 @@
+<?
+	$code = "areas";
+	$name = "地区模块";
+	$description = "全国的省，市，区";
+	$version = "4.2";
+	$author = "youyi";
+	$update = "";
+	$date = "2011-11-04";
+	$type = "system";
+?>

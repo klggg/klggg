@@ -1,0 +1,199 @@
+{include file="header.html"}
+{if $_G.user_id==""}
+
+	<script>alert("你还没有登录，请先登录再查看");location.href='/index.php?user';</script>
+
+{/if}
+<div class="clearfix con_box">
+
+	<div>
+		<div class="con_bor">
+			<div class="pos_bor"><span>申请VIP</span>&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF0000"><strong>VIP自助申请指南：1、首次使用请您先设置交易密码 2、设置好交易密码后在线申请VIP会员</strong></font></div>
+			<div class="con1">
+				<div class="con">
+					<div style="padding:20px 0">
+						{articles module="users" function="GetUsersVip" var="Vvar" user_id="$_G.user_id"}
+						<div style="padding:0px 10px 20px">
+							<div class="cy_list1">
+							<form action="/?user&q=code/users/applyvip" method="post" onsubmit="return checkvip();">
+								<div class="user_right_border">
+								<div class="l">状态：</div>
+									<div class="c">
+										{if $Vvar.status==0}
+											未申请
+										{elseif $Vvar.status==-1}
+											审核中
+										{elseif $Vvar.status==1}
+											{if $Vvar.vip_type==1}
+												<strong style="color:blue">VIP会员</strong>
+											{else}
+												<strong style="color:blue">高级VIP会员</strong>
+											{/if}
+										{/if}
+									</div>
+								</div>
+								{if $Vvar.status==0}
+								<div class="user_right_border">
+								<div class="l">升级类型：</div>
+									<div class="c">
+										<input type="radio" name="vip_type" value="1" checked="checked" onclick="change(1);"/>
+										VIP会员
+										<!--<input type="radio" name="vip_type" value="2" checked="checked" onclick="change(2);"/>
+										高级VIP会员-->
+									</div>
+								</div>
+								<div class="user_right_border">
+								<div class="l">会员费：</div>
+									<div class="c">
+										<strong style="color:blue;" id="fee_vip">{$_G.system.con_vip_fee|default:0}元/年</strong>
+										<strong style="color:blue;display:none" id="fee_high">{$_G.system.con_vip_gao|default:0}元/年</strong>
+									</div>
+								</div>
+								<div class="user_right_border">
+								<div class="l">享受服务：</div>
+									<div class="c">
+										<strong style="color:red;" id="ser_vip">投资人享受本金垫付，垫付行为发生时投资者必须仍在会员有效期内；<br>借款人享受快速审核，投标列表靠前。<br><a href="/vip_xieyi/index.html" target="_blank">查看VIP协议书</a></strong>
+										<strong style="color:red;display:none;" id="ser_higt">投资人享受本息垫付，垫付行为发生时投资者必须仍在会员有效期内；<br>借款人享受专属客服服务，额度提升。<br><a href="/hvip_xieyi/index.html" target="_blank">查看高级VIP协议书</a></strong>
+									</div>
+								</div>
+								{else}
+								<div class="user_right_border">
+								<div class="l">会员费：</div>
+									<div class="c">
+										{if $Vvar.vip_type==1}
+											<strong style="color:blue;">{$_G.system.con_vip_fee|default:0}元/年</strong>
+										{else}
+											<strong style="color:blue">{$_G.system.con_vip_gao|default:0}元/年</strong>
+										{/if}
+									</div>
+								</div>
+								<div class="user_right_border">
+								<div class="l">享受服务：</div>
+									<div class="c">
+										{if $Vvar.vip_type==1}
+										<strong style="color:red;">投资人享受本金垫付，垫付行为发生时投资者必须仍在会员有效期内；<br>借款人享受快速审核，投标列表靠前。</strong>
+										{else}
+										<strong style="color:red;">投资人享受本息垫付，垫付行为发生时投资者必须仍在会员有效期内；<br>借款人享受专属客服服务，额度提升。</strong>
+										{/if}
+									</div>
+								</div>
+								{/if}
+								{if $Vvar.status==0}
+								<div class="user_right_border">
+								<div class="l">当前可用余额：</div>
+									<div class="c">
+										{articles module="account" function="GetOne" var="var" user_id="$_G.user_id"}
+											￥{$var.balance|default:0} <a href="/?user&q=code/account/recharge_new" target="_blank">我要充值</a>
+										{/articles}
+									</div>
+								</div>
+								<div class="user_right_border">
+								<div class="l">请输入交易密码：</div>
+									<div class="c">
+										{if $_G.user_result.paypassword==""}请先<a href="/?user&q=code/users/paypwd" target="_blank">设置交易密码</a>{else}<input type="password" name="paypassword" id="paypassword" size="30"  tabindex="6"/>{/if}
+									</div>
+								</div>
+								<div class="user_right_border" style="display:none">
+								<div class="l">会员费冲抵：</div>
+									<div class="c">
+										<input type="checkbox" name="gold_status" value="1">使用20个金币冲抵20元VIP费。
+									</div>
+								</div>
+								{if $_G.user_result.paypassword!=""}
+								<div class="user_right_border">
+								<div class="l"></div>
+									<div class="c">
+										<input type="submit" name="submit"  value="" class="urb_btn" onclick="return checkvip();"/> 
+									</div>
+								</div>
+								{/if}
+								{/if}
+							</form>
+							<div class="cle"></div>
+							</div>
+						{/articles}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<div class="cle"></div>
+
+</div>
+
+<script>
+{articles module="credit" function="GetGoldCount" var="Gvar" user_id="$_G.user_id"}
+	var gold = {$Gvar.total|default:0};
+{/articles}
+{articles module="account" function="GetOne" var="var" user_id="$_G.user_id"}
+	var use_money = {$var.balance|default:0};
+{/articles}
+
+var con_vip_fee = {$_G.system.con_vip_fee|default:0}
+var con_vip_gao = {$_G.system.con_vip_gao|default:0}
+var h_fee=con_vip_fee-20;
+
+
+{literal}
+
+if(h_fee<0){
+h_fee=0;
+}
+
+var g_h_fee=con_vip_gao-20;
+if(g_h_fee<0){
+g_h_fee=0;
+}
+function checkvip(){
+
+
+
+	if ($('input[name="gold_status"]:checked').val()==1){
+		if ($('input[name="vip_type"]:checked').val()==1 && use_money<h_fee){
+			alert("您的余额不足"+h_fee+"元，无法申请VIP会员。请充值后申请！");
+			return false;
+		}else if($('input[name="vip_type"]:checked').val()==2 && use_money<g_h_fee){
+			alert("您的余额不足"+g_h_fee+"元，无法申请高级VIP会员。请充值后申请！");
+			return false;
+		}
+	}else{
+		if ($('input[name="vip_type"]:checked').val()==1 && use_money<con_vip_fee){
+			alert("您的余额不足"+con_vip_fee+"元，无法申请VIP会员。请充值后申请！");
+			return false;
+		}else if($('input[name="vip_type"]:checked').val()==2 && use_money<con_vip_gao){
+			alert("您的余额不足"+con_vip_gao+"元，无法申请高级VIP会员。请充值后申请！");
+			return false;
+		}
+	}
+	
+	
+	
+	
+	if ($("#paypassword").val()==""){
+		alert("请填写您的交易密码。");
+		return false;
+	}
+	if (gold<20 && $('input[name="gold_status"]:checked').val()==1){
+		alert("您的金币不足20，无法进行冲抵。");
+		return false;
+	}
+	return true;
+}
+function change(id){
+	if (id==1){
+		$("#fee_vip").show();
+		$("#ser_vip").show();
+		$("#fee_high").hide();
+		$("#ser_higt").hide();
+	}else{
+		$("#fee_high").show();
+		$("#ser_higt").show();
+		$("#fee_vip").hide();
+		$("#ser_vip").hide();
+	}
+}
+</script>
+{/literal}
+{include file="footer.html"}

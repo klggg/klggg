@@ -1,0 +1,83 @@
+{include file="header.html"}
+
+{if $_G.user_id==""}
+	<script>alert("你还没有登录，请先登录再查看");location.href='/index.php?user&q=login';</script>
+{/if}
+                  {if $_G.site_result.nid=="borrow_info" || $_G.site_result.nid=="amount_info"}
+				  <script>location.href='/?user&q=code/rating/basic'</script>
+					{elseif $_G.site_result.nid=="borrow_job" || $_G.site_result.nid=="amount_job"}
+					<script>location.href='/?user&q=code/rating/job'</script>
+					{elseif $_G.site_result.nid=="borrow_company" || $_G.site_result.nid=="amount_company"}
+						<script>location.href='/?user&q=code/rating/company'</script>
+					{elseif $_G.site_result.nid=="borrow_finance" || $_G.site_result.nid=="amount_finance"}
+						<script>location.href='/?user&q=code/rating/finance'</script>
+					{elseif $_G.site_result.nid=="borrow_contact" || $_G.site_result.nid=="amount_contact"}
+							<script>location.href='/?user&q=code/rating/finance'</script>
+					{/if}
+<div class="clearfix con_box">
+
+     <div>
+	      <div class="con_bor">
+		       <div class="pos_bor"><span><a href="#">我要借款</a> > 借款规则学习</span>	</div>
+		    <div class="con2">
+			     <div style="width:897px; margin:20px auto">
+				 <div style="margin:20px 0">
+		              <div class="m_change">
+					  {if $_G.site_result.nid=="amount_info" || $_G.site_result.nid=="amount_job" || $_G.site_result.nid=="amount_company" || $_G.site_result.nid=="amount_finance" || $_G.site_result.nid=="amount_contact"}
+					  <ul>
+					     <li>
+						 <a href="/amount_info/index.html" {if $_G.site_result.nid=="amount_info"}class="onn" {/if}>个人详细信息</a>
+						 </li>
+						 <li>
+						 <a href="/amount_job/index.html" {if $_G.site_result.nid=="amount_job"}class="onn" {/if}>工作单位信息</a>
+						 </li>
+						 <li>
+						 <a href="/amount_company/index.html" {if $_G.site_result.nid=="amount_company"}class="onn" {/if}>私营业主信息</a>
+						 </li>
+						 <li>
+						 <a href="/amount_finance/index.html" {if $_G.site_result.nid=="amount_finance"}class="onn" {/if}>财务状况</a>
+						 </li>
+						 <li>
+						 <a href="/amount_contact/index.html" {if $_G.site_result.nid=="amount_contact"}class="onn" {/if}>主要联系人</a>
+						 </li>
+					 </ul>
+					  {else}
+			         <ul>
+					     <li>
+						 <a href="/borrow_info/index.html" {if $_G.site_result.nid=="borrow_info"}class="onn" {/if}>个人详细信息</a>
+						 </li>
+						 <li>
+						 <a href="/borrow_job/index.html" {if $_G.site_result.nid=="borrow_job"}class="onn" {/if}>工作单位信息</a>
+						 </li>
+						 <li>
+						 <a href="/borrow_company/index.html" {if $_G.site_result.nid=="borrow_company"}class="onn" {/if}>私营业主信息</a>
+						 </li>
+						 <li>
+						 <a href="/borrow_finance/index.html" {if $_G.site_result.nid=="borrow_finance"}class="onn" {/if}>财务状况</a>
+						 </li>
+						 <li>
+						 <a href="/borrow_contact/index.html" {if $_G.site_result.nid=="borrow_contact"}class="onn" {/if}>主要联系人</a>
+						 </li>
+					 </ul>
+					 {/if}
+					</div>
+					{if $_G.site_result.nid=="borrow_info" || $_G.site_result.nid=="amount_info"}
+						{include file="info_borrow.html"}
+					{elseif $_G.site_result.nid=="borrow_job" || $_G.site_result.nid=="amount_job"}
+						{include file="info_work.html"}   
+					{elseif $_G.site_result.nid=="borrow_company" || $_G.site_result.nid=="amount_company"}
+						{include file="info_company.html"}    
+					{elseif $_G.site_result.nid=="borrow_finance" || $_G.site_result.nid=="amount_finance"}
+						{include file="info_caiwu.html"}   
+					{elseif $_G.site_result.nid=="borrow_contact" || $_G.site_result.nid=="amount_contact"}
+						{include file="info_contrat.html"}
+					{/if}
+			     </div>
+		</div>
+				 </div>
+			</div>
+	   </div>
+     </div>
+</div>
+
+{include file="footer.html"}

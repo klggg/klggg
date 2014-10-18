@@ -1,0 +1,10 @@
+<?
+	$code = "approve";
+	$name = "认证管理";
+	$description = "姓名，学历，手机认证等管理";
+	$version = "2.0";
+	$author = "youyi";
+	$date = "2011-11-21";
+	$update = "";
+	$type = "approve";
+?>

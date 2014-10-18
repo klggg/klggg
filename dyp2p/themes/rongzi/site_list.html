@@ -1,0 +1,66 @@
+{include file="header.html"}
+
+<div class="clearfix con_box">
+
+<div style="float:left;width:750px;">
+	<div>
+		<div class="con_bor">
+			<div class="pos_bor"><span>{$_G.site_result.name}</span></div>
+			<div class="con1">
+				<div class="con">
+					<div style="padding:20px 0">
+						{if $_G.site_result.id==31}
+						<div style="padding:0px 10px 20px">
+							<div class="cy_list1">
+							{list module="articles" function="GetList" var="loop" epage=15 type_id="6"}
+								{foreach from="$loop.list" item="var"}
+								·<a href="/{$_G.site_result.nid}/a{$var.id}.html">{$var.name}</a><span style="float:right">{$var.addtime|date_format:"Y-m-d H:i:s"}</span></br>
+								{/foreach}
+								<div class="cle"></div>
+							</div>
+							<div style="text-align:center;margin-top:20px;">{$loop.pages|showpage}</div>
+							{/list}
+						</div>
+						{elseif $_G.site_result.id==151}
+						<div style="padding:0px 10px 20px">
+							<div class="cy_list1">
+							{list module="articles" function="GetList" var="loop" epage=15 type_id="25"}
+								{foreach from="$loop.list" item="var"}
+								·<a href="/{$_G.site_result.nid}/a{$var.id}.html">{$var.name}</a><span style="float:right">{$var.addtime|date_format:"Y-m-d H:i:s"}</span></br>
+								{/foreach}
+								<div class="cle"></div>
+							</div>
+							<div style="text-align:center;margin-top:20px;">{$loop.pages|showpage}</div>
+							{/list}
+						</div>
+						{/if}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div style="float:right;width:200px;">
+	<div>
+		<div class="r_tit">使用技巧<span style="float:right;font-weight:normal;"><a href="/usekey/index.html">更多>></a>&nbsp;</span></div>
+		<div class="r_cen">
+			<div class="inf_right">
+				<ul>
+				{loop module="articles" function="GetList" var="var" limit="all" type_id="25"}
+					<li>·<a href="/usekey/a{$var.id}.html">{$var.name}</a></li>
+				{/loop}
+				</ul>
+			</div>
+		</div>
+		<div class="r_bot"></div>
+	</div>
+</div>
+
+
+
+<div class="cle"></div>
+
+</div>
+
+{include file="footer.html"}

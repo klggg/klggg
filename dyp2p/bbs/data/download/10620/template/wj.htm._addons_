@@ -1,0 +1,56 @@
+<!--{block return}-->
+<link rel="stylesheet" href="source/plugin/wj_paihang/template/{$skin}.css" />
+<div class="wj_paihang_box">
+    	<div class="wj_paihang_title">{$wtext[0]}</div>
+        <div class="wj_paihang_body">
+       	  <div class="wj_paihang_left">
+          	<div><table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><input name="" type="button" class="wj_paihang_btn"  value="{$wtext[1]}"/></td>
+    <td align="center">{$wtext[4]}</td>
+  </tr>
+</table>
+</div>
+            <div class="wj_paihang_lsb">
+            	<ul class="wj_paihang_ph">
+                <!--{loop $hotsubject $result}-->
+                <li><a href="forum.php?mod=viewthread&tid={$result['tid']}&extra=page=1">{$result['subject']}</a><span>{$result['views']}</span></li>
+                <!--{/loop}-->
+                </ul>
+            </div>
+          </div>
+          <div class="wj_paihang_center">
+          	<div><table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><input name="" type="button" class="wj_paihang_btn"  value="{$wtext[2]}"/></td>
+    <td align="center">{$wtext[5]}</td>
+  </tr>
+</table>
+</div>
+            <div class="wj_paihang_lsb">
+            	<ul class="wj_paihang_ph">
+                <!--{loop $hotreplies $result}-->
+                <li><a href="forum.php?mod=viewthread&tid={$result['tid']}&extra=page=1">{$result['subject']}</a><span>{$result['replies']}</span></li>
+                <!--{/loop}-->
+                </ul>
+            </div>
+          </div>
+          <div class="wj_paihang_right">
+          	<div><table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><input name="" type="button" class="wj_paihang_btn"  value="{$wtext[3]}"/></td>
+    <td align="right">{$wtext[6]}&nbsp;&nbsp;</td>
+  </tr>
+</table>
+</div>
+            <div class="wj_paihang_lsb"  style="background:none">
+            	<ul class="wj_paihang_ph">
+                <!--{loop $hotforum $result}-->
+                <li><div class="wj_paihang_fname"><a href="forum.php?mod=forumdisplay&fid={$result['fid']}">{$result['name']}</a></div><div class="wj_paihang_jindu"><em style="width:{$result[process]}%; background:{$result[processcolor]};"></em></div><font>{$result['clicks']}</font></li>
+                <!--{/loop}-->
+                </ul>
+            </div>
+          </div>
+      </div>
+    </div>
+<!--{/block}-->

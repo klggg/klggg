@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>系统管理-爱丽丝网站建设</title>
+<link href="/themes/youyidai_admin/css/css.css" rel="stylesheet" type="text/css" />
+<link rel="shortcut icon" href="../../favicon.ico" />
+<link rel="icon" href="../../afavico.gif" type="image/gif" />
+</head>
+
+<body>
+
+<div class="top">
+	<div class="top_logo">
+    	<div class="logo"></div>
+    </div>
+</div>
+
+<div class="menu">
+	<div class="login">
+    	<div class="txt">
+      <form id="form1" name="form1" method="post" action="{$_A.admin_url}&q=login" onsubmit="return check_login();">
+          <table width="255" height="187" border="0" align="center" cellspacing="0">
+		  	<tr>
+			<td colspan="2"><font color="#3399CC" size="2">欢迎进入爱丽丝网站建设后台系统管理</font>
+			</td>
+			</tr>
+            <tr>
+              <td width="54" height="40">用 户：</td>
+              <td><input name="username" type="text" size="20" maxlength="20" tabindex="1" style="width:145px;"/></td>
+            </tr>
+            <tr>
+              <td height="40">密 码：</td>
+              <td><input name="password" type="password" size="21" maxlength="20"  tabindex="2" style="width:145px;"/></td>
+            </tr>
+            <tr>
+              <td height="40">验证码:</td>
+              <td><input name="valicode" type="text" size="11" maxlength="4"  tabindex="3" onClick="$('#valicode').attr('src','?plugins&q=imgcode&t=' + Math.random())"/>&nbsp;<img src="?plugins&q=imgcode" alt="点击刷新" onClick="this.src='?plugins&q=imgcode&t=' + Math.random();" id="valicode" align="absmiddle" style="cursor:pointer" /></td>
+            </tr>
+            <tr>
+              <td colspan="2"><div class="dengl"><a href="#"><input type="image" src="/themes/youyidai_admin/images/anniu.gif"></a></div></td>
+            </tr>
+          </table>
+		  </form>
+   	  </div>
+  </div>
+</div>
+
+</body>
+</html>

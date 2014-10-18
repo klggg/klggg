@@ -1,0 +1,98 @@
+{include file="header.html"}
+<div class="bodyer clearfix">
+       	    	<div class="form-container box1000 mian">
+					<div class="mianleft">
+                    	<ul>
+                        	<li><a href="/jczs/index.html" {if $_G.site_result.nid=='jczs' ||  $_G.site_result.nid=='help'}class="xin"{/if}>新手上路</a></li>
+					<li><a href="/aqbz/index.html" {if $_G.site_result.nid=='aqbz'}class="xin"{/if}>安全保障</a></li>
+					<li><a href="/zhxg/index.html" {if $_G.site_result.nid=='zhxg'}class="xin"{/if}>账户相关</a></li>
+					<li><a href="/tzxg/index.html" {if $_G.site_result.nid=='tzxg'}class="xin"{/if}>投资相关</a></li>
+					<li><a href="/jcxg/index.html" {if $_G.site_result.nid=='jcxg'}class="xin"{/if}>借款相关</a></li>
+					<li><a href="/shxg/index.html" {if $_G.site_result.nid=='shxg'}class="xin"{/if}>审核认证</a></li>
+					<li><a href="/xywb/index.html" {if $_G.site_result.nid=='xywb'}class="xin"{/if}>协议文本</a></li>
+					<li><a href="/tool_lixi/index.html" {if $_G.site_result.nid=='tool_lixi'}class="xin"{/if}>利息计算器</a></li>
+                        </ul>
+                      <div class="line"></div>
+                        <div class="contact-information">
+			 <div class="mail">123456@qq.com</div>
+			 <div class="phone">010-88888888</div>
+			 </div>
+             <div class="line"></div>
+             <div><a href="help.html"><img src="{$tempdir}/zhuliu/images/about_03.jpg" width="202" height="220" /></a></div>
+                    </div>
+                    <div class="mianright">
+                    	<h2>{$_G.site_result.name}<span><a href="/">首页</a> > 爱丽丝网站建设 > {$_G.site_result.name}</span></h2>
+                        <p><img src="{$tempdir}/zhuliu/images/about_02.jpg" width="650" height="130" /></p>
+                        
+                      <P>{literal}
+	<?
+		$account = isset($_REQUEST['account'])?$_REQUEST['account']:"";
+		$lilv = isset($_REQUEST['lilv'])?$_REQUEST['lilv']:"";
+		$times = isset($_REQUEST['times'])?$_REQUEST['times']:"";
+		$type = isset($_REQUEST['type'])?$_REQUEST['type']:"";
+		$style = isset($_REQUEST['style'])?$_REQUEST['style']:"";
+	?>
+<div style="float:right;width:650px;">
+	<div>
+		<div class="con_bor">
+			<div class="pos_bor"><span>利息计算器</span></div>
+			<div class="con1">
+				<div class="con">
+					<div style="padding:20px 0">	          
+						<div style="padding:0px 10px 20px">
+							<div class="cy_list1">
+							<form action="" method="post">借款金额：<input type="text" name="account" size="10"  value="<? echo isset($_REQUEST['account'])?$_REQUEST['account']:""; ?>" value="<? echo $_REQUEST['account'];?>" /> 年利率：<input type="text" name="lilv"  size="10"  value="<? echo isset($_REQUEST['lilv'])?$_REQUEST['lilv']:""; ?>"/>%  借款期限：<input type="text" name="times"  size="10"  value="<? echo isset($_REQUEST['times'])?$_REQUEST['times']:""; ?>" />个月 <br />
+<br />
+还款方式：<select name="style"><option value="0" >按月还款</option><option value="1" >按季还款</option><option value="2" >到期还本还息</option><option value="3" >按月还息到期还本</option></select>  <input type="submit" value="开始计算" class="xinbuton" />
+		<?
+require_once(ROOT_PATH."modules/borrow/borrow.class.php");
+$data['account'] = $account;
+$data['apr'] = $lilv;
+$data['period'] = $times;
+$data['time'] = time();
+$data['style'] = $style;
+$list = EqualInterest($data);
+$data['type'] = "all";
+$result = EqualInterest($data);
+if ($result!="" && is_array($list)){
+?>
+	<h5 style="line-height:50px;">每个月将偿还：<? echo $result['repay_month'];?>元 &nbsp; &nbsp; 月利率：<? echo $result['month_apr'];?>% &nbsp; &nbsp; 还款本息总额：<? echo $result['account_total'];?>元</h5>
+<table width="100%"  class="form-contentier" >
+		<tr>
+			<td  bgcolor="#f9f9f9" style="text-align:center"><strong>期数</strong></td>
+			<td  bgcolor="#f9f9f9" style="text-align:center"><strong>月还款本息</strong></td>
+			<td  bgcolor="#f9f9f9" style="text-align:center"><strong>月还款本金</strong></td>
+			<td  bgcolor="#f9f9f9" style="text-align:center"><strong>利息</strong></td>
+			<td  bgcolor="#f9f9f9" style="text-align:center"><strong>余额</strong></td>
+		</tr>
+		<? foreach ($list as $key => $value){?>
+		<tr>
+			<td bgcolor="#fdf4df"  align="center" style="text-align:center"><? echo $key+1;?></td>
+			<td bgcolor="#fdf4df" style="text-align:center"><? echo $value['account_all'];?></td>
+			<td bgcolor="#fdf4df" style="text-align:center"><? echo $value['account_capital'];?></td>
+			<td bgcolor="#fdf4df" style="text-align:center"><? echo $value['account_interest'];?></td>
+			<td bgcolor="#fdf4df" style="text-align:center"><? if($key+1==$_REQUEST['times']){
+						echo "0.00";
+					}else{
+						echo $value['account_other'];
+					};?></td>
+		</tr>
+		<? }?>
+</table>
+<? }?>
+{/literal}
+							<div class="cle"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</P>
+                    </div>	
+                </div>
+
+            </div>
+{include file="footer.html"}

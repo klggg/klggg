@@ -1,0 +1,678 @@
+{include file="user_header.html"}
+<div class="clearfix con_box">
+
+<div class="mi_content">
+	<div class="mi_c_left">
+		{include file="user_menu.html"}
+	</div>
+	<div class="user_right">
+	   <div>
+		   <div class="m_change">
+			{if $_U.query_type=="basic" || $_U.query_type=="detail" || $_U.query_type=="contact" || $_U.query_type=="company" || $_U.query_type=="finance" || $_U.query_type=="assets" || $_U.query_type=="job" || $_U.query_type=="addpayment" || $_U.query_type=="addrevenue"}
+
+			<ul>
+
+				<!--<li><a href="{$_U.query_url}/basic" {if $_U.query_type=="basic"} class="onn"{/if} >个人基本资料</a></li>-->
+
+				<li><a href="{$_U.query_url}/basic" {if $_U.query_type=="basic"} class="onn"{/if}>个人详细资料</a></li>
+
+				<li><a href="{$_U.query_url}/job" {if $_U.query_type=="job"} class="onn"{/if}>工作单位信息</a></li>
+				
+				<li><a href="{$_U.query_url}/company" {if $_U.query_type=="company"} class="onn"{/if}>私营业主信息</a></li>
+				
+				<li><a href="{$_U.query_url}/finance" {if $_U.query_type=="finance" || $_U.query_type=="addpayment" || $_U.query_type=="addrevenue"} class="onn"{/if}>财务状况</a></li>
+
+				<li><a href="{$_U.query_url}/contact" {if $_U.query_type=="contact"} class="onn"{/if}>主要联系人</a></li>
+
+				<!--<li><a href="{$_U.query_url}/assets" {if $_U.query_type=="assets"} class="onn"{/if}>资产状况</a></li>-->
+
+			</ul>
+			
+			{elseif $_U.query_type=="addpayment"}
+			
+			<ul>
+				<li><a href="{$_U.query_url}/addpayment" {if $_U.query_type=="addpayment"} class="onn"{/if}>添加支出状况</a></li>
+			</ul>
+			{elseif $_U.query_type=="addrevenue"}
+			<ul>
+				<li><a href="{$_U.query_url}/addrevenue" {if $_U.query_type=="addrevenue"} class="onn"{/if}>添加收入状况</a></li>
+			</ul>
+			{elseif $_U.query_type=="addassets"}
+			<ul>
+				<li><a href="{$_U.query_url}/addassets" {if $_U.query_type=="addassets"} class="onn"{/if}>添加资产状况</a></li>
+			</ul>
+			{/if}
+		</div>
+		
+		<div class="us_r_bor1">
+			{if $_U.query_type=="basic"}
+			<form action="" method="post" onsubmit="return formcheck();" name="formx" id="formx">
+			<div class="user_main_title1" >
+			<font color="#ff0000">*</font>为必填资料，所有资料均会严格保密
+			</div>
+			{articles module="rating" function="GetInfoOne" user_id="$_G.user_id" var="var"}
+			<div class="user_right_border" style="display:none">
+				<div class="l" >真实姓名：</div>
+				<div class="c"><input type="text" name="realname" id="realname" value="{$var.realname}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/> <font color="#ff0000">*</font></div>
+			</div>
+			<div class="user_right_border" style="display:none">
+				<div class="l">身份证号：</div>
+				<div class="c"><input type="text" name="card_id" id="card_id" value="{$var.card_id}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/> <font color="#ff0000">*</font></div>
+			</div>
+			<div class="user_right_border">
+				<div class="l">手机号码：</div>
+				<div class="c"><input type="text" name="phone_num" id="phone_num" value="{$var.phone_num}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/> <font color="#ff0000">*</font></div>
+			</div>
+			<div class="user_right_border">
+				<div class="l">性别：</div>
+				<div class="c">{linkages nid="rating_sex" name="sex" value="$var.sex" type="value"  style="width:150px; border:#BFBFBF solid 1px; height:18px;"} <font color="#ff0000">*</font></div>
+			</div>
+			<div class="user_right_border">
+				<div class="l">出生日期：</div>
+				<div class="c"><input type="text"  readonly="readonly" onclick="change_picktime()" name="birthday" id="birthday" value="{$var.birthday}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/> <font color="#ff0000">*</font></div>
+			</div>
+			<div class="user_right_border">
+				<div class="l">最高学历：</div>
+				<div class="c">{linkages nid="rating_education" name="edu" value="$var.edu" type="value" style="width:150px; border:#BFBFBF solid 1px; height:18px;"} <font color="#ff0000">*</font></div>
+			</div>
+			<div class="user_right_border">
+				<div class="l">入学时间：</div>
+				<div class="c"><input type="text" readonly="readonly" onclick="change_picktime()" name="school_year" id="school_year" value="{$var.school_year}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/> <font color="#ff0000">*</font></div>
+			</div>
+			<div class="user_right_border">
+				<div class="l">毕业院校：</div>
+				<div class="c"><input type="text" name="school" id="school" value="{$var.school}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/> <font color="#ff0000">*</font></div>
+			</div>
+			<div class="user_right_border">
+				<div class="l">婚姻状况：</div>
+				<div class="c">{linkages nid="rating_marry" name="marry" type="value" value="$var.marry"  style="width:150px; border:#BFBFBF solid 1px; height:18px;"} <font color="#ff0000">*</font></div>
+			</div>
+			<div class="user_right_border">
+				<div class="l">有无子女：</div>
+				<div class="c">{linkages nid="rating_children" name="children" value="$var.children" type="value"  style="width:150px; border:#BFBFBF solid 1px; height:18px;"} <font color="#ff0000">*</font></div>
+			</div>
+			<div class="user_right_border">
+				<div class="l">是否有房：</div>
+				<div class="c">{linkages nid="rating_house" name="house" value="$var.house" type="value"  style="width:150px; border:#BFBFBF solid 1px; height:18px;"} <font color="#ff0000">*</font></div>
+			</div>
+			<div class="user_right_border">
+				<div class="l">是否有车：</div>
+				<div class="c">{linkages nid="rating_car" name="is_car" value="$var.is_car" type="value"  style="width:150px; border:#BFBFBF solid 1px; height:18px;"} <font color="#ff0000">*</font></div>
+			</div>
+			<div class="user_right_border">
+				<div class="l">户口所在地：</div>
+				<div class="c">{areas type="p,c" value="$var.city"} <font color="#ff0000">*</font></div>
+			</div>
+			<div class="user_right_border">
+				<div class="l">居住地址：</div>
+				<div class="c"><input type="text" name="address" id="address" value="{$var.address}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/> <font color="#ff0000">*</font></div>
+			</div>
+			<div class="user_right_border">
+				<div class="l">居住电话：</div>
+				<div class="c"><input type="text" name="phone" id="phone"  value="{$var.phone}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/>
+				</div>
+			</div>
+			<div class="user_right_border">
+				<div class="l"></div>
+				<div class="c"><input type="hidden" name="submit" value="submit"><input type="submit" name="submit" value="提交" class="xinbuton"></div>
+			</div>
+			{/articles}
+			{literal}
+			<script>
+			function formcheck(){
+				 var frm = document.forms['formx'];
+				 var realname = frm.elements['realname'].value;
+				 var card_id = frm.elements['card_id'].value;
+				 var phone_num = frm.elements['phone_num'].value;
+				 var birthday = frm.elements['birthday'].value;
+				 var school_year = frm.elements['school_year'].value;
+				 var school = frm.elements['school'].value;
+				 var address = frm.elements['address'].value;
+				 var errorMsg = '';
+				  //if (realname.length == 0 ) {
+				//	errorMsg += '* 真实姓名不能为空' + '\n';
+				 // }
+				//  if (card_id.length == 0 ) {
+				//	errorMsg += '* 身份证号不能为空' + '\n';
+				 // }
+				  if (phone_num.length == 0 ) {
+					errorMsg += '* 手机号码不能为空' + '\n';
+				  }
+				  if (birthday.length == 0 ) {
+					errorMsg += '* 出生日期不能为空' + '\n';
+				  }
+				  if (school_year.length == 0 ) {
+					errorMsg += '* 入学年份不能为空' + '\n';
+				  }
+				  if (school.length == 0 ) {
+					errorMsg += '* 毕业院校不能为空' + '\n';
+				  }
+				  if (address.length == 0 ) {
+					errorMsg += '* 居住地址不能为空' + '\n';
+				  }
+				  if (errorMsg.length > 0){
+					alert(errorMsg); return false;
+				  } else{  
+					return true;
+				  }
+			}
+			</script>
+			{/literal}
+			{elseif $_U.query_type=="job"}
+			<form action="" method="post" onsubmit="return formck();" name="formx" id="formx">
+			<div class="user_main_title1" >
+			<font color="#ff0000">*</font>为必填资料，所有资料均会严格保密
+			</div>
+			{articles module="rating" function="GetJobOne" user_id="$_G.user_id" var="var"}
+			<div class="user_right_border">
+				<div class="l"><font color="#ff0000">*</font>单位名称：</div>
+				<div class="c"><input type="text" name="name" value="{$var.name}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></div>
+			</div>
+			<div class="user_right_border">
+				<div class="l"><font color="#ff0000">*</font>性质：</div>
+				<div class="c"><input type="text" name="type" value="{$var.type}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></div>
+			</div>
+			<div class="user_right_border">
+				<div class="l"><font color="#ff0000">*</font>行业：</div>
+				<div class="c"><input type="text" name="industry" value="{$var.industry}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></div>
+			</div>
+			<div class="user_right_border">
+				<div class="l"><font color="#ff0000">*</font>人员规模：</div>
+				<div class="c"><input type="text" name="peoples" value="{$var.peoples}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></div>
+			</div>
+			<div class="user_right_border">
+				<div class="l"><font color="#ff0000">*</font>入职时间：</div>
+				<div class="c"><input type="text"  readonly="readonly" onclick="change_picktime()" name="worktime1" value="{$var.worktime1}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/>
+				</div>
+			</div>
+			<div class="user_right_border">
+				<div class="l"><font color="#ff0000">*</font>职务：</div>
+				<div class="c"><input type="text" name="office" value="{$var.office}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></div>
+			</div>
+			<div class="user_right_border">
+				<div class="l"><font color="#ff0000">*</font>单位地址：</div>
+				<div class="c"><input type="text" name="address" value="{$var.address}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></div>
+			</div>
+			<div class="user_right_border">
+				<div class="l"><font color="#ff0000">*</font>单位电话：</div>
+				<div class="c"><input type="text" name="tel" id="tel" value="{$var.tel}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></div>
+			</div>
+			<div class="user_right_border">
+				<div class="l"></div>
+				<div class="c"><input type="hidden" name="submit" value="submit"><input type="submit" name="submit" value="提交" class="xinbuton"></div>
+			</div>
+		    {/articles}
+			{literal}
+			<script>
+			function formck(){
+				 var frm = document.forms['formx'];
+				 var address = frm.elements['tel'].value;
+				 var errorMsg = '';
+				  if (tel.length == 0 ) {
+					errorMsg += '* 单位电话不能为空' + '\n';
+				  }
+				  if (address.length == 0 ) {
+					errorMsg += '* 单位地址不能为空' + '\n';
+				  }
+				  if (office.length == 0 ) {
+					errorMsg += '* 工作职位不能为空' + '\n';
+				  }
+				  if (worktime1.length == 0 ) {
+					errorMsg += '* 入职时间不能为空' + '\n';
+				  }
+				  if (peoples.length == 0 ) {
+					errorMsg += '* 公司人数不能为空' + '\n';
+				  }
+				  if (industry.length == 0 ) {
+					errorMsg += '* 行业不能为空' + '\n';
+				  }
+				  if (type.length == 0 ) {
+					errorMsg += '* 单位性质不能为空' + '\n';
+				  }
+				  if (name.length == 0 ) {
+					errorMsg += '* 单位名称不能为空' + '\n';
+				  }
+				  if (errorMsg.length > 0){
+					alert(errorMsg); return false;
+				  } else{  
+					return true;
+				  }
+			}
+			</script>
+			{/literal}
+			{elseif $_U.query_type=="contact"}
+			<form action="" method="post" onsubmit="return ck();" name="formx" id="formx">
+			<div class="user_main_title1" >
+			<font color="#ff0000">*</font>为必填资料，所有资料均会严格保密<br>
+			<font color="#ff0000">请注意: 请确保联系人填写准确，如果核实时出现对方不知道的情况，将取消借款资格!</font>
+			</div>
+			{articles module="rating" function="GetContactOne" user_id="$_G.user_id" var="var"}
+			<div class="user_right_border">
+				<div class="l">配偶姓名：</div>
+				<div class="c"><input type="text" name="linkman2" value="{$var.linkman2}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/>
+				</div>
+			</div>
+			<div class="user_right_border">
+				<div class="l">配偶电话：</div>
+				<div class="c"><input type="text" name="phone2" value="{$var.phone2}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/>
+				</div>
+			</div>
+			<div class="user_right_border">
+				<div class="l">直系亲属1姓名：</div>
+				<div class="c"><input type="text" name="linkman3" value="{$var.linkman3}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/> <font color="#ff0000">*</font>
+				</div>
+			</div>
+			<div class="user_right_border">
+				<div class="l">直系亲属1电话：</div>
+				<div class="c"><input type="text" name="phone3" value="{$var.phone3}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/> <font color="#ff0000">*</font>
+				</div>
+			</div>
+			<div class="user_right_border">
+				<div class="l">直系亲属2姓名：</div>
+				<div class="c"><input type="text" name="linkman6" value="{$var.linkman6}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/> <font color="#ff0000">*</font>
+				</div>
+			</div>
+			<div class="user_right_border">
+				<div class="l">直系亲属2电话：</div>
+				<div class="c"><input type="text" name="phone6" value="{$var.phone6}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/> <font color="#ff0000">*</font>
+				</div>
+			</div>
+			<div class="user_right_border">
+				<div class="l">同事1姓名：</div>
+				<div class="c"><input type="text" name="linkman4" value="{$var.linkman4}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/> <font color="#ff0000">*</font>
+				</div>
+			</div>
+			<div class="user_right_border">
+				<div class="l">同事1电话：</div>
+				<div class="c"><input type="text" name="phone4" value="{$var.phone4}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/> <font color="#ff0000">*</font>
+				</div>
+			</div>
+			<div class="user_right_border">
+				<div class="l">同事2姓名：</div>
+				<div class="c"><input type="text" name="linkman7" value="{$var.linkman7}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/>
+				</div>
+			</div>
+			<div class="user_right_border">
+				<div class="l">同事2电话：</div>
+				<div class="c"><input type="text" name="phone7" value="{$var.phone7}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/>
+				</div>
+			</div>
+			<div class="user_right_border">
+				<div class="l">朋友1姓名：</div>
+				<div class="c"><input type="text" name="linkman8" value="{$var.linkman8}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/> <font color="#ff0000">*</font>
+				</div>
+			</div>
+			<div class="user_right_border">
+				<div class="l">朋友1电话：</div>
+				<div class="c"><input type="text" name="phone8" value="{$var.phone8}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/> <font color="#ff0000">*</font>
+				</div>
+			</div>
+			<div class="user_right_border">
+				<div class="l">朋友2姓名：</div>
+				<div class="c"><input type="text" name="linkman9" value="{$var.linkman9}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/>
+				</div>
+			</div>
+			<div class="user_right_border">
+				<div class="l">朋友2电话：</div>
+				<div class="c"><input type="text" name="phone9" value="{$var.phone9}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/>
+				</div>
+			</div>
+			<div class="user_right_border">
+				<div class="l">同学1姓名：</div>
+				<div class="c"><input type="text" name="linkman10" value="{$var.linkman10}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/>
+				</div>
+			</div>
+			<div class="user_right_border">
+				<div class="l">同学1电话：</div>
+				<div class="c"><input type="text" name="phone10" value="{$var.phone10}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/>
+				</div>
+			</div>
+			<div class="user_right_border">
+				<div class="l">同学2姓名：</div>
+				<div class="c"><input type="text" name="linkman11" value="{$var.linkman11}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/>
+				</div>
+			</div>
+			<div class="user_right_border">
+				<div class="l">同学2电话：</div>
+				<div class="c"><input type="text" name="phone11" value="{$var.phone11}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/>
+				</div>
+			</div>
+			<div class="user_right_border">
+				<div class="l">紧急联系人姓名：</div>
+				<div class="c"><input type="text" name="linkman5" value="{$var.linkman5}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/> <font color="#ff0000">*</font>
+				</div>
+			</div>
+			<div class="user_right_border">
+				<div class="l">紧急联系人电话：</div>
+				<div class="c"><input type="text" name="phone5" value="{$var.phone5}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/> <font color="#ff0000">*</font>
+				</div>
+			</div>
+			<div class="user_right_border">
+				<div class="l"></div>
+				<div class="c"><input type="hidden" name="submit" value="submit"><input type="submit" name="submit" value="提交" class="xinbuton"></div>
+			</div>
+		    {/articles}
+			{literal}
+			<script>
+			function ck(){
+				 var frm = document.forms['formx'];
+				 var linkman2 = frm.elements['linkman2'].value;
+				 var linkman3 = frm.elements['linkman3'].value;
+				 var linkman3 = frm.elements['linkman4'].value;
+				 var linkman3 = frm.elements['linkman5'].value;
+				 var phone2 = frm.elements['phone2'].value;
+				 var phone3 = frm.elements['phone3'].value;
+				 var phone3 = frm.elements['phone4'].value;
+				 var phone3 = frm.elements['phone5'].value;
+				 var errorMsg = '';
+				  if (linkman2.length == 0 ) {
+					errorMsg += '* 配偶姓名不能为空' + '\n';
+				  }
+				  if (linkman3.length == 0 ) {
+					errorMsg += '* 直系亲属姓名不能为空' + '\n';
+				  }
+				  if (linkman4.length == 0 ) {
+					errorMsg += '* 同事姓名不能为空' + '\n';
+				  }
+				  if (linkman5.length == 0 ) {
+					errorMsg += '* 紧急联系人姓名不能为空' + '\n';
+				  }
+				  if (phone2.length == 0 ) {
+					errorMsg += '* 配偶电话不能为空' + '\n';
+				  }
+				  if (phone3.length == 0 ) {
+					errorMsg += '* 直系亲属电话不能为空' + '\n';
+				  }
+				  if (phone4.length == 0 ) {
+					errorMsg += '* 同事电话不能为空' + '\n';
+				  }
+				  if (phone5.length == 0 ) {
+					errorMsg += '* 紧急联系人电话不能为空' + '\n';
+				  }
+				  if (errorMsg.length > 0){
+					alert(errorMsg); return false;
+				  } else{  
+					return true;
+				  }
+			}
+			</script>
+			{/literal}
+			{elseif $_U.query_type=="company"}
+			<form action="" method="post" name="formx" id="formx" onsubmit="return formck();">
+			<div class="user_main_title1" >
+			<font color="#ff0000">*</font>为必填资料，所有资料均会严格保密
+			</div>
+			{articles module="rating" function="GetCompanyOne" user_id="$_G.user_id" var="var"}
+			<div class="user_right_border">
+				<div class="l"><font color="#ff0000">*</font>名称：</div>
+				<div class="c"><input type="text" name="name" value="{$var.name}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></div>
+			</div>
+			<div class="user_right_border">
+				<div class="l"><font color="#ff0000">*</font>执照号：</div>
+				<div class="c"><input type="text" name="license_num" value="{$var.license_num}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></div>
+			</div>
+			<div class="user_right_border">
+				<div class="l"><font color="#ff0000">*</font>税务号(地税)：</div>
+				<div class="c"><input type="text" name="tax_num_di" value="{$var.tax_num_di}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></div>
+			</div>
+			<div class="user_right_border">
+				<div class="l">税务号(国税)：：</div>
+				<div class="c"><input type="text" name="tax_num_guo" value="{$var.tax_num_guo}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></div>
+			</div>
+			<div class="user_right_border">
+				<div class="l"><font color="#ff0000">*</font>地址：</div>
+				<div class="c"><input type="text" name="address" value="{$var.address}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></div>
+			</div>
+			<div class="user_right_border">
+				<div class="l"><font color="#ff0000">*</font>租期：</div>
+				<div class="c"><input type="text" name="rent_time" value="{$var.rent_time}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></div>
+			</div>
+			<div class="user_right_border">
+				<div class="l"><font color="#ff0000">*</font>租金：</div>
+				<div class="c"><input type="text" name="rent_money" value="{$var.rent_money}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></div>
+			</div>
+			<div class="user_right_border">
+				<div class="l"><font color="#ff0000">*</font>行业：</div>
+				<div class="c"><input type="text" name="hangye" value="{$var.hangye}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></div>
+			</div>
+			<div class="user_right_border">
+				<div class="l"><font color="#ff0000">*</font>人员规模：</div>
+				<div class="c"><input type="text" name="people" value="{$var.people}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></div>
+			</div>
+			<div class="user_right_border">
+				<div class="l"><font color="#ff0000">*</font>成立时间：</div>
+				<div class="c"><input type="text" name="time" value="{$var.time}" style="width:150px; border:#BFBFBF solid 1px; height:18px;"/></div>
+			</div>
+			<div class="user_right_border">
+				<div class="l"></div>
+				<div class="c"><input type="hidden" name="submit" value="submit"><input type="submit" name="submit" value="提交" class="xinbuton"></div>
+			</div>
+		    {/articles}
+			{literal}
+			<script>
+			function formck(){
+				 var frm = document.forms['formx'];
+				 var name = frm.elements['name'].value;
+				 var license_num = frm.elements['license_num'].value;
+				 var tax_num_di = frm.elements['tax_num_di'].value;
+				 var address = frm.elements['address'].value;
+				 var rent_time = frm.elements['rent_time'].value;
+				 var hangye = frm.elements['hangye'].value;
+				 var time = frm.elements['time'].value;
+				 var people = frm.elements['people'].value;
+				 var rent_money = frm.elements['rent_money'].value;
+				 var errorMsg = '';
+				  if (name.length == 0 ) {
+					errorMsg += '* 单位名称不能为空' + '\n';
+				  }
+				  if (people.length == 0 ) {
+					errorMsg += '* 人员规模不能为空' + '\n';
+				  }
+				  if (time.length == 0 ) {
+					errorMsg += '* 成立时间不能为空' + '\n';
+				  }
+				  if (license_num.length == 0 ) {
+					errorMsg += '* 执照号不能为空' + '\n';
+				  }
+				  if (hangye.length == 0 ) {
+					errorMsg += '* 行业不能为空' + '\n';
+				  }
+				  if (tax_num_di.length == 0 ) {
+					errorMsg += '* 地税号不能为空' + '\n';
+				  }
+				  if (address.length == 0 ) {
+					errorMsg += '* 单位地址不能为空' + '\n';
+				  }
+				  if (rent_time.length == 0 ) {
+					errorMsg += '* 租期不能为空' + '\n';
+				  }
+				  if (rent_money.length == 0 ) {
+					errorMsg += '* 租金不能为空' + '\n';
+				  }
+				  if (errorMsg.length > 0){
+					alert(errorMsg); return false;
+				  } else{  
+					return true;
+				  }
+			}
+			</script>
+			{/literal}
+			{elseif $_U.query_type=="assets"}
+			<div class="user_main_title1" >
+				<font color="#ff0000">*</font>为必填资料，所有资料均会严格保密
+			</div>
+			
+			<div class="t20">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabyel">
+				<tr class="ytit">
+					<td colspan="5"><a href="{$_U.query_url}/addassets">添加资产状况</a></td>
+				</tr>
+				<tr class="ytit1" >
+					<td  >负债类型</td>
+					<td  >负债名称</td>
+					<td  >金额</td>
+					<td  >其他说明</td>
+					<td  >操作</td>
+				</tr>
+				{list module="rating" var="loop" function ="GetAssetsList" user_id="0"}
+				{foreach from="$loop.list" item="item"}
+				<tr {if $key%2==1} class="tr1"{/if} >
+					<td>{$item.assetstype|linkages:"rating_assetstype"}</td>
+					<td>{$item.name}</td>
+					<td>{$item.account}</td>
+					<td>{$item.other}</td>
+					<td><a href="{$_U.query_url}/addassets&edit={$item.id}">编辑</a>/<a href="#" onClick="javascript:if(confirm('确定要删除吗?删除后将不可恢复')) location.href='{$_U.query_url}/{$_U.query_type}&del={$item.id}'">删除</a></td>
+				</tr>
+				{/foreach}
+				{/list}
+			</table>
+			</div>
+			{elseif $_U.query_type=="finance"}
+			<div class="user_main_title1" >
+			请如实填写，如发现情况不符而产生的<font color="#ff0000">严重后果</font>全部由个人承担。
+			</div>
+			<div class="t20">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabyel">
+				<tr class="ytit">
+					<td colspan="5">您的个人收入一览（<a href="{$_U.query_url}/addrevenue">添加收入状况</a>）</td>
+				</tr>
+			
+				<tr class="ytit1" >
+					<td  >收入类型</td>
+					<td  >收入名称</td>
+					<td  >金额</td>
+					<td  >其他说明</td>
+					<td  >操作</td>
+				</tr>
+				{list module="rating" var="loop" function ="GetFinanceList" user_id="0" use_type="1"}
+				{foreach from="$loop.list" item="item"}
+				<tr {if $key%2==1} class="tr1"{/if} >
+					<td>{$item.type|linkages:"rating_revenue"}</td>
+					<td>{$item.name}</td>
+					<td>{$item.account}</td>
+					<td>{$item.other}</td>
+					<td><a href="{$_U.query_url}/addrevenue&edit={$item.id}">编辑</a>/<a href="#" onClick="javascript:if(confirm('确定要删除吗?删除后将不可恢复')) location.href='{$_U.query_url}/{$_U.query_type}&del={$item.id}'">删除</a></td>
+				</tr>
+				{/foreach}
+				{/list}
+			</table>
+			<br>
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tabyel">
+				<tr class="ytit">
+					<td colspan="5">您的个人支出一览（<a href="{$_U.query_url}/addpayment">添加支出状况</a>）</td>
+				</tr>
+				<tr class="ytit1" >
+					<td  >支出类型</td>
+					<td  >支出名称</td>
+					<td  >金额</td>
+					<td  >其他说明</td>
+					<td  >操作</td>
+				</tr>
+				{list module="rating" var="loop" function ="GetFinanceList" user_id="0" use_type="2"}
+				{foreach from="$loop.list" item="item"}
+				<tr {if $key%2==1} class="tr1"{/if} >
+					<td>{$item.type|linkages:"rating_payment"}</td>
+					<td>{$item.name}</td>
+					<td>{$item.account}</td>
+					<td>{$item.other}</td>
+					<td><a href="{$_U.query_url}/addpayment&edit={$item.id}">编辑</a>/<a href="#" onClick="javascript:if(confirm('确定要删除吗?删除后将不可恢复')) location.href='{$_U.query_url}/{$_U.query_type}&del={$item.id}'">删除</a></td>
+				</tr>
+				{/foreach}
+				{/list}
+			</table><br>
+			</div>
+			{elseif $_U.query_type=="addassets"}
+			<form action="" method="post">
+			<div class="user_right_border">
+				<div class="l">负债类别：</div>
+				<div class="c">{linkages name="assetstype" nid="rating_assetstype" type="value" value="$_U.rating_result.assetstype"} <font color="#ff0000">*</font>
+				</div>
+			</div>
+			<div class="user_right_border">
+				<div class="l">负债名称：</div>
+				<div class="c"><input type="text" name="name" value="{$_U.rating_result.name}" id="name"> <font color="#ff0000">*</font>
+				</div>
+			</div>
+			<div class="user_right_border">
+				<div class="l">金额：</div>
+				<div class="c"><input type="text" name="account" value="{$_U.rating_result.account}" id="account"> <font color="#ff0000">*</font>
+				</div>
+			</div>
+			<div class="user_right_border">
+				<div class="l">其他：</div>
+				<div class="c"><textarea cols="30" rows="5" name="other">{$_U.rating_result.other}</textarea><font color="#ff0000">*</font>
+				</div>
+			</div>
+			<div class="user_right_border">
+				<div class="l"></div>
+				<div class="c"><input type="hidden" name="submit" value="submit"><input type="submit" name="submit" value="提交" class="xinbuton"></div>
+			</div>
+			{elseif $_U.query_type=="addpayment"}
+				<div class="user_main_title1" >
+			添加支出状况,请如实填写，如发现情况不符而产生的<font color="#ff0000">严重后果</font>全部由个人承担。
+			</div><br />
+			<form action="" method="post">
+			<div class="user_right_border">
+				<div class="l">支出类别：</div>
+				<div class="c">{linkages name="type" nid="rating_payment" type="value" value="$_U.rating_result.type"} <font color="#ff0000">*</font>
+				</div>
+			</div>
+			<div class="user_right_border">
+				<div class="l">支出名称：</div>
+				<div class="c"><input type="text" name="name" value="{$_U.rating_result.name}" id="name"> <font color="#ff0000">*</font>
+				</div>
+			</div>
+			<div class="user_right_border">
+				<div class="l">金额：</div>
+				<div class="c"><input type="text" name="account" value="{$_U.rating_result.account}" id="account"> <font color="#ff0000">*</font>
+				</div>
+			</div>
+			<div class="user_right_border">
+				<div class="l">其他：</div>
+				<div class="c"><textarea cols="30" rows="5" name="other">{$_U.rating_result.other}</textarea><font color="#ff0000">*</font>
+				</div>
+			</div>
+			<div class="user_right_border">
+				<div class="l"><input type="hidden" name="use_type" value="2" id="use_type"></div>
+				<div class="c"><input type="hidden" name="submit" value="submit"><input type="submit" name="submit" value="提交" class="xinbuton"></div>
+			</div>
+			{elseif $_U.query_type=="addrevenue"}
+			<div class="user_main_title1" >
+			添加收入状况,请如实填写，如发现情况不符而产生的<font color="#ff0000">严重后果</font>全部由个人承担。
+			</div><br />
+
+			<form action="" method="post">
+			<div class="user_right_border">
+				<div class="l">收入类别：</div>
+				<div class="c">{linkages name="type" nid="rating_revenue" type="value" value="$_U.rating_result.type"} <font color="#ff0000">*</font>
+				</div>
+			</div>
+			<div class="user_right_border">
+				<div class="l">收入名称：</div>
+				<div class="c"><input type="text" name="name" value="{$_U.rating_result.name}" id="name"> <font color="#ff0000">*</font>
+				</div>
+			</div>
+			<div class="user_right_border">
+				<div class="l">金额：</div>
+				<div class="c"><input type="text" name="account" value="{$_U.rating_result.account}" id="account"> <font color="#ff0000">*</font>
+				</div>
+			</div>
+			<div class="user_right_border">
+				<div class="l">其他：</div>
+				<div class="c"><textarea cols="30" rows="5" name="other">{$_U.rating_result.other}</textarea><font color="#ff0000">*</font>
+				</div>
+			</div>
+			<div class="user_right_border">
+				<div class="l"><input type="hidden" name="use_type" value="1" id="use_type"></div>
+				<div class="c"><input type="hidden" name="submit" value="submit"><input type="submit" name="submit" value="提交" class="xinbuton"></div>
+			</div>
+			{/if}
+			</form>
+		</div>
+	
+	</div>
+	</div>
+</div>
+<div style="clear:both;"></div>
+
+{include file="user_footer.html"}

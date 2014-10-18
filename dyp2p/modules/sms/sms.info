@@ -1,0 +1,9 @@
+<?
+		$code = "sms";
+		$name = "短信设置";
+		$description = "短信设置";
+		$version = "1.0";
+		$author = "wqs";
+		$date = "2010-08-01";
+		$type = "sms";
+		?>

@@ -1,0 +1,10 @@
+<?
+	$code = "admin";
+	$name = "系统管理模块";
+	$description = "系统管理模块";
+	$version = "4.2";
+	$author = "youyi";
+	$date = "2011-11-20";
+	$update = "";
+	$type = "system";
+?>

@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Plugin]]></item>
+	<item id="Version"><![CDATA[X2.5]]></item>
+	<item id="Time"><![CDATA[2012-10-24 11:26]]></item>
+	<item id="From"><![CDATA[开发站点 (http://localhost/dz25/)]]></item>
+	<item id="Data">
+		<item id="plugin">
+			<item id="available"><![CDATA[1]]></item>
+			<item id="adminid"><![CDATA[1]]></item>
+			<item id="name"><![CDATA[【DRK】LED 醒目牌]]></item>
+			<item id="identifier"><![CDATA[drk_ledadv]]></item>
+			<item id="description"><![CDATA[1、可调用N个版块帖子;
+2、可定义调用帖子数量;
+3、可自定义广告语;
+4、可仅显示帖子或仅显示自定义广告语或帖子+广告语轮显;
+5、根据显示内容自动单双行显示;
+6、卡片式/LED两种时钟选择;
+7、可选择投放版块;
+8、可选择是否全局投放:当全局投放时,版块投放无效;
+9、可选择上下左右滚动模式;
+10、可选择是否启用天气预报:效果不太美观,木办法,美工方面我是外行;
+11、自适应宽度。]]></item>
+			<item id="datatables"><![CDATA[]]></item>
+			<item id="directory"><![CDATA[drk_ledadv/]]></item>
+			<item id="copyright"><![CDATA[要命的酒鬼]]></item>
+			<item id="version"><![CDATA[2.0]]></item>
+			<item id="__modules">
+				<item id="0">
+					<item id="name"><![CDATA[drk_ledadv]]></item>
+					<item id="menu"><![CDATA[]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[11]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[0]]></item>
+					<item id="navtitle"><![CDATA[]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+			</item>
+		</item>
+		<item id="version"><![CDATA[X2,X2.5]]></item>
+		<item id="var">
+			<item id="0">
+				<item id="displayorder"><![CDATA[0]]></item>
+				<item id="title"><![CDATA[是否启用]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[isopen]]></item>
+				<item id="type"><![CDATA[radio]]></item>
+				<item id="value"><![CDATA[1]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="1">
+				<item id="displayorder"><![CDATA[1]]></item>
+				<item id="title"><![CDATA[类型选择]]></item>
+				<item id="description"><![CDATA[按住 CTRL 多选]]></item>
+				<item id="variable"><![CDATA[selecttype]]></item>
+				<item id="type"><![CDATA[select]]></item>
+				<item id="value"><![CDATA[3]]></item>
+				<item id="extra"><![CDATA[1=仅显示帖子主题
+2=仅显示自定义广告语
+3=显示帖子主题+广告语]]></item>
+			</item>
+			<item id="2">
+				<item id="displayorder"><![CDATA[2]]></item>
+				<item id="title"><![CDATA[版块选择]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[forums]]></item>
+				<item id="type"><![CDATA[forums]]></item>
+				<item id="extra"><![CDATA[]]></item>
+				<item id="__value">
+					<item id="0"><![CDATA[54]]></item>
+					<item id="1"><![CDATA[53]]></item>
+				</item>
+			</item>
+			<item id="3">
+				<item id="displayorder"><![CDATA[3]]></item>
+				<item id="title"><![CDATA[各版块调用帖子数量]]></item>
+				<item id="description"><![CDATA[选择多版块时，调用数量不易太多，总量尽量控制最少，否则会增加服务器负担。]]></item>
+				<item id="variable"><![CDATA[threadnum]]></item>
+				<item id="type"><![CDATA[number]]></item>
+				<item id="value"><![CDATA[2]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="4">
+				<item id="displayorder"><![CDATA[4]]></item>
+				<item id="title"><![CDATA[帖子类型]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[threadtype]]></item>
+				<item id="type"><![CDATA[select]]></item>
+				<item id="value"><![CDATA[1]]></item>
+				<item id="extra"><![CDATA[1=最新主题
+2=关注最多
+3=回帖最多]]></item>
+			</item>
+			<item id="5">
+				<item id="displayorder"><![CDATA[5]]></item>
+				<item id="title"><![CDATA[自定义广告语]]></item>
+				<item id="description"><![CDATA[一行一条广告语,书写规则   http://www.4dkj.net|四度空间   每行广告的链接地址和广告语用 | 隔离开]]></item>
+				<item id="variable"><![CDATA[myadv]]></item>
+				<item id="type"><![CDATA[textarea]]></item>
+				<item id="value"><![CDATA[a|自定义广告1
+b|自定义广告2]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="6">
+				<item id="displayorder"><![CDATA[6]]></item>
+				<item id="title"><![CDATA[是否全局]]></item>
+				<item id="description"><![CDATA[当选择全局时,下面所有投放选项都木用]]></item>
+				<item id="variable"><![CDATA[isall]]></item>
+				<item id="type"><![CDATA[radio]]></item>
+				<item id="value"><![CDATA[1]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="7">
+				<item id="displayorder"><![CDATA[7]]></item>
+				<item id="title"><![CDATA[是否在论坛首页显示]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[isforum]]></item>
+				<item id="type"><![CDATA[radio]]></item>
+				<item id="value"><![CDATA[0]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="8">
+				<item id="displayorder"><![CDATA[7]]></item>
+				<item id="title"><![CDATA[投放版块]]></item>
+				<item id="description"><![CDATA[当上面选择了全局时,此处选择投放版块木用]]></item>
+				<item id="variable"><![CDATA[forumss]]></item>
+				<item id="type"><![CDATA[forums]]></item>
+				<item id="extra"><![CDATA[]]></item>
+				<item id="__value">
+					<item id="0"><![CDATA[54]]></item>
+					<item id="1"><![CDATA[53]]></item>
+				</item>
+			</item>
+			<item id="9">
+				<item id="displayorder"><![CDATA[8]]></item>
+				<item id="title"><![CDATA[在投放版块所在版区显示]]></item>
+				<item id="description"><![CDATA[是否在上面投放版块所在的版区显示LED屏]]></item>
+				<item id="variable"><![CDATA[isfup]]></item>
+				<item id="type"><![CDATA[radio]]></item>
+				<item id="value"><![CDATA[1]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="10">
+				<item id="displayorder"><![CDATA[9]]></item>
+				<item id="title"><![CDATA[在投放版块帖子页头部显示]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[istopictop]]></item>
+				<item id="type"><![CDATA[radio]]></item>
+				<item id="value"><![CDATA[1]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="11">
+				<item id="displayorder"><![CDATA[10]]></item>
+				<item id="title"><![CDATA[是否在门户页面显示]]></item>
+				<item id="description"><![CDATA[如果选否,则下面的频道和文章选项无用]]></item>
+				<item id="variable"><![CDATA[isportal]]></item>
+				<item id="type"><![CDATA[radio]]></item>
+				<item id="value"><![CDATA[0]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="12">
+				<item id="displayorder"><![CDATA[11]]></item>
+				<item id="title"><![CDATA[是否在频道列表页显示]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[islist]]></item>
+				<item id="type"><![CDATA[radio]]></item>
+				<item id="value"><![CDATA[1]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="13">
+				<item id="displayorder"><![CDATA[12]]></item>
+				<item id="title"><![CDATA[是否在文章页显示]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[isview]]></item>
+				<item id="type"><![CDATA[radio]]></item>
+				<item id="value"><![CDATA[1]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="14">
+				<item id="displayorder"><![CDATA[12]]></item>
+				<item id="title"><![CDATA[时钟显示宽度]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[clockwidth]]></item>
+				<item id="type"><![CDATA[number]]></item>
+				<item id="value"><![CDATA[170]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="15">
+				<item id="displayorder"><![CDATA[13]]></item>
+				<item id="title"><![CDATA[是否显示时钟]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[showclock]]></item>
+				<item id="type"><![CDATA[radio]]></item>
+				<item id="value"><![CDATA[1]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="16">
+				<item id="displayorder"><![CDATA[14]]></item>
+				<item id="title"><![CDATA[时钟选择]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[clocks]]></item>
+				<item id="type"><![CDATA[select]]></item>
+				<item id="value"><![CDATA[1]]></item>
+				<item id="extra"><![CDATA[1=卡片式
+2=LED灯]]></item>
+			</item>
+			<item id="17">
+				<item id="displayorder"><![CDATA[15]]></item>
+				<item id="title"><![CDATA[LED背景图]]></item>
+				<item id="description"><![CDATA[绝对路径、相对路径均可,为空则自动调用默认图片
+有说背景难看、有说圆点太大、有说要红圆点……美化界面工作对我来说太难了，干脆加个图片链接，站长们自己作图吧^_^]]></item>
+				<item id="variable"><![CDATA[ledimg]]></item>
+				<item id="type"><![CDATA[text]]></item>
+				<item id="value"><![CDATA[./source/plugin/drk_ledadv/image/drk_led.png]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="18">
+				<item id="displayorder"><![CDATA[16]]></item>
+				<item id="title"><![CDATA[LED屏高度]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[ledheight]]></item>
+				<item id="type"><![CDATA[number]]></item>
+				<item id="value"><![CDATA[58]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="19">
+				<item id="displayorder"><![CDATA[17]]></item>
+				<item id="title"><![CDATA[LED屏边框样式]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[ledstyle]]></item>
+				<item id="type"><![CDATA[select]]></item>
+				<item id="value"><![CDATA[none]]></item>
+				<item id="extra"><![CDATA[none=无
+solid=实线
+dashed=虚线
+dotted=点线
+double=双实线
+groove=浅灰实线
+inset=凹陷实线
+outset=凸起实线
+ridge=隆起实线]]></item>
+			</item>
+			<item id="20">
+				<item id="displayorder"><![CDATA[18]]></item>
+				<item id="title"><![CDATA[LED屏边框颜色]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[ledcolor]]></item>
+				<item id="type"><![CDATA[color]]></item>
+				<item id="value"><![CDATA[#CCCCCC]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="21">
+				<item id="displayorder"><![CDATA[19]]></item>
+				<item id="title"><![CDATA[LED屏边框宽度]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[ledwidth]]></item>
+				<item id="type"><![CDATA[number]]></item>
+				<item id="value"><![CDATA[0]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="22">
+				<item id="displayorder"><![CDATA[20]]></item>
+				<item id="title"><![CDATA[文字大小]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[fontsize]]></item>
+				<item id="type"><![CDATA[number]]></item>
+				<item id="value"><![CDATA[30]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="23">
+				<item id="displayorder"><![CDATA[20]]></item>
+				<item id="title"><![CDATA[文字字体]]></item>
+				<item id="description"><![CDATA[默认为 微软雅黑]]></item>
+				<item id="variable"><![CDATA[typeface]]></item>
+				<item id="type"><![CDATA[text]]></item>
+				<item id="value"><![CDATA[华文琥珀]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="24">
+				<item id="displayorder"><![CDATA[21]]></item>
+				<item id="title"><![CDATA[文字显示位置]]></item>
+				<item id="description"><![CDATA[仅上下滚动时有效]]></item>
+				<item id="variable"><![CDATA[position]]></item>
+				<item id="type"><![CDATA[select]]></item>
+				<item id="value"><![CDATA[center]]></item>
+				<item id="extra"><![CDATA[left=居左
+center=居中
+right=居右]]></item>
+			</item>
+			<item id="25">
+				<item id="displayorder"><![CDATA[22]]></item>
+				<item id="title"><![CDATA[是否显示简要内容]]></item>
+				<item id="description"><![CDATA[仅对帖子,开启后,将显示帖子部分内容,内容长度为标题的三倍.]]></item>
+				<item id="variable"><![CDATA[ismessage]]></item>
+				<item id="type"><![CDATA[radio]]></item>
+				<item id="value"><![CDATA[1]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="26">
+				<item id="displayorder"><![CDATA[23]]></item>
+				<item id="title"><![CDATA[摘要和主题间距]]></item>
+				<item id="description"><![CDATA[数值越小间距越大]]></item>
+				<item id="variable"><![CDATA[spacing]]></item>
+				<item id="type"><![CDATA[number]]></item>
+				<item id="value"><![CDATA[8]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="27">
+				<item id="displayorder"><![CDATA[24]]></item>
+				<item id="title"><![CDATA[摘要长度是标题的几倍]]></item>
+				<item id="description"><![CDATA[数字越大字串越长.尽量用整数,小数也可,但最后一个字符可能是乱码]]></item>
+				<item id="variable"><![CDATA[messagelen]]></item>
+				<item id="type"><![CDATA[number]]></item>
+				<item id="value"><![CDATA[2]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="28">
+				<item id="displayorder"><![CDATA[25]]></item>
+				<item id="title"><![CDATA[上一文字颜色]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[textcolor1]]></item>
+				<item id="type"><![CDATA[color]]></item>
+				<item id="value"><![CDATA[#FFFF00]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="29">
+				<item id="displayorder"><![CDATA[26]]></item>
+				<item id="title"><![CDATA[下一文字颜色]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[textcolor2]]></item>
+				<item id="type"><![CDATA[color]]></item>
+				<item id="value"><![CDATA[#FF0000]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="30">
+				<item id="displayorder"><![CDATA[27]]></item>
+				<item id="title"><![CDATA[滚动方向]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[direction]]></item>
+				<item id="type"><![CDATA[select]]></item>
+				<item id="value"><![CDATA[3]]></item>
+				<item id="extra"><![CDATA[1=向上滚动
+2=向下滚动
+3=向左滚动
+4=向右滚动]]></item>
+			</item>
+			<item id="31">
+				<item id="displayorder"><![CDATA[28]]></item>
+				<item id="title"><![CDATA[滚动速度]]></item>
+				<item id="description"><![CDATA[数值越大,速度越慢,必须正整数
+IE不支持]]></item>
+				<item id="variable"><![CDATA[speed]]></item>
+				<item id="type"><![CDATA[text]]></item>
+				<item id="value"><![CDATA[5]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="32">
+				<item id="displayorder"><![CDATA[29]]></item>
+				<item id="title"><![CDATA[是否显示天气预报]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[isweater]]></item>
+				<item id="type"><![CDATA[radio]]></item>
+				<item id="value"><![CDATA[0]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="33">
+				<item id="displayorder"><![CDATA[30]]></item>
+				<item id="title"><![CDATA[天气预报显示位置]]></item>
+				<item id="description"><![CDATA[当选择右侧显示时,且LED屏高度小于天气预报高度时,LED屏会被撑高]]></item>
+				<item id="variable"><![CDATA[weaterposition]]></item>
+				<item id="type"><![CDATA[select]]></item>
+				<item id="value"><![CDATA[2]]></item>
+				<item id="extra"><![CDATA[1=LED屏右侧(当天)
+2=LED屏下方(七天)]]></item>
+			</item>
+		</item>
+		<item id="installfile"><![CDATA[install.php]]></item>
+		<item id="uninstallfile"><![CDATA[uninstall.php]]></item>
+	</item>
+</root>

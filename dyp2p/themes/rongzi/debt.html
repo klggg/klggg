@@ -1,0 +1,135 @@
+{include file="header.html"}
+{if $_G.user_id==""}
+<script>
+alert("请登录后再查看");
+location.href='/?user&q=login';
+</script>
+{/if}
+  
+
+    
+    
+  <div class="bodyer clearfix">
+                <dl class="list-mian box1000">
+                   	  <dt>
+                          <ul>
+                              <li><a href="/debt/index.html" {if $_G.site_result.nid=="debt"}class="hover"{/if}>转让中债权</a></li>
+                              <li><a href="/debt_success/index.html" {if $_G.site_result.nid=="debt_success"}class="hover"{/if}>转让成功债权</a></li>
+                         
+                          </ul>
+                      </dt>
+                      <dd>
+                     {list module="borrow" function="GetChangeList" var="loop" epage=10 status=2 borrow_type="request" account_status="request" borrow_name="request" order="request" borrow_name="request" apr="request"}
+                    	<table width="100%" border="0" cellspacing="0" cellpadding="0"  style="margin:20px;">
+					<tbody><tr>
+						<th width="4%" style="text-align:center">债权人</th>
+						<th  width="8%" style="text-align:center">信用等级</th>
+						<th width="13%" style="text-align:center">投标标题</th>
+						<th width="5%" style="text-align:left">利率</th>
+						<th width="9%" style="text-align:left">待还期数/总期数</th>
+						<th width="8%" style="text-align:left">待收本金/利息</th>
+						<th width="8%" style="text-align:center">转让价格</th>
+                        <th width="8%" style="text-align:left">购买债权</th>
+					</tr>
+				</tbody></table>
+                     {literal}
+    <script>
+
+function borrowChange(type,userid){
+	var api=$.dialog({
+		id: 'LHG1976D',
+		lock:true
+	});
+
+	/* jQuery ajax */
+	$.ajax({
+		url:'/?user&q=code/borrow/change&'+type,
+		success:function(data){
+			api.content(data);
+		},
+		cache:false
+	});
+}
+  
+  </script>
+  {/literal}
+  
+  {if $loop.list}    
+                <ul>
+                  {foreach from="$loop.list" item="item"}
+					<li style="height:55px;padding:10px 0 0 0;">
+					<!-- BOF product list -->
+				
+					<div class="index-list-iteam">
+						 <table width="100%" border="0" >
+          
+  <tr {if $key%2==0} class="oushu"{/if}>
+    <td width="7%"  style="text-align:center"><a href="/u/{$item.user_id}" target="_blank">{$item.username}</a></td>
+    <td  width="7%" style="text-align:center">{$item.credit.approve_credit|credit:"credit"}</td>
+    <td  width="15%" style="text-align:center"><a href="/invest/a{$item.borrow_nid}.html">{$item.borrow_name}</a></td>
+    <td  width="5%" style="text-align:center">{$item.borrow_apr}%</td>
+    <td width="9%" style="text-align:center">{$item.wait_times}/{$item.borrow_period}</td>
+    <td width="10%" style="text-align:center">￥{$item.recover_account_capital_wait}/￥{$item.recover_account_interest_wait}</td>
+    <td width="8%" style="text-align:center"><em>￥{$item.account}</em></td>
+    <td width="8%" style="text-align:center"><span>
+		{if $_G.user_id==$item.user_id}
+		-
+		{else}
+			{if $_G.user_info.tender_status==1}
+				{articles module="borrow" function="GetUserCount" var="var" user_id="$_G.user_id"}
+					{if $_G.user_info.tender_status==1}
+						{if $item.buyaccount>$var.borrow_repay_wait && $var.borrow_repay_wait>0}
+							<a href="javascript:alert('购买金额大于您未还金额的50%，请还款后再进行投资！');">购买</a>
+						{else}
+							<a href="javascript:void(0)" onclick="borrowChange('buy_id={$item.id}&account={$item.account}','');">购买</a>
+						{/if}
+					{else}
+						{if $var.borrow_repay_wait>0}
+							<a href="javascript:alert('请还清借款后再进行投资！');">购买</a>
+						{else}
+							<a href="javascript:void(0)" onclick="borrowChange('buy_id={$item.id}&account={$item.account}','');">购买</a>
+						{/if}
+					{/if}
+				{/articles}
+			{else}
+				<a href="javascript:alert('请先成为投资人再进行债权购买。');">购买</a>
+			{/if}
+		{/if}
+		</span></td>
+  </tr>
+  </table>
+					</div>
+				</li>	
+                  {/foreach}  
+                    <li><div class="page">
+                    
+                    {$loop.pages|showpage}
+          
+          </div></li>						
+				</ul>
+         {else}
+                   <div style="height:50px; font-size:24px; text-align:center; padding-top:30px;">暂无投资项目</div>
+                   {/if}         
+                    </dd>
+                  </dl>
+
+            </div>
+  {literal}
+<script>
+function JqueryAjaxs(q,action){
+var api = $.dialog({id:'L360'});
+
+$.ajax({
+
+    url:'/?user&q='+q+action,
+    success:function(data){
+        api.content(data);
+
+    }
+
+});
+
+}
+</script>
+{/literal}
+  {include file="footer.html"}

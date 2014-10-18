@@ -1,0 +1,87 @@
+{include file="header.html"}
+{if $_G.user_info.phone_status=="" || $_G.user_info.phone_status==0}
+	<script>alert("您还没有通过手机认证。");location.href='/tender_info/index.html';</script>
+{/if}
+{if $_G.user_info.tender_status==1}
+	<script>location.href='/tender_finsh/index.html';</script>
+{/if}
+<div class="clearfix con_box">
+
+	      <div class="con_bor">
+		       <div class="pos_bor"><span><a href="#">我要投资</a> > 成为投资人第二步</span></div>
+			   <div class="con1" style="padding:30px 0">
+			        <table width="90%" border="0" align="center" cellpadding="0" cellspacing="0" style="margin:0px auto">
+  <tr>
+    <td width="67%" align="center" valign="top">
+	    <div><img src="{$tempdir}/images/s2.gif" width="535" height="23" /></div>
+		<div style=" width:535px; margin:20px auto">
+		     <div class="question">
+			      <ul>
+				  <form action="/?user&q=code/attestations/study" method="post" onsubmit="return check()">
+						<ul>
+						<li><font color="#FF0000">通过以下资料学习,全对后才能进入下一步.</font></li>
+							{loop module="vote" function="GetVoteList" limit="all" var="item" status="1" type_id="1"}
+							<li>
+								<div>{$key+1}.{$item.title} {if $item.input=="radio"}单选{else}多选{/if}</div>
+									<div style="padding:10px 0 0 10px">
+									{loop module="vote" function="GetVoteAnswerList" limit="all" var="var" vote_id="$item.id"}
+										{if $item.input=="radio"}
+										{$var.nid}、<input name="q{$var.vote_id}" type="radio" value="{$var.answer_status}" />{$var.title}<br />
+										{else}
+										{$var.nid}、<input name="q{$var.vote_id}" type="checkbox" value="{$var.answer_status}" />{$var.title}<br />
+										{/if}
+									{/loop}
+									</div>
+								<div class="gou" id="yes{$item.id}" style="display:none"><img src="{$tempdir}/images/gou.gif" />正确</div>
+								<div class="gou" id="no{$item.id}" style="display:none"><img src="{$tempdir}/images/ca.gif" />错误</div>
+							</li>
+							{/loop}
+							<li>详见网站<a href="/jczs/a19.html" style="color:#0000ff">产品说明</a>和<a href="/tzxg/index.html" style="color:#0000ff">投资相关问题</a></li>
+							<li><input type="hidden" name="type" value="tender_study"><input type="hidden" name="nid" value="tender_study"><input type="submit" name="submit" value="提交答案" class="btn1"></li>
+							<li><a href="javascript:da()" style="color:#0000ff">参考答案</a></li>
+							<li style="display:none" id="da">(1)C  (2)ABC  (3)B
+</li>
+						 </ul>
+				  </form>
+				  </ul>
+			 </div>
+		</div>
+	</td>
+    <td width="33%" align="right" valign="top"><img src="{$tempdir}/images/moneytree.jpg" width="280" height="313" /></td>
+  </tr>
+</table>
+
+			   </div>
+	   </div>
+</div>
+{literal}
+<script>
+function da(){
+	$("#da").show();
+}
+function check(){
+	{/literal}
+	var error="";
+	{loop module="vote" function="GetVoteList" limit="all" var="item" status="1" type_id="1"}
+		var num = {$item.id};
+		{literal}
+		if ($('input[name="q'+num+'"]:checked').val()!=1 || $('input[name="q'+num+'"]:checked').val()==""){
+			$("#no"+num+"").show();
+			$("#yes"+num+"").hide();
+			error+="isfalse";
+		}else{
+			$("#yes"+num+"").show();
+			$("#no"+num+"").hide();
+		}
+		{/literal}
+	{/loop}
+	{literal}
+	if (error.length > 0){
+		return false;
+	}else{
+		return true;
+	}
+}
+</script>
+{/literal}
+{include file="footer.html"}

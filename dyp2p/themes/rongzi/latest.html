@@ -1,0 +1,31 @@
+{include file="header.html"}
+<div class="bodyer clearfix">
+       	    	<div class="form-container box1000 mian">
+					<div class="mianleft">
+                    	  {include file="about_left.html"}
+                      <div class="line"></div>
+                        <div class="contact-information">
+			 <div class="mail">123456789@qq.com</div>
+			 <div class="phone">010-88888888</div>
+			 </div>
+             <div class="line"></div>
+             <div><img src="{$tempdir}/zhuliu/images/about_03.jpg" width="202" height="220" /></div>
+                    </div>
+                    <div class="mianright">
+                    	<h2>{$_G.site_result.name}<span><a href="/">Ê×Ò³</a> > ÆÓ¿ÍµÛ¹ú > {$_G.site_result.name}</span></h2>
+                        <p><img src="{$tempdir}/zhuliu/images/about_02.jpg" width="650" height="130" /></p>
+                        <ul class="news">
+                        	
+                 {list module="articles" function="GetList" var="loop" epage="10" type_id="$_G.site_result.value"}
+				{foreach from="$loop.list" item="var"}
+                <li><span>{$var.addtime|date_format:"Y-m-d H:i:s"}</span><a href="/hetong/{$var.nid}/a{$var.id}.html">{$var.name}</a></li>
+                {/foreach}
+                {/list}
+                        </ul>
+                        <div class="page">{$loop.pages|showpage}</div>
+                    </div>	
+                </div>
+
+            </div>
+<div class="cle"></div>
+{include file="footer.html"}

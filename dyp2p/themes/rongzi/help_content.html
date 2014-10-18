@@ -1,0 +1,23 @@
+{include file="header.html"}
+<div class="bodyer clearfix">
+       	    	<div class="form-container box1000 mian">
+					<div class="mianleft">
+                    	  {include file="about_left.html"}
+                      <div class="line"></div>
+                        <div class="contact-information">
+			 <div class="mail">123456789@qq.com</div>
+			 <div class="phone">010-88888888</div>
+			 </div>
+             <div class="line"></div>
+             <div><img src="{$tempdir}/zhuliu/images/about_03.jpg" width="202" height="220" /></div>
+                    </div>
+                    <div class="mianright">
+                    	<h2>{$_G.articles_result.name|truncate:6}<span><a href="/">Ê×Ò³</a> > ÆÓ¿ÍµÛ¹ú > {$_G.articles_result.name}</span></h2>
+                        <p><img src="{$tempdir}/zhuliu/images/about_02.jpg" width="650" height="130" /></p>
+                        <p> {$_G.articles_result.contents}</p>
+                    </div>	
+                </div>
+
+            </div>
+<div class="cle"></div>
+{include file="footer.html"}

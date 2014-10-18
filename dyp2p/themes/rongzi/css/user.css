@@ -1,0 +1,38 @@
+/* 用户中心 */
+.user_left{ width:200px; float:left;}
+.user_right{ width:775px; float:right; padding-right:0;border:0px solid red;}
+.us_top{ background:url(../images/us_top.gif) no-repeat; height:4px; overflow:hidden}
+.us_cen{ background:#fff; border-left:#E2E2E2 solid 1px; border-right:#E2E2E2 solid 1px; padding:0px 4px; overflow:hidden}
+.us_cen h1{ background:url(../images/us_tit_bg.gif) no-repeat; height:31px; font-size:12px; color:#FFFFFF; padding-left:15px; line-height:31px;}
+.us_cen ul{ padding:5px auto}
+.us_cen li{ background:url(../images/us_l_bg.gif) repeat-x; height:29px; line-height:29px; color:#666666; padding-left:10px;}
+.us_cen li a{ line-height:29px;}
+.us_cen li a:hover{ text-decoration:underline; color:#0560a1; font-weight:bold}
+.us_bot{ background:url(../images/us_bot.gif) no-repeat; height:4px; overflow:hidden}
+
+.us_r_bor{ border:#DBDBDB solid 1px; background:#fff; padding:10px}
+.us_r_tit{ border-bottom:#F7D1D1 solid 1px; height:30px;}
+.us_r_tit h1{ font-size:12px; float:left; padding-left:15px; color:#FF6D00; line-height:30px;}
+.us_r_tit span{ float:right; line-height:30px;}
+.us_r_tit span a{ line-height:30px;}
+.us_infor{ padding:10px 20px;}
+b.red{ color:#D72D2C}
+
+.my_news{}
+.my_news td{ border-bottom:#E1E1E1 solid 1px; height:35px; line-height:35px; padding-left:10px}
+.my_news td a{ color:#425F9D;}
+td.time{ color:#999999; padding-right:10px}
+
+table.tabguy{ border-collapse:collapse}
+table.tabguy td{ border:#CCCCCC solid 1px; height:32px; line-height:32px; text-align:center}
+table.tabguy tr.gtit td{ background:#F6F6F6;}
+
+table.tabyel{ border-collapse:collapse}
+table.tabyel td{ border:#E0D5B3 solid 1px; height:32px; line-height:32px; text-align:center; color:#666666}
+table.tabyel td a{color:#425F9D;}
+table.tabyel tr.ytit td{ background:#FFF5D3; text-align:left; padding-left:15px; color:#666666; font-weight:bold}
+table.tabyel tr.ytit1 td{ font-weight:bold; background:#F6F6F6; }
+table.tabyel tr.ynow td{ background:#FEFDEF;}
+
+.user_right_pic { margin-top:20px;}
+.user_right_pic li { float:left; margin-right:20px;}

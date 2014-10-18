@@ -1,0 +1,52 @@
+{include file="header.html"}
+
+<div class="clearfix con_box">
+
+<div style="float:left;width:750px;">
+	<div>
+		<div class="con_bor">
+			<div class="pos_bor"><span>{$_G.site_result.name}</span></div>
+			<div class="con1">
+				<div class="con">
+					<div style="padding:5px 0">
+						{get module="articles" function="GetOne" id="$_G.article_id" type_id="$_G.site_result.id"}
+						<h3 style="text-align:center;">{$var.name}</h3>
+						<div style="text-align:center;border-bottom:1px dashed #999999">{$var.addtime|date_format:"Y-m-d H:i:s"}</div>
+						<div style="padding:0px 10px 20px">
+							<div class="cy_list1">
+							{$var.contents}
+							<div class="cle"></div>
+							</div>
+						</div>
+						<div style="text-align:right;"><a href="/{$_G.site_result.nid}/index.html">返回列表</a></div>
+						{/get}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div style="float:right;width:200px;">
+	<div>
+		<div class="r_tit">使用技巧<span style="float:right;font-weight:normal;"><a href="/usekey/index.html">更多>></a>&nbsp;</span></div>
+		<div class="r_cen">
+			<div class="inf_right">
+				<ul>
+				{loop module="articles" function="GetList" var="var" limit="all" type_id="25"}
+					<li>·<a href="/usekey/a{$var.id}.html">{$var.name}</a></li>
+				{/loop}
+				</ul>
+			</div>
+		</div>
+		<div class="r_bot"></div>
+	</div>
+</div>
+
+
+
+<div class="cle"></div>
+
+</div>
+
+{include file="footer.html"}

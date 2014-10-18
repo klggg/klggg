@@ -1,0 +1,43 @@
+{include file="header.html"}
+
+<div class="clearfix con_box">
+
+<div class="help_top"><img src="/data/ad/banner1.jpg" alt="" /></div>
+<div style="float:left;width:200px;margin-top:10px;">
+	<div>
+		<div class="r_tit">关于我们</div>
+		<div class="r_cen">
+			<div class="inf_right">
+				<ul>
+				{loop module="articles" function="GetList" var="var" limit="all" type_id="16"}
+					<li>·<a href="/{$_G.site_result.nid}/a{$var.id}.html">{$var.name}</a></li>
+				{/loop}
+				</ul>
+			</div>
+		</div>
+		<div class="r_bot"></div>
+	</div>
+</div>
+<div style="float:right;width:750px;">
+	<div>
+		<div class="con_bor">
+			{get module="articles" function="GetOne" id="$magic.request.article_id"}
+			<div class="pos_bor"><span>{$var.name}</span></div>
+			<div class="con1">
+				<div class="con">
+					<div style="padding:20px 0">
+						<div style="padding:0px 10px 20px">
+							<div class="cy_list1">{$var.contents}
+							<div class="cle"></div>
+							</div>
+						</div>
+						{/get}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="cle"></div>
+</div>
+{include file="footer.html"}

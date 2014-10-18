@@ -1,0 +1,43 @@
+{include file="header.html"}
+<link href="{$tempdir}/css/css_proser.css" rel="stylesheet" type="text/css" />
+<div class="clearfix con_box">
+
+  <div class="help_top"><img src="/data/ad/banner4.jpg" alt="" /></div>
+  <div class="proser_content t10">
+		<div class="jianshezhong">
+			正在建设中...<img src="{$tempdir}/images/doing.gif" />
+		</div>
+	<!-- <div class="pc_left">
+		<div class="title">
+			贷款服务
+		</div>
+		<div class="cont">
+           {loop module="articles" function="GetList" var="var" limit="4" key=k type_id="36" flag="index"}
+        
+				<div class="c{$key}">	<a href="/kefu/{$var.type_nid}/a{$var.id}.html">{$var.name}</a></div>
+				{/loop}
+		
+			<div class="title2">
+			理财服务
+			</div>
+		       {loop module="articles" function="GetList" var="var" limit="4" key=k type_id="37" flag="index"}
+    
+				<div class="h{$key}">	<a href="/kefu/{$var.type_nid}/a{$var.id}.html">{$var.name}</a></div>
+				{/loop}
+		</div>
+		 {include file="kefu_bottom.html"}
+	</div>
+	<div class="pc_right">
+		<div class="top">
+			<div class="title">
+				{$_G.articles_result.name}
+			</div>
+			<div style="padding:10px 20px;">
+    {$_G.articles_result.contents}
+	</div>
+		</div>
+		
+	</div> -->
+  </div>
+</div>
+{include file="footer.html"}

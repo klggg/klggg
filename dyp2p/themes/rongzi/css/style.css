@@ -1,0 +1,70 @@
+.clearfix:after, .container:after {content:"\0020";display:block;height:0;clear:both;visibility:hidden;overflow:hidden;}
+.clearfix, .container {display:block;}
+.clear {clear:both;}
+.banner{ margin-top:0px; float:left; position:absolute; height:282px; overflow:hidden;}
+.login{ width:208px; overflow:hidden; height:159px; border:1px solid #dedede; position:relative; left:732px; top:0px; background-color:#fff; padding:25px; padding-top:15px; padding-right:10px; padding-left:18px;}
+.loging{ width:233px; overflow:hidden; height:201px; border:1px solid #dedede; position:relative; left:732px; top:0px;  }
+.name{ font-weight:bold; color:#666; display:block; margin-bottom:10px;}
+.name span{ float:right;font-weight:normal;}
+.name span a{ color:#2a8af0; }
+.name span a:hover{ color:#fd7600;}
+.from{ display:block; margin-bottom:10px;}
+.login-dl{ display:block; margin:10px 0 10px 0;}
+.login-zc{ text-align:right; padding-right:10px;}
+.login-zc a{color:#2a8af0;}
+.login-zc a:hover{ color:#fd7600;}
+.Credit-detail{ margin-top:40px; overflow:hidden;}
+.Credit{ float:left; width:255px; height:42px; display:block; background:url(../images/Credit_20.jpg); padding:25px; margin-right:28px;}
+.Credit img{ float:left; margin-right:15px;}
+.Credit h4{ margin:0; color:#0172da;}
+.Credit p{ margin:0; line-height:20px;}
+
+.container {
+	WIDTH: 730px;
+	HEIGHT: 200px
+}
+.container A IMG {
+	WIDTH: 730px;
+	HEIGHT: 200px
+}
+.container IMG {
+	BORDER-BOTTOM-STYLE: none;
+	BORDER-RIGHT-STYLE: none;
+	BORDER-TOP-STYLE: none;
+	BORDER-LEFT-STYLE: none
+}
+.td_f A IMG {
+	PADDING-BOTTOM: 0px;
+	MARGIN: 0px;
+	PADDING-LEFT: 0px;
+	PADDING-RIGHT: 0px;
+	PADDING-TOP: 0px
+}
+.num {
+	POSITION: absolute;
+	WIDTH: 90px;
+	FLOAT: right;
+	TOP: 180px;
+	LEFT: 625px
+}
+.num LI {
+	TEXT-ALIGN: center;
+	LINE-HEIGHT: 15px;
+	LIST-STYLE-TYPE: none;
+	MARGIN: 1px;
+	WIDTH: 15px;
+	FONT-FAMILY: Arial;
+	BACKGROUND: url(../images/flashbutton.gif) no-repeat -15px 0px;
+	FLOAT: left;
+	HEIGHT: 15px;
+	COLOR: #86a2b8;
+	FONT-SIZE: 12px;
+	CURSOR: pointer
+}
+.num LI.on {
+	LINE-HEIGHT: 15px;
+	WIDTH: 15px;
+	BACKGROUND: url(../images/flashbutton.gif) no-repeat;
+	HEIGHT: 15px;
+	COLOR: #ffffff
+}

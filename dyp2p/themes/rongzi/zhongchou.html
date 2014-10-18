@@ -1,0 +1,89 @@
+{include file="header.html"}
+
+     
+      <link rel="stylesheet" type="text/css" href="{$tempdir}/zhongchou/0d449e0e38e4f9a69794ff0a81b6f530.css"> 
+      <link rel="stylesheet" type="text/css" href="{$tempdir}/zhongchou/7c285136c361014baa8c1a1878bdff0e.css">
+
+
+<div class="wrap">
+	<div class="main">
+		<div class="bro_ztai">众</div>
+		<div class="br_list">
+			<ul>
+				<li {if $magic.request.raise_type==''}class="on"{/if}><a title="全部分类" href="/zhongchou/index.html&status={$magic.request.status}&flag={$magic.request.flag}">全部</a></li>
+				{loop module="linkages" function="GetList" var="item" limit=all type_id="58"}
+								<li {if $magic.request.raise_type==$item.value}class="on"{/if}><a href="/zhongchou/index.html&raise_type={$item.value}&status={$magic.request.status}&flag={$magic.request.flag}" title="{$item.name}">{$item.name}</a></li>
+                {/loop}
+							</ul>
+			<ul class="mar-l100">
+				<li class="tit">类别</li>
+				<li {if $magic.request.flag=='' && $magic.request.status==''}class="on"{/if}><a href="/zhongchou/index.html&raise_type={$magic.request.raise_type}">全部</a></li>
+				<li {if $magic.request.flag=='tuijian'}class="on"{/if}>
+				{if $magic.request.flag=='tuijian'}
+				<a href="/zhongchou/index.html&raise_type={$magic.request.raise_type}&status={$magic.request.status}">推荐项目 </a>
+				{else}
+				<a href="/zhongchou/index.html&flag=tuijian&raise_type={$magic.request.raise_type}&status={$magic.request.status}">推荐项目 </a>
+				{/if}
+				</li>
+				<li {if $magic.request.status=='0'}class="on"{/if}><a href="/zhongchou/index.html&status=0&flag={$magic.request.flag}&raise_type={$magic.request.raise_type}">筹资中 </a></li>
+				<li {if $magic.request.status=='1'}class="on"{/if}><a href="/zhongchou/index.html&status=1&flag={$magic.request.flag}&raise_type={$magic.request.raise_type}">筹资成功 </a></li>
+				<li {if $magic.request.status=='2'}class="on"{/if}><a href="/zhongchou/index.html&status=2&flag={$magic.request.flag}&raise_type={$magic.request.raise_type}">筹资失败 </a></li>
+				
+			</ul>
+		</div>
+		 {list module="borrow" function="GetRaiseList" var="loop" epage="10" flag=request status=request  raise_type=request}
+        {if $loop.list}
+		<!-- 循环 -->	
+			{foreach from="$loop.list" item="var"}
+			<div class="pcart {if $key%3==1}mar-r0{/if}"> 
+			<a title="{$var.raise_name}" href="/zhongchou/a{$var.id}.html" class="bline" target="_blank">
+			<img src="{$var.fileurl}" alt="{$var.raise_name}"></a>
+			<a class="gzbtn" style="font-size:12px;font-weight:normal;" href="javascript:void(0);" rel="0" >
+				{if $var.status==0}{if $var.end_day>=0}筹资中{else}已到期{/if}{elseif $var.status==1}筹资成功{elseif $var.status==2}筹资失败{else}草稿{/if}			</a>
+						<div class="desc">
+				 <a title="{$var.raise_name}" target="_blank" href="/zhongchou/a{$var.id}.html">
+				<span class="tit"> {$var.raise_name} </span>
+				<span class="dction" style="height:46px;">{$var.raise_intro|truncate:40}…</span>
+				</a>
+				<div class="fot">
+			
+					<span class="mz">目标：{$var.raise_period}天 &nbsp;&nbsp;￥{$var.raise_account}</span>
+																	<span class="tx"><a target="_blank" href="/zhongchou/a{$var.id}.html">支持</a></span>
+															</div>
+			</div>
+			<div class="bra">
+				<span class="bsp">
+										   <span class="csp" style="width:{$var.raise_account_scale}%"></span>
+									</span> 
+			</div>
+			<div class="rate">
+				<span class="m01">
+				<span class="cu" name="focus_2237" rel="{$var.tender_times}">{$var.tender_times}人</span>
+				<br>
+				支持</span>
+				<span class="m02">
+				<span class="cu red">￥{$var.raise_account_yes}</span>
+				<br>
+				已筹资</span>
+				<span class="m03"><span class="cu">
+								{if $var.end_day>= 0}{$var.end_day}天{else}已结束{/if}	</span>				<br>
+					
+					 {if $var.end_day>= 0}剩余{else}{/if}		</span>
+			</div>
+		</div> 
+			{/foreach}
+	
+				<!-- 循环 -->
+	
+		<span class="blank20"></span>
+		<!--分页-->
+		<div class="pages">   {$loop.pages|showpage}</div>
+			{else}
+			<span class="blank20" style="font-size:20px; height:40px; width:100%; text-align:center; margin:auto; margin-top:50px;">该类别下暂无项目</span>
+			{/if}
+		<!--//分页-->
+		 {/list}
+		<span class="blank20"></span>
+	</div>
+</div>
+{include file="footer.html"}

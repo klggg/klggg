@@ -1,0 +1,10 @@
+<?
+	$code = "vote";
+	$name = "投票系统";
+	$description = "投票管理";
+	$version = "1.0";
+	$author = "dwcms";
+	$date = "2012-03-23";
+	$update = "";
+	$type = "vote";
+?>
