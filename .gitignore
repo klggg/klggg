@@ -5,3 +5,4 @@ themes/classic/views/
 */protected/runtime/*
 vendor/*
 *.swp
+/dyp2p/dyp2p.zip
