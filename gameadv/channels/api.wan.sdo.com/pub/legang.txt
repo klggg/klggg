@@ -1,0 +1,55 @@
+绑定接口URL:
+http://api.wan.sdo.com/money/bound
+
+HTTP方式:
+GET
+
+所有参数必须经过urldecode
+
+输入参数:
+sdid                盛大数字账号 (我们会以 http://贵方网站/?sdid=1930000333方式传给你们)
+companyid           商户号(盛大提供)
+actid               活动ID(盛大提供)
+merid               商户的账号ID(必须唯一)
+mername             商户的显示账号(可以是登陆名称或者其他,如没有则可以同merid一样)
+signature           签名参数
+
+
+签名生成的规则
+
+签名涉及到的参数 :    输入参数中除了signature以外所有的参数
+
+PHP方法
+
+function gensig($params,$secret)
+{
+    $str = '';
+    ksort($params);
+    foreach ($params as $k => $v) {
+        $str .= "$k=$v";
+    }
+    $str .= $secret;
+    return md5($str);
+}
+
+调用方法:
+
+$sig_params = array(
+            'sdid'  =>  $sdid,
+            'actid' =>  $actid,
+            'merid' =>  $merid,
+            'mername'=> $mername,
+            'companyid'=>   $companyid,
+);
+$count_signature = $this->gensig($sig_params,$secret);
+
+签名的参数必须经过urldecode
+
+错误提示:
+
+'17001'     =>      'Params missing.',             参数缺失
+'17002'     =>      'companyId is not exist',      商户号不存在
+'17003'     =>      'Signature fail.',             签名验证失败
+'17004'     =>      'actid is not exist',          活动ID不存在
+'17005'     =>      'THe meria is already exist',  第三方用户已经绑定过了
+'17006'     =>      'System error,Please contact admin',      系统错误,联系我

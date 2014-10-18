@@ -1,0 +1,4 @@
+$(function(){
+    SetFocusField("UserEmailId");
+    HideRightBigDivClick();
+});
