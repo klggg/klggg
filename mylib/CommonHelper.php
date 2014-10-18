@@ -2,6 +2,38 @@
 
 class CommonHelper {
 
+	static private $_instance=null;
+	static public $errorMsg=null;
+
+
+	/**
+	 * 获得唯一实例
+	 *
+	 * @param string $key
+	 * @return obj
+	 */
+	static public function getInstance()
+	{
+		if(self::$_instance === null)
+		{
+			self::$_instance = new self();
+		}
+		return self::$_instance;
+	}
+	//转换编码
+	static public function gbk2utf8($str)
+	{
+		// return iconv("gbk", "utf-8//IGNORE", $str);
+        return mb_convert_encoding($str,"utf-8","gbk");
+	}
+
+	//转换编码
+	static public function utf82gbk($str)
+	{
+		// return iconv("utf-8", "gbk//IGNORE", $str);
+        return mb_convert_encoding($str,"gbk","utf-8");
+	}
+
 	/*
 		取文件名 如  aaa.txt 返回  aaa
 		注意如果是  aaa.bbb.txt ，返回是 aaa.bbb
@@ -30,6 +62,91 @@ class CommonHelper {
 		return($fileExt);                                 //返回扩展名
 	}
 
+    /**
+     * 把csv格式的字符窜转为二维数组　　　
+     *  aaa1    bbb1    ccc1
+     *  aaa2    bbb2    ccc2
+     *  转为  Array(
+     *      Array("aaa1",“bbb1"
+     *  )
+     * Enter description here ...
+     * @param string $str  需要转换的字符窜　　，一
+     * @param string $rowKeys  一行里的数组每个字段映射的key值 Array('gameid'=>123,....) 注意要和列数保持一致
+     * @param string $rowSplit  一行一条记录的隔符，默认以回车结尾
+     * @param string $colSplit  一行里的字段分隔符　默认用逗号分隔
+     */
+    public static function csv2Array($str,$rowKeys=null,$rowSplit="\n",$colSplit=","){
+    /* 
+         $str	= <<<EOF
+    gameid	game_area_id	sdid	game_member_name	game_team_name	cleartime
+    1	1	8024	ggg	team	time
+    1	2	8024	kl	team	time    
+    EOF;
+    
+        
+       $rowKeys    = Array('gameid','game_area_id','sdid','game_member_name','game_team_name','cleartime');
+        $colSplit    = "\t";
+     */
+        $insert_array	= array();
+        $str = trim($str);
+        $tmp_array1	= explode($rowSplit,$str);
+    //     var_dump($str);
+
+        if(count($tmp_array1) < 1)
+        {
+            // $this->_errorMsg ="empty file ";
+            return false;
+        }
+
+
+        
+        $tmp_count	= 0;
+        foreach ($tmp_array1 as $recode){
+    
+            $tmp_recode	= trim($recode);
+    
+            $tmp_count++;
+
+    
+            if(empty($tmp_recode))
+                continue;
+
+            $tmp_array2	= explode($colSplit,$tmp_recode);
+    
+            $tmp_array3	= Array();
+
+            if( !empty ($rowKeys) && (count($tmp_array2) != count($rowKeys)) ){
+                return false;
+            }
+ 
+            foreach($tmp_array2 as $tmp_key => $tmp_val)
+            {
+                if(!empty($rowKeys))
+                {
+                    $tmp_array3[$rowKeys[$tmp_key]]    = $tmp_val;
+                }
+                else
+                    $tmp_array3[]    = $tmp_val;
+            }
+
+//            if(!empty($addRows)){
+//                $tmp_array3 = $tmp_array3 + $addRows;
+//            }
+
+   
+            //以游戏、区、帐号为key
+            //$insert_array[$tmp_array3['gameid'].$tmp_array3['game_area_id'].$tmp_array3['sdid']]	= $tmp_array3;
+            $insert_array[]	= $tmp_array3;
+    
+            //list($k,$v)	= explode("\t",$recode);
+            //$a[$k]=$v;
+        }
+    
+        // 		print_r($insert_array);
+    
+        return $insert_array;
+    
+    }
 }
 
 
@@ -441,6 +558,8 @@ function CutArray($tf,$field_range="",$need_sure=0)
 	unset($Field_tf);
 	unset($tf);
 }
+
+    
 
 
 /***********函数GETFILE******
