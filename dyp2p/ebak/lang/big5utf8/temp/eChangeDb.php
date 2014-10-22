@@ -64,7 +64,7 @@ function DoDrop(dbname)
 		&nbsp;&nbsp;&nbsp;<input type="button" name="Submit3" value="刪除數據庫" onclick="javascript:DoDrop('<?=$r[0]?>')">
       </div></td>
   </tr>
-  <?
+  <?php
   }
   ?>
   <tr> 

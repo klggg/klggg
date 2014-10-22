@@ -30,7 +30,7 @@ $var = empty($var)?"var":$var;
 if ($function == ""){
 trigger_error("loop: extra attribute 'function' cannot be not empty",E_USER_NOTICE);exit;
 }else{
-$display = "<? \$this->magic_vars['query_type']='{$function}';\$data = {$data};";
+$display = "<?php \$this->magic_vars['query_type']='{$function}';\$data = {$data};";
 }
 if (file_exists(ROOT_PATH."core/user.class.php")){
 $display .= "  include_once(ROOT_PATH.'core/user.class.php');\$this->magic_vars['magic_result'] = userClass::{$function}(\$data);";
@@ -43,7 +43,7 @@ $display .= "    foreach (\$_from as \$this->magic_vars['key'] => \$this->magic_
 $display .= '?>';
 return $display;
 }else if ($tag_command == "/user"){
-return "<? endforeach;  endif; unset(\$_from);unset(\$_magic_vars); ?>";
+return "<?php endforeach;  endif; unset(\$_from);unset(\$_magic_vars); ?>";
 }
 }
 ?>

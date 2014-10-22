@@ -82,29 +82,29 @@ class template {
 
 		$template = preg_replace("/\<\?=(\@?\\\$[a-zA-Z_]\w*)((\[[\\$\[\]\w]+\])+)\?\>/ies", "\$this->arrayindex('\\1', '\\2')", $template);
 
-		$template = preg_replace("/\{\{eval (.*?)\}\}/ies", "\$this->stripvtag('<? \\1?>')", $template);
-		$template = preg_replace("/\{eval (.*?)\}/ies", "\$this->stripvtag('<? \\1?>')", $template);
-		$template = preg_replace("/\{for (.*?)\}/ies", "\$this->stripvtag('<? for(\\1) {?>')", $template);
+		$template = preg_replace("/\{\{eval (.*?)\}\}/ies", "\$this->stripvtag('<?php \\1?>')", $template);
+		$template = preg_replace("/\{eval (.*?)\}/ies", "\$this->stripvtag('<?php \\1?>')", $template);
+		$template = preg_replace("/\{for (.*?)\}/ies", "\$this->stripvtag('<?php for(\\1) {?>')", $template);
 
-		$template = preg_replace("/\{elseif\s+(.+?)\}/ies", "\$this->stripvtag('<? } elseif(\\1) { ?>')", $template);
+		$template = preg_replace("/\{elseif\s+(.+?)\}/ies", "\$this->stripvtag('<?php } elseif(\\1) { ?>')", $template);
 
 		for($i=0; $i<2; $i++) {
 			$template = preg_replace("/\{loop\s+$this->vtag_regexp\s+$this->vtag_regexp\s+$this->vtag_regexp\}(.+?)\{\/loop\}/ies", "\$this->loopsection('\\1', '\\2', '\\3', '\\4')", $template);
 			$template = preg_replace("/\{loop\s+$this->vtag_regexp\s+$this->vtag_regexp\}(.+?)\{\/loop\}/ies", "\$this->loopsection('\\1', '', '\\2', '\\3')", $template);
 		}
-		$template = preg_replace("/\{if\s+(.+?)\}/ies", "\$this->stripvtag('<? if(\\1) { ?>')", $template);
+		$template = preg_replace("/\{if\s+(.+?)\}/ies", "\$this->stripvtag('<?php if(\\1) { ?>')", $template);
 
-		$template = preg_replace("/\{template\s+(\w+?)\}/is", "<? include \$this->gettpl('\\1');?>", $template);
-		$template = preg_replace("/\{template\s+(.+?)\}/ise", "\$this->stripvtag('<? include \$this->gettpl(\\1); ?>')", $template);
+		$template = preg_replace("/\{template\s+(\w+?)\}/is", "<?php include \$this->gettpl('\\1');?>", $template);
+		$template = preg_replace("/\{template\s+(.+?)\}/ise", "\$this->stripvtag('<?php include \$this->gettpl(\\1); ?>')", $template);
 
 
-		$template = preg_replace("/\{else\}/is", "<? } else { ?>", $template);
-		$template = preg_replace("/\{\/if\}/is", "<? } ?>", $template);
-		$template = preg_replace("/\{\/for\}/is", "<? } ?>", $template);
+		$template = preg_replace("/\{else\}/is", "<?php } else { ?>", $template);
+		$template = preg_replace("/\{\/if\}/is", "<?php } ?>", $template);
+		$template = preg_replace("/\{\/for\}/is", "<?php } ?>", $template);
 
 		$template = preg_replace("/$this->const_regexp/", "<?=\\1?>", $template);
 
-		$template = "<? if(!defined('UC_ROOT')) exit('Access Denied');?>\r\n$template";
+		$template = "<?php if(!defined('UC_ROOT')) exit('Access Denied');?>\r\n$template";
 		$template = preg_replace("/(\\\$[a-zA-Z_]\w+\[)([a-zA-Z_]\w+)\]/i", "\\1'\\2']", $template);
 
 		$template = preg_replace("/\<\?(\s{1})/is", "<?php\\1", $template);
@@ -129,7 +129,7 @@ class template {
 		$k = $this->stripvtag($k);
 		$v = $this->stripvtag($v);
 		$statement = str_replace("\\\"", '"', $statement);
-		return $k ? "<? foreach((array)$arr as $k => $v) {?>$statement<? }?>" : "<? foreach((array)$arr as $v) {?>$statement<? } ?>";
+		return $k ? "<?php foreach((array)$arr as $k => $v) {?>$statement<?php }?>" : "<?php foreach((array)$arr as $v) {?>$statement<?php } ?>";
 	}
 
 	function lang($k) {

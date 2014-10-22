@@ -60,7 +60,7 @@ $_display .= " && !in_array(\$this->magic_vars['$var']['site_id'],\$this->magic_
 if ($status!=null){
 $_display .= " && \$this->magic_vars['$var']['status'] == {$status}";
 }
-$display .="<? \$this->magic_vars['{$var}lgnore'] = array($lgnore);\$this->magic_vars['{$var}site_id'] = array($site_id);";
+$display .="<?php \$this->magic_vars['{$var}lgnore'] = array($lgnore);\$this->magic_vars['{$var}site_id'] = array($site_id);";
 $display .=" if(!isset(\$this->magic_vars['_G']['site_list'])) \$this->magic_vars['_G']['site_list']= array(); \$_from = \$this->magic_vars['_G']['site_list']; if (!is_array(\$_from) && !is_object(\$_from)) { settype(\$_from,'array'); } ";
 $display .= "if (count(\$_from)):\n \$i=0;";
 $display .= "    foreach (\$_from as \$this->magic_vars['key'] => \$this->magic_vars['$var']):\n";
@@ -69,7 +69,7 @@ $display .= " \$this->magic_vars['key'] =\$i";
 $display .= '?>';
 return $display;
 }else if ($tag_command == "/site"){
-return "<? \$i++;endif;endforeach; endif;  unset(\$_from);unset(\$_magic_vars);unset(\$this->magic_vars['{$var}lgnore']); ?>";
+return "<?php \$i++;endif;endforeach; endif;  unset(\$_from);unset(\$_magic_vars);unset(\$this->magic_vars['{$var}lgnore']); ?>";
 }
 }
 ?>

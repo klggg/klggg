@@ -1,4 +1,4 @@
-<?
+<?php
 /******************************
  * $File: account.excel.php
  * $Description: 资金类文件

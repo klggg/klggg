@@ -1,4 +1,4 @@
-<? header("content-Type: text/html; charset=GBK");?>
+<?php header("content-Type: text/html; charset=GBK");?>
 <?php
 /* *
  *功能：即时到账交易接口接入页
@@ -173,26 +173,26 @@
 <body onLoad="document.dinpayForm.submit();">
 正在跳转 ...
 <form name="dinpayForm" method="post" action="https://pay.dinpay.com/gateway?input_charset=GBK"><!-- 注意 非UTF-8编码的商家网站 此地址必须后接编码格式 -->
-	<input type="hidden" name="sign" value="<? echo $sign?>" />
-	<input type="hidden" name="merchant_code" value="<? echo $merchant_code?>" />
-	<input type="hidden" name="bank_code" value="<? echo $bank_code?>"/>
-	<input type="hidden" name="order_no" value="<? echo $order_no?>"/>
-	<input type="hidden" name="order_amount" value="<? echo $order_amount?>"/>
-	<input type="hidden" name="service_type" value="<? echo $service_type?>"/>
-	<input type="hidden" name="input_charset" value="<? echo $input_charset?>"/>
-	<input type="hidden" name="notify_url" value="<? echo $notify_url?>">
-	<input type="hidden" name="interface_version" value="<? echo $interface_version?>"/>
-	<input type="hidden" name="sign_type" value="<? echo $sign_type?>"/>
-	<input type="hidden" name="order_time" value="<? echo $order_time?>"/>
-	<input type="hidden" name="product_name" value="<? echo $product_name?>"/>
-	<input Type="hidden" Name="client_ip" value="<? echo $client_ip?>"/>
-	<input Type="hidden" Name="extend_param" value="<? echo $extend_param?>"/>
-	<input Type="hidden" Name="extra_return_param" value="<? echo $extra_return_param?>"/>
-	<input Type="hidden" Name="product_code" value="<? echo $product_code?>"/>
-	<input Type="hidden" Name="product_desc" value="<? echo $product_desc?>"/>
-	<input Type="hidden" Name="product_num" value="<? echo $product_num?>"/>
-	<input Type="hidden" Name="return_url" value="<? echo $return_url?>"/>
-	<input Type="hidden" Name="show_url" value="<? echo $show_url?>"/>
+	<input type="hidden" name="sign" value="<?php echo $sign?>" />
+	<input type="hidden" name="merchant_code" value="<?php echo $merchant_code?>" />
+	<input type="hidden" name="bank_code" value="<?php echo $bank_code?>"/>
+	<input type="hidden" name="order_no" value="<?php echo $order_no?>"/>
+	<input type="hidden" name="order_amount" value="<?php echo $order_amount?>"/>
+	<input type="hidden" name="service_type" value="<?php echo $service_type?>"/>
+	<input type="hidden" name="input_charset" value="<?php echo $input_charset?>"/>
+	<input type="hidden" name="notify_url" value="<?php echo $notify_url?>">
+	<input type="hidden" name="interface_version" value="<?php echo $interface_version?>"/>
+	<input type="hidden" name="sign_type" value="<?php echo $sign_type?>"/>
+	<input type="hidden" name="order_time" value="<?php echo $order_time?>"/>
+	<input type="hidden" name="product_name" value="<?php echo $product_name?>"/>
+	<input Type="hidden" Name="client_ip" value="<?php echo $client_ip?>"/>
+	<input Type="hidden" Name="extend_param" value="<?php echo $extend_param?>"/>
+	<input Type="hidden" Name="extra_return_param" value="<?php echo $extra_return_param?>"/>
+	<input Type="hidden" Name="product_code" value="<?php echo $product_code?>"/>
+	<input Type="hidden" Name="product_desc" value="<?php echo $product_desc?>"/>
+	<input Type="hidden" Name="product_num" value="<?php echo $product_num?>"/>
+	<input Type="hidden" Name="return_url" value="<?php echo $return_url?>"/>
+	<input Type="hidden" Name="show_url" value="<?php echo $show_url?>"/>
 	</form>
 </body>
 </html>

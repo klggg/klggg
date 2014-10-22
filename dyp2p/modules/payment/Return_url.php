@@ -1,4 +1,4 @@
-<?
+<?php
 ob_start();
 require_once ('../../core/config.inc.php');
 require_once (ROOT_PATH.'modules/account/account.class.php');

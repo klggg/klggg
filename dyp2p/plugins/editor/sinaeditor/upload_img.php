@@ -33,7 +33,7 @@
 			//$("imgpath").select();
 		}
 		function LoadIMG(imgpath){
-		   oRTE = window.dialogArguments.document.getElementById('<? echo $_REQUEST['id'];?>');
+		   oRTE = window.dialogArguments.document.getElementById('<?php echo $_REQUEST['id'];?>');
 			if(window.isIE) {
 				try{
 					oRTE.value =imgpath;

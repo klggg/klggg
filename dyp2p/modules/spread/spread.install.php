@@ -1,4 +1,4 @@
-<?
+<?php
 /******************************
  * $File: group.install.php
  * $Description: Èº×é

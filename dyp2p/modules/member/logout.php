@@ -1,4 +1,4 @@
-<?
+<?php
 # ÅÐ¶ÏÊÇ·ñUcenter
 		if ($_G['module']['ucenter_status']==1){
 			$sql = "select * from `{ucenter}` where user_id='{$_G['user_id']}'";

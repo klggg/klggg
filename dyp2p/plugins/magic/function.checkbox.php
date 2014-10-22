@@ -33,9 +33,9 @@ break;
 }
 }
 if ($result!=""){
-$display = "<? \$result = $result;";
+$display = "<?php \$result = $result;";
 }else{
-$display .= "<? \$sql = 'select $name,$value from `{".$table."}`';";
+$display .= "<?php \$sql = 'select $name,$value from `{".$table."}`';";
 $display .= "\$result = \$this->magic_vars['_G']['mysql']->db_fetch_arrays(\$sql);";
 }
 if ($checked!=""){

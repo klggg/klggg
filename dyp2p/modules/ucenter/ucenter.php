@@ -1,4 +1,4 @@
-<?
+<?php
 if (!defined('ROOT_PATH'))  /*die('不能访问')*/echo "<script>window.location.href='/404.htm';</script>";//防止直接访问
 
 $_A['list_purview']["ucenter"]["name"] = "UCenter";
@@ -15,7 +15,7 @@ if ($_A['query_type'] == "list"){
 		$var = array("uc_status","uc_dbhost","uc_dbuser","uc_dbpw","uc_dbname","uc_charset","uc_dbtablepre","dz_dbtablepre","uc_key","uc_api","uc_ip","uc_appid");
 		$index = post_var($var);
 		$result = ucenterClass::Manage($index);
-		$content = "<? define('UC_CONNECT', 'mysql');
+		$content = "<?php define('UC_CONNECT', 'mysql');
 					define('UC_DBHOST', '".$index['uc_dbhost']."');
 					define('UC_DBUSER', '".$index['uc_dbuser']."');
 					define('UC_DBPW', '".$index['uc_dbpw']."');

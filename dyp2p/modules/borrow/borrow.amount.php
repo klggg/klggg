@@ -1,4 +1,4 @@
-<?
+<?php
 /*
 1,用户中心页面，需要读取所有的额度，程序在borrow.class.php function GetUserLog
 

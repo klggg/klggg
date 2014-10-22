@@ -61,7 +61,7 @@ trigger_error("list: extra attribute 'module' cannot be not empty",E_USER_NOTICE
 if ($function == ""){
 trigger_error("list: extra attribute 'function' cannot be not empty",E_USER_NOTICE);exit;
 }else{
-$display = "<? \$this->magic_vars['query_type']='{$function}';\$data = {$data};\$data['page'] = intval(isset(\$_REQUEST['page'])?\$_REQUEST['page']:'');";
+$display = "<?php \$this->magic_vars['query_type']='{$function}';\$data = {$data};\$data['page'] = intval(isset(\$_REQUEST['page'])?\$_REQUEST['page']:'');";
 }
 if ($plugins!=""){
 if (file_exists(ROOT_PATH."modules/{$module}/{$module}.{$plugins}.php")){
@@ -83,7 +83,7 @@ $display .=" \$this->magic_vars['$var']['pages'] =  array('total'=>\$this->magic
 $display .= '?>';
 return $display;
 }else if ($tag_command == "/list"){
-return "<? unset(\$_magic_vars); ?>";
+return "<?php unset(\$_magic_vars); ?>";
 }
 }
 ?>

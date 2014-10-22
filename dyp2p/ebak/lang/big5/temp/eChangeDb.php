@@ -64,7 +64,7 @@ function DoDrop(dbname)
 		&nbsp;&nbsp;&nbsp;<input type="button" name="Submit3" value="§R°£¼Æ¾Ú®w" onclick="javascript:DoDrop('<?=$r[0]?>')">
       </div></td>
   </tr>
-  <?
+  <?php
   }
   ?>
   <tr> 

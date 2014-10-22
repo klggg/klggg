@@ -70,7 +70,7 @@ trigger_error("loop: extra attribute 'module' cannot be not empty",E_USER_NOTICE
 if ($function == ""){
 trigger_error("loop: extra attribute 'function' cannot be not empty",E_USER_NOTICE);exit;
 }else{
-$display = "<? \$this->magic_vars['query_type']='{$function}';\$data = {$data};\$default = '{$default}';";
+$display = "<?php \$this->magic_vars['query_type']='{$function}';\$data = {$data};\$default = '{$default}';";
 }
 if (file_exists(ROOT_PATH."modules/{$module}/{$module}.class.php")){
 $display .= "  include_once(ROOT_PATH.'modules/{$module}/{$module}.class.php');\$this->magic_vars['magic_result'] = {$module}Class::{$function}(\$data);";
@@ -82,7 +82,7 @@ $display .= "if (count(\$_result)>0):\n;\$this->magic_vars['$var']=\$_result;";
 $display .= '?>';
 return $display;
 }else if ($tag_command == "/get"){
-return "<? else:echo \$default; endif; unset(\$_result);unset(\$this->magic_vars['$var']);unset(\$_magic_vars); ?>";
+return "<?php else:echo \$default; endif; unset(\$_result);unset(\$this->magic_vars['$var']);unset(\$_magic_vars); ?>";
 }
 }
 ?>

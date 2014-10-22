@@ -1,4 +1,4 @@
-<?
+<?php
 /******************************
  * $File: credit.class.php
  * $Description: 积分类管理

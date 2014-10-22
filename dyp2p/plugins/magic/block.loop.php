@@ -73,7 +73,7 @@ trigger_error("loop: extra attribute 'module' cannot be not empty",E_USER_NOTICE
 if ($function == ""){
 trigger_error("loop: extra attribute 'function' cannot be not empty",E_USER_NOTICE);exit;
 }else{
-$display = "<? \$this->magic_vars['query_type']='{$function}';\$data = {$data};\$default = '{$default}';";
+$display = "<?php \$this->magic_vars['query_type']='{$function}';\$data = {$data};\$default = '{$default}';";
 }
 if ($plugins!=""){
 if (file_exists(ROOT_PATH."modules/{$module}/{$module}.{$plugins}.php")){
@@ -96,7 +96,7 @@ $display .= "    foreach (\$_from as \$this->magic_vars['key'] => \$this->magic_
 $display .= '?>';
 return $display;
 }else if ($tag_command == "/loop"){
-return "<? endforeach;else:echo \$default; endif; unset(\$_from);unset(\$_magic_vars); ?>";
+return "<?php endforeach;else:echo \$default; endif; unset(\$_from);unset(\$_magic_vars); ?>";
 }
 }
 ?>

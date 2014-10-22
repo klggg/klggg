@@ -1,4 +1,4 @@
-<?
+<?php
 /******************************
  * $File: attestations.unstall.php
  * $Description: п╤ть

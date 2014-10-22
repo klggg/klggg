@@ -1,4 +1,4 @@
-<?
+<?php
 if (!defined('ROOT_PATH'))  /*die('不能访问')*/echo "<script>window.location.href='/404.htm';</script>";//防止直接访问
 $province["北京"] = array("北京市"=> array("东城区",
 "西城区",

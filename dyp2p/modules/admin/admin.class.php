@@ -1,4 +1,4 @@
-<?
+<?php
 /******************************
  * $File: admin.class.php
  * $Description: 管理类文件

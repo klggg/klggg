@@ -1,4 +1,4 @@
-<?
+<?php
 /******************************
  * $File: users.vip.php
  * $Description: 用户vip的管理中心

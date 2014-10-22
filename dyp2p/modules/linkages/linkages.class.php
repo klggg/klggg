@@ -1,4 +1,4 @@
-<?
+<?php
 /******************************
  * $File: linkage.class.php
  * $Description: Ö¤Êé

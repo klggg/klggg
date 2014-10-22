@@ -1,4 +1,4 @@
-<?
+<?php
 /******************************
  * $File: userinfo.class.php
  * $Description: 用户信息数据库处理文件

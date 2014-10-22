@@ -4,7 +4,7 @@ $type = !IsExiest($data['type'])?"radio":$data['type'];
 if ($type=="radio"){
 if (!IsExiest($data['value'])){trigger_error("input: radio extra attribute 'value' cannot empty",E_USER_NOTICE);}
 if (!IsExiest($data['name'])){trigger_error("input: radio extra attribute 'name' cannot empty",E_USER_NOTICE);}
-$display = '<? 
+$display = '<?php 
 		$_value = explode(",","'.$data['value'].'");
 		$display = "";';
 if ($data['checked']==""){
@@ -38,7 +38,7 @@ return $display;
 }elseif ($type=="select"){
 if (!IsExiest($data['value'])){trigger_error("input: radio extra attribute 'value' cannot empty",E_USER_NOTICE);}
 if (!IsExiest($data['name'])){trigger_error("input: radio extra attribute 'name' cannot empty",E_USER_NOTICE);}
-$result = '<? $display ="<select name=\''.$data['name'].'\'  id=\''.$data['name'].'\'>";';
+$result = '<?php $display ="<select name=\''.$data['name'].'\'  id=\''.$data['name'].'\'>";';
 if ($data['default']!=""){
 $result .= ' $display .= "<option value=\'\'>'.$data['default'].'</option>";';
 }

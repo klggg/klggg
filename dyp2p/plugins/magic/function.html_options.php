@@ -28,7 +28,7 @@ break;
 }
 if (!isset($options) &&!isset($values))
 return '';
-$_html_result = '<? ';
+$_html_result = '<?php ';
 if (isset($options)) {
 $_html_result .= "if (!isset($options)) $options = array(); \$_from =$options;\$_selected='';  foreach (\$_from as \$key => \$value):";
 $_html_result .= "echo \"<option value='\$key'\"; ";

@@ -26,7 +26,7 @@ trigger_error("years: extra attribute '$_key' cannot be an array",E_USER_NOTICE)
 break;
 }
 }
-$display = "<? ";
+$display = "<?php ";
 $display .=  " echo \"<select name='$name' id=$name  style='$style'>\";";
 if ($default!=""){
 $display .=  " echo \"<option value=''>".urldecode($default)."</option>\";";

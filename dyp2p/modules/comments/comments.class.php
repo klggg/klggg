@@ -1,4 +1,4 @@
-<?
+<?php
 /******************************
  * $File: comments.class.php
  * $Description: ÆÀÂÛ¹ÜÀí

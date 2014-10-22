@@ -1,4 +1,4 @@
-<?
+<?php
 /******************************
  * $File: linkages.php
  * $Description: 联动管理

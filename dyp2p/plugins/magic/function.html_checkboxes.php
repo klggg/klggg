@@ -46,7 +46,7 @@ $_name = $name."[\$kname][]";
 $kname = "\"\"";
 $_name = $name."[]";
 }
-$_html_result = '<? ';
+$_html_result = '<?php ';
 if (isset($options)) {
 $_html_result .= "if (!isset($options)) $options = array();\n \$_from =$options;\n ";
 if ( $checked{0}=="$"){

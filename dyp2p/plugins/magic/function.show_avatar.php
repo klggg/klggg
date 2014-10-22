@@ -2,7 +2,7 @@
 function magic_function_show_avatar($params){
 global $_G;
 $path = dirname(__FILE__).'/../avatar/';
-$display = " <? \n ";
+$display = " <?php \n ";
 $display .= "require_once(ROOT_PATH.'plugins/avatar/configs.php');\n";
 $display .= "require_once(ROOT_PATH.'plugins/avatar/avatar.class.php');\n";
 $display .= "\$objAvatar = new Avatar();\n";

@@ -58,7 +58,7 @@ if(isset($_POST['action']) && $_POST['action']=='annex'){
 <html>
 <head>
 		<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
-		<title><? if ($s == "uploadimg"){?>插入图片<? }else{?>插入附件 <? }?></title>
+		<title><?php if ($s == "uploadimg"){?>插入图片<?php }else{?>插入附件 <?php }?></title>
 		<style type="text/css">
 			body, td, span, div, input {
 				font-size: 12px;
@@ -90,7 +90,7 @@ if(isset($_POST['action']) && $_POST['action']=='annex'){
 			//$("imgpath").select();
 		}
 		function LoadIMG(imgpath){
-		   oRTE = window.dialogArguments.document.getElementById('<? echo $_REQUEST['id'];?>');
+		   oRTE = window.dialogArguments.document.getElementById('<?php echo $_REQUEST['id'];?>');
 			if(window.isIE) {
 				try{
 					oRTE.value =imgpath;
@@ -128,9 +128,9 @@ if(isset($_POST['action']) && $_POST['action']=='annex'){
 		</script>
 	</head>
 	<body>
-	<? if ($s == "uploadimg"){?>
+	<?php if ($s == "uploadimg"){?>
 	<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0" id="tabDialogSize">
-    <form name="form1" id="form1" method="post" action="?<? echo $query_site?>&q=plugins/uploadimg&id=<? echo $_REQUEST['id'];?>" enctype="multipart/form-data" target="myiframe">
+    <form name="form1" id="form1" method="post" action="?<?php echo $query_site?>&q=plugins/uploadimg&id=<?php echo $_REQUEST['id'];?>" enctype="multipart/form-data" target="myiframe">
     <tr>
       <td height="24" bgcolor="#DDE7EE" style="padding-left: 10px;">插入缩略图图片</td>
     </tr>
@@ -158,9 +158,9 @@ if(isset($_POST['action']) && $_POST['action']=='annex'){
     <td bgcolor="#3A6EA5" align="center"><font color=#FFFFFF>图片上传中,请等待...</font></td>
   </tr>
 </table>
-<? }elseif ($s=="uploadannex"){?>
+<?php }elseif ($s=="uploadannex"){?>
 <table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0" id="tabDialogSize">
-    <form name="form1" id="form1" method="post" action="?<? echo $query_site?>&q=plugins/uploadannex&id=<? echo $_REQUEST['id'];?>" enctype="multipart/form-data" target="myiframe">
+    <form name="form1" id="form1" method="post" action="?<?php echo $query_site?>&q=plugins/uploadannex&id=<?php echo $_REQUEST['id'];?>" enctype="multipart/form-data" target="myiframe">
     <tr>
       <td height="24" bgcolor="#DDE7EE" style="padding-left: 10px;">插入附件</td>
     </tr>
@@ -189,7 +189,7 @@ if(isset($_POST['action']) && $_POST['action']=='annex'){
   </tr>
 </table>
 </div>
-<? }?>
+<?php }?>
 </div>
 <iframe src="../upload.php" width="0" height="0" name="myiframe" id="myiframe" frameborder="0" scrolling="no"></iframe>
 	</body>

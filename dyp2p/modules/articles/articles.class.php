@@ -1,4 +1,4 @@
-<?
+<?php
 /******************************
  * $File: article.class.php
  * $Description: 文章数据库处理文件

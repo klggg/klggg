@@ -1,4 +1,4 @@
-<?
+<?php
 /******************************
  * $File: approve.class.php
  * $Description: 认证说明

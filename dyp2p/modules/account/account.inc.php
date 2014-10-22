@@ -1,4 +1,4 @@
-<?
+<?php
 /******************************
  * $File: account.inc.php
  * $Description: 资金用户处理文件

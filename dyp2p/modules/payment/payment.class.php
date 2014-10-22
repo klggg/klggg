@@ -1,4 +1,4 @@
-<?
+<?php
 /******************************
  * $File: payment.class.php
  * $Description: 支付方式类文件

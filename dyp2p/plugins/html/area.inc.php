@@ -97,7 +97,7 @@ foreach ($result as $key => $value){
 ?>
 
 $(document).ready(function (){
-	$("#<? echo $name;?>province").change(function(){
+	$("#<?php echo $name;?>province").change(function(){
 		var province = $(this).val();
 		var count = 0;
 		$.ajax({
@@ -105,18 +105,18 @@ $(document).ready(function (){
 			dataType:'json', 
 			data:"q=area&area_id="+province,
 			success:function(json){
-				$("#<? echo $name;?>city option").each(function(){
+				$("#<?php echo $name;?>city option").each(function(){
 					$(this).remove();				 
 				});
 				$(json).each(function(){
-					$("<option value='"+json[count].id+"'>"+json[count].name+"</option>").appendTo("#<? echo $name;?>city");
+					$("<option value='"+json[count].id+"'>"+json[count].name+"</option>").appendTo("#<?php echo $name;?>city");
 					count++;
 				});
 				
 			}
 		});
 	});
-	$("#<? echo $name;?>city").change(function(){
+	$("#<?php echo $name;?>city").change(function(){
 		var province = $(this).val();
 		var count = 0;
 		$.ajax({
@@ -124,28 +124,28 @@ $(document).ready(function (){
 			dataType:'json', 
 			data:"q=area&area_id="+province,
 			success:function(json){
-				$("#<? echo $name;?>area option").each(function(){
+				$("#<?php echo $name;?>area option").each(function(){
 					$(this).remove();				 
 				});
 				$(json).each(function(){					
-					$("<option value='"+json[count].id+"'>"+json[count].name+"</option>").appendTo("#<? echo $name;?>area");
+					$("<option value='"+json[count].id+"'>"+json[count].name+"</option>").appendTo("#<?php echo $name;?>area");
 					count++;
 				});
 				if(count>0)
 				{
-					$("#<? echo $name;?>area").show();
+					$("#<?php echo $name;?>area").show();
 				}else
 				{
-					$("#<? echo $name;?>area").hide();
+					$("#<?php echo $name;?>area").hide();
 				}
 			}
 		});
 	});
-	$("#<? echo $name;?>area").change(function(){
+	$("#<?php echo $name;?>area").change(function(){
 		
 	});
 });
-<?
+<?php
 $p = "<select id='{$name}province' name='{$name}province'><option value=''>«Î—°‘Ò</option>{$_province}</select>&nbsp;";
 $c = "<select id='{$name}city' name='{$name}city'><option value=''>«Î—°‘Ò</option>{$_city}</select>&nbsp;";
 $a = "<select id='{$name}area' name='{$name}area'><option value=''>«Î—°‘Ò</option>{$_area}</select>&nbsp;";
@@ -155,4 +155,4 @@ foreach ($_type as $key => $value){
 }
 
 ?>
-document.write("<? echo $display;?>");
+document.write("<?php echo $display;?>");

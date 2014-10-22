@@ -1,4 +1,4 @@
-<?
+<?php
 /******************************
  * $File: scrollpic.install.php
  * $Description: °²×°

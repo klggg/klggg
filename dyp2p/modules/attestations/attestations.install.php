@@ -1,4 +1,4 @@
-<?
+<?php
 /******************************
  * $File: attestations.install.php
  * $Description: 证明材料安装信息

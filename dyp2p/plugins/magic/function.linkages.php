@@ -42,7 +42,7 @@ if (isset($_G['_linkage'])){
 $result = $_G['_linkage'][$nid];
 if ($result=="") return " ";
 }
-$display = "<? \$result = \$this->magic_vars['_G']['_linkages']['$nid'];";
+$display = "<?php \$result = \$this->magic_vars['_G']['_linkages']['$nid'];";
 if ($input==""||$input == "select"){
 $display .=  " echo \"<select name='$name' id=$name  style='$style'>\";";
 if ($default!=""){

@@ -1,4 +1,4 @@
-<?
+<?php
 /******************************
  * $File: borrow.tool.php
  * $Description: ¼ì²â¹¤¾ß

@@ -1,4 +1,4 @@
-<?
+<?php
 if (!defined('ROOT_PATH'))  /*die('不能访问')*/echo "<script>window.location.href='/404.htm';</script>";//防止直接访问
 check_rank("invite_".$_A['query_type']);//检查权限
 

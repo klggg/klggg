@@ -6,7 +6,7 @@ if(!defined('InEmpireBak'))
 
 //Database
 $phome_db_ver="5.0";
-$phome_db_server="localhost";
+$phome_db_server="localhost";	// localhost
 $phome_db_port="";
 $phome_db_username="ggg";
 $phome_db_password="uiodSDF!sdUjkl";

@@ -1,4 +1,4 @@
-<?
+<?php
 session_start();//´ò¿ª»º´æ
 $op = empty($_GET['op'])?'':$_GET['op'];
 $isupload = empty($_GET['cam']) && empty($_GET['doodle']) ? true : false;

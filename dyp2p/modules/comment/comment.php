@@ -1,4 +1,4 @@
-<?
+<?php
 /******************************
  * $File: comment.php
  * $Description: ÆÀÂÛ¹ÜÀí

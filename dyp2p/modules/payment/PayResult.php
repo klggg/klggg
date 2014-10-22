@@ -1,4 +1,4 @@
-<?
+<?php
 require_once ('../../core/config.inc.php');
 require_once (ROOT_PATH.'modules/account/account.class.php');
 require_once (ROOT_PATH.'modules/payment/payment.class.php');

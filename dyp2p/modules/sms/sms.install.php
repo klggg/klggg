@@ -1,4 +1,4 @@
-<?
+<?php
 /******************************
  * $File: remind.install.php
  * $Description: 提醒模块安装文件

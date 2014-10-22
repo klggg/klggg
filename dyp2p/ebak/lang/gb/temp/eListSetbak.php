@@ -72,7 +72,7 @@ function ChangeSet(filename)
         <?=$showfile?> </div></td>
     <td><div align="center">&nbsp;[<?=$showdel?>]</div></td>
   </tr>
-  <?
+  <?php
      }
   }
   ?>

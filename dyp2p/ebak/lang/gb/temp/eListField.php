@@ -72,7 +72,7 @@ function ChangeAutoField(f)
         <?=$r[Extra]?>
       </div></td>
   </tr>
-  <?
+  <?php
   }
   ?>
 </table>

@@ -71,7 +71,7 @@ trigger_error("list: extra attribute 'module' cannot be not empty",E_USER_NOTICE
 if ($function == ""){
 trigger_error("list: extra attribute 'function' cannot be not empty",E_USER_NOTICE);exit;
 }else{
-$display = "<? \$data = {$data};";
+$display = "<?php \$data = {$data};";
 }
 if($module=="user"){
 $display .= "  include_once(ROOT_PATH.'core/user.class.php');\$this->magic_vars['$var'] = userClass::{$function}(\$data);";
@@ -88,7 +88,7 @@ $display .="if(!is_array(\$this->magic_vars['$var'])){ \$this->magic_vars['$var'
 $display .= '?>';
 return $display;
 }else if ($tag_command == "/article"){
-return "<? unset(\$_magic_vars);unset(\$data); ?>";
+return "<?php unset(\$_magic_vars);unset(\$data); ?>";
 }
 }
 ?>

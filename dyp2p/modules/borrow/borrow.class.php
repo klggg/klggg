@@ -1,4 +1,4 @@
-<?
+<?php
 /******************************
  * $File: borrow.class.php
  * $Description: 借款类文件

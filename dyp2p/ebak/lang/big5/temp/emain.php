@@ -136,12 +136,12 @@ function GetPhpSafemod()
                   <?=$_SERVER['SERVER_SOFTWARE']?>
                 </td>
                 <td height="26">操作系統&nbsp;&nbsp;:
-				<? echo GetUseSys();?></td>
+				<?php echo GetUseSys();?></td>
               </tr>
               <tr bgcolor="#FFFFFF"> 
-                <td width="50%" height="25">PHP版本&nbsp;&nbsp; : <? echo PHP_VERSION;?></td>
+                <td width="50%" height="25">PHP版本&nbsp;&nbsp; : <?php echo PHP_VERSION;?></td>
                 <td height="25">MYSQL版本&nbsp;:
-				<? echo @mysql_get_server_info();?></td>
+				<?php echo @mysql_get_server_info();?></td>
               </tr>
               <tr bgcolor="#FFFFFF"> 
                 <td height="25">全局變量&nbsp;&nbsp;: 
@@ -153,9 +153,9 @@ function GetPhpSafemod()
               </tr>
               <tr bgcolor="#FFFFFF"> 
                 <td height="25">登錄者IP&nbsp;&nbsp;:
-				<? echo $_SERVER['REMOTE_ADDR'];?></td>
+				<?php echo $_SERVER['REMOTE_ADDR'];?></td>
                 <td height="25">當前時間&nbsp;&nbsp;:
-				<? echo date("Y-m-d H:i:s");?></td>
+				<?php echo date("Y-m-d H:i:s");?></td>
               </tr>
               <tr bgcolor="#FFFFFF"> 
                 <td height="25">程序版本&nbsp;&nbsp;: <a href="http://www.phome.net" target="_blank"><strong><font color="#07519A">EmpireBak</font></strong> 

@@ -1,4 +1,4 @@
-<?
+<?php
 /******************************
  * $File: articles.php
  * $Description: 文章后台管理文件

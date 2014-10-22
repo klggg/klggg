@@ -1,4 +1,4 @@
-<?
+<?php
 /******************************
  * $File: spread.php
  * $Description: 推广管理

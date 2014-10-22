@@ -13,7 +13,7 @@ $canshu = isset($params['canshu'])?$params['canshu']:"";
 $total = "\$this->magic_vars['{$listvar}']['total']";
 $epage = "\$this->magic_vars['{$listvar}']['epage']";
 $page = "\$this->magic_vars['{$listvar}']['page']";
-return "<div class='".$style."'><? if (isset(\$this->magic_vars['{$listvar}']['page'])): \$pages = new Pages();\$pages->set_data(array('total'=>$total,'epage'=>$epage,'page'=>$page,'page_name'=>'{$page_name}','url'=>'$page_url','rewrite'=>'$rewrite','very_page'=>'$very_page','suffix'=>'$suffix','canshu'=>'$canshu'));\n
+return "<div class='".$style."'><?php if (isset(\$this->magic_vars['{$listvar}']['page'])): \$pages = new Pages();\$pages->set_data(array('total'=>$total,'epage'=>$epage,'page'=>$page,'page_name'=>'{$page_name}','url'=>'$page_url','rewrite'=>'$rewrite','very_page'=>'$very_page','suffix'=>'$suffix','canshu'=>'$canshu'));\n
 	if (\$this->magic_vars['{$listvar}']['total']>0) echo \$pages->show($type);else echo 'ÔİÃ»ÎÄÕÂ';endif;?></div>";
 }
 ?>

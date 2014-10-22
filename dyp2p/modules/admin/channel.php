@@ -1,4 +1,4 @@
-<?
+<?php
 /******************************
  * $File: channel.php
  * $Description: 模块的新模型管理

@@ -1,4 +1,4 @@
-<?
+<?php
 /******************************
  * $File: comments.install.php
  * $Description: ÆÀÂÛ

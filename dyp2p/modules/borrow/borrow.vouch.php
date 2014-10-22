@@ -1,4 +1,4 @@
-<?
+<?php
 /******************************
  * $File: borrow.vouch.php
  * $Description: µ£±£Àà

@@ -1,4 +1,4 @@
-<?
+<?php
 /******************************
  * $File: liuyan.install.php
  * $Description: ÁôÑÔ°´ÕÕÎÄ¼þ

@@ -1,4 +1,4 @@
-<?
+<?php
 /******************************
  * $File: ucenter.install.php
  * $Description: °´ÕÕÎÄ¼þ

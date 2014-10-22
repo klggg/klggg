@@ -1,4 +1,4 @@
-<?
+<?php
 /******************************
  * $File: borrow.inc.php
  * $Description: 借款用户中心处理文件

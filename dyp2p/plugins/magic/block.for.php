@@ -17,11 +17,11 @@ $$_key = (string)$_val;
 break;
 }
 }
-$display .="<? for( \$this->magic_vars['$var']=$start;\$this->magic_vars['$var']<=$end;\$this->magic_vars['$var']++){";
+$display .="<?php for( \$this->magic_vars['$var']=$start;\$this->magic_vars['$var']<=$end;\$this->magic_vars['$var']++){";
 $display .= '?>';
 return $display;
 }else if ($tag_command == "/for"){
-return "<? };unset(\$_magic_vars); ?>";
+return "<?php };unset(\$_magic_vars); ?>";
 }
 }
 ?>

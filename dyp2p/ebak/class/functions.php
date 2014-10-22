@@ -805,7 +805,7 @@ function Ebak_EchoBakSt($tbname,$tbnum,$tb,$rnum,$r){
 		<tr><td height="25">Table&nbsp;:&nbsp;<b><?=$table?></b></td></tr>
 		<tr><td height="25">Record&nbsp;:&nbsp;<b><?=$record?></b></td></tr>
 	</table><br><br>
-	<?
+	<?php
 }
 
 //输出恢复进度条
@@ -819,7 +819,7 @@ function Ebak_EchoReDataSt($tbname,$tbnum,$tb,$pnum,$p){
 		<tr><td height="25">Table&nbsp;:&nbsp;<b><?=$table?></b></td></tr>
 		<tr><td height="25">File&nbsp;:&nbsp;<b><?=$record?></b></td></tr>
 	</table><br><br>
-	<?
+	<?php
 }
 
 //取得表记录数

@@ -1,4 +1,4 @@
-<?
+<?php
 /******************************
  * $File: users.admin.php
  * $Description: 用户管理员类文件

@@ -1,4 +1,4 @@
-<?
+<?php
 /******************************
  * $File: account.class.php
  * $Description: 资金类文件

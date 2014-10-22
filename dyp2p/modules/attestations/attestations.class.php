@@ -1,4 +1,4 @@
-<?
+<?php
 /******************************
  * $File: attestations.class.php
  * $Description: 证明材料类文件管理

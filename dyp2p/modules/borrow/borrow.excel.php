@@ -1,4 +1,4 @@
-<?
+<?php
 /******************************
  * $File: borrow.excel.php
  * $Description: ½è¿îµ¼³ö

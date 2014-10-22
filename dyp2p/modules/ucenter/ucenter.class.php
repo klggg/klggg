@@ -1,4 +1,4 @@
-<?
+<?php
 /******************************
  * $File: ucenter.class.php
  * $Description: 数据库处理文件

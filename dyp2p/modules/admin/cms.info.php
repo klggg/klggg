@@ -1,4 +1,4 @@
-<?
+<?php
 	$code = "cms";
 	$name = "cms模块";
 	$description = "新增加了flag标签，简略标题等";

@@ -287,7 +287,7 @@ if ($tag_str{0}== "$"){
 $_result .= "if (!isset($tag_str)) $tag_str = '';"; 
 } 
 } 
-return "<? $_result echo $result; ?>"; 
+return "<?php $_result echo $result; ?>"; 
 }else{ 
 $output ="<?"; 
 foreach ($chars as $tag_str){ 
@@ -350,7 +350,7 @@ $parse_var .= join(",",$_parse_var);
 } 
 $parse_var .= ")"; 
 $_tmp = "\$this->magic_vars['sqlfunc']"; 
-$output .= "<?  $_tmp = \$this->magic_sqlfunc(\"".$tag_str."\",$parse_var);\n"; 
+$output .= "<?php  $_tmp = \$this->magic_sqlfunc(\"".$tag_str."\",$parse_var);\n"; 
 $output .= "echo $_tmp;?>"; 
 return $output; 
 } 
@@ -415,10 +415,10 @@ if (file_exists($_file)){
 if ($tag_str[0]{0}!= "/"){ 
 $output = ""; 
 $_tmp = "\$this->magic_vars['list']"; 
-$output .= "<? \$default = '$_default'; $_tmp = \$this->magic_sql(\"".$_tag_str."\",$parse_var,\$this->magic_vars,\$this->mysql);\n";
+$output .= "<?php \$default = '$_default'; $_tmp = \$this->magic_sql(\"".$_tag_str."\",$parse_var,\$this->magic_vars,\$this->mysql);\n";
  $output .= " if (count($_tmp"."['result'])>0):foreach ($_tmp"."['result'] as \$this->magic_vars['key'] => \$this->magic_vars['$var_name']):\n;?>";
  }else{ 
-$output = "<? endforeach;else:echo \"\$default\";endif; ?>"; 
+$output = "<?php endforeach;else:echo \"\$default\";endif; ?>"; 
 } 
 return $output; 
 } 
@@ -511,12 +511,12 @@ $result = "";
 $result .= $key; 
 } 
 } 
-$result = "<? $_res ;$tag_command ($result): ?>"; 
+$result = "<?php $_res ;$tag_command ($result): ?>"; 
 return $result; 
 }elseif ($tag_command == "else"){ 
-return "<? else: ?>"; 
+return "<?php else: ?>"; 
 }elseif ($tag_command == "/if"){ 
-return "<? endif; ?>"; 
+return "<?php endif; ?>"; 
 } 
 } 
 function compile_include_tag($tag_command,$parse_var) { 
@@ -539,9 +539,9 @@ $include_file = $value;
 } 
 } 
 if ($_file{0}!= "$"){ 
-return  "<? \$this->magic_include(array('file' => \"".$include_file ."\", 'vars' => array(".implode(',',(array)$arg_list).")));?>";
+return  "<?php \$this->magic_include(array('file' => \"".$include_file ."\", 'vars' => array(".implode(',',(array)$arg_list).")));?>";
  }else{ 
-$output  = "<? if (!isset($_file)) $_file='';$_arg; \$_from = $_file; "; 
+$output  = "<?php if (!isset($_file)) $_file='';$_arg; \$_from = $_file; "; 
 $output  .= " \$this->magic_include(array('file' => \$_from, 'vars' => array(".implode(',',(array)$arg_list)."))); unset(\$_from);?>";
  return $output; 
 } 
@@ -558,7 +558,7 @@ $_value = "\"$_value\"";
 }else{ 
 $_var = " if (!isset($_value)) $_value='';"; 
 } 
-return "<? $_var ; \$name = \"$_name\" ; \$value = $_value;".html_entity_decode($result['api'])." ?>";
+return "<?php $_var ; \$name = \"$_name\" ; \$value = $_value;".html_entity_decode($result['api'])." ?>";
  } 
 function compile_foreach_tag($tag_command,$parse_var) { 
 if  ($tag_command == "foreach") { 
@@ -580,7 +580,7 @@ $key_part = "\$this->magic_vars['$key'] => ";
 $key = null; 
 $key_part ="\$this->magic_vars['key'] => "; 
 } 
-$result = '<? '; 
+$result = '<?php '; 
 $result .= " if(!isset($from) || $from=='') $from = array();  \$_from = $from; \n if (!is_array(\$_from) && !is_object(\$_from)) { settype(\$_from, 'array'); } \n";
  if (isset($name)) { 
 $foreach_props = "\$this->_foreach[$name]"; 
@@ -595,7 +595,7 @@ $result .= "    foreach (\$_from as $key_part \$this->magic_vars['$item']):\n";
 $result .= '?>'; 
 return $result; 
 }else if ($tag_command == "/foreach"){ 
-return "<? endforeach; endif; unset(\$_from); ?>"; 
+return "<?php endforeach; endif; unset(\$_from); ?>"; 
 } 
 } 
 function trigger_error($error_msg,$error_type = E_USER_WARNING) { 

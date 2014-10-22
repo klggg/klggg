@@ -15,7 +15,7 @@ break;
 }
 $var = empty($var)?"var":$var;
 $_display = "";
-$display .="<? \$_from = explode(',',$from); if (!is_array(\$_from) && !is_object(\$_from)) { settype(\$_from,'array'); } ";
+$display .="<?php \$_from = explode(',',$from); if (!is_array(\$_from) && !is_object(\$_from)) { settype(\$_from,'array'); } ";
 $display .= "if (count(\$_from)):\n \$i=0;";
 $display .= "    foreach (\$_from as \$this->magic_vars['key'] => \$this->magic_vars['$var']):\n";
 $display .= " if ( \$this->magic_vars['$var']!=''):";
@@ -23,7 +23,7 @@ $display .= " \$this->magic_vars['key'] =\$i";
 $display .= '?>';
 return $display;
 }else if ($tag_command == "/array"){
-return "<? \$i++;endif;endforeach; endif;  unset(\$_from);unset(\$_magic_vars); ?>";
+return "<?php \$i++;endif;endforeach; endif;  unset(\$_from);unset(\$_magic_vars); ?>";
 }
 }
 ?>

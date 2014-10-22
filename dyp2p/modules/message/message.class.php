@@ -1,4 +1,4 @@
-<?
+<?php
 /******************************
  * $File: message.class.php
  * $Description: 短消息类文件
