@@ -28,7 +28,7 @@ class Zk8SubjectController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','showHtml','chapterList'),
+				'actions'=>array('index','view','showHtml','ChapterList'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -77,6 +77,7 @@ class Zk8SubjectController extends Controller
 		
 		$records = Zk8Subject::model()->findAll(array(
 		 'condition'=>'status = ? and course_id= ?'
+		 // 'condition'=>'status = ? and course_id= ? and (question like "%[识记]%" or question like "%[应用]%")'			
 		 ,'params' => array(Zk8Subject::STATUS_DONE,$id)
 		 ,'order' => 'subject_id asc'
 		 ));

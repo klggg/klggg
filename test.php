@@ -4,6 +4,7 @@ $tmp = "/media/ggg/bak1/git/github_klggg/site/crawl/protected/commands/../runtim
 
 $xxx = pathinfo($tmp);
 print_r($xxx);
+
 /*
 
 Array

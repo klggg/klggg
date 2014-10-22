@@ -1,0 +1,138 @@
+盛大游戏广告产品部  机器汇总
+
+
+[南汇机器]
+	114.80.134.32 跳板机
+	10.129.38.38 win2000机器
+
+
+[无锡线上环境跳板机]
+	ssh oadba@58.215.44.5 -p58422
+	SSH端口: 58422 账号 oadba
+	密 码 ICKoiiilmz9Ys
+
+[svn地址]
+	  http://192.168.90.25:8088/svn/gameAD
+
+
+[开发环境]
+	10.241.12.120 (对应物理机ip 10.241.12.112)
+
+	web服务器 
+		10.241.12.120
+
+	数据库服务器
+		mysql -h10.241.12.120 -uroot -psdooadb  -Doa_newchannel
+
+	Memcache服务器
+		10.241.12.120
+
+	[ftp]
+		10.241.12.120
+		ftp： oaftp    密码： WD#sd7258
+		所在目录 /opt/op/channels/dingyue.sdo.com/
+		/opt/op/
+
+	[ssh]
+		ssh root@10.241.12.120
+		user:root
+		pass:WD#sd7258
+
+	[host]
+		可以通过  dev.xxx.snda.com 方式来绑定
+
+
+[测试环境]
+	Memcache服务器
+	     58.215.39.189 (10.10.85.189)
+	     /opt/app/memcached/bin/memcached -l 10.10.85.189 -d -m 2048 -p 11556 -u nobody
+	    /usr/local/bin/memcached -l 10.10.85.187 -d -m 2048 -p 58422 -u nobody
+
+	资产编号	机架位置	外网ip			内网ip
+	C192350	03O10	58.215.39.190	10.10.85.190
+	数据库服务器
+		58.215.39.190 (10.10.85.190)
+
+	[ssh]
+		ssh root@58.215.39.187  58422 
+		root vczk/H7rwdsCU
+
+	[ftp]
+		58.215.39.185
+		ftp ：oadev xlK9cMPOfFzAY
+
+	[mysql]
+		mysql  -h58.215.39.190 -utest_root -p -Dvcu_main
+		asd#%@$^
+
+		mysql  -h10.10.85.190 -uroot -Doa_newchannel
+
+		mysql -h127.0.0.1 -uroot --password=    
+		http://test.phpmyadmin.sp.snda.com/
+		vcu_read / sdooadb
+
+			grant all on *.* to test_root@'114.80.133.%' identified by 'asd#%@$^';
+
+
+	[相关日志]
+	/data1/logs/nginx_error_debug.log
+
+	[host]
+		可以通过  test.xxx.snda.com 方式来绑定
+
+
+[线上无锡WEB虚拟机]
+	[ssh 相关]
+		ssh 端口: 58422
+		密码:	 VWD#sd7258
+
+
+	10.150.15.77 前端web，挂了nfs 
+	10.150.15.81 前端web 加 http://qudao.snda.com/backend/  后台
+
+	10.150.15.78 为脚本机
+	10.150.15.82  预发布环境
+
+	nginx conf 在 /opt/conf/nginx/
+	web 路径/opt/game_wwwroot/channels/g.sdo.com
+
+	tail -f /opt/logs/php/php_error.log
+	vim /opt/conf/nginx/vhost/g.sdo.com.conf 
+
+
+[DB]
+         AlexJin(金霄.alex)‎‎ [11:59]:
+         你好，你的两台机器好了
+        10.150.15.85-86
+        密码WD#sd7258
+
+	mysql -h10.150.15.85 -uoa_vcu  -Doa_newchannel -p"vcu!@#$%^&*()"
+        ‎‎许剑峰.Justin‎‎ [17:32]:
+        1. 在新机器搭建mysql环境并搭主从环境，假设主IP1、从IP2，主IP1--->从IP2
+        2. 搭建10.150.25.32<--->10.150.25.33--->新机器 的链式主从复制，变成10.150.25.33--->主IP1，其中主IP1只复制需要的两个库
+        3. 等主IP1数据同步一致后，业务应用可以随时切换到新的主IP1 mysql。一旦有问题，马上切换到旧的DB环境。
+        4. 配置新机器主IP1、从IP2环境的监控、备份、报警等
+
+          这几步，我都操作好了，数据也同步到新的10.150.15.85 主db服务器了
+        ‎‎许剑峰.Justin‎‎ [18:01]:
+          现在的db架构是：10.150.25.32<--->10.150.25.33--->10.150.15.85--->10.150.15.86
+
+[phpadmin]
+	绑定 host 
+	10.150.15.81 phpadmin.9292wan.com    
+	用户： vcu_read
+	密码： mVNR#eQ&
+	DB： oa_newchannel
+
+
+
+[联运平台的机器,待迁移]
+	10.150.185.11 WEB
+	10.150.185.12 DB
+
+[其他可用机器]
+	‎‎HenryCao(曹杰)‎‎ [11:44]:
+	10.150.15.51
+	10.150.15.52
+	这两台宿主机上还有6个坑,可以用于做测试机、开发机、预发布之类
+	10.150.15.77 /  81  这两台虚拟机就安装在以上宿主机上

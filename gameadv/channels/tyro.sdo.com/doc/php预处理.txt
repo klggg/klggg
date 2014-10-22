@@ -1,0 +1,36 @@
+
+	/*
+	 * 防SQL注入函数,预处理
+	 */
+	function prepare_query($sql, $params=null){
+		$sql_block = explode("?", $sql);
+		$sp_size = sizeof($sql_block) - 1;
+		$param_size = sizeof($params);
+		if( $sp_size == 0 && $params == null){
+			return $sql;
+		}
+		if (($sp_size < 1) || ($param_size < 1) || ($sp_size != $param_size) ) {
+			return "";
+		}
+		
+		if ($param_size == 1){
+			if ( gettype($params) == 'string'){
+				$result = str_replace('?', "'".$params."'", $sql);
+			} else if ( gettype($params) == 'integer'){
+				$result = str_replace('?', $params, $sql);
+			}
+		} else if ( $param_size > 1) {
+			for($i = 0; $i < sizeof($params); $i++){
+				if ( gettype($params[$i]) == 'string'){
+					$sql_block[$i] .= "'".$params[$i]."'";
+				} else if (gettype($params[$i]) == 'integer'){
+					$sql_block[$i] .= $params[$i];
+				}
+			}
+			$result = '';
+			for($i = 0; $i < $param_size; $i++){
+				$result .= $sql_block[$i];
+			}
+		}
+		return $result;
+	}

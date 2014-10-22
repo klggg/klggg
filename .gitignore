@@ -3,6 +3,13 @@ assets/
 protected/runtime/
 themes/classic/views/
 */protected/runtime/*
+site/crawl/protected/config/console.php
 vendor/*
 *.swp
+<<<<<<< HEAD
+*~
+*.*~
+*.DS_Store
+=======
 /dyp2p/dyp2p.zip
+>>>>>>> 4fd51768c245e633e7beb027832badef9cbbe720

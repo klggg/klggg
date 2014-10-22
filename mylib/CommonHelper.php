@@ -1,4 +1,6 @@
 <?php
+<<<<<<< HEAD
+=======
 
 class CommonHelper {
 
@@ -1073,47 +1075,519 @@ function setstatus($statusid,$istrue,$_DATA_STATUS_PATH)
 	}//END GggMkjsArray
 
 
+>>>>>>> 4fd51768c245e633e7beb027832badef9cbbe720
 /**
- * ·ÀÖ¹Ë¢ĞÂÄ£¿é
- * ÊµÏÖÔ­Àí ÉèÖÃ max_reloadtime	=100;	//ÉèÖÃÒ³ÃæË¢ĞÂ×î³¤¼ä¸ôÊ±¼ä
- * ÓÃ»§µÚÒ»´Î´ò¿ªÒ³Ãæ ¼ÇÂ¼µ±Ç°µÄÊ±¼ä±£´æÔÚ session_start
- * ÓÃ»§µÚ¶ş´Î´ò¿ªÒ³Ãæ(ÅĞ¶Ï session_startÊÇ·ñ´æÔÚ)   ÓÃµ±Ç°Ê±¼äºÍ session_start Ïà¼õ µÃµ½²îÖµ time_passed
- * µ± time_passed < max_reloadtime ±íÊ¾ÓÃ»§ÔÚÖ¸¶¨Ê±¼äÄÚÆµ·±Ë¢ĞÂÁË ¾¯¸æºóÖ±½ÓÍË³ö
- * @param int $max_reloadtime Ò³ÃæË¢ĞÂ×î³¤¼ä¸ôÊ±¼ä
- * @return bool		·µ»Ø ¾ßÌåÊıÖµ ±íÊ¾Ë¢ĞÂÌ«¿ìÁË ·µ»Ø false  ±íÊ¾Ã»ÓĞ³¬Ê±
+ * 2011-7-15 18:05 ggg
+ * ç”¨äºå¸¸ç”¨åŠ©æ‰‹ç±»
  */
-
-if (!function_exists('controller_onload'))
+class CommonHelper
 {
-	function limitReload($max_reloadtime=3)
-	{
-		session_start();
-		if(empty($_SESSION["session_start"]))			//ÓÃ»§µÚÒ»´Î´ò¿ªÒ³Ãæ ¼ÇÂ¼µ±Ç°µÄÊ±¼ä±£´æÔÚ session_start
-			$_SESSION["session_start"]	=time();
-		else
-		{
-			$time_passed	=time()-$_SESSION["session_start"];
-			if($time_passed < $max_reloadtime)
-			{
-				return $time_passed;
-	//			echo "´óÏÀ±ğ¼±,ÏÈ×øÏÂĞİÏ¢ĞİÏ¢ :P <a href=javascript:history.go(0)>°´´ËË¢ĞÂÒ³Ãæ</a><br>";
-	//			echo "Ò³ÃæË¢ĞÂ¼ä¸ôÊ±¼ä ".$max_reloadtime."<br>";
-	//			echo "ÀëÉÏ´ÎË¢ĞÂÊ±¼ä  ".$time_passed."<br>";
-	//			die();
-			}
-			$_SESSION["session_start"]	=time();
-		}
-		return false;
-	}
+    static private $_instance=null;
+    static public $errorMsg=null;
+
+
+    /**
+     * è·å¾—å”¯ä¸€å®ä¾‹
+     *
+     * @param string $key
+     * @return obj
+     */
+    static public function getInstance()
+    {
+        if(self::$_instance === null)
+        {
+            self::$_instance = new self();
+        }
+        return self::$_instance;
+    }
+
+    //è½¬æ¢ç¼–ç 
+    static public function gbk2utf8($str)
+    {
+        // return iconv("gbk", "utf-8//IGNORE", $str);
+        return mb_convert_encoding($str,"utf-8","gbk");
+    }
+
+    //è½¬æ¢ç¼–ç 
+    static public function utf82gbk($str)
+    {
+        // return iconv("utf-8", "gbk//IGNORE", $str);
+        return mb_convert_encoding($str,"gbk","utf-8");
+    }
+
+
+    /*
+     * å¾—åˆ°æŒ‡å®šç¯å¢ƒä¸‹çš„é…ç½®dbé…ç½®å†…å®¹
+     *
+     * @param stirng  $evn G_CODE_ENV
+     * @param stirng  $dbStr å¦‚ statdb gameaddbä¹‹ç±»
+     * @return  Array
+     *
+     */
+    static public function getDbConfig($evn,$dbStr)
+    {
+        $tmp_config = self::getEvnConfig($evn);
+        $tmp_db =$tmp_config['components'][$dbStr];
+        $tmp_dns    = self::parseDsn($tmp_db['connectionString']);
+        $tmp_db['host'] =$tmp_dns['host'];
+        $tmp_db['dbname'] =$tmp_dns['dbname'];
+        return $tmp_db;
+    }
+    
+    /*
+     * å¾—åˆ°æŒ‡å®šç¯å¢ƒä¸‹çš„é…ç½®å†…å®¹
+     *
+     * @param stirng  $evn G_CODE_ENV
+     * @return  Array
+     *
+     */
+    static public function getEvnConfig($evn)
+    {
+        $tmp_config = Array();
+        //ç¯å¢ƒåˆ¤å®š
+        switch($evn)
+        {
+            case "LOCAL" :
+                $tmp_config=require(G_COMMON_CONFIG_PATH.'/main_local.php');
+                break;
+            case "DEV" :
+                $tmp_config=require(G_COMMON_CONFIG_PATH.'/main_dev.php');
+                break;
+            case "TEST" :
+                $tmp_config=require(G_COMMON_CONFIG_PATH.'/main_test.php');
+                break;
+            case "PRE" :
+                $tmp_config=require(G_COMMON_CONFIG_PATH.'/main_pre.php');
+                break;                
+            case "RELEASE" :
+                $tmp_config=require(G_COMMON_CONFIG_PATH.'/main_release.php');
+                break;
+
+        }
+
+        return $tmp_config; 
+
+    }
+
+    /*
+     * è§£é‡Š mysql:host=10.241.12.120;dbname=oa_newchannel è¿”å› æ•°ç»„
+     *
+     * @param stirng  $dsnStr
+     * @return  Array
+     *
+     */
+    static public function parseDsn($dsnStr)
+    {
+        //$url='mysql:host=10.241.12.120;dbname=oa_newchannel';
+        $url    =  $dsnStr;
+        $tmp_dsn    = parse_url($url);
+
+        $tmp_array   = explode(';',$tmp_dsn['path']);
+        foreach($tmp_array as $tmp_recode)
+        {
+            $tmp_exp    = explode('=',$tmp_recode);
+            $tmp_dsn[$tmp_exp[0]] = $tmp_exp[1];
+        }
+        return $tmp_dsn;
+    }
+
+
+    
+    /**
+     * å›¾ç‰‡æ›´æ–°æ˜¯,ä¸è¢«CDN cache 
+     */
+    public static function getCdnVersion()
+    {
+        return '2013012401';
+    }
+
+        //ä¸‹è½½æ–‡ä»¶
+    public static function down($content,$filename)
+    {
+        $len = strlen($content);
+        @ob_end_clean();
+
+
+        header("Content-Type: application/vnd.ms-excel; charset=UTF-8");
+        header("Pragma: public");
+        header("Expires: 0");
+        header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
+        header("Content-Type: application/force-download");
+        header("Content-Type: application/octet-stream");
+        header("Content-Type: application/download");
+        header("Content-Disposition: attachment;filename=".$filename." ");
+        header("Content-Transfer-Encoding: binary ");
+        header('Content-Length: '.$len);
+        echo  $content;
+    }
+
+  
+    
+    /**
+     * æŠŠcsvæ ¼å¼çš„å­—ç¬¦çªœè½¬ä¸ºäºŒç»´æ•°ç»„ã€€ã€€ã€€
+     *  aaa1    bbb1    ccc1
+     *  aaa2    bbb2    ccc2
+     *  è½¬ä¸º  Array(
+     *      Array("aaa1",â€œbbb1"
+     *  )
+     * Enter description here ...
+     * @param string $str  éœ€è¦è½¬æ¢çš„å­—ç¬¦çªœã€€ã€€ï¼Œä¸€
+     * @param string $rowKeys  ä¸€è¡Œé‡Œçš„æ•°ç»„æ¯ä¸ªå­—æ®µæ˜ å°„çš„keyå€¼ Array('gameid'=>123,....) æ³¨æ„è¦å’Œåˆ—æ•°ä¿æŒä¸€è‡´
+     * @param string $rowSplit  ä¸€è¡Œä¸€æ¡è®°å½•çš„éš”ç¬¦ï¼Œé»˜è®¤ä»¥å›è½¦ç»“å°¾
+     * @param string $colSplit  ä¸€è¡Œé‡Œçš„å­—æ®µåˆ†éš”ç¬¦ã€€é»˜è®¤ç”¨é€—å·åˆ†éš”
+     */
+    public function csv2Array($str,$rowKeys=null,$rowSplit="\n",$colSplit=","){
+    /* 
+         $str   = <<<EOF
+    gameid  game_area_id    sdid    game_member_name    game_team_name  cleartime
+    1   1   8024    ggg team    time
+    1   2   8024    kl  team    time    
+    EOF;
+    
+        
+       $rowKeys    = Array('gameid','game_area_id','sdid','game_member_name','game_team_name','cleartime');
+        $colSplit    = "\t";
+     */
+        $insert_array   = array();
+        $str = trim($str);
+        $tmp_array1 = explode($rowSplit,$str);
+    //     var_dump($str);
+
+        if(count($tmp_array1) < 1)
+        {
+            // $this->_errorMsg ="empty file ";
+            return false;
+        }
+
+
+        
+        $tmp_count  = 0;
+        foreach ($tmp_array1 as $recode){
+    
+            $tmp_recode = trim($recode);
+    
+            $tmp_count++;
+
+    
+            if(empty($tmp_recode))
+                continue;
+
+            $tmp_array2 = explode($colSplit,$tmp_recode);
+    
+            $tmp_array3 = Array();
+
+            if( !empty ($rowKeys) && (count($tmp_array2) != count($rowKeys)) ){
+                return false;
+            }
+ 
+            foreach($tmp_array2 as $tmp_key => $tmp_val)
+            {
+                if(!empty($rowKeys))
+                {
+                    $tmp_array3[$rowKeys[$tmp_key]]    = $tmp_val;
+                }
+                else
+                    $tmp_array3[]    = $tmp_val;
+            }
+
+//            if(!empty($addRows)){
+//                $tmp_array3 = $tmp_array3 + $addRows;
+//            }
+
+   
+            //ä»¥æ¸¸æˆã€åŒºã€å¸å·ä¸ºkey
+            //$insert_array[$tmp_array3['gameid'].$tmp_array3['game_area_id'].$tmp_array3['sdid']]  = $tmp_array3;
+            $insert_array[] = $tmp_array3;
+    
+            //list($k,$v)   = explode("\t",$recode);
+            //$a[$k]=$v;
+        }
+    
+        //      print_r($insert_array);
+    
+        return $insert_array;
+    
+    }
+   
+   
+        
+        /*
+         * signature  ç­¾åç®—æ³•
+         * $params  ç­¾åæ•°ç»„
+         * $secret  ç­¾åsecretKey
+         * $secret  ä¸åŒå‚æ•°ä¹‹é—´åˆ†éš”ç¬¦
+         */
+        static public function generateSign($params, $secret,$separator='')
+        {
+            $str_array = array();
+            ksort($params);
+            foreach ($params as $k => $v) {
+                    $str_array[] = "{$k}={$v}";
+            }
+
+            $str = implode($separator, $str_array) . $secret;
+            return md5($str);
+        }
+
+
+
+    static public function isdate($str,$format="Y-m-d"){  
+        
+        $strArr = explode("-",$str);  
+        if(empty($strArr)){
+            return false;
+        }  
+        
+        foreach($strArr as $val){
+            
+            if(strlen($val)<2){
+                $val="0".$val;}$newArr[]=$val;
+            }  
+        
+            $str =implode("-",$newArr);   
+            $unixTime=strtotime($str);   
+            $checkDate= date($format,$unixTime);   
+            
+            if($checkDate==$str)   
+                return true;   
+            else   
+                return false;
+    }
+
+    /**
+     * è¿”å›å½“å‰é¡µé¢çš„URL
+     */
+    public static function getCurrRequestUrl()
+    {
+        $url =  "http://{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
+        return $url;
+    }
+
+    
+    
+    
+    //æˆªå–utf8å­—ç¬¦ä¸²
+    public static function utf8Substr($str, $from, $len)
+    {
+        return preg_replace('#^(?:[\x00-\x7F]|[\xC0-\xFF][\x80-\xBF]+){0,'.$from.'}'.
+                           '((?:[\x00-\x7F]|[\xC0-\xFF][\x80-\xBF]+){0,'.$len.'}).*#s',
+                           '$1',$str);
+    }
+
+
+
+    /*
+         http://txz.sdo.com/plugin/?pn=ma-1.2.0-zs067-0627-3.apk&m=UF1ZQU63vKurkpM=&key=100000005
+         è§£å¯† mæ‰‹æœºå·ç åŠ å¯†çªœ
+         print_r(decodeMobile('UF1ZQU63vKurkpM'));
+         15673379224
+    */
+    public static function decodeMobile ($strEncode) {
+
+        $strEncode = base64_decode($strEncode);
+        $strLen = strlen($strEncode);
+        if ( $strLen <= 0 || $strLen >= 256)
+            return false;
+
+        $cCRB = 'a';
+        $dst    = '';
+        for ($i = 0; $i < $strLen; $i++)
+        {
+            $dst.= $strEncode[$i] ^ $cCRB;
+            $cCRB = chr(ord($cCRB) + 7);
+        }
+
+        $strEncode = $dst;
+        return $strEncode;
+
+    }
+
+    /*
+        by ggg
+         åŠ å¯† æ‰‹æœºå·ç 
+         print_r(encodeMobile('15673379224'));
+         UF1ZQU63vKurkpM=
+    */
+    public static function encodeMobile ($mobile) {
+
+        $strLen = strlen($mobile);
+        if ( $strLen <= 0 || $strLen >= 256)
+            return false;
+
+        $cCRB = 'a';
+        $dst    = '';
+        for ($i = 0; $i < $strLen; $i++)
+        {
+            $dst.= $mobile[$i] ^ $cCRB;
+            $cCRB = chr(ord($cCRB) + 7);
+        }
+
+        $strEncode = $dst;
+        return base64_encode($strEncode);
+
+    }
+
+    /*
+        å–æ–‡ä»¶å å¦‚  aaa.txt è¿”å›  aaa
+        æ³¨æ„å¦‚æœæ˜¯  aaa.bbb.txt ï¼Œè¿”å›æ˜¯ aaa.bbb
+    */
+    public static function subStrHead($fileName,$needle='.')//è¿”å›æ–‡ä»¶çš„åå­—
+    {
+        //ä»åå¾€å‰æ‰¾
+        $currPos=strrpos($fileName, $needle);
+        if(!$currPos)
+            $currPos=strlen($fileName);
+        return(substr($fileName,0,$currPos));//å¾—åˆ°ä¸Šä¼ æ–‡ä»¶åå­—
+    }
+
+    /*
+        å–æ–‡ä»¶åæ‰©å±•å å¦‚  aaa.txt è¿”å›  txt
+        æ³¨æ„å¦‚æœæ˜¯  aaa.bbb.txt ï¼Œè¿”å›çš„ä¹Ÿæ˜¯ txt
+    */
+    public static function subStrEnd($fileName,$needle ='.')//è¿”å›æ–‡ä»¶çš„æ‰©å±•å
+    {
+        $fileExt='';
+        if($currPos=strrpos($fileName, $needle))                //å¦‚æœæ–‡ä»¶æ²¡æœ‰æ‰©å±•å,æ–‡ä»¶åå³ä¸ºå…¨æ–‡ä»¶,æ‰©å±•åç©º
+        {
+            //æ–‡ä»¶åé•¿åº¦ - æ‰¾åˆ°çš„ä½ç½® - é—´éš”ç¬¦é•¿åº¦
+            $fileExt=substr($fileName,-(strlen($fileName) - $currPos - strlen($needle) ));
+        }
+        return($fileExt);                                 //è¿”å›æ‰©å±•å
+    }
+
+   
+
+    //è¿”å› hps æ ¼å¼çš„ç»“æœ jsonæ ¼å¼
+    public static function getApiResult($resultCode,$resultMsg,$data) {
+
+        $result = array();
+        $result['resultCode'] = $resultCode;
+        $result['resultMsg'] = $resultMsg;
+        $result['data'] = $data;
+
+        return json_encode($result);
+    }
+
+
+    /**
+     * å¾—åˆ°è®¿é—®è€…çš„å¹³å°å·
+     * @return string
+     */
+    public static function getOsType()
+    {
+        $agent = strtolower($_SERVER['HTTP_USER_AGENT']);  
+        $is_pc = (strpos($agent, 'windows nt')) ? true : false;  
+        $is_iphone = (strpos($agent, 'iphone')) ? true : false;  
+        $is_ipad = (strpos($agent, 'ipad')) ? true : false;  
+        $is_android = (strpos($agent, 'android')) ? true : false;  
+      
+        if($is_pc){  
+            echo "è¿™æ˜¯PC(ç”µè„‘)";  
+        }  
+        if($is_iphone){  
+            echo "è¿™æ˜¯iPhone";  
+        }  
+        if($is_ipad){  
+            echo "è¿™æ˜¯iPad";  
+        }  
+        if($is_android){  
+            echo "è¿™æ˜¯Android";  
+        }  
+
+    }
+
+    public static function getTcpServer($key = 'memcache_sess') {
+
+        $sessionServer = Yii::app()->params[$key];
+
+        $session = array();
+        foreach ($sessionServer as $value) {
+            $session[] = 'tcp://' . $value['ip'] . ':' . $value['port'];
+        }
+        return join(';', $session);
+    }
+    
+    
+
+    /**
+     * ç”Ÿæˆä¸€ä¸ªéšæœºå­—ç¬¦ä¸²
+     * @param  integer $len å­—ç¬¦ä¸²é•¿åº¦
+     * @return string
+     */
+    public static function getRandomString($len = 10) {
+        $chars = array(
+            'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
+            'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
+            'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G',
+            'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
+            'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '0', '1', '2',
+            '3', '4', '5', '6', '7', '8', '9',
+        );
+        $charsLen = count($chars) - 1;
+        shuffle($chars);
+
+        $output = "";
+        for ($i=0; $i<$len; $i++)
+        {
+            $output .= $chars[mt_rand(0, $charsLen)];
+        }
+
+        return $output;
+    }
+
+
+    /**
+     * è·å–æœåŠ¡å™¨ip
+     * @return string
+     */
+    static public function getServerIp(){
+
+        if(!empty($_SERVER["SERVER_ADDR"]))
+        {
+            return $_SERVER["SERVER_ADDR"];
+        }
+         // cliæ–¹å¼ä¸‹è·å–æœåŠ¡å™¨ip
+        $ss = exec('/sbin/ifconfig eth0 | sed -n \'s/^ *.*addr:\\([0-9.]\\{7,\\}\\) .*$/\\1/p\'',$arr);   
+        $ret = $arr[0];
+        return $ret;
+    }
+
+
+
+
+    /**
+     * jsonè½¬array
+     * @param  [type] $jsonStr [jsonæ ¼å¼]
+     * @return [type]      [arrayæ•°ç»„]
+     */
+    function json_to_array($jsonStr){
+        $arr=array();
+        foreach($jsonStr as $k=>$w){
+            if(is_object($w)) $arr[$k]=json_to_array($w);  //åˆ¤æ–­ç±»å‹æ˜¯ä¸æ˜¯object
+            else $arr[$k]=$w;
+        }
+        return $arr;
+    }
+
+
+    /**
+     * æ£€æŸ¥å˜é‡æ˜¯å¦åŒ…å«ä¸­æ–‡
+     * @param  [type] $str [description]
+     * @return [boolean]      [description]
+     */
+    function checkGB($str){
+        if (preg_match("/[\x7f-\xff]/", $str)) { 
+            return true ;
+        }else{ 
+            return false;
+        } 
+    }
+    //è§£æ key æ²¡æœ‰è¢«åŒå¼•å·å¼•èµ·æ¥çš„Json æ•°æ®ã€‚
+    public static function exJsonDecode($s, $mode=false) {
+      if(preg_match('/\w:/', $s))
+        $s = preg_replace('/(\w+):/is', '"$1":', $s);
+      return json_decode($s, $mode);
+    } 
+
+
 }
-
-
-//********* ²âÊÔ
-/*
-$tmpArray = array(
-array('ÕĞÆ¸'=>'ÕĞÆ¸','³ÏÕ÷'=>'³ÏÕ÷','´ıÆ¸'=>'´ıÆ¸','¼æÖ°'=>'¼æÖ°'),
-array('»é½é'=>'»é½é','ÄĞ'=>'ÄĞ'),
-array('·¿²ú'=>'·¿²ú','³öÊÛ'=>'³öÊÛ','¹ºÂò'=>'¹ºÂò','ÕĞ×â'=>'ÕĞ×â','³Ğ×â'=>'³Ğ×â','×ªÈÃ'=>'×ªÈÃ'),
-);
-print(GggMkjsArray($tmpArray,"city"));
-*/

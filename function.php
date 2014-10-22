@@ -2,46 +2,46 @@
 
 
 /*
-	È¡ÎÄ¼şÃû Èç  aaa.txt ·µ»Ø  aaa
-	×¢ÒâÈç¹ûÊÇ  aaa.bbb.txt £¬·µ»ØÊÇ aaa.bbb
+	å–æ–‡ä»¶å å¦‚  aaa.txt è¿”å›  aaa
+	æ³¨æ„å¦‚æœæ˜¯  aaa.bbb.txt ï¼Œè¿”å›æ˜¯ aaa.bbb
 */
-function subStrHead($fileName,$needle='.')//·µ»ØÎÄ¼şµÄÃû×Ö
+function subStrHead($fileName,$needle='.')//è¿”å›æ–‡ä»¶çš„åå­—
 {
-	//´ÓºóÍùÇ°ÕÒ
+	//ä»åå¾€å‰æ‰¾
 	$currPos=strrpos($fileName, $needle);
 	if(!$currPos)
 		$currPos=strlen($fileName);
-	return(substr($fileName,0,$currPos));//µÃµ½ÉÏ´«ÎÄ¼şÃû×Ö
+	return(substr($fileName,0,$currPos));//å¾—åˆ°ä¸Šä¼ æ–‡ä»¶åå­—
 }
 
 /*
-	È¡ÎÄ¼şÃûÀ©Õ¹Ãû Èç  aaa.txt ·µ»Ø  txt
-	×¢ÒâÈç¹ûÊÇ  aaa.bbb.txt £¬·µ»ØµÄÒ²ÊÇ txt
+	å–æ–‡ä»¶åæ‰©å±•å å¦‚  aaa.txt è¿”å›  txt
+	æ³¨æ„å¦‚æœæ˜¯  aaa.bbb.txt ï¼Œè¿”å›çš„ä¹Ÿæ˜¯ txt
 */
-function subStrEnd($fileName,$needle ='.')//·µ»ØÎÄ¼şµÄÀ©Õ¹Ãû
+function subStrEnd($fileName,$needle ='.')//è¿”å›æ–‡ä»¶çš„æ‰©å±•å
 {
 	$fileExt='';
-	if($currPos=strrpos($fileName, $needle))                //Èç¹ûÎÄ¼şÃ»ÓĞÀ©Õ¹Ãû,ÎÄ¼şÃû¼´ÎªÈ«ÎÄ¼ş,À©Õ¹Ãû¿Õ
+	if($currPos=strrpos($fileName, $needle))                //å¦‚æœæ–‡ä»¶æ²¡æœ‰æ‰©å±•å,æ–‡ä»¶åå³ä¸ºå…¨æ–‡ä»¶,æ‰©å±•åç©º
 	{
-		//ÎÄ¼şÃû³¤¶È - ÕÒµ½µÄÎ»ÖÃ - ¼ä¸ô·û³¤¶È
+		//æ–‡ä»¶åé•¿åº¦ - æ‰¾åˆ°çš„ä½ç½® - é—´éš”ç¬¦é•¿åº¦
 		$fileExt=substr($fileName,-(strlen($fileName) - $currPos - strlen($needle) ));
 	}
-	return($fileExt);                                 //·µ»ØÀ©Õ¹Ãû
+	return($fileExt);                                 //è¿”å›æ‰©å±•å
 }
 
 
 
 
 
-function _HTML_END($title,$msg,$alert_msg="")                       //³ö´íÍË³ö³ÌĞòº¯Êı,ÓÃÓÚÆÕÍ¨´íÎóµÄÌáÊ¾
+function _HTML_END($title,$msg,$alert_msg="")                       //å‡ºé”™é€€å‡ºç¨‹åºå‡½æ•°,ç”¨äºæ™®é€šé”™è¯¯çš„æç¤º
 {
 	printf("<html><head><link rel=stylesheet href=style.css></head><body>");
 	printf("<script language=JavaScript>document.title='".$title."'</script>");
 	printf("<table align=center height=300><tr align=left><td>");
-	printf($msg."<a title=·µ»ØÉÏÒ»Ò³ href=javascript:history.back(-1)> <font color=#ff0000>£¼£¼·µ»Ø</font></a>");
+	printf($msg."<a title=è¿”å›ä¸Šä¸€é¡µ href=javascript:history.back(-1)> <font color=#ff0000>ï¼œï¼œè¿”å›</font></a>");
 	printf("</td></tr>");
 	printf("<tr><td align=center>");
-	printf("<a title=·µ»ØÉÏÒ»Ò³ href=javascript:history.back(-1)><img src=".$GLOBALS[_BASE_PATH]."error.gif border=0></a>");
+	printf("<a title=è¿”å›ä¸Šä¸€é¡µ href=javascript:history.back(-1)><img src=".$GLOBALS[_BASE_PATH]."error.gif border=0></a>");
 	printf("</td></tr></table>");
 	$msg=eregi_replace("<[^\>]+>","",$msg);
 	if($alert_msg!="")
@@ -53,19 +53,19 @@ function _HTML_END($title,$msg,$alert_msg="")                       //³ö´íÍË³ö³Ì
 	die();
 }
 
-function _MYSQL_END($title="Error",$msg)                    //³ö´íÍË³ö³ÌĞòº¯Êı,ÓÃÓÚÊı¾İ¿â´íÎóµÄÌáÊ¾
+function _MYSQL_END($title="Error",$msg)                    //å‡ºé”™é€€å‡ºç¨‹åºå‡½æ•°,ç”¨äºæ•°æ®åº“é”™è¯¯çš„æç¤º
 {
-	$errno = mysql_errno();                                  //µÃµ½´íÎóĞÅÏ¢´úÂë
-	$error = mysql_error();                                  //µÃµ½´íÎóĞÅÏ¢,Á½ÕßÒ»ÆğÆğÅÅ´í×÷ÓÃ
+	$errno = mysql_errno();                                  //å¾—åˆ°é”™è¯¯ä¿¡æ¯ä»£ç 
+	$error = mysql_error();                                  //å¾—åˆ°é”™è¯¯ä¿¡æ¯,ä¸¤è€…ä¸€èµ·èµ·æ’é”™ä½œç”¨
 	printf("<html><head><head><link rel=stylesheet href=style.css></head><title>".$title."</title></head><body><center>");
 	printf($msg);
-	printf("<br>Error: (".$errno.")".$error."<a title=·µ»ØÉÏÒ»Ò³ href=javascript:history.back(-1)> <font color=#ff0000>£¼£¼·µ»Ø</font></a><br></center>");
+	printf("<br>Error: (".$errno.")".$error."<a title=è¿”å›ä¸Šä¸€é¡µ href=javascript:history.back(-1)> <font color=#ff0000>ï¼œï¼œè¿”å›</font></a><br></center>");
 	printf("</body></html>");
 	exit();
 	die();
 }
 
-//°Ñä¯ÀÀÆ÷Êı¾İ´«µİµ½ÁíÒ»Ò³ÃæµÄº¯Êı ×¢Òâ±ØĞë´æÔÚ±íµ¥
+//æŠŠæµè§ˆå™¨æ•°æ®ä¼ é€’åˆ°å¦ä¸€é¡µé¢çš„å‡½æ•° æ³¨æ„å¿…é¡»å­˜åœ¨è¡¨å•
 
 function submit_to($To_url,$url_test,$pop_test="",$main_form="main_form")                    
 {
@@ -75,15 +75,15 @@ function submit_to($To_url,$url_test,$pop_test="",$main_form="main_form")
 
 //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-//\\\\\\\\\\Í³¼Æ×Ö·ûÖĞÄ³¶ÎascÂëÄÚµÄ¸öÊı,·µ»ØÒ»¸öÕûÊı\\\
+//\\\\\\\\\\ç»Ÿè®¡å­—ç¬¦ä¸­æŸæ®µascç å†…çš„ä¸ªæ•°,è¿”å›ä¸€ä¸ªæ•´æ•°\\\
 //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-function count_str($find_str,$start_ord,$end_ord="")				//×Ô¶¨ÒåµÄÍ³¼Æ×Ö´ÜÀï×Ö·ûº¯Êı,¿ªÊ¼ascµ½½áÊøµÄasc
+function count_str($find_str,$start_ord,$end_ord="")				//è‡ªå®šä¹‰çš„ç»Ÿè®¡å­—çªœé‡Œå­—ç¬¦å‡½æ•°,å¼€å§‹ascåˆ°ç»“æŸçš„asc
 {
 	$tmp_len=0;
 	for($tmp_i=0;$tmp_i<strlen($find_str);$tmp_i++)
 	{
-		//Èç¹û´«µİµÄµÚ¶ş²ÎÊı²»Îª¿Õ,Í³¼Æ start -> end ascÂëµÄ×Ö·û
+		//å¦‚æœä¼ é€’çš„ç¬¬äºŒå‚æ•°ä¸ä¸ºç©º,ç»Ÿè®¡ start -> end ascç çš„å­—ç¬¦
 		if($end_ord!="")
 		{
 			if(Ord($find_str[$tmp_i])>=$start_ord && Ord($find_str[$tmp_i])<=$end_ord)
@@ -99,10 +99,10 @@ function count_str($find_str,$start_ord,$end_ord="")				//×Ô¶¨ÒåµÄÍ³¼Æ×Ö´ÜÀï×Ö·û
 			}
 		}
 	}
-	return($tmp_len);	//°ÑÕÒµ½×Ö·û¸öÊı·µ»Ø
+	return($tmp_len);	//æŠŠæ‰¾åˆ°å­—ç¬¦ä¸ªæ•°è¿”å›
 }//count_str
 
-function _SHOW_DEBUG($debug_msg,$att_msg="")                       //ÏÔÊ¾µ÷ÊÔĞÅÏ¢
+function _SHOW_DEBUG($debug_msg,$att_msg="")                       //æ˜¾ç¤ºè°ƒè¯•ä¿¡æ¯
 {
 	if($GLOBALS[_DEBUG_SURE])
 	{
@@ -114,24 +114,24 @@ function _SHOW_DEBUG($debug_msg,$att_msg="")                       //ÏÔÊ¾µ÷ÊÔĞÅÏ
 }
 
 /*
-¶ÔÄ³Ğ©Ò»ĞĞÄÚ¹ı³¤µÄ×Ö´Ü½øĞĞ´¦Àí,±£Ö¤Ã¿ĞĞµÄ×Ö·ûÔÚ Len_of_row ÒÔÄÚ
+å¯¹æŸäº›ä¸€è¡Œå†…è¿‡é•¿çš„å­—çªœè¿›è¡Œå¤„ç†,ä¿è¯æ¯è¡Œçš„å­—ç¬¦åœ¨ Len_of_row ä»¥å†…
 ls_str 
-	×Ö·û´Ü,Ò²¼´Òª´¦ÀíµÄ´Ü
+	å­—ç¬¦çªœ,ä¹Ÿå³è¦å¤„ç†çš„çªœ
 Len_of_row 
-	µÚĞĞµÄ×Ö·û¸öÊı
+	ç¬¬è¡Œçš„å­—ç¬¦ä¸ªæ•°
 $input_str
-	µÚĞĞµÄ·Ö¸ô·û
+	ç¬¬è¡Œçš„åˆ†éš”ç¬¦
 */
 
 function _MAKE_ROW_STR($tmp_str,$Len_of_row=100,$input_str="\n")                       //
 {
-	$tmp_str=str_replace("\r", "", $tmp_str);     //È¥linuxÏÂµÄ»»ĞĞ 
-	$tmp_str= explode("\n",$tmp_str);//ÒÔ»Ø³µ·ûÇĞ¿ª·û´Ü
+	$tmp_str=str_replace("\r", "", $tmp_str);     //å»linuxä¸‹çš„æ¢è¡Œ 
+	$tmp_str= explode("\n",$tmp_str);//ä»¥å›è½¦ç¬¦åˆ‡å¼€ç¬¦çªœ
 	$temp_str="";
 	for($tmp_i=0;$tmp_i<count($tmp_str);$tmp_i++)
 	{
 		$tmp_str[$tmp_i]=trim($tmp_str[$tmp_i]);
-		if(strlen($tmp_str[$tmp_i])>$Len_of_row ) //ÕÒµ½³¬¹ıÏŞ¶¨³¤¶È
+		if(strlen($tmp_str[$tmp_i])>$Len_of_row ) //æ‰¾åˆ°è¶…è¿‡é™å®šé•¿åº¦
 		{
 			if(strpos($tmp_str[$tmp_i],$input_str)<$Len_of_row && strpos($tmp_str[$tmp_i],$input_str)>0)
 			{
@@ -168,54 +168,54 @@ function _MAKE_ROW_STR($tmp_str,$Len_of_row=100,$input_str="\n")                
 
 //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-//\\\\\\\\\\È¡µÃ¶¨³¤×Ö´Ü,½â¾ö°ë¸öºº×Ö\\\\\\\\\\\\\\\\\\
+//\\\\\\\\\\å–å¾—å®šé•¿å­—çªœ,è§£å†³åŠä¸ªæ±‰å­—\\\\\\\\\\\\\\\\\\
 //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 /*
 $gb_str
-	ÒªÈ¡µÃ¶¨³¤µÄ×Ö´Ü
+	è¦å–å¾—å®šé•¿çš„å­—çªœ
 $str_len
-	ÒªÈ¡µÃ×Ö´ÜµÄ³¤¶È
+	è¦å–å¾—å­—çªœçš„é•¿åº¦
 $sub_str
-	±»½ØºóµÄ×Ö´Ü
+	è¢«æˆªåçš„å­—çªœ
 $ngb_len
-	Í³¼Æ³öÀ´µÄ·Çºº×Ö×Ö·ûµÄ¸öÊı
+	ç»Ÿè®¡å‡ºæ¥çš„éæ±‰å­—å­—ç¬¦çš„ä¸ªæ•°
 $asc_gb_start
-	ºº×Ö¿ªÊ¼µÄASCÂë
+	æ±‰å­—å¼€å§‹çš„ASCç 
 $asc_gb_end
-	ºº×Ö½áÊøµÄASCÂë
+	æ±‰å­—ç»“æŸçš„ASCç 
 
-ÎªÊ²Ã´³öÏÖ°ë¸öºº×Ö? 
-Ô­Òò1:ÎÒÃÇÈç½ØµÄ×Ö´ÜÀïÓĞ1¸ö×Ö·û²»ÊÇºº×Ö(a),Ò²¾ÍÊÇËµ.·Çºº×Ö×Ö·û.ÓĞ»úÆæÊı¸ö 
-Ô­Òò2:ÎÒÃÇËù½ØµÄ×Ö´Ü³¤¶ÈÊÇ4,ÊÇÅ¼Êı¸ö×Ö·û 
+ä¸ºä»€ä¹ˆå‡ºç°åŠä¸ªæ±‰å­—? 
+åŸå› 1:æˆ‘ä»¬å¦‚æˆªçš„å­—çªœé‡Œæœ‰1ä¸ªå­—ç¬¦ä¸æ˜¯æ±‰å­—(a),ä¹Ÿå°±æ˜¯è¯´.éæ±‰å­—å­—ç¬¦.æœ‰æœºå¥‡æ•°ä¸ª 
+åŸå› 2:æˆ‘ä»¬æ‰€æˆªçš„å­—çªœé•¿åº¦æ˜¯4,æ˜¯å¶æ•°ä¸ªå­—ç¬¦ 
 
-ÎÒÃÇÏëÒ»ÏÂ,Èç¹ûËù½ØµÄ×Ö´ÜÀï·Çºº×Ö×Ö·û(Ïñ a b 1 2  ÕâÑùµÄ)ÓĞÆæÊı¸ö,¶øÎÒÃÇ½ØÈ¡µÄÊÇÅ¼Êı¸ö×Ö·û, 
-ÊÇ²»ÊÇºÜÈİÒ×³öÏÖ°ë¸öºº×Ö,ÕâÊ±ÎÒÃÇÖ»ÒªÔÚÕâÖÖÇé¿öÏÂÔÙ¶à½ØÒ»¸ö×Ö·û¾Í¿É½â¾öÎÊÌâÁË 
+æˆ‘ä»¬æƒ³ä¸€ä¸‹,å¦‚æœæ‰€æˆªçš„å­—çªœé‡Œéæ±‰å­—å­—ç¬¦(åƒ a b 1 2  è¿™æ ·çš„)æœ‰å¥‡æ•°ä¸ª,è€Œæˆ‘ä»¬æˆªå–çš„æ˜¯å¶æ•°ä¸ªå­—ç¬¦, 
+æ˜¯ä¸æ˜¯å¾ˆå®¹æ˜“å‡ºç°åŠä¸ªæ±‰å­—,è¿™æ—¶æˆ‘ä»¬åªè¦åœ¨è¿™ç§æƒ…å†µä¸‹å†å¤šæˆªä¸€ä¸ªå­—ç¬¦å°±å¯è§£å†³é—®é¢˜äº† 
 
 
-ÕâÀïÎÒÖ»¿¼ÂË×Ö´ÜÀïµÄºº×Ö¶¼ÊÇÍêÕûµÄ.Ò²¾ÍÊÇ²»´æÔÚ°ë¸öºº×ÖµÄÇé¿ö.ÎÒÏëÄÜÊäÈë°ë¸öºº×ÖµÄ¿ÉÄÜĞÔºÜÉÙ:)
-ÆäÊµÖ»ÒªÂú×ãÕâÑùµÄÌõ¼ş  
-Ëù½Ø×Ö·ûµÄ³¤¶È  Óë  ½ØÈ¡µÄ×Ö·ûÄÚ °üº¬·Çºº×Ö×Ö·ûµÄ³¤¶È²»ÎªÍ¬ ÆæÅ¼ 
-¾Í±íÊ¾ÓĞ´æÔÚ°ë¸öºº×ÖµÄ¿ÉÄÜ,ÕâÊ±ÎÒÃÇ¾Í°ÑËù½ØµÄ×Ö´Ü³¤¶È¼ÓÉÏ1¸ö×Ö·û,¾Í¿ÉÒÔ±ÜÃâ°ë¸öºº×ÖÁË. 
-Áíµ±È»Òª×¢ÒâÒ»ÏÂ ·Çºº×Ö×Ö·ûµÄ³¤¶È Îª 1  ÕâÌØÊâÇé¿ö 
+è¿™é‡Œæˆ‘åªè€ƒæ»¤å­—çªœé‡Œçš„æ±‰å­—éƒ½æ˜¯å®Œæ•´çš„.ä¹Ÿå°±æ˜¯ä¸å­˜åœ¨åŠä¸ªæ±‰å­—çš„æƒ…å†µ.æˆ‘æƒ³èƒ½è¾“å…¥åŠä¸ªæ±‰å­—çš„å¯èƒ½æ€§å¾ˆå°‘:)
+å…¶å®åªè¦æ»¡è¶³è¿™æ ·çš„æ¡ä»¶  
+æ‰€æˆªå­—ç¬¦çš„é•¿åº¦  ä¸  æˆªå–çš„å­—ç¬¦å†… åŒ…å«éæ±‰å­—å­—ç¬¦çš„é•¿åº¦ä¸ä¸ºåŒ å¥‡å¶ 
+å°±è¡¨ç¤ºæœ‰å­˜åœ¨åŠä¸ªæ±‰å­—çš„å¯èƒ½,è¿™æ—¶æˆ‘ä»¬å°±æŠŠæ‰€æˆªçš„å­—çªœé•¿åº¦åŠ ä¸Š1ä¸ªå­—ç¬¦,å°±å¯ä»¥é¿å…åŠä¸ªæ±‰å­—äº†. 
+å¦å½“ç„¶è¦æ³¨æ„ä¸€ä¸‹ éæ±‰å­—å­—ç¬¦çš„é•¿åº¦ ä¸º 1  è¿™ç‰¹æ®Šæƒ…å†µ 
 */
-function get_gb_str($gb_str,$str_len,$asc_gb_start=160,$asc_gb_end=255)                 //×Ô¶¨ÒåµÄÍ³¼Æ×Ö´ÜÀï×Ö·ûº¯Êı,¿ªÊ¼ascµ½½áÊøµÄasc
+function get_gb_str($gb_str,$str_len,$asc_gb_start=160,$asc_gb_end=255)                 //è‡ªå®šä¹‰çš„ç»Ÿè®¡å­—çªœé‡Œå­—ç¬¦å‡½æ•°,å¼€å§‹ascåˆ°ç»“æŸçš„asc
 {
-	$sub_str=substr($gb_str,0,$str_len);//È¡µÃ$str_len³¤¶ÈµÄ×Ö´Ü
-	$ngb_len=strlen($sub_str)-count_str($sub_str,$asc_gb_start,$asc_gb_end);//µÃµ½×Ö´ÜÀïÓĞ¼¸¸ö·Çºº×Ö×Ö·û
-//Èç¹ûÎªÍ¬ÆæÅ¼,¼Ó1,ÕâÀï$ngb_len +2ÊÇÎªÁË³ıÈ¥$ngb_len Îª  1  ÕâÌØÊâÇé¿ö 
+	$sub_str=substr($gb_str,0,$str_len);//å–å¾—$str_lené•¿åº¦çš„å­—çªœ
+	$ngb_len=strlen($sub_str)-count_str($sub_str,$asc_gb_start,$asc_gb_end);//å¾—åˆ°å­—çªœé‡Œæœ‰å‡ ä¸ªéæ±‰å­—å­—ç¬¦
+//å¦‚æœä¸ºåŒå¥‡å¶,åŠ 1,è¿™é‡Œ$ngb_len +2æ˜¯ä¸ºäº†é™¤å»$ngb_len ä¸º  1  è¿™ç‰¹æ®Šæƒ…å†µ 
 	if($ngb_len%2!=$str_len%2)
 	{
 		$str_len++;
 	}
 //	print($str_len);
 //	print("<br>");
-	return(substr($gb_str,0,$str_len));//°ÑËù½ØÈ¡µÄ×Ö´Ü·µ»Ø
+	return(substr($gb_str,0,$str_len));//æŠŠæ‰€æˆªå–çš„å­—çªœè¿”å›
 }
 
 //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-//\\\\\\\\\\Ìø×ªµ½Ö¸¶¨Ò³Ãæ\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+//\\\\\\\\\\è·³è½¬åˆ°æŒ‡å®šé¡µé¢\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
@@ -233,10 +233,10 @@ function jumpto($jump_url,$intor="")
 	<table border='0' cellspacing='1' cellpadding='10' bgcolor='#555576' width='70%'>
 	<tr>
 		<td bgcolor='#FFFFFF' align='center'>
-		<p> <font face='ËÎÌå, verdana, arial, helvetica' style='FONT-SIZE: 9pt' > ".$intor." <br><br> </font>
+		<p> <font face='å®‹ä½“, verdana, arial, helvetica' style='FONT-SIZE: 9pt' > ".$intor." <br><br> </font>
 		
-		<font face='ËÎÌå, verdana,arial,helvetica' style='FONT-SIZE: 9pt' >Ò³ÃæÌø×ªÖĞ... <a href='".$jump_url."'>Èç¹ûÄã²»ÏëµÈ´ıµãÕâÀï<br>
-		(»òÕßÈç¹ûÄãµÄä¯ÀÀÆ÷Ã»ÓĞ×Ô¶¯·µ»Ø)</a> </font> </p></td>
+		<font face='å®‹ä½“, verdana,arial,helvetica' style='FONT-SIZE: 9pt' >é¡µé¢è·³è½¬ä¸­... <a href='".$jump_url."'>å¦‚æœä½ ä¸æƒ³ç­‰å¾…ç‚¹è¿™é‡Œ<br>
+		(æˆ–è€…å¦‚æœä½ çš„æµè§ˆå™¨æ²¡æœ‰è‡ªåŠ¨è¿”å›)</a> </font> </p></td>
 	</tr>
 	</table>
 	</td>
@@ -246,9 +246,9 @@ function jumpto($jump_url,$intor="")
 
 /*
 		print("<span align=center style='background-color: rgb(4,41,104); color: rgb(255,255,255);font-size: 10pt'>");
-		print("Ò³ÃæÔØÈëÖĞ,ÇëÉÔµÈ...");
+		print("é¡µé¢è½½å…¥ä¸­,è¯·ç¨ç­‰...");
 		print("</span><br>");
-		print("Èç¹ûÄã²»Ô¸µÈ´ı,Ò²¿É°´´ËÖ±½Ó½øÈë:<a href=".$jump_url.">".$jump_url.">>></a>");
+		print("å¦‚æœä½ ä¸æ„¿ç­‰å¾…,ä¹Ÿå¯æŒ‰æ­¤ç›´æ¥è¿›å…¥:<a href=".$jump_url.">".$jump_url.">>></a>");
 */
 //		header("Location: {$url}");
 
@@ -256,26 +256,26 @@ function jumpto($jump_url,$intor="")
 	print("location.replace('".$jump_url."')");
 	print("</script>");
 }
-//$back_page±íÊ¾ºóÍË¼¸Ò³
+//$back_pageè¡¨ç¤ºåé€€å‡ é¡µ
 function alert_js($alert_msg,$back=0,$back_page=1)
 {
-	print("<a title=·µ»ØÉÏÒ»Ò³ href=javascript:history.back(-1) >ÉÏÒ»Ò³[Back]</a>");
+	print("<a title=è¿”å›ä¸Šä¸€é¡µ href=javascript:history.back(-1) >ä¸Šä¸€é¡µ[Back]</a>");
 	print("<script language=JavaScript>");
 	if($alert_msg!=""){	print("alert('".$alert_msg."');");}
-	if($back==1)print("history.back(-".$back_page.")");//·µ»ØÇ°Ò»Ç°
+	if($back==1)print("history.back(-".$back_page.")");//è¿”å›å‰ä¸€å‰
 	else if($back==2)
 	{
-		print("window.close();");//¹Ø±Õ´°¿Ú
+		print("window.close();");//å…³é—­çª—å£
 	}
 	print("</script>");
 }
 
 /*
-Êä³ö²ÊÉ«×Ö·û
+è¾“å‡ºå½©è‰²å­—ç¬¦
 fcolor
-	Ç°¾°É«
+	å‰æ™¯è‰²
 bcolor
-	±³¾°É«
+	èƒŒæ™¯è‰²
 
 
 		print("<font color=#2B2968><div align=center style='background-color: rgb(4,41,104); color: rgb(255,255,255);font-size: 10pt'>");
@@ -314,144 +314,144 @@ function cprint($string,$fcolor,$bcolor="")
 
 }
 
-/*  µÃµ½Êı×ékeyÓëµÚ index ¸övalueµÄÄÚÈİ,
- *  Exp:                $tf['user']="user|ÓÃ»§Ãû|c"; 
- *  ·µ»ØÊÇÒ»¸öÒ»Î¬Êı×é
- * ½«Ò»Î¬Êı×é±ä³ÉÁ½¸öÊı×é
+/*  å¾—åˆ°æ•°ç»„keyä¸ç¬¬ index ä¸ªvalueçš„å†…å®¹,
+ *  Exp:                $tf['user']="user|ç”¨æˆ·å|c"; 
+ *  è¿”å›æ˜¯ä¸€ä¸ªä¸€ç»´æ•°ç»„
+ * å°†ä¸€ç»´æ•°ç»„å˜æˆä¸¤ä¸ªæ•°ç»„
  * $field_range
- * ×Ö¶Î±êÊ¶,¿ÉÒÔÁé»îÈ¡µÃÖ¸¶¨×Ö¶Î½øĞĞÏÔÊ¾
+ * å­—æ®µæ ‡è¯†,å¯ä»¥çµæ´»å–å¾—æŒ‡å®šå­—æ®µè¿›è¡Œæ˜¾ç¤º
  * $need_sure
- * 	Îª0±íÊ¾Ö»È¡ºÍ×Ö¶Î±êÊ¶²»Ò»Ñù
- * Èç
- * 	$tf['user']="user|ÓÃ»§Ãû";
- * ±ä³É¡¡Á½¸öÈ«¾Ö±äÁ¿Êı×é
- * 	$Table_Field['user']="user";      //±£´æ×Ö¶Î±äÁ¿
- * 	$Table_Field_c['user']="ÓÃ»§Ãû";    //±£´æ×Ö¶Î¶ÔÓ¦µÄÖĞÎÄĞÅÏ¢
- * ´«ÈëµÄÊÇÒ»¸öÊı×é
+ * 	ä¸º0è¡¨ç¤ºåªå–å’Œå­—æ®µæ ‡è¯†ä¸ä¸€æ ·
+ * å¦‚
+ * 	$tf['user']="user|ç”¨æˆ·å";
+ * å˜æˆã€€ä¸¤ä¸ªå…¨å±€å˜é‡æ•°ç»„
+ * 	$Table_Field['user']="user";      //ä¿å­˜å­—æ®µå˜é‡
+ * 	$Table_Field_c['user']="ç”¨æˆ·å";    //ä¿å­˜å­—æ®µå¯¹åº”çš„ä¸­æ–‡ä¿¡æ¯
+ * ä¼ å…¥çš„æ˜¯ä¸€ä¸ªæ•°ç»„
 
  */
 
 
 function GetArrayKey($tf,$index=0,$field_range="",$need_sure=0)
 {
-	reset($tf);//Ö¸ÏòÊı×éÍ·
-	$Table_Field="";                         //±í¸ñµÄ×Ö¶Î,ÊÇ¸öÒ»Î¬Êı×é,±£´æµÄÊÇÒª²éÑ¯µÄ¾ßÌå×Ö¶Î
-	$Table_Field_c="";                       //±í¸ñµÄÖĞÎÄ×Ö¶Î,ÊÇ¸öÒ»Î¬Êı×é,±£´æµÄÊÇÒª²éÑ¯µÄ¾ßÌå×Ö¶Î
+	reset($tf);//æŒ‡å‘æ•°ç»„å¤´
+	$Table_Field="";                         //è¡¨æ ¼çš„å­—æ®µ,æ˜¯ä¸ªä¸€ç»´æ•°ç»„,ä¿å­˜çš„æ˜¯è¦æŸ¥è¯¢çš„å…·ä½“å­—æ®µ
+	$Table_Field_c="";                       //è¡¨æ ¼çš„ä¸­æ–‡å­—æ®µ,æ˜¯ä¸ªä¸€ç»´æ•°ç»„,ä¿å­˜çš„æ˜¯è¦æŸ¥è¯¢çš„å…·ä½“å­—æ®µ
 	for($tmp_i=0;$tmp_i<count($tf);$tmp_i++)
 	{
-		$current_key=key($tf);//µÃµ½Êı×éµÄË÷Òı
+		$current_key=key($tf);//å¾—åˆ°æ•°ç»„çš„ç´¢å¼•
 		$Field_tf=explode("|",$tf[$current_key]);
 		if($field_range=="")
 		{
-			if($Field_tf[2]=="")                   //ÂÔ¹ı²»ÒªÏÔÊ¾µÄ×Ö¶Î
+			if($Field_tf[2]=="")                   //ç•¥è¿‡ä¸è¦æ˜¾ç¤ºçš„å­—æ®µ
 			{
-				$Table_Field[$current_key]=$Field_tf[$index];      //±£´æ×Ö¶Î±äÁ¿
+				$Table_Field[$current_key]=$Field_tf[$index];      //ä¿å­˜å­—æ®µå˜é‡
 			}
 		}
 		else if($field_range=="all")
 		{
-				$Table_Field[$current_key]=$Field_tf[$index];      //±£´æ×Ö¶Î±äÁ¿
+				$Table_Field[$current_key]=$Field_tf[$index];      //ä¿å­˜å­—æ®µå˜é‡
 		}
 		else
 		{
 			if($need_sure==0)
 			{
-				if(!strstr($Field_tf[2],$field_range))                   //ÂÔ¹ı²»ÒªÏÔÊ¾µÄ×Ö¶Î
+				if(!strstr($Field_tf[2],$field_range))                   //ç•¥è¿‡ä¸è¦æ˜¾ç¤ºçš„å­—æ®µ
 				{
-					$Table_Field[$current_key]=$Field_tf[$index];      //±£´æ×Ö¶Î±äÁ¿
+					$Table_Field[$current_key]=$Field_tf[$index];      //ä¿å­˜å­—æ®µå˜é‡
 				}
 			}
 			else
 			{
-				if(strstr($Field_tf[2],$field_range))                   //È¡µÃÒªÏÔÊ¾µÄ×Ö¶Î
+				if(strstr($Field_tf[2],$field_range))                   //å–å¾—è¦æ˜¾ç¤ºçš„å­—æ®µ
 				{
-					$Table_Field[$current_key]=$Field_tf[$index];      //±£´æ×Ö¶Î±äÁ¿
+					$Table_Field[$current_key]=$Field_tf[$index];      //ä¿å­˜å­—æ®µå˜é‡
 				}
 			}
 		}
-		next($tf);//ÒÆ¶¯Êı×éÖ¸Õë
+		next($tf);//ç§»åŠ¨æ•°ç»„æŒ‡é’ˆ
 	}
 	unset($Field_tf);
 	unset($tf);
-	return($Table_Field);//·µ»Ø°üº¬keyµÄÊı×é
+	return($Table_Field);//è¿”å›åŒ…å«keyçš„æ•°ç»„
 }
 
 /*
-½«Ò»Î¬Êı×é±ä³ÉÁ½¸öÊı×é
+å°†ä¸€ç»´æ•°ç»„å˜æˆä¸¤ä¸ªæ•°ç»„
 $field_range
-	×Ö¶Î±êÊ¶,¿ÉÒÔÁé»îÈ¡µÃÖ¸¶¨×Ö¶Î½øĞĞÏÔÊ¾
+	å­—æ®µæ ‡è¯†,å¯ä»¥çµæ´»å–å¾—æŒ‡å®šå­—æ®µè¿›è¡Œæ˜¾ç¤º
 $need_sure
-	Îª0±íÊ¾Ö»È¡ºÍ×Ö¶Î±êÊ¶²»Ò»Ñù
-Èç
-	$tf['user']="user|ÓÃ»§Ãû";
-±ä³É¡¡Á½¸öÈ«¾Ö±äÁ¿Êı×é
-	$Table_Field['user']="user";      //±£´æ×Ö¶Î±äÁ¿
-	$Table_Field_c['user']="ÓÃ»§Ãû";    //±£´æ×Ö¶Î¶ÔÓ¦µÄÖĞÎÄĞÅÏ¢
-´«ÈëµÄÊÇÒ»¸öÊı×é
+	ä¸º0è¡¨ç¤ºåªå–å’Œå­—æ®µæ ‡è¯†ä¸ä¸€æ ·
+å¦‚
+	$tf['user']="user|ç”¨æˆ·å";
+å˜æˆã€€ä¸¤ä¸ªå…¨å±€å˜é‡æ•°ç»„
+	$Table_Field['user']="user";      //ä¿å­˜å­—æ®µå˜é‡
+	$Table_Field_c['user']="ç”¨æˆ·å";    //ä¿å­˜å­—æ®µå¯¹åº”çš„ä¸­æ–‡ä¿¡æ¯
+ä¼ å…¥çš„æ˜¯ä¸€ä¸ªæ•°ç»„
 */
 function CutArray($tf,$field_range="",$need_sure=0)
 {
 	global $Table_Field;
 	global $Table_Field_c;
-	reset($tf);//Ö¸ÏòÊı×éÍ·
-	$Table_Field="";                         //±í¸ñµÄ×Ö¶Î,ÊÇ¸öÒ»Î¬Êı×é,±£´æµÄÊÇÒª²éÑ¯µÄ¾ßÌå×Ö¶Î
-	$Table_Field_c="";                       //±í¸ñµÄÖĞÎÄ×Ö¶Î,ÊÇ¸öÒ»Î¬Êı×é,±£´æµÄÊÇÒª²éÑ¯µÄ¾ßÌå×Ö¶Î
+	reset($tf);//æŒ‡å‘æ•°ç»„å¤´
+	$Table_Field="";                         //è¡¨æ ¼çš„å­—æ®µ,æ˜¯ä¸ªä¸€ç»´æ•°ç»„,ä¿å­˜çš„æ˜¯è¦æŸ¥è¯¢çš„å…·ä½“å­—æ®µ
+	$Table_Field_c="";                       //è¡¨æ ¼çš„ä¸­æ–‡å­—æ®µ,æ˜¯ä¸ªä¸€ç»´æ•°ç»„,ä¿å­˜çš„æ˜¯è¦æŸ¥è¯¢çš„å…·ä½“å­—æ®µ
 	for($tmp_i=0;$tmp_i<count($tf);$tmp_i++)
 	{
-		$current_key=key($tf);//µÃµ½Êı×éµÄË÷Òı
+		$current_key=key($tf);//å¾—åˆ°æ•°ç»„çš„ç´¢å¼•
 		$Field_tf=explode("|",$tf[$current_key]);
 		if($field_range=="")
 		{
-			if($Field_tf[2]=="")                   //ÂÔ¹ı²»ÒªÏÔÊ¾µÄ×Ö¶Î
+			if($Field_tf[2]=="")                   //ç•¥è¿‡ä¸è¦æ˜¾ç¤ºçš„å­—æ®µ
 			{
-				$Table_Field[$current_key]=$Field_tf[0];      //±£´æ×Ö¶Î±äÁ¿
-				$Table_Field_c[$current_key]=$Field_tf[1];    //±£´æ×Ö¶Î¶ÔÓ¦µÄÖĞÎÄĞÅÏ¢
+				$Table_Field[$current_key]=$Field_tf[0];      //ä¿å­˜å­—æ®µå˜é‡
+				$Table_Field_c[$current_key]=$Field_tf[1];    //ä¿å­˜å­—æ®µå¯¹åº”çš„ä¸­æ–‡ä¿¡æ¯
 			}
 		}
 		else if($field_range=="all")
 		{
-				$Table_Field[$current_key]=$Field_tf[0];      //±£´æ×Ö¶Î±äÁ¿
-				$Table_Field_c[$current_key]=$Field_tf[1];    //±£´æ×Ö¶Î¶ÔÓ¦µÄÖĞÎÄĞÅÏ¢
+				$Table_Field[$current_key]=$Field_tf[0];      //ä¿å­˜å­—æ®µå˜é‡
+				$Table_Field_c[$current_key]=$Field_tf[1];    //ä¿å­˜å­—æ®µå¯¹åº”çš„ä¸­æ–‡ä¿¡æ¯
 		}
 		else
 		{
 			if($need_sure==0)
 			{
-				if(!strstr($Field_tf[2],$field_range))                   //ÂÔ¹ı²»ÒªÏÔÊ¾µÄ×Ö¶Î
+				if(!strstr($Field_tf[2],$field_range))                   //ç•¥è¿‡ä¸è¦æ˜¾ç¤ºçš„å­—æ®µ
 				{
-					$Table_Field[$current_key]=$Field_tf[0];      //±£´æ×Ö¶Î±äÁ¿
-					$Table_Field_c[$current_key]=$Field_tf[1];    //±£´æ×Ö¶Î¶ÔÓ¦µÄÖĞÎÄĞÅÏ¢
+					$Table_Field[$current_key]=$Field_tf[0];      //ä¿å­˜å­—æ®µå˜é‡
+					$Table_Field_c[$current_key]=$Field_tf[1];    //ä¿å­˜å­—æ®µå¯¹åº”çš„ä¸­æ–‡ä¿¡æ¯
 				}
 			}
 			else
 			{
-				if(strstr($Field_tf[2],$field_range))                   //È¡µÃÒªÏÔÊ¾µÄ×Ö¶Î
+				if(strstr($Field_tf[2],$field_range))                   //å–å¾—è¦æ˜¾ç¤ºçš„å­—æ®µ
 				{
-					$Table_Field[$current_key]=$Field_tf[0];      //±£´æ×Ö¶Î±äÁ¿
-					$Table_Field_c[$current_key]=$Field_tf[1];    //±£´æ×Ö¶Î¶ÔÓ¦µÄÖĞÎÄĞÅÏ¢
+					$Table_Field[$current_key]=$Field_tf[0];      //ä¿å­˜å­—æ®µå˜é‡
+					$Table_Field_c[$current_key]=$Field_tf[1];    //ä¿å­˜å­—æ®µå¯¹åº”çš„ä¸­æ–‡ä¿¡æ¯
 				}
 			}
 
 		}
-		next($tf);//ÒÆ¶¯Êı×éÖ¸Õë
+		next($tf);//ç§»åŠ¨æ•°ç»„æŒ‡é’ˆ
 	}
 	unset($Field_tf);
 	unset($tf);
 }
 
 
-/***********º¯ÊıGETFILE******
-×÷ÓÃ:µÃµ½Ô¶³ÌÎÄ¼ş£¬ÒÔĞÎ³É»º³åÎÄ¼ş
-Ê±¼ä:2002-5-11
-·µ»Ø:²¼¶ûÖµ
+/***********å‡½æ•°GETFILE******
+ä½œç”¨:å¾—åˆ°è¿œç¨‹æ–‡ä»¶ï¼Œä»¥å½¢æˆç¼“å†²æ–‡ä»¶
+æ—¶é—´:2002-5-11
+è¿”å›:å¸ƒå°”å€¼
 $local_file
-	±¾µØÎÄ¼ş,ÓÃÓÚ±£´æÔ¶³ÌÍøÒ³µÄÃû×Ö
+	æœ¬åœ°æ–‡ä»¶,ç”¨äºä¿å­˜è¿œç¨‹ç½‘é¡µçš„åå­—
 $remote_file
-	Ô¶³ÌµÄÎÄ¼şÃû
+	è¿œç¨‹çš„æ–‡ä»¶å
 $update_time
-	//¸üĞÂ»º³åÎÄ¼şµÄ¼ä¸ôÊ±¼äÊı.
+	//æ›´æ–°ç¼“å†²æ–‡ä»¶çš„é—´éš”æ—¶é—´æ•°.
 $base_path
-	Ô­ÎÄ¼şµÄÄ¿Â¼
+	åŸæ–‡ä»¶çš„ç›®å½•
 ***********************************************/
 
 function getfile($remote_file,$local_file,$base_path,$upata_time=3600)
@@ -459,8 +459,8 @@ function getfile($remote_file,$local_file,$base_path,$upata_time=3600)
 //	_SHOW_DEBUG(filesize($local_file));
 //$upata_time=1;
 	print("aaaaaaaaaaa<br>");
-	$current_time=time();//µ±Ç°Ê±¼ä
-	if(file_exists($local_file))//´æÔÚ»º³åÎÄ¼ş
+	$current_time=time();//å½“å‰æ—¶é—´
+	if(file_exists($local_file))//å­˜åœ¨ç¼“å†²æ–‡ä»¶
 	{
 		$local_filesize=filesize($local_file);
 		if($local_filesize<100)
@@ -469,32 +469,32 @@ function getfile($remote_file,$local_file,$base_path,$upata_time=3600)
 			unlink($local_file);
 			return(false);
 		}
-		$file_time=filemtime($local_file);//µÃµ½ÎÄ¼şµÄ×îºóĞŞ¸ÄÊ±¼ä
-		if(($current_time-$file_time)<$upata_time)//ÎÄ¼şÎ´¹ıÆÚ
+		$file_time=filemtime($local_file);//å¾—åˆ°æ–‡ä»¶çš„æœ€åä¿®æ”¹æ—¶é—´
+		if(($current_time-$file_time)<$upata_time)//æ–‡ä»¶æœªè¿‡æœŸ
 		{
-			if($local_filesize<10)//ÕâÀïÆäÊµÊÇÎªÁË·ÀÖ¹ËÀÑ­»·.´æÔÚ¶Á±¾ÉíµÄÎÊÌâ,µİ¹é
+			if($local_filesize<10)//è¿™é‡Œå…¶å®æ˜¯ä¸ºäº†é˜²æ­¢æ­»å¾ªç¯.å­˜åœ¨è¯»æœ¬èº«çš„é—®é¢˜,é€’å½’
 			{
 				_SHOW_DEBUG("local_filesize<10");
 				return(false);
 			}
 			else
 			{
-				_SHOW_DEBUG("¸ÃÎÄ¼ş²»ĞèÒª¸üĞÂ!".($current_time-filemtime($local_file)));
+				_SHOW_DEBUG("è¯¥æ–‡ä»¶ä¸éœ€è¦æ›´æ–°!".($current_time-filemtime($local_file)));
 				return(true);
 			}
 		}
 	}
-	$timeout=10;                                     //Éè¶¨³ÌĞòÖ´ĞĞ$timeoutÃëºóÍË³ö,·ÀÖ¹ËÀÑ­»·
+	$timeout=10;                                     //è®¾å®šç¨‹åºæ‰§è¡Œ$timeoutç§’åé€€å‡º,é˜²æ­¢æ­»å¾ªç¯
 
 	if(!$remote_fp=fopen($remote_file,"r")) //!file_exists($remote_file) ||
 	{
-		_SHOW_DEBUG("´ò¿ªÔ¶³ÌÎÄ¼ş".$remote_file."Ê§°Ü!");
+		_SHOW_DEBUG("æ‰“å¼€è¿œç¨‹æ–‡ä»¶".$remote_file."å¤±è´¥!");
 		return(false);
 	}
 
 	if(!$local_fp=fopen($local_file,"w"))
 	{
-		_SHOW_DEBUG("´ò¿ª±¾µØÎÄ¼ş".$local_file."Ê§°Ü!");
+		_SHOW_DEBUG("æ‰“å¼€æœ¬åœ°æ–‡ä»¶".$local_file."å¤±è´¥!");
 		fclose($remote_fp);
 		return(false);
 	}
@@ -514,7 +514,7 @@ function getfile($remote_file,$local_file,$base_path,$upata_time=3600)
 
 */
 
-	fputs($local_fp,"<base href='".$base_path."'> ");//Ğ´Èë»ùÖ·
+	fputs($local_fp,"<base href='".$base_path."'> ");//å†™å…¥åŸºå€
 /*	print($remote_file);
 
 
@@ -526,9 +526,9 @@ function getfile($remote_file,$local_file,$base_path,$upata_time=3600)
 */
 	while(!feof($remote_fp))
 	{
-		if((time()-$current_time)>$timeout)                    //Èç¹û³¬Ê±¾ÍÇ¿ĞĞÍË³ö
+		if((time()-$current_time)>$timeout)                    //å¦‚æœè¶…æ—¶å°±å¼ºè¡Œé€€å‡º
 		{
-			_SHOW_DEBUG("³¬¹ı PHP ³ÌÊ½Ö´ĞĞÊ±¼ä:".$timeout."Ãë,³ÌĞòÖĞ¶Ï!");
+			_SHOW_DEBUG("è¶…è¿‡ PHP ç¨‹å¼æ‰§è¡Œæ—¶é—´:".$timeout."ç§’,ç¨‹åºä¸­æ–­!");
 			if(file_exists($local_file))
 			{
 				unlink($local_file);
@@ -542,7 +542,7 @@ function getfile($remote_file,$local_file,$base_path,$upata_time=3600)
 	}
 	fclose($local_fp);
 	fclose($remote_fp);
-	_SHOW_DEBUG("ÓÃÊ±".(time()-$current_time));
+	_SHOW_DEBUG("ç”¨æ—¶".(time()-$current_time));
 	return(true);
 }
 
@@ -551,20 +551,20 @@ function getfile($remote_file,$local_file,$base_path,$upata_time=3600)
 
 /*
  *    lang_translate
- *    ¹¦ÄÜ:
- *           ´ÓÊı¾İ¿âÀï²éÕÒµ½¶ÔÓ¦ÆäËûÓïÑÔµÄ·­Òë. Èç  "ÖĞ¹ú"  ¶ÔÓ¦µÄÊÇ "china"
+ *    åŠŸèƒ½:
+ *           ä»æ•°æ®åº“é‡ŒæŸ¥æ‰¾åˆ°å¯¹åº”å…¶ä»–è¯­è¨€çš„ç¿»è¯‘. å¦‚  "ä¸­å›½"  å¯¹åº”çš„æ˜¯ "china"
  *    $lang_former
- *           Òª·­ÒëµÄ×Ö·û´Ü
+ *           è¦ç¿»è¯‘çš„å­—ç¬¦çªœ
  *    
  *    $lang_type
- *           ·­Òë³ÉµÄÀàĞÍ                Èç  en ±íÊ¾¶ÔÓ¦Ó¢ÎÄµÄ·­Òë.
+ *           ç¿»è¯‘æˆçš„ç±»å‹                å¦‚  en è¡¨ç¤ºå¯¹åº”è‹±æ–‡çš„ç¿»è¯‘.
  *    
  *    $order
- *           ·­Òë³ÉµÄË³Ğò                Èç°Ñ order=1 :"ÖĞ¹ú"  ·­Òë³É "china"  »ò°Ñ "china"  ·­Òë³É "ÖĞ¹ú"
+ *           ç¿»è¯‘æˆçš„é¡ºåº                å¦‚æŠŠ order=1 :"ä¸­å›½"  ç¿»è¯‘æˆ "china"  æˆ–æŠŠ "china"  ç¿»è¯‘æˆ "ä¸­å›½"
  *    
- *    ·µ»Ø
- *           ·­ÒëºÃµÄ×Ö·û´Ü,Èç¹ûÕÒ²»µ½·µ»ØÔ­´Ü
- *    ³õÊ¼ÓïÑÔÊÇ ÖĞÎÄ ,°Ñ ÖĞÎÄ·­Òë³ÉÆäËûµÄÓïÑÔ
+ *    è¿”å›
+ *           ç¿»è¯‘å¥½çš„å­—ç¬¦çªœ,å¦‚æœæ‰¾ä¸åˆ°è¿”å›åŸçªœ
+ *    åˆå§‹è¯­è¨€æ˜¯ ä¸­æ–‡ ,æŠŠ ä¸­æ–‡ç¿»è¯‘æˆå…¶ä»–çš„è¯­è¨€
  *    
 */
 function lang_translate($lang_former,$lang_type,$order=1)
@@ -594,20 +594,20 @@ function lang_translate($lang_former,$lang_type,$order=1)
 	}
 }
 
-/*  ·µ»Ø·­Òë³ÉµÄ×Ö´Ü
- *   Èç µç×ê,µç´¸,µçÅÙ »á±»·­Òë³É  aaa,bbb,ccc µÄĞÎÊ½,¿âÀïÕÒ²»µ½µÄ²»·­Òë
- *   ·­ÒëºÃµÄÄÚÈİ·ÅÓÚÒÔ lang_former Îª ¹Ø¼ü×Ö(key) µÄÈ«¾ÖÊı×éÀï
+/*  è¿”å›ç¿»è¯‘æˆçš„å­—çªœ
+ *   å¦‚ ç”µé’»,ç”µé”¤,ç”µåˆ¨ ä¼šè¢«ç¿»è¯‘æˆ  aaa,bbb,ccc çš„å½¢å¼,åº“é‡Œæ‰¾ä¸åˆ°çš„ä¸ç¿»è¯‘
+ *   ç¿»è¯‘å¥½çš„å†…å®¹æ”¾äºä»¥ lang_former ä¸º å…³é”®å­—(key) çš„å…¨å±€æ•°ç»„é‡Œ
  *
- *   lang_array  ÊÇÒ»¸öÊı×éÖ¸Õë,
+ *   lang_array  æ˜¯ä¸€ä¸ªæ•°ç»„æŒ‡é’ˆ,
  *
- *   µ÷ÓÃ·½Ê½ ***¼Ç×¡´«µİÊÇµÄÊı×éÖ¸Õë****
- *      get_lang(&$lang_array,"ÖĞ¹ú","en")
+ *   è°ƒç”¨æ–¹å¼ ***è®°ä½ä¼ é€’æ˜¯çš„æ•°ç»„æŒ‡é’ˆ****
+ *      get_lang(&$lang_array,"ä¸­å›½","en")
  *
  */
 
 function get_lang($tmp_lang_array,$lang_former,$lang_type,$order=1)
 {
-	$tmp_array=split("[£¬ ,¡¡]",trim($lang_former));
+	$tmp_array=split("[ï¼Œ ,ã€€]",trim($lang_former));
 	$tmp_string="";
 	for($tmp_i=0;$tmp_i<count($tmp_array);$tmp_i++)
 	{
@@ -616,7 +616,7 @@ function get_lang($tmp_lang_array,$lang_former,$lang_type,$order=1)
 			continue;
 
 
-		if($tmp_lang_array[$tmp_array[$tmp_i]]=="")//Ã»·­Òë¹ı
+		if($tmp_lang_array[$tmp_array[$tmp_i]]=="")//æ²¡ç¿»è¯‘è¿‡
 		{
 			$tmp_lang_array[$tmp_array[$tmp_i]]=lang_translate($tmp_array[$tmp_i],$lang_type,$order);
 		}
@@ -637,34 +637,34 @@ function get_lang($tmp_lang_array,$lang_former,$lang_type,$order=1)
 
 //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-//\\\\\\\\\\²úÉúselect ±íµ¥µÄº¯Êı\\\\\\\\\\\\\\\\\\\\\\
+//\\\\\\\\\\äº§ç”Ÿselect è¡¨å•çš„å‡½æ•°\\\\\\\\\\\\\\\\\\\\\\
 //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 //\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 /*
-ÈÕÆÚ:2002-5-16
-×÷ÓÃ:ÊµÏÖÉÏÏÂ¼¶ÏÂÀ­¿òµÄÁª¶¯
+æ—¥æœŸ:2002-5-16
+ä½œç”¨:å®ç°ä¸Šä¸‹çº§ä¸‹æ‹‰æ¡†çš„è”åŠ¨
 
 $select_data
-	¶şÎ¬Êı×é,´æ·Å²úÉúselect±íµ¥ÄÚµÄÊı×é.
+	äºŒç»´æ•°ç»„,å­˜æ”¾äº§ç”Ÿselectè¡¨å•å†…çš„æ•°ç»„.
 
-·µ»ØÖµ
-	Ã»ÓĞ·µ»ØÖµ
+è¿”å›å€¼
+	æ²¡æœ‰è¿”å›å€¼
 
-µ÷ÓÃÀı×Ó:
+è°ƒç”¨ä¾‹å­:
 MakeSelectHtml($select_data);
 
-javascript²ÎÊı
+javascriptå‚æ•°
 	V
 	V
 	V
 ParentSelect
-	¹Ø¼ü×ÖÖĞµÄÖµÎª¸¸ÀàµÄSelectµÄµÄJavaScript½Å±¾
+	å…³é”®å­—ä¸­çš„å€¼ä¸ºçˆ¶ç±»çš„Selectçš„çš„JavaScriptè„šæœ¬
 
 SubSelect
-	¹Ø¼ü×ÖÖĞµÄÖµÎª×ÓÀàµÄSelectµÄ¶¨ÒåµÄJavaScript½Å±¾
+	å…³é”®å­—ä¸­çš„å€¼ä¸ºå­ç±»çš„Selectçš„å®šä¹‰çš„JavaScriptè„šæœ¬
 
 
-htmlÀı×Ó:
+htmlä¾‹å­:
 	<select size="1" name="province"  onChange="javascript:select_option(document.personpro,document.personpro.province,document.personpro.city)"> 
 
 
@@ -694,7 +694,7 @@ $select_var.="
 	if (selected_id==0)
 	{
 		SubSelect.length=0;
-		SubSelect.options[0]=new Option('ÇëÑ¡Ôñ','');
+		SubSelect.options[0]=new Option('è¯·é€‰æ‹©','');
 		return false;
 	}
 	else
@@ -711,7 +711,7 @@ $select_var.="
 		}
 		else
 		{
-			SubSelect.options[0]=new Option('ÇëÑ¡Ôñ','');
+			SubSelect.options[0]=new Option('è¯·é€‰æ‹©','');
 			for (var i=0; i < array_length ; i++)
 			{
 				SubSelect.options[i+1]=new Option(eval(name_array)[i],eval(id_array)[i]);
@@ -724,22 +724,22 @@ $select_var.="}</script>";
 return($select_var);
 }
 
-/***********º¯Êıcountdate******
-×÷ÓÃ:µÃµ½Á½¶ÎÊ±¼äËù¾­¹ıµÄÌìÊı
-Ê±¼ä:2003-9-6
-ÊµÏÖ $date1Óë$date2Ïà¼õ
-$date2 ¸ñÊ½
+/***********å‡½æ•°countdate******
+ä½œç”¨:å¾—åˆ°ä¸¤æ®µæ—¶é—´æ‰€ç»è¿‡çš„å¤©æ•°
+æ—¶é—´:2003-9-6
+å®ç° $date1ä¸$date2ç›¸å‡
+$date2 æ ¼å¼
 2003-9-6
 ***********************************************/
 
 function countdata($date1,$date2)
 {
 	$date1_elements = explode("-" ,$date1); 
-	$udate1=mktime (0, 0,0 ,$date1_elements [1], $date1_elements[ 2],$date1_elements [0]); ;	//µÃµ½ÁËÊ±¼ä´Á1
+	$udate1=mktime (0, 0,0 ,$date1_elements [1], $date1_elements[ 2],$date1_elements [0]); ;	//å¾—åˆ°äº†æ—¶é—´æˆ³1
 
 	$date2_elements = explode("-" ,$date2);
-	$udate2=mktime (0, 0,0 ,$date2_elements [1], $date2_elements[ 2],$date2_elements [0]); //µÃµ½ÁËÏÖÔÚµÄÊ±¼ä´Á
-	$pass_data=($udate1-$udate2)/(3600*24);		//µÃµ½ÁË´Ó×¢²á¿ªÊ¼µ½ÏÖÔÚ¾­¹ıµÄÌìÊı
+	$udate2=mktime (0, 0,0 ,$date2_elements [1], $date2_elements[ 2],$date2_elements [0]); //å¾—åˆ°äº†ç°åœ¨çš„æ—¶é—´æˆ³
+	$pass_data=($udate1-$udate2)/(3600*24);		//å¾—åˆ°äº†ä»æ³¨å†Œå¼€å§‹åˆ°ç°åœ¨ç»è¿‡çš„å¤©æ•°
 	return($pass_data);
 }
 
@@ -748,17 +748,17 @@ function countdata($date1,$date2)
 function DateAdd ($interval, $number, $date)
 { 
 /*
-	yyyy yearÄê 
-	q Quarter¼¾¶È 
-	m MonthÔÂ 
-	y Day of yearÒ»ÄêµÄÊı 
-	d DayÌì 
-	w WeekdayÒ»ÖÜµÄÌìÊı 
-	ww Week of yearÖÜ 
-	h HourĞ¡Ê± 
-	n Minute·Ö 
-	s SecondÃë 
-	w¡¢yºÍdµÄ×÷ÓÃÊÇÍêÈ«Ò»ÑùµÄ£¬¼´ÔÚÄ¿Ç°µÄÈÕÆÚÉÏ¼ÓÒ»Ìì£¬q¼Ó3¸öÔÂ£¬ww¼Ó7Ìì¡£ 
+	yyyy yearå¹´ 
+	q Quarterå­£åº¦ 
+	m Monthæœˆ 
+	y Day of yearä¸€å¹´çš„æ•° 
+	d Dayå¤© 
+	w Weekdayä¸€å‘¨çš„å¤©æ•° 
+	ww Week of yearå‘¨ 
+	h Hourå°æ—¶ 
+	n Minuteåˆ† 
+	s Secondç§’ 
+	wã€yå’Œdçš„ä½œç”¨æ˜¯å®Œå…¨ä¸€æ ·çš„ï¼Œå³åœ¨ç›®å‰çš„æ—¥æœŸä¸ŠåŠ ä¸€å¤©ï¼ŒqåŠ 3ä¸ªæœˆï¼ŒwwåŠ 7å¤©ã€‚ 
 
 	$currenttime = time(); 
 	echo "Current time: ". strftime("%Hh%M %A %d %b" ,$currenttime)."br"; 
@@ -796,7 +796,7 @@ function DateAdd ($interval, $number, $date)
 
 Function DateDiff ($interval, $date1,$date2)
 { 
-// µÃµ½Á½ÈÕÆÚÖ®¼ä¼ä¸ôµÄÃëÊı 
+// å¾—åˆ°ä¸¤æ—¥æœŸä¹‹é—´é—´éš”çš„ç§’æ•° 
 	$timedifference = $date2 - $date1; 
 	switch ($interval) { 
 /*
@@ -814,7 +814,7 @@ Function DateDiff ($interval, $date1,$date2)
 	} 
 	return $retval;
 } 
-/*	µÃµ½µ±Ç°ä¯ÀÀÕßµÄIPµØÖ·
+/*	å¾—åˆ°å½“å‰æµè§ˆè€…çš„IPåœ°å€
  *
  *
  */
@@ -830,7 +830,7 @@ function get_ip()
 	//REMOTE_ADDR
 }
 
-//************* µÃµ½µ±Ç°Ê±¼ä Î¢Ãë
+//************* å¾—åˆ°å½“å‰æ—¶é—´ å¾®ç§’
 function getmicrotime()
 {
 	list($usec, $sec) = explode(" ",microtime()); 
@@ -838,29 +838,29 @@ function getmicrotime()
 }
 
 /**+-----------------------------------------------
-	º¯ Êı Ãû: setstatus
-	¹¦ÄÜÃèÊö: ÉèÖÃÎÄ¼şÃû msg Óë ~msg ¾ÍÈçÍ¬1ºÍ0  
-	º¯ÊıËµÃ÷: ÓÃÎÄ¼şÃûµÄ msg ~msg À´±íÊ¾µ±Ç°ÊÇ true »ò false ×´Ì¬
-	µ÷ÓÃº¯Êı: setstatus($statusid,$istrue,$_DATA_STATUS_PATH)
-	²ÎÊı:
+	å‡½ æ•° å: setstatus
+	åŠŸèƒ½æè¿°: è®¾ç½®æ–‡ä»¶å msg ä¸ ~msg å°±å¦‚åŒ1å’Œ0  
+	å‡½æ•°è¯´æ˜: ç”¨æ–‡ä»¶åçš„ msg ~msg æ¥è¡¨ç¤ºå½“å‰æ˜¯ true æˆ– false çŠ¶æ€
+	è°ƒç”¨å‡½æ•°: setstatus($statusid,$istrue,$_DATA_STATUS_PATH)
+	å‚æ•°:
 		statusid
-			±êÇ©Ãû
+			æ ‡ç­¾å
 		istrue
-			±êÇ©×´Ì¬ true or false
+			æ ‡ç­¾çŠ¶æ€ true or false
 		_DATA_STATUS_PATH
-			±êÇ©´æ·ÅµÄÄ¿Â¼ *Òª¿É¶ÁĞ´
-	Éè ¼Æ Õß: ggg			    ÈÕÆÚ: 2004-9-27 13:35
-	ĞŞ ¸Ä Õß: ggg			    ÈÕÆÚ: 2004-9-27 13:35
-	°æ    ±¾: 1.0
+			æ ‡ç­¾å­˜æ”¾çš„ç›®å½• *è¦å¯è¯»å†™
+	è®¾ è®¡ è€…: ggg			    æ—¥æœŸ: 2004-9-27 13:35
+	ä¿® æ”¹ è€…: ggg			    æ—¥æœŸ: 2004-9-27 13:35
+	ç‰ˆ    æœ¬: 1.0
 **+-----------------------------------------------
 */
 function setstatus($statusid,$istrue,$_DATA_STATUS_PATH)
 {
-	if(!file_exists($_DATA_STATUS_PATH.$statusid))	//²»´æÔÚ×´Ì¬±êÇ©
+	if(!file_exists($_DATA_STATUS_PATH.$statusid))	//ä¸å­˜åœ¨çŠ¶æ€æ ‡ç­¾
 	{
-		if(!file_exists($_DATA_STATUS_PATH."~".$statusid))	//msg Óë ~msg ¾ÍÈçÍ¬1ºÍ0
+		if(!file_exists($_DATA_STATUS_PATH."~".$statusid))	//msg ä¸ ~msg å°±å¦‚åŒ1å’Œ0
 		{
-			if($istrue)//°Ñ×´Ì¬±ê¼ÇÉè³ÉÕæ
+			if($istrue)//æŠŠçŠ¶æ€æ ‡è®°è®¾æˆçœŸ
 			{
 				$fp=fopen($_DATA_STATUS_PATH.$statusid,"w");fclose($fp);
 			}
@@ -869,18 +869,18 @@ function setstatus($statusid,$istrue,$_DATA_STATUS_PATH)
 				$fp=fopen($_DATA_STATUS_PATH."~".$statusid,"w");fclose($fp);
 			}
 		}
-		else	//´æÔÚ¼ÙÎÄ¼şÔÚ
+		else	//å­˜åœ¨å‡æ–‡ä»¶åœ¨
 		{
-			if($istrue)//°Ñ×´Ì¬±ê¼ÇÉè³ÉÕæ
+			if($istrue)//æŠŠçŠ¶æ€æ ‡è®°è®¾æˆçœŸ
 			{
 				rename($_DATA_STATUS_PATH."~".$statusid,$_DATA_STATUS_PATH.$statusid);
 				//move_uploaded_file($_DATA_STATUS_PATH."~".$statusid,$_DATA_STATUS_PATH.$statusid);
 			}
 		}
 	}
-	else	//´æÔÚÕæÎÄ¼şÔÚ
+	else	//å­˜åœ¨çœŸæ–‡ä»¶åœ¨
 	{
-		if(!$istrue)//°Ñ×´Ì¬±ê¼ÇÉè³É¼Ù
+		if(!$istrue)//æŠŠçŠ¶æ€æ ‡è®°è®¾æˆå‡
 		{
 			rename($_DATA_STATUS_PATH.$statusid,$_DATA_STATUS_PATH."~".$statusid);
 			//move_uploaded_file($_DATA_STATUS_PATH.$statusid,$_DATA_STATUS_PATH."~".$statusid);
@@ -888,11 +888,11 @@ function setstatus($statusid,$istrue,$_DATA_STATUS_PATH)
 	}
 }
 
-//*** µÃµ½×´Ì¬±ê¼Ç
+//*** å¾—åˆ°çŠ¶æ€æ ‡è®°
 	function getstatus($statusid,$_DATA_STATUS_PATH)
 	{
 		$istrue=false;
-		if(file_exists($_DATA_STATUS_PATH.$statusid))	//´æÔÚ×´Ì¬±êÇ©
+		if(file_exists($_DATA_STATUS_PATH.$statusid))	//å­˜åœ¨çŠ¶æ€æ ‡ç­¾
 		{
 			$istrue=true;
 		}
@@ -902,26 +902,26 @@ function setstatus($statusid,$istrue,$_DATA_STATUS_PATH)
 		}
 		return ($istrue);
 	}
-//!!! µÃµ½×´Ì¬±ê¼Ç
+//!!! å¾—åˆ°çŠ¶æ€æ ‡è®°
 
 
 
 /**+-----------------------------------------------
-	º¯ Êı Ãû: GggMkjsArray
-	¹¦ÄÜÃèÊö: ²úÉújsÊı×é´úÂë
-	º¯ÊıËµÃ÷: 
-	µ÷ÓÃº¯Êı: GggMkjsArray()
-	²ÎÊı:
+	å‡½ æ•° å: GggMkjsArray
+	åŠŸèƒ½æè¿°: äº§ç”Ÿjsæ•°ç»„ä»£ç 
+	å‡½æ•°è¯´æ˜: 
+	è°ƒç”¨å‡½æ•°: GggMkjsArray()
+	å‚æ•°:
 		$tmpCatagoryArray
-			±£´æ¶ş¼¶·ÖÀàµÄÊı×é
-			tmpCatagoryArray µÄµÚÒ»¸öÊı×éÄÚÈİÊÇ±£´æ´óÀà,ÆäËûÊÇĞ¡Àà
-			$tmpCatagoryArray[0]["computer"]="µçÄÔÍøÂç";
+			ä¿å­˜äºŒçº§åˆ†ç±»çš„æ•°ç»„
+			tmpCatagoryArray çš„ç¬¬ä¸€ä¸ªæ•°ç»„å†…å®¹æ˜¯ä¿å­˜å¤§ç±»,å…¶ä»–æ˜¯å°ç±»
+			$tmpCatagoryArray[0]["computer"]="ç”µè„‘ç½‘ç»œ";
 			$tmpCatagoryArray[0]["xxx"]="xxx";
 			$tmpCatagoryArray[1]["aaa"]="aaa";
-	·µ	»Ø: ÎŞ
-	Éè ¼Æ Õß: ggg				ÈÕÆÚ: 2005-3-17 18:27
-	ĞŞ ¸Ä Õß: ggg				ÈÕÆÚ: 2005-3-17 18:27
-	°æ	±¾: 1.0
+	è¿”	å›: æ— 
+	è®¾ è®¡ è€…: ggg				æ—¥æœŸ: 2005-3-17 18:27
+	ä¿® æ”¹ è€…: ggg				æ—¥æœŸ: 2005-3-17 18:27
+	ç‰ˆ	æœ¬: 1.0
 **+-----------------------------------------------
 */
 
@@ -930,11 +930,11 @@ function setstatus($statusid,$istrue,$_DATA_STATUS_PATH)
 	{
 		if( empty($tmpCatagoryArray))
 			return false;
-		$ParentCount=count($tmpCatagoryArray);	//Í³¼Æ³öÓĞ¼¸¸ö¸¸Àà
-		if($ParentCount<1)						//¶ş¼¶·ÖÀàÊı×éÀïÃ»ÓĞÊı¾İ£¬Ö±½Ó·µ»Ø
+		$ParentCount=count($tmpCatagoryArray);	//ç»Ÿè®¡å‡ºæœ‰å‡ ä¸ªçˆ¶ç±»
+		if($ParentCount<1)						//äºŒçº§åˆ†ç±»æ•°ç»„é‡Œæ²¡æœ‰æ•°æ®ï¼Œç›´æ¥è¿”å›
 			return false;
-		$javaColumnName=$tmpCatagoryName."Array";	//ÓÃÓÚÉú³ÉµÄ javascript ±äÁ¿ ±£´æ·ÖÀàĞÅÏ¢
-		$htmlString="\n var ".$javaColumnName."=new Array();";//±£´æ×îºó²úÉúµÄjavascript´úÂë¡£¿ÉÒÔÓÃÓÚÊä³ö»ò±£´æÔÚÎÄ¼ş
+		$javaColumnName=$tmpCatagoryName."Array";	//ç”¨äºç”Ÿæˆçš„ javascript å˜é‡ ä¿å­˜åˆ†ç±»ä¿¡æ¯
+		$htmlString="\n var ".$javaColumnName."=new Array();";//ä¿å­˜æœ€åäº§ç”Ÿçš„javascriptä»£ç ã€‚å¯ä»¥ç”¨äºè¾“å‡ºæˆ–ä¿å­˜åœ¨æ–‡ä»¶
 		for($icnt=0;$icnt<$ParentCount;$icnt++)
 		{
 			if(count($tmpCatagoryArray[$icnt])<1)
@@ -952,13 +952,13 @@ function setstatus($statusid,$istrue,$_DATA_STATUS_PATH)
 
 
 /**
- * ·ÀÖ¹Ë¢ĞÂÄ£¿é
- * ÊµÏÖÔ­Àí ÉèÖÃ max_reloadtime	=100;	//ÉèÖÃÒ³ÃæË¢ĞÂ×î³¤¼ä¸ôÊ±¼ä
- * ÓÃ»§µÚÒ»´Î´ò¿ªÒ³Ãæ ¼ÇÂ¼µ±Ç°µÄÊ±¼ä±£´æÔÚ session_start
- * ÓÃ»§µÚ¶ş´Î´ò¿ªÒ³Ãæ(ÅĞ¶Ï session_startÊÇ·ñ´æÔÚ)   ÓÃµ±Ç°Ê±¼äºÍ session_start Ïà¼õ µÃµ½²îÖµ time_passed
- * µ± time_passed < max_reloadtime ±íÊ¾ÓÃ»§ÔÚÖ¸¶¨Ê±¼äÄÚÆµ·±Ë¢ĞÂÁË ¾¯¸æºóÖ±½ÓÍË³ö
- * @param int $max_reloadtime Ò³ÃæË¢ĞÂ×î³¤¼ä¸ôÊ±¼ä
- * @return bool		·µ»Ø ¾ßÌåÊıÖµ ±íÊ¾Ë¢ĞÂÌ«¿ìÁË ·µ»Ø false  ±íÊ¾Ã»ÓĞ³¬Ê±
+ * é˜²æ­¢åˆ·æ–°æ¨¡å—
+ * å®ç°åŸç† è®¾ç½® max_reloadtime	=100;	//è®¾ç½®é¡µé¢åˆ·æ–°æœ€é•¿é—´éš”æ—¶é—´
+ * ç”¨æˆ·ç¬¬ä¸€æ¬¡æ‰“å¼€é¡µé¢ è®°å½•å½“å‰çš„æ—¶é—´ä¿å­˜åœ¨ session_start
+ * ç”¨æˆ·ç¬¬äºŒæ¬¡æ‰“å¼€é¡µé¢(åˆ¤æ–­ session_startæ˜¯å¦å­˜åœ¨)   ç”¨å½“å‰æ—¶é—´å’Œ session_start ç›¸å‡ å¾—åˆ°å·®å€¼ time_passed
+ * å½“ time_passed < max_reloadtime è¡¨ç¤ºç”¨æˆ·åœ¨æŒ‡å®šæ—¶é—´å†…é¢‘ç¹åˆ·æ–°äº† è­¦å‘Šåç›´æ¥é€€å‡º
+ * @param int $max_reloadtime é¡µé¢åˆ·æ–°æœ€é•¿é—´éš”æ—¶é—´
+ * @return bool		è¿”å› å…·ä½“æ•°å€¼ è¡¨ç¤ºåˆ·æ–°å¤ªå¿«äº† è¿”å› false  è¡¨ç¤ºæ²¡æœ‰è¶…æ—¶
  */
 
 if (!function_exists('controller_onload'))
@@ -966,7 +966,7 @@ if (!function_exists('controller_onload'))
 	function limitReload($max_reloadtime=3)
 	{
 		session_start();
-		if(empty($_SESSION["session_start"]))			//ÓÃ»§µÚÒ»´Î´ò¿ªÒ³Ãæ ¼ÇÂ¼µ±Ç°µÄÊ±¼ä±£´æÔÚ session_start
+		if(empty($_SESSION["session_start"]))			//ç”¨æˆ·ç¬¬ä¸€æ¬¡æ‰“å¼€é¡µé¢ è®°å½•å½“å‰çš„æ—¶é—´ä¿å­˜åœ¨ session_start
 			$_SESSION["session_start"]	=time();
 		else
 		{
@@ -974,9 +974,9 @@ if (!function_exists('controller_onload'))
 			if($time_passed < $max_reloadtime)
 			{
 				return $time_passed;
-	//			echo "´óÏÀ±ğ¼±,ÏÈ×øÏÂĞİÏ¢ĞİÏ¢ :P <a href=javascript:history.go(0)>°´´ËË¢ĞÂÒ³Ãæ</a><br>";
-	//			echo "Ò³ÃæË¢ĞÂ¼ä¸ôÊ±¼ä ".$max_reloadtime."<br>";
-	//			echo "ÀëÉÏ´ÎË¢ĞÂÊ±¼ä  ".$time_passed."<br>";
+	//			echo "å¤§ä¾ åˆ«æ€¥,å…ˆåä¸‹ä¼‘æ¯ä¼‘æ¯ :P <a href=javascript:history.go(0)>æŒ‰æ­¤åˆ·æ–°é¡µé¢</a><br>";
+	//			echo "é¡µé¢åˆ·æ–°é—´éš”æ—¶é—´ ".$max_reloadtime."<br>";
+	//			echo "ç¦»ä¸Šæ¬¡åˆ·æ–°æ—¶é—´  ".$time_passed."<br>";
 	//			die();
 			}
 			$_SESSION["session_start"]	=time();
@@ -986,12 +986,12 @@ if (!function_exists('controller_onload'))
 }
 
 
-//********* ²âÊÔ
+//********* æµ‹è¯•
 /*
 $tmpArray = array(
-array('ÕĞÆ¸'=>'ÕĞÆ¸','³ÏÕ÷'=>'³ÏÕ÷','´ıÆ¸'=>'´ıÆ¸','¼æÖ°'=>'¼æÖ°'),
-array('»é½é'=>'»é½é','ÄĞ'=>'ÄĞ'),
-array('·¿²ú'=>'·¿²ú','³öÊÛ'=>'³öÊÛ','¹ºÂò'=>'¹ºÂò','ÕĞ×â'=>'ÕĞ×â','³Ğ×â'=>'³Ğ×â','×ªÈÃ'=>'×ªÈÃ'),
+array('æ‹›è˜'=>'æ‹›è˜','è¯šå¾'=>'è¯šå¾','å¾…è˜'=>'å¾…è˜','å…¼èŒ'=>'å…¼èŒ'),
+array('å©šä»‹'=>'å©šä»‹','ç”·'=>'ç”·'),
+array('æˆ¿äº§'=>'æˆ¿äº§','å‡ºå”®'=>'å‡ºå”®','è´­ä¹°'=>'è´­ä¹°','æ‹›ç§Ÿ'=>'æ‹›ç§Ÿ','æ‰¿ç§Ÿ'=>'æ‰¿ç§Ÿ','è½¬è®©'=>'è½¬è®©'),
 );
 print(GggMkjsArray($tmpArray,"city"));
 */
