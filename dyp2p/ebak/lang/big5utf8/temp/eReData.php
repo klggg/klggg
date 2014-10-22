@@ -27,14 +27,14 @@ if(!defined('InEmpireBak'))
     <tr bgcolor="#FFFFFF"> 
       <td height="25">恢復數據源目錄：</td>
       <td height="25"> 
-        <?=$bakpath?>
+        <?php echo $bakpath?>
         / 
-        <input name="mypath" type="text" id="mypath" value="<?=$mypath?>"> <input type="button" name="Submit2" value="選擇目錄" onclick="javascript:window.open('ChangePath.php?change=1','','width=750,height=500,scrollbars=yes');"></td>
+        <input name="mypath" type="text" id="mypath" value="<?php echo $mypath?>"> <input type="button" name="Submit2" value="選擇目錄" onclick="javascript:window.open('ChangePath.php?change=1','','width=750,height=500,scrollbars=yes');"></td>
     </tr>
     <tr bgcolor="#FFFFFF"> 
       <td height="25" valign="top">要導入的數據庫：</td>
       <td height="25"> <select name="add[mydbname]" size="23" id="add[mydbname]" style="width=260">
-          <?=$db?>
+          <?php echo $db?>
         </select></td>
     </tr>
     <tr bgcolor="#FFFFFF">

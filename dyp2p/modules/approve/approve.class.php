@@ -237,7 +237,8 @@ class approveClass{
 			$sql = "update `{approve_sms}` set status=3,credit=0 where user_id='{$result['user_id']}' and status=1";
 			$result = $mysql->db_query($sql);
 		}
-		
+	
+	$data['credit'] = intval($data['credit']);	
 		$sql = "update `{approve_sms}` set verify_userid='{$data['verify_userid']}',verify_remark='{$data['verify_remark']}', verify_time='".time()."',status='{$data['status']}',credit='{$data['credit']}' where id='{$data['id']}'";
 		$result = $mysql->db_query($sql);
 		if ($result!=false){

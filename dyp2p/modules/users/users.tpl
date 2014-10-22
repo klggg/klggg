@@ -368,22 +368,22 @@ function check_user(){
 	   var email = frm.elements['email'].value;
 	 var errorMsg = '';
 	  if (username.length == 0 ) {
-		errorMsg += '<? echo $this->magic_vars['MsgInfo']['users_username_empty']; ?> \n';
+		errorMsg += '<?php echo $this->magic_vars['MsgInfo']['users_username_empty']; ?> \n';
 	  }
 	   if (username.length<4) {
-		errorMsg += '<? echo $this->magic_vars['MsgInfo']['users_username_long4']; ?> \n';
+		errorMsg += '<?php echo $this->magic_vars['MsgInfo']['users_username_long4']; ?> \n';
 	  }
 	  if (password.length==0) {
-		errorMsg += '<? echo $this->magic_vars['MsgInfo']['users_password_empty']; ?> \n';
+		errorMsg += '<?php echo $this->magic_vars['MsgInfo']['users_password_empty']; ?> \n';
 	  }
 	  if (password.length<6) {
-		errorMsg += '<? echo $this->magic_vars['MsgInfo']['users_password_long6']; ?> \n';
+		errorMsg += '<?php echo $this->magic_vars['MsgInfo']['users_password_long6']; ?> \n';
 	  }
 	   if (password.length!=password1.length) {
-		errorMsg += '<? echo $this->magic_vars['MsgInfo']['users_password_error']; ?> \n';
+		errorMsg += '<?php echo $this->magic_vars['MsgInfo']['users_password_error']; ?> \n';
 	  }
 	   if (email.length==0) {
-		errorMsg += '<? echo $this->magic_vars['MsgInfo']['users_email_empty']; ?> \n';
+		errorMsg += '<?php echo $this->magic_vars['MsgInfo']['users_email_empty']; ?> \n';
 	  }
 	  if (errorMsg.length > 0){
 		alert(errorMsg); return false;

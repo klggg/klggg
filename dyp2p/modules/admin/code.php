@@ -6,6 +6,8 @@
 
 if (!defined('ROOT_PATH'))  /*die('不能访问')*/echo "<script>window.location.href='/404.htm';</script>";//防止直接访问
 
+
+
 //当前模块的信息
 $code = $_A['query_class'] ;
 if ($code==""){

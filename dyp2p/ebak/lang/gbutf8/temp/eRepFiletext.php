@@ -27,9 +27,9 @@ if(!defined('InEmpireBak'))
     <tr bgcolor="#FFFFFF"> 
       <td height="25">替换目录：</td>
       <td height="25"> 
-        <?=$bakpath?>
+        <?php echo $bakpath?>
         / 
-        <input name="mypath" type="text" id="mypath" value="<?=$mypath?>" size="38"> 
+        <input name="mypath" type="text" id="mypath" value="<?php echo $mypath?>" size="38"> 
         <input type="button" name="Submit2" value="选择目录" onclick="javascript:window.open('ChangePath.php?change=1&toform=ebakrepfiletext','','width=750,height=500,scrollbars=yes');"></td>
     </tr>
     <tr bgcolor="#FFFFFF"> 

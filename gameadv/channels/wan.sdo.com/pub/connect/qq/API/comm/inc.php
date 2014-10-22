@@ -1,0 +1,1 @@
+{"appid":"100363685","appkey":"3a5d4d6cfbe9c0739955c5f2c6277f1d","callback":"http://wan.sdo.com/connect/qq/example/oauth/callback.php","scope":"get_user_info","errorReport":true,"storageType":"file","host":"localhost","user":"root","password":"root","database":"test"}

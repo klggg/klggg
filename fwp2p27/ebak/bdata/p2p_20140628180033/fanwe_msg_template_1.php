@@ -1,0 +1,37 @@
+<?php
+require("../../inc/header.php");
+
+/*
+		SoftName : EmpireBak Version 2010
+		Author   : wm_chief
+		Copyright: Powered by www.phome.net
+*/
+
+DoSetDbChar('utf8');
+E_D("DROP TABLE IF EXISTS `fanwe_msg_template`;");
+E_C("CREATE TABLE `fanwe_msg_template` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `content` text NOT NULL,
+  `type` tinyint(1) NOT NULL,
+  `is_html` tinyint(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=utf8");
+E_D("replace into `fanwe_msg_template` values('1','TPL_MAIL_USER_VERIFY','{\$user.user_name}你好，请点击以下链接验证你的会员身份\r\n</p>\r\n<a href=''{\$user.verify_url}''>{\$user.verify_url}</a>','1','1');");
+E_D("replace into `fanwe_msg_template` values('2','TPL_MAIL_USER_PASSWORD','{\$user.user_name}你好，请点击以下链接修改您的密码\r\n</p>\r\n<a href=''{\$user.password_url}''>{\$user.password_url}</a>','1','1');");
+E_D("replace into `fanwe_msg_template` values('3','TPL_SMS_PAYMENT','{\$payment_notice.user_name}你好,你所下订单{\$payment_notice.order_sn}的收款单{\$payment_notice.notice_sn}金额{\$payment_notice.money_format}于{\$payment_notice.pay_time_format}支付成功','0','0');");
+E_D("replace into `fanwe_msg_template` values('4','TPL_MAIL_PAYMENT','{\$payment_notice.user_name}你好,你所下订单{\$payment_notice.order_sn}的收款单{\$payment_notice.notice_sn}金额{\$payment_notice.money_format}于{\$payment_notice.pay_time_format}支付成功','1','0');");
+E_D("replace into `fanwe_msg_template` values('5','TPL_SMS_VERIFY_CODE','你的手机号为{\$verify.mobile},验证码为{\$verify.code}','0','0');");
+E_D("replace into `fanwe_msg_template` values('6','TPL_DEAL_NOTICE_SMS','{\$notice.site_name}又有新借款啦!{\$notice.deal_name},欢迎来投标{\$notice.site_url}','0','0');");
+E_D("replace into `fanwe_msg_template` values('7','TPL_MAIL_DEAL_FAILED','<p>尊敬的用户{\$notice.user_name}：&nbsp; </p>\r\n<p>遗憾的通知您，您于{\$notice.deal_publish_time}发布的借款“{\$notice.deal_name}”流标，您的本次借款行为失败。&nbsp;</p><p>您借款失败的可能原因为：&nbsp; </p>\r\n<br>\r\n<br>\r\n1. 您没能按时提交四项必要信用认证的材料。\r\n<br>\r\n<br>\r\n2. 您在招标期间没有筹集到足够的借款。&nbsp;&nbsp; \r\n<p>如果您属于认证未通过流标，为了您能够成功贷款，请凑齐申请贷款所需要的材料。您可以点击<a href=\"{\$notice.help_url}\" target=\"_blank\">需要提供哪些材料？</a>来了解更多所需材料的详情。进行更多的信用认证将有助您获得更高的贷款额度。</p>\r\n<p>如果您属于招标到期流标，为了您能够成功贷款，请适度提高贷款利率，将有助您更快的获得贷款。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>\r\n<p>点击 <a href=\"{\$notice.send_deal_url}\">这里</a>重新发布借款。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>\r\n<p>感谢您对我们的支持与关注。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>\r\n<p>{\$notice.site_name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>\r\n<p>注：此邮件由系统自动发送，请勿回复！&nbsp; </p>\r\n<p>如果您有任何疑问，请您查看 <a href=\"{\$notice.help_url}\" target=\"_blank\">帮助</a>，或访问 <a href=\"{\$notice.site_url}\" target=\"_blank\">客服中心</a></p>\r\n<p>如果您觉得收到过多邮件，可以点击 <a href=\"{\$notice.msg_cof_setting_url}\" target=\"_blank\">这里</a>进行设置\r\n&nbsp; </p>','1','1');");
+E_D("replace into `fanwe_msg_template` values('8','TPL_MAIL_LOAD_FAILED','<p>尊敬的用户{\$notice.user_name}：&nbsp; </p>\r\n<p>遗憾的通知您，您于{\$notice.deal_load_time}所投的借款“{\$notice.deal_name}”流标，您的本次投标行为失败。&nbsp;</p><p>您所投的借款失败的可能原因为：&nbsp; </p>\r\n<br>\r\n<br>\r\n1. 借款者没能按时提交四项必要信用认证的材料。\r\n<br>\r\n<br>\r\n2. 借款者在招标期间没有筹集到足够的借款。&nbsp;&nbsp; \r\n\r\n<p>感谢您对我们的支持与关注。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>\r\n<p>{\$notice.site_name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>\r\n<p>注：此邮件由系统自动发送，请勿回复！&nbsp; </p>\r\n<p>如果您有任何疑问，请您查看 <a href=\"{\$notice.help_url}\" target=\"_blank\">帮助</a>，或访问 <a href=\"{\$notice.site_url}\" target=\"_blank\">客服中心</a></p>\r\n<p>如果您觉得收到过多邮件，可以点击 <a href=\"{\$notice.msg_cof_setting_url}\" target=\"_blank\">这里</a>进行设置\r\n&nbsp; </p>','1','1');");
+E_D("replace into `fanwe_msg_template` values('9','TPL_DEAL_THREE_SMS','尊敬的{\$notice.site_name}用户 {\$notice.user_name} ，您本期贷款的还款日是{\$notice.repay_time_d}日，还款金额{\$notice.repay_money}元，请按时还款。【{\$notice.site_name}】','0','0');");
+E_D("replace into `fanwe_msg_template` values('10','TPL_MAIL_DEAL_MSG','<p>尊敬的用户{\$notice.user_name}：</p>\r\n<p>您好，用户{\$notice.msg_user_name}对您发布的借款列表“{\$notice.deal_name}”进行了以下留言：</p>\r\n<p>“{\$notice.message}”</p>\r\n<p>请您登录{\$notice.site_name}借款详情页面查看答复。</p>\r\n<p>点击 <a href=\"{\$notice.deal_url}\" target=\"_blank\">这里</a>进行答复。</p>\r\n<p>感谢您对我们的支持与关注！</p>\r\n<p>{\$notice.site_name}</p>\r\n<p>注：此邮件由系统自动发送，请勿回复！</p>\r\n<p>如果您有任何疑问，请您查看 <a href=\"{\$notice.help_url}\" target=\"_blank\">帮助</a>，或访问 <a href=\"#\" target=\"_blank\">客服中心</a></p>','1','1');");
+E_D("replace into `fanwe_msg_template` values('11','TPL_MAIL_DEAL_REPLY_MSG','<p>尊敬的用户{\$notice.user_name}：</p>\r\n<p>您好，用户{\$notice.msg_user_name}回复了您对借款列表“{\$notice.deal_name}”的留言。具体回复如下：</p>\r\n<p>“{\$notice.message}”</p>\r\n<p>点击 <a href=\"{\$notice.deal_url}\" target=\"_blank\">这里</a>查看借款列表详情或进行投标。</p>\r\n<p>感谢您对我们的支持与关注！</p>\r\n<p>{\$notice.site_name}</p>\r\n<p>注：此邮件由系统自动发送，请勿回复！</p>\r\n<p>如果您有任何疑问，请您查看 <a href=\"{\$notice.help_url}\" target=\"_blank\">帮助</a>，或访问 <a href=\"#\" target=\"_blank\">客服中心</a></p>','1','1');");
+E_D("replace into `fanwe_msg_template` values('12','TPL_DEAL_THREE_EMAIL','<p>尊敬的用户{\$notice.user_name}：&nbsp; </p>\r\n<p>您的借款“<a href=\"{\$notice.deal_url}\">{\$notice.deal_name}</a>”本期还款日是{\$notice.repay_time_d}日，还款金额{\$notice.repay_money}元，请按时还款。【{\$notice.site_name}】 </p>\r\n<p>点击 <a href=\"{\$notice.repay_url}\">这里</a>进行还款。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>\r\n<p>感谢您对我们的支持与关注。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>\r\n<p>{\$notice.site_name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>\r\n<p>注：此邮件由系统自动发送，请勿回复！&nbsp; </p>\r\n<p>如果您有任何疑问，请您查看 <a href=\"{\$notice.help_url}\" target=\"_blank\">帮助</a>，或访问 <a href=\"{\$notice.site_url}\" target=\"_blank\">客服中心</a></p>\r\n<p>如果您觉得收到过多邮件，可以点击 <a href=\"{\$notice.msg_cof_setting_url}\" target=\"_blank\">这里</a>进行设置rn&nbsp; </p>','1','1');");
+E_D("replace into `fanwe_msg_template` values('13','TPL_DEAL_HALF_EMAIL','<p>尊敬的用户{\$notice.user_name}：&nbsp; </p>\r\n<p>您的借款“<a href=\"{\$notice.deal_url}\">{\$notice.deal_name}</a>”招标完成度超过50%【{\$notice.site_name}】 </p>\r\n<p>感谢您对我们的支持与关注。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>\r\n<p>{\$notice.site_name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>\r\n<p>注：此邮件由系统自动发送，请勿回复！&nbsp; </p>\r\n<p>如果您有任何疑问，请您查看 <a href=\"{\$notice.help_url}\" target=\"_blank\">帮助</a>，或访问 <a href=\"{\$notice.site_url}\" target=\"_blank\">客服中心</a></p>\r\n<p>如果您觉得收到过多邮件，可以点击 <a href=\"{\$notice.msg_cof_setting_url}\" target=\"_blank\">这里</a>进行设置\r\n&nbsp; </p>','1','1');");
+E_D("replace into `fanwe_msg_template` values('14','TPL_DEAL_LOAD_REPAY_EMAIL','<p>尊敬的用户{\$notice.user_name}：&nbsp; </p>\r\n<p>您好，您在{\$notice.site_name}所投的的投标“<a href=\"{\$notice.deal_url}\">{\$notice.deal_name}</a>”成功还款{\$notice.repay_money}元 </p>\r\n{if \$notice.need_next_repay}\r\n<p>本笔投标的下个还款日为{\$notice.next_repay_time}，需还本息{\$notice.next_repay_money}元。</p>\r\n{else}\r\n<p>本次投标共获得收益:{\$notice.all_repay_money}元,{if \$notice.impose_money}其中违约金为:{\$notice.impose_money}元,{/if}本次投标已回款完毕！</p>\r\n{/if}\r\n<p>感谢您对我们的支持与关注。&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>\r\n<p>{\$notice.site_name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>\r\n<p>注：此邮件由系统自动发送，请勿回复！&nbsp; </p>\r\n<p>如果您有任何疑问，请您查看 <a href=\"{\$notice.help_url}\" target=\"_blank\">帮助</a>，或访问 <a href=\"{\$notice.site_url}\" target=\"_blank\">客服中心</a></p>\r\n<p>如果您觉得收到过多邮件，可以点击 <a href=\"{\$notice.msg_cof_setting_url}\" target=\"_blank\">这里</a>进行设置\r\n&nbsp; </p>','1','1');");
+E_D("replace into `fanwe_msg_template` values('24','TPL_DEAL_LOAD_REPAY_SMS','尊敬的{\$notice.site_name}用户{\$notice.user_name}，您所投的标【{\$notice.deal_name}】回款{\$notice.repay_money}元，感谢您的关注和支持。【{\$notice.site_name}】','0','0');");
+
+require("../../inc/footer.php");
+?>

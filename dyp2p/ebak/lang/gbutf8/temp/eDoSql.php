@@ -36,7 +36,7 @@ if(!defined('InEmpireBak'))
                 </select>
               </td>
               <td><div align="right">数据编码： 
-                  <input name="mydbchar" type="text" id="mydbchar" value="<?=$phome_db_char?>" size="16">
+                  <input name="mydbchar" type="text" id="mydbchar" value="<?php echo $phome_db_char?>" size="16">
                   <font color="#666666"> 
                   <select name="selectchar" onchange="document.form1.mydbchar.value=this.value">
                     <option value="">选择</option>
@@ -82,7 +82,7 @@ if(!defined('InEmpireBak'))
 				?>
                 </select> </td>
               <td><div align="right">数据编码： 
-                  <input name="mydbchar" type="text" id="mydbchar" value="<?=$phome_db_char?>" size="16">
+                  <input name="mydbchar" type="text" id="mydbchar" value="<?php echo $phome_db_char?>" size="16">
                   <font color="#666666"> 
                   <select name="selectchar" onchange="document.form2.mydbchar.value=this.value">
                     <option value="">选择</option>

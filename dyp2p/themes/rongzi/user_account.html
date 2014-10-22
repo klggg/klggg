@@ -724,8 +724,8 @@ function check_form(){
 		<!--提现 结束-->
 				{else}
 				{literal}
-				<? $this->magic_vars['day7'] = time()-6*60*60*24;?>
-				<? $this->magic_vars['nowtime'] = time();?>
+				<?php $this->magic_vars['day7'] = time()-6*60*60*24;?>
+				<?php $this->magic_vars['nowtime'] = time();?>
 				{/literal}
 				{articles module="borrow" function="GetDetail" var="Devar" user_id="$_G.user_id"}
 				<div style="line-height:30px; font-size:15px; font-weight:bold">个人资金详情</div>

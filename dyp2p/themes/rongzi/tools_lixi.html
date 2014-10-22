@@ -41,7 +41,7 @@
 					<div style="padding:20px 0">	          
 						<div style="padding:0px 10px 20px">
 							<div class="cy_list1">
-							<form action="" method="post">借款金额：<input type="text" name="account" size="10"  value="<? echo isset($_REQUEST['account'])?$_REQUEST['account']:""; ?>" value="<? echo $_REQUEST['account'];?>" /> 年利率：<input type="text" name="lilv"  size="10"  value="<? echo isset($_REQUEST['lilv'])?$_REQUEST['lilv']:""; ?>"/>%  借款期限：<input type="text" name="times"  size="10"  value="<? echo isset($_REQUEST['times'])?$_REQUEST['times']:""; ?>" />个月 <br />
+							<form action="" method="post">借款金额：<input type="text" name="account" size="10"  value="<?php echo isset($_REQUEST['account'])?$_REQUEST['account']:""; ?>" value="<?php echo $_REQUEST['account'];?>" /> 年利率：<input type="text" name="lilv"  size="10"  value="<?php echo isset($_REQUEST['lilv'])?$_REQUEST['lilv']:""; ?>"/>%  借款期限：<input type="text" name="times"  size="10"  value="<?php echo isset($_REQUEST['times'])?$_REQUEST['times']:""; ?>" />个月 <br />
 <br />
 还款方式：<select name="style"><option value="0" >按月还款</option><option value="1" >按季还款</option><option value="2" >到期还本还息</option><option value="3" >按月还息到期还本</option></select>  <input type="submit" value="开始计算" class="xinbuton" />
 		<?
@@ -56,7 +56,7 @@ $data['type'] = "all";
 $result = EqualInterest($data);
 if ($result!="" && is_array($list)){
 ?>
-	<h5 style="line-height:50px;">每个月将偿还：<? echo $result['repay_month'];?>元 &nbsp; &nbsp; 月利率：<? echo $result['month_apr'];?>% &nbsp; &nbsp; 还款本息总额：<? echo $result['account_total'];?>元</h5>
+	<h5 style="line-height:50px;">每个月将偿还：<?php echo $result['repay_month'];?>元 &nbsp; &nbsp; 月利率：<?php echo $result['month_apr'];?>% &nbsp; &nbsp; 还款本息总额：<?php echo $result['account_total'];?>元</h5>
 <table width="100%"  class="form-contentier" >
 		<tr>
 			<td  bgcolor="#f9f9f9" style="text-align:center"><strong>期数</strong></td>
@@ -65,21 +65,21 @@ if ($result!="" && is_array($list)){
 			<td  bgcolor="#f9f9f9" style="text-align:center"><strong>利息</strong></td>
 			<td  bgcolor="#f9f9f9" style="text-align:center"><strong>余额</strong></td>
 		</tr>
-		<? foreach ($list as $key => $value){?>
+		<?php foreach ($list as $key => $value){?>
 		<tr>
-			<td bgcolor="#fdf4df"  align="center" style="text-align:center"><? echo $key+1;?></td>
-			<td bgcolor="#fdf4df" style="text-align:center"><? echo $value['account_all'];?></td>
-			<td bgcolor="#fdf4df" style="text-align:center"><? echo $value['account_capital'];?></td>
-			<td bgcolor="#fdf4df" style="text-align:center"><? echo $value['account_interest'];?></td>
-			<td bgcolor="#fdf4df" style="text-align:center"><? if($key+1==$_REQUEST['times']){
+			<td bgcolor="#fdf4df"  align="center" style="text-align:center"><?php echo $key+1;?></td>
+			<td bgcolor="#fdf4df" style="text-align:center"><?php echo $value['account_all'];?></td>
+			<td bgcolor="#fdf4df" style="text-align:center"><?php echo $value['account_capital'];?></td>
+			<td bgcolor="#fdf4df" style="text-align:center"><?php echo $value['account_interest'];?></td>
+			<td bgcolor="#fdf4df" style="text-align:center"><?php if($key+1==$_REQUEST['times']){
 						echo "0.00";
 					}else{
 						echo $value['account_other'];
 					};?></td>
 		</tr>
-		<? }?>
+		<?php }?>
 </table>
-<? }?>
+<?php }?>
 {/literal}
 							<div class="cle"></div>
 							</div>

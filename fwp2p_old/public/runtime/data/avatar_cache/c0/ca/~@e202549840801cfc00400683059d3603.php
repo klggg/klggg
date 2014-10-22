@@ -1,0 +1,3 @@
+<?php
+//-00000000001a:2:{s:32:"cff960f701df54dfc0874037eea3d8a4";a:1:{s:32:"0345482b9206cb879067479c5b394a6d";s:155:"<a href='/index.php?ctl=home&id=17' style='text-align:center; display:inline-block;'><img src='/public/avatar/000/00/00/17virtual_avatar_small.jpg'  /></a>";}s:32:"92ba636fe127f1592304d7734134cbe5";a:1:{s:32:"5ebcef7f5cdfd8e04099bc1f2a411e6a";s:155:"<a href='/index.php?ctl=home&id=18' style='text-align:center; display:inline-block;'><img src='/public/avatar/000/00/00/18virtual_avatar_small.jpg'  /></a>";}}
+?>

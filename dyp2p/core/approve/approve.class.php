@@ -222,6 +222,8 @@ class approveClass{
 	 */
 	 function CheckSms($data = array()){
 		global $mysql;
+
+		
 		if (!IsExiest($data['id'])) return "approve_sms_id_empty";
 		
 		$sql = "select p1.* from `{approve_sms}` as p1  where id='{$data['id']}'";
@@ -238,7 +240,8 @@ class approveClass{
 			$result = $mysql->db_query($sql);
 		}
 		
-		$sql = "update `{approve_sms}` set verify_userid='{$data['verify_userid']}',verify_remark='{$data['verify_remark']}', verify_time='".time()."',status='{$data['status']}',credit='{$data['credit']}' where id='{$data['id']}'";
+		$data['credit'] = intval($data['credit']);
+		$sql = "update `{approve_sms}` set verify_userid='{$data['verify_userid']}',verify_remark='{$data['verify_remark']}', verify_time='".time()."',status='{$data['status']}',credit={$data['credit']} where id='{$data['id']}'";
 		$result = $mysql->db_query($sql);
 		if ($result!=false){
 			$user_info['user_id'] = $user_id;

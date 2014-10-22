@@ -260,7 +260,6 @@ Tools.randGet = function (begin,end){
 
 
 //向 select 控件设置数据
-//by 清风无痕
 Tools.setItemsToSelect = function (objSelectid, arr_data){
 	var objSelect=document.getElementById(objSelectid);
 	objSelect.options.length = 0;  
@@ -274,6 +273,25 @@ Tools.setItemsToSelect = function (objSelectid, arr_data){
 		varItem.setAttribute("value", k);
 	}
 };
+
+// 6.设置select中value="paraText"的第一个Item为选中        
+Tools.setSelectedByValue = function (objSelect, objItemValue){
+    var isExit = false;        
+    for (var i = 0; i < objSelect.options.length; i++) {        
+        if (objSelect.options[i].value == objItemValue) {        
+            objSelect.options[i].selected = true;        
+            isExit = true;        
+            break;        
+        }        
+    }              
+    //Show出结果        
+    if (isExit) {        
+        alert("成功选中");        
+    } else {        
+        alert("该select中 不存在该项");        
+    }        
+};        
+
 
 
 //格式化数字

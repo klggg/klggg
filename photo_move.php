@@ -1,14 +1,14 @@
 <?php
 /*
-	2014/4/1 17:27 ggg ÕÕÆ¬°´ÅÄÕÕÈÕÆÚÕûÀí
-	ÒÀÀµ php_exif À©Õ¹
-	 winÏÂ¿ÉÓÃ
+	2014/4/1 17:27 ggg ç…§ç‰‡æŒ‰æ‹ç…§æ—¥æœŸæ•´ç†
+	ä¾èµ– php_exif æ‰©å±•
+	 winä¸‹å¯ç”¨
 	   extension=php_exif.dll      ; Must be after mbstring as it depends on it
-	´ò¿ª
+	æ‰“å¼€
 
-	ÓÃµ½ÁË pearµÄ logÄ£¿é£¬¿É²ÉÓÃ
+	ç”¨åˆ°äº† pearçš„ logæ¨¡å—ï¼Œå¯é‡‡ç”¨
 	composer.bat install
-	À´°²×°
+	æ¥å®‰è£…
 */
 date_default_timezone_set('PRC');
 //require dirname(__FILE__).'/vendor/autoload.php';
@@ -16,29 +16,38 @@ date_default_timezone_set('PRC');
 $curr_dir_path = dirname(__FILE__); 
 $config =  array(
 	'fileExtension' => array(
-		//Í¼Æ¬µÄÀ©Õ¹Ãû
+		//å›¾ç‰‡çš„æ‰©å±•å
 		'pic' => array('jpg','png','gif','bmp'),
+<<<<<<< HEAD
+		//è§†é¢‘çš„æ‰©å±•å
+		'movies' => array('mov','3gp','mp4')
+=======
 		//ÊÓÆµµÄÀ©Õ¹Ãû
 		'movies' => array('mov','3gp','mp4','avi')
+>>>>>>> 4fd51768c245e633e7beb027832badef9cbbe720
 	),
 	'path'  => array(
-		//ËùÓĞĞÂÄ¿Â¼²úÉúµÄ¸ùÄ¿Â¼,* ×¢ÒâĞŞ¸Ä³É×Ô¼ºµÄÂ·¾¶
+		//æ‰€æœ‰æ–°ç›®å½•äº§ç”Ÿçš„æ ¹ç›®å½•,* æ³¨æ„ä¿®æ”¹æˆè‡ªå·±çš„è·¯å¾„
 		'root' => $curr_dir_path.'/../../pic_new_month'
 		)
 );
 
-$config['path']['pic'] = $config['path']['root'].'/pic';	//ÕÕÆ¬ÒÆµ½ÄÄ¸öÄ¿Â¼
-$config['path']['movies'] = $config['path']['root'].'/movies';	//ÊÓÆµÒÆµ½ÄÄ¸öÄ¿Â¼
-$config['path']['unkown'] = $config['path']['root'].'/unkown';	//·ÇÕÕÆ¬ÎÄ¼şÒÆµ½ÄÄ¸öÄ¿Â¼
+$config['path']['pic'] = $config['path']['root'].'/pic';	//ç…§ç‰‡ç§»åˆ°å“ªä¸ªç›®å½•
+$config['path']['movies'] = $config['path']['root'].'/movies';	//è§†é¢‘ç§»åˆ°å“ªä¸ªç›®å½•
+$config['path']['unkown'] = $config['path']['root'].'/unkown';	//éç…§ç‰‡æ–‡ä»¶ç§»åˆ°å“ªä¸ªç›®å½•
 
+<<<<<<< HEAD
+//è¦å¤„ç†çš„ç…§ç‰‡æ¥æºè·¯å¾„  * éœ€è¦é’ˆå¯¹è‡ªå·±çš„æƒ…å†µåšä¸‹ä¿®æ”¹
+=======
 //G:\kuaipan\ggg\www\github_klggg
 
 //Òª´¦ÀíµÄÕÕÆ¬À´Ô´Â·¾¶  * ĞèÒªÕë¶Ô×Ô¼ºµÄÇé¿ö×öÏÂĞŞ¸Ä
+>>>>>>> 4fd51768c245e633e7beb027832badef9cbbe720
 //$photo_source_path = $curr_dir_path.'/../../pic';
 //$photo_source_path = $curr_dir_path.'/../../../[Pictures]';
 //$photo_source_path = 'F:/tmp';
-//$photo_source_path = 'K:/¼ÒÍ¥ÕÕÆ¬Â¼Ïñ';
-//$photo_source_path = 'K:/¼ÒÍ¥ÕÕÆ¬';
+//$photo_source_path = 'K:/å®¶åº­ç…§ç‰‡å½•åƒ';
+//$photo_source_path = 'K:/å®¶åº­ç…§ç‰‡';
 //$photo_source_path = 'H:/kuaipan/[MobileBackup]/[Pictures]/[Camera Album]'; //android
 //$photo_source_path = 'H:/kuaipan/[Pictures]'; //pad
 //$photo_source_path = 'D:/¿ìÅÌ/[Pictures]'; //pad
@@ -46,7 +55,7 @@ $config['path']['unkown'] = $config['path']['root'].'/unkown';	//·ÇÕÕÆ¬ÎÄ¼şÒÆµ½Ä
 //$photo_source_path = 'H:/kuaipan/ggg/pic_new_month/pic/1970-01';
 //$photo_source_path = 'H:/kuaipan/ggg/pic_new_month/unkown';
 
-//³õÊ¼»¯logÏà¹Ø
+//åˆå§‹åŒ–logç›¸å…³
 $log_path = $config['path']['root'].'/log/';
 if(!is_dir($log_path))
         mkdir($log_path, 0755, true); 
@@ -116,8 +125,8 @@ class PhotoMove {
 	}
 
 	/**
-	 * ÔËĞĞ½Å±¾Èë¿Ú
-	 * @param string $srcPath ÕÕÆ¬À´Ô´Ä¿Â¼
+	 * è¿è¡Œè„šæœ¬å…¥å£
+	 * @param string $srcPath ç…§ç‰‡æ¥æºç›®å½•
 	 *
 	 */
 	public function  run($srcPath) {
@@ -141,12 +150,12 @@ class PhotoMove {
 				$file_info['extension'] = '';
 			}
 			$file_info['extension'] = strtolower($file_info['extension']);
-			//ÕÒµ½Í¼Æ¬
+			//æ‰¾åˆ°å›¾ç‰‡
 			if(in_array($file_info['extension'],$this->mConfig['fileExtension']['pic']))
 			{
 				$tmp_timestamp = $this->getDateTimeOriginal($file_path_name);
 
-				//ÒÆµ½ĞÂÄ¿Â¼
+				//ç§»åˆ°æ–°ç›®å½•
 				$new_dir = $this->mConfig['path']['pic'].'/'.date('Y-m',$tmp_timestamp);
 				if(!is_dir($new_dir))
 					mkdir($new_dir, 0755, true); 
@@ -162,7 +171,7 @@ class PhotoMove {
 			}
 			else
 			{
-				//·ÇÍ¼Æ¬ÎÄ¼ş´¦Àí
+				//éå›¾ç‰‡æ–‡ä»¶å¤„ç†
 				$this->logger->notice('not image file : '.$file_path_name);
 				$tmp_new_file_path = $this->mConfig['path']['unkown'].'/'.$file_info['basename'];
 				$this->move($file_path_name, $tmp_new_file_path);
@@ -172,10 +181,10 @@ class PhotoMove {
 	}
 
 	/**
-	 * È¡ÅÄÕÕÈÕÆÚ
-	 * @param string $filePathName ÕÕÆ¬ÍêÕûÂ·¾¶
-	 * @param string $defaultDateTime È¡²»µ½ÅÄÕÕÊ±¼äÊ±µÄÄ¬ÈÏÊ±¼ä
-	 * @return  int ·µ»ØÊ±¼ä´Á
+	 * å–æ‹ç…§æ—¥æœŸ
+	 * @param string $filePathName ç…§ç‰‡å®Œæ•´è·¯å¾„
+	 * @param string $defaultDateTime å–ä¸åˆ°æ‹ç…§æ—¶é—´æ—¶çš„é»˜è®¤æ—¶é—´
+	 * @return  int è¿”å›æ—¶é—´æˆ³
 	 *
 	 */
 	public function  getDateTimeOriginal($filePathName,$defaultDateTime='1970:01:01 01:01:01') {
@@ -196,15 +205,15 @@ class PhotoMove {
 	}
 
 	/**
-	 * ÒÆ¶¯ÎÄ¼ş
-	 * @param string $oldFilePath Ô­ÎÄ¼şÍêÕûÂ·¾¶
-	 * @param string $newFilePath Ä¿±êÎÄ¼şÍêÕûÂ·¾¶
+	 * ç§»åŠ¨æ–‡ä»¶
+	 * @param string $oldFilePath åŸæ–‡ä»¶å®Œæ•´è·¯å¾„
+	 * @param string $newFilePath ç›®æ ‡æ–‡ä»¶å®Œæ•´è·¯å¾„
 	 * @return  bool
 	 *
 	 */
 	public function  move($oldFilePath,$newFilePath) {
 
-		//Õë¶ÔÒÑ´æÔÚµÄÎÄ¼ş
+		//é’ˆå¯¹å·²å­˜åœ¨çš„æ–‡ä»¶
 		if(file_exists($newFilePath))
 		{
 			$this->logger->notice("file_exists ".$newFilePath);

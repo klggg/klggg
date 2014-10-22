@@ -10,7 +10,6 @@
 if(!defined('UC_API')) {
 	exit('Access denied');
 }
-
 error_reporting(0);
 
 define('IN_UC', TRUE);

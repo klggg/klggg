@@ -57,4 +57,14 @@ return array(
 			),
 		),
 	),
+	'params'=>array(
+		// this is used in contact page
+		'adminEmail'=>'webmaster@example.com',
+		'zk8' => array(
+		 'login_email' =>'gggxin@126.com',
+		 'login_pass' =>'xinghong123',		 
+//		 'login_email' =>'76458857@qq.com',
+//		 'login_pass' =>'970406',		 
+		)
+	),	
 );

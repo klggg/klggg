@@ -179,6 +179,8 @@ elseif ($_A['query_type'] == "realname_id5set"){
 **/
 
 elseif ($_A['query_type'] == "sms"  ){
+
+	
 	if (isset($_POST['phone'])){
 		$msg = check_valicode();
 		if ($msg==""){

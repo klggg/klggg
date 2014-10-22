@@ -1,0 +1,37 @@
+location / {
+
+
+#if (!-e $request_filename){
+#    rewrite ^(.*)$ /index.php?s=$1 last;
+#    break;
+#}
+
+rewrite ^/(.*)/index.html(.*)$ /index.php\?$1$2;
+
+# http://demo.52jscn.com/invest/full_success/a20131200020.html
+# http://demo.52jscn.com//index.php?invest&nid=full_sucess&article_id=20131200020
+rewrite ^/(.*)/(.*)/a(.*).html$ /index.php\?$1&nid=$2&article_id=$3;
+
+#http://demo.52jscn.com/zhongchou/a1.html
+rewrite ^/(.*)/a(.*).html$ /index.php\?$1&article_id=$2;
+
+#rewrite ^/(.*)/(.*)/(.*)/a(.*).html?(.*)$ /$1/index\.php\?$2&nid=$3&article_id=$4&$5;
+
+
+#rewrite ^/(.*)/(.*)/a(.*).html?(.*)$ /$1/index\.php\?$2&article_id=$3&$4;
+
+#http://demo.52jscn.com/invest_1/index.html
+#http://demo.52jscn.com//index.php?invest&article_id=1
+rewrite ^/(.*)/(.*)/a(.*)_(.*).html$ /$1/index\.php\?$2&article_id=$3&page=$4;
+
+#rewrite ^/(.*)/user/(.*)/(.*)/(.*)$ /$1/index\.php\?user&user_id=$2&q=code/$3/$4;
+#rewrite ^/(.*)/user/(.*)/(.*)$ /$1/index\.php\?user&user_id=$2&q=code/$3;
+#rewrite ^/(.*)/user/(.*)$ /$1/index\.php\?user&user_id=$2;
+#rewrite ^/(.*)/u/(.*)/(.*)$ /$1/index\.php\?home&user_id=$2&q=$3;
+#rewrite ^/(.*)/u/(.*)$ /$1/index\.php\?home&user_id=$2;
+#rewrite ^/(.*)/(.*)/(.*)/index.html$ /$1/index\.php\?$2&nid=$3;
+#rewrite ^/(.*)/(.*)/(.*)/index(.*).html$ /$1/index\.php?$2&nid=$3&page=$4;
+#rewrite ^/(.*)/(.*)/index.html$ /$1/index\.php\?$2;
+#rewrite ^/(.*)/(.*)/index(.*).html$ /$1/index\.php\?$2&page=$3;
+#rewrite ^/(.*)/(.*)/index(.*).html?(.*)$ /$1/index\.php\?$2&page=$3&$4;
+}

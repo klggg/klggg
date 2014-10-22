@@ -9,7 +9,7 @@ if(!defined('InEmpireBak'))
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>信息提示</title>
-<link href="<?=$a?>images/css.css" rel="stylesheet" type="text/css">
+<link href="<?php echo $a?>images/css.css" rel="stylesheet" type="text/css">
 <SCRIPT language=javascript>
 var secs=3;//3秒
 for(i=1;i<=secs;i++) 
@@ -17,7 +17,7 @@ for(i=1;i<=secs;i++)
 function update(num) 
 { 
 if(num == secs) 
-{ <?=$gotourl_js?>; } 
+{ <?php echo $gotourl_js?>; } 
 else 
 { } 
 }
@@ -39,9 +39,9 @@ else
     <td height="80"> 
       <div align="center">
 	  <br>
-        <b><?=$error?></b>
+        <b><?php echo $error?></b>
         <br>
-        <br><a href="<?=$gotourl?>">如果您的瀏覽器沒有自動跳轉，請點擊這裡</a>
+        <br><a href="<?php echo $gotourl?>">如果您的瀏覽器沒有自動跳轉，請點擊這裡</a>
 <br><br>
 	  </div></td>
   </tr>
