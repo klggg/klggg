@@ -7,6 +7,8 @@
 // | Author: 云淡风轻(88522820@qq.com)
 // +----------------------------------------------------------------------
 
+// error_reporting(E_ALL ^ E_NOTICE ^ E_DEPRECATED);
+error_reporting(0);
 require './system/common.php';
 require './app/Lib/SiteApp.class.php';
 

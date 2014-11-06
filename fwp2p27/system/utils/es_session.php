@@ -27,7 +27,7 @@ class es_session
 	static function start()
 	{
 		session_set_cookie_params(0,app_conf("COOKIE_PATH"),app_conf("DOMAIN_ROOT"));
-		@session_start();
+		session_start();
 	}
 	
     // 判断session是否存在
@@ -64,7 +64,7 @@ class es_session
     static function close()
     {
 
-    	@session_write_close();
+    	session_write_close();
     }
     
     static function  is_expired()
