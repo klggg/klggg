@@ -18,13 +18,8 @@ $config =  array(
 	'fileExtension' => array(
 		//å›¾ç‰‡çš„æ‰©å±•å
 		'pic' => array('jpg','png','gif','bmp'),
-<<<<<<< HEAD
 		//è§†é¢‘çš„æ‰©å±•å
-		'movies' => array('mov','3gp','mp4')
-=======
-		//ÊÓÆµµÄÀ©Õ¹Ãû
 		'movies' => array('mov','3gp','mp4','avi')
->>>>>>> 4fd51768c245e633e7beb027832badef9cbbe720
 	),
 	'path'  => array(
 		//æ‰€æœ‰æ–°ç›®å½•äº§ç”Ÿçš„æ ¹ç›®å½•,* æ³¨æ„ä¿®æ”¹æˆè‡ªå·±çš„è·¯å¾„
@@ -36,22 +31,7 @@ $config['path']['pic'] = $config['path']['root'].'/pic';	//ç…§ç‰‡ç§»åˆ°å“ªä¸ªç›®
 $config['path']['movies'] = $config['path']['root'].'/movies';	//è§†é¢‘ç§»åˆ°å“ªä¸ªç›®å½•
 $config['path']['unkown'] = $config['path']['root'].'/unkown';	//éç…§ç‰‡æ–‡ä»¶ç§»åˆ°å“ªä¸ªç›®å½•
 
-<<<<<<< HEAD
 //è¦å¤„ç†çš„ç…§ç‰‡æ¥æºè·¯å¾„  * éœ€è¦é’ˆå¯¹è‡ªå·±çš„æƒ…å†µåšä¸‹ä¿®æ”¹
-=======
-//G:\kuaipan\ggg\www\github_klggg
-
-//Òª´¦ÀíµÄÕÕÆ¬À´Ô´Â·¾¶  * ĞèÒªÕë¶Ô×Ô¼ºµÄÇé¿ö×öÏÂĞŞ¸Ä
->>>>>>> 4fd51768c245e633e7beb027832badef9cbbe720
-//$photo_source_path = $curr_dir_path.'/../../pic';
-//$photo_source_path = $curr_dir_path.'/../../../[Pictures]';
-//$photo_source_path = 'F:/tmp';
-//$photo_source_path = 'K:/å®¶åº­ç…§ç‰‡å½•åƒ';
-//$photo_source_path = 'K:/å®¶åº­ç…§ç‰‡';
-//$photo_source_path = 'H:/kuaipan/[MobileBackup]/[Pictures]/[Camera Album]'; //android
-//$photo_source_path = 'H:/kuaipan/[Pictures]'; //pad
-//$photo_source_path = 'D:/¿ìÅÌ/[Pictures]'; //pad
-
 //$photo_source_path = 'H:/kuaipan/ggg/pic_new_month/pic/1970-01';
 //$photo_source_path = 'H:/kuaipan/ggg/pic_new_month/unkown';
 
@@ -92,11 +72,10 @@ else
 
 
 $PhotoMove_obj=  new PhotoMove($config,$log);
-//$PhotoMove_obj->run( 'D:/¿ìÅÌ/[MobileBackup]');
-//$PhotoMove_obj->run('D:/¿ìÅÌ/[Pictures]');
-//$PhotoMove_obj->run('D:/¿ìÅÌ/[Videos]');
-
-$PhotoMove_obj->run('D:/¿ìÅÌ/ggg/pic_new_month/unkown');
+$PhotoMove_obj->run( 'D:/kuaipan/[MobileBackup]');
+$PhotoMove_obj->run('D:/kuaipan/[Pictures]');
+$PhotoMove_obj->run('D:/kuaipan/[Videos]');
+//$PhotoMove_obj->run('D:/kuaipan/ggg/pic_new_month/unkown');
 
 
 echo "done";

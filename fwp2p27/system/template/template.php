@@ -330,6 +330,7 @@ class AppTemplate
      * @return  sring
      */
     function fetch_str($source)
+<<<<<<< HEAD
      {
     //     echo "-------------\n";
     //     echo($source);
@@ -344,6 +345,10 @@ class AppTemplate
         //  , $source);
         // return $tmp_return;
          
+=======
+    {
+        return preg_replace("/{([^\}\{\n]*)}/e", "\$this->select('\\1');", $source);
+>>>>>>> 88ff99af4a79ee6d3241fb6bc3a913083a079c5c
     }
 
     

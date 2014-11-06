@@ -10,3 +10,12 @@ vendor/*
 *.*~
 *.DS_Store
 dyp2p/data/*
+fwp2p27/.tags_sorted_by_file
+fwp2p27/.tags
+fwp2p27/public/runtime
+fwp2p27/public/attachment
+.DS_Store
+.gitignore
+dyp2p/.htaccess
+dyp2p/.tags
+dyp2p/.tags_sorted_by_file
