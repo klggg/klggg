@@ -69,7 +69,7 @@ function check()
 <body>
 <table width="100%" border="0" align="center" cellpadding="3" cellspacing="1">
   <tr> 
-    <td width="51%">位置：備份數據 -&gt; <a href="ChangeDb.php">選擇數據庫</a>(<b><?=$mydbname?></b>) -&gt; <a href="ChangeTable.php?mydbname=<?=$mydbname?>">選擇備份表</a></td>
+    <td width="51%">位置：備份數據 -&gt; <a href="ChangeDb.php">選擇數據庫</a>(<b><?php echo $mydbname?></b>) -&gt; <a href="ChangeTable.php?mydbname=<?php echo $mydbname?>">選擇備份表</a></td>
     <td width="49%"><div align="right"> </div></td>
   </tr>
   <tr> 
@@ -82,19 +82,19 @@ function check()
     <tr> 
       <td height="25"><font color="#FFFFFF">備份參數設置： 
         <input name="phome" type="hidden" id="phome" value="DoEbak">
-        <input name="mydbname" type="hidden" id="mydbname" value="<?=$mydbname?>">
+        <input name="mydbname" type="hidden" id="mydbname" value="<?php echo $mydbname?>">
         </font></td>
     </tr>
     <tr> 
       <td height="25" bgcolor="#FFFFFF"> <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#DBEAF5">
           <tr> 
             <td width="22%">&nbsp;</td>
-            <td> [<a href="#ebak" onclick="javascript:window.open('ListSetbak.php?mydbname=<?=$mydbname?>&change=1','','width=550,height=380,scrollbars=yes');">導入設置</a>]&nbsp;&nbsp;&nbsp;[<a href="#ebak" onclick="javascript:showsave.style.display='';">保存設置</a>]&nbsp;&nbsp;&nbsp;[<a href="#ebak" onclick="javascript:showreptable.style.display='';">批量替換表名</a>]</td>
+            <td> [<a href="#ebak" onclick="javascript:window.open('ListSetbak.php?mydbname=<?php echo $mydbname?>&change=1','','width=550,height=380,scrollbars=yes');">導入設置</a>]&nbsp;&nbsp;&nbsp;[<a href="#ebak" onclick="javascript:showsave.style.display='';">保存設置</a>]&nbsp;&nbsp;&nbsp;[<a href="#ebak" onclick="javascript:showreptable.style.display='';">批量替換表名</a>]</td>
           </tr>
           <tr id="showsave" style="display:none">
             <td>&nbsp;</td>
             <td>保存文件名:setsave/ 
-              <input name="savename" type="text" id="savename" value="<?=$_GET['savefilename']?>">
+              <input name="savename" type="text" id="savename" value="<?php echo $_GET['savefilename']?>">
               <input name="Submit4" type="submit" id="Submit4" onClick="document.ebakchangetb.phome.value='DoSave';document.ebakchangetb.action='phome.php';" value="保存設置">
               <font color="#666666">(文件名請用英文字母,如：test)</font></td>
           </tr>
@@ -110,31 +110,31 @@ function check()
         </table>
         <table width="100%" border="0" align="center" cellpadding="3" cellspacing="1">
           <tr> 
-            <td width="22%"><input type="radio" name="baktype" value="0"<?=$dbaktype==0?' checked':''?>> 
+            <td width="22%"><input type="radio" name="baktype" value="0"<?php echo $dbaktype==0?' checked':''?>> 
               <strong>按文件大小備份</strong> </td>
             <td width="78%" height="23"> 每組備份大小: 
-              <input name="filesize" type="text" id="filesize" value="<?=$dfilesize?>" size="6">
+              <input name="filesize" type="text" id="filesize" value="<?php echo $dfilesize?>" size="6">
               KB <font color="#666666">(1 MB = 1024 KB)</font></td>
           </tr>
           <tr> 
-            <td><input type="radio" name="baktype" value="1"<?=$dbaktype==1?' checked':''?>> 
+            <td><input type="radio" name="baktype" value="1"<?php echo $dbaktype==1?' checked':''?>> 
               <strong>按記錄數備份</strong></td>
             <td height="23">每組備份 
-              <input name="bakline" type="text" id="bakline" value="<?=$dbakline?>" size="6">
+              <input name="bakline" type="text" id="bakline" value="<?php echo $dbakline?>" size="6">
               條記錄， 
-              <input name="autoauf" type="checkbox" id="autoauf" value="1"<?=$dautoauf==1?' checked':''?>>
+              <input name="autoauf" type="checkbox" id="autoauf" value="1"<?php echo $dautoauf==1?' checked':''?>>
               自動識別自增字段<font color="#666666">(此方式效率更高)</font></td>
           </tr>
           <tr> 
             <td>備份數據庫結構</td>
-            <td height="23"><input name="bakstru" type="checkbox" id="bakstru" value="1"<?=$dbakstru==1?' checked':''?>>
+            <td height="23"><input name="bakstru" type="checkbox" id="bakstru" value="1"<?php echo $dbakstru==1?' checked':''?>>
               是 <font color="#666666">(沒特殊情況，請選擇)</font></td>
           </tr>
           <tr> 
             <td>數據編碼</td>
             <td height="23"> <select name="dbchar" id="dbchar">
-                <option value="auto"<?=$ddbchar=='auto'?' selected':''?>>自動識別編碼</option>
-                <option value=""<?=$ddbchar==''?' selected':''?>>不設置</option>
+                <option value="auto"<?php echo $ddbchar=='auto'?' selected':''?>>自動識別編碼</option>
+                <option value=""<?php echo $ddbchar==''?' selected':''?>>不設置</option>
                 <?php
 				echo Ebak_ReturnDbCharList($ddbchar);
 				?>
@@ -142,17 +142,17 @@ function check()
           </tr>
           <tr>
             <td>數據存放格式</td>
-            <td height="23"><input type="radio" name="bakdatatype" value="0"<?=$dbakdatatype==0?' checked':''?>>
+            <td height="23"><input type="radio" name="bakdatatype" value="0"<?php echo $dbakdatatype==0?' checked':''?>>
               正常
-              <input type="radio" name="bakdatatype" value="1"<?=$dbakdatatype==1?' checked':''?>>
+              <input type="radio" name="bakdatatype" value="1"<?php echo $dbakdatatype==1?' checked':''?>>
               十六進制方式<font color="#666666">(十六進制備份文件會佔用更多的空間)</font></td>
           </tr>
           <tr> 
             <td>存放目錄</td>
             <td height="23"> 
-              <?=$bakpath?>
+              <?php echo $bakpath?>
               / 
-              <input name="mypath" type="text" id="mypath" value="<?=$mypath?>" size="28"> 
+              <input name="mypath" type="text" id="mypath" value="<?php echo $mypath?>" size="28"> 
               <font color="#666666"> 
               <input type="button" name="Submit2" value="選擇目錄" onclick="javascript:window.open('ChangePath.php?change=1&toform=ebakchangetb','','width=750,height=500,scrollbars=yes');">
               (目錄不存在，系統會自動建立)</font></td>
@@ -161,25 +161,25 @@ function check()
             <td>備份選項</td>
             <td height="23">導入方式: 
               <select name="insertf" id="select">
-                <option value="replace"<?=$dinsertf=='replace'?' selected':''?>>REPLACE</option>
-                <option value="insert"<?=$dinsertf=='insert'?' selected':''?>>INSERT</option>
+                <option value="replace"<?php echo $dinsertf=='replace'?' selected':''?>>REPLACE</option>
+                <option value="insert"<?php echo $dinsertf=='insert'?' selected':''?>>INSERT</option>
               </select>
               , 
-              <input name="beover" type="checkbox" id="beover" value="1"<?=$dbeover==1?' checked':''?>>
+              <input name="beover" type="checkbox" id="beover" value="1"<?php echo $dbeover==1?' checked':''?>>
               完整插入，
-              <input name="bakstrufour" type="checkbox" id="bakstrufour" value="1"<?=$dbakstrufour==1?' checked':''?>>
+              <input name="bakstrufour" type="checkbox" id="bakstrufour" value="1"<?php echo $dbakstrufour==1?' checked':''?>>
               <a title="需要轉換數據表編碼時選擇">轉成MYSQL4.0格式</a>, 每組備份間隔： 
-              <input name="waitbaktime" type="text" id="waitbaktime" value="<?=$dwaitbaktime?>" size="2">
+              <input name="waitbaktime" type="text" id="waitbaktime" value="<?php echo $dwaitbaktime?>" size="2">
               秒</td>
           </tr>
           <tr> 
             <td valign="top">備份說明<br> <font color="#666666">(系統會生成一個readme.txt)</font></td>
-            <td height="23"><textarea name="readme" cols="80" rows="5" id="readme"><?=$dreadme?></textarea></td>
+            <td height="23"><textarea name="readme" cols="80" rows="5" id="readme"><?php echo $dreadme?></textarea></td>
           </tr>
           <tr> 
             <td valign="top">去除自增值的字段列表：<br> <font color="#666666">(格式：<strong>表名.字段名</strong><br>
               多個請用&quot;,&quot;格開)</font></td>
-            <td height="23"><textarea name="autofield" cols="80" rows="5" id="autofield"><?=$dautofield?></textarea></td>
+            <td height="23"><textarea name="autofield" cols="80" rows="5" id="autofield"><?php echo $dautofield?></textarea></td>
           </tr>
         </table>
       </td>
@@ -191,8 +191,8 @@ function check()
             <td width="50%"><font color="#FFFFFF">選擇要備份的表：( <a href="#ebak" onclick="SelectCheckAll(document.ebakchangetb)"><font color="#ffffff"><u>全選</u></font></a> 
               | <a href="#ebak" onclick="reverseCheckAll(document.ebakchangetb);"><font color="#ffffff"><u>反選</u></font></a> )</font></td>
             <td><div align="right"><font color="#FFFFFF">查詢:</font> 
-                <input name="keyboard" type="text" id="keyboard" value="<?=$keyboard?>">
-                <input type="button" name="Submit32" value="顯示數據表" onclick="self.location.href='ChangeTable.php?sear=1&mydbname=<?=$mydbname?>&keyboard='+document.ebakchangetb.keyboard.value;">
+                <input name="keyboard" type="text" id="keyboard" value="<?php echo $keyboard?>">
+                <input type="button" name="Submit32" value="顯示數據表" onclick="self.location.href='ChangeTable.php?sear=1&mydbname=<?php echo $mydbname?>&keyboard='+document.ebakchangetb.keyboard.value;">
               </div></td>
           </tr>
         </table></td>
@@ -243,27 +243,27 @@ function check()
 			}
 			$collation=$r[Collation]?$r[Collation]:'---';
 		  ?>
-          <tr id=tb<?=$r[Name]?>> 
+          <tr id=tb<?php echo $r[Name]?>> 
             <td height="23"> <div align="center"> 
-                <input name="tablename[]" type="checkbox" id="tablename[]" value="<?=$r[Name]?>" onclick="if(this.checked){tb<?=$r[Name]?>.style.backgroundColor='#F1F7FC';}else{tb<?=$r[Name]?>.style.backgroundColor='#ffffff';}"<?=$tbchecked?>>
+                <input name="tablename[]" type="checkbox" id="tablename[]" value="<?php echo $r[Name]?>" onclick="if(this.checked){tb<?php echo $r[Name]?>.style.backgroundColor='#F1F7FC';}else{tb<?php echo $r[Name]?>.style.backgroundColor='#ffffff';}"<?php echo $tbchecked?>>
               </div></td>
-            <td height="23"> <div align="left"><a href="#ebak" onclick="window.open('ListField.php?mydbname=<?=$mydbname?>&mytbname=<?=$r[Name]?>','','width=660,height=500,scrollbars=yes');" title="點擊查看表字段列表"> 
-                <?=$r[Name]?>
+            <td height="23"> <div align="left"><a href="#ebak" onclick="window.open('ListField.php?mydbname=<?php echo $mydbname?>&mytbname=<?php echo $r[Name]?>','','width=660,height=500,scrollbars=yes');" title="點擊查看表字段列表"> 
+                <?php echo $r[Name]?>
                 </a></div></td>
             <td height="23"> <div align="center">
-                <?=$r[Type]?$r[Type]:$r[Engine]?>
+                <?php echo $r[Type]?$r[Type]:$r[Engine]?>
               </div></td>
             <td><div align="center">
-				<?=$collation?>
+				<?php echo $collation?>
               </div></td>
             <td height="23"> <div align="right">
-                <?=$r[Rows]?>
+                <?php echo $r[Rows]?>
               </div></td>
             <td height="23"> <div align="right">
-                <?=Ebak_ChangeSize($datasize)?>
+                <?php echo Ebak_ChangeSize($datasize)?>
               </div></td>
             <td height="23"> <div align="right">
-                <?=Ebak_ChangeSize($r[Data_free])?>
+                <?php echo Ebak_ChangeSize($r[Data_free])?>
               </div></td>
           </tr>
           <?php
@@ -271,18 +271,18 @@ function check()
 		  ?>
           <tr bgcolor="#DBEAF5"> 
             <td height="23"> <div align="center">
-                <input type=checkbox name=chkall value=on onclick="CheckAll(this.form)"<?=$check==0?' checked':''?>>
+                <input type=checkbox name=chkall value=on onclick="CheckAll(this.form)"<?php echo $check==0?' checked':''?>>
               </div></td>
             <td height="23"> <div align="center"> 
-                <?=$tablenum?>
+                <?php echo $tablenum?>
               </div></td>
             <td height="23"> <div align="center">---</div></td>
             <td><div align="center">---</div></td>
             <td height="23"> <div align="center">
-                <?=$rownum?>
+                <?php echo $rownum?>
               </div></td>
             <td height="23" colspan="2"> <div align="center">
-                <?=Ebak_ChangeSize($totaldatasize)?>
+                <?php echo Ebak_ChangeSize($totaldatasize)?>
               </div></td>
           </tr>
         </table></td>

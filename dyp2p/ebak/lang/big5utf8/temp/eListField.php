@@ -12,12 +12,12 @@ if(!defined('InEmpireBak'))
 <script>
 function ChangeAutoField(f)
 {
-	var tbname="<?=$mytbname?>";
+	var tbname="<?php echo $mytbname?>";
 	var chstr=tbname+"."+f;
 	var r;
 	var dh=",";
 	var a;
-	a=opener.document.<?=$form?>.autofield.value;
+	a=opener.document.<?php echo $form?>.autofield.value;
 	r=a.split(chstr);
 	if(r.length!=1)
 	{return true;}
@@ -25,7 +25,7 @@ function ChangeAutoField(f)
 	{
 		dh="";
 	}
-	opener.document.<?=$form?>.autofield.value+=dh+chstr;
+	opener.document.<?php echo $form?>.autofield.value+=dh+chstr;
 	window.close();
 }
 </script>
@@ -35,9 +35,9 @@ function ChangeAutoField(f)
 <table width="100%" border="0" align="center" cellpadding="3" cellspacing="1">
   <tr> 
     <td>位置：<b>
-      <?=$mydbname?>
+      <?php echo $mydbname?>
       .
-      <?=$mytbname?>
+      <?php echo $mytbname?>
       </b> 字段列表&nbsp;<font color="#666666">(點擊字段名可「加入去除自增值字段列表」)</font></td>
   </tr>
 </table>
@@ -57,19 +57,19 @@ function ChangeAutoField(f)
   ?>
   <tr bgcolor="#FFFFFF"> 
     <td height="27"> <div align="center">
-        <?=$r[Field]?>
+        <?php echo $r[Field]?>
       </div></td>
     <td> <div align="center">
-        <?=$r[Type]?>
+        <?php echo $r[Type]?>
       </div></td>
     <td> <div align="center">
-        <?=$r[Key]?>
+        <?php echo $r[Key]?>
       </div></td>
     <td> <div align="center">
-        <?=$r['Default']?>
+        <?php echo $r['Default']?>
       </div></td>
     <td> <div align="center">
-        <?=$r[Extra]?>
+        <?php echo $r[Extra]?>
       </div></td>
   </tr>
   <?php

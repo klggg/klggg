@@ -68,7 +68,7 @@ function GetPhpSafemod()
           <td bgcolor="#FFFFFF"><table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#DBEAF5">
               <tr bgcolor="#FFFFFF"> 
                 <td height="25"> <div align="left">登录者:&nbsp;<b> 
-                    <?=$loginin?>
+                    <?php echo $loginin?>
                     </b></div></td>
               </tr>
             </table></td>
@@ -133,7 +133,7 @@ function GetPhpSafemod()
           <td bgcolor="#FFFFFF"><table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#DBEAF5">
               <tr bgcolor="#FFFFFF"> 
                 <td height="26">服务器软件: 
-                  <?=$_SERVER['SERVER_SOFTWARE']?>
+                  <?php echo $_SERVER['SERVER_SOFTWARE']?>
                 </td>
                 <td height="26">操作系统&nbsp;&nbsp;:
 				<?php echo GetUseSys();?></td>
@@ -145,10 +145,10 @@ function GetPhpSafemod()
               </tr>
               <tr bgcolor="#FFFFFF"> 
                 <td height="25">全局变量&nbsp;&nbsp;: 
-                  <?=$onoff?>
+                  <?php echo $onoff?>
                 </td>
                 <td height="25">上传文件&nbsp;&nbsp;: 
-                  <?=$upload?>
+                  <?php echo $upload?>
                 </td>
               </tr>
               <tr bgcolor="#FFFFFF"> 
@@ -161,7 +161,7 @@ function GetPhpSafemod()
                 <td height="25">程序版本&nbsp;&nbsp;: <a href="http://www.phome.net" target="_blank"><strong><font color="#07519A">EmpireBak</font></strong> 
                   <font color="#FF9900"><strong>v2010</strong></font></a> <font color="#666666">[开源版]</font></td>
                 <td height="25">安全模式&nbsp;&nbsp;: 
-                  <?=GetPhpSafemod()?>
+                  <?php echo GetPhpSafemod()?>
                 </td>
               </tr>
             </table></td>

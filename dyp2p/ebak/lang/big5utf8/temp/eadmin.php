@@ -39,7 +39,7 @@ document.all("frmTitle").style.display=""
             <td width="73%" bgcolor="C7D4F7"><strong>歡迎使用帝國備份王 [<a href="http://www.phome.net/" target="_blank">官方站</a>]</strong></td>
             <td width="27%" bgcolor="C7D4F7"> 
               <select name="select" onchange="parent.location.href='phome.php?phome=ChangeLanguage&from=admin.php&l='+this.value;" style="width:300">
-			<?=Ebak_ReturnLang()?>
+			<?php echo Ebak_ReturnLang()?>
               </select></td>
           </tr>
           <tr>

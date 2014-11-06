@@ -1,45 +1,172 @@
-注意：一般不想麻烦的一定要选择数据库和你的主机在同一个系统或者IP内！
 
-伪静态配置请联系主机商帮助你搭建，服务器或者云主机可以百度一下rewrite的安装或者读取一下Rewrite目录里面的说明！目前仅支持iis的rewrite！
+2014-10-23
+[sql]
+	掳虏脳掳潞贸脰麓脨脨
 
-第1步.上传程序后先还原数据库，这里采用的是帝国备份王恢复数据库的方法，访问http://您的域名/ebak进入帝国备份王登陆界面，账号和密码分别是admin和123456
-
-新手注意：不会恢复的请参照我们的教程 —— http://www.52jscn.com/web/2013/03/4580.shtml
-
-第2步.修改数据库链接文件（推荐使用代码编辑软件打开以下文件，仅仅需要修改数据库用户名、数据库用户密码、数据库名这三处，推荐Dreamweaver或者EditPlus）
-
-①打开core/common.inc.php，按照里面的数据库标注修改数据库链接；
-
-②bbs/config/config_global.php，修改root为您的数据库用户名，第一个52jscn为您的数据库密码，第二个52jscn为您的数据库名称；
-
-③bbs/config/config_ucenter.php，修改root为您的数据库用户名，第一个52jscn为您的数据库密码，第二个52jscn为您的数据库名称，第三个52jscn为您的数据库名称，另外还要将里面的demo.52jscn.com改成你自己的网址；
-
-④bbs/uc_server/data/config.inc.php，修改root为您的数据库用户名，第一个52jscn为您的数据库密码，第二个52jscn为您的数据库名称；
-
-第3步.登陆网站后台
-
-访问http://您的域名/?admin     账号和密码为admin和admin
-
-进入之后，首先点击顶部菜单系统管理——左侧菜单系统参数，将里面的网站网址改成你自己的域名，一定要是http://demo.52jscn.com格式；
-
-再点击顶部菜单的新开发功能——左侧菜单中的Ucenter，这个是开启整合discuz论坛的功能，根据自己情况，不要论坛的直接选择否，需要开启就按照以下格式修改：
-
-UCenter 数据库用户名：——————————修改成你自己的数据库用户名
-
-UCenter 数据库密码：——————————修改成你自己的数据库密码
-
-UCenter 数据库名称：——————————修改成你自己的数据库名称
-
-UCenter 安装地址：——————————仅仅把demo.52jscn.com修改成你当前的域名
+		alter table yyd_users modify paypassword varchar(100)  null default '';
+		alter table yyd_users modify question varchar(100)  null default '';
+		alter table yyd_users modify answer varchar(50)  null default '';
+		alter table yyd_users modify logintime int(11)  null default 0;
+		alter table yyd_users modify second_status int(10)  null default 0;
+		alter table pre_ucenter_memberfields modify blacklist text null;
 
 
-其余功能就自己摸索以下吧！不再赘述！！
+		alter table yyd_users_info modify niname varchar(50) null default '';
+		alter table yyd_users_info modify sex varchar(10) null default '';
+		alter table yyd_users_info modify birthday varchar(50) null default '';
+		alter table yyd_users_info modify avatar longtext null ;
+
+	 alter table yyd_users_info modify status        int(2) null default 0; 
+	 alter table yyd_users_info modify invite_userid int(11) default 0; 
+	 alter table yyd_users_info modify invite_money   decimal(11,2) null default 0.0; 
+	 alter table yyd_users_info modify realname          varchar(200) null default ''; 
+	 alter table yyd_users_info modify realname_status   int(2) null default 0; 
+	 alter table yyd_users_info modify realname_times    int(11)  null default 0; 
+	 alter table yyd_users_info modify education         varchar(200) null  default ''; 
+	 alter table yyd_users_info modify education_status  int(2)  null default 0; 
+	 alter table yyd_users_info modify edu_times         int(11)  null default 0; 
+	 alter table yyd_users_info modify phone             varchar(200) null  default ''; 
+	 alter table yyd_users_info modify phone_status      int(2)  null default 0; 
+	 alter table yyd_users_info modify video_status      int(2) null  default 0; 
+	 alter table yyd_users_info modify tender_status     int(2) null  default 0; 
+	 alter table yyd_users_info modify province          varchar(11) null  default ''; 
+	 alter table yyd_users_info modify city              varchar(11) null  default ''; 
+	 alter table yyd_users_info modify area              varchar(11) null  default ''; 
+	 alter table yyd_users_info modify web_status        int(2)  null default 0; 
+	 alter table yyd_users_info modify question          varchar(100)  null default ''; 
+	 alter table yyd_users_info modify answer            varchar(100) null  default ''; 
+
+	 alter table yyd_credit_log modify update_time    varchar(50) null  default ''; 
+	alter table yyd_credit modify credit int(11)  null default 0; 
+	alter table yyd_credit modify credits longtext null  ; 
+
+
+	alter table yyd_users_vip modify status    int(2)    null default 0; 
+	alter table yyd_users_vip modify vip_type    int(2)    null default 0; 
+	alter table yyd_users_vip modify years    int(2)    null default 0; 
+	alter table yyd_users_vip modify money    int(11)    null default 0; 
+	alter table yyd_users_vip modify kefu_userid    int(11)    null default 0; 
+	alter table yyd_users_vip modify gold_status    int(2)    null default 0; 
+	alter table yyd_users_vip modify remark    varchar(250)    null default ''; 
+	alter table yyd_users_vip modify first_date    varchar(50)    null default ''; 
+	alter table yyd_users_vip modify end_date    varchar(50)    null default ''; 
+	alter table yyd_users_vip modify `order`    int(11)    null default 0; 
+	alter table yyd_users_vip modify verify_userid    int(11)    null default 0; 
+	alter table yyd_users_vip modify verify_time    varchar(50)    null default ''; 
+	alter table yyd_users_vip modify verify_remark    varchar(250)    null default ''; 
+	alter table yyd_users_vip modify addtime    varchar(50)    null default ''; 
+	alter table yyd_users_vip modify addip    varchar(50)    null default ''; 
+
+	alter table yyd_borrow_amount modify  id      int(11) unsigned      null  default 0; 
+	alter table yyd_borrow_amount modify  user_id      int(11)      null  default 0; 
+	alter table yyd_borrow_amount modify  borrow      decimal(11,2)      null  default 0; 
+	alter table yyd_borrow_amount modify  borrow_add      decimal(11,2)      null  default 0; 
+	alter table yyd_borrow_amount modify  borrow_reduce      decimal(11,2)      null  default 0; 
+	alter table yyd_borrow_amount modify  borrow_use      decimal(11,2)      null  default 0; 
+	alter table yyd_borrow_amount modify  vouch_borrow      decimal(11,2)      null  default 0; 
+	alter table yyd_borrow_amount modify  vouch_borrow_add      decimal(11,2)      null  default 0; 
+	alter table yyd_borrow_amount modify  vouch_borrow_reduce      decimal(11,2)      null  default 0; 
+	alter table yyd_borrow_amount modify  vouch_borrow_use      decimal(11,2)      null  default 0; 
+	alter table yyd_borrow_amount modify  vouch_tender      decimal(11,2)      null  default 0; 
+	alter table yyd_borrow_amount modify  vouch_tender_add      decimal(11,2)      null  default 0; 
+	alter table yyd_borrow_amount modify  vouch_tender_reduce      decimal(11,2)      null  default 0; 
+	alter table yyd_borrow_amount modify  vouch_tender_use      decimal(11,2)      null  default 0; 
+	alter table yyd_borrow_amount modify  update_time      varchar(50)      null  default ''; 
+	alter table yyd_borrow_amount modify  update_ip      varchar(50)      null  default ''; 
+
+	alter table yyd_borrow_amount modify  id      int(11) unsigned NOT NULL AUTO_INCREMENT; 
+
+	alter table yyd_account_users_bank modify   status    int(2)  	   null  default 0; 
+	alter table yyd_account_users_bank modify   update_time    varchar(50)  	   null  default ''; 
+	alter table yyd_account_users_bank modify   update_ip    varchar(50)  	   null  default ''; 
+
+
+	alter table yyd_approve_realname modify   realname    varchar(100)  	   null  default ''; 
+	alter table yyd_approve_realname modify   card_id    varchar(100)  	   null  default ''; 
+	alter table yyd_approve_realname modify   card_pic    varchar(100)  	   null  default ''; 
+	alter table yyd_approve_realname modify   card_pic1    varchar(200)  	   null  default ''; 
+	alter table yyd_approve_realname modify   card_pic2    varchar(200)  	   null  default ''; 
+	alter table yyd_approve_realname modify   id5_status    int(2)  	   null  ; 
+	alter table yyd_approve_realname modify  verify_remark      varchar(200)   null  default '';
+	alter table yyd_approve_realname modify  verify_time        varchar(50)    null  default '';
+	alter table yyd_approve_realname modify  verify_id5_userid  int(11)        null  ;
+	alter table yyd_approve_realname modify  verify_id5_time    varchar(50)    null  default '';
+	alter table yyd_approve_realname modify  verify_id5_remark  varchar(200)    null  default '';
+	alter table yyd_approve_realname modify  addtime            varchar(50)      null  default '';
+	alter table yyd_approve_realname modify  addip              varchar(50)      null  default '';
+	alter table yyd_approve_realname modify  type              varchar(40)      null  default '';
+	alter table yyd_approve_realname modify  sex              varchar(10)      null  default '';
+	alter table yyd_approve_realname modify  verify_userid    int(11)    null  ;
+
+	alter table yyd_approve_sms modify user_id        int(11)           null ;
+	alter table yyd_approve_sms modify  status         int(2)           null ;
+	alter table yyd_approve_sms modify  type           varchar(20)      null default '';
+	alter table yyd_approve_sms modify  phone          varchar(20)      null default '';
+	alter table yyd_approve_sms modify  credit         int(11)          null ;
+	alter table yyd_approve_sms modify  verify_userid  int(11)          null ;
+	alter table yyd_approve_sms modify  verify_time    varchar(50)      null default '';
+	alter table yyd_approve_sms modify  verify_remark  varchar(250)     null default '';
+	alter table yyd_approve_sms modify  check_time     varchar(30)      null default '';
+	alter table yyd_approve_sms modify  addtime        varchar(50)      null default '';
+	alter table yyd_approve_sms modify  addip          varchar(50)      null default '';
+
+
+	alter table yyd_users_upfiles modify  contents varchar(200)    null  default '';
+
+alter table yy_attestations  modify  user_id        int(11)           null; 
+alter table yy_attestations  modify  upfiles_id     int(11)           null;
+alter table yy_attestations  modify  type_id        int(11)           null ; 
+alter table yyd_attestations  modify  order          int(11)           null ;
+alter table yyd_attestations  modify  status         int(2)            null ; 
+alter table yyd_attestations  modify  addtime        varchar(30)       null default ''; 
+alter table yyd_attestations  modify  addip          varchar(30)       null default   '';         
+alter table yyd_attestations  modify  verify_time    varchar(30)       null default '';
+alter table yyd_attestations  modify  verify_userid  int(11)           null ;
+alter table yyd_attestations  modify  verify_remark  varchar(250)      null default '';
+
+
+脳垄脪芒拢潞脪禄掳茫虏禄脧毛脗茅路鲁碌脛脪禄露篓脪陋脩隆脭帽脢媒戮脻驴芒潞脥脛茫碌脛脰梅禄煤脭脷脥卢脪禄赂枚脧碌脥鲁禄貌脮脽IP脛脷拢隆
+
+脦卤戮虏脤卢脜盲脰脙脟毛脕陋脧碌脰梅禄煤脡脤掳茂脰煤脛茫麓卯陆篓拢卢路镁脦帽脝梅禄貌脮脽脭脝脰梅禄煤驴脡脪脭掳脵露脠脪禄脧脗rewrite碌脛掳虏脳掳禄貌脮脽露脕脠隆脪禄脧脗Rewrite脛驴脗录脌茂脙忙碌脛脣碌脙梅拢隆脛驴脟掳陆枚脰搂鲁脰iis碌脛rewrite拢隆
+
+碌脷1虏陆.脡脧麓芦鲁脤脨貌潞贸脧脠禄鹿脭颅脢媒戮脻驴芒拢卢脮芒脌茂虏脡脫脙碌脛脢脟碌脹鹿煤卤赂路脻脥玫禄脰赂麓脢媒戮脻驴芒碌脛路陆路篓拢卢路脙脦脢http://脛煤碌脛脫貌脙没/ebak陆酶脠毛碌脹鹿煤卤赂路脻脥玫碌脟脗陆陆莽脙忙拢卢脮脣潞脜潞脥脙脺脗毛路脰卤冒脢脟admin潞脥123456
+
+脨脗脢脰脳垄脪芒拢潞虏禄禄谩禄脰赂麓碌脛脟毛虏脦脮脮脦脪脙脟碌脛陆脤鲁脤 隆陋隆陋 http://www.52jscn.com/web/2013/03/4580.shtml
+
+碌脷2虏陆.脨脼赂脛脢媒戮脻驴芒脕麓陆脫脦脛录镁拢篓脥脝录枚脢鹿脫脙麓煤脗毛卤脿录颅脠铆录镁麓貌驴陋脪脭脧脗脦脛录镁拢卢陆枚陆枚脨猫脪陋脨脼赂脛脢媒戮脻驴芒脫脙禄搂脙没隆垄脢媒戮脻驴芒脫脙禄搂脙脺脗毛隆垄脢媒戮脻驴芒脙没脮芒脠媒麓娄拢卢脥脝录枚Dreamweaver禄貌脮脽EditPlus拢漏
+
+垄脵麓貌驴陋core/common.inc.php拢卢掳麓脮脮脌茂脙忙碌脛脢媒戮脻驴芒卤锚脳垄脨脼赂脛脢媒戮脻驴芒脕麓陆脫拢禄
+
+垄脷bbs/config/config_global.php拢卢脨脼赂脛root脦陋脛煤碌脛脢媒戮脻驴芒脫脙禄搂脙没拢卢碌脷脪禄赂枚52jscn脦陋脛煤碌脛脢媒戮脻驴芒脙脺脗毛拢卢碌脷露镁赂枚52jscn脦陋脛煤碌脛脢媒戮脻驴芒脙没鲁脝拢禄
+
+垄脹bbs/config/config_ucenter.php拢卢脨脼赂脛root脦陋脛煤碌脛脢媒戮脻驴芒脫脙禄搂脙没拢卢碌脷脪禄赂枚52jscn脦陋脛煤碌脛脢媒戮脻驴芒脙脺脗毛拢卢碌脷露镁赂枚52jscn脦陋脛煤碌脛脢媒戮脻驴芒脙没鲁脝拢卢碌脷脠媒赂枚52jscn脦陋脛煤碌脛脢媒戮脻驴芒脙没鲁脝拢卢脕铆脥芒禄鹿脪陋陆芦脌茂脙忙碌脛demo.52jscn.com赂脛鲁脡脛茫脳脭录潞碌脛脥酶脰路拢禄
+
+垄脺bbs/uc_server/data/config.inc.php拢卢脨脼赂脛root脦陋脛煤碌脛脢媒戮脻驴芒脫脙禄搂脙没拢卢碌脷脪禄赂枚52jscn脦陋脛煤碌脛脢媒戮脻驴芒脙脺脗毛拢卢碌脷露镁赂枚52jscn脦陋脛煤碌脛脢媒戮脻驴芒脙没鲁脝拢禄
+
+碌脷3虏陆.碌脟脗陆脥酶脮戮潞贸脤篓
+
+路脙脦脢http://脛煤碌脛脫貌脙没/?admin     脮脣潞脜潞脥脙脺脗毛脦陋admin潞脥admin
+
+陆酶脠毛脰庐潞贸拢卢脢脳脧脠碌茫禄梅露楼虏驴虏脣碌楼脧碌脥鲁鹿脺脌铆隆陋隆陋脳贸虏脿虏脣碌楼脧碌脥鲁虏脦脢媒拢卢陆芦脌茂脙忙碌脛脥酶脮戮脥酶脰路赂脛鲁脡脛茫脳脭录潞碌脛脫貌脙没拢卢脪禄露篓脪陋脢脟http://demo.52jscn.com赂帽脢陆拢禄
+
+脭脵碌茫禄梅露楼虏驴虏脣碌楼碌脛脨脗驴陋路垄鹿娄脛脺隆陋隆陋脳贸虏脿虏脣碌楼脰脨碌脛Ucenter拢卢脮芒赂枚脢脟驴陋脝么脮没潞脧discuz脗脹脤鲁碌脛鹿娄脛脺拢卢赂霉戮脻脳脭录潞脟茅驴枚拢卢虏禄脪陋脗脹脤鲁碌脛脰卤陆脫脩隆脭帽路帽拢卢脨猫脪陋驴陋脝么戮脥掳麓脮脮脪脭脧脗赂帽脢陆脨脼赂脛拢潞
+
+UCenter 脢媒戮脻驴芒脫脙禄搂脙没拢潞隆陋隆陋隆陋隆陋隆陋隆陋隆陋隆陋隆陋隆陋脨脼赂脛鲁脡脛茫脳脭录潞碌脛脢媒戮脻驴芒脫脙禄搂脙没
+
+UCenter 脢媒戮脻驴芒脙脺脗毛拢潞隆陋隆陋隆陋隆陋隆陋隆陋隆陋隆陋隆陋隆陋脨脼赂脛鲁脡脛茫脳脭录潞碌脛脢媒戮脻驴芒脙脺脗毛
+
+UCenter 脢媒戮脻驴芒脙没鲁脝拢潞隆陋隆陋隆陋隆陋隆陋隆陋隆陋隆陋隆陋隆陋脨脼赂脛鲁脡脛茫脳脭录潞碌脛脢媒戮脻驴芒脙没鲁脝
+
+UCenter 掳虏脳掳碌脴脰路拢潞隆陋隆陋隆陋隆陋隆陋隆陋隆陋隆陋隆陋隆陋陆枚陆枚掳脩demo.52jscn.com脨脼赂脛鲁脡脛茫碌卤脟掳碌脛脫貌脙没
+
+
+脝盲脫脿鹿娄脛脺戮脥脳脭录潞脙镁脣梅脪脭脧脗掳脡拢隆虏禄脭脵脳赂脢枚拢隆拢隆
 
 
 ---------------------------------------------------------------------------------------------
-购买中国尚网空间免费赠送源码，并安装架设好，提供技术支持 www.3s3w.com 联系QQ：843495165
+鹿潞脗貌脰脨鹿煤脡脨脥酶驴脮录盲脙芒路脩脭霉脣脥脭麓脗毛拢卢虏垄掳虏脳掳录脺脡猫潞脙拢卢脤谩鹿漏录录脢玫脰搂鲁脰 www.3s3w.com 脕陋脧碌QQ拢潞843495165
 
-免备案云虚拟主机 200M 98元 送数据库，代理更优惠，香港，国内多线，美国机房可选，高速稳定。
+脙芒卤赂掳赂脭脝脨茅脛芒脰梅禄煤 200M 98脭陋 脣脥脢媒戮脻驴芒拢卢麓煤脌铆赂眉脫脜禄脻拢卢脧茫赂脹拢卢鹿煤脛脷露脿脧脽拢卢脙脌鹿煤禄煤路驴驴脡脩隆拢卢赂脽脣脵脦脠露篓隆拢
 
-加入VIP会员仅需28元，可下载所有精品VIP源码，且源码不断新增中 bbs.3s3w.com    
+录脫脠毛VIP禄谩脭卤陆枚脨猫28脭陋拢卢驴脡脧脗脭脴脣霉脫脨戮芦脝路VIP脭麓脗毛拢卢脟脪脭麓脗毛虏禄露脧脨脗脭枚脰脨 bbs.3s3w.com    
 ---------------------------------------------------------------------------------------------

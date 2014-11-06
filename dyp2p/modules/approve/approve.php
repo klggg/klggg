@@ -179,6 +179,8 @@ elseif ($_A['query_type'] == "realname_id5set"){
 **/
 
 elseif ($_A['query_type'] == "sms"  ){
+
+
 	if (isset($_POST['phone'])){
 		$msg = check_valicode();
 		if ($msg==""){
@@ -187,6 +189,7 @@ elseif ($_A['query_type'] == "sms"  ){
 			if ($_POST['id']!=""){
 				$data['id'] = $_POST['id'];
 				$result = approveClass::UpdateSms($data);
+
 				if ($result>0){
 					$msg = array($MsgInfo["approve_sms_update_success"],"",$_A['query_url_all']);
 				}else{
@@ -228,6 +231,8 @@ elseif ($_A['query_type'] == "sms"  ){
 			$data = post_var($var);
 			$data['id'] = $_REQUEST['examine'];
 			$data['verify_userid'] = $_G['user_id'];
+
+			
 			$result = approveClass::CheckSms($data);
 			
 			if ($result>0){

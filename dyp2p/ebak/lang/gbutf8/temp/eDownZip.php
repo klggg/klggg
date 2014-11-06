@@ -15,16 +15,16 @@ if(!defined('InEmpireBak'))
 <table width="100%" border="0" align="center" cellpadding="3" cellspacing="1" bgcolor="#0472BC">
   <tr> 
     <td height="30"> <div align="center"><strong><font color="#FFFFFF">下载压缩包(目录： 
-        <?=$p?>
+        <?php echo $p?>
         )</font></strong></div></td>
   </tr>
   <tr> 
     <td height="30" bgcolor="#FFFFFF"> 
-      <div align="center">[<a href="<?=$file?>">下载压缩包</a>]</div></td>
+      <div align="center">[<a href="<?php echo $file?>">下载压缩包</a>]</div></td>
   </tr>
   <tr> 
     <td height="30" bgcolor="#FFFFFF"> 
-      <div align="center">[<a href="phome.php?f=<?=$f?>&phome=DelZip" onclick="return confirm('确认要删除？');">删除压缩包</a>]</div></td>
+      <div align="center">[<a href="phome.php?f=<?php echo $f?>&phome=DelZip" onclick="return confirm('确认要删除？');">删除压缩包</a>]</div></td>
   </tr>
   <tr>
     <td height="30" bgcolor="#FFFFFF">

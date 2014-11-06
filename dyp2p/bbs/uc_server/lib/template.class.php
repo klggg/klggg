@@ -20,7 +20,7 @@ class template {
 	var $force = 0;
 
 	var $var_regexp = "\@?\\\$[a-zA-Z_]\w*(?:\[[\w\.\"\'\[\]\$]+\])*";
-	var $vtag_regexp = "\<\?=(\@?\\\$[a-zA-Z_]\w*(?:\[[\w\.\"\'\[\]\$]+\])*)\?\>";
+	var $vtag_regexp = "\<\?php echo (\@?\\\$[a-zA-Z_]\w*(?:\[[\w\.\"\'\[\]\$]+\])*)\?\>";
 	var $const_regexp = "\{([\w]+)\}";
 
 	var $languages = array();
@@ -76,11 +76,11 @@ class template {
 		$template = preg_replace("/\<\!\-\-\{(.+?)\}\-\-\>/s", "{\\1}", $template);
 		$template = preg_replace("/\{lang\s+(\w+?)\}/ise", "\$this->lang('\\1')", $template);
 
-		$template = preg_replace("/\{($this->var_regexp)\}/", "<?=\\1?>", $template);
-		$template = preg_replace("/\{($this->const_regexp)\}/", "<?=\\1?>", $template);
-		$template = preg_replace("/(?<!\<\?\=|\\\\)$this->var_regexp/", "<?=\\0?>", $template);
+		$template = preg_replace("/\{($this->var_regexp)\}/", "<?php echo \\1?>", $template);
+		$template = preg_replace("/\{($this->const_regexp)\}/", "<?php echo \\1?>", $template);
+		$template = preg_replace("/(?<!\<\?\=|\\\\)$this->var_regexp/", "<?php echo \\0?>", $template);
 
-		$template = preg_replace("/\<\?=(\@?\\\$[a-zA-Z_]\w*)((\[[\\$\[\]\w]+\])+)\?\>/ies", "\$this->arrayindex('\\1', '\\2')", $template);
+		$template = preg_replace("/\<\?php echo (\@?\\\$[a-zA-Z_]\w*)((\[[\\$\[\]\w]+\])+)\?\>/ies", "\$this->arrayindex('\\1', '\\2')", $template);
 
 		$template = preg_replace("/\{\{eval (.*?)\}\}/ies", "\$this->stripvtag('<?php \\1?>')", $template);
 		$template = preg_replace("/\{eval (.*?)\}/ies", "\$this->stripvtag('<?php \\1?>')", $template);
@@ -102,7 +102,7 @@ class template {
 		$template = preg_replace("/\{\/if\}/is", "<?php } ?>", $template);
 		$template = preg_replace("/\{\/for\}/is", "<?php } ?>", $template);
 
-		$template = preg_replace("/$this->const_regexp/", "<?=\\1?>", $template);
+		$template = preg_replace("/$this->const_regexp/", "<?php echo \\1?>", $template);
 
 		$template = "<?php if(!defined('UC_ROOT')) exit('Access Denied');?>\r\n$template";
 		$template = preg_replace("/(\\\$[a-zA-Z_]\w+\[)([a-zA-Z_]\w+)\]/i", "\\1'\\2']", $template);
@@ -117,7 +117,7 @@ class template {
 
 	function arrayindex($name, $items) {
 		$items = preg_replace("/\[([a-zA-Z_]\w*)\]/is", "['\\1']", $items);
-		return "<?=$name$items?>";
+		return "<?php echo $name$items?>";
 	}
 
 	function stripvtag($s) {

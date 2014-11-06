@@ -35,7 +35,7 @@ if(self!=top)
             <div style="padding:6px" align="center" width="300" height="80"><fieldset>
               <legend><font size="4">Language</font></legend>
               <table cellpadding=0 cellspacing=0 border=0><tr><td height="30"><select name="select" onchange="parent.location.href='phome.php?phome=ChangeLanguage&from=index.php&l='+this.value;" style="width=300">
-                      <?=Ebak_ReturnLang()?>
+                      <?php echo Ebak_ReturnLang()?>
                     </select></td></tr></table></fieldset></div>
 		  </td>
         </tr>

@@ -12,7 +12,5 @@ vendor/*
 /dyp2p/dyp2p.zip
 fwp2p27/public/attachment/
 fwp2p27/public/runtime
-
-
 .tags
 .tags_sorted_by_file

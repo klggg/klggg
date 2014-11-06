@@ -54,14 +54,14 @@ function DoDrop(dbname)
 		$bgcolor="#ffffff";
 	}
   ?>
-  <tr bgcolor="<?=$bgcolor?>"> 
+  <tr bgcolor="<?php echo $bgcolor?>"> 
     <td height="25"> 
-      <div align="center"><?=$r[0]?></div></td>
+      <div align="center"><?php echo $r[0]?></div></td>
     <td height="25"> 
       <div align="center"> 
-        <input type="button" name="Submit" value="備份數據" onclick="self.location.href='ChangeTable.php?mydbname=<?=$r[0]?>';">
-        &nbsp;&nbsp;&nbsp;<input type="button" name="Submit" value="執行SQL" onclick="self.location.href='DoSql.php?mydbname=<?=$r[0]?>';">
-		&nbsp;&nbsp;&nbsp;<input type="button" name="Submit3" value="刪除數據庫" onclick="javascript:DoDrop('<?=$r[0]?>')">
+        <input type="button" name="Submit" value="備份數據" onclick="self.location.href='ChangeTable.php?mydbname=<?php echo $r[0]?>';">
+        &nbsp;&nbsp;&nbsp;<input type="button" name="Submit" value="執行SQL" onclick="self.location.href='DoSql.php?mydbname=<?php echo $r[0]?>';">
+		&nbsp;&nbsp;&nbsp;<input type="button" name="Submit3" value="刪除數據庫" onclick="javascript:DoDrop('<?php echo $r[0]?>')">
       </div></td>
   </tr>
   <?php

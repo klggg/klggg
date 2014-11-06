@@ -1,10 +1,10 @@
 <?php
 /******************************
  * $File: attestations.class.php
- * $Description: 证明材料类文件管理
+ * $Description: 脰陇脙梅虏脛脕脧脌脿脦脛录镁鹿脺脌铆
 ******************************/
 
-if (!defined('ROOT_PATH'))  /*die('不能访问')*/echo "<script>window.location.href='/404.htm';</script>";//防止直接访问
+if (!defined('ROOT_PATH'))  /*die('虏禄脛脺路脙脦脢')*/echo "<script>window.location.href='/404.htm';</script>";//路脌脰鹿脰卤陆脫路脙脦脢
 
 require_once("attestations.model.php");
 
@@ -17,23 +17,23 @@ class attestationsClass{
 	
 	}
 	/**
-	 * 1,添加证明资料
+	 * 1,脤铆录脫脰陇脙梅脳脢脕脧
 	 *
-	 * @param array $data =array("name"=>"证明资料名称","status"=>"状态","degree"=>"学历","in_year"=>"入学时间","professional"=>"专业");
+	 * @param array $data =array("name"=>"脰陇脙梅脳脢脕脧脙没鲁脝","status"=>"脳麓脤卢","degree"=>"脩搂脌煤","in_year"=>"脠毛脩搂脢卤录盲","professional"=>"脳篓脪碌");
 	 * @param string $data;
 	 * @return boolen(true,false)
 	 */
 	function AddAttestationsType($data = array()){
 		global $mysql;
-		 //判断名称是否存在
+		 //脜脨露脧脙没鲁脝脢脟路帽麓忙脭脷
         if (!IsExiest($data['name'])) {
             return "attestations_type_name_empty";
         }
-		 //判断标识名是否存在
+		 //脜脨露脧卤锚脢露脙没脢脟路帽麓忙脭脷
         if (!IsExiest($data['nid'])) {
             return "attestations_type_nid_empty";
         }
-		//判断标识名是否存在
+		//脜脨露脧卤锚脢露脙没脢脟路帽麓忙脭脷
 		$sql = "select 1 from `{attestations_type}` where nid='{$data['nid']}'";
 		$result = $mysql->db_fetch_array($sql);
 		if ($result!=false) return "attestations_type_nid_exiest";
@@ -61,7 +61,7 @@ class attestationsClass{
 			$credit_log['type'] = $data['type'];
 			$credit_log['addtime'] = time();
 			$credit_log['article_id'] =$data['user_id'];
-			$credit_log['remark'] = "通过学习测试获得的积分";
+			$credit_log['remark'] = "脥篓鹿媒脩搂脧掳虏芒脢脭禄帽碌脙碌脛禄媒路脰";
 			creditClass::ActionCreditLog($credit_log);
 		}
 		if ($data['type']=="tender_study"){
@@ -72,25 +72,25 @@ class attestationsClass{
 	}
 	
 	/**
-	 * 2,修改证明资料
+	 * 2,脨脼赂脛脰陇脙梅脳脢脕脧
 	 *
-	 * @param array $data =array("id"=>"id","name"=>"名称","status"=>"状态");
+	 * @param array $data =array("id"=>"id","name"=>"脙没鲁脝","status"=>"脳麓脤卢");
 	 * @param string $data;
 	 * @return boolen(true,false)
 	 */
 	function UpdateAttestationsType($data = array()){
 		global $mysql;
 		
-		 //判断名称是否存在
+		 //脜脨露脧脙没鲁脝脢脟路帽麓忙脭脷
         if (!IsExiest($data['name'])) {
             return "attestations_type_name_empty";
         }
-		 //判断标识名是否存在
+		 //脜脨露脧卤锚脢露脙没脢脟路帽麓忙脭脷
         if (!IsExiest($data['nid'])) {
             return "attestations_type_nid_empty";
 		}
 		
-		//判断标识名是否存在
+		//脜脨露脧卤锚脢露脙没脢脟路帽麓忙脭脷
 		$sql = "select 1 from `{attestations_type}` where nid='{$data['nid']}' and id!={$data['id']}";
 		$result = $mysql->db_fetch_array($sql);
 		if ($result!=false) return "attestations_type_nid_exiest";
@@ -104,7 +104,7 @@ class attestationsClass{
 	}
 	
 	/**
-	 * 3,删除证明资料
+	 * 3,脡戮鲁媒脰陇脙梅脳脢脕脧
 	 *
 	 * @param Array $data = array("id"=>"ID")
 	 * @return Boolen
@@ -128,7 +128,7 @@ class attestationsClass{
 	
 	
 	/**
-	 * 5,获得证明资料列表
+	 * 5,禄帽碌脙脰陇脙梅脳脢脕脧脕脨卤铆
 	 *
 	 * @return Array
 	 */
@@ -140,24 +140,24 @@ class attestationsClass{
 		$_order = " order by p1.id desc";
 		$sql = "select SELECT from `{attestations_type}` as p1  SQL ORDER ";
 		
-		//是否显示全部的信息
+		//脢脟路帽脧脭脢戮脠芦虏驴碌脛脨脜脧垄
 		if (IsExiest($data['limit'])!=false){
 			if ($data['limit'] != "all"){ $_limit = "  limit ".$data['limit']; }
 			return $mysql->db_fetch_arrays(str_replace(array('SELECT', 'SQL', 'ORDER', 'LIMIT'), array($_select, $_sql, $_order, $_limit), $sql));
 		}			 
 		
-		//判断总的条数
+		//脜脨露脧脳脺碌脛脤玫脢媒
 		$row = $mysql->db_fetch_array(str_replace(array('SELECT', 'SQL', 'ORDER', 'LIMIT'), array('count(1) as num', $_sql,'', ''), $sql));
 		$total = intval($row['num']);
 		
-		//分页返回结果
+		//路脰脪鲁路碌禄脴陆谩鹿没
 		$data['page'] = !IsExiest($data['page'])?1:$data['page'];
 		$data['epage'] = !IsExiest($data['epage'])?10:$data['epage'];
 		$total_page = ceil($total / $data['epage']);
 		$_limit = " limit ".($data["epage"] * ($data["page"] - 1)).", {$data['epage']}";
 		$list = $mysql->db_fetch_arrays(str_replace(array('SELECT', 'SQL','ORDER', 'LIMIT'), array($_select,$_sql,$_order, $_limit), $sql));
 		
-		//返回最终的结果
+		//路碌禄脴脳卯脰脮碌脛陆谩鹿没
 		$result = array('list' => $list?$list:array(),'total' => $total,'page' => $data['page'],'epage' => $data['epage'],'total_page' => $total_page);
 		return $result;
 	}
@@ -165,7 +165,7 @@ class attestationsClass{
 	
 	
 	/**
-	 * 6,获得证明资料的单条记录
+	 * 6,禄帽碌脙脰陇脙梅脳脢脕脧碌脛碌楼脤玫录脟脗录
 	 *
 	 * @param Array $data = array("id"=>"");
 	 * @return Array
@@ -183,7 +183,7 @@ class attestationsClass{
 	
 	
 	/**
-	 * 5,获得用户证明资料列表
+	 * 5,禄帽碌脙脫脙禄搂脰陇脙梅脳脢脕脧脕脨卤铆
 	 *
 	 * @return Array
 	 */
@@ -193,17 +193,17 @@ class attestationsClass{
 		
 		$_sql = " where 1=1 ";
 		
-		//搜索用户id
+		//脣脩脣梅脫脙禄搂id
         if (IsExiest($data['user_id'])!=false) {
             $_sql .= " and p2.user_id ='{$data['user_id']}'";
         }
 		
-		//搜索用户名
+		//脣脩脣梅脫脙禄搂脙没
 		elseif (IsExiest($data['username'])!=false) {
             $_sql .= " and p2.username = '{$data['username']}'";
         }
 		
-		//搜索用户名
+		//脣脩脣梅脫脙禄搂脙没
 		elseif (IsExiest($data['email'])!=false) {
             $_sql .= " and p2.email = '{$data['email']}'";
         }
@@ -222,6 +222,10 @@ class attestationsClass{
 		if ($data["pic_result"]=="") return "";
 		foreach ($data["pic_result"] as $key => $value){
 		   $attestations_type = $mysql->db_fetch_array("select credit from {attestations_type} where id='{$data['type_id']}'");
+
+
+		    $value['order'] = intval($value['order']);
+	
 			$sql = "insert into `{attestations}` set addtime='".time()."',addip='".ip_address()."',user_id='{$data['user_id']}',upfiles_id='{$value['upfiles_id']}',`order`='{$value['order']}',type_id='{$data['type_id']}', credit='".$attestations_type['credit']."'";
 			$mysql->db_query($sql);
 		
@@ -237,22 +241,22 @@ class attestationsClass{
 		
 		$_sql = " where 1=1 ";
 		
-		//搜索用户id
+		//脣脩脣梅脫脙禄搂id
         if (IsExiest($data['user_id'])!=false) {
             $_sql .= " and p1.user_id ='{$data['user_id']}'";
         }
 		
-		//搜索用户id
+		//脣脩脣梅脫脙禄搂id
         if (IsExiest($data['type_id'])!=false) {
             $_sql .= " and p1.type_id in ({$data['type_id']}) ";
         }
 		
-		//搜索用户id
+		//脣脩脣梅脫脙禄搂id
         if (IsExiest($data['status'])!=false) {
             $_sql .= " and p1.status = '{$data['status']}'";
         }
 		
-		//搜索用户名
+		//脣脩脣梅脫脙禄搂脙没
 		if (IsExiest($data['username'])!=false) {
             $_sql .= " and p2.username like '%{$data['username']}%'";
         }
@@ -266,7 +270,7 @@ class attestationsClass{
             $sql .= " ORDER LIMIT";
 		}
 		
-		//是否显示全部的信息
+		//脢脟路帽脧脭脢戮脠芦虏驴碌脛脨脜脧垄
 		if (IsExiest($data['limit'])!=false){
 			if ($data['limit'] != "all"){ $_limit = "  limit ".$data['limit']; }
 			$result = $mysql->db_fetch_arrays(str_replace(array('SELECT', 'SQL', 'ORDER', 'LIMIT'), array($_select, $_sql, $_order, $_limit), $sql));
@@ -286,11 +290,11 @@ class attestationsClass{
 			return $result;
 		}			 
 		
-		//判断总的条数
+		//脜脨露脧脳脺碌脛脤玫脢媒
 		$row = $mysql->db_fetch_array(str_replace(array('SELECT', 'SQL', 'ORDER', 'LIMIT'), array('count(1) as num', $_sql,'', ''), $sql));
 		$total = intval($row['num']);
 		
-		//分页返回结果
+		//路脰脪鲁路碌禄脴陆谩鹿没
 		$data['page'] = !IsExiest($data['page'])?1:$data['page'];
 		$data['epage'] = !IsExiest($data['epage'])?10:$data['epage'];
 		$total_page = ceil($total / $data['epage']);
@@ -302,14 +306,14 @@ class attestationsClass{
 				$list[$key]['validity_time'] = 2;
 			}
 		}
-		//返回最终的结果
+		//路碌禄脴脳卯脰脮碌脛陆谩鹿没
 		$result = array('list' => $list?$list:array(),'total' => $total,'page' => $data['page'],'epage' => $data['epage'],'total_page' => $total_page);
 		return $result;
 	}
 	
 	
 	/**
-	 * 6,获得证明资料的单条记录
+	 * 6,禄帽碌脙脰陇脙梅脳脢脕脧碌脛碌楼脤玫录脟脗录
 	 *
 	 * @param Array $data = array("id"=>"");
 	 * @return Array
@@ -332,9 +336,9 @@ class attestationsClass{
 	}
 	
 	/**
-	 * 2,修改证明资料
+	 * 2,脨脼赂脛脰陇脙梅脳脢脕脧
 	 *
-	 * @param array $data =array("id"=>"id","name"=>"名称","status"=>"状态");
+	 * @param array $data =array("id"=>"id","name"=>"脙没鲁脝","status"=>"脳麓脤卢");
 	 * @param string $data;
 	 * @return boolen(true,false)
 	 */
@@ -345,10 +349,11 @@ class attestationsClass{
 		if (!IsExiest($data['id'])) return "attestations_id_empty";
 		if (!IsExiest($data['upfiles_id'])) return "attestations_upfilesid_empty";
 		
-         //判断名称是否存在
+         //脜脨露脧脙没鲁脝脢脟路帽麓忙脭脷
         if (!IsExiest($data['name'])) {
             return "attestations_name_empty";
         }
+        $data['order'] = intval($data['order']);
 		$sql = "update `{attestations}` set `type_id` = '{$data['type_id']}',`order` = '{$data['order']}' where id='{$data['id']}'  and user_id='{$data['user_id']}'";
 		
 		$mysql->db_query($sql);
@@ -373,7 +378,7 @@ class attestationsClass{
 	}
 	
 	/**
-	 * 3,删除证明资料
+	 * 3,脡戮鲁媒脰陇脙梅脳脢脕脧
 	 *
 	 * @param Array $data = array("id"=>"ID")
 	 * @return Boolen
@@ -396,7 +401,7 @@ class attestationsClass{
 	}
 	
 		/**
-	 *4,审核证明资料
+	 *4,脡贸潞脣脰陇脙梅脳脢脕脧
 	 *
 	 * @param Array $data = array("id"=>"");
 	 * @return id
@@ -408,10 +413,13 @@ class attestationsClass{
 		$sql = "select p1.*,p2.username from `{attestations}` as p1  left join `{users}` as p2 on p1.user_id=p2.user_id where id='{$data['id']}'";
 		$result = $mysql->db_fetch_array($sql);
 		if ($result==false) return "attestations_empty";
+
+
+		$data['verify_userid'] = intval($data['verify_userid']);
 		$sql = "update `{attestations}` set verify_userid='{$data['verify_userid']}',verify_remark='{$data['verify_remark']}', verify_time='".time()."',status='{$data['status']}' where id='{$data['id']}'";
 		$mysql->db_query($sql);
 		
-		//加入审核记录
+		//录脫脠毛脡贸潞脣录脟脗录
 		$_data["user_id"] = $result["user_id"];
 		$_data["result"] = $data["status"];
 		$_data["code"] = "attestations";
@@ -424,7 +432,7 @@ class attestationsClass{
 	}
 	
 		/**
-	 *4,审核证明资料
+	 *4,脡贸潞脣脰陇脙梅脳脢脕脧
 	 *
 	 * @param Array $data = array("id"=>"");
 	 * @return id
@@ -438,10 +446,12 @@ class attestationsClass{
 		$result = $mysql->db_fetch_array($sql);
 		if ($result['credit']<$_credit) return "attestations_credit_most";
 		foreach ($data['id'] as  $key => $value){
+
+			$data['user_id'] = intval($data['user_id']);
 			$sql = "update `{attestations}` set credit='{$data['credit'][$key]}',verify_remark='{$data['verify_remark'][$key]}',status='{$data['status'][$key]}',verify_userid='{$data['user_id']}',verify_time='".time()."' where id='{$value}'";
 			$mysql->db_query($sql);
 		}
-		//加入审核记录
+		//录脫脠毛脡贸潞脣录脟脗录
 		$_data["user_id"] = $result["user_id"];
 		$_data["result"] = $data["status"];
 		$_data["code"] = "attestations";
@@ -454,7 +464,7 @@ class attestationsClass{
 	}
 	
 		/**
-	 *4,审核证明资料
+	 *4,脡贸潞脣脰陇脙梅脳脢脕脧
 	 *
 	 * @param Array $data = array("id"=>"");
 	 * @return id
@@ -463,12 +473,12 @@ class attestationsClass{
 	 	global $mysql;
 		$_sql = " where 1=1 ";
 		
-		//搜索用户id
+		//脣脩脣梅脫脙禄搂id
         if (IsExiest($data['user_id'])!=false) {
             $_sql .= " and p1.user_id ='{$data['user_id']}'";
         }
 		
-		//搜索用户id
+		//脣脩脣梅脫脙禄搂id
         if (IsExiest($data['type_id'])!=false) {
             $_sql .= " and p1.type_id ='{$data['type_id']}'";
         }
@@ -492,7 +502,7 @@ class attestationsClass{
 	 }
 	 
 	 	/**
-	 *4,审核证明资料
+	 *4,脡贸潞脣脰陇脙梅脳脢脕脧
 	 *
 	 * @param Array $data = array("id"=>"");
 	 * @return id
@@ -501,13 +511,13 @@ class attestationsClass{
 	 	global $mysql;
 		$_sql = " where 1=1 ";
 		
-		//搜索用户id
+		//脣脩脣梅脫脙禄搂id
         if (IsExiest($data['user_id'])!=false) {
             $_sql .= " and p1.user_id ='{$data['user_id']}'";
         }
 		
 		$_result = array();
-		//搜索用户id
+		//脣脩脣梅脫脙禄搂id
         if (IsExiest($data['type_id'])!=false) {
             $_sql .= " and p1.type_id ='{$data['type_id']}'";
         }
@@ -537,7 +547,7 @@ class attestationsClass{
 	 
 	  
 	 /**
-	 *1,审核证明资料
+	 *1,脡贸潞脣脰陇脙梅脳脢脕脧
 	 *
 	 * @param Array $data = array("id"=>"");
 	 * @return id
@@ -575,9 +585,9 @@ class attestationsClass{
 	 
 	   
 	 /**
-	 *1,审核证明资料
-	 * 状态说明：1表示已通过，2表示
-	 * @param Array $data = array("user_id"=>"用户id"，"type_id"=>"用户id");
+	 *1,脡贸潞脣脰陇脙梅脳脢脕脧
+	 * 脳麓脤卢脣碌脙梅拢潞1卤铆脢戮脪脩脥篓鹿媒拢卢2卤铆脢戮
+	 * @param Array $data = array("user_id"=>"脫脙禄搂id"拢卢"type_id"=>"脫脙禄搂id");
 	 * @return id
 	 */
 	 function ActionAttestationsUser($data = array()){

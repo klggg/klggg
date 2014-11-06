@@ -11,6 +11,7 @@
 require_once(ROOT_PATH.'modules/ucenter/config.inc.php');//
 require_once(ROOT_PATH.'modules/ucenter/include/db_mysql.class.php');//
 require_once(ROOT_PATH.'modules/ucenter/uc_client/client.php');//
+
 class ucenterClass{
 	
 	const ERROR = '操作有误，请不要乱操作';
@@ -104,7 +105,9 @@ class ucenterClass{
 	function UcenterLogin($data){
 		global $db_config;
 		$db = new dbstuff;
-		$db->connect(UC_DBHOST, UC_DBUSER,UC_DBPW, UC_DBNAME,0);
+
+		$result = $db->connect(UC_DBHOST, UC_DBUSER,UC_DBPW, UC_DBNAME,0);
+
 		list($uid, $username, $password, $email) = uc_user_login($data['username'], $data['password']);
 		if ($uid<0){
 			$_data['email'] = $data['email'];

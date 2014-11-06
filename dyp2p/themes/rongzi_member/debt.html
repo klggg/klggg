@@ -164,8 +164,8 @@ function borrowChange(type,userid){
 					$result = EqualInterest($data);
 					if ($result!="" && is_array($list)){
 				?>
-			<div style="text-align:center"><b>到期价值</b> <font style="color:#FF0000"><span id="show"><? echo $result['account_total'];?></span>元</font></div>
-			<? }?>
+			<div style="text-align:center"><b>到期价值</b> <font style="color:#FF0000"><span id="show"><?php echo $result['account_total'];?></span>元</font></div>
+			<?php }?>
 			{/literal}
 			</div>
 		<div class="r_bot"></div>

@@ -16,6 +16,17 @@ if (isset($_REQUEST['query_site']) && $_REQUEST['query_site']!=""){
 	$_G['query_site'] = $query_string[0];
 }
 
+
+if (isset($query_string[0]) && isset($query_string[1])){
+	if(empty($query_string[0]))
+		$_G['query_site'] = $query_string[1];
+}
+
+// var_dump($_SERVER['QUERY_STRING'] );
+// var_dump($query_string );
+// var_dump($_G['query_site'] );
+// die();
+
 //网站基本配置文件
 $system = array();
 $system_name = array();

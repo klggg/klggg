@@ -21,7 +21,7 @@ function ChangeSet(filename)
 	var ok=confirm("確認要導入?");
 	if(ok)
 	{
-		opener.parent.ebakmain.location.href='ChangeTable.php?mydbname=<?=$mydbname?>&savefilename='+filename;
+		opener.parent.ebakmain.location.href='ChangeTable.php?mydbname=<?php echo $mydbname?>&savefilename='+filename;
 		window.close();
 	}
 }
@@ -37,7 +37,7 @@ function ChangeSet(filename)
 <br>
 <table width="500" border="0" align="center" cellpadding="3" cellspacing="1">
   <tr bgcolor="#0472BC"> 
-    <td width="63%" height="25" bgcolor="#0472BC"> <div align="center"><strong><font color="#FFFFFF">保存設置文件名<?=$onclickword?></font></strong></div></td>
+    <td width="63%" height="25" bgcolor="#0472BC"> <div align="center"><strong><font color="#FFFFFF">保存設置文件名<?php echo $onclickword?></font></strong></div></td>
     <td width="37%"><div align="center"><font color="#FFFFFF">操作</font></div></td>
   </tr>
   <?php
@@ -69,8 +69,8 @@ function ChangeSet(filename)
   ?>
   <tr bgcolor="#DBEAF5"> 
     <td height="25"> <div align="left"><img src="images/txt.gif" width="19" height="16">&nbsp; 
-        <?=$showfile?> </div></td>
-    <td><div align="center">&nbsp;[<?=$showdel?>]</div></td>
+        <?php echo $showfile?> </div></td>
+    <td><div align="center">&nbsp;[<?php echo $showdel?>]</div></td>
   </tr>
   <?php
      }
