@@ -331,10 +331,14 @@ class AppTemplate
      */
     function fetch_str($source)
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 7c9cd3801a626936bd1d6a85029b42aa3747ec4f
      {
     //     echo "-------------\n";
     //     echo($source);
     //     die();
+<<<<<<< HEAD
         return preg_replace("/{([^\}\{\n]*)}/e", "\$this->select('\\1');", $source);
         
         // $tmp_return =  preg_replace_callback("/{([^\}\{\n]*)}/",
@@ -349,6 +353,18 @@ class AppTemplate
     {
         return preg_replace("/{([^\}\{\n]*)}/e", "\$this->select('\\1');", $source);
 >>>>>>> 88ff99af4a79ee6d3241fb6bc3a913083a079c5c
+=======
+        return preg_replace("/{([^\}\{\n]*)}/e", "\$this->select('\\1');", $source);
+        
+        // $tmp_return =  preg_replace_callback("/{([^\}\{\n]*)}/",
+        //     function ($m) {
+               
+        //         return  "\$this->select('".$m[1]."');"; 
+        //     }
+        //  , $source);
+        // return $tmp_return;
+         
+>>>>>>> 7c9cd3801a626936bd1d6a85029b42aa3747ec4f
     }
 
     

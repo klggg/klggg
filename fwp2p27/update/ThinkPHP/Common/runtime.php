@@ -127,10 +127,14 @@ class IndexAction extends Action{
     }else{
         header("Content-Type:text/html; charset=utf-8");
 <<<<<<< HEAD
+<<<<<<< HEAD
         exit('<div style=\'font-weight:bold;float:left;width:345px;text-align:center;border:1px solid silver;background:#E8EFFF;padding:8px;color:red;font-size:14px;font-family:Tahoma\'>项目目录不可写，目录无法自动生成！<BR>请使用项目生成器或者手动生成项目目录2~</div>');
 =======
         exit('<div style=\'font-weight:bold;float:left;width:345px;text-align:center;border:1px solid silver;background:#E8EFFF;padding:8px;color:red;font-size:14px;font-family:Tahoma\'>项目目录不可写，目录无法自动生成！<BR>请使用项目生成器或者手动生成项目目录~</div>');
 >>>>>>> 88ff99af4a79ee6d3241fb6bc3a913083a079c5c
+=======
+        exit('<div style=\'font-weight:bold;float:left;width:345px;text-align:center;border:1px solid silver;background:#E8EFFF;padding:8px;color:red;font-size:14px;font-family:Tahoma\'>项目目录不可写，目录无法自动生成！<BR>请使用项目生成器或者手动生成项目目录2~</div>');
+>>>>>>> 7c9cd3801a626936bd1d6a85029b42aa3747ec4f
     }
 }
 

@@ -28,10 +28,14 @@ class es_session
 	{
 		session_set_cookie_params(0,app_conf("COOKIE_PATH"),app_conf("DOMAIN_ROOT"));
 <<<<<<< HEAD
+<<<<<<< HEAD
 		session_start();
 =======
 		@session_start();
 >>>>>>> 88ff99af4a79ee6d3241fb6bc3a913083a079c5c
+=======
+		session_start();
+>>>>>>> 7c9cd3801a626936bd1d6a85029b42aa3747ec4f
 	}
 	
     // 判断session是否存在
@@ -69,10 +73,14 @@ class es_session
     {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     	session_write_close();
 =======
     	@session_write_close();
 >>>>>>> 88ff99af4a79ee6d3241fb6bc3a913083a079c5c
+=======
+    	session_write_close();
+>>>>>>> 7c9cd3801a626936bd1d6a85029b42aa3747ec4f
     }
     
     static function  is_expired()
