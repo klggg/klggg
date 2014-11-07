@@ -7,10 +7,11 @@
 // | Author: 云淡风轻(88522820@qq.com)
 // +----------------------------------------------------------------------
 
+
 @set_magic_quotes_runtime (0);
 define('MAGIC_QUOTES_GPC',get_magic_quotes_gpc()?True:False);
 //error_reporting(E_ALL ^ E_NOTICE ^ E_WARNING);
-error_reporting(0);
+// error_reporting(0);
 if(!defined('IS_CGI'))
 define('IS_CGI',substr(PHP_SAPI, 0,3)=='cgi' ? 1 : 0 );
  if(!defined('_PHP_FILE_')) {

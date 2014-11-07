@@ -125,6 +125,28 @@ alter table yyd_attestations  modify  verify_userid  int(11)           null ;
 alter table yyd_attestations  modify  verify_remark  varchar(250)      null default '';
 
 
+alter table yyd_examines modify user_id    int(11)  null ; 
+alter table yyd_examines modify code   varchar(100) null  default ''; 
+alter table yyd_examines modify type   varchar(200) null  default ''; 
+alter table yyd_examines modify article_id    int(11)  null ; 
+
+alter table yyd_examines modify result   varchar(100) null  default ''; 
+alter table yyd_examines modify verify_userid    int(11)  null ; 
+
+alter table yyd_examines modify remark   varchar(200) null  default ''; 
+alter table yyd_examines modify addtime   varchar(50) null  default ''; 
+alter table yyd_examines modify addip   varchar(50) null  default ''; 
+
+
+#------
+chown -R www-data:www-data /var/wwwroot/dyp2p/data 
+chown -R www-data:www-data /var/wwwroot/dyp2p/bbs/data/cache
+
+vim dyp2p/modules/ucenter/config.inc.php
+define('UC_API', 'http://demo.52jscn.com/modules/ucenter');
+define('UC_API', 'http://121.40.125.248/modules/ucenter');
+
+
 ×¢Òâ£ºÒ»°ã²»ÏëÂé·³µÄÒ»¶¨ÒªÑ¡ÔñÊý¾Ý¿âºÍÄãµÄÖ÷»úÔÚÍ¬Ò»¸öÏµÍ³»òÕßIPÄÚ£¡
 
 Î±¾²Ì¬ÅäÖÃÇëÁªÏµÖ÷»úÉÌ°ïÖúÄã´î½¨£¬·þÎñÆ÷»òÕßÔÆÖ÷»ú¿ÉÒÔ°Ù¶ÈÒ»ÏÂrewriteµÄ°²×°»òÕß¶ÁÈ¡Ò»ÏÂRewriteÄ¿Â¼ÀïÃæµÄËµÃ÷£¡Ä¿Ç°½öÖ§³ÖiisµÄrewrite£¡

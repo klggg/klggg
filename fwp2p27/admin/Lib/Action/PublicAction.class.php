@@ -47,21 +47,12 @@ class PublicAction extends BaseAction{
     	{
     		$this->error(L('ADM_PASSWORD_EMPTY',$ajax));
     	}
-<<<<<<< HEAD
-<<<<<<< HEAD
   //   	if(es_session::get("verify") != md5($_REQUEST['adm_verify'])) {
 		// 	$this->error(L('ADM_VERIFY_ERROR'),$ajax);
 		// }
-=======
     	if(es_session::get("verify") != md5($_REQUEST['adm_verify'])) {
 			$this->error(L('ADM_VERIFY_ERROR'),$ajax);
 		}
->>>>>>> 88ff99af4a79ee6d3241fb6bc3a913083a079c5c
-=======
-  //   	if(es_session::get("verify") != md5($_REQUEST['adm_verify'])) {
-		// 	$this->error(L('ADM_VERIFY_ERROR'),$ajax);
-		// }
->>>>>>> 7c9cd3801a626936bd1d6a85029b42aa3747ec4f
 		
 		$condition['adm_name'] = $adm_name;
 		$condition['is_effect'] = 1;

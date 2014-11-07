@@ -535,7 +535,9 @@ function sys_user_status($user_id,$is_cache = false,$make_cache=false){
 		//加权平均借款利率
 		$data['avg_rate'] = $GLOBALS['db']->getOne("SELECT sum(rate)/count(*) FROM ".DB_PREFIX."deal use index(idx_0) WHERE deal_status in (4,5) AND user_id=$user_id AND publish_wait = 0");
 		//平均每笔借款金额
-		$data['avg_borrow_amount'] = $data['borrow_amount'] / $data['success_deal_count'];
+		$data['avg_borrow_amount'] = 0;
+		if(!empty($data['success_deal_count']))
+			$data['avg_borrow_amount'] = $data['borrow_amount'] / $data['success_deal_count'];
 		
 		//逾期本息
 		$data['yuqi_amount'] = $GLOBALS['db']->getOne("SELECT (sum(repay_money) + sum(impose_money)) as new_amount FROM ".DB_PREFIX."deal_repay use index(idx_0) WHERE user_id=$user_id AND status in(2,3)");
@@ -2867,4 +2869,3 @@ function filter_ctl_act_req($str){
 		
 	return str_replace($search,"",$str);
 }
-?>

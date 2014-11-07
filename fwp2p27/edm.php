@@ -115,4 +115,3 @@ function send_mail($email,$subject,$send_email,$send_name,$content,$send_time,$c
 //
 //send_mail("fzmatthew@qq.com","测试邮件","fzmatthew@qq.com","易想","测试内容","2010-01-01 23:50:12",$client,$token);
 //exit;
-?>

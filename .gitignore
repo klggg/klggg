@@ -9,21 +9,14 @@ vendor/*
 *~
 *.*~
 *.DS_Store
-<<<<<<< HEAD
+
 dyp2p/data/*
-fwp2p27/.tags_sorted_by_file
-fwp2p27/.tags
 fwp2p27/public/runtime
 fwp2p27/public/attachment
+fwp2p27/public/attachment/
+
 .DS_Store
 .gitignore
-dyp2p/.htaccess
-dyp2p/.tags
-dyp2p/.tags_sorted_by_file
-=======
 /dyp2p/dyp2p.zip
-fwp2p27/public/attachment/
-fwp2p27/public/runtime
 .tags
 .tags_sorted_by_file
->>>>>>> 7c9cd3801a626936bd1d6a85029b42aa3747ec4f

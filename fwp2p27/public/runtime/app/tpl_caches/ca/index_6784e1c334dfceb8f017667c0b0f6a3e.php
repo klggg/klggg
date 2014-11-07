@@ -1,4 +1,4 @@
-<?php exit;?>a:3:{s:8:"template";a:3:{i:0;s:63:"/Users/mac/www/github_klggg/fwp2p27/app/Tpl/red/page/index.html";i:1;s:63:"/Users/mac/www/github_klggg/fwp2p27/app/Tpl/red/inc/header.html";i:2;s:63:"/Users/mac/www/github_klggg/fwp2p27/app/Tpl/red/inc/footer.html";}s:7:"expires";i:1414135411;s:8:"maketime";i:1414134811;}﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<?php exit;?>a:3:{s:8:"template";a:3:{i:0;s:63:"/Users/mac/www/github_klggg/fwp2p27/app/Tpl/red/page/index.html";i:1;s:63:"/Users/mac/www/github_klggg/fwp2p27/app/Tpl/red/inc/header.html";i:2;s:63:"/Users/mac/www/github_klggg/fwp2p27/app/Tpl/red/inc/footer.html";}s:7:"expires";i:1415344873;s:8:"maketime";i:1415344273;}﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta name="Generator" />
@@ -141,6 +141,37 @@ var send_span = 2000;
 		</div>
 	</div>
 	<div class="i_deal_list clearfix pr15 pl15">
+				<div class="item  clearfix" style="border-bottom:0">
+			<div class="icon f_l">
+				<a href="/index.php?ctl=deal&id=7"><img src="http://local.fyp2p.com/public/attachment/201411/03/21/5457891f61241.png" class="img_b" height="80" width="80"></a>
+			</div>
+			<div class="detail f_r">
+				<div class="tit b lh24 clearfix">
+					<a href="/index.php?ctl=deal&id=7" class="f_l"><span style='color:#5e9999'>缺钱了</span></a>
+					<div class="cate_tip cate_tip_1 ml5 f_l">信用认证标！</div>
+				</div>
+				<div class="clearfix">
+					<div class="info f_l">借款金额：<span class="f_red">￥100,000.00</span></div>
+					<div class="info info2 f_l">年利率：<span class="f_red">20.00 %</span></div>
+					<div class="info info3 f_l">借款期限：<span class="f_red">3</span>个月</div>
+				</div>
+				<div class="clearfix">
+					<div class="info f_l">
+						信用等级：<img src="http://local.fyp2p.com/app/Tpl/red/images/HR.png" align="absmiddle" title="HR" alt="HR" height="16" />
+					</div>
+					<div class="info info2 f_l clearfix">
+						<div class="f_l">借款进度：</div>
+						<div class="greenProcessBar progressBar f_l indexbar">						
+							<p>0%</p>
+							<div class="p">
+								<div class="c" style="width: 0%;"></div>
+							</div>
+						</div>
+					</div>
+					<div class="info info3 f_l">还需：<span class="f_red">￥100,000.00</span></div>
+				</div>
+			</div>
+		</div>
 			</div>
 </div>
 <div class="index_right f_r">

@@ -330,41 +330,26 @@ class AppTemplate
      * @return  sring
      */
     function fetch_str($source)
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 7c9cd3801a626936bd1d6a85029b42aa3747ec4f
      {
     //     echo "-------------\n";
     //     echo($source);
     //     die();
-<<<<<<< HEAD
-        return preg_replace("/{([^\}\{\n]*)}/e", "\$this->select('\\1');", $source);
+        // return preg_replace("/{([^\}\{\n]*)}/e", "\$this->select('\\1');", $source);
         
-        // $tmp_return =  preg_replace_callback("/{([^\}\{\n]*)}/",
-        //     function ($m) {
+        $tmp_return =  preg_replace_callback("/{([^\}\{\n]*)}/",
+            function ($m) {
                
-        //         return  "\$this->select('".$m[1]."');"; 
-        //     }
-        //  , $source);
-        // return $tmp_return;
+                // return  "\$this->select('".$m[1]."');"; 
+                $tmp_str = $this->select($m[1]);
+                // var_dump($tmp_str);
+                // die();
+                return $tmp_str;
+            }
+         , $source);
+
+        return $tmp_return;
          
-=======
-    {
-        return preg_replace("/{([^\}\{\n]*)}/e", "\$this->select('\\1');", $source);
->>>>>>> 88ff99af4a79ee6d3241fb6bc3a913083a079c5c
-=======
-        return preg_replace("/{([^\}\{\n]*)}/e", "\$this->select('\\1');", $source);
-        
-        // $tmp_return =  preg_replace_callback("/{([^\}\{\n]*)}/",
-        //     function ($m) {
-               
-        //         return  "\$this->select('".$m[1]."');"; 
-        //     }
-        //  , $source);
-        // return $tmp_return;
-         
->>>>>>> 7c9cd3801a626936bd1d6a85029b42aa3747ec4f
+
     }
 
     
@@ -490,7 +475,9 @@ class AppTemplate
         }
         else
         {
-            $tag_sel = array_shift(explode(' ', $tag));
+            $tmp_array = explode(' ', $tag);
+            $tag_sel = array_shift($tmp_array);
+
             switch ($tag_sel)
             {
                 case 'if':
@@ -582,9 +569,19 @@ class AppTemplate
                     break;
                 case 'insert' :
                     $t = $this->get_para(substr($tag, 7), false);					
-                    $out = "<?php \n" . '$k = ' . preg_replace("/(\'\\$[^,]+)/e" , "stripslashes(trim('\\1','\''));", var_export($t, true)) . ";\n";
-                    $out .= 'echo $this->_hash . $k[\'name\'] . \'|\' . base64_encode(serialize($k)) . $this->_hash;' . "\n?>";
 
+                     $tmp_return =  preg_replace_callback("/(\'\\$[^,]+)/",
+                        function ($m) {
+                           
+                            return  stripslashes(trim($m[1],'\''));; 
+                        }
+                     , var_export($t, true));
+
+                    $out = "<?php \n" . '$k = ' . $tmp_return . ";\n";
+
+
+                    // $out = "<?php \n" . '$k = ' . preg_replace("/(\'\\$[^,]+)/e" , "stripslashes(trim('\\1','\''));", var_export($t, true)) . ";\n";
+                    $out .= 'echo $this->_hash . $k[\'name\'] . \'|\' . base64_encode(serialize($k)) . $this->_hash;' . "\n?>";
                     return $out;
                     break;
 
@@ -625,7 +622,16 @@ class AppTemplate
 				case 'function' :
                     $t = $this->get_para(substr($tag, 8), false);
 
-                    $out = "<?php \n" . '$k = ' . preg_replace("/(\'\\$[^,]+)/e" , "stripslashes(trim('\\1','\''));", var_export($t, true)) . ";\n";
+
+                    $tmp_return =  preg_replace_callback("/(\'\\$[^,]+)/",
+                        function ($m) {
+                           
+                            return  stripslashes(trim($m[1],'\''));
+                        }
+                     , var_export($t, true));
+
+                    // $out = "<?php \n" . '$k = ' . preg_replace("/(\'\\$[^,]+)/e" , "stripslashes(trim('\\1','\''));", var_export($t, true)) . ";\n";
+                    $out = "<?php \n" . '$k = ' . $tmp_return . ";\n";
 					$out .= 'echo $k[\'name\'](';
 					
 					$first = true;

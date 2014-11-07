@@ -57,6 +57,10 @@ class mysql_db
 
     function connect($dbhost, $dbuser, $dbpw, $dbname = '', $charset = 'utf8', $pconnect = 0, $quiet = 0)
     {
+
+        // var_dump($dbhost,$dbuser, $dbpw, $dbname );
+        // var_dump($pconnect);
+
         if ($pconnect)
         {
             if (!($this->link_id = @mysql_pconnect($dbhost, $dbuser, $dbpw)))
@@ -73,11 +77,11 @@ class mysql_db
         {
             if (PHP_VERSION >= '4.2')
             {
-                $this->link_id = @mysql_connect($dbhost, $dbuser, $dbpw, true);
+                $this->link_id = mysql_connect($dbhost, $dbuser, $dbpw, true);
             }
             else
             {
-                $this->link_id = @mysql_connect($dbhost, $dbuser, $dbpw);
+                $this->link_id = mysql_connect($dbhost, $dbuser, $dbpw);
 
                 mt_srand((double)microtime() * 1000000); // 对 PHP 4.2 以下的版本进行随机数函数的初始化工作
             }
